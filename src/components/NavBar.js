@@ -9,11 +9,11 @@ const NavBar = () => (
         <div className ="inside">
             <ul role="tablist">
                 <li className="selected" tabindex="0" role="tab" aria-selected="true">
-                    <img src={require('./../../sass/image/icon_home.svg')} />
+                    <img src={require('./../sass/image/icon_home.svg')} />
                     <span>HOME</span>
                 </li>
                 <li tabindex="0" role="tab" aria-selected="false">
-                    <img src={require('./../../sass/image/icon_book.svg')} />
+                    <img src={require('./../sass/image/icon_book.svg')} />
                     <span>EBOOK</span>
                 </li>
                 <div class="clearfix"></div>
