@@ -4,11 +4,11 @@
 import React from 'react'
 
 const Header = ({userName}) => (<header role="banner" id="header">
-        <div id="logo-ml"><img src="_img/logo_ml.png" alt="Macmillan Learning" /></div>
+        <div id="logo-ml"><img src={require('./../../sass/image/logo_ml.png')} alt="Macmillan Learning" /></div>
         <div id="header-nav" role="navigation">
             <ul role="menubar">
                 <li id="nav-courses" tabindex="0" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="st1" >COURSES
-                   <image src="./image/icon_down_arrow.svg" />
+                   <image src={require('./../../sass/image/icon_down_arrow.svg')} />
                     <ul className="sub-nav menu" role="menu" aria-hidden="true">
                         <li tabindex="0" role="menuitem" className="menu-item add-course" aria-controls="st1">+ Add A Course</li>
                     </ul>
