@@ -3,13 +3,14 @@
  */
 
 import React from 'react'
+import Header from './../../containers/HeaderContainer'
 
 const Layout = ({isAuthenticated, userName, children}) => {
     // if (!isAuthenticated) {
     //     return (<div>go home</div>)
     // }
     return (<div>
-            'hello world, children go here!'
+        <Header userName={userName} />
         {children}
     </div>)
 };

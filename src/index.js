@@ -12,6 +12,9 @@ import configureStore from './store/configureStore'
 // import './less/form.less';
 
 const initialState =  {
+    auth:{
+        userName: 'Raif Harik'
+    }
 };
 
 const store = configureStore(initialState);
