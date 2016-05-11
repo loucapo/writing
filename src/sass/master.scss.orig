@@ -467,7 +467,11 @@ input[type=text], input[type=password] {
 			cursor: pointer;
 		}
 		
+<<<<<<< HEAD
+		#header-nav li:hover svg {
+=======
 		#header-nav li:hover img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 			opacity: 1;	
 		}
 	
@@ -486,7 +490,11 @@ input[type=text], input[type=password] {
 		padding-left: 15px;
 	}
 		
+<<<<<<< HEAD
+		li#nav-courses svg {
+=======
 		li#nav-courses img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 			position: absolute;
 			top: 25px;
 			right: 10px;
@@ -496,7 +504,11 @@ input[type=text], input[type=password] {
 			margin-left: 10px;	
 		}
 		
+<<<<<<< HEAD
+		li#nav-calendar svg, li#nav-help svg {
+=======
 		li#nav-calendar img, li#nav-help img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 			fill: #ffffff;
 			width: 28px;
 			height: 28px;
@@ -606,7 +618,11 @@ input[type=text], input[type=password] {
 	z-index: 800;
 }
 
+<<<<<<< HEAD
+	#mobile-icon svg {
+=======
 	#mobile-icon img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 		width: 32px;
 		height: 32px;
 		fill: #999999;	
@@ -644,7 +660,11 @@ input[type=text], input[type=password] {
 		letter-spacing: 0.05em;	
 	}
 	
+<<<<<<< HEAD
+	#mobile-nav li svg {
+=======
 	#mobile-nav li img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 		position: absolute;
 		top: 11px;
 		left: 20px;
@@ -673,7 +693,11 @@ input[type=text], input[type=password] {
 		height: auto;
 	}
 	
+<<<<<<< HEAD
+	#icon-x svg {
+=======
 	#icon-x img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 		position: absolute;
 		top: 22px;
 		right: 22px;
@@ -752,7 +776,11 @@ input[type=text], input[type=password] {
 			border-bottom: 3px solid #cc0000;	
 		}
 	
+<<<<<<< HEAD
+	#main-nav svg {
+=======
 	#main-nav img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 		position: absolute;
 		top: -5px;
 		left: 0;
@@ -789,7 +817,11 @@ input[type=text], input[type=password] {
 			
 		}
 		
+<<<<<<< HEAD
+			#main-nav li svg {
+=======
 			#main-nav li img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 				position: relative;
 				display: block;	
 				margin: 0 auto;
@@ -944,7 +976,11 @@ input[type=text], input[type=password] {
 	
 	}
 
+<<<<<<< HEAD
+	.progress svg {
+=======
 	.progress img {
+>>>>>>> f4a3e7e0ef22600cc7d6bd1047af6bb1a4ce3473
 		position: absolute;
 		top: -3px;
 		left: -3px;
