@@ -7,7 +7,8 @@ import { routerReducer as routing } from 'react-router-redux'
 
 const routerReducer = combineReducers({
     routing,
-    auth: (state = {}) => state
+    auth: (state = {}) => state,
+    course: (state = {}) => state
 });
 
 export default routerReducer;

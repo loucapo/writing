@@ -7,7 +7,7 @@ import Layout from './../components/layout/layout.js'
 
 function mapStateToProps(state) {
     return {
-        // isAuthenticated: state.auth.isAuthenticated,
+        courseName: state.course.courseName
         // userName       : state.auth.userName
     }
 }

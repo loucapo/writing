@@ -15,6 +15,7 @@ const Header = ({userName}) => (<header role="banner" id="header">
                 </li>
 
                 <li id="nav-help" aria-owns="sub-nav-help" aria-controls="sub-nav-help" tabindex="0" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-label="Help" >
+                    <img src={require('./../../sass/image/icon_help.svg')} />
                     <ul className="sub-nav" role="group" id="sub-nav-help">
                         <li tabindex="0" role="button">User Guide</li>
                         <li tabindex="0" role="button">Email Technical Support</li>

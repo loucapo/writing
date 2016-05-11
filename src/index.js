@@ -9,11 +9,14 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import Root from './containers/Root'
 import configureStore from './store/configureStore'
 
-// import './less/form.less';
+require('./sass/master.scss');
 
 const initialState =  {
     auth:{
         userName: 'Raif Harik'
+    },
+    course: {
+        courseName: 'General Chemistry Laboratory - 1331'
     }
 };
 
