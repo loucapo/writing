@@ -9,6 +9,6 @@ import ChapterContent from './ChapterContent'
 export default ({index, title, content}) => (
     <li>
         <ChapterTitle index={index} title={title} />
-        <ChapterContent {...content} />
+        {content.map(x=> <ChapterContent key={x.id} content={x} /> )}
     </li>
 )

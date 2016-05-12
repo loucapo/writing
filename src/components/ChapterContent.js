@@ -4,7 +4,7 @@
 
 
 import React from 'react'
-import item from './item'
+import item from './Assignment'
 
 export default ({content}) => (
     <div className="accord-content">
@@ -24,8 +24,8 @@ export default ({content}) => (
                     </tr>
                 </thead>
                 <tbody>
-                    {content.items.map(item=>{
-                        <item {...item} />
+                    {content.assignments.map(item=>{
+                        <item key={item.id} {...item} />
                     })}
                 </tbody>
             </table>

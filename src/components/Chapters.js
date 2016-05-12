@@ -9,8 +9,6 @@ export default ({chapters}) => (
     <div id="chapters">
     <h2>Chapters</h2>
     <ul>
-        {chapters.map(chapter =>
-            <Chapter {...chapter}/>
-        )}
+        {chapters.map(chapter => <Chapter key={chapter.id} {...chapter}/> )}
     </ul>
 </div>)

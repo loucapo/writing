@@ -19,22 +19,35 @@ const initialState =  {
         courseName: 'General Chemistry Laboratory - 1331',
         assignments: [
             {
-                upcoming:'some assignment',
-                status: 'awesome',
-                date: '1/5/72',
-                points: 3
+                id: 1,
+                name: 'Chemical Reactions Pre-Lab Assignment',
+                status: 'TO DO',
+                date: 'MAY 16, 2016 at 1:51PM',
+                points: 3,
+                pointsAvailable: 300,
+                type: 'Assesment'
             }
         ],
         chapters: [
             {
+                id: 1,
                 title: "Experiment 1 - Density",
                 content: [
                     {
-                        description:'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
+                        id: 1,
+                        description: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
                         caption: 'Chapter 1 Content',
-                        summary:'A list of content and assignments for Chapter 1',
-                        items:[
-                            
+                        summary: 'A list of content and assignments for Chapter 1',
+                        assignments: [
+                            {
+                                id: 1,
+                                name: 'Chemical Reactions Pre-Lab Assignment',
+                                status: 'TO DO',
+                                date: 'MAY 16, 2016 at 1:51PM',
+                                points: 3,
+                                pointsAvailable: 300,
+                                type: 'Assesment'
+                            }
                         ]
                     }
                 ]
