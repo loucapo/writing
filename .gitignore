@@ -15,3 +15,6 @@ build-info.json
 
 *.iml
 dist
+
+.DS_Store
+
