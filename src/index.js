@@ -10,6 +10,7 @@ import Root from './containers/Root'
 import configureStore from './store/configureStore'
 
 require('./sass/master.scss');
+require('./sass/icons.data.svg.css');
 
 const initialState = {
     auth: {
