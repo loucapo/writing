@@ -9,7 +9,9 @@ const Layout = ({children}) => {
     // if (!isAuthenticated) {
     //     return (<div>go home</div>)
     // }
-    return (<div>
+    return (
+    <div>
+        <div id="coverup" style={{display: 'none'}}></div>
         <Header />
         {children}
     </div>)

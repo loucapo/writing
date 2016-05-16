@@ -4,6 +4,7 @@
 import React from 'react'
 import CoursesDropdown  from './CoursesDropdown'
 import HelpDropdown  from './HelpDropdown'
+import Hamburger from './../Hamburger'
 
 
 const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover, onHelpMenuHover}) => {
@@ -19,9 +20,7 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover,
                 <div className="clearfix"></div>
             </ul>
         </div>
-        <div id="mobile-icon" role="navigation">
-            <div id="icon-hamburder" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Navigation Menu"></div>
-        </div>
+        <Hamburger />
     </header>);
-}
+};
 export default Header;

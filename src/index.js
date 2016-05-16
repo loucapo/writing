@@ -48,6 +48,7 @@ const initialState = {
             active: true,
             chapters: [
                 {
+                    isExpanded:false,
                     id: 1,
                     title: "Experiment 1 - Density",
                     summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
@@ -76,6 +77,7 @@ const initialState = {
             active: true,
             chapters: [
                 {
+                    isExpanded:false,
                     id: 1,
                     title: "Experiment 1 - Density",
                     summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',

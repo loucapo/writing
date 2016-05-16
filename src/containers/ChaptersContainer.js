@@ -3,6 +3,8 @@
  */
 
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import actions from './../actions/index'
 import Chapters from './../components/Chapters.js'
 
 
@@ -14,4 +16,9 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Chapters);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ onChapterClick:actions.expandChapter }, dispatch)
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chapters);

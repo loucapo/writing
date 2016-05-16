@@ -4,9 +4,9 @@
 
 import React from 'react'
 
-export default ({expanded, index, title, expandChapter}) => (
+export default ({isExpanded, index, title, id, onChapterClick}) => (
 <div className="accord-title">
-    <a aria-expanded={expanded} onClick={expandChapter}>
+    <a aria-expanded={isExpanded} onClick={()=>onChapterClick(id)}>
         <div className="accord-toggle"></div>
         <div className="progress">
             <div class="num">{index}</div>

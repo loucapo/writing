@@ -4,10 +4,10 @@
 
 import React from 'react'
 
-const TitleBar = ({courseName}) => (
+const TitleBar = ({title}) => (
     <div id="title" role="banner">
         <div className="inside">
-            <h1>{courseName}</h1>
+            <h1>{title}</h1>
         </div>
     </div>
 );

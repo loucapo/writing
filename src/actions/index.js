@@ -2,7 +2,12 @@
  * Created by rharik on 5/11/16.
  */
 
-import actions from './headerMenuActions'
+import headerMenu from './headerMenuActions'
+import expandChapter from './chapterActions'
 
-export default actions;
+export default {
+    onCourseMenuHover: headerMenu.onCourseMenuHover,
+    onHelpMenuHover: headerMenu.onHelpMenuHover,
+    expandChapter: expandChapter.expandChapter
+};
 
