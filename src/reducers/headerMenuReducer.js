@@ -8,7 +8,7 @@ const headerMenuCourses = (state = {}, action = null) =>
         return Object.assign({}, state, { headerMenuCourses: { dropdownActive: !state.courses.dropdownActive, items: state.courses.items } });
     }
     return state;
-}
+};
 
 const headerMenuHelp = (state = {}, action = null) =>
 {
@@ -16,7 +16,7 @@ const headerMenuHelp = (state = {}, action = null) =>
         return Object.assign({}, state, {headerMenuHelp: { dropdownActive: !state.help.dropdownActive, items:state.help.items }});
     }
     return state;
-}
+};
 
 export default {
     headerMenuCourses,
