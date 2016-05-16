@@ -4,12 +4,12 @@
 
 import React from 'react'
 
-export default ({index, title}) => (
+export default ({expanded, index, title}) => (
 <div className="accord-title">
-    <a aria-expanded="false">
+    <a aria-expanded={expanded}>
         <div className="accord-toggle"></div>
         <div className="progress">
-            <div className="num">{index}</div>
+            <div class="num">{index}</div>
             <image src={require('./../sass/image/icon_down_arrow.svg')} />
         </div>
         <div class="text">

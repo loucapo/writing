@@ -4,11 +4,16 @@
 
 import React from 'react'
 import ChapterTitle from './ChapterTitle'
-import ChapterContent from './ChapterContent'
+import Assignments from './Assignments'
 
-export default ({index, title, content}) => (
-    <li>
-        <ChapterTitle index={index} title={title} />
-        {content.map(x=> <ChapterContent key={x.id} content={x} /> )}
-    </li>
-)
+export default ({index, title, summary, assignments}) => (
+        <li>
+            <ChapterTitle index={index} title={title} />
+            <div className="accord-content">
+                <p></p>
+                <p>{summary}</p>
+                <p></p>
+                <Assignments assignments={assignments} />
+            </div>
+        </li>
+    );

@@ -11,7 +11,7 @@ import  Course from './containers/CourseContainer'
 
 var routes = (
     <Route path="/" component={AppContainer}>
-        <Route path="/Course" component={Course} />
+        <Route path="course(/:id)" component={Course} />
     </Route>);
 
 module.exports = routes;

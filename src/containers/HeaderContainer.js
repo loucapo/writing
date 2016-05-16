@@ -3,14 +3,21 @@
  */
 
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import actions from './../actions/index'
 import Header from './../components/layout/Header.js'
 
 function mapStateToProps(state) {
     return {
-        // isAuthenticated: state.auth.isAuthenticated,
-        userName       : state.auth.userName
+        userName       : state.auth.userName,
+        headerMenuCourses     : state.headerMenuCourses,
+        headerMenuHelp     : state.headerMenuHelp
     }
 }
 
-export default connect(mapStateToProps)(Header);
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ onCourseMenuHover:actions.onCourseMenuHover, onHelpMenuHover:actions.onHelpMenuHover }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
 

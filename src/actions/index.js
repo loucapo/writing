@@ -2,9 +2,7 @@
  * Created by rharik on 5/11/16.
  */
 
-const actions = {
-    // loginUser
-};
+import actions from './headerMenuActions'
 
-// module.exports = actions;
-module.exports = {};
+export default actions;
+
