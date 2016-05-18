@@ -20,6 +20,13 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover,
                 <div className="clearfix"></div>
             </ul>
         </div>
+<<<<<<< HEAD
         <Hamburger />
+=======
+        <div id="mobile-icon" role="navigation">
+            <div className="icon-icon_hamburger-0" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Navigation Menu"></div>
+        </div>
+>>>>>>> d2bb5adccf1dd35d719fc2a97d8f34512609d347
     </header>);
+};
 export default Header;
