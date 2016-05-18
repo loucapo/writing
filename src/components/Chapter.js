@@ -4,16 +4,16 @@
 
 import React from 'react'
 import ChapterTitle from './ChapterTitle'
-import Assignments from './Assignments'
+import Assignments from './../containers/AssignmentsContainer'
 
-export default ({index, title, summary, assignments, id, onChapterClick}) => (
+export default ({index, title, summary, assignments, id, isExpanded, onChapterClick}) => (
         <li>
             <ChapterTitle index={index} title={title} id={id} onChapterClick={onChapterClick} />
-            <div className="accord-content">
+            {isExpanded ? <div className="">
                 <p></p>
                 <p>{summary}</p>
-                <p></p>
-                <Assignments assignments={assignments} />
-            </div>
+                <p></p> 
+                <Assignments id={id} /> 
+            </div>: null}
         </li>
     );

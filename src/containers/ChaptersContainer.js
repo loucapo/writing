@@ -2,23 +2,17 @@
  * Created by rharik on 5/11/16.
  */
 
-import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from './../actions/index'
 import Chapters from './../components/Chapters.js'
+import container from './containerFactory'
 
-
-
-function mapStateToProps(state) {
-    const currentCourse = state.courses.filter(x=>x.id === state.currentCourse)[0] || state.courses[0];
-    return {
-        chapters: currentCourse.chapters
-    }
-}
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ onChapterClick:actions.expandChapter }, dispatch)
 }
 
+var transform = ({courses, currentCourse, chapters}) => {return {chapters:courses[currentCourse].chapters.map(chapterId => chapters[chapterId])}};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chapters);
+export default container(['courses', 'currentCourse','chapters'], transform, mapDispatchToProps)(Chapters);
+

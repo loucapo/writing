@@ -26,7 +26,7 @@ class Course extends React.Component {
             <NavBar />
             <div id="content" role="main" className="inside">
                 <Assignments />
-                <Chapters/>
+                <Chapters />
             </div>
         </div>)
     }
