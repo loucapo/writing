@@ -20,10 +20,6 @@
 	list-style:none;
 }
 
-:focus, :active {  
-    
-} 
-
 html {
 	overflow-y: scroll;		
 	overflow-x: hidden;
@@ -576,7 +572,11 @@ input[type=text], input[type=password] {
 
 
 @media (max-width: 700px) {
-	
+
+  #mobile-nav {
+    display: block;
+  }
+
 	#header-nav {
 		right: 5%;
 		display: none;
@@ -595,31 +595,27 @@ input[type=text], input[type=password] {
 			padding: 0;
 			margin-left: 0;	
 		}
+
+  #mobile-icon > div {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 800;
+    width: 2.4615384615384617em;
+    height: 2.4615384615384617em;
+  }
 }
 
-#mobile-icon {
-	display: none;	
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	z-index: 800;
-}
 
-	#mobile-icon img {
-		width: 32px;
-		height: 32px;
-		fill: #999999;	
-	}
-	
 #mobile-nav {
-	display: none;	
-	position: fixed;
-	top: 0;
-	right: -250px;
-	z-index: 900;
-	width: 250px;
-	height: 100%;
-	background: #000000;	
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  z-index: 900;
+  width: 250px;
+  height: 100%;
+  background: #000000;
 }
 
 	#mobile-nav ul, #mobile-nav li {
@@ -680,19 +676,8 @@ input[type=text], input[type=password] {
 		height: 28px;
 		fill: #999999;	
 	}
-	
-@media (max-width: 700px) {
-	
-	#mobile-icon, #mobile-nav {
-		display: block;	
-	}
-	
-	
-}
 
-	
 
-/* Title */
 
 #title {
 	position: fixed;
@@ -1158,7 +1143,4 @@ input[type=text], input[type=password] {
 	.accord-content p {
 		padding: 0;
 	}
-	
-		
 }
-
