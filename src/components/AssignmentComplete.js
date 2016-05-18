@@ -3,14 +3,12 @@
  */
 import React from 'react'
 
-export default ({pointsEarned, isUpcomming}) => {
+export default ({pointsEarned, isUpcoming}) => {
     var image = (pointsEarned > 0)
         ? <image src={require('./../sass/image/icon_down_arrow.svg')}/>
         : <image src={require('./../sass/image/icon_incomplete.svg')}/>;
 
-    console.log("HEREEEEEEEEEEEE")
-    console.log(isUpcomming)
-    if (isUpcomming) {
+    if (isUpcoming) {
         return (<td className="ctd-status">
         </td>)
     } else {
