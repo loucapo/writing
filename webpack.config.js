@@ -21,10 +21,11 @@ const config = {
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
             // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-            // { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
             { test: /\.png$/, loader: "url-loader", query: { mimetype: "image/png" } },
             { test: /\.jpg$/, loader: "url-loader", query: { mimetype: "image/jpg" } },
-            { test: /\.gif$/, loader: "url-loader", query: { mimetype: "image/gif" } }
+            { test: /\.gif$/, loader: "url-loader", query: { mimetype: "image/gif" } },
+            { test: /\.scss$/, loaders: ["style", "css", "sass"] }
             // { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: ['url-loader?limit=10000&mimetype=application/font-woff' ] },
 
         ]
@@ -36,14 +37,16 @@ const config = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
-    ]
-    ,
+    ],
     devServer: {
         contentBase       : "./dist",
         colors            : true,
         historyApiFallback: true,
         inline            : true,
         hot               : true
+    },
+    sassLoader: {
+        includePaths: [path.resolve(__dirname, "./sass")]
     }
 };
 
