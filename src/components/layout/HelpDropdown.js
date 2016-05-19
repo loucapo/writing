@@ -1,7 +1,3 @@
-/**
- * Created by rharik on 5/12/16.
- */
-
 import React from 'react'
 import HelpMenuItem from './HelpMenuItem'
 
@@ -15,8 +11,9 @@ export default ({items, dropdownActive, onHover}) => (
             aria-expanded={dropdownActive}
             onMouseEnter={onHover}
             onMouseLeave={onHover}
+            className={dropdownActive ? "open" : ""}
             aria-label="Help">
-            <image src={require('./../../sass/image/icon_down_arrow.svg')} />
+            <div className="icon icon-icon_help-white"></div>
             {
                 dropdownActive
                     ? <ul className="sub-nav" role="group" id="sub-nav-help">

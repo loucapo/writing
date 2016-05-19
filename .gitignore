@@ -12,3 +12,5 @@ build
 build-info.json
 
 .idea
+*.iml
+out
