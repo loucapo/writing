@@ -1,7 +1,3 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
 import React from 'react'
 
 export default ({isExpanded, index, title, id, onChapterClick}) => (
@@ -10,7 +6,7 @@ export default ({isExpanded, index, title, id, onChapterClick}) => (
         <div className="accord-toggle"></div>
         <div className="progress">
             <div class="num">{index}</div>
-            <image src={require('./../sass/image/icon_down_arrow.svg')} />
+            <image src={require('./../sass/image/icon_down_arrow.colors-cc0000.svg')} />
         </div>
         <div class="text">
             <h3>{title}</h3>
@@ -18,5 +14,3 @@ export default ({isExpanded, index, title, id, onChapterClick}) => (
     </a>
 </div>
 );
-
-//Experiment 1 - Density

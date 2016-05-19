@@ -13,7 +13,7 @@ export default ({assignment}) => (
         <td className="ctd-status">{
             (assignment.pointsEarned > 0 && !assignment.isUpcomming)
             ?<div className="complete" role="img" aria-label="Complete">
-                <image src={require('./../sass/image/icon_down_arrow.svg')}/>
+                <image src={require('./../sass/image/icon_down_arrow.colors-cc0000.svg')}/>
             </div>
             : null
         }</td>

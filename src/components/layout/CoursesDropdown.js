@@ -1,7 +1,3 @@
-/**
- * Created by rharik on 5/12/16.
- */
-
 import React from 'react'
 import CourseMenuItem from './CourseMenuItem'
 
@@ -14,7 +10,7 @@ export default ({items, dropdownActive, onHover}) => (
         aria-controls="st1"
         onMouseEnter={onHover}
         onMouseLeave={onHover}>COURSES
-        <image src={require('./../../sass/image/icon_down_arrow.svg')} />
+        <span className="icon icon-icon_down_arrow-0"></span>
         {
             dropdownActive
                 ? <ul className="sub-nav menu" role="menu" aria-hidden={dropdownActive}>

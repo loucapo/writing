@@ -481,16 +481,16 @@ input[type=text], input[type=password] {
 		padding-right: 35px;
 		padding-left: 15px;
 	}
-		
-		li#nav-courses img {
-			position: absolute;
-			top: 25px;
-			right: 10px;
-			fill: #cc0000;
-			width: 18px;
-			height: 18px;
-			margin-left: 10px;	
-		}
+
+li#nav-courses .icon {
+  position: absolute;
+  top: 1.9230769230769231em; // 25 / 13
+  right: 0.7692307692307693em; // 10 / 13
+  fill: #cc0000;
+  width: 1.3846153846153846em; // 18 / 13
+  height: 1.3846153846153846em; // 18 / 13
+  margin-left: 0.7692307692307693em; // 10 / 13
+}
 
 li#nav-calendar div, li#nav-help div {
   fill: #ffffff;
