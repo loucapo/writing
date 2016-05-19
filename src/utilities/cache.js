@@ -3,15 +3,15 @@
  */
 
 import  moment from 'moment';
+import Promise from 'bluebird';
 
-var cache = function(store) {
-    var course = (expression) => {
-        var targetCourse = store.courses.find(expression);
-        if(targetCourse && (!targetCourse.lastUpdated || moment().isBefore(moment(targetCourse.lastUpdated).add(2,'m')))) {
-            return Promise.resolve({
-                response: targetCourse,
-                type: successType
-            });
-        }
+var cache = function(store, entityType, id) {
+    var target = store[entityType][id];
+    if ( target ) {
+        // && (!target.lastUpdated || moment().isBefore(moment(target.lastUpdated).add(2, 'm')))) {
+        return true;
+        
     }
 };
+
+export default cache;

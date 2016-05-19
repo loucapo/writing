@@ -4,18 +4,19 @@
 
 import sendGetRequest from './sendGetRequest';
 import sendPostRequest from './sendPostRequest';
+import cache from './../../utilities/cache';
 
 export const CALL_API = Symbol('Call API');
 
 export default store => next => action => {
     const callAPI = action[CALL_API];
-
     // So the middleware doesn't get applied to every single action
     if (typeof callAPI === 'undefined') {
         return next(action);
     }
 
-    const {method, entityType, expression, types, authenticated} = callAPI;
+    const {method, entityType, types, authenticated} = callAPI;
+    const [ requestType, successType ] = types;
 
     let token = localStorage.getItem('id_token') || null;
     let config = {};
@@ -37,20 +38,22 @@ export default store => next => action => {
         return finalAction;
     }
     // send action to say call pending
-    next(actionWith({ type: types.requestType }));
+    next(actionWith({ type: requestType }));
 
     var responseAction;
     switch(method){
-        case 'get':{
-            var tryCache = cache(store, entityType, expression);
-            if(tryCache){
-                responseAction = Promise.resolve({type:types.successType, response:tryCache})
-            }else {
-                responseAction = sendGetRequest(callAPI, action, config);
-            }
+        case 'GET':
+        {
+            responseAction = cache(store.getState(), entityType, action.id)
+                ? Promise.resolve({
+                        entities: {result: [action.id]},
+                        fromCache: true,
+                        type: successType
+                    })
+                : responseAction = sendGetRequest(callAPI, action, config);
             break;
         }
-        case 'post':{
+        case 'POST':{
             responseAction = sendPostRequest(callAPI, action, config);
             break;
         }
