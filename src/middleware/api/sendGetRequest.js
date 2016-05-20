@@ -2,11 +2,14 @@
  * Created by rharik on 5/13/16.
  */
 
+import { normalize } from 'normalizr'
+import { camelizeKeys } from 'humps'
 import makeRequest from './makeRequest';
+
 
 export default function sendGetRequest(callAPI, action, config) {
 
-    let {endpoint, types} = callAPI;
+    let {endpoint, types, schema} = callAPI;
 
     const [ successType, errorType ] = types;
     
@@ -15,9 +18,10 @@ export default function sendGetRequest(callAPI, action, config) {
     // call then return action
     return makeRequest(endpoint, authenticated, config).then(
         response => {
+            const camelizedJson = camelizeKeys(response);
+
             return {
-                //maybe tidy up data here    
-                response,
+                entities: Object.assign({}, normalize(camelizedJson, schema)),
                 type: successType
             }
         },
