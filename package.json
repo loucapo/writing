@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-core/register ./tests/**"
+    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./tests/**"
   },
   "license": "MIT",
   "engines": {
@@ -41,10 +41,12 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "enzyme": "^2.3.0",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^2.9.0",
     "mocha": "^2.4.5",
     "node-sass": "^3.7.0",
+    "react-addons-test-utils": "^15.0.2",
     "react-transform-hmr": "^1.0.2",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",

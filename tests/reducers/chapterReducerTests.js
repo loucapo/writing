@@ -1,5 +1,5 @@
 /**
- * Created by rharik on 5/19/16.
+ * Cre`ated by rharik on 5/19/16.
  */
 
 import {EXPAND_CHAPTER} from './../../src/constants'
@@ -30,9 +30,15 @@ describe("CHAPTER_REDUCERS", () => {
                 id: 1
             };
         });
+
         it('should_return_chapter_state', () => {
             var newState = expandChapter(_initialState, _action);
             newState.should.not.be.null;
+        });
+
+        it('should_toggle_isExpanded', () => {
+            var newState = expandChapter(_initialState, _action);
+            newState[1].isExpanded.should.be.true;
         })
     })
 });
