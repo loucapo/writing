@@ -7,7 +7,6 @@ const BASE_URL = 'http://localhost:3001/api/';
 
 export default function makeRequest(endpoint, authenticated, config) {
 
-    
     _config = Object.assign({}, _config, config);
 
     return fetch(BASE_URL + endpoint, _config)

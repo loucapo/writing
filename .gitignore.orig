@@ -12,7 +12,10 @@ build
 build-info.json
 
 .idea
+<<<<<<< HEAD
 .orig
+=======
 *.iml
 out
 .DS_Store
+>>>>>>> 8af9007ff725c1a5f8d87693ee17276a68193740

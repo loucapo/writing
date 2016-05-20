@@ -7,19 +7,26 @@ import TitleBar from './TitleBar'
 import NavBar from './NavBar'
 import Assignments from './../containers/UpCommingAssignmentsContainer'
 import Chapters from './../containers/ChaptersContainer'
-import loadCourse from './../actions'
+import {getCourse} from './../actions'
 
 class Course extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    componentDidMount() {
-        const {dispatch, params} = this.props;
+    loadData(props) {
+        const {dispatch, params} = props;
         const {id} = params;
-        // dispatch(loadCourse(id));
+        dispatch(getCourse(id));
     }
-    
+    componentWillMount() {
+        this.loadData(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.loadData(nextProps);
+    }
+
     render() {
         return (<div>
             <TitleBar title={this.props.courseTitle} />
