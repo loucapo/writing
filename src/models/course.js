@@ -10,13 +10,16 @@ const assignment = new Schema('assignments');
 
 
 course.define({
-    chapters: arrayOf(chapter)
-});
+    units: arrayOf(chapter)
+}, { idAttribute: 'm_course_id' });
 
 chapter.define({
-    assignments: arrayOf(assignment)
-});
+    activities: arrayOf(assignment)
+}, { idAttribute: 'section' });
 
+assignment.define({
+
+})
 
 function getChaptersForCourse(state, courseId){
     return state.courses[courseId].chapters.map(c=> getChapterById(state,c));

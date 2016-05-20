@@ -15,12 +15,11 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover,
                 <CoursesDropdown onHover={onCourseMenuHover} {...headerMenuCourses} />
                 <HelpDropdown onHover={onHelpMenuHover} {...headerMenuHelp} />
                 <li id="nav-profile" tabindex="0" role="menuitem"><span>{userName}</span>
-                    <div id="avatar"><img src="https://hm-staging.mnv-tech.com/user/pix.php/19311/f1.jpg" alt="User Profile"/></div>
+                    <div id="avatar"><img src={require('./../../sass/image/avatar.png')} alt="User Profile"/></div>
                 </li>
                 <div className="clearfix"></div>
             </ul>
         </div>
         <Hamburger />
-    </header>);
-};
-export default Header;
+    </header>)};
+export default Header

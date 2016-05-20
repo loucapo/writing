@@ -17,7 +17,7 @@ const onHelpMenuHover = () => {
     }
 };
 
-export default {
+export {
     onCourseMenuHover,
     onHelpMenuHover
 }

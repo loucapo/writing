@@ -2,12 +2,14 @@
  * Created by rharik on 5/11/16.
  */
 
-import headerMenu from './headerMenuActions'
-import expandChapter from './chapterActions'
+import {onCourseMenuHover, onHelpMenuHover} from './headerMenuActions'
+import {getCourse} from './navigationActions'
+import {expandChapter} from './chapterActions'
 
-export default {
-    onCourseMenuHover: headerMenu.onCourseMenuHover,
-    onHelpMenuHover: headerMenu.onHelpMenuHover,
-    expandChapter: expandChapter.expandChapter
+export {
+    onCourseMenuHover,
+    onHelpMenuHover,
+    expandChapter,
+    getCourse
 };
 

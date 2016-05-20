@@ -46,14 +46,14 @@ const initialState = {
         1:{
             lastUpdated: '',
             id: 1,
-            courseTitle: 'General Chemistry Laboratory - 1331',
+            courseTitle: 'General Chemistry Laboratory - 6660',
             active: true,
             chapters: [1]
         },
         2:{
             lastUpdated: '',
             id: 2,
-            courseTitle: 'General Chemistry Laboratory - 666',
+            courseTitle: 'General Chemistry Laboratory - 1331',
             active: true,
             chapters: [2]
         }

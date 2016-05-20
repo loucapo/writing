@@ -12,3 +12,7 @@ build
 build-info.json
 
 .idea
+*.orig
+*.iml
+out
+.DS_Store
