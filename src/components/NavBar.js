@@ -1,7 +1,3 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
 import React from 'react'
 
 const NavBar = () => (
@@ -13,7 +9,7 @@ const NavBar = () => (
                     <span>HOME</span>
                 </li>
                 <li tabindex="0" role="tab" aria-selected="false">
-                    <img src={require('./../sass/image/icon_book.svg')} />
+                    <img src={require('./../sass/image/icon_book.colors-cc0000.svg')} />
                     <span>EBOOK</span>
                 </li>
                 <div class="clearfix"></div>
