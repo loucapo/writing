@@ -1,0 +1,20 @@
+* tests
+** when i x and y and z
+*** it should be viewable by myself
+*** it should be viewable by an admin
+*** it should not be viewable by anyone else
+** when i have a single braintree purchase
+*** with credit
+*** with no credit
+** when i have a single used credit
+*** with credit
+*** with no credit
+** when i have a single used access code
+*** with credit
+*** with no credit
+
+
+- when a student has unenrolled?
+- when a student's account is suspended?
+- when a student's account is 'deleted'?
+- when a user has been admin-enrolled in a course?

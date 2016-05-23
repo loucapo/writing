@@ -1,0 +1,156 @@
+{
+  "@type": "mnv_gateway_log",
+  "@timestamp": "2015-11-06T21:08:18.945+0000",
+  "level_val": 400,
+  "level_name": "ERROR",
+  "hostname": "placeholder",
+  "environment": "local",
+  "request_uri": "http:\/\/mnv-gateway.com\/v1\/association_launch",
+  "client_info": {
+    "originalUserAgent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/46.0.2490.80 Safari\/537.36",
+    "device": {
+      "family": "Other",
+      "model": null,
+      "brand": null
+    },
+    "os": {
+      "family": "Mac OS X",
+      "patchMinor": null,
+      "patch": "1",
+      "minor": "11",
+      "major": "10"
+    },
+    "ua": {
+      "family": "Chrome",
+      "patch": "2490",
+      "minor": "0",
+      "major": "46"
+    }
+  },
+  "ip_address": "127.0.0.1",
+  "transaction_id": "8526D5D7-D065-E619-E12D-4C9DF6AEDF5F",
+  "mnv_stacktrace_14": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache",
+    "function": "handle",
+    "line": 54,
+    "file": "\/var\/www\/mnv_gateway\/web\/app.php"
+  },
+  "mnv_stacktrace_13": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},true]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache",
+    "function": "invalidate",
+    "line": 206,
+    "file": "\/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php"
+  },
+  "mnv_stacktrace_12": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},true]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache",
+    "function": "pass",
+    "line": 277,
+    "file": "\/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php"
+  },
+  "mnv_stacktrace_11": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},true]",
+    "type": "->",
+    "class": "Symfony\\Bundle\\FrameworkBundle\\HttpCache\\HttpCache",
+    "function": "forward",
+    "line": 260,
+    "file": "\/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php"
+  },
+  "mnv_stacktrace_10": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},true,null]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache",
+    "function": "forward",
+    "line": 60,
+    "file": "\/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Bundle\/FrameworkBundle\/HttpCache\/HttpCache.php"
+  },
+  "mnv_stacktrace_9": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},1,true]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\Kernel",
+    "function": "handle",
+    "line": 489,
+    "file": "\/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php"
+  },
+  "mnv_stacktrace_8": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},1,true]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\DependencyInjection\\ContainerAwareHttpKernel",
+    "function": "handle",
+    "line": 2364,
+    "file": "\/var\/www\/mnv_gateway\/app\/bootstrap.php.cache"
+  },
+  "mnv_stacktrace_7": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},1,true]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\HttpKernel",
+    "function": "handle",
+    "line": 3119,
+    "file": "\/var\/www\/mnv_gateway\/app\/bootstrap.php.cache"
+  },
+  "mnv_stacktrace_6": {
+    "args": "[{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}},1]",
+    "type": "->",
+    "class": "Symfony\\Component\\HttpKernel\\HttpKernel",
+    "function": "handleRaw",
+    "line": 2970,
+    "file": "\/var\/www\/mnv_gateway\/app\/bootstrap.php.cache"
+  },
+  "mnv_stacktrace_5": {
+    "args": "[[{},\"handleReplay\"],[]]",
+    "function": "call_user_func_array",
+    "line": 3008,
+    "file": "\/var\/www\/mnv_gateway\/app\/bootstrap.php.cache"
+  },
+  "mnv_stacktrace_4": {
+    "args": "[]",
+    "type": "->",
+    "class": "MNV\\Bundle\\GatewayBundle\\Service\\Launch\\Handler",
+    "function": "handleReplay"
+  },
+  "mnv_stacktrace_3": {
+    "args": "[{\"__initializer__\":null,\"__cloner__\":null,\"__isInitialized__\":true},{\"post\":{\"ext_lms\":\"bb-9.1.201404.160205\",\"oauth_nonce\":\"8621368982282381\",\"oauth_consumer_key\":\"MNV_GATEWAY\",\"context_label\":\"ECOQAA-DEV-BB-DEFAULT\",\"resource_link_id\":\"_2169_1\",\"lis_person_name_family\":\"\",\"oauth_callback\":\"about:blank\",\"oauth_signature\":\"ly5fHb3\\\/3iZDyRL44FbbqsLdEEU=\",\"launch_presentation_return_url\":\"https:\\\/\\\/iclicker.blackboard.com\\\/webapps\\\/blackboard\\\/execute\\\/blti\\\/launchReturn?course_id=_911_1&content_id=_2169_1&toGC=false\",\"lis_result_sourcedid\":\"bbgc22532gi4307\",\"lti_version\":\"LTI-1p0\",\"tool_consumer_info_version\":\"9.1.201404.160205\",\"oauth_signature_method\":\"HMAC-SHA1\",\"tool_consumer_instance_contact_email\":\"email@null.com\",\"lti_message_type\":\"basic-lti-launch-request\",\"user_id\":\"38da801462da42a3b91fa7e8350d7f84\",\"tool_consumer_info_product_family_code\":\"Blackboard Learn\",\"tool_consumer_instance_guid\":\"375fd6b5351f43a69d06efa6952583f5\",\"launch_presentation_document_target\":\"window\",\"context_title\":\"ECOQAA-DEV-BB-DEFAULT\",\"resource_link_description\":\"http:\\\/\\\/mnv-gateway.com\\\/v1\\\/launch\\\/LTI11\\\/dynamicBooks\\\/Launch?type=course&amp;id=2\",\"oauth_version\":\"1.0\",\"tool_consumer_instance_name\":\"Macmillan New Ventures\",\"lis_outcome_service_url\":\"https:\\\/\\\/iclicker.blackboard.com\\\/webapps\\\/gradebook\\\/lti11grade\",\"lis_person_name_full\":\"\",\"resource_link_title\":\"type:course\\\/id:2\",\"context_id\":\"0f4b290b282f48169e74b529a9a7be29\",\"roles\":\"urn:lti:role:ims\\\/lis\\\/Learner\",\"lis_person_contact_email_primary\":\"\",\"lis_person_name_given\":\"\",\"launch_presentation_locale\":\"en-US\",\"oauth_timestamp\":\"1446843967\",\"ext_launch_presentation_css_url\":\"https:\\\/\\\/iclicker.blackboard.com\\\/common\\\/shared.css,https:\\\/\\\/iclicker.blackboard.com\\\/themes\\\/as_2012\\\/theme.css\"},\"launch_ext_params\":\"type=course&id=2\",\"launch_ext_params_list\":{\"type\":\"course\",\"id\":\"2\"},\"origin\":null,\"uri\":\"http:\\\/\\\/mnv-gateway.com\\\/v1\\\/launch\\\/LTI11\\\/barebones-dev\\\/Launch?id=2&type=course\",\"launch_version\":\"v1\",\"launch_type\":\"launch\",\"launch_adapter\":\"LTI11\",\"launch_provider\":\"barebones-dev\",\"launch_service\":\"Launch\",\"user_association\":\"{\\\"toolConsumerUserId\\\":\\\"38da801462da42a3b91fa7e8350d7f84\\\",\\\"toolProviderUserId\\\":null,\\\"toolProviderId\\\":31,\\\"toolConsumerId\\\":1}\"},{\"tc_role\":\"urn:lti:role:ims\\\/lis\\\/Learner\",\"tc_first_name\":\"\",\"tc_last_name\":\"\",\"tc_email\":\"\",\"tc_user_id\":null,\"mnv_replay\":\"true\",\"grade_return_token\":\"3939EE48-0D74-58D7-973A-59479DD6BED4\"},{}]",
+    "type": "->",
+    "class": "MNV\\Bundle\\GatewayBundle\\Service\\Launch\\Handler",
+    "function": "processTPSLaunch",
+    "line": 389,
+    "file": "\/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/Launch\/Handler.php"
+  },
+  "mnv_stacktrace_2": {
+    "args": "[{\"tc_role\":\"urn:lti:role:ims\\\/lis\\\/Learner\",\"tc_first_name\":\"\",\"tc_last_name\":\"\",\"tc_email\":\"\",\"tc_user_id\":null,\"mnv_replay\":\"true\",\"grade_return_token\":\"3939EE48-0D74-58D7-973A-59479DD6BED4\"}]",
+    "type": "->",
+    "class": "MNV\\Bundle\\GatewayBundle\\Service\\ServiceAdapter\\ToolProvider\\LaunchToolProviderServiceAdapter",
+    "function": "signOn",
+    "line": 510,
+    "file": "\/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/Launch\/Handler.php"
+  },
+  "mnv_stacktrace_1": {
+    "args": "[{\"code\":\"ECONNRESET\"},{\"tc_role\":\"urn:lti:role:ims\\\/lis\\\/Learner\",\"tc_first_name\":\"\",\"tc_last_name\":\"\",\"tc_email\":\"\",\"tc_user_id\":null,\"mnv_replay\":\"true\",\"grade_return_token\":\"3939EE48-0D74-58D7-973A-59479DD6BED4\",\"tp_user_id\":\"3\"}]",
+    "type": "->",
+    "class": "MNV\\Bundle\\GatewayBundle\\Service\\ServiceAdapter\\ToolProvider\\LaunchToolProviderServiceAdapter",
+    "function": "validateResponse",
+    "line": 39,
+    "file": "\/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/ServiceAdapter\/ToolProvider\/LaunchToolProviderServiceAdapter.php"
+  },
+  "mnv_stacktrace_0": {
+    "args": "[8,\"Undefined property: stdClass::$action\",\"\\\/var\\\/www\\\/mnv_gateway\\\/src\\\/MNV\\\/Bundle\\\/GatewayBundle\\\/Service\\\/ServiceAdapter\\\/ToolProvider\\\/LaunchToolProviderServiceAdapter.php\",89,{\"response\":{\"code\":\"ECONNRESET\"},\"signOnPayload\":{\"tc_role\":\"urn:lti:role:ims\\\/lis\\\/Learner\",\"tc_first_name\":\"\",\"tc_last_name\":\"\",\"tc_email\":\"\",\"tc_user_id\":null,\"mnv_replay\":\"true\",\"grade_return_token\":\"3939EE48-0D74-58D7-973A-59479DD6BED4\",\"tp_user_id\":\"3\"},\"logData\":{\"message\":\"Tool Provider Signon validation failed\",\"type\":\"TP_SIGNON_VALIDATION_FAILED\",\"tp_endpoint\":\"http:\\\/\\\/172.20.0.23:3080\\\/v1\\\/launch\",\"tp_consumer_key\":\"e6c9fe23-bb9c-5f85-9c8e-1463c8a28618\",\"tp_payload\":{\"tc_role\":\"urn:lti:role:ims\\\/lis\\\/Learner\",\"tc_first_name\":\"\",\"tc_last_name\":\"\",\"tc_email\":\"\",\"tc_user_id\":null,\"mnv_replay\":\"true\",\"grade_return_token\":\"3939EE48-0D74-58D7-973A-59479DD6BED4\",\"tp_user_id\":\"3\"}}}]",
+    "type": "->",
+    "class": "Symfony\\Component\\Debug\\ErrorHandler",
+    "function": "handleError",
+    "line": 89,
+    "file": "\/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/ServiceAdapter\/ToolProvider\/LaunchToolProviderServiceAdapter.php"
+  },
+  "source_exception": {
+    "xdebug_message": "\nSymfony\\Component\\Debug\\Exception\\ContextErrorException: Notice: Undefined property: stdClass::$action in \/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/ServiceAdapter\/ToolProvider\/LaunchToolProviderServiceAdapter.php on line 89\n\nCall Stack:\n    0.0003     237896   1. {main}() \/var\/www\/mnv_gateway\/web\/app.php:0\n    0.0422    1500960   2. Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache->handle() \/var\/www\/mnv_gateway\/web\/app.php:54\n    0.0483    1520768   3. Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache->invalidate() \/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php:206\n    0.0483    1520816   4. Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache->pass() \/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php:277\n    0.0483    1521320   5. Symfony\\Bundle\\FrameworkBundle\\HttpCache\\HttpCache->forward() \/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php:260\n    0.4895    2661976   6. Symfony\\Component\\HttpKernel\\HttpCache\\HttpCache->forward() \/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Bundle\/FrameworkBundle\/HttpCache\/HttpCache.php:60\n    0.4895    2663552   7. Symfony\\Component\\HttpKernel\\Kernel->handle() \/var\/www\/mnv_gateway\/vendor\/symfony\/symfony\/src\/Symfony\/Component\/HttpKernel\/HttpCache\/HttpCache.php:489\n    0.5310    2807752   8. Symfony\\Component\\HttpKernel\\DependencyInjection\\ContainerAwareHttpKernel->handle() \/var\/www\/mnv_gateway\/app\/bootstrap.php.cache:2364\n    0.5312    2809592   9. Symfony\\Component\\HttpKernel\\HttpKernel->handle() \/var\/www\/mnv_gateway\/app\/bootstrap.php.cache:3119\n    0.5312    2810088  10. Symfony\\Component\\HttpKernel\\HttpKernel->handleRaw() \/var\/www\/mnv_gateway\/app\/bootstrap.php.cache:2970\n    1.2611    6347976  11. call_user_func_array() \/var\/www\/mnv_gateway\/app\/bootstrap.php.cache:3008\n    1.2611    6349192  12. MNV\\Bundle\\GatewayBundle\\Service\\Launch\\Handler->handleReplay() \/var\/www\/mnv_gateway\/app\/bootstrap.php.cache:3008\n    1.4530    7489128  13. MNV\\Bundle\\GatewayBundle\\Service\\Launch\\Handler->processTPSLaunch() \/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/Launch\/Handler.php:389\n    1.4590    7533784  14. MNV\\Bundle\\GatewayBundle\\Service\\ServiceAdapter\\ToolProvider\\LaunchToolProviderServiceAdapter->signOn() \/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/Launch\/Handler.php:510\n  121.6537    8045600  15. MNV\\Bundle\\GatewayBundle\\Service\\ServiceAdapter\\ToolProvider\\LaunchToolProviderServiceAdapter->validateResponse() \/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/ServiceAdapter\/ToolProvider\/LaunchToolProviderServiceAdapter.php:39\n  121.6537    8048160  16. Symfony\\Component\\Debug\\ErrorHandler->handleError() \/var\/www\/mnv_gateway\/src\/MNV\/Bundle\/GatewayBundle\/Service\/ServiceAdapter\/ToolProvider\/LaunchToolProviderServiceAdapter.php:89\n"
+  },
+  "code": 0,
+  "exception_class": "Symfony\\Component\\Debug\\Exception\\ContextErrorException",
+  "exception_type": "UNHANDLED_EXCEPTION",
+  "type": "UNHANDLED_EXCEPTION",
+  "message": "Notice: Undefined property: stdClass::$action"
+}

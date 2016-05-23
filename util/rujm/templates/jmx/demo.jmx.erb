@@ -1,0 +1,12 @@
+<% fun = self %>
+<% self.instance_variables.each do |v| %>
+    ------> <%= v %>
+<% end %>
+config <%=  fun.config %>
+
+time <%= fun.timestamp %>
+
+name <%= fun.name %>
+
+
+fun.suite.class <%=  fun.suite.class %>

@@ -1,0 +1,55 @@
+CREATE DATABASE  IF NOT EXISTS `eco` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `eco`;
+-- MySQL dump 10.13  Distrib 5.6.19, for osx10.7 (i386)
+--
+-- Host: 172.20.0.22    Database: eco
+-- ------------------------------------------------------
+-- Server version	5.6.19-0ubuntu0.14.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `zipcode_taxrate`
+--
+
+DROP TABLE IF EXISTS `zipcode_taxrate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `zipcode_taxrate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zip_start` varchar(255) DEFAULT NULL,
+  `zip_end` varchar(255) DEFAULT NULL,
+  `tax_rate` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `zipcode_taxrate`
+--
+
+LOCK TABLES `zipcode_taxrate` WRITE;
+/*!40000 ALTER TABLE `zipcode_taxrate` DISABLE KEYS */;
+INSERT INTO `zipcode_taxrate` VALUES (1,'05000','05099','0.25'),(2,'4000','4999','0.26'),(3,'20000','20999','0'),(4,'21000','21999','3.254'),(5,'22000','22999','117.76'),(6,'23000','23999','-40.00'),(7,'24000','24999','0.0725'),(8,'30000',NULL,'0'),(9,'30001',NULL,'3.354'),(10,'30002',NULL,'119.76'),(11,'30003',NULL,'-45.00'),(12,'30004',NULL,'0.0625'),(13,'5000','5049','frog'),(14,'5050',NULL,'duck'),(15,'5051',NULL,NULL);
+/*!40000 ALTER TABLE `zipcode_taxrate` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2015-08-06 13:00:24

@@ -1,0 +1,40 @@
+---
+  business_units: 
+    # barebones: 
+    #   lms: 
+    #     baseurl: 'http://172.20.0.21/'
+    #     realpassword: 'Password123!'
+    #   lmsdb: 
+    #     type: 'mysql'
+    #     host: '172.20.0.21'
+    #     database: 'moodle'
+    #     user: 'root'
+    #     password: 'Bz3ZnkKGM2I_eFRpb82j'
+    #   tpapi: 
+    #     blank: 45
+    haydenMcNeil:
+      lms:
+        baseurl: 'https://hm-qa.internal.mnv-tech.com/'
+        realpassword: 'Password123!'
+      lmsdb:
+        type: 'mysql'
+        host: 
+  ecoapi: 
+    baseurl: 'http://172.20.0.22:3000'
+    # users: 
+    #   dynamicBooks: 'password'
+    #   haydenMcNeil: 'test123'
+    db: 
+      type: 'mysql'
+      host: '172.20.0.22'
+      database: 'eco'
+      user: 'root'
+      password: 'qolUmvssD5b59RsQmfQA'
+  gateway: 
+    ltiprefix: ''
+    db: 
+      type: 'mysql'
+      host: '172.20.0.20'
+      database: 'mnv_gateway'
+      user: 'root'
+      password: 'ravenapplestrongpig'
