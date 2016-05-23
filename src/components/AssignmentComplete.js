@@ -5,7 +5,7 @@ import React from 'react'
 
 export default ({pointsEarned, isUpcoming}) => {
     var image = (pointsEarned > 0)
-        ? <image src={require('./../sass/image/icon_down_arrow.svg')}/>
+        ? <image src={require('./../sass/image/icon_down_arrow.colors-cc0000.svg')}/>
         : <image src={require('./../sass/image/icon_incomplete.svg')}/>;
 
     if (isUpcoming) {
