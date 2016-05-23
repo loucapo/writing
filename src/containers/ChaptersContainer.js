@@ -3,13 +3,13 @@
  */
 
 import { bindActionCreators } from 'redux'
-import actions from './../actions/index'
+import {onChapterClick} from './../actions/index'
 import Chapters from './../components/Chapters.js'
 import container from './containerFactory'
 
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ onChapterClick:actions.expandChapter }, dispatch)
+    return bindActionCreators({ onChapterClick }, dispatch)
 }
 
 var transform = ({courses, currentCourse, chapters}) => {return {chapters:courses[currentCourse].chapters.map(chapterId => chapters[chapterId])}};

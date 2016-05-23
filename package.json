@@ -16,6 +16,8 @@
     "node": ">=4.0"
   },
   "dependencies": {
+    "bluebird": "^3.4.0",
+    "humps": "^1.1.0",
     "moment": "^2.13.0",
     "normalizr": "^2.1.0",
     "ramda": "^0.21.0",

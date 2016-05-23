@@ -4,7 +4,7 @@
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import actions from './../actions/index'
+import {onCourseMenuHover, onHelpMenuHover} from './../actions/index'
 import Header from './../components/layout/Header.js'
 
 function mapStateToProps(state) {
@@ -16,7 +16,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ onCourseMenuHover:actions.onCourseMenuHover, onHelpMenuHover:actions.onHelpMenuHover }, dispatch)
+    return bindActionCreators({ onCourseMenuHover, onHelpMenuHover }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
