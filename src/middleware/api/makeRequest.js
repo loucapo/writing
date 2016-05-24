@@ -3,18 +3,20 @@
  */
 
 //pull from config
+var fetch = require('node-fetch');
+    
 const BASE_URL = 'http://localhost:3001/api/';
 
 export default function makeRequest(endpoint, authenticated, config) {
-
-    _config = Object.assign({}, _config, config);
-
-    return fetch(BASE_URL + endpoint, _config)
-        .then(({ response }) => {
+    return fetch(BASE_URL + endpoint, config)
+        .then(response =>
+        //apparently fetch returns a stream and has a json() method that will parse that and return a promise
+            response.json().then(json => ({ json, response }))
+        ).then(({ json, response }) => {
             if (!response.ok) {
-                return Promise.reject(response.text)
+                return Promise.reject(json)
             }
 
-            return response
+            return json
         }).catch(err => console.log(err))
 }

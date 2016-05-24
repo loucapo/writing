@@ -3,14 +3,12 @@
  */
 
 import  moment from 'moment';
-import Promise from 'bluebird';
 
 var cache = function(store, entityType, id) {
     var target = store[entityType][id];
     if ( target ) {
         // && (!target.lastUpdated || moment().isBefore(moment(target.lastUpdated).add(2, 'm')))) {
         return true;
-        
     }
 };
 
