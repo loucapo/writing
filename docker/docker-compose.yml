@@ -9,3 +9,15 @@ frontend:
     APPLICATION_NAME: eco_frontend
   ports:
     - "8080:8080"
+
+frontend_test:
+  image: eco_frontend
+  volumes:
+    - ./../app:/home/current/app
+  command: npm test #top -b #
+  environment:
+    DEBUG: 'true'
+    NODE_ENV: development
+    APPLICATION_NAME: eco_frontend
+  ports:
+    - "8080:8080"

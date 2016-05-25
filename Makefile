@@ -22,6 +22,9 @@ docker-build:	docker-build-node
 run:	docker-build
 	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend
 
+test:	docker-build
+	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend_test
+
 docker-build-node:
 	docker build -t eco_node -f nodeDocker/Dockerfile ./nodeDocker
 

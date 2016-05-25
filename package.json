@@ -9,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --config ./app/webpack.config.js",
-    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./tests/**"
+    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./app/tests/**"
   },
   "license": "MIT",
   "engines": {
