@@ -3,7 +3,7 @@
  */
 
 //pull from config
-var fetch = require('node-fetch');
+var fetch = require('isomorphic-fetch');
     
 const BASE_URL = 'http://localhost:3001/api/';
 

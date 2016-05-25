@@ -1,0 +1,11 @@
+frontend:
+  image: eco_frontend
+  volumes:
+    - ./../app:/home/current/app
+  command: npm start #top -b #
+  environment:
+    DEBUG: 'true'
+    NODE_ENV: development
+    APPLICATION_NAME: eco_frontend
+  ports:
+    - "8080:8080"

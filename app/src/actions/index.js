@@ -4,12 +4,12 @@
 
 import {onCourseMenuHover, onHelpMenuHover} from './headerMenuActions'
 import {getCourse} from './navigationActions'
-import {expandChapter} from './chapterActions'
+import {toggleChapter} from './chapterActions'
 
 export {
+    toggleChapter,
     onCourseMenuHover,
     onHelpMenuHover,
-    expandChapter,
     getCourse
 };
 
