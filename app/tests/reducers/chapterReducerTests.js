@@ -3,11 +3,9 @@
  */
 
 import {EXPAND_CHAPTER} from './../../src/constants'
-import {expandChapter} from './../../src/reducers/chapterReducers';
+import {expandChapter as SUT} from './../../src/reducers/chapterReducers';
 import * as chai from 'chai';
-
 let should = chai.should();
-
 
 describe("CHAPTER_REDUCERS", () => {
     describe('when_calling_expand_chapter', () => {
@@ -32,12 +30,12 @@ describe("CHAPTER_REDUCERS", () => {
         });
 
         it('should_return_chapter_state', () => {
-            var newState = expandChapter(_initialState, _action);
+            var newState = SUT(_initialState, _action);
             newState.should.not.be.null;
         });
 
         it('should_toggle_isExpanded', () => {
-            var newState = expandChapter(_initialState, _action);
+            var newState = SUT(_initialState, _action);
             newState[1].isExpanded.should.be.true;
         })
     })

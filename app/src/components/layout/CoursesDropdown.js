@@ -3,14 +3,20 @@ import CourseMenuItem from './CourseMenuItem'
 
 export default ({items, dropdownActive, onHover}) => (
     <li id="nav-courses"
-        tabindex="0"
+        tabindex="-1"
         role="menuitem"
         aria-haspopup="true"
         aria-expanded={dropdownActive}
         aria-controls="st1"
-        onMouseEnter={onHover}
-        onMouseLeave={onHover}>COURSES
-        <span className="icon icon-icon_down_arrow-0"></span>
+        // onMouseEnter={onHover}
+        onMouseLeave={onHover}
+        onClick={onHover}
+        // onfocus={onHover}
+        >
+
+        COURSES
+
+    <span className="icon icon-icon_down_arrow-0"></span>
         {
             dropdownActive
                 ? <ul className="sub-nav menu" role="menu" aria-hidden={dropdownActive}>

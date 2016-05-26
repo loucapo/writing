@@ -7,9 +7,9 @@ import moment from 'moment'
 
 import container from './containerFactory'
 
-var transform = ({courses, currentCourse, chapters, assignments}, props) => {
+const transform = ({courses, currentCourse, chapters, assignments}, props) => {
     var course = courses[currentCourse];
-    var filter = a => moment.unix(a.closeDate) < moment() && a.badge==='TO DO' ? a : null;
+    var filter = a => moment.unix(a.closeDate) >= moment() && a.badge==='TO DO' ? a : null;
 
     var allAssIds = course.chapters
         .map(chapterId => chapters[chapterId])
@@ -30,4 +30,6 @@ var transform = ({courses, currentCourse, chapters, assignments}, props) => {
     return {assignments: upCommingAssignments};
 };
 
-export default container(['courses', 'currentCourse', 'chapters', 'assignments'], transform)(Assignments);
+const UpComingAssignmentsContainer = container(['courses', 'currentCourse', 'chapters', 'assignments'], transform)(Assignments);
+
+export {transform, UpComingAssignmentsContainer};

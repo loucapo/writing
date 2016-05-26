@@ -12,7 +12,8 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ toggleChapter }, dispatch)
 }
 
-var transform = ({courses, currentCourse, chapters}) => {return {chapters:courses[currentCourse].chapters.map(chapterId => chapters[chapterId])}};
+const transform = ({courses, currentCourse, chapters}) => {return {chapters:courses[currentCourse].chapters.map(chapterId => chapters[chapterId])}};
 
-export default container(['courses', 'currentCourse','chapters'], transform, mapDispatchToProps)(Chapters);
+const ChaptersContainer = container(['courses', 'currentCourse','chapters'], transform, mapDispatchToProps)(Chapters);
 
+export { transform, ChaptersContainer}
