@@ -3,7 +3,7 @@ import CourseMenuItem from './CourseMenuItem'
 
 export default ({items, dropdownActive, onHover}) => (
     <li id="nav-courses"
-        tabindex="0"
+        tabIndex="0"
         role="menuitem"
         aria-haspopup="true"
         aria-expanded={dropdownActive}
@@ -15,7 +15,7 @@ export default ({items, dropdownActive, onHover}) => (
             dropdownActive
                 ? <ul className="sub-nav menu" role="menu" aria-hidden={dropdownActive}>
                 { items.map(i => <CourseMenuItem key={i.id} id={i.id} name={i.name} isActive={i.isActive}/>) }
-                <li tabindex="0" role="menuitem" className="menu-item add-course" aria-controls="st1">+ Add A Course</li>
+                <li tabIndex="0" role="menuitem" className="menu-item add-course" aria-controls="st1">+ Add A Course</li>
             </ul>
                 : ''
         }

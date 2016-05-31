@@ -4,4 +4,4 @@
 import React from 'react'
 import {Link} from 'react-router';
 
-export default ({id, name}) => (<li tabindex="0" role="button">{name}</li>)
+export default ({id, name}) => (<li tabIndex="0" role="button">{name}</li>)

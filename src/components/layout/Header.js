@@ -12,7 +12,7 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover,
           <ul role="menubar">
             <CoursesDropdown onHover={onCourseMenuHover} {...headerMenuCourses} />
             <HelpDropdown onHover={onHelpMenuHover} {...headerMenuHelp} />
-            <li id="nav-profile" tabindex="0" role="menuitem"><span>{userName}</span>
+            <li id="nav-profile" tabIndex="0" role="menuitem"><span>{userName}</span>
               <div id="avatar"><img src={require('./../../sass/image/avatar.png')} alt="User Profile"/></div>
             </li>
             <div className="clearfix"></div>
@@ -22,7 +22,7 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover,
         <div id="mobile-icon"
              role="navigation">
           <div className="icon-icon_hamburger-0"
-               tabindex="0"
+               tabIndex="0"
                role="button"
                aria-haspopup="true"
                aria-expanded="false"
@@ -33,7 +33,7 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover,
             <label htmlFor="nav-trigger" className="icon-icon_x-0"></label>
 
         <div id="mobile-nav" role="navigation">
-          <div id="icon-x" tabindex="0" role="button" aria-label="Close">
+          <div id="icon-x" tabIndex="0" role="button" aria-label="Close">
           </div>
           <ul>
             <li><i className="icon-icon_book-0"></i>COURSES</li>
