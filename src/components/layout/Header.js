@@ -3,15 +3,15 @@ import CoursesDropdown  from './CoursesDropdown'
 import HelpDropdown  from './HelpDropdown'
 
 
-const Header = ({userName, headerMenuCourses, headerMenuHelp, onCourseMenuHover, onHelpMenuHover}) => {
+const Header = ({userName, headerMenuCourses, headerMenuHelp, onMenuToggle}) => {
   return (
     <div>
       <header role="banner" id="header">
         <div id="logo-ml"><img src={require('./../../sass/image/logo_ml.png')} alt="Macmillan Learning"/></div>
         <div id="header-nav" role="navigation">
           <ul role="menubar">
-            <CoursesDropdown onHover={onCourseMenuHover} {...headerMenuCourses} />
-            <HelpDropdown onHover={onHelpMenuHover} {...headerMenuHelp} />
+            <CoursesDropdown onMenuToggle={onMenuToggle} {...headerMenuCourses} />
+            <HelpDropdown onMenuToggle={onMenuToggle} {...headerMenuHelp} />
             <li id="nav-profile" tabIndex="0" role="menuitem"><span>{userName}</span>
               <div id="avatar"><img src={require('./../../sass/image/avatar.png')} alt="User Profile"/></div>
             </li>

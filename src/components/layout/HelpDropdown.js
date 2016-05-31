@@ -1,7 +1,7 @@
 import React from 'react'
 import HelpMenuItem from './HelpMenuItem'
 
-export default ({items, dropdownActive, onHover}) => (
+export default ({items, dropdownActive, onMenuToggle}) => (
         <li id="nav-help" 
             aria-owns="sub-nav-help" 
             aria-controls="sub-nav-help" 
@@ -9,8 +9,9 @@ export default ({items, dropdownActive, onHover}) => (
             role="menuitem"
             aria-haspopup="true"
             aria-expanded={dropdownActive}
-            onMouseEnter={onHover}
-            onMouseLeave={onHover}
+            onClick={()=>onMenuToggle('headerMenuHelp')}
+            onKeyPress={(event) => (event.charCode === 13 || event.charCode === 32) && onMenuToggle('headerMenuHelp', event)}
+            onBlur={() => dropdownActive && onMenuToggle('headerMenuHelp')}
             className={dropdownActive ? "open" : ""}
             aria-label="Help">
             <div className="icon icon-icon_help-white"></div>

@@ -1,24 +1,23 @@
-/**
- * Created by rharik on 5/12/16.
- */
+import {MENU_TOGGLE} from './../constants';
 
-const headerMenuCourses = (state = {}, action = null) =>
-{
-    if (action.type == 'COURSE_MENU_HOVER') {
-        return Object.assign({}, state, { dropdownActive: !state.dropdownActive, items: state.items  });
+const _toggleMenu = (state) => {
+    return {...state, dropdownActive: !state.dropdownActive};
+};
+
+export const headerMenuCourses = (state = {}, action = null) => {
+    switch (action.type) {
+        case MENU_TOGGLE:
+            state = action.menuName === 'headerMenuCourses' ? _toggleMenu(state) : state;
+            break;
     }
     return state;
 };
 
-const headerMenuHelp = (state = {}, action = null) =>
-{
-    if (action.type == 'HELP_MENU_HOVER') {
-        return Object.assign({}, state, { dropdownActive: !state.dropdownActive, items:state.items });
+export const headerMenuHelp = (state = {}, action = null) => {
+    switch (action.type) {
+        case MENU_TOGGLE:
+            state = action.menuName === 'headerMenuHelp' ? _toggleMenu(state) : state;
+            break;
     }
     return state;
 };
-
-export {
-    headerMenuCourses,
-    headerMenuHelp
-}

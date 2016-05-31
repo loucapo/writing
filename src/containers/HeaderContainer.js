@@ -1,11 +1,7 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import {onCourseMenuHover, onHelpMenuHover} from './../actions/index'
-import Header from './../components/layout/Header.js'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { onMenuToggle } from './../actions/index';
+import Header from './../components/layout/Header';
 
 function mapStateToProps(state) {
     return {
@@ -16,8 +12,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ onCourseMenuHover, onHelpMenuHover }, dispatch)
+    return bindActionCreators({ onMenuToggle }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
-

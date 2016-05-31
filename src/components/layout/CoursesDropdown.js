@@ -1,15 +1,16 @@
 import React from 'react'
 import CourseMenuItem from './CourseMenuItem'
 
-export default ({items, dropdownActive, onHover}) => (
+export default ({items, dropdownActive, onMenuToggle}) => (
     <li id="nav-courses"
         tabIndex="0"
         role="menuitem"
         aria-haspopup="true"
         aria-expanded={dropdownActive}
         aria-controls="st1"
-        onMouseEnter={onHover}
-        onMouseLeave={onHover}>COURSES
+        onClick={()=>onMenuToggle('headerMenuCourses')}
+        onKeyPress={(event) => (event.charCode === 13 || event.charCode === 32) && onMenuToggle('headerMenuCourses', event)}
+        onBlur={() => dropdownActive && onMenuToggle('headerMenuCourses')}>COURSES
         <span className="icon icon-icon_down_arrow-0"></span>
         {
             dropdownActive

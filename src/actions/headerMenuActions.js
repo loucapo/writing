@@ -1,26 +1,9 @@
-/**
- * Created by rharik on 5/12/16.
- */
+import {MENU_TOGGLE} from './../constants';
 
-import {COURSE_MENU_HOVER, HELP_MENU_HOVER} from './../constants';
-
-
-const onCourseMenuHover = () => {
+export const onMenuToggle = (menuName, event) => {
     return {
-        type: COURSE_MENU_HOVER
+        type: MENU_TOGGLE,
+        menuName: menuName,
+        event: event
     }
 };
-
-const onHelpMenuHover = () => {
-    return {
-        type: HELP_MENU_HOVER
-    }
-};
-
-export {
-    onCourseMenuHover,
-    onHelpMenuHover
-}
-
-
-

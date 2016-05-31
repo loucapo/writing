@@ -1,15 +1,11 @@
-/**
- * Created by rharik on 5/13/16.
- */
+export const EXPAND_CHAPTER = 'EXPAND_CHAPTER';
 
-export const COURSE_MENU_HOVER = 'COURSE_MENU_HOVER'
-export const HELP_MENU_HOVER = 'HELP_MENU_HOVER'
-export const EXPAND_CHAPTER = 'EXPAND_CHAPTER'
+export const COURSE_REQUEST = 'COURSE_REQUEST';
+export const COURSE_SUCCESS = 'COURSE_SUCCESS';
+export const COURSE_FAILURE = 'COURSE_FAILURE';
 
-export const COURSE_REQUEST = 'COURSE_REQUEST'
-export const COURSE_SUCCESS = 'COURSE_SUCCESS'
-export const COURSE_FAILURE = 'COURSE_FAILURE'
 
+export const MENU_TOGGLE = 'MENU_TOGGLE';
 
 // export const COURSE_MENU_HOVER = 'COURSE_MENU_HOVER'
 // export const COURSE_MENU_HOVER = 'COURSE_MENU_HOVER'
