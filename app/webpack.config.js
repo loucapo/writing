@@ -25,7 +25,7 @@ const config = {
             { test: /\.png$/, loader: "url-loader", query: { mimetype: "image/png" } },
             { test: /\.jpg$/, loader: "url-loader", query: { mimetype: "image/jpg" } },
             { test: /\.gif$/, loader: "url-loader", query: { mimetype: "image/gif" } },
-            { test: /\.scss$/, loaders: ["style", "css", "sass"] }
+            { test: /\.scss$/, loaders: ["style", "css?sourceMap", "sass?sourceMap"] }
             // { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: ['url-loader?limit=10000&mimetype=application/font-woff' ] },
 
         ]
