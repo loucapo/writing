@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import Layout from './../../src/components/layout/layout'
+import Layout from '../../../src/components/layout/layout'
 import { shallow, mount, render } from 'enzyme';
 import * as chai from 'chai';
 
