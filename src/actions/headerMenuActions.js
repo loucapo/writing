@@ -1,9 +1,9 @@
-import {MENU_TOGGLE} from './../constants';
+import {SELECT_COURSE_FROM_MENU} from './../constants';
+import { browserHistory } from 'react-router';
 
-export const onMenuToggle = (menuName, event) => {
+export const onSelectCourseFromMenu = (value) => {
+    value && browserHistory.push('/course/' + value);
     return {
-        type: MENU_TOGGLE,
-        menuName: menuName,
-        event: event
+        type: SELECT_COURSE_FROM_MENU
     }
 };

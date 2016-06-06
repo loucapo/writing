@@ -1,9 +1,9 @@
-import {onMenuToggle} from './headerMenuActions'
+import {onSelectCourseFromMenu} from './headerMenuActions'
 import {getCourse} from './navigationActions'
 import {expandChapter} from './chapterActions'
 
 export {
-    onMenuToggle,
+    onSelectCourseFromMenu,
     expandChapter,
     getCourse
 };

@@ -1,4 +1,4 @@
-import {MENU_TOGGLE} from './../constants';
+import {SELECT_COURSE_FROM_MENU} from './../constants';
 
 const _toggleMenu = (state) => {
     return {...state, dropdownActive: !state.dropdownActive};
@@ -6,7 +6,7 @@ const _toggleMenu = (state) => {
 
 export const headerMenuCourses = (state = {}, action = null) => {
     switch (action.type) {
-        case MENU_TOGGLE:
+        case SELECT_COURSE_FROM_MENU:
             state = action.menuName === 'headerMenuCourses' ? _toggleMenu(state) : state;
             break;
     }
@@ -15,7 +15,7 @@ export const headerMenuCourses = (state = {}, action = null) => {
 
 export const headerMenuHelp = (state = {}, action = null) => {
     switch (action.type) {
-        case MENU_TOGGLE:
+        case SELECT_COURSE_FROM_MENU:
             state = action.menuName === 'headerMenuHelp' ? _toggleMenu(state) : state;
             break;
     }
