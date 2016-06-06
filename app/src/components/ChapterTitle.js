@@ -7,7 +7,7 @@ export default ({index, title, id, isExpanded, toggleChapter}) => (
             <div className="progress">
                 <div class="num">{index}</div>
                 {
-                    //<image src={require('./../sass/image/icon_down_arrow.colors-cc0000.svg')}/>
+                    // <image src={require('./../sass/image/icon_down_arrow.colors-cc0000.svg')}/>
                 }
             </div>
             <div class="text">
