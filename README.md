@@ -1,6 +1,6 @@
 ### Start me up!
 
-    git clone git@bitbucket.org:ron_romero_sapling/eco_frontend.git
+    git clone git@bitbucket.org:mnv_tech/eco_frontend.git
     must use node > 4.0
     cd eco_frontend
     npm install                    # install project packages
