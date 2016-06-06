@@ -1,20 +1,3 @@
-/*
-@font-face {
-    font-family: 'ProximaNovaExtrabold';
-    src: url('../_fonts/proximanova-extrabld-webfont.eot');
-    src: url('../_fonts/proximanova-extrabld-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../_fonts/proximanova-extrabld-webfont.woff') format('woff'),
-         url('../_fonts/proximanova-extrabld-webfont.ttf') format('truetype'),
-         url('../_fonts/proximanova-extrabld-webfont.svg#ProximaNovaExtrabold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-*/
-
-/* red #e8393c */
-
-
 
 $browser-context: 13;
 
@@ -31,10 +14,18 @@ $browser-context: 13;
   @return $pixels / $context * 1em;
 }
 
+
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+
+
 * {
-	margin:0;
-	padding:0;
-	list-style:none;
+  @include reset;
 }
 
 html {
@@ -45,10 +36,7 @@ html {
 }
 
 html, body {
-
 	position: relative;
-	margin: 0;
-	padding: 0;
 	width: 100%;
 	height: 100%;
 	background: #ffffff;
@@ -65,15 +53,10 @@ html, body {
 	-webkit-appearance: none;
 	-moz-appearance: none;
     appearance: none; 
-
-	/*min-width: 1000px;*/
-
 }
 
 h1, h2, h3, h4, h5 {
-	margin: 0;
-	padding: 0;
-	font-weight: normal;
+  font-weight: normal;
 }
 
 h1 {
@@ -125,9 +108,8 @@ ol {
 	
 
 img {
-	border: 0;
-	margin: 0;
-	padding: 0;
+  @include reset;
+  border: 0;
 }
 
 p {
@@ -195,11 +177,10 @@ input[type=text], input[type=password] {
 }
 
 .button, a.button {
+  @include reset;
 	position: relative;
 	display: block;
 	width: 100%;
-	margin: 0;
-	padding: 0;
 	background: #cc0000;
 	padding: 12px 20px;
 	text-align: center;
@@ -294,11 +275,10 @@ input[type=text], input[type=password] {
 }
 
 #login {
+  @include reset;
 	position: relative;
 	width: 100%;
-	margin: 0;
-	padding: 0;
-	background: #f3f3f3;	
+	background: #f3f3f3;
 }
 
 #login-holder {
@@ -442,150 +422,146 @@ input[type=text], input[type=password] {
 	height: 100%;	
 }
 
-/* Header */
+
+
+
+
+
+/* BEGIN HEADER */
 
 #header {
-	position: fixed;
-	width: 100%;
-	height: 70px;
-	background: #333333;
-	z-index: 700;
+  position: fixed;
+  width: 100%;
+  height: em(70);
+  background-color: #333333;
+  z-index: 700;
+}
+
+#logo-ml {
+  position: absolute;
+  top: em(10);
+  left: em(30);
+
+  img {
+    height: em(50);
+  }
+}
+
+#avatar {
+  width: em(28);
+  height: em(28);
+  background: #999999;
+  border-radius: 50%;
+  float: right;
+  margin-top: em(21);
+  margin-left: em(12);
+  overflow: hidden;
+
+  img {
+    @include reset;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 #header-nav {
-	position: absolute;
-	top: 0;
-	right: 20px;	
-}
-
-	#header-nav ul, #header-nav li {
-		margin: 0;
-		padding: 0;
-		list-style: none;	
-	}
-	
-	#header-nav li {
-		position: relative;
-		float: left;
-		margin-left: 0px;	
-		color: #ffffff;
-		height: 70px;
-		line-height: 70px;
-		font-weight: 700;
-		padding: 0 12px;
-	}
-	
-		#header-nav li:hover {
-			background: #000000;
-			cursor: pointer;
-		}
-
-#header-nav .open .icon {
-  opacity: 1;
-}
-	
-	#logo-ml {
-		position: absolute;
-		top: 10px;
-		left: 30px;
-	}
-	
-		#logo-ml img {
-			height: 50px;	
-		}
-		
-	li#nav-courses {
-		padding-right: 35px;
-		padding-left: 15px;
-	}
-
-li#nav-courses .icon {
+  color: white;
   position: absolute;
-  top: 1.9230769230769231em; // 25 / 13
-  right: 0.7692307692307693em; // 10 / 13
-  fill: #cc0000;
-  width: 1.3846153846153846em; // 18 / 13
-  height: 1.3846153846153846em; // 18 / 13
-  margin-left: 0.7692307692307693em; // 10 / 13
+  top: 0;
+  right: em(20);
+
+  & > div {
+    float: left;
+    line-height: em(70);
+    font-weight: 700;
+    margin: 0 0;
+
+    &:not(:last-child)  {
+    }
+
+    &:last-child {
+      padding: 0 em(12);
+    }
+  }
+
+  & *[role="button"] {
+    display: inline-block;
+    padding: 0 em(12);
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    &:hover, &:focus {
+      background-color: black;
+    }
+
+    &[aria-expanded="true"] {
+      background-color: black;
+    }
+  }
+
+  & .icon {
+    display: inline-block;
+    height: 100%;
+  }
+
+  & .help-menu .icon {
+    background-position: left em(21);
+    width: em(28);
+    opacity: 0.75;
+    & span {
+      visibility: hidden;
+    }
+  }
+
+  & .courses-menu {
+
+    & *[role=menuitem]:last-child {
+      background-color: #d82934;
+      &:hover, &:focus {
+        background-color: saturate(#d82934, 20%);
+      }
+    }
+
+    & .icon {
+      background-position: left em(25);
+      width: em(18);
+      margin-left: em(8);
+      &:after {
+        content: "\00a0";
+      }
+    }
+  }
+
+  & *[role="menu"] {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    position: absolute;
+  }
+
+  & *[role="menuitem"] {
+    float: none;
+    width: em(200);
+    height: auto;
+    padding: em(15) em(20);
+    border-top: 1px solid #333333;
+    line-height: em(19);
+    font-weight: 700;
+    background-color: black;
+
+    cursor: pointer;
+    &:hover, &:focus {
+      background-color: #333333;
+    }
+  }
 }
 
-li#nav-calendar div, li#nav-help div {
-  fill: #ffffff;
-  width: 2.1538461538461537em; // 28 / 13
-  height: 2.1538461538461537em;
-  opacity: 0.5;
-  margin-top: 21px;
-}
-	
-	#avatar {
-		width: 28px;
-		height: 28px;
-		background: #999999;	
-		border-radius: 50%;
-		float: right;
-		margin-top: 21px;
-		margin-left: 12px;
-		overflow: hidden;
-	}
-	
-	#avatar img {
-		display: block;
-		margin: 0;
-		padding: 0;
-		width: 100%;
-		height: auto;
-	}
-	
-#header-nav .sub-nav, #header-nav .sub-nav li {
-	margin: 0;
-	padding: 0;
-	list-style: none;	
-}
-	
-#header-nav .sub-nav {
-	position: absolute;
-	top: 69px;
-	left: 0;
-	background: #000000;
-}
+/* END HEADER */
 
-	#header-nav .sub-nav li {
-		float: none;
-		width: 200px;
-		height: auto;
-		padding: 15px 20px;	
-		border-top: 1px solid #333333;
-		line-height: 19px;
-		font-weight: 700;
-	}
-	
-		#header-nav .sub-nav li:hover{
-			background: #333333;	
-		}
-		
-	#header-nav .sub-nav h5 {
-		color: #999999;
-		padding: 0 20px;	
-		font-size: 11px;
-		line-height: 40px;
-		text-transform: uppercase;
-		letter-spacing: 0.2em;
-		border-top: 1px solid #333333;
-		font-weight: 700;
-	}
-		
-#header-nav li.open .sub-nav {
-	display: block;
-}
 
-#coverup {
-	display: none;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	z-index: 600;
-	background: transparent;	
-}
+
+
+
 
 @media (min-width: 700px) {
   #mobile-nav {
@@ -618,7 +594,7 @@ li#nav-calendar div, li#nav-help div {
 			margin-left: 0;	
 		}
 
-  #mobile-icon > div, label[for="nav-trigger"] {
+  label[for="nav-trigger"] {
     position: absolute;
     top: em(20);
     right: em(20);
@@ -639,9 +615,7 @@ li#nav-calendar div, li#nav-help div {
   background: black;
 
   & ul, & li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    @include reset;
   }
 
   & ul {
@@ -681,9 +655,8 @@ li#nav-calendar div, li#nav-help div {
   }
 
   & #mobile-avatar img {
+    @include reset;
     display: block;
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: auto;
   }
@@ -700,6 +673,7 @@ li#nav-calendar div, li#nav-help div {
 .nav-trigger {
   position: absolute;
   clip: rect(0, 0, 0, 0);
+  visibility: hidden;
 }
 
 #mobile-nav {
@@ -721,10 +695,6 @@ li#nav-calendar div, li#nav-help div {
 }
 
 .nav-trigger:not(:checked) {
-  & ~ #mobile-nav {
-
-  }
-
   & ~ label:nth-of-type(2) {
     display: none;
   }
@@ -943,9 +913,7 @@ li#nav-calendar div, li#nav-help div {
 	
 	
 #chapters ul, #chapters li {
-	margin: 0;
-	padding: 0;
-	list-style: none;	
+  @include reset;
 }
 
 	#chapters li {

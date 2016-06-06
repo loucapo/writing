@@ -1,24 +1,9 @@
-/**
- * Created by rharik on 5/12/16.
- */
+import {SELECT_COURSE_FROM_MENU} from './../constants';
 
-const headerMenuCourses = (state = {}, action = null) =>
-{
-    if (action.type == 'COURSE_MENU_HOVER') {
-        return Object.assign({}, state, { dropdownActive: !state.dropdownActive, items: state.items  });
-    }
+export const headerMenuCourses = (state = {}, action = null) => {
     return state;
 };
 
-const headerMenuHelp = (state = {}, action = null) =>
-{
-    if (action.type == 'HELP_MENU_HOVER') {
-        return Object.assign({}, state, { dropdownActive: !state.dropdownActive, items:state.items });
-    }
+export const headerMenuHelp = (state = {}, action = null) => {
     return state;
 };
-
-export {
-    headerMenuCourses,
-    headerMenuHelp
-}

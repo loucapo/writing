@@ -1,7 +1,3 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
 import React from 'react'
 import { render } from 'react-dom'
 import { browserHistory } from 'react-router'
@@ -14,25 +10,21 @@ require('./sass/icons.data.svg.css');
 
 const initialState = {
     auth: {
-        userName: 'Raif Harik'
+        userName: 'Wayne Student'
     },
     headerMenuCourses: {
-        dropdownActive: false,
         items: [
             {
                 id: 1,
-                name: 'General Chemistry Laboratory - 6660',
-                isActive: true
+                name: 'General Chemistry Laboratory - 6660'
             },
             {
                 id: 2,
-                name: 'General Chemistry Laboratory - 1331',
-                isActive: true
+                name: 'General Chemistry Laboratory - 1331'
             }
         ]
     },
     headerMenuHelp: {
-        dropdownActive: false,
         items: [
             {id: 1, name: 'User Guide'},
             {id: 2, name: 'Email Technical Support'},
