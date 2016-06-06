@@ -14,7 +14,7 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onSelectCourseFrom
           <CoursesMenuButton onSelection={onSelectCourseFromMenu} {...headerMenuCourses} />
           <HelpMenuButton {...headerMenuHelp}/>
           <div id="nav-profile" >
-            <span aria-label="Username">{userName}</span>
+            <span>{userName}</span>
             <div id="avatar">
               <img src={require('./../../sass/image/avatar.png')} alt="User Avatar"/>
             </div>
