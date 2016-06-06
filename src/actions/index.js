@@ -7,4 +7,3 @@ export {
     expandChapter,
     getCourse
 };
-
