@@ -27,7 +27,8 @@
             // this is just one of them!
           }
         ]
-      ]
+      ],
+      "ignore": [ "node_module" ]
     }
   }
 }

@@ -5,8 +5,8 @@
 import React from 'react'
 import TitleBar from './TitleBar'
 import NavBar from './NavBar'
-import Assignments from './../containers/UpComingAssignmentsContainer'
-import Chapters from './../containers/ChaptersContainer'
+import {UpComingAssignmentsContainer as Assignments} from './../containers/UpComingAssignmentsContainer'
+import {ChaptersContainer as Chapters} from './../containers/ChaptersContainer'
 import {getCourse} from './../actions'
 
 class Course extends React.Component {

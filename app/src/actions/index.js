@@ -1,9 +1,9 @@
 import {onSelectCourseFromMenu} from './headerMenuActions'
 import {getCourse} from './navigationActions'
-import {expandChapter} from './chapterActions'
+import {toggleChapter} from './chapterActions'
 
 export {
     onSelectCourseFromMenu,
-    expandChapter,
+    toggleChapter,
     getCourse
 };

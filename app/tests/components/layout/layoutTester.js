@@ -18,11 +18,6 @@ describe('LAYOUT_COMPONENT', () => {
 
         it('should contain div', () => {
             var result = SUT.find('div');
-            result.should.have.length.of(2);
-        });
-
-        it('should contain div with id coverup', () => {
-            var result = SUT.find('#coverup');
             result.should.have.length.of(1);
         });
     })

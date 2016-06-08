@@ -9,7 +9,7 @@ export default ({items}) => {
   });
 
   return (
-    <Wrapper className="courses-menu" >
+    <Wrapper className="courses-menu" onSelection={()=>{}} >
       <Button>
         Courses
         <i className="icon icon-icon_down_arrow-0" aria-hidden="true"></i>

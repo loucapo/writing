@@ -33,7 +33,7 @@ const config = {
     plugins: [
         new HtmlWebpackPlugin({
             template: __dirname + "/src/index.tmpl.html",
-            favicon: 'src/sass/image/favicon.png'
+            favicon: __dirname + '/src/sass/image/favicon.png'
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),

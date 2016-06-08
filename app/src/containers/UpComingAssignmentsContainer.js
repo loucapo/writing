@@ -26,7 +26,6 @@ const transform = ({courses, currentCourse, chapters, assignments}, props) => {
                 tableCaption :'Upcoming Assignments'
             }
         });
-
     return {assignments: upCommingAssignments};
 };
 

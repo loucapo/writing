@@ -1,6 +1,5 @@
 import { combineReducers, compose } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import { headerMenuCourses, headerMenuHelp } from './headerMenuReducer'
 import {expandChapter} from './chapterReducers'
 import {courses} from './navigationReducers'
 import {currentCourse} from './courseReducer'
@@ -12,8 +11,8 @@ const reducers = combineReducers({
     chapters: expandChapter,
     assignments: (state = {}) => state,
     currentCourse: currentCourse,
-    headerMenuCourses,
-    headerMenuHelp
+    headerMenuCourses: (state = {}) => state,
+    headerMenuHelp: (state = {}) => state
 });
 
 export default reducers;
