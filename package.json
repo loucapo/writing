@@ -8,8 +8,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress",
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --harmony --reporter spec ./unittest/*test.js"
+    "start": "webpack-dev-server --progress --config ./app/webpack.config.js",
+    "test": "NODE_ENV=test mocha -w --recursive --compilers js:babel-core/register ./app/tests/**"
   },
   "license": "MIT",
   "engines": {
@@ -18,6 +18,7 @@
   "dependencies": {
     "bluebird": "^3.4.0",
     "humps": "^1.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "moment": "^2.13.0",
     "normalizr": "^2.1.0",
     "ramda": "^0.21.0",
@@ -35,16 +36,22 @@
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
+    "babel": "^6.5.2",
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.5.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.23.1",
+    "enzyme": "^2.3.0",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^2.9.0",
+    "mocha": "^2.4.5",
+    "nock": "^8.0.0",
     "node-sass": "^3.7.0",
+    "react-addons-test-utils": "^15.0.2",
     "react-transform-hmr": "^1.0.2",
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
@@ -55,5 +62,10 @@
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.9.1"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }
