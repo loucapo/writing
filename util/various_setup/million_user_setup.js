@@ -15,7 +15,7 @@ var fixtures = require('../../data/fixtures');
 //   associate the course with an institution
 //   create and enroll a batch of students in the course
 
-var total_students = 5000000;
+var total_students = 5000;
 var students_per_course = 100;
 var courses_per_institution = 5; // almost meaningless for current testing, simple and maybe useful later.
 

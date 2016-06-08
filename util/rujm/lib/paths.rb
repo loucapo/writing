@@ -4,7 +4,7 @@ class Paths
 
   @paths = {
     # @TODO make it so this can take an absolute path
-    jmeter: 'apache-jmeter-2.13',
+    jmeter: 'apache-jmeter-3.0',
     templates: {
       test_index: 'templates/test_index',
       suite_index: 'templates/suite_index',

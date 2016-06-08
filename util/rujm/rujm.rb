@@ -104,7 +104,7 @@ class TestSuiteInfo
     # now is when we create the timestamp used for this suite
     suite[:timestamp] = Time.now.to_i.to_s
     dir = if OPTIONS[:suite]
-            OPTIONS[:suite]
+            File.join(@project[:dir], OPTIONS[:suite])
           elsif @config[:suite][:name].nil?
             File.join(@project[:dir], suite[:timestamp])
           else
@@ -199,13 +199,11 @@ class TestInfo
 
   def create_render
     # totally sufficient for now, just not very flexible
-    render_file = Paths.join("#{config[:render]}.jmx", :templates, :jmx)
     jmeter_bin = Paths.join('bin/jmeter', :jmeter)
     input = File.join(@dir, 'output.csv')
-    "#{jmeter_bin} -n " \
-    "-t=#{render_file} " \
-    "-Jinput=#{input} " \
-    "-Joutdir=#{@dir}"
+    "#{jmeter_bin} " \
+    "-g=#{input} " \
+    "-o=#{@dir}/graphs"
   end
 end
 
