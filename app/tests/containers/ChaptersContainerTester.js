@@ -7,56 +7,56 @@ import * as chai from 'chai';
 let should = chai.should();
 
 
-describe('CHAPTER_CONTAINER_TRANSFORM', () =>{
+describe('CHAPTER_CONTAINER_TRANSFORM', () => {
     describe('when_calling_transform', () => {
-        var props ;
+        var props;
         beforeEach(() => {
-          props = {
-              courses: {
-                  1: {
-                      lastUpdated: '',
-                      id: 1,
-                      courseTitle: 'General Chemistry Laboratory - 6660',
-                      active: true,
-                      chapters: [1]
-                  },
-                  2: {
-                      lastUpdated: '',
-                      id: 2,
-                      courseTitle: 'General Chemistry Laboratory - 1331',
-                      active: true,
-                      chapters: [2]
-                  }
-              },
-              chapters: {
-                  1: {
-                      isExpanded: false,
-                      id: 1,
-                      title: "Experiment 1 - Density",
-                      summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                      caption: 'Chapter 1 Content',
-                      tableSummary: 'A list of content and assignments for Chapter 1',
-                      assignments: [1]
-                  },
+            props = {
+                courses: {
+                    1: {
+                        lastUpdated: '',
+                        id: 1,
+                        courseTitle: 'General Chemistry Laboratory - 6660',
+                        active: true,
+                        chapters: [1]
+                    },
+                    2: {
+                        lastUpdated: '',
+                        id: 2,
+                        courseTitle: 'General Chemistry Laboratory - 1331',
+                        active: true,
+                        chapters: [2]
+                    }
+                },
+                chapters: {
+                    1: {
+                        isExpanded: false,
+                        id: 1,
+                        title: "Experiment 1 - Density",
+                        summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
+                        caption: 'Chapter 1 Content',
+                        tableSummary: 'A list of content and assignments for Chapter 1',
+                        assignments: [1]
+                    },
 
-                  2: {
-                      isExpanded: false,
-                      id: 2,
-                      title: "Experiment 2 - Density",
-                      summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                      caption: 'Chapter 2 Content',
-                      tableSummary: 'A list of content and assignments for Chapter 2',
-                      assignments: [2]
-                  }
-              },
-              currentCourse: 1
-          };
+                    2: {
+                        isExpanded: false,
+                        id: 2,
+                        title: "Experiment 2 - Density",
+                        summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
+                        caption: 'Chapter 2 Content',
+                        tableSummary: 'A list of content and assignments for Chapter 2',
+                        assignments: [2]
+                    }
+                },
+                currentCourse: 1
+            };
         });
 
         it('should not return null', () => {
             SUT(props).should.not.be.null;
         });
-        
+
         it('should return a valid object with chapters property', () => {
             SUT(props).chapters.should.not.be.undefined;
         });

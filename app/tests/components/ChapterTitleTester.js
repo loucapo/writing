@@ -14,22 +14,15 @@ describe('CHAPTER__TITLE_COMPONENT', () => {
             SUT = shallow(<ChapterTitle {...props} />);
         });
 
-        it('should render a DIV with a accord-title className', () => {
-const divs = SUT.find('div');
-console.log('***' + JSON.stringify(divs, null, 4) + '***');
-            SUT.find('div').length.should.equal(1);
+        it('should render a DIV with an accord-title className', () => {
+            SUT.find('div.accord-title').length.should.equal(1);
         });
 
-        it('should not render a DIV with a progress className', () => {
-            SUT.find('div').length.should.equal(0);
+        it('should render a DIV with an accord-toggle className', () => {
+            SUT.find('div.accord-toggle').length.should.equal(1);
         });
-
-        it('should not render a DIV with a accord-toggle className', () => {
-            SUT.find('div').length.should.equal(0);
-        });
-
-        it('should not render a DIV with a text className', () => {
-            SUT.find('div').length.should.equal(0);
+        it('should render one anchor tag with an aria-expanded property with a value of false', () => {
+            SUT.find('a').node.props['aria-expanded'].should.equal(false);
         });
     });
 
@@ -41,20 +34,15 @@ console.log('***' + JSON.stringify(divs, null, 4) + '***');
             SUT = shallow(<ChapterTitle {...props} />);
         });
 
-        it('should render a DIV with a accord-title className', () => {
-            SUT.find('div').length.should.equal(0);
+        it('should render a DIV with an accord-title className', () => {
+            SUT.find('div.accord-title').length.should.equal(1);
         });
 
-        it('should render a DIV with a progress className', () => {
-            SUT.find('div').length.should.equal(1);
+        it('should render a DIV with an accord-toggle className', () => {
+            SUT.find('div.accord-toggle').length.should.equal(1);
         });
-
-        it('should render a DIV with a accord-toggle className', () => {
-            SUT.find('div').length.should.equal(1);
-        });
-
-        it('should render a DIV with a text className', () => {
-            SUT.find('div').length.should.equal(1);
+        it('should render one anchor tag with an aria-expanded property with a value of true', () => {
+            SUT.find('a').node.props['aria-expanded'].should.equal(true);
         });
     });
 });
