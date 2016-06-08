@@ -1,4 +1,7 @@
-var path = require('path');
+/*global require*/
+/*global __dirname*/
+
+var path = require('path'); // eslint-disable-line no-use-before-define
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,7 +20,7 @@ const config = {
     module   : {
         noParse:[],
         loaders: [
-            { test   : /\.jsx?$/, exclude: /node_modules/, loader : 'babel-loader' },
+            { test   : /\.jsx?$/, exclude: node_modules, loader : 'babel-loader' },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
             // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
@@ -27,7 +30,6 @@ const config = {
             { test: /\.gif$/, loader: "url-loader", query: { mimetype: "image/gif" } },
             { test: /\.scss$/, loaders: ["style", "css", "sass"] }
             // { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: ['url-loader?limit=10000&mimetype=application/font-woff' ] },
-
         ]
     },
     plugins: [

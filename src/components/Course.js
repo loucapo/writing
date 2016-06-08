@@ -2,12 +2,12 @@
  * Created by rharik on 5/11/16.
  */
 
-import React from 'react'
-import TitleBar from './TitleBar'
-import NavBar from './NavBar'
-import Assignments from './../containers/UpCommingAssignmentsContainer'
-import Chapters from './../containers/ChaptersContainer'
-import {getCourse} from './../actions'
+import React, {PropTypes} from 'react';
+import TitleBar from './TitleBar';
+import NavBar from './NavBar';
+import Assignments from './../containers/UpCommingAssignmentsContainer';
+import Chapters from './../containers/ChaptersContainer';
+import {getCourse} from './../actions';
 
 class Course extends React.Component {
     constructor(props) {
@@ -35,8 +35,12 @@ class Course extends React.Component {
                 <Assignments />
                 <Chapters />
             </div>
-        </div>)
+        </div>);
     }
 }
+
+Course.propTypes = {
+    courseTitle: PropTypes.string
+};
 
 export default Course;

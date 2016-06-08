@@ -2,12 +2,12 @@
  * Created by rharik on 5/11/16.
  */
 
-import Assignments from './../components/Assignments'
-import moment from 'moment'
+import Assignments from './../components/Assignments';
+import moment from 'moment';
 
-import container from './containerFactory'
+import container from './containerFactory';
 
-var transform = ({courses, currentCourse, chapters, assignments}, props) => {
+var transform = ({courses, currentCourse, chapters, assignments}) => {
     var course = courses[currentCourse];
     var filter = a => moment.unix(a.closeDate) < moment() && a.badge==='TO DO' ? a : null;
 
@@ -24,7 +24,7 @@ var transform = ({courses, currentCourse, chapters, assignments}, props) => {
                 isUpcoming:"UPCOMING",
                 tableSummary: 'A list of upcoming course content and assigments',
                 tableCaption :'Upcoming Assignments'
-            }
+            };
         });
 
     return {assignments: upCommingAssignments};

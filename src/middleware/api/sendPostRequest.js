@@ -12,19 +12,19 @@ export default function sendPostRequest(callAPI, action, config) {
 
     // Passing the authenticated boolean back in our data will let us distinguish between normal and secret quotes
     // call then return action
-    return makeRequest(endpoint, authenticated, config).then(
+    return makeRequest(endpoint, config).then(
         response => {
             return {
                 //maybe tidy up data here    
                 response,
                 type: successType
-            }
+            };
         },
         error => {
             return {
                 error: error.message || 'There was an error.',
                 type: errorType
-            }
+            };
         }
-    )
-};
+    );
+}

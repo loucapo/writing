@@ -2,11 +2,11 @@
  * Created by rharik on 5/11/16.
  */
 
-import React from 'react'
-import ChapterTitle from './ChapterTitle'
-import Assignments from './../containers/AssignmentsContainer'
+import React, {PropTypes}from 'react';
+import ChapterTitle from './ChapterTitle';
+import Assignments from './../containers/AssignmentsContainer';
 
-export default ({index, title, summary, assignments, id, isExpanded, onChapterClick}) => (
+const Chapter = ({index, title, summary, id, isExpanded, onChapterClick}) => (
         <li>
             <ChapterTitle index={index} title={title} id={id} onChapterClick={onChapterClick} />
             {isExpanded ? <div className="">
@@ -17,3 +17,15 @@ export default ({index, title, summary, assignments, id, isExpanded, onChapterCl
             </div>: null}
         </li>
     );
+
+
+Chapter.propTypes = {
+    index: PropTypes.int,
+    title: PropTypes.string,
+    summary: PropTypes.string,
+    id: PropTypes.int,
+    isExpanded: PropTypes.bool,
+    onChapterClick: PropTypes.func
+};
+
+export default Chapter;

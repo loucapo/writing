@@ -6,7 +6,7 @@ import Assignments from './../components/Assignments';
 import container from './containerFactory';
 
 var transform = ({chapters, assignments}, props) => {
-    return {assignments: chapters[props.id].assignments.map(assId => assignments[assId])}
+    return {assignments: chapters[props.id].assignments.map(assId => assignments[assId])};
 };
 
 export {transform};

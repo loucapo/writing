@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import HelpMenuButton  from '../HelpMenuButton';
 import CoursesMenuButton from '../CoursesMenuButton';
 
 const Header = ({userName, headerMenuCourses, headerMenuHelp, onSelectCourseFromMenu}) => {
-  console.log('header!' + onSelectCourseFromMenu);
   return (
     <div>
       <header role="banner" id="header">
@@ -39,7 +38,15 @@ const Header = ({userName, headerMenuCourses, headerMenuHelp, onSelectCourseFrom
       </header>
 
     </div>
-  )
+  );
 };
 
-export default Header
+Header.propTypes = {
+  userName: PropTypes.string,
+  headerMenuCourses: PropTypes.array,
+  headerMenuHelp: PropTypes.array,
+  onSelectCourseFromMenu: PropTypes.func
+};
+
+
+export default Header;

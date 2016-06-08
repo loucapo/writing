@@ -1,5 +1,5 @@
-import React from 'react'
-import Header from './../../containers/HeaderContainer'
+import React, {PropTypes} from 'react';
+import Header from './../../containers/HeaderContainer';
 
 const Layout = ({children}) => {
     // if (!isAuthenticated) {
@@ -9,7 +9,12 @@ const Layout = ({children}) => {
     <div>
         <Header />
         {children}
-    </div>)
+    </div>);
 };
+
+Layout.propTypes = {
+    children: PropTypes.array
+};
+
 
 export default Layout;

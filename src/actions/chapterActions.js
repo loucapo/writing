@@ -8,11 +8,11 @@ const expandChapter = (id) => {
     return {
         type: EXPAND_CHAPTER,
         id
-    }
+    };
 };
 
 export default {
     expandChapter
-}
+};
 
 

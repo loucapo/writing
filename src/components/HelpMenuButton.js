@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
 
-export default ({items}) => {
+const HelpMenuButton = ({items}) => {
   const menuItems = items.map((e) => {
     return <MenuItem key={e.id} value={e.id}>{e.name}</MenuItem>;
   });
@@ -16,4 +16,11 @@ export default ({items}) => {
       </Menu>
     </Wrapper>
   );
-}
+};
+
+
+HelpMenuButton.propTypes = {
+    items: PropTypes.array
+};
+
+export default HelpMenuButton;

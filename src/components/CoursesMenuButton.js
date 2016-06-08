@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
 import {Link} from 'react-router';
 
 
-export default ({items}) => {
+const CoursesMenuButton = ({items}) => {
   const menuItems = items.map((e) => {
     return <MenuItem key={e.id} value={e.id}><Link to={'/course/'+e.id}>{e.name}</Link></MenuItem>;
   });
@@ -20,4 +20,11 @@ export default ({items}) => {
       </Menu>
     </Wrapper>
   );
-}
+};
+
+
+CoursesMenuButton.propTypes = {
+    items: PropTypes.array
+};
+
+export default CoursesMenuButton;

@@ -8,7 +8,7 @@ function mapStateToProps(state) {
         userName       : state.auth.userName,
         headerMenuCourses     : state.headerMenuCourses,
         headerMenuHelp     : state.headerMenuHelp
-    }
+    };
 }
 
 function mapDispatchToProps(dispatch) {

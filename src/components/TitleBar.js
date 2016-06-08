@@ -2,7 +2,7 @@
  * Created by rharik on 5/11/16.
  */
 
-import React from 'react'
+import React, {PropTypes} from 'react';
 
 const TitleBar = ({title}) => (
     <div id="title" role="banner">
@@ -11,5 +11,9 @@ const TitleBar = ({title}) => (
         </div>
     </div>
 );
+
+TitleBar.propTypes = {
+    title: PropTypes.string
+};
 
 export default TitleBar;

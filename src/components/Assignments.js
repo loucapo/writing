@@ -2,8 +2,8 @@
  * Created by rharik on 5/11/16.
  */
 
-import React from 'react'
-import Assignment from './Assignment'
+import React, {PropTypes} from 'react';
+import Assignment from './Assignment';
 
 const Assignments = ({assignments}) => {
     return (
@@ -27,4 +27,10 @@ const Assignments = ({assignments}) => {
         </div>
     );
 };
+
+
+Assignments.propTypes = {
+    assignments: PropTypes.array
+};
+
 export default Assignments;

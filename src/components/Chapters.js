@@ -2,10 +2,10 @@
  * Created by rharik on 5/11/16.
  */
 
-import React from 'react';
+import React, {PropTypes} from 'react';
 import Chapter from './Chapter';
 
-export default ({chapters, onChapterClick}) => {
+const Chapters =  ({chapters, onChapterClick}) => {
     return (
         <div id="chapters">
             <h2>Chapters</h2>
@@ -13,5 +13,13 @@ export default ({chapters, onChapterClick}) => {
                 {chapters.map((chapter, index) =>
                     <Chapter key={chapter.id} index={index+1} {...chapter} onChapterClick={onChapterClick}/> )}
             </ul>
-        </div>)
-}
+        </div>);
+};
+
+
+Chapters.propTypes = {
+    chapters: PropTypes.array,
+    onChapterClick: PropTypes.func
+};
+
+export default Chapters;

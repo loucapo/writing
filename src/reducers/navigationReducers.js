@@ -2,7 +2,7 @@
  * Created by rharik on 5/18/16.
  */
 
-import {COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE} from './../constants'
+import {COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE} from './../constants';
 
 
 function courses(state = {}, action = null) {
@@ -13,7 +13,7 @@ function courses(state = {}, action = null) {
             });
         case COURSE_SUCCESS:
             if(!action.fromCache) {
-                return object.assign({}, state, action.entities)
+                return Object.assign({}, state, action.entities);
             }
             return state;
         case COURSE_FAILURE:
@@ -21,7 +21,7 @@ function courses(state = {}, action = null) {
                 error: action.error
             });
         default:
-            return state
+            return state;
     }
 }
 

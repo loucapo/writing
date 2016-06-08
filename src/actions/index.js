@@ -1,6 +1,6 @@
-import {onSelectCourseFromMenu} from './headerMenuActions'
-import {getCourse} from './navigationActions'
-import {expandChapter} from './chapterActions'
+import {onSelectCourseFromMenu} from './headerMenuActions';
+import {getCourse} from './navigationActions';
+import {expandChapter} from './chapterActions';
 
 export {
     onSelectCourseFromMenu,

@@ -1,20 +1,21 @@
-/**
- * Created by rharik on 5/13/16.
- */
+/*global fetch*/
+
+import Promise from 'bluebird';
 
 //pull from config
 const BASE_URL = 'http://localhost:3001/api/';
 
-export default function makeRequest(endpoint, authenticated, config) {
+export default function makeRequest(endpoint, config) {
 
-    _config = Object.assign({}, _config, config);
+    // var _config = Object.assign({}, _config, config);
 
-    return fetch(BASE_URL + endpoint, _config)
+    return fetch(BASE_URL + endpoint, config)
         .then(({ response }) => {
             if (!response.ok) {
-                return Promise.reject(response.text)
+                return Promise.reject(response.text);
             }
 
-            return response
-        }).catch(err => console.log(err))
+            return response;
+        // eslint-disable-next-line no-console
+        }).catch(err => console.log(err));
 }

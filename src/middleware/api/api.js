@@ -1,10 +1,8 @@
-/**
- * Created by rharik on 5/13/16.
- */
 
 import sendGetRequest from './sendGetRequest';
 import sendPostRequest from './sendPostRequest';
 import cache from './../../utilities/cache';
+import Promise from 'bluebird';
 
 export const CALL_API = Symbol('Call API');
 
@@ -25,10 +23,10 @@ export default store => next => action => {
         if(token) {
             config = {
                 headers: { 'Authorization': `Bearer ${token}` }
-            }
+            };
         }
         else {
-            throw "No token saved!"
+            throw "No token saved!";
         }
     }
 
@@ -60,4 +58,4 @@ export default store => next => action => {
     }
 
     responseAction.then(action=>next(actionWith(action)));
-}
+};

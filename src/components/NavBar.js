@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const NavBar = () => (
     <div id="main-nav" role="navigation">
@@ -12,7 +12,7 @@ const NavBar = () => (
                     <img src={require('./../sass/image/icon_book.colors-cc0000.svg')} />
                     <span>EBOOK</span>
                 </li>
-                <div class="clearfix"></div>
+                <div className="clearfix"></div>
             </ul>
         </div>
     </div>
