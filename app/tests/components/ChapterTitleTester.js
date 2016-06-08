@@ -15,10 +15,6 @@ describe('CHAPTER__TITLE_COMPONENT', () => {
         });
 
         it('should render a DIV with an accord-title className', () => {
-// const div = SUT.find('div.accord-title');
-// console.log('**********************************************************************');
-// console.log(div);
-// console.log('**********************************************************************');
             SUT.find('div.accord-title').length.should.equal(1);
         });
 
