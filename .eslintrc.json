@@ -10,7 +10,7 @@
   "plugins": [
     "react"
   ],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": ["airbandb"],
   "rules": {
     "semi": 2,
     "display-name": 0
