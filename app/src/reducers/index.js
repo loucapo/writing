@@ -1,10 +1,6 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
-import { combineReducers } from 'redux'
+import { combineReducers, compose } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
-import {headerMenuCourses,headerMenuHelp} from './headerMenuReducer'
+import { headerMenuCourses, headerMenuHelp } from './headerMenuReducer'
 import {expandChapter} from './chapterReducers'
 import {courses} from './navigationReducers'
 import {currentCourse} from './courseReducer'

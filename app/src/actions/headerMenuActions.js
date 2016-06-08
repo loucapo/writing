@@ -1,26 +1,9 @@
-/**
- * Created by rharik on 5/12/16.
- */
+import {SELECT_COURSE_FROM_MENU} from './../constants';
+import { browserHistory } from 'react-router';
 
-import {COURSE_MENU_HOVER, HELP_MENU_HOVER} from './../constants';
-
-
-const onCourseMenuHover = () => {
-    return {
-        type: COURSE_MENU_HOVER
-    }
+export const onSelectCourseFromMenu = (value) => {
+  value && browserHistory.push('/course/' + value);
+  return {
+    type: SELECT_COURSE_FROM_MENU
+  }
 };
-
-const onHelpMenuHover = () => {
-    return {
-        type: HELP_MENU_HOVER
-    }
-};
-
-export {
-    onCourseMenuHover,
-    onHelpMenuHover
-}
-
-
-

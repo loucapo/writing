@@ -19,3 +19,5 @@ out
 
 #npm-generated file
 npm-debug.log
+dist
+*.log

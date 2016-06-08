@@ -1,15 +1,9 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
-import {onCourseMenuHover, onHelpMenuHover} from './headerMenuActions'
+import {onSelectCourseFromMenu} from './headerMenuActions'
 import {getCourse} from './navigationActions'
-import {toggleChapter} from './chapterActions'
+import {expandChapter} from './chapterActions'
 
 export {
-    toggleChapter,
-    onCourseMenuHover,
-    onHelpMenuHover,
+    onSelectCourseFromMenu,
+    expandChapter,
     getCourse
 };
-
