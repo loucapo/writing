@@ -1,45 +1,50 @@
-import React from 'react';
-import HelpMenuButton  from '../HelpMenuButton';
+import React, { PropTypes } from 'react';
+import HelpMenuButton from '../HelpMenuButton';
 import CoursesMenuButton from '../CoursesMenuButton';
 
-const Header = ({userName, headerMenuCourses, headerMenuHelp, onSelectCourseFromMenu}) => {
-  console.log('header!' + onSelectCourseFromMenu);
-  return (
-    <div>
-      <header role="banner" id="header">
+import logo from './../../sass/image/logo_ml.png';
+import avatar from './../../sass/image/avatar.png';
+
+const Header = ({ userName, headerMenuCourses, headerMenuHelp }) => (<div>
+    <header role="banner" id="header">
         <div id="logo-ml">
-          <img src={require('./../../sass/image/logo_ml.png')} alt="Macmillan Learning Logo"/>
+            <img src={logo} alt="Macmillan Learning Logo" />
         </div>
         <nav id="header-nav" role="navigation">
-          <CoursesMenuButton onSelection={onSelectCourseFromMenu} {...headerMenuCourses} />
-          <HelpMenuButton {...headerMenuHelp}/>
-          <div id="nav-profile" >
-            <span>{userName}</span>
-            <div id="avatar">
-              <img src={require('./../../sass/image/avatar.png')} alt="User Avatar"/>
+            <CoursesMenuButton {...headerMenuCourses} />
+            <HelpMenuButton {...headerMenuHelp} />
+            <div id="nav-profile">
+                <span>{userName}</span>
+                <div id="avatar">
+                    <img src={avatar} alt="User Avatar" />
+                </div>
             </div>
-          </div>
         </nav>
-        <input type="checkbox" id="nav-trigger" className="nav-trigger" aria-hidden="true"/>
-        <label htmlFor="nav-trigger"
-               className="icon-icon_hamburger-0"></label>
-        <label htmlFor="nav-trigger" className="icon-icon_x-0"></label>
+        <input type="checkbox" id="nav-trigger" className="nav-trigger" aria-hidden="true" />
+        <label
+            htmlFor="nav-trigger"
+            className="icon-icon_hamburger-0"
+        />
+        <label htmlFor="nav-trigger" className="icon-icon_x-0" />
         <div id="mobile-nav">
-          <ul>
-            <li><i className="icon-icon_book-0"></i>COURSES</li>
-            <li><i className="icon-icon_help-1"></i>HELP</li>
-            <li>
-              <div id="mobile-avatar">
-                <img src={require('./../../sass/image/avatar.png')} alt="User Profile" />
-              </div>
-              PROFILE
-            </li>
-          </ul>
+            <ul>
+                <li><i className="icon-icon_book-0" />COURSES</li>
+                <li><i className="icon-icon_help-1" />HELP</li>
+                <li>
+                    <div id="mobile-avatar">
+                        <img src={avatar} alt="User Profile" />
+                    </div>
+                    PROFILE
+                </li>
+            </ul>
         </div>
-      </header>
+    </header>
+</div>);
 
-    </div>
-  )
+Header.propTypes = {
+    userName: PropTypes.string,
+    headerMenuCourses: PropTypes.object,
+    headerMenuHelp: PropTypes.object
 };
 
-export default Header
+export default Header;

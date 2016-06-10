@@ -2,9 +2,9 @@
  * Created by rharik on 5/18/16.
  */
 
-import { CALL_API } from './../middleware/api/api'
-import {course} from './../models/course'
-import {COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE} from './../constants';
+import { CALL_API } from './../middleware/api/api';
+import { course } from './../models/course';
+import { COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE } from './../constants';
 
 
 // Fetches a page of starred repos by a particular user.
@@ -14,16 +14,16 @@ function getCourse(id) {
         id,
         type: 'apicall',
         [CALL_API]: {
-            types: [ COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE ],
+            types: [COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE],
             endpoint: '/course',
             schema: course,
-            method :'GET',
+            method: 'GET',
             entityType: 'courses'
         }
-    }
+    };
 }
 
 export {
     getCourse
-}
+};
 

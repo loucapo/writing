@@ -2,7 +2,7 @@
  * Created by rharik on 5/26/16.
  */
 
-import {transform as SUT} from './../../src/containers/ChaptersContainer';
+import SUT  from './../../src/containers/selectors/chaptersSelector';
 import * as chai from 'chai';
 let should = chai.should();
 
@@ -32,7 +32,7 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
                     1: {
                         isExpanded: false,
                         id: 1,
-                        title: "Experiment 1 - Density",
+                        title: 'Experiment 1 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
                         caption: 'Chapter 1 Content',
                         tableSummary: 'A list of content and assignments for Chapter 1',
@@ -42,7 +42,7 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
                     2: {
                         isExpanded: false,
                         id: 2,
-                        title: "Experiment 2 - Density",
+                        title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
                         caption: 'Chapter 2 Content',
                         tableSummary: 'A list of content and assignments for Chapter 2',

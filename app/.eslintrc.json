@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": ["airbnb"],
+  "rules": {
+    "indent": [2, 4],
+    "react/jsx-indent-props": [2, 4],
+    "react/jsx-indent": [2, 4],
+    "comma-dangle": [2, "never"],
+    "max-len": [2, {"code": 120}],
+    "prefer-template": [0]
+  },
+  "env": {
+    "browser": true,
+    "node" :true
+  },
+  "globals": {
+    "Symbol": true
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import ChapterTitle from '../../src/components/ChapterTitle';
-import {shallow, mount, render} from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import * as chai from 'chai';
 
 let should = chai.should();
@@ -10,7 +10,7 @@ describe('CHAPTER__TITLE_COMPONENT', () => {
         var props;
         var SUT;
         beforeEach(() => {
-            props = {index: 1, title: 'Test Title', id: 1, isExpanded: false};
+            props = { index: 1, title: 'Test Title', id: 1, isExpanded: false };
             SUT = shallow(<ChapterTitle {...props} />);
         });
 
@@ -30,7 +30,7 @@ describe('CHAPTER__TITLE_COMPONENT', () => {
         var props;
         var SUT;
         beforeEach(() => {
-            props = {index: 1, title: 'Test Title', id: 1, isExpanded: true};
+            props = { index: 1, title: 'Test Title', id: 1, isExpanded: true };
             SUT = shallow(<ChapterTitle {...props} />);
         });
 

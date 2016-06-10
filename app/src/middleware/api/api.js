@@ -1,34 +1,32 @@
-/**
- * Created by rharik on 5/13/16.
- */
 
 import sendGetRequest from './sendGetRequest';
 import sendPostRequest from './sendPostRequest';
 import cache from './../../utilities/cache';
+import Promise from 'bluebird';
 
 export const CALL_API = Symbol('Call API');
 
 export default store => next => action => {
     const callAPI = action[CALL_API];
+    var responseAction; // eslint-disable-line no-var
     // So the middleware doesn't get applied to every single action
     if (typeof callAPI === 'undefined') {
         return next(action);
     }
 
-    const {method, entityType, types, authenticated} = callAPI;
-    const [ requestType, successType ] = types;
+    const { method, entityType, types, authenticated } = callAPI;
+    const [requestType, successType] = types;
 
-    let token = localStorage.getItem('id_token') || null;
+    const token = localStorage.getItem('id_token') || null;
     let config = {};
 
-    if(authenticated) {
-        if(token) {
+    if (authenticated) {
+        if (token) {
             config = {
-                headers: { 'Authorization': `Bearer ${token}` }
-            }
-        }
-        else {
-            throw "No token saved!"
+                headers: { Authorization: `Bearer ${token}` }
+            };
+        } else {
+            throw new Error('No token saved!');
         }
     }
 
@@ -40,24 +38,28 @@ export default store => next => action => {
     // send action to say call pending
     next(actionWith({ type: requestType }));
 
-    var responseAction;
-    switch(method){
-        case 'GET':
+    switch (method) {
+    case 'GET':
         {
             responseAction = cache(store.getState(), entityType, action.id)
                 ? Promise.resolve({
-                        entities: {result: [action.id]},
-                        fromCache: true,
-                        type: successType
-                    })
+                    entities: { result: [action.id] },
+                    fromCache: true,
+                    type: successType
+                })
                 : responseAction = sendGetRequest(callAPI, action, config);
             break;
         }
-        case 'POST':{
+    case 'POST':
+        {
             responseAction = sendPostRequest(callAPI, action, config);
+            break;
+        }
+    default:
+        {
             break;
         }
     }
 
-    responseAction.then(action=>next(actionWith(action)));
-}
+    return responseAction.then(a => next(actionWith(a)));
+};

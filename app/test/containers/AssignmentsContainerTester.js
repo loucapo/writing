@@ -2,11 +2,11 @@
  * Created by rharik on 5/20/16.
  */
 
-import {transform} from './../../src/containers/AssignmentsContainer';
+import transform from './../../src/containers/selectors/assignmentsSelector';
 import * as chai from 'chai';
 chai.should();
 
-describe("ASSIGNMENT_CONTAINER", () => {
+describe('ASSIGNMENT_CONTAINER', () => {
     describe('when_calling_transform', () => {
         var _props;
         var _initialState;
@@ -16,7 +16,7 @@ describe("ASSIGNMENT_CONTAINER", () => {
                     1: {
                         isExpanded: false,
                         id: 1,
-                        title: "Experiment 1 - Density",
+                        title: 'Experiment 1 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
                         caption: 'Chapter 1 Content',
                         tableSummary: 'A list of content and assignments for Chapter 1',
@@ -26,7 +26,7 @@ describe("ASSIGNMENT_CONTAINER", () => {
                     2: {
                         isExpanded: false,
                         id: 2,
-                        title: "Experiment 2 - Density",
+                        title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
                         caption: 'Chapter 2 Content',
                         tableSummary: 'A list of content and assignments for Chapter 2',
@@ -64,7 +64,11 @@ describe("ASSIGNMENT_CONTAINER", () => {
         });
 
         it('should_return_proper_value', () => {
-            var newState = transform(_initialState, _props);
+            var state = {
+                chapters: _initialState.chapters,
+                assignments: _initialState.assignments
+            };
+            var newState = transform(state, _props);
             newState.assignments.length.should.equal(1);
             newState.assignments[0].id.should.equal(1);
         });

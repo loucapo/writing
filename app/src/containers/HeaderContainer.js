@@ -5,10 +5,10 @@ import Header from './../components/layout/Header';
 
 function mapStateToProps(state) {
     return {
-        userName       : state.auth.userName,
-        headerMenuCourses     : state.headerMenuCourses,
-        headerMenuHelp     : state.headerMenuHelp
-    }
+        userName: state.auth.userName,
+        headerMenuCourses: state.headerMenuCourses,
+        headerMenuHelp: state.headerMenuHelp
+    };
 }
 
 function mapDispatchToProps(dispatch) {

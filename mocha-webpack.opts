@@ -1,0 +1,4 @@
+--colors
+--webpack-config app/webpack.config-testing.js
+--recursive
+app/test/**

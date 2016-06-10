@@ -1,22 +1,20 @@
-/**
- * Created by rharik on 5/13/16.
- */
+/* global fetch*/
 
-//pull from config
-var fetch = require('isomorphic-fetch');
-    
+import Promise from 'bluebird';
+// var fetch = require('isomorphic-fetch');
+
+// pull from config
 const BASE_URL = 'http://localhost:3001/api/';
 
-export default function makeRequest(endpoint, authenticated, config) {
+export default function makeRequest(endpoint, config) {
+    // var _config = Object.assign({}, _config, config);
     return fetch(BASE_URL + endpoint, config)
-        .then(response =>
-        //apparently fetch returns a stream and has a json() method that will parse that and return a promise
-            response.json().then(json => ({ json, response }))
-        ).then(({ json, response }) => {
+        .then(({ response }) => {
             if (!response.ok) {
-                return Promise.reject(json)
+                return Promise.reject(response.text);
             }
 
-            return json
-        }).catch(err => console.log(err))
+            return response;
+        // eslint-disable-next-line no-console
+        }).catch(err => console.log(err));
 }

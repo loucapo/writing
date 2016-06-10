@@ -1,8 +1,6 @@
-/**
- * Created by rharik on 5/3/16.
- */
-if (process.env.NODE_ENV === 'production') {
-    module.exports = require('./Root.prod')
-} else {
-    module.exports = require('./Root.dev')
-}
+import roodProd from './Root.prod';
+import rootDev from './Root.dev';
+
+export default (process.env.NODE_ENV === 'production')
+    ? roodProd
+    : rootDev;

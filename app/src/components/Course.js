@@ -2,29 +2,26 @@
  * Created by rharik on 5/11/16.
  */
 
-import React from 'react'
-import TitleBar from './TitleBar'
-import NavBar from './NavBar'
-import {UpComingAssignmentsContainer as Assignments} from './../containers/UpComingAssignmentsContainer'
-import {ChaptersContainer as Chapters} from './../containers/ChaptersContainer'
-import {getCourse} from './../actions'
+import React, { PropTypes } from 'react';
+import TitleBar from './TitleBar';
+import NavBar from './NavBar';
+import Assignments from './../containers/UpComingAssignmentsContainer';
+import Chapters from './../containers/ChaptersContainer';
+import { getCourse } from './../actions';
 
 class Course extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    loadData(props) {
-        const {dispatch, params} = props;
-        const {id} = params;
-        dispatch(getCourse(id));
-    }
     componentWillMount() {
         this.loadData(this.props);
     }
 
     componentWillReceiveProps(nextProps) {
         this.loadData(nextProps);
+    }
+
+    loadData(props) {
+        const { dispatch, params } = props;
+        const { id } = params;
+        dispatch(getCourse(id));
     }
 
     render() {
@@ -35,8 +32,12 @@ class Course extends React.Component {
                 <Assignments />
                 <Chapters />
             </div>
-        </div>)
+        </div>);
     }
 }
+
+Course.propTypes = {
+    courseTitle: PropTypes.string
+};
 
 export default Course;

@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export default ({index, title, id, isExpanded, toggleChapter}) => (
+const ChapterTitle = ({ isExpanded, index, title, id, toggleChapter }) => (
     <div className="accord-title">
-        <a aria-expanded={isExpanded} onClick={()=>toggleChapter(id)}>
+        <a aria-expanded={isExpanded} onClick={() => toggleChapter(id)}>
             <div className="accord-toggle"></div>
             <div className="progress">
-                <div class="num">{index}</div>
-                {
-                    // <image src={require('./../sass/image/icon_down_arrow.colors-cc0000.svg')}/>
-                }
+                <div className="num">{index}</div>
+                <i className="icon-icon_down_arrow-0" />;
+
             </div>
-            <div class="text">
+            <div className="text">
                 <h3>{title}</h3>
             </div>
         </a>
     </div>
 );
+
+
+ChapterTitle.propTypes = {
+    isExpanded: PropTypes.bool,
+    index: PropTypes.number,
+    title: PropTypes.string,
+    id: PropTypes.number,
+    toggleChapter: PropTypes.func
+};
+
+export default ChapterTitle;

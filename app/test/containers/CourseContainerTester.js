@@ -1,7 +1,7 @@
 /**
  * Created by rharik on 5/26/16.
  */
-import {transform as SUT} from '../../src/containers/CourseContainer';
+import SUT  from '../../src/containers/selectors/courseSelector';
 import * as chai from 'chai';
 let should = chai.should();
 
@@ -29,7 +29,7 @@ describe('COURSE_CONTAINER_TRANSFORM', () => {
         });
 
         it('should return an object with a course with proper ID', () => {
-           SUT(props).id.should.equal(1);
-       });
+            SUT(props).id.should.equal(1);
+        });
     });
 });

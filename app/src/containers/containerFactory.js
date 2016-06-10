@@ -1,17 +1,13 @@
 /**
- * Created by rharik on 5/17/16.
- */
-
-/**
  * Container:
  * takes data from store and applies a transform function to it
  * and passes the data to component as props
  */
 
-const { connect } = require('react-redux');
+import { connect } from 'react-redux';
 
-module.exports = (storeKeys = [], transform, actions) => (component) => {
-    transform = transform || ((dataFromStore) => { return dataFromStore});
+module.exports = (storeKeys = [], trans, actions) => (component) => {
+    const transform = trans || ((dataFromStore) => (dataFromStore));
 
     const mapStateToProps = (state, ownProps) => {
         const storeDataObjs = storeKeys.map(key => ({ [key]: state[key] }));
@@ -20,6 +16,6 @@ module.exports = (storeKeys = [], transform, actions) => (component) => {
         return transform(storeObj, ownProps);
     };
 
-    return connect( mapStateToProps, actions )(component);
+    return connect(mapStateToProps, actions)(component);
 };
 

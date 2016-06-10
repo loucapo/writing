@@ -1,7 +1,7 @@
 import React from 'react';
 import Chapter from '../../src/components/Chapter';
 import Chapters from '../../src/components/Chapters';
-import {shallow, mount, render} from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import * as chai from 'chai';
 
 let should = chai.should();
@@ -25,7 +25,7 @@ describe('CHAPTERS_COMPONENT', () => {
                     {
                         isExpanded: false,
                         id: 2,
-                        title: "Experiment 2 - Density",
+                        title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
                         caption: 'Chapter 2 Content',
                         tableSummary: 'A list of content and assignments for Chapter 2',
