@@ -22,3 +22,5 @@ npm-debug.log
 dist
 *.log
 .eslintcache
+
+.tmp
