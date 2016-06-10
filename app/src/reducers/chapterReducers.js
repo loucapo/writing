@@ -1,9 +1,6 @@
 /**
  * Created by rharik on 5/13/16.
  */
-
-/* global require*/
-
 import { EXPAND_CHAPTER } from './../constants';
 
 const expandChapter = (state = {}, action = null) => {

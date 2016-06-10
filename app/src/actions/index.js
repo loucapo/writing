@@ -1,7 +1,7 @@
 import { getCourse } from './navigationActions';
-import { expandChapter } from './chapterActions';
+import { toggleChapter } from './chapterActions';
 
 export {
-    expandChapter,
+    toggleChapter,
     getCourse
 };

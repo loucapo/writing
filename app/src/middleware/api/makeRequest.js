@@ -1,6 +1,7 @@
 /* global fetch*/
 
 import Promise from 'bluebird';
+// var fetch = require('isomorphic-fetch');
 
 // pull from config
 const BASE_URL = 'http://localhost:3001/api/';

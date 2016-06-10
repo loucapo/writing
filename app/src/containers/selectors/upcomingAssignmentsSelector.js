@@ -1,13 +1,6 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
-import Assignments from './../components/Assignments';
 import moment from 'moment';
 
-import container from './containerFactory';
-
-const transform = ({ courses, currentCourse, chapters, assignments }) => {
+export default ({ courses, currentCourse, chapters, assignments }) => {
     const course = courses[currentCourse];
     const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
 
@@ -28,5 +21,3 @@ const transform = ({ courses, currentCourse, chapters, assignments }) => {
 
     return { assignments: upCommingAssignments };
 };
-
-export default container(['courses', 'currentCourse', 'chapters', 'assignments'], transform)(Assignments);

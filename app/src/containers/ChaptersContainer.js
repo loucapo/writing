@@ -1,18 +1,11 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
 import { bindActionCreators } from 'redux';
-import { expandChapter as onChapterClick } from './../actions/index';
+import { toggleChapter } from './../actions/index';
 import Chapters from './../components/Chapters.js';
 import container from './containerFactory';
-
+import chaptersSelector from './selectors/chaptersSelector';
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ onChapterClick }, dispatch);
+    return bindActionCreators({ toggleChapter }, dispatch);
 }
 
-const transform = ({ courses, currentCourse, chapters }) =>
-    ({ chapters: courses[currentCourse].chapters.map(chapterId => chapters[chapterId]) });
-
-export default container(['courses', 'currentCourse', 'chapters'], transform, mapDispatchToProps)(Chapters);
+export default container(['courses', 'currentCourse', 'chapters'], chaptersSelector, mapDispatchToProps)(Chapters);

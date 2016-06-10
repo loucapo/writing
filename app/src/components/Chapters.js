@@ -5,7 +5,7 @@
 import React, { PropTypes } from 'react';
 import Chapter from './Chapter';
 
-const Chapters = ({ chapters, onChapterClick }) => (
+const Chapters = ({ chapters, toggleChapter }) => (
     <div id="chapters">
         <h2>Chapters</h2>
         <ul>
@@ -14,7 +14,7 @@ const Chapters = ({ chapters, onChapterClick }) => (
                     key={chapter.id}
                     index={index + 1}
                     {...chapter}
-                    onChapterClick={onChapterClick}
+                    toggleChapter={toggleChapter}
                 />)}
         </ul>
     </div>);
@@ -22,7 +22,7 @@ const Chapters = ({ chapters, onChapterClick }) => (
 
 Chapters.propTypes = {
     chapters: PropTypes.array,
-    onChapterClick: PropTypes.func
+    toggleChapter: PropTypes.func
 };
 
 export default Chapters;

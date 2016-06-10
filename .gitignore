@@ -17,6 +17,8 @@ build-info.json
 out
 .DS_Store
 
+#npm-generated file
+npm-debug.log
 dist
 *.log
 .eslintcache

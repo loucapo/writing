@@ -1,16 +1,11 @@
-/**
- * Created by rharik on 5/11/16.
- */
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import AssignmentComplete from './AssignmentComplete';
 
-const Assignment = ({ assignment }) => (
+const Assignments = ({ assignment }) => (
     <tr className="done">
         <th className="ctd-title">
-            <h4 role="presentation">
-                <a target="_blank" href={assignment.link}>{assignment.name}</a>
-            </h4>
+            <h4 role="presentation"><a target="_blank" href={assignment.link}>{assignment.name}</a></h4>
             {assignment.type}
         </th>
         <AssignmentComplete {...assignment} />
@@ -24,8 +19,9 @@ const Assignment = ({ assignment }) => (
     </tr>
 );
 
-Assignment.propTypes = {
-    assignment: PropTypes.object.isRequired
+Assignments.propTypes = {
+    assignment: PropTypes.object
 };
 
-export default Assignment;
+export default Assignments;
+

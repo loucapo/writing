@@ -1,12 +1,12 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var config = {
+const config = {
     // Gives you sourcemaps without slowing down rebundling
     devtool: 'cheap-module-eval-source-map',
     resolve: { alias: {} },
-    entry: path.join(__dirname, '/app/src/index.js'),
+    entry: path.join(__dirname, '/src/index.js'),
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: 'bundle.js',
@@ -15,7 +15,27 @@ var config = {
     module: {
         noParse: [],
         loaders: [
-            { test: /\.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel-loader' },
+            { test: /\.jsx?$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader',
+                query: {
+                    "presets": [
+                        "es2015",
+                        "react",
+                        "stage-0"
+                    ],
+                    "env": {
+                        "development": {
+                            "plugins": [["react-transform", {
+                                "transforms": [{
+                                    "transform": "react-transform-hmr",
+                                    "imports": ["react"], "locals": ["module"]
+                                }]
+                            }]],
+                            "ignore": ["node_module", "src/sass/image"]
+                        }
+                    }
+                }},
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
             // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
@@ -24,12 +44,11 @@ var config = {
             { test: /\.jpg$/, loader: 'url-loader', query: { mimetype: 'image/jpg' } },
             { test: /\.gif$/, loader: 'url-loader', query: { mimetype: 'image/gif' } },
             { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
-            // { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loaders: ['url-loader?limit=10000&mimetype=application/font-woff' ] },
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: __dirname + '/app/src/index.tmpl.html',
+            template: __dirname + '/src/index.tmpl.html',
             favicon: 'app/src/sass/image/favicon.png'
         }),
         new webpack.optimize.OccurenceOrderPlugin(),

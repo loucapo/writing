@@ -1,14 +1,5 @@
-IMAGENAME=mf/cdn
-CONTAINERNAME=cdn
-#CVERSION=$$(git rev-parse --short HEAD)
-TEST_CONTAINER_NAME=test_$$(date +"%s")
-
-
-docker-build:
-	docker build -t $(IMAGENAME) .
-
-docker-run:
-	docker run --name $(CONTAINERNAME) -d -p 8080:80 $(IMAGENAME)
+IMAGENAME=eco_frontend
+CONTAINERNAME=eco_frontend
 
 docker-exec:
 	docker exec -it $(CONTAINERNAME) /bin/bash
@@ -18,4 +9,23 @@ docker-clean:
 	docker rm -f $(CONTAINERNAME)
 	docker rmi -f $(IMAGENAME)
 
-.PHONY: docker-build docker-run docker-exec docker-clean
+clean:
+	make install
+
+install:
+	rm -rf ./node_modules
+	npm install --silent
+
+docker-build:	docker-build-node
+	docker build -t $(IMAGENAME) -f docker/Dockerfile .
+
+run:	docker-build
+	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend
+
+test:	docker-build
+	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend_test
+
+docker-build-node:
+	docker build -t eco_node -f nodeDocker/Dockerfile ./nodeDocker
+
+.PHONY: clean install docker-build run docker-clean docker-exec

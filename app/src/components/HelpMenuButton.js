@@ -13,7 +13,7 @@ const HelpMenuButton = ({ items }) => {
                 {menuItems}
             </Menu>
         </Wrapper>
-  );
+    );
 };
 
 HelpMenuButton.propTypes = {
@@ -21,3 +21,4 @@ HelpMenuButton.propTypes = {
 };
 
 export default HelpMenuButton;
+

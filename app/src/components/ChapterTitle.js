@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react';
 
-const downArrow = require('./../sass/image/icon_down_arrow.colors-cc0000.svg');
-
-const ChapterTitle = ({ isExpanded, index, title, id, onChapterClick }) => (
+const ChapterTitle = ({ isExpanded, index, title, id, toggleChapter }) => (
     <div className="accord-title">
-        <a aria-expanded={isExpanded} onClick={() => onChapterClick(id)}>
+        <a aria-expanded={isExpanded} onClick={() => toggleChapter(id)}>
             <div className="accord-toggle"></div>
             <div className="progress">
                 <div className="num">{index}</div>
-                <image src={downArrow} />
+                <i className="icon-icon_down_arrow-0" />;
+
             </div>
             <div className="text">
                 <h3>{title}</h3>
@@ -23,7 +22,7 @@ ChapterTitle.propTypes = {
     index: PropTypes.number,
     title: PropTypes.string,
     id: PropTypes.number,
-    onChapterClick: PropTypes.func
+    toggleChapter: PropTypes.func
 };
 
 export default ChapterTitle;
