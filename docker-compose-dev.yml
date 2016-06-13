@@ -1,0 +1,7 @@
+version: "2"
+services:
+  cbapi-dev:
+    extends:
+      file: docker-compose.yml
+      service: cbapi
+    command: ../node_modules/.bin/nodemon app.js

@@ -4,5 +4,8 @@
   "private": true,
   "dependencies": {
     "koa": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
   }
 }
