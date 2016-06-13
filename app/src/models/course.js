@@ -13,9 +13,7 @@ chapter.define({
     activities: arrayOf(assignment)
 }, { idAttribute: 'section' });
 
-assignment.define({
-
-});
+assignment.define({});
 
 // function getChapterById(state, id) {
 //     return Object.assign({}, state.chapters[id]);

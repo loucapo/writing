@@ -1,4 +1,3 @@
-
 import sendGetRequest from './sendGetRequest';
 import sendPostRequest from './sendPostRequest';
 import cache from './../../utilities/cache';
@@ -35,30 +34,29 @@ export default store => next => action => {
         delete finalAction[CALL_API];
         return finalAction;
     }
+
     // send action to say call pending
     next(actionWith({ type: requestType }));
 
     switch (method) {
-    case 'GET':
-        {
-            responseAction = cache(store.getState(), entityType, action.id)
-                ? Promise.resolve({
-                    entities: { result: [action.id] },
-                    fromCache: true,
-                    type: successType
-                })
-                : responseAction = sendGetRequest(callAPI, action, config);
+        case 'GET':
+            {
+                responseAction = cache(store.getState(), entityType, action.id)
+                    ? Promise.resolve({
+                        entities: { result: [action.id] },
+                        fromCache: true,
+                        type: successType
+                    })
+                    : responseAction = sendGetRequest(callAPI, action, config);
+                break;
+            }
+        case 'POST':
+            {
+                responseAction = sendPostRequest(callAPI, action, config);
+                break;
+            }
+        default:
             break;
-        }
-    case 'POST':
-        {
-            responseAction = sendPostRequest(callAPI, action, config);
-            break;
-        }
-    default:
-        {
-            break;
-        }
     }
 
     return responseAction.then(a => next(actionWith(a)));
