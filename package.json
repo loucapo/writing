@@ -1,0 +1,8 @@
+{
+  "name": "sls_course_builder_api",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "koa": "^1.2.0"
+  }
+}
