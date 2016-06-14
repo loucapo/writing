@@ -7,7 +7,7 @@ import routes from '../routes';
 import { Router } from 'react-router';
 
 const Root = ({ store, history }) =>
-    (<Provider store={store}>
+    (<Provider store={store} >
         <div>
             <Router history={history} routes={routes} />
         </div>

@@ -15,6 +15,6 @@ export default function makeRequest(endpoint, config) {
             }
 
             return response;
-        // eslint-disable-next-line no-console
+            // eslint-disable-next-line no-console
         }).catch(err => console.log(err));
 }

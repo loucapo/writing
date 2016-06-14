@@ -28,7 +28,7 @@ class Course extends React.Component {
         return (<div>
             <TitleBar title={this.props.courseTitle} />
             <NavBar />
-            <div id="content" role="main" className="inside">
+            <div id="content" role="main" className="inside" >
                 <Assignments />
                 <Chapters />
             </div>

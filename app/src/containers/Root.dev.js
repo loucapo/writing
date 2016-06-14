@@ -5,7 +5,7 @@ import DevTools from './DevTools';
 import { Router } from 'react-router';
 
 const Root = ({ store, history }) =>
-    (<Provider store={store}>
+    (<Provider store={store} >
         <div>
             <Router history={history} routes={routes} />
             <DevTools />

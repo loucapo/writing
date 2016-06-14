@@ -4,17 +4,17 @@ import { Link } from 'react-router';
 
 const CourseMenuButton = ({ items }) => {
     const menuItems = items.map((e) =>
-        (<MenuItem key={e.id} value={e.id}><Link to={'/course/' + e.id}>{e.name}</Link></MenuItem>));
+        (<MenuItem key={e.id} value={e.id} ><Link to={'/course/' + e.id} >{e.name}</Link></MenuItem>));
 
     return (
-        <Wrapper className="courses-menu" onSelection={() => {}}>
+        <Wrapper className="courses-menu" onSelection={() => {}} >
             <Button>
                 Courses
                 <i className="icon icon-icon_down_arrow-0" aria-hidden="true" />
             </Button>
             <Menu>
                 {menuItems}
-                <MenuItem value=""><span aria-hidden="true">+</span> Add A Course</MenuItem>
+                <MenuItem value="" ><span aria-hidden="true" >+</span> Add A Course</MenuItem>
             </Menu>
         </Wrapper>
     );
