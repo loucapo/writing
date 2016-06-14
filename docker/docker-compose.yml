@@ -1,0 +1,41 @@
+sls_course_builder_api_dev:
+  image: sls_course_builder_api
+  volumes:
+    - ./../app:/home/current/app
+  command: npm run start_dev #top -b #
+ # external_links:
+  #  - cdn:frontend
+  environment:
+    DEBUG: 'true'
+    NODE_ENV: development
+    APPLICATION_NAME: sls_course_builder_api
+  ports:
+    - "3000:3000"
+
+sls_course_builder_api_test:
+  image: sls_course_builder_api
+  volumes:
+    - ./../app:/home/current/app
+  command: npm test #top -b #
+ # external_links:
+  #  - cdn:frontend
+  environment:
+    DEBUG: 'true'
+    NODE_ENV: test
+    APPLICATION_NAME: sls_course_builder_api
+  ports:
+    - "3000:3000"
+
+sls_course_builder_api:
+  image: sls_course_builder_api
+  volumes:
+    - ./../app:/home/current/app
+  command: npm start #top -b #
+ # external_links:
+  #  - cdn:frontend
+  environment:
+    DEBUG: 'true'
+    NODE_ENV: development
+    APPLICATION_NAME: sls_course_builder_api
+  ports:
+    - "3000:3000"
