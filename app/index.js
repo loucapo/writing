@@ -1,22 +1,16 @@
-/**
- * Created by reharik on 7/25/15.
- */
-"use strict";
-
-process.env['ALLOW_CONFIG_MUTATIONS']=true;
+process.env['ALLOW_CONFIG_MUTATIONS'] = true; // eslint-disable-line dot-notation
 var extend = require('extend');
 var config = require('config');
+var registry = require('./registry');
 
-module.exports = function(_options) {
-    var options = {
-        dagon:{
-            application:'api'
+module.exports = (function (_options) {
+    const options = {
+        dagon: {
+            application: 'api'
         }
     };
     extend(options, config.get('configs') || {}, _options || {});
-    var container = require('./registry')(options);
+    var container = registry(options);
     var api = container.getInstanceOf('server');
     api();
-}();
-
-
+}());

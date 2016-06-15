@@ -1,31 +1,24 @@
-/**
- * Created by reharik on 7/26/15.
- */
-"use strict";
-
-module.exports = function(koaresponsetime,
+module.exports = function (koaresponsetime,
                           koalogger,
                           koacompress,
                           koaerror,
                           koabodyparser,
                           koajwt,
                           koaunless,
-                          config){
-
+                          config) {
     return function (app) {
         if (!config.app.keys) {
-            throw new Error("Please add session secret key in the config file!");
+            throw new Error('Please add session secret key in the config file!');
         }
-        app.keys = config.app.keys;
-
+        app.keys = config.app.keys; // eslint-disable-line no-param-reassign
         app.use(koalogger());
 
         // handles failed token
-        app.use(function *(next){
+        app.use(function *(next) {
             try {
                 yield next;
             } catch (err) {
-                if (401 == err.status) {
+                if (err.status === 401) {
                     this.status = 401;
                     this.body = 'Protected resource, use Authorization header to get access\n';
                 } else {
