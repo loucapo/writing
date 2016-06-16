@@ -60,7 +60,8 @@ const config = {
         colors: true,
         historyApiFallback: true,
         inline: true,
-        hot: true
+        hot: true,
+        host: '0.0.0.0'
     },
     sassLoader: {
         includePaths: [path.resolve(__dirname, './sass')]

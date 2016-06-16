@@ -1,23 +1,26 @@
-frontend:
-  image: eco_frontend
-  volumes:
-    - ./../app:/home/current/app
-  command: npm start #top -b #
-  environment:
-    DEBUG: 'true'
-    NODE_ENV: development
-    APPLICATION_NAME: eco_frontend
-  ports:
-    - "8080:8080"
+version: "2"
+services:
+  eco_frontend:
+    image: eco_frontend
+    volumes:
+      - ./../app:/home/current/app
+    command: npm start #top -b #
 
-frontend_test:
-  image: eco_frontend
-  volumes:
-    - ./../app:/home/current/app
-  command: npm test #top -b #
-  environment:
-    DEBUG: 'true'
-    NODE_ENV: development
-    APPLICATION_NAME: eco_frontend
-  ports:
-    - "8080:8080"
+    environment:
+      DEBUG: 'true'
+      NODE_ENV: development
+      APPLICATION_NAME: eco_frontend
+    ports:
+      - "8080:8080"
+
+# frontend_test:
+#   image: eco_frontend
+#   volumes:
+#     - ./../app:/home/current/app
+#   command: npm test #top -b #
+#   environment:
+#     DEBUG: 'true'
+#     NODE_ENV: development
+#     APPLICATION_NAME: eco_frontend
+#   ports:
+#     - "8080:8080"
