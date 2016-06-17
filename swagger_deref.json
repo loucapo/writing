@@ -1,0 +1,169 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Course Builder Api"
+  },
+  "host": "localhost:10010",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/course": {
+      "x-swagger-router-controller": "courseController",
+      "get": {
+        "description": "Returns spcified course to the caller",
+        "operationId": "course",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "The id of the course you wish to retrieve",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "ErrorResponse": {
+                "required": [
+                  "message"
+                ],
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              },
+              "course": {
+                "title": "Course",
+                "description": "Course",
+                "type": "object",
+                "required": [
+                  "id",
+                  "title"
+                ],
+                "properties": {
+                  "id": {
+                    "description": "The unique identifier for a course",
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "title": {
+                    "description": "Title of the course",
+                    "type": "string"
+                  },
+                  "sections": {
+                    "description": "Section to break up the course e.g. chapter week semester",
+                    "type": "array",
+                    "items": {
+                      "title": "section",
+                      "description": "section",
+                      "type": "object",
+                      "required": [
+                        "id",
+                        "title",
+                        "order"
+                      ],
+                      "properties": {
+                        "id": {
+                          "description": "The unique identifier for a section",
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "title": {
+                          "description": "Title of the section",
+                          "type": "string"
+                        },
+                        "order": {
+                          "description": "Order to present section",
+                          "type": "number"
+                        },
+                        "summary": {
+                          "description": "summary of the section",
+                          "type": "string"
+                        },
+                        "activities": {
+                          "description": "activities to perform for this section",
+                          "type": "array",
+                          "items": {
+                            "title": "activity",
+                            "description": "activity",
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "name",
+                              "link",
+                              "type"
+                            ],
+                            "properties": {
+                              "id": {
+                                "description": "The unique identifier for an activity",
+                                "type": "string",
+                                "format": "uuid"
+                              },
+                              "name": {
+                                "description": "Name of the activity",
+                                "type": "string"
+                              },
+                              "link": {
+                                "description": "link to access the activity",
+                                "type": "string",
+                                "format": "uri"
+                              },
+                              "type": {
+                                "description": "type of activity",
+                                "type": "string"
+                              },
+                              "openDate": {
+                                "description": "Date that the activity is open to act upon",
+                                "type": "string",
+                                "format": "date"
+                              },
+                              "closeDate": {
+                                "description": "Date that the activity is closes and can no longer be acted upon",
+                                "type": "string",
+                                "format": "date"
+                              },
+                              "pointsAvailable": {
+                                "description": "how many points are available to earn",
+                                "type": "number"
+                              },
+                              "pointsEarned": {
+                                "description": "points earned out of total available",
+                                "type": "number"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/paths/~1course/get/responses/200/schema/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/swagger": {
+      "x-swagger-pipe": "swagger_raw"
+    }
+  }
+}

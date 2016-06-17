@@ -1,4 +1,4 @@
-module.exports = function routes(koarouter, indexController, authController) {
+module.exports = function routes(koarouter, controllers) {
     return function module(app) {
 // var clientController = require("../controllers/client.server.controller");
 // var clientListController = require("../controllers/clientList.server.controller");
@@ -8,13 +8,14 @@ module.exports = function routes(koarouter, indexController, authController) {
 //    var authController = require("../controllers/auth.controller");
         var router = koarouter();
         router.get('/', function *() {
-            yield indexController.index.apply(this);
+            yield controllers.indexController.index.apply(this);
         });
 
-        router.get('/auth', authController.checkAuth);
-        router.post('/auth', authController.signIn);
-        router.all('/signout', authController.signOut);
-        router.get('/index', indexController.index);
+        router.get('/auth', controllers.authController.checkAuth);
+        router.post('/auth', controllers.authController.signIn);
+        router.all('/signout', controllers.authController.signOut);
+        router.get('/index', controllers.indexController.index);
+        router.get('/documentation', controllers.swaggerController.swagger);
 
         app.use(router.routes());
         app.use(router.allowedMethods());

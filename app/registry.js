@@ -11,6 +11,7 @@ module.exports = function (_options) {
                     .requireDirectoryRecursively('./app/src')
                     .for('winston')
                         .renameTo('logger')
+                    .groupAllInDirectory('./app/src/controllers', 'controllers')
                     .complete());
     } catch (ex) {
         console.log(ex); // eslint-disable-line no-console

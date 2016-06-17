@@ -4,6 +4,7 @@
   "app": {
     "title": "Course Builder",
     "port": 3000,
+    "baseUrl": "http://localhost/",
     "env": "Dev",
     "keys": [
       "CourseBuilder"

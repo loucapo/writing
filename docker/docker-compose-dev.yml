@@ -2,7 +2,7 @@ sls_course_builder_api:
   image: sls_course_builder_api
   volumes:
     - ./../app:/home/current/app
-  command: npm start #top -b #
+  command: npm run start_dev #top -b #
  # external_links:
   #  - cdn:frontend
   environment:
@@ -11,3 +11,9 @@ sls_course_builder_api:
     APPLICATION_NAME: sls_course_builder_api
   ports:
     - "3000:3000"
+swagger_ui:
+  image: sls_swagger_ui
+  ports:
+    - "8666:80"
+  links:
+    - sls_course_builder_api

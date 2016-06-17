@@ -27,6 +27,7 @@ module.exports = function (koaresponsetime,
             }
         });
         // app.use(koajwt({ secret: 'shared-secret' }).unless({path: [/^\/auth/]}));
+
         app.use(koaerror());
         app.use(koabodyparser());
         app.use(koacompress());

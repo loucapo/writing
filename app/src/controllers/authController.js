@@ -1,6 +1,5 @@
 module.exports = function (authentication) {
     var signIn = function *() {
-        console.log('arrived at login'); // eslint-disable-line object-shorthand
         var token = yield authentication.matchUser();// send creds from request here);
         if (token) {
             this.body = { token };

@@ -1,13 +1,13 @@
-sls_course_builder_api:
+sls_course_builder_api_test:
   image: sls_course_builder_api
   volumes:
     - ./../app:/home/current/app
-  command: npm start #top -b #
+  command: npm test #top -b #
  # external_links:
   #  - cdn:frontend
   environment:
     DEBUG: 'true'
-    NODE_ENV: development
+    NODE_ENV: test
     APPLICATION_NAME: sls_course_builder_api
   ports:
     - "3000:3000"
