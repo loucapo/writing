@@ -3,9 +3,18 @@
     git clone git@bitbucket.org:mnv_tech/eco_frontend.git
     must use node >= 4.0
     cd eco_frontend
-    npm install                    
+    npm install
     npm start
     navigate in browser to localhost:8080
+
+### RUN ALL THE THINGS VIA DOCKER
+
+    [ ! -d eco_frontend ] && git clone git@bitbucket.org:mnv_tech/eco_frontend.git
+    [ ! -d sls_course_builder_api ] && git clone git@bitbucket.org:mnv_tech/sls_course_builder_api.git
+    cd eco_frontend && make docker-build-node docker-build
+    cd dockerNginx && docker-compose up -d
+    open http://localhost:10080
+    open http://localhost:10080/api
 
 ### Overview
 #### React/Redux
@@ -35,7 +44,7 @@ Component
         * An Action i a very simple javascript object that has a type and generally some data
         * We generally call an action factory to dispatch the action so we can add the data and whatever meta data we need
         * Actions are also used for async calls
-            * Requests for data are made from the Container Component.  
+            * Requests for data are made from the Container Component.
             * They are made by calling an action factory and passing the expected data, but also an object that specifies some api date (endpoint, method, headers, etc)
             * The action is picked up by the middleware and a "request pending" action is fired so you can put up a little spinny thing
             * When the promise ( thunk actually ) resolves another action will be fired, either success or failure with the corresponding data
@@ -44,7 +53,7 @@ Component
         * The reducer is/acts as a switch statement that filters ( on action.type ) for the actions that it is interested in.
         * When an action that concerns this reducer is received the reducer forwards it to a handler
         * The action generally has data in it, but sometimes just the fact that an action has been fired is the data it's self e.g. LOGIN_REQUEST_PENDING -> show spinny thing
-        * The handlers receive a copy of the slice of the store that they are concerned with as well as the action. 
+        * The handlers receive a copy of the slice of the store that they are concerned with as well as the action.
         * They then decide what changes they would like to make to the store and do so but IMMUTABLY
         * The patterns for immutably updating the store are shown below under reducers
     * Store
@@ -70,7 +79,7 @@ Component
             <ChapterTitle index={index} title={title} id={id} onChapterClick={onChapterClick} />
             {isExpanded ? <div className="">
                 <p>{summary}</p>
-                <Assignments id={id} /> 
+                <Assignments id={id} />
             </div>: null}
         </li>)
     * `export default ({index, title, summary, assignments, id, isExpanded, onChapterClick}) => (`
@@ -80,7 +89,7 @@ Component
     * `<li className='someClass'>`
         * Simple html element except that instead of using class attr it uses className attr because class is reserved word in js
     * `<ChapterTitle index={index} title={title} id={id} onChapterClick={onChapterClick} />`
-        * Here is another one of our components.  
+        * Here is another one of our components.
         * We are passing it several pieces of state that we received form our parent.
         * This is how state and actions are handed down. From container element to all subsequent children
         * This ChapterTitle component will look very similar to ours, except it will only have access to the state that we specify here
@@ -88,7 +97,7 @@ Component
         * You can pass all the properties of an object to a component using destructuring if you like as so
             * `<ChapterTitle index={index} title={title} id={id} onChapterClick={onChapterClick}  {...someObjectPasseFromParent}/>`
         * As you can see this could become very verbose which is a good argument for using multiple Container elements that handle state for just a little part of the ui
-    * `  {isExpanded ? <div className="">` 
+    * `  {isExpanded ? <div className="">`
         * Here we use some logic.  Very little logic is allowed in the JSX.  And for conditionals you must use the terinary form like this.  You also must surround with curlies
         * if you want to do just if, rather than if then then return null rather that "" in the second position
     * ` <p>{summary}</p>`
@@ -120,18 +129,18 @@ Component
 
 * Then pass the top level component to the result
     * `export default container(['chapters', 'assignments'], transform, mapDispatchToProps)(Assignments);`
-    
+
 ##### CombineRouters
 * In the index.js file you will find a function called **combineReducers** which takes a hash with a key for every root node in your store
-* For each root node 
+* For each root node
     * Either assign a reducer
-        * Reducer will receive this root store node as it's **_state_** parameter 
+        * Reducer will receive this root store node as it's **_state_** parameter
     * Or the following function `(state = {}) => state`
         * This will just always return the store node unaltered
 * If you add a new root node to the store and do not provide the above you will get an error
 
 #### Reducers
-* Reducers take a state and an action, please default 
+* Reducers take a state and an action, please default
 ` = (state = {}, action = null) => {`
 * There should be one reducer per root node in the State
 * Reducer should use a switch to handle actions of interest ( unless you know how to do pattern matching, then teach me )
@@ -145,7 +154,7 @@ Component
 #### Api Middleware
 * The api middleware listens to all actions ( much as the reducers do ) and when it sees an action that has the special property ( symbol actually ) Symbol('Call API') it knows that this is an api call.  If it does not find this property it mearly calls next(action) and passes it down the line
 * the call_api object has meta data about the api being called. The are
-    * method -> "POST", "GET" 
+    * method -> "POST", "GET"
     * endpoint -> the endpoint to hit ( the base url is specified in the config )
     * schema -> this is then name of the schema that is associated with the entityType beleow
         * I don't like this and will refactor so entityType or schema will suffice for both
@@ -154,22 +163,21 @@ Component
         * '[COURSE]_REQUEST' -> so 'COURSE_REQUEST' but the COURSE part will change for each api call
         * '[COURSE]_SUCCESS'
         * '[COURSE]_FAILURE'
-        * you must list them in this order ( request, success, failure ) 
+        * you must list them in this order ( request, success, failure )
         * I do not like this and will refactor it so your actions consist of the entityType + 'REQUEST' etc so you never have to worry about this, but till then, worry
         * authenticated -> not currently implemented ( but the code is there ) I'm sure we'll want it
     * method, entityType, types, authenticated
 
 ##### Testing
 * Test directory structure should mirror src directory
-* To run tests, 
+* To run tests,
     * In a console nav to the root dir where package.json lives
     * Type npm test
     * Tests will be run in Watch mode you can ctrl c to get out it
-* The libraries used are 
+* The libraries used are
     * Mocha -install globally unless this is offensive to you in which case I understand and will fix it
     * [Chai](http://chaijs.com/api/bdd/)  (should) ( link to api )
     * [Enzyme](http://airbnb.io/enzyme/docs/api/shallow.html) ( link to api )
        *Enzyme is used for testing react components.
        *It is not necessary when testing pure functions
 * Please follow the when… it.... Should… format that is already present in the existing tests.
-
