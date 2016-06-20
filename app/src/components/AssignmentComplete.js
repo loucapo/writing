@@ -6,11 +6,11 @@ const AssignmentComplete = ({ pointsEarned, isUpcoming }) => {
         : <i className="icon-icon_incomplete" />;
 
     if (isUpcoming) {
-        return (<td className="ctd-status">
+        return (<td className="ctd-status" >
         </td>);
     }
-    return (<td className="ctd-status">
-        <div className="complete" role="img" aria-label="Complete">
+    return (<td className="ctd-status" >
+        <div className="complete" role="img" aria-label="Complete" >
             {image}
         </div>
     </td>);

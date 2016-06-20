@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
 
 const ChapterTitle = ({ isExpanded, index, title, id, toggleChapter }) => (
-    <div className="accord-title">
-        <a aria-expanded={isExpanded} onClick={() => toggleChapter(id)}>
-            <div className="accord-toggle"></div>
-            <div className="progress">
-                <div className="num">{index}</div>
+    <div className="accord-title" >
+        <a aria-expanded={isExpanded} onClick={() => toggleChapter(id)} >
+            <div className="accord-toggle" ></div>
+            <div className="progress" >
+                <div className="num" >{index}</div>
                 <i className="icon-icon_down_arrow-0" />;
 
             </div>
-            <div className="text">
+            <div className="text" >
                 <h3>{title}</h3>
             </div>
         </a>
