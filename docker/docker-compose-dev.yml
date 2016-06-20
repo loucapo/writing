@@ -6,7 +6,7 @@ sls_course_builder_api:
  # external_links:
   #  - cdn:frontend
   environment:
-    DEBUG: 'true'
+    DEBUG: swagger-tools:middleware:*
     NODE_ENV: development
     APPLICATION_NAME: sls_course_builder_api
   ports:
