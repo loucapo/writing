@@ -1,16 +1,8 @@
 import React, { PropTypes } from 'react';
 import Header from './../../containers/HeaderContainer';
-import { CALL_API } from 'redux-api-middleware';
 
-const Layout = ({ children, dispatch }) => {
-    dispatch({
-        type: 'GetSwaggerSpec',
-        [CALL_API]: {
-            endpoint: 'http://localhost:3000/documentationJS',
-            method: 'GET',
-            types: ['SWAGGER_REQUEST', 'SWAGGER_SUCCESS', 'SWAGGER_FAILURE']
-        }
-    });
+const Layout = ({ children, getSwaggerSpec }) => {
+    getSwaggerSpec();
     return (<div>
         <Header />
         {children}
@@ -19,7 +11,7 @@ const Layout = ({ children, dispatch }) => {
 
 Layout.propTypes = {
     children: PropTypes.object,
-    dispatch: PropTypes.func
+    getSwaggerSpec: PropTypes.func
 };
 
 export default Layout;

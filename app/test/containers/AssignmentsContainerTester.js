@@ -12,6 +12,12 @@ describe('ASSIGNMENT_CONTAINER', () => {
         var _initialState;
         beforeEach(() => {
             _initialState = {
+                courses: {
+                    1: {
+                        title: "currentCourse"
+                    }
+                },
+                currentCourse: 1,
                 chapters: {
                     1: {
                         isExpanded: false,
@@ -65,6 +71,8 @@ describe('ASSIGNMENT_CONTAINER', () => {
 
         it('should_return_proper_value', () => {
             var state = {
+                courses: _initialState.courses,
+                currentCourse: _initialState.currentCourse,
                 chapters: _initialState.chapters,
                 assignments: _initialState.assignments
             };

@@ -1,9 +1,6 @@
 import Course from './../components/Course.js';
 import {} from './../models/course';
-import container from './containerFactory';
 import courseSelector from './selectors/courseSelector';
+import { connect } from 'react-redux';
 
-const CourseContainer = container(['courses', 'currentCourse'], courseSelector)(Course);
-
-export default CourseContainer;
-
+export default connect(courseSelector)(Course);

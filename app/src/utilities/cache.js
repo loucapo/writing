@@ -1,7 +1,10 @@
 // import moment from 'moment';
-
-const cache = function cache(store, entityType, id) {
-    return !!store[entityType][id];
+/*eslint-disable*/
+const cache = {
+    needsCacheRefresh: (store, rootEntity, action) => {
+        // here check the entity for the exp time, then if necessary fire action and return true, else return false
+        return false;
+    }
 };
 
-export default cache;
+export { cache };
