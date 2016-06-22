@@ -14,7 +14,8 @@ module.exports = function routes(koarouter, controllers) {
          * @swagger
          * /course/{id}:
          *   get:
-         *     description: Returns spcified course to the caller
+         *     x-name: getCourseById
+         *     description: Returns specified course to the caller
          *     operationId: course
          *     parameters:
          *       - name: id
