@@ -2,16 +2,17 @@ module.exports = function () {
     return {
         course: function *() { // eslint-disable-line object-shorthand
             this.body = {
-                title: 'string',
+                id: 1,
+                courseTitle: 'string',
                 sections: [
                     {
-                        id: 'string',
+                        id: 1,
                         title: 'string',
                         order: 0,
                         summary: 'string',
-                        activities: [
+                        assignments: [
                             {
-                                id: 'string',
+                                id: 1,
                                 name: 'string',
                                 link: 'string',
                                 type: 'string',
