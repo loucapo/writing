@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
-import ChapterTitle from './ChapterTitle';
+import SectionTitle from './SectionTitle';
 import Assignments from './../containers/AssignmentsContainer';
 
-const Chapter = ({ index, title, summary, id, isExpanded, toggleChapter }) => (
+const Section = ({ index, title, summary, id, isExpanded, toggleSection }) => (
     <li>
-        <ChapterTitle index={index} title={title} id={id} toggleChapter={toggleChapter} />
+        <SectionTitle index={index} title={title} id={id} toggleSection={toggleSection} />
         {isExpanded ? <div className="" >
             <p></p>
             <p>{summary}</p>
@@ -14,13 +14,13 @@ const Chapter = ({ index, title, summary, id, isExpanded, toggleChapter }) => (
     </li>
 );
 
-Chapter.propTypes = {
+Section.propTypes = {
     index: PropTypes.number,
     title: PropTypes.string,
     summary: PropTypes.string,
     id: PropTypes.number,
     isExpanded: PropTypes.bool,
-    toggleChapter: PropTypes.func
+    toggleSection: PropTypes.func
 };
 
-export default Chapter;
+export default Section;

@@ -1,9 +1,7 @@
-import { cache } from './../../utilities/cache';
+import format from 'string-format-obj';
 
-export default (state) => {
-    const course = state.courses[state.currentCourse];
-    // check if object is cachable and if so does it need to be refreshed
-    // if needs to be refreshed then dispatch action that refreshes
-
-    return cache.needsCacheRefresh(state, course) ? [] : course;
-};
+export default (state) => ({
+    courseTitle: state.courses[state.currentCourse] ? state.courses[state.currentCourse].courseTitle : '',
+    url: format('{api}' + state.swagger.paths.getCourseById.path, { api: '/api', id: state.currentCourse }),
+    id: state.currentCourse
+});

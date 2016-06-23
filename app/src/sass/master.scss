@@ -850,7 +850,7 @@ input[type=text], input[type=password] {
     color: #666666;
 }
 
-#assignments, #chapters {
+#assignments, #sections {
     margin-bottom: 40px;
 }
 
@@ -886,21 +886,21 @@ input[type=text], input[type=password] {
     width: 20%;
 }
 
-#chapters ul, #chapters li {
+#sections ul, #sections li {
     @include reset;
 }
 
-#chapters li {
+#sections li {
     position: relative;
     padding: 20px 0;
     border-top: 1px solid #d8d8d8;
 }
 
-#chapters li:last-child {
+#sections li:last-child {
     border-bottom: 1px solid #d8d8d8;
 }
 
-.chapter-content {
+.section-content {
     padding-left: 25px;
     margin-bottom: 30px;
     padding-top: 20px;
@@ -937,7 +937,7 @@ input[type=text], input[type=password] {
     fill: none;
 }
 
-#chapters li .text {
+#sections li .text {
     padding-left: 120px;
     padding-top: 6px;
 }
@@ -976,7 +976,7 @@ tr.done .complete {
     fill: #0b8943;
 }
 
-#chapters th.ctd-title {
+#sections th.ctd-title {
     padding-left: 10px;
 }
 
@@ -1030,77 +1030,77 @@ tr.done .complete {
         display: none;
     }
 
-    #chapters td {
+    #sections td {
         display: block;
         border: 0;
         padding: 0;
         padding-bottom: 8px;
     }
 
-    #chapters th {
+    #sections th {
         display: block;
         border: 0;
         padding: 0;
         padding-bottom: 8px;
     }
 
-    .chapter-content {
+    .section-content {
         margin: 0;
         padding: 0;
         padding-top: 10px;
     }
 
-    #chapters li {
+    #sections li {
         border: 0;
         border-bottom: 1px solid #d8d8d8;
         padding: 15px 0 30px 0;
     }
 
-    #chapters table {
+    #sections table {
         width: 100%;
         margin-bottom: 20px;
     }
 
-    #chapters table thead {
+    #sections table thead {
         display: none;
     }
 
     /*
-    #chapters th.cth-content, #chapters th.cth-type, #chapters th.cth-points, #chapters th.cth-status {
+    #sections th.cth-content, #sections th.cth-type, #sections th.cth-points, #sections th.cth-status {
         display: none;
     }
     */
 
-    #chapters table td {
+    #sections table td {
         padding-left: 10px;
         padding-right: 7%;
     }
 
-    #chapters tr:first-child {
+    #sections tr:first-child {
         border-top: 1px solid #d8d8d8;
     }
 
-    #chapters td.ctd-title {
+    #sections td.ctd-title {
         padding-top: 20px;
     }
 
-    #chapters th.ctd-title {
+    #sections th.ctd-title {
         padding-top: 7px;
     }
 
-    #chapters tr.done td.ctd-date {
+    #sections tr.done td.ctd-date {
         /*border-bottom: 1px solid #ffffff;*/
     }
 
-    #chapters td.ctd-date:before {
+    #sections td.ctd-date:before {
         content: 'DUE: ';
     }
 
-    #chapters tr.done td.ctd-date:before {
+    #sections tr.done td.ctd-date:before {
         content: '';
     }
 
-    #chapters td.ctd-points, #chapters td.ctd-complete {
+    #sections td.ctd-points, #sections td.ctd-complete {
         display: none;
     }
 
@@ -1121,7 +1121,7 @@ tr.done .complete {
         background-position: center -58px;
     }
 
-    #chapters li .text {
+    #sections li .text {
         float: none;
         padding: 0;
     }

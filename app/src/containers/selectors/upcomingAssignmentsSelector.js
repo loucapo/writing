@@ -1,22 +1,15 @@
 import moment from 'moment';
-import { cache } from './../../utilities/cache';
 
 export default (state) => {
     const result = { assignments: [] };
 
-    const { chapters, assignments } = state;
+    const { sections, assignments } = state;
     const course = state.courses[state.currentCourse];
-    // check if object is cachable and if so does it need to be refreshed
-    // if needs to be refreshed then dispatch action that refreshes
-
-    if (cache.needsCacheRefresh(state, course)) {
-        return result;
-    }
 
     const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
 
-    const allAssIds = course.chapters
-        .map(chapterId => chapters[chapterId])
+    const allAssIds = course.sections
+        .map(sectionId => sections[sectionId])
         .map(chap => chap.assignments)
         .reduce((a, b) => a.concat(b), []);
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCourse } from './../actions/index';
 import Header from './../components/layout/Header';
+import { navigateToCourse } from './../actions';
 
 function mapStateToProps(state) {
     return {
@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ getCourse }, dispatch);
+    return bindActionCreators({ navigateToCourse }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

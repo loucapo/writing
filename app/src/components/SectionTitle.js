@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const ChapterTitle = ({ isExpanded, index, title, id, toggleChapter }) => (
+const SectionTitle = ({ isExpanded, index, title, id, toggleSection }) => (
     <div className="accord-title" >
-        <a aria-expanded={isExpanded} onClick={() => toggleChapter(id)} >
+        <a aria-expanded={isExpanded} onClick={() => toggleSection(id)} >
             <div className="accord-toggle" ></div>
             <div className="progress" >
                 <div className="num" >{index}</div>
@@ -17,12 +17,12 @@ const ChapterTitle = ({ isExpanded, index, title, id, toggleChapter }) => (
 );
 
 
-ChapterTitle.propTypes = {
+SectionTitle.propTypes = {
     isExpanded: PropTypes.bool,
     index: PropTypes.number,
     title: PropTypes.string,
     id: PropTypes.number,
-    toggleChapter: PropTypes.func
+    toggleSection: PropTypes.func
 };
 
-export default ChapterTitle;
+export default SectionTitle;

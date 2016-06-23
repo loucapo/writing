@@ -1,46 +1,22 @@
 import { Schema, arrayOf } from 'normalizr';
 
-const course = new Schema('courses');
-const chapter = new Schema('chapters');
-const assignment = new Schema('assignments');
+const courseSchema = new Schema('courses');
+const sectionSchema = new Schema('sections');
+const assignmentSchema = new Schema('assignments');
 
 
-course.define({
-    units: arrayOf(chapter)
-}, { idAttribute: 'm_course_id' });
+courseSchema.define({
+    sections: arrayOf(sectionSchema)
+});
 
-chapter.define({
-    activities: arrayOf(assignment)
-}, { idAttribute: 'section' });
+sectionSchema.define({
+    assignments: arrayOf(assignmentSchema)
+});
 
-assignment.define({});
-
-// function getChapterById(state, id) {
-//     return Object.assign({}, state.chapters[id]);
-// }
-//
-// function getChaptersForCourse(state, courseId) {
-//     return state.courses[courseId].chapters.map(c => getChapterById(state, c));
-// }
-//
-// function getAssignmentsForChapter(state, chapterId) {
-//     return state.chapters[chapterId].assignments.map(a => getAssignmentsById(state, a));
-// }
-//
-// function getAssignmentsById(state, id) {
-//     return state.Assignments[id];
-// }
-//
-// function getCurrentCourse(state) {
-//     var course = Object.assign({}, state.courses[state.currentCourse]);
-//     course.chapters = Object.assign({}, course.chapters.map(c => getChaptersForCourse(c)));
-//     course.chapters.map(c => c.assignments = getAssignmentForChapter(c));
-//     return course;
-// }
+assignmentSchema.define({});
 
 export {
-    // getCurrentCourse,
-    course,
-    chapter,
-    assignment
+    courseSchema,
+    sectionSchema,
+    assignmentSchema
 };

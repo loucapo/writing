@@ -12,7 +12,7 @@ const Assignments = ({ assignments }) => (
         >
             <caption>{(assignments.length > 0 && assignments[0].tableCaption)
                 ? assignments[0].tableCaption
-                : 'Chapter 1 Assignments'}</caption>
+                : 'Section 1 Assignments'}</caption>
             <thead>
                 <tr>
                     <th className="ath-upcoming" >{(assignments.length > 0 && assignments[0].isUpcoming)

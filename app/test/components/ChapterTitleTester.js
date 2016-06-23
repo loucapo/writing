@@ -1,5 +1,5 @@
 import React from 'react';
-import ChapterTitle from '../../src/components/ChapterTitle';
+import SectionTitle from '../../src/components/SectionTitle';
 import { shallow, mount, render } from 'enzyme';
 import * as chai from 'chai';
 
@@ -11,7 +11,7 @@ describe('CHAPTER__TITLE_COMPONENT', () => {
         var SUT;
         beforeEach(() => {
             props = { index: 1, title: 'Test Title', id: 1, isExpanded: false };
-            SUT = shallow(<ChapterTitle {...props} />);
+            SUT = shallow(<SectionTitle {...props} />);
         });
 
         it('should render a DIV with an accord-title className', () => {
@@ -31,7 +31,7 @@ describe('CHAPTER__TITLE_COMPONENT', () => {
         var SUT;
         beforeEach(() => {
             props = { index: 1, title: 'Test Title', id: 1, isExpanded: true };
-            SUT = shallow(<ChapterTitle {...props} />);
+            SUT = shallow(<SectionTitle {...props} />);
         });
 
         it('should render a DIV with an accord-title className', () => {

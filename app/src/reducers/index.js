@@ -1,16 +1,17 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import { expandChapter } from './chapterReducers';
+import { sectionReducer } from './sectionReducers';
+import { assignmentReducer } from './assignmentReducer';
 import { courses } from './navigationReducers';
-import { currentCourse } from './courseReducer';
+import { currentCourse } from './currentCourseReducer';
 import { swagger } from './swaggerSpecReducer';
 
 const reducers = combineReducers({
     routing,
     auth: (state = {}) => state,
     courses,
-    chapters: expandChapter,
-    assignments: (state = {}) => state,
+    sections: sectionReducer,
+    assignments: assignmentReducer,
     currentCourse,
     headerMenuCourses: (state = {}) => state,
     headerMenuHelp: (state = {}) => state,

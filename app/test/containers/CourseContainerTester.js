@@ -16,11 +16,12 @@ describe('COURSE_CONTAINER_TRANSFORM', () => {
                         id: 1,
                         courseTitle: 'General Chemistry Laboratory - 6660',
                         active: true,
-                        chapters: []
+                        sections: []
                     }
                 },
-                chapters: {},
-                currentCourse: 1
+                sections: {},
+                currentCourse: 1,
+                swagger: { paths: { getCourseById: { path:'somePath' } } }
             };
         });
 

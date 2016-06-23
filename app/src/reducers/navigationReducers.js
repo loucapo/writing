@@ -1,25 +1,28 @@
-/**
- * Created by rharik on 5/18/16.
- */
-
-import { COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE } from './../constants';
-
+import moment from 'moment';
+import { COURSE_REQUEST, COURSE_SUCCESS, COURSE_FAILURE, LAST_FETCHED } from './../constants';
+import { LOCATION_CHANGE } from 'react-router-redux';
 
 function courses(state = {}, action = null) {
     switch (action.type) {
+        case LOCATION_CHANGE:
         case COURSE_REQUEST:
-            return Object.assign({}, state, {
-                isFetching: true
-            });
-        case COURSE_SUCCESS:
-            if (!action.fromCache) {
-                return Object.assign({}, state, action.entities);
+            {
+                return Object.assign({}, state, {
+                    isFetching: true
+                });
             }
-            return state;
+        case COURSE_SUCCESS:
+            {
+                const entity = action.payload.entities.courses;
+                Object.keys(entity).forEach(x => entity[x][LAST_FETCHED] = moment());
+                return Object.assign({}, state, entity);
+            }
         case COURSE_FAILURE:
-            return Object.assign({}, state, {
-                error: action.error
-            });
+            {
+                return Object.assign({}, state, {
+                    error: action.error
+                });
+            }
         default:
             return state;
     }

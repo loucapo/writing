@@ -18,24 +18,24 @@ describe('UP_COMING_ASSIGNMENTS_CONTAINER_TRANSFORM', () => {
                         id: 1,
                         courseTitle: 'General Chemistry Laboratory - 6660',
                         active: true,
-                        chapters: [1]
+                        sections: [1]
                     },
                     2: {
                         lastUpdated: '',
                         id: 2,
                         courseTitle: 'General Chemistry Laboratory - 1331',
                         active: true,
-                        chapters: [2]
+                        sections: [2]
                     }
                 },
-                chapters: {
+                sections: {
                     1: {
                         isExpanded: false,
                         id: 1,
                         title: 'Experiment 1 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 1 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 1',
+                        caption: 'Section 1 Content',
+                        tableSummary: 'A list of content and assignments for Section 1',
                         assignments: [1, 2]
                     },
 
@@ -44,8 +44,8 @@ describe('UP_COMING_ASSIGNMENTS_CONTAINER_TRANSFORM', () => {
                         id: 2,
                         title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 2 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 2',
+                        caption: 'Section 2 Content',
+                        tableSummary: 'A list of content and assignments for Section 2',
                         assignments: [2]
                     }
                 },

@@ -18,7 +18,8 @@
     "react/jsx-indent": [2, 4],
     "comma-dangle": [2, "never"],
     "max-len": [2, {"code": 120}],
-    "prefer-template": [0]
+    "prefer-template": [0],
+    "no-return-assign": [0]
   },
   "env": {
     "browser": true,

@@ -1,13 +1,12 @@
 /**
  * Created by rharik on 5/18/16.
  */
-import { COURSE_SUCCESS } from './../constants';
-
+import { SELECT_COURSE_FROM_MENU } from './../constants';
 
 function currentCourse(state = {}, action = null) {
     switch (action.type) {
-        case COURSE_SUCCESS:
-            return action.entities.result[0];
+        case SELECT_COURSE_FROM_MENU:
+            return action.courseId;
         default:
             return state;
     }
