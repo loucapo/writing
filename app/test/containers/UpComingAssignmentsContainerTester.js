@@ -11,7 +11,6 @@ describe('UP_COMING_ASSIGNMENTS_CONTAINER_TRANSFORM', () => {
         var props;
         beforeEach(() => {
             props = {
-                currentCourse: 1,
                 courses: {
                     1: {
                         lastUpdated: '',
@@ -77,15 +76,15 @@ describe('UP_COMING_ASSIGNMENTS_CONTAINER_TRANSFORM', () => {
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
         it('should return a valid object with assignments property', () => {
-            SUT(props).assignments.should.not.be.undefined;
+            SUT(props, {params: { id: 1 }}).assignments.should.not.be.undefined;
         });
 
         it('should return only upcoming assignments', () => {
-            SUT(props).assignments.length.should.equal(1);
+            SUT(props, {params: { id: 1 }}).assignments.length.should.equal(1);
         });
     });
 });

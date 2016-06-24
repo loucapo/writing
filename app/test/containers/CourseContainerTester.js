@@ -26,11 +26,11 @@ describe('COURSE_CONTAINER_TRANSFORM', () => {
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
         it('should return an object with a course with proper ID', () => {
-            SUT(props).id.should.equal(1);
+            SUT(props, {params: { id: 1 }}).id.should.equal(1);
         });
     });
 });

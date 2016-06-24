@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
 import { Link } from 'react-router';
 
-const CourseMenuButton = ({ items, navigateToCourse }) => {
+const CourseMenuButton = ({ items }) => {
     const menuItems = items.map((e) =>
-        (<MenuItem key={e.id} value={e.id} onClick={() => navigateToCourse(e.id)} >
+        (<MenuItem key={e.id} value={e.id} >
             <Link to={'/course/' + e.id} >{e.name}</Link>
         </MenuItem>));
 
@@ -23,9 +23,7 @@ const CourseMenuButton = ({ items, navigateToCourse }) => {
 };
 
 CourseMenuButton.propTypes = {
-    items: PropTypes.array,
-    navigateToCourse: PropTypes.func
-
+    items: PropTypes.array
 };
 
 export default CourseMenuButton;

@@ -1,10 +1,11 @@
 import moment from 'moment';
 
-export default (state) => {
+export default (state, { params }) => {
+    const id = params.id;
     const result = { assignments: [] };
 
     const { sections, assignments } = state;
-    const course = state.courses[state.currentCourse];
+    const course = state.courses[id];
 
     const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
 
@@ -14,7 +15,7 @@ export default (state) => {
         .reduce((a, b) => a.concat(b), []);
 
     result.assignments = allAssIds
-        .map(id => assignments[id])
+        .map(assId => assignments[assId])
         .filter(filter)
         .map(ass => ({
             ...ass,

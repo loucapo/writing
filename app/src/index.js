@@ -32,8 +32,6 @@ const initialState = {
             { id: 4, name: 'Show Book Information' }
         ]
     },
-    currentCourse: 1,
-
     courses: {
         1: {
             lastUpdated: '',

@@ -4,13 +4,13 @@ import CoursesMenuButton from '../CoursesMenuButton';
 import logo from './../../sass/image/logo_ml.png';
 import avatar from './../../sass/image/avatar.png';
 
-const Header = ({ userName, headerMenuCourses, headerMenuHelp, navigateToCourse }) => (<div>
+const Header = ({ userName, headerMenuCourses, headerMenuHelp }) => (<div>
     <header role="banner" id="header" >
         <div id="logo-ml" >
             <img src={logo} alt="Macmillan Learning Logo" />
         </div>
         <nav id="header-nav" role="navigation" >
-            <CoursesMenuButton {...headerMenuCourses} navigateToCourse={navigateToCourse} />
+            <CoursesMenuButton {...headerMenuCourses} />
             <HelpMenuButton {...headerMenuHelp} />
             <div id="nav-profile" >
                 <span>{userName}</span>
@@ -43,8 +43,7 @@ const Header = ({ userName, headerMenuCourses, headerMenuHelp, navigateToCourse 
 Header.propTypes = {
     userName: PropTypes.string,
     headerMenuCourses: PropTypes.object,
-    headerMenuHelp: PropTypes.object,
-    navigateToCourse: PropTypes.func
+    headerMenuHelp: PropTypes.object
 };
 
 export default Header;

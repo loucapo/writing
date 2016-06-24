@@ -4,9 +4,8 @@ import NavBar from './NavBar';
 import Assignments from './../containers/UpComingAssignmentsContainer';
 import Sections from './../containers/SectionsContainer';
 
-const Course = ({ courseTitle, url, id, getCourse }) => {
-    getCourse(url, id);
-    return (<div>
+const Course = ({ courseTitle }) =>
+    (<div>
         <TitleBar title={courseTitle} />
         <NavBar />
         <div id="content" role="main" className="inside" >
@@ -14,13 +13,10 @@ const Course = ({ courseTitle, url, id, getCourse }) => {
             <Sections />
         </div>
     </div>);
-};
+
 
 Course.propTypes = {
-    courseTitle: PropTypes.string,
-    url: PropTypes.string,
-    id: PropTypes.string,
-    getCourse: PropTypes.func
+    courseTitle: PropTypes.string
 };
 
 export default Course;

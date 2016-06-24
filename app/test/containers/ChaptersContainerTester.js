@@ -48,25 +48,24 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
                         tableSummary: 'A list of content and assignments for Section 2',
                         assignments: [2]
                     }
-                },
-                currentCourse: 1
+                }
             };
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }} ).should.not.be.null;
         });
 
         it('should return a valid object with sections property', () => {
-            SUT(props).sections.should.not.be.undefined;
+            SUT(props, {params: { id: 1 }}).sections.should.not.be.undefined;
         });
 
         it('should return a sections property with an array length of 1', () => {
-            SUT(props).sections.length.should.equal(1);
+            SUT(props, {params: { id: 1 }}).sections.length.should.equal(1);
         });
 
         it('should return the proper section ID for the current course', () => {
-            SUT(props).sections[0].id.should.equal(1);
+            SUT(props, {params: { id: 1 }}).sections[0].id.should.equal(1);
         });
 
     });
@@ -90,15 +89,15 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
         it('should return a valid object with sections property', () => {
-            SUT(props).sections.should.not.be.undefined;
+            SUT(props, {params: { id: 1 }}).sections.should.not.be.undefined;
         });
 
         it('should return a sections property with an array length of 0', () => {
-            SUT(props).sections.length.should.equal(0);
+            SUT(props, {params: { id: 1 }}).sections.length.should.equal(0);
         });
     });
 
@@ -121,15 +120,15 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
         it('should return a valid object with sections property', () => {
-            SUT(props).sections.should.not.be.undefined;
+            SUT(props, {params: { id: 1 }}).sections.should.not.be.undefined;
         });
 
         it('should return a sections property with an array length of 0', () => {
-            SUT(props).sections.length.should.equal(0);
+            SUT(props, {params: { id: 1 }}).sections.length.should.equal(0);
         });
     });
 
