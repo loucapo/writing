@@ -15,13 +15,13 @@ function courses(state = {}, action = null) {
             {
                 const entity = action.payload.entities.courses;
                 Object.keys(entity).forEach(x => entity[x][LAST_FETCHED] = moment());
-                return Object.assign({}, state, entity);
+                return Object.assign({}, state, entity, { isFetching: false, error: undefined });
             }
         case COURSE_FAILURE:
             {
                 return Object.assign({}, state, {
-                    error: action.error
-                });
+                    error: action.payload
+                }, { isFetching: false });
             }
         default:
             return state;

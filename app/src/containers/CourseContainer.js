@@ -11,6 +11,12 @@ class CourseContainer extends Component {
     loadData() { this.props.getCourse(this.props.url, this.props.id); }
 
     render() {
+        if (this.props.isFetching) {
+            return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
+        }
+        if (this.props.errorMessage) {
+            return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
+        }
         return (<Course {...this.props} />);
     }
 }
@@ -18,11 +24,9 @@ class CourseContainer extends Component {
 CourseContainer.propTypes = {
     url: PropTypes.string,
     id: PropTypes.string,
+    isFetching: PropTypes.string,
+    errorMessage: PropTypes.string,
     getCourse: PropTypes.func
 };
-
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ getCourse }, dispatch);
-// }
 
 export default withRouter(connect(courseSelector, { getCourse })(CourseContainer));
