@@ -11,6 +11,7 @@ module.exports = function (_options) {
                     .requireDirectoryRecursively('./app/src')
                     .for('winston').renameTo('logger') // eslint-disable-line newline-per-chained-call
                     .for('bluebird').renameTo('Promise') // eslint-disable-line newline-per-chained-call
+                    .for('repository').replaceWith('mockDataRepository') // eslint-disable-line newline-per-chained-call
                     .groupAllInDirectory('./app/src/controllers', 'controllers')
                     .complete());
     } catch (ex) {
