@@ -2,7 +2,7 @@
  * Created by rharik on 5/26/16.
  */
 
-import SUT  from './../../src/containers/selectors/chaptersSelector';
+import SUT  from './../../src/containers/selectors/sectionsSelector';
 import * as chai from 'chai';
 let should = chai.should();
 
@@ -18,24 +18,24 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
                         id: 1,
                         courseTitle: 'General Chemistry Laboratory - 6660',
                         active: true,
-                        chapters: [1]
+                        sections: [1]
                     },
                     2: {
                         lastUpdated: '',
                         id: 2,
                         courseTitle: 'General Chemistry Laboratory - 1331',
                         active: true,
-                        chapters: [2]
+                        sections: [2]
                     }
                 },
-                chapters: {
+                sections: {
                     1: {
                         isExpanded: false,
                         id: 1,
                         title: 'Experiment 1 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 1 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 1',
+                        caption: 'Section 1 Content',
+                        tableSummary: 'A list of content and assignments for Section 1',
                         assignments: [1]
                     },
 
@@ -44,34 +44,33 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
                         id: 2,
                         title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 2 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 2',
+                        caption: 'Section 2 Content',
+                        tableSummary: 'A list of content and assignments for Section 2',
                         assignments: [2]
                     }
-                },
-                currentCourse: 1
+                }
             };
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }} ).should.not.be.null;
         });
 
-        it('should return a valid object with chapters property', () => {
-            SUT(props).chapters.should.not.be.undefined;
+        it('should return a valid object with sections property', () => {
+            SUT(props, {params: { id: 1 }}).sections.should.not.be.undefined;
         });
 
-        it('should return a chapters property with an array length of 1', () => {
-            SUT(props).chapters.length.should.equal(1);
+        it('should return a sections property with an array length of 1', () => {
+            SUT(props, {params: { id: 1 }}).sections.length.should.equal(1);
         });
 
-        it('should return the proper chapter ID for the current course', () => {
-            SUT(props).chapters[0].id.should.equal(1);
+        it('should return the proper section ID for the current course', () => {
+            SUT(props, {params: { id: 1 }}).sections[0].id.should.equal(1);
         });
 
     });
 
-    describe('when_calling_transform_on_course_with_no_chapters', () => {
+    describe('when_calling_transform_on_course_with_no_sections', () => {
         var props;
         beforeEach(() => {
             props = {
@@ -81,24 +80,24 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
                         id: 1,
                         courseTitle: 'General Chemistry Laboratory - 6660',
                         active: true,
-                        chapters: []
+                        sections: []
                     }
                 },
-                chapters: {},
+                sections: {},
                 currentCourse: 1
             };
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
-        it('should return a valid object with chapters property', () => {
-            SUT(props).chapters.should.not.be.undefined;
+        it('should return a valid object with sections property', () => {
+            SUT(props, {params: { id: 1 }}).sections.should.not.be.undefined;
         });
 
-        it('should return a chapters property with an array length of 0', () => {
-            SUT(props).chapters.length.should.equal(0);
+        it('should return a sections property with an array length of 0', () => {
+            SUT(props, {params: { id: 1 }}).sections.length.should.equal(0);
         });
     });
 
@@ -112,24 +111,24 @@ describe('CHAPTER_CONTAINER_TRANSFORM', () => {
                         id: 1,
                         courseTitle: 'General Chemistry Laboratory - 6660',
                         active: true,
-                        chapters: []
+                        sections: []
                     }
                 },
-                chapters: {},
+                sections: {},
                 currentCourse: 1
             };
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
-        it('should return a valid object with chapters property', () => {
-            SUT(props).chapters.should.not.be.undefined;
+        it('should return a valid object with sections property', () => {
+            SUT(props, {params: { id: 1 }}).sections.should.not.be.undefined;
         });
 
-        it('should return a chapters property with an array length of 0', () => {
-            SUT(props).chapters.length.should.equal(0);
+        it('should return a sections property with an array length of 0', () => {
+            SUT(props, {params: { id: 1 }}).sections.length.should.equal(0);
         });
     });
 

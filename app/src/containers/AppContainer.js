@@ -1,16 +1,15 @@
-/**
- * Created by reharik on 3/11/16.
- */
-
+import { getSwaggerSpec } from './../actions/index';
 import { connect } from 'react-redux';
 import Layout from './../components/layout/layout.js';
+// import { bindActionCreators } from 'redux';
 
 function mapStateToProps() {
-    return {
-        // courseName: state.course.courseName
-        // userName       : state.auth.userName
-    };
+    return {};
 }
 
-export default connect(mapStateToProps)(Layout);
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({ getSwaggerSpec }, dispatch);
+// }
+
+export default connect(mapStateToProps, { getSwaggerSpec })(Layout);
 

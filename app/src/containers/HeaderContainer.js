@@ -1,6 +1,4 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { onSelectCourseFromMenu } from './../actions/index';
 import Header from './../components/layout/Header';
 
 function mapStateToProps(state) {
@@ -11,8 +9,4 @@ function mapStateToProps(state) {
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ onSelectCourseFromMenu }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

@@ -1,16 +1,21 @@
 import moment from 'moment';
 
-export default ({ courses, currentCourse, chapters, assignments }) => {
-    const course = courses[currentCourse];
+export default (state, { params }) => {
+    const id = params.id;
+    const result = { assignments: [] };
+
+    const { sections, assignments } = state;
+    const course = state.courses[id];
+
     const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
 
-    const allAssIds = course.chapters
-        .map(chapterId => chapters[chapterId])
+    const allAssIds = course.sections
+        .map(sectionId => sections[sectionId])
         .map(chap => chap.assignments)
         .reduce((a, b) => a.concat(b), []);
 
-    const upCommingAssignments = allAssIds
-        .map(id => assignments[id])
+    result.assignments = allAssIds
+        .map(assId => assignments[assId])
         .filter(filter)
         .map(ass => ({
             ...ass,
@@ -19,5 +24,5 @@ export default ({ courses, currentCourse, chapters, assignments }) => {
             tableCaption: 'Upcoming Assignments'
         }));
 
-    return { assignments: upCommingAssignments };
+    return result;
 };

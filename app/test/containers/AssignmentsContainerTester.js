@@ -12,14 +12,20 @@ describe('ASSIGNMENT_CONTAINER', () => {
         var _initialState;
         beforeEach(() => {
             _initialState = {
-                chapters: {
+                courses: {
+                    1: {
+                        title: "currentCourse"
+                    }
+                },
+                currentCourse: 1,
+                sections: {
                     1: {
                         isExpanded: false,
                         id: 1,
                         title: 'Experiment 1 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 1 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 1',
+                        caption: 'Section 1 Content',
+                        tableSummary: 'A list of content and assignments for Section 1',
                         assignments: [1]
                     },
 
@@ -28,8 +34,8 @@ describe('ASSIGNMENT_CONTAINER', () => {
                         id: 2,
                         title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 2 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 2',
+                        caption: 'Section 2 Content',
+                        tableSummary: 'A list of content and assignments for Section 2',
                         assignments: [2]
                     }
                 },
@@ -65,7 +71,9 @@ describe('ASSIGNMENT_CONTAINER', () => {
 
         it('should_return_proper_value', () => {
             var state = {
-                chapters: _initialState.chapters,
+                courses: _initialState.courses,
+                currentCourse: _initialState.currentCourse,
+                sections: _initialState.sections,
                 assignments: _initialState.assignments
             };
             var newState = transform(state, _props);

@@ -1,6 +1,6 @@
 import React from 'react';
-import Chapter from '../../src/components/Chapter';
-import Chapters from '../../src/components/Chapters';
+import Section from '../../src/components/Section';
+import Sections from '../../src/components/Sections';
 import { shallow, mount, render } from 'enzyme';
 import * as chai from 'chai';
 
@@ -12,14 +12,14 @@ describe('CHAPTERS_COMPONENT', () => {
         var SUT;
         beforeEach(() => {
             props = {
-                chapters: [
+                sections: [
                     {
                         isExpanded: false,
                         id: 1,
                         title: 'Experiment 1 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 1 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 1',
+                        caption: 'Section 1 Content',
+                        tableSummary: 'A list of content and assignments for Section 1',
                         assignments: [1]
                     },
                     {
@@ -27,22 +27,22 @@ describe('CHAPTERS_COMPONENT', () => {
                         id: 2,
                         title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 2 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 2',
+                        caption: 'Section 2 Content',
+                        tableSummary: 'A list of content and assignments for Section 2',
                         assignments: [2]
                     }
                 ]
             };
-            SUT = shallow(<Chapters {...props} />);
+            SUT = shallow(<Sections {...props} />);
         });
 
-        it('should render a DIV with an id of chapters', () => {
-            const div = SUT.find('div.chapters');
+        it('should render a DIV with an id of sections', () => {
+            const div = SUT.find('div.sections');
             div.root.nodes.length.should.equal(1);
         });
 
-        it('should render 2 Chapter components', () => {
-            SUT.find(Chapter).length.should.equal(2);
+        it('should render 2 Section components', () => {
+            SUT.find(Section).length.should.equal(2);
         });
     });
 });

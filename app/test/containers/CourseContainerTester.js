@@ -16,20 +16,21 @@ describe('COURSE_CONTAINER_TRANSFORM', () => {
                         id: 1,
                         courseTitle: 'General Chemistry Laboratory - 6660',
                         active: true,
-                        chapters: []
+                        sections: []
                     }
                 },
-                chapters: {},
-                currentCourse: 1
+                sections: {},
+                currentCourse: 1,
+                swagger: { paths: { getCourseById: { path:'somePath' } } }
             };
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
         it('should return an object with a course with proper ID', () => {
-            SUT(props).id.should.equal(1);
+            SUT(props, {params: { id: 1 }}).id.should.equal(1);
         });
     });
 });

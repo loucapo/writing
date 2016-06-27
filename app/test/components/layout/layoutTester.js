@@ -13,7 +13,7 @@ describe('LAYOUT_COMPONENT', () => {
     describe('when_rendering_component', () => {
         var SUT;
         beforeEach(() => {
-            SUT = shallow(<Layout />);
+            SUT = shallow(<Layout getSwaggerSpec={x=>{}} />);
         });
 
         it('should contain div', () => {

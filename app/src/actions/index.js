@@ -1,7 +1,9 @@
-import { getCourse } from './navigationActions';
-import { toggleChapter } from './chapterActions';
+import { getCourse } from './getCourseActions';
+import { toggleSection } from './sectionActions';
+import { getSwaggerSpec } from './swaggerActions';
 
 export {
-    toggleChapter,
-    getCourse
+    toggleSection,
+    getCourse,
+    getSwaggerSpec
 };

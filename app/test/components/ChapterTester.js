@@ -1,6 +1,6 @@
 import React from 'react';
-import Chapter from '../../src/components/Chapter';
-import ChapterTitle from '../../src/components/ChapterTitle';
+import Section from '../../src/components/Section';
+import SectionTitle from '../../src/components/SectionTitle';
 import AssignmentsContainer from '../../src/containers/AssignmentsContainer';
 import { shallow, mount, render } from 'enzyme';
 import * as chai from 'chai';
@@ -12,12 +12,12 @@ describe('CHAPTER_COMPONENT', () => {
         var props;
         var SUT;
         beforeEach(() => {
-            props = { index: 1, title: 'Test Title', summary: 'Great damn chapter!', id: 1, isExpanded: false };
-            SUT = shallow(<Chapter {...props} />);
+            props = { index: 1, title: 'Test Title', summary: 'Great damn section!', id: 1, isExpanded: false };
+            SUT = shallow(<Section {...props} />);
         });
 
-        it('should render ChapterTitle component', () => {
-            SUT.find(ChapterTitle).length.should.equal(1);
+        it('should render SectionTitle component', () => {
+            SUT.find(SectionTitle).length.should.equal(1);
         });
 
         it('should not render AssignmentsContainer component', () => {
@@ -29,12 +29,12 @@ describe('CHAPTER_COMPONENT', () => {
         var props;
         var SUT;
         beforeEach(() => {
-            props = { index: 1, title: 'Test Title', summary: 'Great damn chapter!', id: 1, isExpanded: true };
-            SUT = shallow(<Chapter {...props} />);
+            props = { index: 1, title: 'Test Title', summary: 'Great damn section!', id: 1, isExpanded: true };
+            SUT = shallow(<Section {...props} />);
         });
 
-        it('should render ChapterTitle component', () => {
-            SUT.find(ChapterTitle).length.should.equal(1);
+        it('should render SectionTitle component', () => {
+            SUT.find(SectionTitle).length.should.equal(1);
         });
 
         it('should render AssignmentsContainer component', () => {

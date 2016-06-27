@@ -44,8 +44,8 @@ browser
     .elementById('main-nav').textPresent('HOME').should.become(true)
     .elementById('main-nav').textPresent('EBOOK').should.become(true)
 
-    //Is there an chapters section?
-    .elementById('chapters').textPresent('Chapters').should.become(true)
+    //Is there an sections section?
+    .elementById('sections').textPresent('Sections').should.become(true)
 
     //Does the drop down work? If so, go ahead and click the assignement
     .elementByClassName("accord-title")

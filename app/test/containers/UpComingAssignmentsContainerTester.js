@@ -11,31 +11,30 @@ describe('UP_COMING_ASSIGNMENTS_CONTAINER_TRANSFORM', () => {
         var props;
         beforeEach(() => {
             props = {
-                currentCourse: 1,
                 courses: {
                     1: {
                         lastUpdated: '',
                         id: 1,
                         courseTitle: 'General Chemistry Laboratory - 6660',
                         active: true,
-                        chapters: [1]
+                        sections: [1]
                     },
                     2: {
                         lastUpdated: '',
                         id: 2,
                         courseTitle: 'General Chemistry Laboratory - 1331',
                         active: true,
-                        chapters: [2]
+                        sections: [2]
                     }
                 },
-                chapters: {
+                sections: {
                     1: {
                         isExpanded: false,
                         id: 1,
                         title: 'Experiment 1 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 1 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 1',
+                        caption: 'Section 1 Content',
+                        tableSummary: 'A list of content and assignments for Section 1',
                         assignments: [1, 2]
                     },
 
@@ -44,8 +43,8 @@ describe('UP_COMING_ASSIGNMENTS_CONTAINER_TRANSFORM', () => {
                         id: 2,
                         title: 'Experiment 2 - Density',
                         summary: 'First, read the information and procedure in your lab manual. Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
-                        caption: 'Chapter 2 Content',
-                        tableSummary: 'A list of content and assignments for Chapter 2',
+                        caption: 'Section 2 Content',
+                        tableSummary: 'A list of content and assignments for Section 2',
                         assignments: [2]
                     }
                 },
@@ -77,15 +76,15 @@ describe('UP_COMING_ASSIGNMENTS_CONTAINER_TRANSFORM', () => {
         });
 
         it('should not return null', () => {
-            SUT(props).should.not.be.null;
+            SUT(props, {params: { id: 1 }}).should.not.be.null;
         });
 
         it('should return a valid object with assignments property', () => {
-            SUT(props).assignments.should.not.be.undefined;
+            SUT(props, {params: { id: 1 }}).assignments.should.not.be.undefined;
         });
 
         it('should return only upcoming assignments', () => {
-            SUT(props).assignments.length.should.equal(1);
+            SUT(props, {params: { id: 1 }}).assignments.length.should.equal(1);
         });
     });
 });

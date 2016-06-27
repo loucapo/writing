@@ -1,2 +1,8 @@
-export default ({ chapters, assignments }, props) =>
-    ({ assignments: chapters[props.id].assignments.map(assId => assignments[assId]) });
+
+export default (state, props) => {
+    const result = { assignments: [] };
+
+    result.assignments = state.sections[props.id].assignments.map(assId => state.assignments[assId]);
+
+    return result;
+};

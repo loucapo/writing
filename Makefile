@@ -20,12 +20,20 @@ docker-build:	docker-build-node
 	docker build -t $(IMAGENAME) -f docker/Dockerfile .
 
 run:	docker-build
-	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend
+	docker-compose -f docker/docker-compose.yml run --service-ports --rm eco_frontend
 
 test:	docker-build
 	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend_test
 
 docker-build-node:
 	docker build -t eco_node -f nodeDocker/Dockerfile ./nodeDocker
+
+
+nginx:	docker-build
+	docker-compose -f dockerNginx/docker-compose.yml run --service-ports
+
+gitClone:
+	git clone git@bitbucket.org:mnv_tech/eco_frontend.git
+
 
 .PHONY: clean install docker-build run docker-clean docker-exec

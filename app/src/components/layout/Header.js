@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import HelpMenuButton from '../HelpMenuButton';
 import CoursesMenuButton from '../CoursesMenuButton';
-
 import logo from './../../sass/image/logo_ml.png';
 import avatar from './../../sass/image/avatar.png';
 
