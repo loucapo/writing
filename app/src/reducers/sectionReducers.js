@@ -1,6 +1,6 @@
 import { EXPAND_SECTION, COURSE_SUCCESS } from './../constants';
 
-const sectionReducer = (state = {}, action = null) => {
+const sectionReducer = (state = {}, action) => {
     switch (action.type) {
         case EXPAND_SECTION:
             {

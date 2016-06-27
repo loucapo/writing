@@ -1,6 +1,3 @@
-/**
- * Created by rharik on 5/3/16.
- */
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import routes from '../routes';

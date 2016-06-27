@@ -1,7 +1,3 @@
-/**
- * Created by rharik on 5/11/16.
- */
-
 import React, { PropTypes } from 'react';
 import Section from './Section';
 
