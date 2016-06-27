@@ -1,0 +1,19 @@
+version: "2"
+services:
+  front_end:
+    extends:
+      file: ../../eco_frontend/docker/docker-compose.yml
+      service: eco_frontend
+    container_name: eco_frontend
+
+  course_builder:
+    extends:
+      file: ../../sls_course_builder_api/docker/docker-compose-dev.yml
+      service: sls_course_builder_api
+    container_name: sls_course_builder_api
+
+  nginx:
+    image: nginx_container
+    ports:
+      - "10080:80"
+    container_name: nginx_container
