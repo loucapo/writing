@@ -14,11 +14,11 @@ docker-build-node:
 
 docker-build-course-builder:	docker-build-node
 	cd ../sls_course_builder_api && $(MAKE) docker-build
-	cd ../compose_sls_system
+	cd ../sls_compose
 
 docker-build-front-end:	docker-build-node
 	cd ../eco_frontend && $(MAKE) docker-build
-	cd ../compose_sls_system
+	cd ../sls_compose
 
 docker-build-nginx:	docker-build-course-builder docker-build-front-end
 	pwd
