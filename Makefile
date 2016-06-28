@@ -5,7 +5,7 @@ clone-course-builder:
 	git clone git@bitbucket.org:mnv_tech/sls_course_builder_api.git ../sls_course_builder_api
 
 clone-front-end:
-	git clone git@bitbucket.org:mnv_tech/eco_frontend.git ../eco_frontend
+	git clone git@bitbucket.org:mnv_tech/eco_frontend.git -b eco_dev --single-branch ../eco_frontend
 
 clone-repos:	clone-course-builder clone-front-end
 
