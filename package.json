@@ -1,0 +1,11 @@
+{
+  "name": "jsf-demo",
+  "description": "JSON-Schema-faker demo gist",
+  "main": "app/src/courseDataGenerator.js",
+  "scripts": {
+    "start": "node app/src/courseDataGenerator.js"
+  },
+  "dependencies": {
+    "json-schema-faker": "^0.3.3"
+  }
+}
