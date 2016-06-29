@@ -1,11 +1,31 @@
 {
-  "name": "jsf-demo",
+  "name": "sls_data",
   "description": "JSON-Schema-faker demo gist",
-  "main": "app/src/courseDataGenerator.js",
+  "main": "app/src/index.js",
+  "version": "0.0.1",
   "scripts": {
-    "start": "node app/src/courseDataGenerator.js"
+    "start": "node app/src/index.js",
+    "lint": "eslint .",
+    "validate": "npm ls"
+  },
+  "publishConfig": {
+    "registry": "http://npm.macmillantech.com/"
   },
   "dependencies": {
+    "json-schema-deref-sync": "^0.3.1",
     "json-schema-faker": "^0.3.3"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.9.2",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.2",
+    "precommit-hook-eslint": "^3.0.0"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }

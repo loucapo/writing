@@ -1,18 +1,18 @@
-const jsf = require('json-schema-faker');
-const schema = require('./schemas/courseSchema.json');
-const cache = require('./objectCache');
+var jsf = require('json-schema-faker');
+var schema = require('./schemas/courseSchemas.json');
+var cache = require('./objectCache');
+var deref = require('json-schema-deref-sync');
+var expandedSchema = deref(schema).definitions;
 
-jsf.format('uuid', function(gen, schema) {
-    return gen.faker.random.uuid();
-});
+jsf.format('uuid', (gen) => gen.faker.random.uuid());
 
-const generateFullCourses = () => {
-    for( var i = 1; i <=3; i++ ){
-        var course = jsf(schema.course);
-        for( var ii = 1; ii <=3; ii++ ){
-            var section = jsf(schema.section);
-            for( var iii = 1; iii <=3; iii++ ){
-                var assignment = jsf(schema.assignment);
+var generateFullCourses = () => {
+    for (var i = 1; i <= 3; i ++) {
+        var course = jsf(expandedSchema.course);
+        for (var ii = 1; ii <= 3; ii ++) {
+            var section = jsf(expandedSchema.section);
+            for (var iii = 1; iii <= 3; iii ++) {
+                var assignment = jsf(expandedSchema.assignment);
                 section.assignments = section.assignments || [];
                 section.assignments.push(assignment);
             }
@@ -21,26 +21,36 @@ const generateFullCourses = () => {
         }
         cache.courses[course.id.toString()] = course;
     }
-    console.log(JSON.stringify(cache.courses, null, 4));
 };
 
-const generateFullSections = () => {
+var generateFullSections = () => {
     for (var ii = 1; ii <= 3; ii++) {
-        var section = jsf(schema.section);
+        var section = jsf(expandedSchema.section);
         for (var iii = 1; iii <= 3; iii++) {
-            var assignment = jsf(schema.assignment);
+            var assignment = jsf(expandedSchema.assignment);
             section.assignments = section.assignments || [];
             section.assignments.push(assignment);
         }
-        cache.section[section.id.toString()] = section;
+        cache.sections[section.id.toString()] = section;
     }
-    console.log(JSON.stringify(cache.courses, null, 4));
 };
 
-const generateAssignments = () => {
-        for (var iii = 1; iii <= 3; iii++) {
-            var assignment = jsf(schema.assignment);
+var generateAssignments = () => {
+    for (var iii = 1; iii <= 3; iii++) {
+        var assignment = jsf(expandedSchema.assignment);
         cache.assignments[assignment.id.toString()] = assignment;
     }
-    console.log(JSON.stringify(cache.courses, null, 4));
+};
+
+var generateAll = () => {
+    generateFullCourses();
+    generateFullSections();
+    generateAssignments();
+};
+
+module.exports = {
+    generateFullCourses,
+    generateFullSections,
+    generateAssignments,
+    generateAll
 };
