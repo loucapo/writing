@@ -135,12 +135,12 @@
                                         "openDate": {
                                             "description": "Date that the activity is open to act upon",
                                             "type": "string",
-                                            "format": "date"
+                                            "format": "date-time"
                                         },
                                         "closeDate": {
                                             "description": "Date that the activity is closes and can no longer be acted upon",
                                             "type": "string",
-                                            "format": "date"
+                                            "format": "date-time"
                                         },
                                         "pointsAvailable": {
                                             "description": "how many points are available to earn",

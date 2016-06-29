@@ -4,11 +4,17 @@ module.exports = function routes(koarouter, controllers) {
         router.get('/', function *() {
             yield controllers.indexController.index.apply(this);
         });
+
+        router.get('/auth', controllers.authController.checkAuth);
+        router.post('/auth', controllers.authController.signIn);
+        router.all('/signout', controllers.authController.signOut);
+        router.get('/index', controllers.indexController.index);
+        router.get('/documentation', controllers.swaggerController.swagger);
         /**
          * @swagger
-         * /course/{id}:
+         * /courses/{id}:
          *   get:
-         *     x-name: getCourseById
+         *     x-name: getCoursesById
          *     description: Returns specified course to the caller
          *     operationId: course
          *     parameters:
@@ -24,12 +30,22 @@ module.exports = function routes(koarouter, controllers) {
          *         schema:
          *             $ref: "#/definitions/course"
          */
-        router.get('/auth', controllers.authController.checkAuth);
-        router.post('/auth', controllers.authController.signIn);
-        router.all('/signout', controllers.authController.signOut);
-        router.get('/index', controllers.indexController.index);
-        router.get('/documentation', controllers.swaggerController.swagger);
-        router.get('/course/:id', controllers.courseController.course);
+        router.get('/courses/:id', controllers.courseController.course);
+
+        /**
+         * @swagger
+         * /available-courses:
+         *   get:
+         *     x-name: availableCourses
+         *     description: Returns array of title/id pairs for display in menu
+         *     operationId: availableCourses
+         *     responses:
+         *       200:
+         *         description: Success
+         *         schema:
+         *             $ref: "#/definitions/availableCourses"
+         */
+        router.get('/available-courses', controllers.courseController.availableCourses);
 
         app.use(router.routes());
         app.use(router.allowedMethods());

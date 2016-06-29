@@ -1,4 +1,4 @@
-module.exports = function (swaggerjsdoc, fs) {
+module.exports = function (swaggerjsdoc, slsData, fs) {
     return function () {
         var options = {
             swaggerDefinition: {
@@ -22,7 +22,7 @@ module.exports = function (swaggerjsdoc, fs) {
         };
 
         var swaggerSpec = swaggerjsdoc(options);
-        swaggerSpec.definitions = require('../swagger/definitions.json'); // eslint-disable-line global-require
+        swaggerSpec.definitions = slsData.courseSchema;
         fs.writeFileSync('./app/src/swagger/swagger_spec.json', JSON.stringify(swaggerSpec, null, 4), { mode: 0o777 });
     };
 };
