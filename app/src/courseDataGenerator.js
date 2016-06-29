@@ -50,8 +50,15 @@ var generateAssignments = () => {
     }
 };
 
+var generateAll = () => {
+    generateFullCourses();
+    generateFullSections();
+    generateAssignments();
+};
+
 module.exports = {
     generateFullCourses,
     generateFullSections,
-    generateAssignments
+    generateAssignments,
+    generateAll
 };
