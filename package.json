@@ -3,9 +3,22 @@
   "description": "JSON-Schema-faker demo gist",
   "main": "app/src/courseDataGenerator.js",
   "scripts": {
-    "start": "node app/src/courseDataGenerator.js"
+    "start": "node app/src/courseDataGenerator.js",
+    "lint": "eslint .",
+    "validate": "npm ls"
   },
   "dependencies": {
     "json-schema-faker": "^0.3.3"
-  }
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.9.2",
+    "precommit-hook-eslint": "^3.0.0"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }

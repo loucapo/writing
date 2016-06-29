@@ -1,4 +1,4 @@
-var cache = require('objectCache');
+var cache = require('./objectCache');
 var courseDataGenerator = require('./courseDataGenerator');
 var courseSchema = require('./schemas/courseSchemas.json');
 

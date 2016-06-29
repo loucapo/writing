@@ -1,13 +1,13 @@
 
 
 module.exports = {
-    courses:{
-        
+    courses: {
+
     },
     sections: {
-        
+
     },
     assignments: {
-        
+
     }
 };
