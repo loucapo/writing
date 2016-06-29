@@ -1,7 +1,9 @@
-var objectCache = require('objectCache');
+var cache = require('objectCache');
 var courseDataGenerator = require('./courseDataGenerator');
+var courseSchema = require('./schemas/courseSchemas.json');
 
 module.exports = {
-    objectCache,
-    courseDataGenerator
+    cache,
+    courseDataGenerator,
+    courseSchema
 };
