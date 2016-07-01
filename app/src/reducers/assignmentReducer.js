@@ -1,10 +1,16 @@
 import { COURSE_SUCCESS } from './../constants';
 
-const assignmentReducer = (state = {}, action = null) => {
+const assignments = (state = {}, action = null) => {
     switch (action.type) {
         case COURSE_SUCCESS:
             {
-                return Object.assign({}, state, action.payload.entities.assignments);
+                const formattedAssignments = action.payload.entities.assignments;
+                Reflect.ownKeys(formattedAssignments).forEach(x => {
+                    const ass = formattedAssignments[x];
+                    ass.pointsAvailable = ass.pointsAvailable ? Math.trunc(ass.pointsAvailable) : undefined;
+                    ass.pointsEarned = ass.pointsEarned ? Math.trunc(ass.pointsEarned) : undefined;
+                });
+                return Object.assign({}, state, formattedAssignments);
             }
         default:
             return state;
@@ -12,5 +18,5 @@ const assignmentReducer = (state = {}, action = null) => {
 };
 
 export {
-    assignmentReducer
+    assignments
 };

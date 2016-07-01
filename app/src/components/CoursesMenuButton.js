@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const CourseMenuButton = ({ items }) => {
     const menuItems = items.map((e) =>
         (<MenuItem key={e.id} value={e.id} >
-            <Link to={'/course/' + e.id} >{e.name}</Link>
+            <Link to={'/course/' + e.id} >{e.title}</Link>
         </MenuItem>));
 
     return (

@@ -10,7 +10,7 @@ const Header = ({ userName, headerMenuCourses, headerMenuHelp }) => (<div>
             <img src={logo} alt="Macmillan Learning Logo" />
         </div>
         <nav id="header-nav" role="navigation" >
-            <CoursesMenuButton {...headerMenuCourses} />
+            <CoursesMenuButton items={headerMenuCourses} />
             <HelpMenuButton {...headerMenuHelp} />
             <div id="nav-profile" >
                 <span>{userName}</span>
@@ -42,7 +42,7 @@ const Header = ({ userName, headerMenuCourses, headerMenuHelp }) => (<div>
 
 Header.propTypes = {
     userName: PropTypes.string,
-    headerMenuCourses: PropTypes.object,
+    headerMenuCourses: PropTypes.array,
     headerMenuHelp: PropTypes.object
 };
 

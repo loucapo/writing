@@ -6,7 +6,7 @@ const SectionTitle = ({ isExpanded, index, title, id, toggleSection }) => (
             <div className="accord-toggle" ></div>
             <div className="progress" >
                 <div className="num" >{index}</div>
-                <i className="icon-icon_down_arrow-0" />;
+                <i className="icon-icon_down_arrow-0" />
 
             </div>
             <div className="text" >
@@ -21,7 +21,7 @@ SectionTitle.propTypes = {
     isExpanded: PropTypes.bool,
     index: PropTypes.number,
     title: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
     toggleSection: PropTypes.func
 };
 

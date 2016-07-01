@@ -16,7 +16,7 @@ install:
 	rm -rf ./node_modules
 	npm install --silent
 
-docker-build:	docker-build-node
+docker-build:
 	docker build -t $(IMAGENAME) -f docker/Dockerfile .
 
 run:	docker-build
@@ -29,10 +29,7 @@ docker-build-node:
 	docker build -t eco_node -f nodeDocker/Dockerfile ./nodeDocker
 
 
-nginx:	docker-build
-	docker-compose -f dockerNginx/docker-compose.yml run --service-ports
-
-gitClone:
+   gitClone:
 	git clone git@bitbucket.org:mnv_tech/eco_frontend.git
 
 

@@ -6,7 +6,7 @@ export default (state, { params }) => {
 
     const { sections, assignments } = state;
     const course = state.courses[id];
-
+    if (!course) { return result; }
     const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
 
     const allAssIds = course.sections
