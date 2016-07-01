@@ -1,0 +1,27 @@
+{
+  "frontend":{},
+  "env": "dev",
+  "app": {
+    "title": "Course Builder",
+    "port": 3000,
+    "baseUrl": "http://localhost/",
+    "env": "Dev",
+    "keys": [
+      "CourseBuilder"
+    ],
+    "root": "./"
+  },
+  "configs": {
+    "children": {
+      "postgres": {
+        "connectionString": "postgres://methodfitness:password@postgres/",
+        "postgres": "postgres",
+        "database": "methodfitness"
+      }
+    },
+    "logger": {
+      "moduleName": "Api"
+    },
+    "env": "dev"
+  }
+}
