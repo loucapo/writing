@@ -22,7 +22,7 @@ module.exports = function (swaggerjsdoc, slsData, fs) {
         };
 
         var swaggerSpec = swaggerjsdoc(options);
-        swaggerSpec.definitions = slsData.courseSchema;
+        swaggerSpec.definitions = slsData.definitions;
         fs.writeFileSync('./app/src/swagger/swagger_spec.json', JSON.stringify(swaggerSpec, null, 4), { mode: 0o777 });
     };
 };

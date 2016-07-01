@@ -30,22 +30,23 @@ module.exports = function routes(koarouter, controllers) {
          *         schema:
          *             $ref: "#/definitions/course"
          */
-        router.get('/courses/:id', controllers.courseController.course);
+        router.get('/courses/:id', controllers.courseController.courses);
 
         /**
          * @swagger
-         * /available-courses:
+         * /courses/available:
          *   get:
-         *     x-name: availableCourses
-         *     description: Returns array of title/id pairs for display in menu
-         *     operationId: availableCourses
+         *     x-name: coursesAvailableByUID
+         *     description: Returns array of title/id pairs for display in menu by User Id
+         *     operationId: coursesAvailableByUID
          *     responses:
          *       200:
          *         description: Success
          *         schema:
-         *             $ref: "#/definitions/availableCourses"
+         *             $ref: "#/definitions/availableCourse"
          */
-        router.get('/available-courses', controllers.courseController.availableCourses);
+        // TODO figure out route symantics
+        router.get('/courses/available', controllers.courseController.coursesAvailableByUID);
 
         app.use(router.routes());
         app.use(router.allowedMethods());

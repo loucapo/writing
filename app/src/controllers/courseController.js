@@ -1,10 +1,10 @@
 module.exports = function (repository) {
     return {
-        courses: function *(id) { // eslint-disable-line object-shorthand
-            this.body = yield repository.getCourseById(id);
+        courses: function *() { // eslint-disable-line object-shorthand
+            this.body = yield repository.getCourseById(this.params.id);
         },
-        availableCourses: function *() { // eslint-disable-line object-shorthand
-            this.body = yield repository.availableCourses();
+        coursesAvailableByUID: function *() { // eslint-disable-line object-shorthand
+            this.body = yield repository.coursesAvailableByUID();
         }
     };
 };
