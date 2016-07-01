@@ -3,7 +3,7 @@
  */
 
 import { EXPAND_SECTION } from './../../src/constants';
-import { sectionReducer as SUT } from './../../src/reducers/sectionReducers';
+import { sections as SUT } from './../../src/reducers/sectionReducers';
 import * as chai from 'chai';
 const should = chai.should();
 

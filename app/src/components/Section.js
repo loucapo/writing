@@ -18,7 +18,7 @@ Section.propTypes = {
     index: PropTypes.number,
     title: PropTypes.string,
     summary: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string,
     isExpanded: PropTypes.bool,
     toggleSection: PropTypes.func
 };

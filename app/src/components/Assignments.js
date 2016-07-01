@@ -6,16 +6,16 @@ const Assignments = ({ assignments }) => (
     <div id="assignments" >
         <h2>Assignments</h2>
         <table
-            summary={(assignments.length > 0 && assignments[0].tableSummary)
+            summary={(assignments && assignments.length > 0 && assignments[0].tableSummary)
             ? assignments[0].tableSummary
             : 'A list of upcoming course content and assignments'}
         >
-            <caption>{(assignments.length > 0 && assignments[0].tableCaption)
+            <caption>{(assignments && assignments.length > 0 && assignments[0].tableCaption)
                 ? assignments[0].tableCaption
                 : 'Section 1 Assignments'}</caption>
             <thead>
                 <tr>
-                    <th className="ath-upcoming" >{(assignments.length > 0 && assignments[0].isUpcoming)
+                    <th className="ath-upcoming" >{(assignments && assignments.length > 0 && assignments[0].isUpcoming)
                         ? assignments[0].isUpcoming
                         : 'CONTENT'}</th>
                     <th className="cth-done" ></th>
@@ -25,7 +25,7 @@ const Assignments = ({ assignments }) => (
                 </tr>
             </thead>
             <tbody>
-            {assignments.map(assignment => <Assignment key={assignment.id} assignment={assignment} />)}
+            {assignments && assignments.map(assignment => <Assignment key={assignment.id} assignment={assignment} />)}
             </tbody>
         </table>
     </div>

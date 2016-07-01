@@ -1,16 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import routes from '../routes';
-import DevTools from './DevTools';
-import { Router } from 'react-router';
+import StartUpContainer from './StartUpContainer';
 
-const Root = ({ store, history }) =>
-    (<Provider store={store} >
-        <div>
-            <Router history={history} routes={routes} />
-            <DevTools />
-        </div>
-    </Provider>);
+const Root = ({ store, history }) => (<Provider store={store} >
+    <StartUpContainer history={history} />
+</Provider>);
 
 Root.propTypes = {
     store: PropTypes.object.isRequired,

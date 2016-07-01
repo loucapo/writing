@@ -21,7 +21,7 @@ describe('COURSE_CONTAINER_TRANSFORM', () => {
                 },
                 sections: {},
                 currentCourse: 1,
-                swagger: { paths: { getCourseById: { path:'somePath' } } }
+                swagger: { paths: { getCoursesById: { path:'somePath' } } }
             };
         });
 

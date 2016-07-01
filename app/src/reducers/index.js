@@ -1,19 +1,22 @@
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
-import { sectionReducer } from './sectionReducers';
-import { assignmentReducer } from './assignmentReducer';
+import { sections } from './sectionReducers';
+import { assignments } from './assignmentReducer';
+import { headerMenuCourses } from './headerMenuCoursesReducer';
 import { courses } from './navigationReducers';
 import { swagger } from './swaggerSpecReducer';
+import { startUp } from './startUpReducer';
 
 const reducers = combineReducers({
     routing,
     auth: (state = {}) => state,
     courses,
-    sections: sectionReducer,
-    assignments: assignmentReducer,
-    headerMenuCourses: (state = {}) => state,
+    sections,
+    assignments,
+    headerMenuCourses,
     headerMenuHelp: (state = {}) => state,
-    swagger
+    swagger,
+    startUp
 });
 
 export default reducers;

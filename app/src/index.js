@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
-
+import { bootstrapApp } from './actions';
 require('./sass/master.scss');
 require('./sass/icons.data.svg.css');
 
@@ -94,11 +94,16 @@ const initialState = {
             pointsTotal: 300,
             type: 'Assesment'
         }
+    },
+    startUp: {
+        appReady: false,
+        swaggerStarted: false
     }
 };
 
 const store = configureStore(initialState);
 const history = syncHistoryWithStore(browserHistory, store);
+bootstrapApp(store);
 
 render(<Root store={store} history={history} />,
     document.getElementById('root')
