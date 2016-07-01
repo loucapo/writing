@@ -7,12 +7,15 @@ module.exports = function (koaresponsetime,
                           koaunless,
                            swaggerSpec,
                            swaggerToolsPromise,
+                           slsData, // lame
                           config) {
     return function (app) {
         if (!config.app.keys) {
             throw new Error('Please add session secret key in the config file!');
         }
         app.keys = config.app.keys; // eslint-disable-line no-param-reassign
+
+        slsData.generateAll();// also lame
         swaggerSpec();
 
         // this is basically the middleware chain. it starts here goes down then
