@@ -1,17 +1,18 @@
 var cache = require('./objectCache');
 var courseDataGenerator = require('./courseDataGenerator');
-var courseSchema = require('./schemas/courseSchemas.json');
+var schema = require('./schemas/courseSchemas.json');
+var deref = require('json-schema-deref-sync');
+var definitions = deref(schema).definitions;
 
-var schemas = {
-    definitions: {
-        courses: courseSchema.course,
-        section: courseSchema.section,
-        assignment: courseSchema.assignment
-    }
+
+var generateAll = () => {
+    // more later hence the curlies
+    courseDataGenerator.generateAll();
 };
 
 module.exports = {
     cache,
     courseDataGenerator,
-    schemas
+    definitions,
+    generateAll
 };

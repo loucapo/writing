@@ -1,14 +1,18 @@
 {
-  "name": "jsf-demo",
+  "name": "sls_data",
   "description": "JSON-Schema-faker demo gist",
-  "main": "app/src/courseDataGenerator.js",
+  "main": "app/src/index.js",
   "version": "0.0.1",
   "scripts": {
-    "start": "node app/src/courseDataGenerator.js",
+    "start": "node app/src/index.js",
     "lint": "eslint .",
     "validate": "npm ls"
   },
+  "publishConfig": {
+    "registry": "http://npm.macmillantech.com/"
+  },
   "dependencies": {
+    "json-schema-deref-sync": "^0.3.1",
     "json-schema-faker": "^0.3.3"
   },
   "devDependencies": {
