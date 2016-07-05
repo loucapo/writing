@@ -1,9 +1,13 @@
 var cache = require('./objectCache');
 var courseDataGenerator = require('./courseDataGenerator');
-var schema = require('./schemas/courseSchemas.json');
+var courseSchemas = require('./schemas/courseSchemas.json');
+var viewModels = require('./schemas/viewModels.json');
 var deref = require('json-schema-deref-sync');
-var definitions = deref(schema).definitions;
 
+var gatherDefinitions = () => {
+    var defs = { definitions: Object.assign(courseSchemas.definitions, viewModels.definitions) };
+    return deref(defs).definitions;
+};
 
 var generateAll = () => {
     // more later hence the curlies
@@ -13,6 +17,6 @@ var generateAll = () => {
 module.exports = {
     cache,
     courseDataGenerator,
-    definitions,
+    definitions: gatherDefinitions,
     generateAll
 };
