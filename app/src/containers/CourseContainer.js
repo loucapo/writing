@@ -6,27 +6,27 @@ import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 
 class CourseContainer extends Component {
-    componentDidMount() { this.loadData(); }
-    componentDidUpdate() { this.loadData(); }
-    loadData() { this.props.getCourse(this.props.url, this.props.id); }
+  componentDidMount() { this.loadData(); }
+  componentDidUpdate() { this.loadData(); }
+  loadData() { this.props.getCourse(this.props.url, this.props.id); }
 
-    render() {
-        if (this.props.isFetching) {
-            return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
-        }
-        if (this.props.errorMessage) {
-            return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
-        }
-        return (<Course {...this.props} />);
+  render() {
+    if (this.props.isFetching) {
+      return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
     }
+    if (this.props.errorMessage) {
+      return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
+    }
+    return (<Course {...this.props} />);
+  }
 }
 
 CourseContainer.propTypes = {
-    url: PropTypes.string,
-    id: PropTypes.string,
-    isFetching: PropTypes.string,
-    errorMessage: PropTypes.string,
-    getCourse: PropTypes.func
+  url: PropTypes.string,
+  id: PropTypes.string,
+  isFetching: PropTypes.string,
+  errorMessage: PropTypes.string,
+  getCourse: PropTypes.func
 };
 
 export default withRouter(connect(courseSelector, { getCourse })(CourseContainer));

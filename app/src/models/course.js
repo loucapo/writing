@@ -6,17 +6,18 @@ const assignmentSchema = new Schema('assignments');
 
 
 courseSchema.define({
-    sections: arrayOf(sectionSchema)
+  sections: arrayOf(sectionSchema)
 });
 
 sectionSchema.define({
-    assignments: arrayOf(assignmentSchema)
+  assignments: arrayOf(assignmentSchema)
 });
 
 assignmentSchema.define({});
 
 export {
-    courseSchema,
-    sectionSchema,
-    assignmentSchema
+  courseSchema,
+  sectionSchema,
+  assignmentSchema
 };
+

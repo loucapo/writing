@@ -5,9 +5,10 @@ import { getAvailableCoursesByUID } from './getAvailableCoursesActions';
 import { bootstrapApp } from './bootstrapApp';
 
 export {
-    toggleSection,
-    getCourse,
-    getSwaggerSpec,
-    getAvailableCoursesByUID,
-    bootstrapApp
+  toggleSection,
+  getCourse,
+  getSwaggerSpec,
+  getAvailableCoursesByUID,
+  bootstrapApp
 };
+

@@ -8,15 +8,16 @@ import { swagger } from './swaggerSpecReducer';
 import { startUp } from './startUpReducer';
 
 const reducers = combineReducers({
-    routing,
-    auth: (state = {}) => state,
-    courses,
-    sections,
-    assignments,
-    headerMenuCourses,
-    headerMenuHelp: (state = {}) => state,
-    swagger,
-    startUp
+  routing,
+  auth: (state = {}) => state,
+  courses,
+  sections,
+  assignments,
+  headerMenuCourses,
+  headerMenuHelp: (state = {}) => state,
+  swagger,
+  startUp
 });
 
 export default reducers;
+

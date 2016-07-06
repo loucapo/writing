@@ -4,7 +4,7 @@ import Layout from './../components/layout/layout.js';
 // import { bindActionCreators } from 'redux';
 
 function mapStateToProps() {
-    return {};
+  return {};
 }
 
 // function mapDispatchToProps(dispatch) {
@@ -12,4 +12,3 @@ function mapStateToProps() {
 // }
 
 export default connect(mapStateToProps, { getSwaggerSpec })(Layout);
-
