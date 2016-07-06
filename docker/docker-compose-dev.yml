@@ -4,7 +4,7 @@ services:
     image: sls_course_builder_api
     volumes:
       - ./../app:/home/current/app
-    command: npm run start_dev #top -b #
+    command: npm run start_dev #top -b #top -b #
    # external_links:
     #  - cdn:frontend
     environment:

@@ -5,9 +5,6 @@ module.exports = function routes(koarouter, controllers) {
             yield controllers.indexController.index.apply(this);
         });
 
-        router.get('/auth', controllers.authController.checkAuth);
-        router.post('/auth', controllers.authController.signIn);
-        router.all('/signout', controllers.authController.signOut);
         router.get('/index', controllers.indexController.index);
         router.get('/documentation', controllers.swaggerController.swagger);
         /**
@@ -28,7 +25,7 @@ module.exports = function routes(koarouter, controllers) {
          *       200:
          *         description: Success
          *         schema:
-         *             $ref: "#/definitions/course"
+         *             $ref: "#/definitions/courseNotifcation"
          */
         router.get('/courses/:id', controllers.courseController.courses);
 
@@ -43,7 +40,7 @@ module.exports = function routes(koarouter, controllers) {
          *       200:
          *         description: Success
          *         schema:
-         *             $ref: "#/definitions/availableCourse"
+         *             $ref: "#/definitions/availableCourseNotification"
          */
         // TODO figure out route symantics
         router.get('/courses/available', controllers.courseController.coursesAvailableByUID);

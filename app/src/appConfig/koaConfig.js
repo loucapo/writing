@@ -3,8 +3,6 @@ module.exports = function (koaresponsetime,
                           koacompress,
                           koaerror,
                           koabodyparser,
-                          koajwt,
-                          koaunless,
                            swaggerSpec,
                            swaggerToolsPromise,
                            slsData, // lame
@@ -22,25 +20,6 @@ module.exports = function (koaresponsetime,
         // hits the routes then comes back up and resolves
 
         app.use(koalogger());
-
-        // handles failed token // actuall handles all errors, so figure out a way to figure out what
-        // error. perhaps use custom/specific errors that can be indicator.
-        // also make this emit a continuation rather than free form shite.
-        // koa-jwt just emits a 401 with one of a couple messages.  If we use this we should fork and emit a
-        // specific error so we can discern between a 401 and a jwt failure.
-        app.use(function *(next) {
-            try {
-                yield next;
-            } catch (err) {
-                if (err.status === 401) {
-                    this.status = 401;
-                    this.body = 'Protected resource, use Authorization header to get access\n';
-                } else {
-                    throw err;
-                }
-            }
-        });
-        // app.use(koajwt({ secret: 'shared-secret' }).unless({path: [/^\/auth/]}));
 
         app.use(koaerror());
         app.use(koabodyparser());
