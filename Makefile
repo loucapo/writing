@@ -7,6 +7,9 @@ clone-course-builder:
 clone-front-end:
 	git clone git@bitbucket.org:mnv_tech/eco_frontend.git -b eco_dev --single-branch ../eco_frontend
 
+clone-data:
+	git clone git@bitbucket.org:mnv_tech/sls_data.git -b sls_dev --single-branch ../sls_data
+
 clone-repos:	clone-course-builder clone-front-end
 
 docker-build-node:
