@@ -1,11 +1,15 @@
 var cache = require('./objectCache');
 var courseDataGenerator = require('./courseDataGenerator');
 var courseSchemas = require('./schemas/courseSchemas.json');
+var specificNotifications = require('./schemas/getSpecificNotifications.json');
 var viewModels = require('./schemas/viewModels.json');
 var deref = require('json-schema-deref-sync');
 
 var gatherDefinitions = () => {
-    var defs = { definitions: Object.assign(courseSchemas.definitions, viewModels.definitions) };
+    var defs = { definitions: Object.assign({},
+        courseSchemas.definitions,
+        viewModels.definitions,
+        specificNotifications.definitions) };
     return deref(defs).definitions;
 };
 

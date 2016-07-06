@@ -1,0 +1,47 @@
+{
+    "definitions": {
+        "courseNotification": {
+            "title": "courseNotification",
+            "description": "Object returned by all api calls that specifies, http status code, success, payload and or error messages",
+            "type": "object",
+            "required": [
+                "status",
+                "success"
+            ],
+            "properties": {
+                "note": {
+                    "description": "Http status code",
+                    "type": "object",
+                    "allOf": [{"$ref": "#/definitions/notification"}],
+                    "properties": {
+                        "payload": {
+                            "description": "The desired payload of a successful api call",
+                            "type": "object",
+                            "$ref": "#/definitions/course"
+                        }
+                    }
+                },
+                "success": {
+                    "description": "Success or failure of api call",
+                    "type": "bool"
+                },
+                "message": {
+                    "description": "A message that does not fit in the error category",
+                    "type": "string"
+                },
+                "payload": {
+                    "description": "The desired payload of a successful api call",
+                    "type": "object",
+                    "$ref": "#/definitions/course"
+                }
+            },
+            "errors": {
+                "description": "An array of errors pertaining to the attempted api call",
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/error"
+                }
+            }
+        }
+    }
+}

@@ -23,5 +23,11 @@ describe('JOIN DEFINITIONS', () => {
             var defs = SUT.definitions();
             defs.course.properties.sections.should.be.an.object;
         });
+
+        it('should_properly_set_up_the_course_notification', () => {
+            var defs = SUT.definitions();
+            console.log(JSON.stringify(defs, null, 4));
+            defs.courseNotification.properties.payload.title.should.equal('Course');
+        })
     });
 });
