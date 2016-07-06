@@ -1,5 +1,5 @@
 {
-  "frontend":{},
+  "frontend": {},
   "env": "dev",
   "app": {
     "title": "Course Builder",
@@ -11,17 +11,9 @@
     ],
     "root": "./"
   },
-  "configs": {
-    "children": {
-      "postgres": {
-        "connectionString": "postgres://methodfitness:password@postgres/",
-        "postgres": "postgres",
-        "database": "methodfitness"
-      }
-    },
-    "logger": {
-      "moduleName": "Api"
-    },
-    "env": "dev"
+  "postgres": {
+    "connectionString": "postgres://moodle:password@postgres/",
+    "postgres": "postgres",
+    "database": "methodfitness"
   }
 }

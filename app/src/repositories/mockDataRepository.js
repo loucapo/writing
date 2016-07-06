@@ -2,8 +2,7 @@ module.exports = function (slsData, Promise) {
     return {
         getCourseById(id) {
             const course = slsData.cache.courses[id];
-            var newVar = course ? Promise.resolve(course) : Promise.reject(course);
-            return newVar;
+            return course ? Promise.resolve(course) : Promise.reject(course);
         },
         coursesAvailableByUID() {
             var courses = slsData.cache.courses;
