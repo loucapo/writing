@@ -1,8 +1,8 @@
 {
   "name": "sls_data",
-  "description": "JSON-Schema-faker demo gist",
+  "description": "JSON-Schema and faker",
   "main": "app/src/index.js",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "scripts": {
     "start": "node app/src/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
@@ -10,7 +10,7 @@
     "validate": "npm ls"
   },
   "publishConfig": {
-    "registry": "http://npm.macmillantech.com/"
+    "registry": "http://npm.macmillantech.com:8080/"
   },
   "dependencies": {
     "json-schema-deref-sync": "^0.3.1",

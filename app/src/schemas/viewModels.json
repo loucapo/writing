@@ -38,15 +38,11 @@
             },
             "success":{
                "description":"Success or failure of api call",
-               "type":"bool"
+               "type":"boolean"
             },
             "message":{
                "description":"A message that does not fit in the error category",
                "type":"string"
-            },
-            "payload":{
-               "description":"The desired payload of a successful api call",
-               "type":"object"
             },
             "errors":{
                "description":"An array of errors pertaining to the attempted api call",
