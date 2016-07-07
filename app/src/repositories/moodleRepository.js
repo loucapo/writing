@@ -1,19 +1,33 @@
 
-module.exports = function (pgbluebird, config, transformMoodleToSLS) {
+module.exports = function (slsdata, pgbluebird, config, transformMoodleANDSLS, ajv) {
     return {
         getCourseById(id) {
             var cnn;
             var pg = new pgbluebird(); // eslint-disable-line new-cap
+            var sql = `select * mdl_course where id = ${id};
+                        select * from mdl_course_sections where course = ${id};
+                        select a.id, 
+                            a.section as sectionId, 
+                            mm.module as moduleId, 
+                            lti.id as instance 
+                            lti.name, 
+                            lti.instructorcustomparameters as json
+                        from mdl_modules mm 
+                            inner join mdl_course_modules a on mm.id = a.module
+                            inner join mdl_lti lti on a.instance = lti.id
+                        where mm.name = 'lti' 
+                            and a.course = ${id};`;
             return pg.connect(config.postgres.connectionString)
                 .then((connection) => {
                     cnn = connection;
-                    return cnn.client.query(`select c.*, g.enrolmentkey 
-                     from mdl_course c 
-                     left join mdl_groups g on c.id = g.courseid 
-                     where c.id = ` + id);
+                    return cnn.client.query(sql);
                 }).then((result) => {
-                    var course = transformMoodleToSLS(result.rows[0]);
+                    var course = transformMoodleANDSLS(result /* wtfe from result */);
                     cnn.done();
+                    var valid = new ajv().validate(slsdata.definitions.course, course); // eslint-disable-line new-cap
+                    if (!valid) {
+                        throw new Error(ajv.errorsText());
+                    }
                     return course;
                 });
         },
