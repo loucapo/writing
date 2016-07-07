@@ -1,6 +1,6 @@
 ### Getting Started
 Assuming that the repos have not been clone.
-If they have been cloned make sure `eco_frontend` is on branch `eco_dev` then skip to step 2.
+If they have been cloned make sure `sls_frontend` is on branch `sls_dev` then skip to step 2.
 
 #### 1) Clone
     make clone-repos
@@ -15,7 +15,7 @@ If they have been cloned make sure `eco_frontend` is on branch `eco_dev` then sk
 
 ### Overview
 
-SLS Compose is an orchestration script that builds docker containers for `eco_frontend`
+SLS Compose is an orchestration script that builds docker containers for `sls_frontend`
 and `sls_course_builder_api`. It downloads all the necessary dependancies per container and severs
 the app via `nginx`.
 
