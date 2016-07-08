@@ -1,10 +1,8 @@
 FROM eco_node:latest
 
-MAINTAINER reharik@gmail.com
+ADD mocha-webpack.opts .
+ADD package.json .
 
-ADD ./package.json ./package.json
-#ADD ./bablerc ./bablerc
-
-RUN npm install --silent
+RUN npm install -q
 
 ADD ./app /$HOME/app
