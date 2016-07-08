@@ -1,17 +1,17 @@
 ### Start me up!
 
-    git clone git@bitbucket.org:mnv_tech/eco_frontend.git
+    git clone git@bitbucket.org:mnv_tech/sls_frontend.git
     must use node >= 4.0
-    cd eco_frontend
+    cd sls_frontend
     npm install
     npm start
     navigate in browser to localhost:8080
 
 ### RUN ALL THE THINGS VIA DOCKER
 
-    [ ! -d eco_frontend ] && git clone git@bitbucket.org:mnv_tech/eco_frontend.git
+    [ ! -d sls_frontend ] && git clone git@bitbucket.org:mnv_tech/sls_frontend.git
     [ ! -d sls_course_builder_api ] && git clone git@bitbucket.org:mnv_tech/sls_course_builder_api.git
-    cd eco_frontend && make docker-build-node docker-build
+    cd sls_frontend && make docker-build-node docker-build
     cd dockerNginx && docker-compose up -d
     open http://localhost:10080
     open http://localhost:10080/api
