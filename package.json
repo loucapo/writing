@@ -2,7 +2,7 @@
   "name": "sls_data",
   "description": "JSON-Schema and faker",
   "main": "app/src/index.js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "start": "node app/src/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
