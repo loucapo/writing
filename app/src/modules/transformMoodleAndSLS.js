@@ -1,7 +1,7 @@
 
 
 // TODO ok, so I don't really know what will be coming back from db so sets is just a stand in.
-module.exports = function (moment, slsdata, ajv, config) {
+module.exports = function (moment, slsData, ajv) { // , config) {
     return {
         transformCourseFromMoodle(sets) {
             return {
@@ -20,8 +20,8 @@ module.exports = function (moment, slsdata, ajv, config) {
                                 sectionId: s.id,
                                 activityId: a.module,
                                 ltiId: a.instance,
-                                name: a.name,
-                                link: config.ltiLink + a.id
+                                name: a.name
+                                // link: config.ltiLink + a.id
                             };
                             var data = JSON.parse(a.json);
                             assignment.type = data.type || '';
@@ -123,7 +123,7 @@ module.exports = function (moment, slsdata, ajv, config) {
         },
 
         transformCourseToUpsertSQL(course) {
-            var valid = new ajv().validate(slsdata.definitions.course, course); // eslint-disable-line new-cap
+            var valid = new ajv().validate(slsData.definitions.course, course); // eslint-disable-line new-cap
             if (!valid) {
                 throw new Error(ajv.errorsText());
             }

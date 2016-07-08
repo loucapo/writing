@@ -11,3 +11,4 @@ sls_course_builder_api:
     APPLICATION_NAME: sls_course_builder_api
   ports:
     - "3000:3000"
+  container_name: sls_course_builder_api

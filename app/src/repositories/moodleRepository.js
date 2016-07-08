@@ -1,5 +1,5 @@
 
-module.exports = function (slsdata, pgbluebird, config, transformMoodleANDSLS, ajv) {
+module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, ajv) {
     return {
         getCourseById(id) {
             var cnn;
@@ -22,9 +22,9 @@ module.exports = function (slsdata, pgbluebird, config, transformMoodleANDSLS, a
                     cnn = connection;
                     return cnn.client.query(sql);
                 }).then((result) => {
-                    var course = transformMoodleANDSLS(result /* wtfe from result */);
+                    var course = transformMoodleAndSLS(result /* wtfe from result */);
                     cnn.done();
-                    var valid = new ajv().validate(slsdata.definitions.course, course); // eslint-disable-line new-cap
+                    var valid = new ajv().validate(slsData.definitions.course, course); // eslint-disable-line new-cap
                     if (!valid) {
                         throw new Error(ajv.errorsText());
                     }

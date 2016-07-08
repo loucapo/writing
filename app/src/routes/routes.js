@@ -25,7 +25,7 @@ module.exports = function routes(koarouter, controllers) {
          *       200:
          *         description: Success
          *         schema:
-         *             $ref: "#/definitions/courseNotifcation"
+         *             $ref: "#/definitions/courseNotification"
          */
         router.get('/courses/:id', controllers.courseController.courses);
 
