@@ -8,9 +8,9 @@ export default (state, { params }) => {
   const course = state.courses[id];
   if (!course) {
     return result; }
-  const filter = a => {
-    if (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO') {
-      return a;
+  const isUpcomingFilter = assignment => {
+    if (moment.unix(assignment.closeDate) < moment() && assignment.badge === 'TO DO') {
+      return assignment;
     }
     return null;
   };
@@ -22,7 +22,7 @@ export default (state, { params }) => {
 
   result.assignments = allAssIds
     .map(assId => assignments[assId])
-    .filter(filter)
+    .filter(isUpcomingFilter)
     .map(ass => ({
       ...ass,
       isUpcoming: 'UPCOMING',
