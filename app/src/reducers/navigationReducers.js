@@ -14,7 +14,7 @@ function courses(state = {}, action = null) {
     case COURSE_SUCCESS:
       {
         const entity = action.payload.entities.courses;
-        Object.keys(entity).forEach(x => entity[x][LAST_FETCHED] = moment());
+        Object.keys(entity).forEach(x => {entity[x][LAST_FETCHED] = moment();});
         return Object.assign({}, state, entity, { isFetching: false, error: undefined });
       }
     case COURSE_FAILURE:
@@ -29,4 +29,3 @@ function courses(state = {}, action = null) {
 }
 
 export { courses };
-

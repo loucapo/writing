@@ -8,7 +8,12 @@ export default (state, { params }) => {
   const course = state.courses[id];
   if (!course) {
     return result; }
-  const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
+  const filter = a => {
+    if (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO') {
+      return a;
+    }
+    return null;
+  };
 
   const allAssIds = course.sections
     .map(sectionId => sections[sectionId])
@@ -27,4 +32,3 @@ export default (state, { params }) => {
 
   return result;
 };
-
