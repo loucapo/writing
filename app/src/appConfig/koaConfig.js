@@ -1,7 +1,7 @@
 module.exports = function (koaresponsetime,
                           koalogger,
                           koacompress,
-                          koaerror,
+                          koaErrorHandler,
                           koabodyparser,
                            swaggerSpec,
                            swaggerToolsPromise,
@@ -21,19 +21,11 @@ module.exports = function (koaresponsetime,
 
         app.use(koalogger());
 
-        app.use(koaerror());
+        app.use(koaErrorHandler());
         app.use(koabodyparser());
         app.use(koacompress());
         app.use(koaresponsetime());
         // this isn't working and will probaby have to be tweaked.  They want us to wrap all middle ware in there
         // crap.  no reason for that.  so pull it out and just add it as middleware should be added.
-        app.use(function *(next) {
-            var swagger = require('./../swagger/swagger_spec.json');// eslint-disable-line global-require
-            var swaggerMiddleware = yield swaggerToolsPromise(swagger);
-            swaggerMiddleware.swaggerValidator({
-                validateResponse: true
-            });
-            yield next;
-        });
     };
 };

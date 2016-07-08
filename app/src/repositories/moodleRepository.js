@@ -4,6 +4,7 @@ module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, a
         getCourseById(id) {
             var cnn;
             var pg = new pgbluebird(); // eslint-disable-line new-cap
+            var validation = new ajv(); // eslint-disable-line new-cap
             var sql = `select * mdl_course where id = ${id};
                         select * from mdl_course_sections where course = ${id};
                         select a.id, 
@@ -24,9 +25,9 @@ module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, a
                 }).then((result) => {
                     var course = transformMoodleAndSLS(result /* wtfe from result */);
                     cnn.done();
-                    var valid = new ajv().validate(slsData.definitions.course, course); // eslint-disable-line new-cap
+                    var valid = validation.validate(slsData.definitions.course, course); // eslint-disable-line new-cap
                     if (!valid) {
-                        throw new Error(ajv.errorsText());
+                        throw new Error(validation.errorsText());
                     }
                     return course;
                 });
