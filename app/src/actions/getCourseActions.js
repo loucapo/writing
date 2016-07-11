@@ -9,19 +9,16 @@ function getCourse(url, id) {
     [CALL_API]: {
       endpoint: url,
       method: 'GET',
-      bailout(state) {
-        return !!(state.courses[id] &&
-                  state.courses[id][LAST_FETCHED] &&
-                  state.courses[id].LAST_FETCHED.isAfter(moment().subtract(5, 'minutes')));
-      },
+      bailout: state => !!(state.courses[id]
+        && state.courses[id][LAST_FETCHED]
+        && state.courses[id].LAST_FETCHED.isAfter(moment().subtract(5, 'minutes'))),
       types: [
         COURSE_REQUEST, {
           type: COURSE_SUCCESS,
           payload: (action, state, res) => getJSON(res)
-            .then(json => normalize(json, courseSchema))
+            .then(json => normalize(json.payload, courseSchema))
         },
-        COURSE_FAILURE
-      ]
+        COURSE_FAILURE]
     }
   };
 }

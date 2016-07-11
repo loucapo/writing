@@ -8,6 +8,7 @@ export default (state, { params }) => {
   const course = state.courses[id];
   if (!course) {
     return result; }
+  /* eslint-disable no-confusing-arrow */
   const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
 
   const allAssIds = course.sections
@@ -27,4 +28,3 @@ export default (state, { params }) => {
 
   return result;
 };
-

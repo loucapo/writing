@@ -21,7 +21,8 @@
 
   "parserOptions": {
     ecmaFeatures: {
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     },
     ecmaVersion: 6,
     sourceType: "module"  //'no-strict' is no longer needed (https://github.com/yannickcr/eslint-plugin-react/issues/447#issuecomment-184617282)
