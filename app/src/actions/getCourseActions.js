@@ -17,7 +17,7 @@ function getCourse(url, id) {
                 {
                     type: COURSE_SUCCESS,
                     payload: (action, state, res) => getJSON(res)
-                        .then((json) => normalize(json, courseSchema))
+                        .then((json) => normalize(json.payload, courseSchema))
                 },
                 COURSE_FAILURE]
         }
