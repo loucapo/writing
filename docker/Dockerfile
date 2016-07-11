@@ -1,4 +1,4 @@
-FROM eco_node:latest
+FROM sls_node:latest
 
 MAINTAINER reharik@gmail.com
 
