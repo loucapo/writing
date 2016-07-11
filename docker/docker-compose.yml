@@ -2,9 +2,9 @@ version: "2"
 services:
   front_end:
     extends:
-      file: ../../eco_frontend/docker/docker-compose.yml
-      service: eco_frontend
-    container_name: eco_frontend
+      file: ../../sls_frontend/docker/docker-compose.yml
+      service: sls_frontend
+    container_name: sls_frontend
 
   course_builder:
     extends:
