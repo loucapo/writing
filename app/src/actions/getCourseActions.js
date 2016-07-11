@@ -5,26 +5,25 @@ import { courseSchema } from './../models/course';
 import moment from 'moment';
 
 function getCourse(url, id) {
-    return {
-        [CALL_API]: {
-            endpoint: url,
-            method: 'GET',
-            bailout: (state) => !!(state.courses[id]
-                && state.courses[id][LAST_FETCHED]
-                && state.courses[id].LAST_FETCHED.isAfter(moment().subtract(5, 'minutes'))),
-            types: [
-                COURSE_REQUEST,
-                {
-                    type: COURSE_SUCCESS,
-                    payload: (action, state, res) => getJSON(res)
-                        .then((json) => normalize(json.payload, courseSchema))
-                },
-                COURSE_FAILURE]
-        }
-    };
+  return {
+    [CALL_API]: {
+      endpoint: url,
+      method: 'GET',
+      bailout: state => !!(state.courses[id]
+        && state.courses[id][LAST_FETCHED]
+        && state.courses[id].LAST_FETCHED.isAfter(moment().subtract(5, 'minutes'))),
+      types: [
+        COURSE_REQUEST, {
+          type: COURSE_SUCCESS,
+          payload: (action, state, res) => getJSON(res)
+            .then(json => normalize(json.payload, courseSchema))
+        },
+        COURSE_FAILURE]
+    }
+  };
 }
 
 export {
-    getCourse
+  getCourse
 };
 
