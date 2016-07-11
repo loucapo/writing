@@ -25,7 +25,5 @@ module.exports = function (koaresponsetime,
         app.use(koabodyparser());
         app.use(koacompress());
         app.use(koaresponsetime());
-        // this isn't working and will probaby have to be tweaked.  They want us to wrap all middle ware in there
-        // crap.  no reason for that.  so pull it out and just add it as middleware should be added.
     };
 };
