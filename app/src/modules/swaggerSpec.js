@@ -23,6 +23,9 @@ module.exports = function (swaggerjsdoc, slsData, fs) {
 
         var swaggerSpec = swaggerjsdoc(options);
         swaggerSpec.definitions = slsData.definitions;
+        if (!fs.existsSync('./app/src/swagger/')) {
+            fs.mkdirSync('./app/src/swagger/');
+        }
         fs.writeFileSync('./app/src/swagger/swagger_spec.json', JSON.stringify(swaggerSpec, null, 4), { mode: 0o777 });
     };
 };
