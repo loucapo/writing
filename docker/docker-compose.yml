@@ -1,7 +1,7 @@
 version: "2"
 services:
-  eco_frontend:
-    image: eco_frontend
+  sls_frontend:
+    image: sls_frontend
     volumes:
       - ./../app:/home/current/app
     command: npm start #top -b #
@@ -9,12 +9,12 @@ services:
     environment:
       DEBUG: 'true'
       NODE_ENV: development
-      APPLICATION_NAME: eco_frontend
+      APPLICATION_NAME: sls_frontend
     ports:
       - "8080:8080"
 
   frontend_test:
-    image: eco_frontend
+    image: sls_frontend
     volumes:
       - ./../app:/home/current/app
     command: npm test #top -b #

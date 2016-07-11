@@ -8,12 +8,8 @@ export default (state, { params }) => {
   const course = state.courses[id];
   if (!course) {
     return result; }
-  const isUpcomingFilter = assignment => {
-    if (moment.unix(assignment.closeDate) < moment() && assignment.badge === 'TO DO') {
-      return assignment;
-    }
-    return null;
-  };
+  /* eslint-disable no-confusing-arrow */
+  const filter = a => (moment.unix(a.closeDate) < moment() && a.badge === 'TO DO' ? a : null);
 
   const allAssIds = course.sections
     .map(sectionId => sections[sectionId])
@@ -22,7 +18,7 @@ export default (state, { params }) => {
 
   result.assignments = allAssIds
     .map(assId => assignments[assId])
-    .filter(isUpcomingFilter)
+    .filter(filter)
     .map(ass => ({
       ...ass,
       isUpcoming: 'UPCOMING',
@@ -32,3 +28,4 @@ export default (state, { params }) => {
 
   return result;
 };
+

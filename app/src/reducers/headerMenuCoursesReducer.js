@@ -5,7 +5,8 @@ const headerMenuCourses = (state = {}, action = null) => {
   switch (action.type) {
     case AVAILABLE_COURSES_SUCCESS:
       {
-        return {...state, items: action.payload, [LAST_FETCHED]: moment() };
+        // TODO not pleased with this double payload business
+        return {...state, items: action.payload.payload, [LAST_FETCHED]: moment() };
       }
     default:
       return state;

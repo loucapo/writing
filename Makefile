@@ -1,5 +1,5 @@
-IMAGENAME=eco_frontend
-CONTAINERNAME=eco_frontend
+IMAGENAME=sls_frontend
+CONTAINERNAME=sls_frontend
 
 docker-exec:
 	docker exec -it $(CONTAINERNAME) /bin/bash
@@ -20,7 +20,7 @@ docker-build:
 	docker build -t $(IMAGENAME) -f docker/Dockerfile .
 
 run:	docker-build
-	docker-compose -f docker/docker-compose.yml run --service-ports --rm eco_frontend
+	docker-compose -f docker/docker-compose.yml run --service-ports --rm sls_frontend
 
 test:	docker-build
 	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend_test
