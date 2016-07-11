@@ -10,6 +10,6 @@ RUN mkdir /root/.ssh/
 
 #RUN ssh -oStrictHostKeyChecking=no bitbucket.org || true
 
-RUN npm install
+RUN npm install --silent
 
 ADD ./app /$HOME/app
