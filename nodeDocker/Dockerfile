@@ -1,5 +1,5 @@
 # Dockerfile
-FROM node:4.4.4
+FROM node:6.2.2
 
 ENV HOME /home/current
 RUN mkdir -p $HOME
