@@ -21,6 +21,6 @@ services:
     environment:
       DEBUG: 'true'
       NODE_ENV: development
-      APPLICATION_NAME: eco_frontend
+      APPLICATION_NAME: sls_frontend
     ports:
       - "8080:8080"
