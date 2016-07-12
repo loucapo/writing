@@ -10,7 +10,7 @@ If they have been cloned make sure `sls_frontend` is on branch `sls_dev` then sk
       ...
       (build and download)
       ...
-    localhost:8080
+    localhost:10080
 
 
 ### Overview
