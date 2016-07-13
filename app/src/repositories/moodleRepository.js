@@ -18,7 +18,7 @@ module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, a
                             inner join mdl_lti lti on a.instance = lti.id
                         where mm.name = 'lti' 
                             and a.course = ${id};`;
-            return pg.connect(config.postgres.connectionString)
+            return pg.connect(config.postgres.config)
                 .then((connection) => {
                     cnn = connection;
                     return cnn.client.query(sql);
@@ -35,7 +35,7 @@ module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, a
         coursesAvailableByUID() {
             var cnn;
             var pg = new pgbluebird();  // eslint-disable-line new-cap
-            return pg.connect(config.postgres.connectionString)
+            return pg.connect(config.postgres.config)
                 .then((connection) => {
                     cnn = connection;
                     return cnn.client.query('select title, id from mdl_course where id <> 1 order by id asc');
