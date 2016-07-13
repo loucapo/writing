@@ -80,7 +80,7 @@ kill-moodle:
 #run
 ##################
 
-run:	docker-build-nginx
+run:	docker-build-nginx docker-build-moodle
 	docker-compose -f docker/docker-compose.yml up
 
 run-moodle:	docker-build-moodle
