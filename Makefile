@@ -86,5 +86,12 @@ run:	docker-build-nginx docker-build-moodle
 run-moodle:	docker-build-moodle
 	docker-compose -f docker/docker-compose-moodle.yml up
 
+##################
+#Other Docker Helpers
+##################
+
+exec:
+	docker exec -it $(con) bash
+	
 
 #.PHONY: clean install docker-build run docker-clean docker-exec
