@@ -92,6 +92,6 @@ run-moodle:	docker-build-moodle
 
 exec:
 	docker exec -it $(con) bash
-	
+
 
 #.PHONY: clean install docker-build run docker-clean docker-exec
