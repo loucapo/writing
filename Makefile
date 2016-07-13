@@ -1,13 +1,27 @@
 IMAGENAME=sls_course_builder_api
 CONTAINERNAME=sls_course_builder_api
 
+##################
+#clone
+##################
+
 clone-course-builder:
 	git clone git@bitbucket.org:mnv_tech/sls_course_builder_api.git ../sls_course_builder_api
 
 clone-front-end:
 	git clone git@bitbucket.org:mnv_tech/sls_frontend.git -b sls_dev --single-branch ../sls_frontend
 
-clone-repos:	clone-course-builder clone-front-end
+clone-data:
+	git clone git@bitbucket.org:mnv_tech/sls_data.git -b sls_dev --single-branch ../sls_data
+
+clone-moodle:
+	git clone git@bitbucket.org:mnv_tech/sls_moodle.git -b sls_dev --single-branch ../sls_moodle
+
+clone-repos:	clone-course-builder clone-front-end clone-data clone-moodle
+
+##################
+#build
+##################
 
 docker-build-node:
 	docker build -t sls_node -f nodeDocker/Dockerfile ./nodeDocker
@@ -20,9 +34,18 @@ docker-build-front-end:	docker-build-node
 	cd ../sls_frontend && $(MAKE) docker-build
 	cd ../sls_compose
 
+docker-build-moodle:
+	cd ../sls_moodle && $(MAKE) docker-build
+	cd ../sls_compose
+
+
 docker-build-nginx:	docker-build-course-builder docker-build-front-end
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
+
+##################
+#kill
+##################
 
 kill-all:
 	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
@@ -48,7 +71,20 @@ kill-front-end:
 	docker rm -vf sls_frontend 2>/dev/null || echo "No more containers to remove."
 	docker rmi sls_frontend
 
-run:	docker-build-nginx
+kill-moodle:
+	docker rm -vf sls_moodle 2>/dev/null || echo "No more containers to remove."
+	docker rmi sls_moodle
+	docker rmi sls_moodle_DB
+
+##################
+#run
+##################
+
+run:	docker-build-nginx docker-build-moodle
 	docker-compose -f docker/docker-compose.yml up
+
+run-moodle:	docker-build-moodle
+	docker-compose -f docker/docker-compose-moodle.yml up
+
 
 #.PHONY: clean install docker-build run docker-clean docker-exec
