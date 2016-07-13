@@ -28,3 +28,4 @@ export default (state, { params }) => {
 
   return result;
 };
+
