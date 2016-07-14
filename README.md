@@ -48,3 +48,6 @@ the application. The following commands are made accessible:
   * `kill-nginx`
   * `kill-course-builder`
   * `kill-front-end`
+
+##### exec into a container
+  * `exec con=[mycontainer]`
