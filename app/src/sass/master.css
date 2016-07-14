@@ -1,25 +1,11 @@
-$browser-context: 13;
-
-@function em($pixels, $context: $browser-context) {
-    @if (unitless($pixels)) {
-        $pixels: $pixels * 1px;
-    }
-
-    @if (unitless($context)) {
-        $context: $context * 1px;
-    }
-
-    @return $pixels / $context * 1em;
-}
-
-@mixin reset {
+@define-mixin reset {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 * {
-    @include reset;
+    @mixin reset;
 }
 
 html {
@@ -101,7 +87,7 @@ ol li {
 }
 
 img {
-    @include reset;
+    @mixin reset;
     border: 0;
 }
 
@@ -170,7 +156,7 @@ input[type=text], input[type=password] {
 }
 
 .button, a.button {
-    @include reset;
+    @mixin reset;
     position: relative;
     display: block;
     width: 100%;
@@ -266,7 +252,7 @@ input[type=text], input[type=password] {
 }
 
 #login {
-    @include reset;
+    @mixin reset;
     position: relative;
     width: 100%;
     background: #f3f3f3;
@@ -416,33 +402,33 @@ input[type=text], input[type=password] {
 #header {
     position: fixed;
     width: 100%;
-    height: em(70);
+    height: 70px;
     background-color: #333333;
     z-index: 700;
 }
 
 #logo-ml {
     position: absolute;
-    top: em(10);
-    left: em(30);
+    top: 10px;
+    left: 30px;
 
     img {
-        height: em(50);
+        height: 50px;
     }
 }
 
 #avatar {
-    width: em(28);
-    height: em(28);
+    width: 28px;
+    height: 28px;
     background: #999999;
     border-radius: 50%;
     float: right;
-    margin-top: em(21);
-    margin-left: em(12);
+    margin-top: 21px;
+    margin-left: 12px;
     overflow: hidden;
 
     img {
-        @include reset;
+        @mixin reset;
         display: block;
         width: 100%;
         height: auto;
@@ -453,11 +439,11 @@ input[type=text], input[type=password] {
     color: white;
     position: absolute;
     top: 0;
-    right: em(20);
+    right: 20px;
 
     & > div {
         float: left;
-        line-height: em(70);
+        line-height: 70px;
         font-weight: 700;
         margin: 0 0;
 
@@ -465,13 +451,13 @@ input[type=text], input[type=password] {
         }
 
         &:last-child {
-            padding: 0 em(12);
+            padding: 0 12px;
         }
     }
 
     & *[role="button"] {
         display: inline-block;
-        padding: 0 em(12);
+        padding: 0 12px;
         text-transform: uppercase;
 
         cursor: pointer;
@@ -491,8 +477,8 @@ input[type=text], input[type=password] {
     }
 
     & .help-menu .icon {
-        background-position: left em(21);
-        width: em(28);
+        background-position: left 21px;
+        width: 28px;
         opacity: 0.75;
         & span {
             visibility: hidden;
@@ -509,9 +495,9 @@ input[type=text], input[type=password] {
         }
 
         & .icon {
-            background-position: left em(25);
-            width: em(18);
-            margin-left: em(8);
+            background-position: left 25px;
+            width: 18px;
+            margin-left: 8px;
             &:after {
                 content: "\00a0";
             }
@@ -525,11 +511,11 @@ input[type=text], input[type=password] {
 
     & *[role="menuitem"] {
         float: none;
-        width: em(200);
+        width: 200px;
         height: auto;
-        padding: em(15) em(20);
+        padding: 15px 20px;
         border-top: 1px solid #333333;
-        line-height: em(19);
+        line-height: 19px;
         font-weight: 700;
         background-color: black;
 
@@ -575,11 +561,11 @@ input[type=text], input[type=password] {
 
     label[for="nav-trigger"] {
         position: absolute;
-        top: em(20);
-        right: em(20);
+        top: 20px;
+        right: 20px;
         z-index: 1000;
-        width: em(32);
-        height: em(32);
+        width: 32px;
+        height: 32px;
         cursor: pointer;
     }
 }
@@ -593,17 +579,17 @@ input[type=text], input[type=password] {
     background: black;
 
     & ul, & li {
-        @include reset;
+        @mixin reset;
     }
 
     & ul {
-        margin-top: em(70);
+        margin-top: 70px;
         border-top: 1px solid #333333;
     }
 
     & li {
         position: relative;
-        padding: em(18) em(20) em(18) em(65);
+        padding: 18px 20px 18px 65px;
         border-bottom: 1px solid #333333;
 
         color: #ffffff;
@@ -612,27 +598,27 @@ input[type=text], input[type=password] {
 
         & i {
             position: absolute;
-            top: em(11);
-            left: em(20);
-            width: em(32);
-            height: em(32);
+            top: 11px;
+            left: 20px;
+            width: 32px;
+            height: 32px;
         }
     }
 
     & #mobile-avatar {
         position: absolute;
-        top: em(13);
-        left: em(20);
+        top: 13px;
+        left: 20px;
 
-        width: em(28);
-        height: em(28);
+        width: 28px;
+        height: 28px;
         background: #999999;
         border-radius: 50%;
         overflow: hidden;
     }
 
     & #mobile-avatar img {
-        @include reset;
+        @mixin reset;
         display: block;
         width: 100%;
         height: auto;
@@ -640,10 +626,10 @@ input[type=text], input[type=password] {
 
     & #icon-x i {
         position: absolute;
-        top: em(22);
-        right: em(22);
-        width: em(28);
-        height: em(28);
+        top: 22px;
+        right: 22px;
+        width: 28px;
+        height: 28px;
     }
 }
 
@@ -660,7 +646,7 @@ input[type=text], input[type=password] {
 .nav-trigger:checked {
     & ~ #mobile-nav {
         left: 50vw;
-        box-shadow: 0 0 em(5) em(5) rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
     }
     & ~ label:nth-of-type(2) {
         display: block;
@@ -821,7 +807,7 @@ input[type=text], input[type=password] {
 .accord-toggle {
     float: left;
     margin-right: 12px;
-    background: url('image/icon_accord_arrow.svg') no-repeat;
+    background: url('./image/icon_accord_arrow.svg') no-repeat;
     background-position: center -20px;
     background-size: 32px 96px;
     fill: #999999;
@@ -887,7 +873,7 @@ input[type=text], input[type=password] {
 }
 
 #sections ul, #sections li {
-    @include reset;
+    @mixin reset;
 }
 
 #sections li {
