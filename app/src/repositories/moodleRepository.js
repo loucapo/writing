@@ -1,7 +1,7 @@
 
 module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, ajv) {
     return {
-        getCourseById(id) {
+        getCourseByExternalId(id) {
             var cnn;
             var pg = new pgbluebird(); // eslint-disable-line new-cap
             var validation = new ajv(); // eslint-disable-line new-cap

@@ -54,7 +54,7 @@ describe('TRANSFORM_MOODLE_AND_SLS', () => {
 
         it('should_return_proper_value', () => {
             var result = SUT.transformCourseFromMoodle({course});
-            result.id.should.equal(227);
+            result.externalId.should.equal(227);
             result.fullname.should.equal("PoB MASTER COURSE");
             result.title.should.equal("PoB MASTER COURSE SHORT NAME");
         });
@@ -108,7 +108,7 @@ describe('TRANSFORM_MOODLE_AND_SLS', () => {
         it('should_return_proper_value', () => {
             var result = SUT.transformCourseFromMoodle({course, sections, assignments});
 
-            result.sections[0].id.should.equal(2391);
+            result.sections[0].externalId.should.equal(2391);
             result.sections[0].title.should.equal("Unit 1: Introduction");
             result.sections[0].order.should.equal(1);
             result.sections[0].summary.should.equal("<p><span style=\"orphans: auto; text-align: start; text-indent: 0px; widows: 1; float: none; display: inline !important;\">How is the complexity of the human body explained by the relatively small number of coding genes? How do memory and intelligence work? These are just a few of the many unanswered questions in the field of biology that will be answered in the not so distant future.</span></p>");
@@ -194,26 +194,26 @@ describe('TRANSFORM_MOODLE_AND_SLS', () => {
         it('should_return_proper_value', () => {
             var result = SUT.transformCourseFromMoodle({course, sections, assignments});
 
-            result.sections[0].id.should.equal(2391);
+            result.sections[0].externalId.should.equal(2391);
             result.sections[0].title.should.equal("Unit 1: Introduction");
             result.sections[0].order.should.equal(1);
             result.sections[0].summary.should.equal("<p><span style=\"orphans: auto; text-align: start; text-indent: 0px; widows: 1; float: none; display: inline !important;\">How is the complexity of the human body explained by the relatively small number of coding genes? How do memory and intelligence work? These are just a few of the many unanswered questions in the field of biology that will be answered in the not so distant future.</span></p>");
-            result.sections[0].assignments[0].id.should.equal(129047);
+            result.sections[0].assignments[0].externalId.should.equal(129047);
             result.sections[0].assignments[0].name.should.equal("Module 1: Evolution and Life on Earth");
             result.sections[0].assignments[0].ltiId.should.equal(40277);
-            result.sections[0].assignments[1].id.should.equal(129050);
+            result.sections[0].assignments[1].externalId.should.equal(129050);
             result.sections[0].assignments[1].name.should.equal("Module 2: Energy and Matter");
             result.sections[0].assignments[1].ltiId.should.equal(40278);
 
-            result.sections[1].id.should.equal(2392);
-            result.sections[1].assignments[0].id.should.equal(129056);
+            result.sections[1].externalId.should.equal(2392);
+            result.sections[1].assignments[0].externalId.should.equal(129056);
             result.sections[1].assignments[0].name.should.equal("Module 4: Atoms, Elements, and Matter");
             result.sections[1].assignments[0].ltiId.should.equal(40280);
-            result.sections[1].assignments[1].id.should.equal(129059);
+            result.sections[1].assignments[1].externalId.should.equal(129059);
             result.sections[1].assignments[1].name.should.equal("Module 5: Structure of Molecules and Compounds");
             result.sections[1].assignments[1].ltiId.should.equal(40281);
 
-            result.sections[2].id.should.equal(2393);
+            result.sections[2].externalId.should.equal(2393);
             result.sections[2].assignments.should.eql([]);
         });
     });

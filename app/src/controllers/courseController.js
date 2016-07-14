@@ -4,7 +4,7 @@ module.exports = function (repository) {
             this.body = {
                 success: true,
                 status: 200,
-                payload: yield repository.getCourseById(this.params.id)
+                payload: yield repository.getCourseByExternalId(this.params.id)
             };
         },
         coursesAvailableByUID: function *() { // eslint-disable-line object-shorthand

@@ -6,18 +6,18 @@ module.exports = function (moment, slsData, ajv) { // , config) {
         transformCourseFromMoodle(sets) {
             var course = sets.course && sets.course[0] ? sets.course[0] : undefined;
             return !course ? {} : {
-                id: course.id,
+                externalId: course.id,
                 title: course.shortname,
                 fullname: course.fullname,
                 sections: sets.sections ? sets.sections.map(s => ({
-                    id: s.id,
+                    externalId: s.id,
                     title: s.name,
                     order: s.section,
                     summary: s.summary,
                     assignments: sets.assignments ? sets.assignments.filter(a => a.sectionId === s.id)
                         .map(a => {
                             var assignment = {
-                                id: a.id,
+                                externalId: a.id,
                                 sectionId: s.id,
                                 activityId: a.module,
                                 ltiId: a.instance,
