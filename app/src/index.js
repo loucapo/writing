@@ -14,10 +14,10 @@ const initialState = {
   },
   headerMenuCourses: {
     items: [{
-      id: 1,
+      externalId: 1,
       name: 'General Chemistry Laboratory - 6660'
     }, {
-      id: 2,
+      externalId: 2,
       name: 'General Chemistry Laboratory - 1331'
     }]
   },
@@ -32,14 +32,14 @@ const initialState = {
   courses: {
     1: {
       lastUpdated: '',
-      id: 1,
+      externalId: 1,
       courseTitle: 'General Chemistry Laboratory - 6660',
       active: true,
       sections: [1]
     },
     2: {
       lastUpdated: '',
-      id: 2,
+      externalId: 2,
       courseTitle: 'General Chemistry Laboratory - 1331',
       active: true,
       sections: [2]
@@ -48,7 +48,7 @@ const initialState = {
   sections: {
     1: {
       isExpanded: false,
-      id: 1,
+      externalId: 1,
       title: 'Experiment 1 - Density',
       summary: 'First, read the information and procedure in your lab manual. ' +
         'Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
@@ -59,7 +59,7 @@ const initialState = {
 
     2: {
       isExpanded: false,
-      id: 2,
+      externalId: 2,
       title: 'Experiment 2 - Density',
       summary: 'First, read the information and procedure in your lab manual. ' +
         'Then complete the lab simulation. Finally, complete the pre-lab assignment below.',
@@ -70,7 +70,7 @@ const initialState = {
   },
   assignments: {
     1: {
-      id: 1,
+      externalId: 1,
       link: 'https://hm-staging.mnv-tech.com/mod/lti/view.php?id=7778',
       name: 'Chemical Reactions Pre-Lab Assignment',
       badge: 'TO DO',
@@ -81,7 +81,7 @@ const initialState = {
       type: 'Assesment'
     },
     2: {
-      id: 2,
+      externalId: 2,
       link: 'https://hm-staging.mnv-tech.com/mod/lti/view.php?id=7778',
       name: 'Chemical Reactions Pre-Lab Assignment',
       badge: 'TO DO',
