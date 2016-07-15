@@ -38,8 +38,12 @@ docker-build-moodle:
 	cd ../sls_moodle && $(MAKE) docker-build
 	cd ../sls_compose
 
+docker-build-moodle-db:
+	cd ../sls_moodle && $(MAKE) docker-build-postgres
+	cd ../sls_compose
 
-docker-build-nginx:	docker-build-course-builder docker-build-front-end
+
+docker-build-nginx:	docker-build-course-builder docker-build-front-end docker-build-moodle-db
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
