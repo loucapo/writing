@@ -34,7 +34,7 @@ docker-build-front-end:	docker-build-node
 	cd ../sls_frontend && $(MAKE) docker-build
 	cd ../sls_compose
 
-docker-build-moodle:
+docker-build-moodle: docker-build-moodle-db
 	cd ../sls_moodle && $(MAKE) docker-build
 	cd ../sls_compose
 
@@ -43,7 +43,7 @@ docker-build-moodle-db:
 	cd ../sls_compose
 
 
-docker-build-nginx:	docker-build-course-builder docker-build-front-end docker-build-moodle-db
+docker-build-nginx:	docker-build-course-builder docker-build-front-end
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
