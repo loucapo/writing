@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import HelpMenuButton from '../HelpMenuButton';
 import CoursesMenuButton from '../CoursesMenuButton';
+import ProfileMenuButton from '../ProfileMenuButton';
 import logo from './../../sass/image/logo_ml.png';
 import avatar from './../../sass/image/avatar.png';
 
@@ -13,12 +14,7 @@ const Header = ({ userName, headerMenuCourses, headerMenuHelp }) => (
       <nav id="header-nav" role="navigation" >
         <CoursesMenuButton items={headerMenuCourses} />
         <HelpMenuButton {...headerMenuHelp} />
-        <div id="nav-profile" >
-          <span>{userName}</span>
-          <div id="avatar" >
-            <img src={avatar} alt="User Avatar" />
-          </div>
-        </div>
+        <ProfileMenuButton userName={userName} avatar={avatar} items={headerMenuCourses} />
       </nav>
       <input type="checkbox" id="nav-trigger" className="nav-trigger" aria-hidden="true" />
       <label
