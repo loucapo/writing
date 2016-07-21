@@ -19,7 +19,7 @@ var generateFullCourses = () => {
             course.sections = course.sections || [];
             course.sections.push(section);
         }
-        cache.courses[course.id.toString()] = course;
+        cache.courses[course.externalId.toString()] = course;
     }
 };
 
@@ -31,14 +31,14 @@ var generateFullSections = () => {
             section.assignments = section.assignments || [];
             section.assignments.push(assignment);
         }
-        cache.sections[section.id.toString()] = section;
+        cache.sections[section.externalId.toString()] = section;
     }
 };
 
 var generateAssignments = () => {
     for (var iii = 1; iii <= 3; iii++) {
         var assignment = jsf(expandedSchema.assignment);
-        cache.assignments[assignment.id.toString()] = assignment;
+        cache.assignments[assignment.externalId.toString()] = assignment;
     }
 };
 
