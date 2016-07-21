@@ -7,17 +7,16 @@ module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, a
             var validation = new ajv(); // eslint-disable-line new-cap
             var sql = `select * mdl_course where id = ${id};
                         select * from mdl_course_sections where course = ${id};
-                        select a.id, 
-                            a.section as sectionId, 
-                            mm.module as moduleId, 
-                            lti.id as instance 
-                            lti.name, 
+                        select a.id,
+                            a.section as sectionId,
+                            lti.id as instance,
+                            lti.name,
                             lti.instructorcustomparameters as json
-                        from mdl_modules mm 
+                        from mdl_modules mm
                             inner join mdl_course_modules a on mm.id = a.module
                             inner join mdl_lti lti on a.instance = lti.id
-                        where mm.name = 'lti' 
-                            and a.course = ${id};`;
+                        where mm.name = 'lti'
+                        and a.course = ${id};`;
             return pg.connect(config.postgres.config)
                 .then((connection) => {
                     cnn = connection;
@@ -38,7 +37,7 @@ module.exports = function (slsData, pgbluebird, config, transformMoodleAndSLS, a
             return pg.connect(config.postgres.config)
                 .then((connection) => {
                     cnn = connection;
-                    return cnn.client.query('select title, id from mdl_course where id <> 1 order by id asc');
+                    return cnn.client.query('select shortname, id from mdl_course where id <> 1 order by id asc');
                 })
                 .then((result) => {
                     var availableCourses = result.rows;

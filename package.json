@@ -36,7 +36,7 @@
     "moment": "^2.10.6",
     "path": "^0.12.7",
     "pg-bluebird": "^1.0.8",
-    "sls_data": "0.0.6",
+    "sls_data": "^0.0.7",
     "swagger-jsdoc": "^1.3.0",
     "swagger-parser": "^3.4.1",
     "swagger-tools": "^0.10.1",
