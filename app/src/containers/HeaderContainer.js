@@ -4,7 +4,9 @@ import { getAvailableCoursesByUID } from './../actions';
 import Header from './../components/layout/Header';
 
 class HeaderContainer extends Component {
-  componentDidMount() { this.props.getAvailableCoursesByUID(this.props.url); }
+  componentDidMount() {
+    this.props.getAvailableCoursesByUID(this.props.url);
+  }
 
   render() {
     return (<Header {...this.props} />);

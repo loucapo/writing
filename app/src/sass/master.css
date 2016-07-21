@@ -435,6 +435,19 @@ input[type=text], input[type=password] {
     }
 }
 
+#nav-profile {
+  line-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-clear-center {
+  clear: both;
+  display: flex;
+  align-items: center;
+}
+
 #header-nav {
     color: white;
     position: absolute;
@@ -501,6 +514,26 @@ input[type=text], input[type=password] {
             &:after {
                 content: "\00a0";
             }
+        }
+    }
+
+    & .profile-menu {
+
+        & *[role=menuitem]:last-child {
+            line-height: 50px;
+            background-color: #d82934;
+            &:hover, &:focus {
+                background-color: saturate(#d82934, 20%);
+            }
+        }
+
+        & .icon {
+            background-position: left 25px;
+            width: 18px;
+            margin-left: 8px;
+            &:after {
+               content: "\00a0";
+             }
         }
     }
 
