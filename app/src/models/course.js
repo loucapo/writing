@@ -1,8 +1,8 @@
 import { Schema, arrayOf } from 'normalizr';
 
-const courseSchema = new Schema('courses');
-const sectionSchema = new Schema('sections');
-const assignmentSchema = new Schema('assignments');
+const courseSchema = new Schema('courses', { idAttribute: 'externalId' });
+const sectionSchema = new Schema('sections', { idAttribute: 'externalId' });
+const assignmentSchema = new Schema('assignments', { idAttribute: 'externalId' });
 
 
 courseSchema.define({

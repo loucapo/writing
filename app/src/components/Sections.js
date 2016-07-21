@@ -7,7 +7,7 @@ const Sections = ({ sections, toggleSection }) => (
     <ul>
         {sections.map((section, index) =>
           <Section
-            key={section.id}
+            key={section.externalId}
             index={index + 1}
             {...section}
             toggleSection={toggleSection}
