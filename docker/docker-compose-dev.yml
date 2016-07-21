@@ -13,6 +13,9 @@ services:
       APPLICATION_NAME: sls_course_builder_api
     ports:
       - "3000:3000"
+    external_links:
+      - sls_moodle_DB
+
   swagger_ui:
     image: sls_swagger_ui
     ports:

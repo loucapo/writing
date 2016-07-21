@@ -4,35 +4,39 @@
 module.exports = function (moment, slsData, ajv) { // , config) {
     return {
         transformCourseFromMoodle(sets) {
-            return {
-                id: sets.course.id,
-                title: sets.course.shortname,
-                fullname: sets.course.fullname,
-                sections: sets.sections.map(s => ({
-                    id: s.id,
+            var course = sets.course && sets.course[0] ? sets.course[0] : undefined;
+            return !course ? {} : {
+                externalId: course.id,
+                title: course.shortname,
+                fullname: course.fullname,
+                sections: sets.sections ? sets.sections.map(s => ({
+                    externalId: s.id,
                     title: s.name,
                     order: s.section,
                     summary: s.summary,
-                    assignments: sets.assignments.filter(a => a.section === s.id)
+                    assignments: sets.assignments ? sets.assignments.filter(a => a.sectionId === s.id)
                         .map(a => {
                             var assignment = {
-                                id: a.id,
+                                externalId: a.id,
                                 sectionId: s.id,
                                 activityId: a.module,
                                 ltiId: a.instance,
                                 name: a.name
                                 // link: config.ltiLink + a.id
                             };
-                            var data = JSON.parse(a.json);
-                            assignment.type = data.type || '';
-                            assignment.pointsAvailable = data.pointsTotal || 0;
-                            assignment.pointsEarned = data.pointsEarned || 0;
-                            assignment.openDate = moment.unix(data.openDate || 0);
-                            assignment.closeDate = moment.unix(data.closeDate || 0);
-                            assignment.badge = data.badge || '';
+                            // TODO let's do a try parse here so we can log an error as specifically bad json
+                            if (a.json) {
+                                var data = JSON.parse(a.json);
+                                assignment.type = data.type || '';
+                                assignment.pointsAvailable = data.pointsTotal || 0;
+                                assignment.pointsEarned = data.pointsEarned || 0;
+                                assignment.openDate = moment.unix(data.openDate || 0);
+                                assignment.closeDate = moment.unix(data.closeDate || 0);
+                                assignment.badge = data.badge || '';
+                            }
                             return assignment;
-                        })
-                }))
+                        }) : []
+                })) : []
             };
         },
 
@@ -89,6 +93,7 @@ module.exports = function (moment, slsData, ajv) { // , config) {
                 sql += `INSERT INTO mdl_lti set 
                             (instructorcustomparameters,
                             timecreated, 
+                            
                             timemodified) 
                         values 
                             (${params},

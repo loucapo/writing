@@ -17,10 +17,9 @@ module.exports = function routes(koarouter, controllers) {
          *     parameters:
          *       - name: id
          *         in: path
-         *         description: The id of the course you wish to retrieve
+         *         description: The external id (moodle id) of the course you wish to retrieve
          *         required: true
-         *         type: string
-         *         format: uuid
+         *         type: number
          *     responses:
          *       200:
          *         description: Success

@@ -12,7 +12,7 @@ module.exports = function (_options) {
                     .for('winston').renameTo('logger') // eslint-disable-line newline-per-chained-call
                     .for('bluebird').renameTo('Promise') // eslint-disable-line newline-per-chained-call
                     .for('sls_data').renameTo('slsData') // eslint-disable-line newline-per-chained-call
-                    .for('repository').replaceWith('moodleRepository') // eslint-disable-line newline-per-chained-call
+                    .for('repository').replaceWith('mockDataRepository') // eslint-disable-line newline-per-chained-call
                     .groupAllInDirectory('./app/src/controllers', 'controllers')
                     .complete());
     } catch (ex) {
