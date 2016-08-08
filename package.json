@@ -11,7 +11,8 @@
     "start": "webpack-dev-server --progress --config ./app/webpack.config.js",
     "test": "mocha-webpack --webpack-config ./app/webpack.config-testing.js",
     "lint": "eslint .",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "licenses": "license-checker --production --csv | tee licenses.csv"
   },
   "license": "MIT",
   "engines": {
@@ -58,6 +59,7 @@
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^2.9.0",
     "isomorphic-fetch": "^2.2.1",
+    "license-checker": "^5.1.2",
     "mocha": "^2.5.3",
     "mocha-webpack": "^0.3.1",
     "nock": "^8.0.0",
