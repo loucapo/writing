@@ -8,7 +8,8 @@
     "start_dev": "nodemon  --ignore app/src/swagger/swagger_spec.json app/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
     "lint": "eslint .",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "licenses": "license-checker --production --csv | tee licenses.csv"
   },
   "license": "MIT",
   "engines": {
@@ -50,6 +51,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.4.2",
     "eslint-plugin-react": "^5.1.1",
+    "license-checker": "^5.1.2",
     "mocha": "2.1.x",
     "nodemon": "^1.9.2",
     "precommit-hook-eslint": "^3.0.0"
