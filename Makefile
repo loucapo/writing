@@ -1,5 +1,5 @@
-IMAGENAME=sls_frontend
-CONTAINERNAME=sls_frontend
+IMAGENAME=wk_frontend
+CONTAINERNAME=wk_frontend
 
 docker-exec:
 	docker exec -it $(CONTAINERNAME) /bin/bash
@@ -20,7 +20,7 @@ docker-build:
 	docker build -t $(IMAGENAME) -f docker/Dockerfile .
 
 run:	docker-build
-	docker-compose -f docker/docker-compose.yml run --service-ports --rm sls_frontend
+	docker-compose -f docker/docker-compose.yml run --service-ports --rm wk_frontend
 
 test:	docker-build
 	docker-compose -f docker/docker-compose.yml run --service-ports --rm frontend_test

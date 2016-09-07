@@ -1,7 +1,7 @@
 version: "2"
 services:
-  sls_frontend:
-    image: sls_frontend
+  wk_frontend:
+    image: wk_frontend
     volumes:
       - ./../app:/home/current/app
     command: npm start #top -b #
@@ -9,18 +9,18 @@ services:
     environment:
       DEBUG: 'true'
       NODE_ENV: development
-      APPLICATION_NAME: sls_frontend
+      APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
 
   frontend_test:
-    image: sls_frontend
+    image: wk_frontend
     volumes:
       - ./../app:/home/current/app
     command: npm test #top -b #
     environment:
       DEBUG: 'true'
       NODE_ENV: development
-      APPLICATION_NAME: sls_frontend
+      APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
