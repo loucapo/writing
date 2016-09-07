@@ -12,3 +12,16 @@ build
 build-info.json
 
 .idea
+*.orig
+*.iml
+out
+.DS_Store
+
+#npm-generated file
+npm-debug.log
+dist
+*.log
+.eslintcache
+
+.tmp
+licenses.csv

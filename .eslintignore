@@ -1,0 +1,5 @@
+node_modules
+functionalTests
+app/test
+app/webpack.config.js
+app/webpack.config-testing.js
