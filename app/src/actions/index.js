@@ -1,14 +1,8 @@
-import { getCourse } from './getCourseActions';
-import { toggleSection } from './sectionActions';
-import { getSwaggerSpec } from './swaggerActions';
-import { getAvailableCoursesByUID } from './getAvailableCoursesActions';
-import { bootstrapApp } from './bootstrapApp';
+export const HELLO_WORLD = 'HELLO_WORLD';
 
-export {
-  toggleSection,
-  getCourse,
-  getSwaggerSpec,
-  getAvailableCoursesByUID,
-  bootstrapApp
+export const helloWorld = () => {
+  return {
+    type: HELLO_WORLD,
+    value: 'Goodbye cruel world'
+  };
 };
-

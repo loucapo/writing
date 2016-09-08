@@ -35,27 +35,27 @@ const webpackConfig = {
     noParse: [],
     loaders: [
       { test: /\.jsx?$/,
-          include: path.resolve(__dirname, 'src'),
-          loader: 'babel-loader',
-          query: {
-            presets: [
-              'es2015',
-              'react',
-              'stage-0'
-            ],
-            env: {
-              development: {
-                plugins: [['react-transform', {
-                  transforms: [{
-                    transform: 'react-transform-hmr',
-                    imports: ['react'],
-                    locals: ['module']
-                  }]
-                }]],
-                ignore: ['node_module', 'src/sass/image']
-              }
+        include: path.resolve(__dirname, 'src'),
+        loader: 'babel-loader',
+        query: {
+          presets: [
+            'es2015',
+            'react',
+            'stage-0'
+          ],
+          env: {
+            development: {
+              plugins: [['react-transform', {
+                transforms: [{
+                  transform: 'react-transform-hmr',
+                  imports: ['react'],
+                  locals: ['module']
+                }]
+              }]],
+              ignore: ['node_module', 'src/sass/image']
             }
-          }},
+          }
+        }},
       {
         test: /\.css$/,
         include: path.resolve(__dirname, 'src/sass'),

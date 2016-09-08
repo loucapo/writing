@@ -1,6 +1,16 @@
-import roodProd from './Root.prod';
-import rootDev from './Root.dev';
+import React, { PropTypes } from 'react';
+import { Provider } from 'react-redux';
+import HelloContainer from './HelloContainer';
 
-export default (process.env.NODE_ENV === 'production')
-  ? roodProd
-  : rootDev;
+const Root = ({ store }) => (
+  <Provider store={store} >
+    <HelloContainer />
+  </Provider>
+);
+
+Root.propTypes = {
+  store: PropTypes.object.isRequired
+};
+
+export default Root;
+

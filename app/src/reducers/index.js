@@ -1,23 +1,17 @@
 import { combineReducers } from 'redux';
-import { routerReducer as routing } from 'react-router-redux';
-import { sections } from './sectionReducers';
-import { assignments } from './assignmentReducer';
-import { headerMenuCourses } from './headerMenuCoursesReducer';
-import { courses } from './navigationReducers';
-import { swagger } from './swaggerSpecReducer';
-import { startUp } from './startUpReducer';
+import { HELLO_WORLD } from './../actions';
 
-const reducers = combineReducers({
-  routing,
-  auth: (state = {}) => state,
-  courses,
-  sections,
-  assignments,
-  headerMenuCourses,
-  headerMenuHelp: (state = {}) => state,
-  swagger,
-  startUp
+const helloWorld = (state = { message: 'Hello' }, action) => {
+  switch (action.type) {
+    case HELLO_WORLD:
+      return Object.assign({}, state, { message: action.value });
+    default:
+      return state;
+  }
+};
+
+const helloReducer = combineReducers({
+  helloWorld
 });
 
-export default reducers;
-
+export default helloReducer;
