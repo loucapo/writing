@@ -1,24 +1,15 @@
 version: "2"
 services:
-  sls_course_builder_api:
-    image: sls_course_builder_api
+  wk_api:
+    image: wk_api
     volumes:
       - ./../app:/home/current/app
     command: npm run start_dev #top -b #top -b #
    # external_links:
     #  - cdn:frontend
     environment:
-      DEBUG: swagger-tools:middleware:*
+      DEBUG: "true"
       NODE_ENV: development
-      APPLICATION_NAME: sls_course_builder_api
+      APPLICATION_NAME: wk_api
     ports:
       - "3000:3000"
-    external_links:
-      - sls_moodle_DB
-
-  swagger_ui:
-    image: sls_swagger_ui
-    ports:
-      - "8666:80"
-    links:
-      - sls_course_builder_api
