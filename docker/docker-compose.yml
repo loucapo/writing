@@ -2,15 +2,15 @@ version: "2"
 services:
   front_end:
     extends:
-      file: ../../sls_frontend/docker/docker-compose.yml
-      service: sls_frontend
-    container_name: sls_frontend
+      file: ../../wk_frontend/docker/docker-compose.yml
+      service: wk_frontend
+    container_name: wk_frontend
 
-  course_builder:
+  api:
     extends:
-      file: ../../sls_course_builder_api/docker/docker-compose-dev.yml
-      service: sls_course_builder_api
-    container_name: sls_course_builder_api
+      file: ../../wk_api/docker/docker-compose-dev.yml
+      service: wk_api
+    container_name: wk_api
 
   nginx:
     image: nginx_container
