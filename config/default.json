@@ -1,27 +1,25 @@
 {
-  "frontend":{},
+  "frontend": {},
   "env": "dev",
   "app": {
-    "title": "Course Builder",
+    "title": "Writer Key",
     "port": 3000,
     "baseUrl": "http://localhost/",
     "env": "Dev",
     "keys": [
-      "CourseBuilder"
+      "WriterKey"
     ],
     "root": "./"
   },
-  "configs": {
-    "children": {
-      "postgres": {
-        "connectionString": "postgres://methodfitness:password@postgres/",
-        "postgres": "postgres",
-        "database": "methodfitness"
-      }
-    },
-    "logger": {
-      "moduleName": "Api"
-    },
-    "env": "dev"
+  "postgres": {
+    "config" :{
+      "user": "writer_key",
+      "database": "writer_key",
+      "host"     : "writer_key_DB",
+      "password": "writer_key",
+      "port": 5432,
+      "max": 10,
+      "idleTimeoutMillis": 30000
+    }
   }
 }

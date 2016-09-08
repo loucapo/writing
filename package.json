@@ -5,61 +5,50 @@
   "main": "app/index.js",
   "scripts": {
     "start": "node app/index.js",
-    "start_dev": "nodemon  --ignore app/src/swagger/swagger_spec.json app/index.js",
+    "start_dev": "nodemon app/index.js",
+    "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
     "lint": "eslint .",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "licenses": "license-checker --production --csv | tee licenses.csv"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=6.6"
   },
   "dependencies": {
-    "JSON": "^1.0.0",
-    "bcrypt": "0.8.x",
-    "bluebird": "^2.9.24",
-    "co": "^4.4.0",
-    "co-body": "^4.0.0",
-    "config": "^1.14.0",
+    "babel-polyfill": "^6.13.0",
+    "config": "^1.21.0",
     "dagon": "git://github.com/reharik/dagon.git",
-    "extend": "^3.0.0",
-    "invariant": "^2.1.0",
-    "jsonwebtoken": "^7.0.0",
-    "koa": "^1.0.0",
-    "koa-bodyparser": "2.0.x",
-    "koa-compress": "1.0.x",
-    "koa-error": "1.1.x",
-    "koa-jwt": "^1.2.0",
-    "koa-logger": "^1.3.0",
-    "koa-response-time": "1.0.x",
-    "koa-router": "^5.2.3",
-    "koa-static": "1.4.x",
-    "koa-unless": "^1.0.0",
-    "moment": "^2.10.6",
-    "path": "^0.12.7",
-    "sls_data": "git+ssh://git@bitbucket.org/mnv_tech/sls_data",
-    "swagger-jsdoc": "^1.3.0",
-    "swagger-parser": "^3.4.1",
-    "swagger-tools": "^0.10.1",
-    "uuid": "^2.0.1",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-compress": "^2.0.0",
+    "koa-errorhandler": "^0.1.1",
+    "koa-logger": "^2.0.0",
+    "koa-response-time": "^2.0.0",
+    "koa-router": "^7.0.1",
+    "pg-async": "^2.4.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {
-    "babel": "^5.5.6",
-    "babel-runtime": "^5.5.6",
-    "del": "^1.2.0",
-    "eslint": "^2.12.0",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.8.1",
-    "eslint-plugin-jsx-a11y": "^1.4.2",
-    "eslint-plugin-react": "^5.1.1",
-    "mocha": "2.1.x",
-    "must": "0.13.0-beta2",
-    "nodemon": "^1.9.2",
-    "precommit-hook-eslint": "^3.0.0"
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-3": "^6.11.0",
+    "babel-register": "^6.14.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.4.0",
+    "license-checker": "^5.1.2",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2",
+    "precommit-hook-eslint": "^3.0.0",
+    "supertest": "^2.0.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-3"
+    ]
   },
   "pre-commit": [
-    "lint",
-    "validate",
-    "test"
+    "validate"
   ]
 }

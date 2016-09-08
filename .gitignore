@@ -10,7 +10,9 @@ node_modules
 public
 build
 build-info.json
+swagger_spec.json
 
 .idea
 npm-debug.log
 output
+licenses.csv

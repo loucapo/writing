@@ -1,13 +1,11 @@
-FROM eco_node:latest
+FROM wk_node:latest
 
-MAINTAINER ecosystem@saplinglearning.com
+MAINTAINER wk@saplinglearning.com
 
 ADD ./package.json ./package.json
+COPY ./.npmrc ./.npmrc
+
 ADD ./config ./config
-
-RUN mkdir /root/.ssh/
-
-#RUN ssh -oStrictHostKeyChecking=no bitbucket.org || true
 
 RUN npm install --silent
 

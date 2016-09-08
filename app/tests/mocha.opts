@@ -1,6 +1,4 @@
---require must
---require babelhook
+--require chai
 --reporter spec
 --ui bdd
 --recursive
---compilers js:babel/register

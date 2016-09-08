@@ -1,4 +1,4 @@
 node_modules
-test
+tests
 webpack.config.js
 webpack.config-testing.js

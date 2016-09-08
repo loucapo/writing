@@ -9,8 +9,8 @@ module.exports = function(_options) {
     result = container(x =>
       x.pathToRoot(path.join(__dirname, '/../'))
         .requireDirectoryRecursively('./app/src')
-        .for('repository').replaceWith('dataRepository') // eslint-disable-line newline-per-chained-call
         .for('winston').renameTo('logger') // eslint-disable-line newline-per-chained-call
+        .for('repository').replaceWith('mockDataRepository') // eslint-disable-line newline-per-chained-call
         .groupAllInDirectory('./app/src/controllers', 'controllers')
         .complete());
   } catch (ex) {
