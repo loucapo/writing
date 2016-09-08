@@ -1,5 +1,5 @@
-IMAGENAME=sls_course_builder_api
-CONTAINERNAME=sls_course_builder_api
+IMAGENAME=wk_api
+CONTAINERNAME=wk_api
 
 docker-exec:
 	docker exec -it $(CONTAINERNAME) /bin/bash
@@ -25,7 +25,7 @@ run:	docker-build
 test:	docker-build
 	docker-compose -f docker/docker-compose-test.yml run --service-ports --rm $(CONTAINERNAME)
 
-docker-build-swagger:
-	docker build -t sls_swagger_ui -f swagger-ui/docker/Dockerfile .
+#docker-build-swagger:
+#	docker build -t sls_swagger_ui -f swagger-ui/docker/Dockerfile .
 
 .PHONY: clean install docker-build run docker-clean docker-exec

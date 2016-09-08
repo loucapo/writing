@@ -1,21 +1,21 @@
 module.exports = function () {
-    return function () {
-        return function *error(next) {
-            try {
-                yield next;
-                if (this.response.status === 404 && !this.response.body) this.throw(404);
-            } catch (err) {
-                this.status = err.status || 500;
+  return function () {
+    return async(ctx, next) => {
+      try {
+        await next();
+        if (ctx.response.status === 404 && !ctx.response.body) ctx.throw(404);
+      } catch (err) {
+        ctx.status = err.statusCode || err.status || 500;
 
-                // application
-                this.app.emit('error', err, this);
+        // application
+        ctx.app.emit('error', err, this);
 
-                this.body = {
-                    status: this.status,
-                    success: false,
-                    errors: [{ message: err.message }]
-                };
-            }
+        ctx.body = {
+          status: ctx.status,
+          success: false,
+          errors: [{message: err.message}]
         };
+      }
     };
+  };
 };

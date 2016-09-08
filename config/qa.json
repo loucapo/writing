@@ -3,6 +3,6 @@
     "ip":"172.0.0.1"
   },
   "postgres":{
-    "connectionString":"postgres://postgres:postgres@localhost/MethodFitness"
+    "connectionString":"postgres://postgres:postgres@localhost/writer_key"
   }
 }

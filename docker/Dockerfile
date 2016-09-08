@@ -1,12 +1,12 @@
-FROM sls_node:latest
+FROM wk_node:latest
 
-MAINTAINER ecosystem@saplinglearning.com
+MAINTAINER wk@saplinglearning.com
 
 ADD ./package.json ./package.json
 COPY ./.npmrc ./.npmrc
 
-RUN npm install --silent
-
 ADD ./config ./config
+
+RUN npm install --silent
 
 ADD ./app /$HOME/app

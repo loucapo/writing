@@ -1,14 +1,14 @@
-sls_course_builder_api:
-  image: sls_course_builder_api
-  volumes:
-    - ./../app:/home/current/app
-  command: npm start #top -b #
- # external_links:
-  #  - cdn:frontend
-  environment:
-    DEBUG: 'true'
-    NODE_ENV: development
-    APPLICATION_NAME: sls_course_builder_api
-  ports:
-    - "3000:3000"
-  container_name: sls_course_builder_api
+version: "2"
+services:
+  wk_api:
+    image: wk_api
+    volumes:
+      - ./../app:/home/current/app
+    command: npm start #top -b #
+    environment:
+      DEBUG: 'true'
+      NODE_ENV: development
+      APPLICATION_NAME: wk_api
+    ports:
+      - "3000:3000"
+    container_name: wk_api
