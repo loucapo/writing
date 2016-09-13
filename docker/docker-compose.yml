@@ -1,16 +1,22 @@
 version: "2"
 services:
-  front_end:
-    extends:
-      file: ../../wk_frontend/docker/docker-compose.yml
-      service: wk_frontend
-    container_name: wk_frontend
-
+#  front_end:
+#    extends:
+#      file: ../../wk_frontend/docker/docker-compose.yml
+#      service: wk_frontend
+#    container_name: wk_frontend
+#
   api:
     extends:
       file: ../../wk_api/docker/docker-compose-dev.yml
       service: wk_api
     container_name: wk_api
+
+  postgres:
+      extends:
+        file: ../../wk_api/docker/docker-compose-dev.yml
+        service: postgres
+      container_name: postgres
 
   nginx:
     image: nginx_container
