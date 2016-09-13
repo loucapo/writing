@@ -3,7 +3,7 @@ FROM wk_node:latest
 MAINTAINER wk@saplinglearning.com
 
 ADD ./package.json ./package.json
-COPY ./.npmrc ./.npmrc
+#COPY ./.npmrc ./.npmrc
 
 ADD ./config ./config
 
