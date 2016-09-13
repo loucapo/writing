@@ -1,13 +1,14 @@
-FROM nginx
+FROM nginx:1.10.1
 
 # Maintainer
 MAINTAINER MVN
 
 # set WORKDIR
-WORKDIR /opt/app/current
+#WORKDIR /opt/app/current
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 
-RUN mkdir /opt/app/current/dist
+#RUN mkdir /usr/share/nginx/html
+COPY app/dist /usr/share/nginx/html
 
-VOLUME ./dist:/opt/app/current/dist
+VOLUME app/dist:/usr/share/nginx/html

@@ -12,7 +12,7 @@ const webpackConfig = {
     host: '0.0.0.0',
     port: '8000',
 
-    contentBase: path.resolve(__dirname, 'app/src'),
+    contentBase: path.resolve(__dirname, './index.tmpl.html'),
     historyApiFallback: true,
 
     hot: true,
@@ -46,7 +46,7 @@ const webpackConfig = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].bundle.js'
   },
@@ -57,13 +57,13 @@ const webpackConfig = {
         test: /\.jsx?$/,
         loader: 'babel',
         include: [
-          path.resolve(__dirname, '/')
+          path.resolve(__dirname, 'src')
         ]
       },
       {
         test: /\.css$/,
         include: [
-          path.resolve(__dirname, '/css')
+          path.resolve(__dirname, 'src/css')
         ],
         loader: combineLoaders([
           {
@@ -90,8 +90,8 @@ const webpackConfig = {
       template: 'index.html',
       inject: true,
       hash: true,
-      cache: true,
-      chunks: ['app'],
+      // cache: true,
+      // chunks: ['app'],
       chunksSortMode: 'dependency',
       showErrors: true
     }),
@@ -108,7 +108,7 @@ const webpackConfig = {
     return [
       require('postcss-import')({
         addDependencyTo: webpack,
-        path: [ 'styles', 'views'],
+        path: [ 'css' ],
         root: path.resolve(__dirname, '/'),
         skipDuplicates: true
       }),
