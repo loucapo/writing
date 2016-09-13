@@ -1,8 +1,16 @@
-export const HELLO_WORLD = 'HELLO_WORLD';
+import { CALL_API } from 'redux-api-middleware';
 
-export const helloWorld = () => {
+export const helloAction = () => {
+  console.log("helloAction");
   return {
-    type: HELLO_WORLD,
-    value: 'Goodbye cruel world'
+    [CALL_API]: {
+      endpoint: 'http://localhost:8080',
+      method: 'GET',
+      types: [
+        'REQUEST',
+        'SUCCESS',
+        'FAILURE'
+      ]
+    }
   };
 };
