@@ -1,11 +1,8 @@
-/* global require*/
-/* global module*/
-
 import { createStore, applyMiddleware, compose } from 'redux';
 import createLogger from 'redux-logger';
 import { apiMiddleware } from 'redux-api-middleware';
-import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
+import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
   const store = createStore(

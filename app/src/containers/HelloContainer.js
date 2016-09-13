@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
-import { helloWorld } from './../actions';
+import { helloAction } from './../actions';
 import Hello from './../components/Hello';
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    message: state.helloWorld.message
+    message: state.message
   };
 };
 
 const HelloContainer = connect(
   mapStateToProps,
-  {helloWorld}
+  {helloAction}
 )(Hello);
 
 export default HelloContainer;

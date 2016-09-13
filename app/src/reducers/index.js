@@ -1,3 +1,3 @@
-/**
- * Created by owencorpening on 9/12/16.
- */
+import hellowWorldReducers from './helloWorldReducers';
+
+export default hellowWorldReducers;

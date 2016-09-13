@@ -1,19 +1,15 @@
-import { combineReducers } from 'redux';
-import { HELLO_WORLD } from './../actions';
-
 const helloWorldReducer = (state = { message: 'Hello' }, action) => {
   switch (action.type) {
-    case HELLO_WORLD:
-      console.log("HANDLING MY ACTION TYPE!!!!");
-      return Object.assign({}, state, { message: action.value });
+    case 'REQUEST':
+      return state;
+    case 'SUCCESS':
+      return Object.assign({}, state, { message: action.payload });
+    case 'FAILURE':
+      return Object.assign({}, state, { message: action.payload });
     default:
-      console.log("Unknown action type");
+      console.log('Unknown action type');
       return state;
   }
 };
 
-const allHelloWorldReducers = combineReducers({
-  helloWorldReducer
-});
-
-export default allHelloWorldReducers;
+export default helloWorldReducer;

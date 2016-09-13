@@ -1,11 +1,11 @@
 import React from 'react';
-import HelloWorld from '../containers/HelloContainer';
+import HelloContainer from '../containers/HelloContainer';
 
 class App extends React.Component {
 
   render() {
     return (
-      <HelloWorld />
+      <HelloContainer />
     );
   }
 }

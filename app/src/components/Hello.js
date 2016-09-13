@@ -1,17 +1,17 @@
 import React, { PropTypes } from 'react';
 
-const Hello = ({ helloWorld, message }) => {
+const Hello = ({ helloAction, message }) => {
   return (
     <div>
       <h1>{ message }</h1>
-      <button onClick={helloWorld}>Click</button>
+      <button onClick={helloAction}>Click</button>
     </div>
   );
 };
 
 Hello.propTypes = {
-  helloWorld: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired
+  helloAction: PropTypes.func,
+  message: PropTypes.string
 };
 
 export default Hello;
