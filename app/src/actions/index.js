@@ -4,7 +4,7 @@ export const helloAction = () => {
   console.log('helloAction');
   return {
     [CALL_API]: {
-      endpoint: 'http://localhost:8080',
+      endpoint: 'http://localhost:10080/api/',
       method: 'GET',
       types: [
         'REQUEST',

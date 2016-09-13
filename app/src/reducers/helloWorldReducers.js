@@ -3,7 +3,7 @@ const helloWorldReducer = (state = { message: 'Hello' }, action) => {
     case 'REQUEST':
       return state;
     case 'SUCCESS':
-      return Object.assign({}, state, { message: action.payload });
+      return Object.assign({}, state, { message: action.payload.payload.Hello });
     case 'FAILURE':
       return Object.assign({}, state, { message: action.payload });
     default:
