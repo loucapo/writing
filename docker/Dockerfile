@@ -1,8 +1,13 @@
-FROM wk_node:latest
+FROM nginx
 
-ADD mocha-webpack.opts .
-ADD package.json .
+# Maintainer
+MAINTAINER MVN
 
-RUN npm install -q
+# set WORKDIR
+WORKDIR /opt/app/current
 
-ADD ./app /$HOME/app
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+RUN mkdir /opt/app/current/dist
+
+VOLUME ./dist:/opt/app/current/dist

@@ -1,95 +1,130 @@
 const path = require('path');
+
 const webpack = require('webpack');
-const validate = require('webpack-validator');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
-const postcssImport = require('postcss-import');
+const validate = require('webpack-validator');
+const combineLoaders = require('webpack-combine-loaders');
 
 const webpackConfig = {
+  context: path.resolve(__dirname, 'src'),
+
   devServer: {
-    contentBase: './dist',
-    historyApiFallback: true,
-    inline: true,
-    hot: true,
     host: '0.0.0.0',
+    port: '8000',
+
+    contentBase: path.resolve(__dirname, 'app/src'),
+    historyApiFallback: true,
+
+    hot: true,
+    inline: true,
+
+    // --progress - [assets, children, chunks, colors, errors, hash, timings, version, warnings]
     stats: {
-      colors: true,
+      assets: true,
+      children: true,
       chunks: false,
-      errors: true
+      colors: true,
+      errors: true,
+      errorDetails: true, //depends on {errors: true}
+      hash: true,
+      modules: false,
+      publicPath: true,
+      reasons: false,
+      source: true, //what does this do?
+      timings: true,
+      version: true,
+      warnings: true
     }
   },
-  devtool: 'cheap-module-eval-source-map',
 
-  entry: path.join(__dirname, '/src/index.js'),
+  devtool: 'cheap-module-eval-source-map', //javascript sourcemaps
+
+  entry: {
+    app: [
+      'react-hot-loader/patch',
+      './index.js'
+    ]
+  },
   output: {
-    path: path.join(__dirname, '/dist/'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
+    filename: '[name].bundle.js'
   },
 
   module: {
-    noParse: [],
     loaders: [
-      { test: /\.jsx?$/,
-        include: path.resolve(__dirname, 'src'),
-        loader: 'babel-loader',
-        query: {
-          presets: [
-            'es2015',
-            'react',
-            'stage-0'
-          ],
-          env: {
-            development: {
-              plugins: [['react-transform', {
-                transforms: [{
-                  transform: 'react-transform-hmr',
-                  imports: ['react'],
-                  locals: ['module']
-                }]
-              }]],
-              ignore: ['node_module', 'src/sass/image']
-            }
-          }
-        }},
+      {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        include: [
+          path.resolve(__dirname, '/')
+        ]
+      },
       {
         test: /\.css$/,
-        include: path.resolve(__dirname, 'src/sass'),
-        // loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader')
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader')
-      },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
-      { test: /\.json?$/, loader: 'json' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
-      { test: /\.png$/, loader: 'url-loader', query: { mimetype: 'image/png' } }
+        include: [
+          path.resolve(__dirname, '/css')
+        ],
+        loader: combineLoaders([
+          {
+            loader: 'style'
+          },
+          {
+            loader: 'css',
+            query: {
+              modules: true,
+              sourceMap: true,
+              localIdentName: '[folder]---[local]---[hash:base64:10]'
+            }
+          },
+          {
+            loader: 'postcss'
+          }
+        ])
+      }
     ]
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.tmpl.html'
+      template: 'index.html',
+      inject: true,
+      hash: true,
+      cache: true,
+      chunks: ['app'],
+      chunksSortMode: 'dependency',
+      showErrors: true
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('bundle.css', { allChunks: true })
+    // Enable multi-pass compilation for enhanced performance
+    // in larger projects. Good default.
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true
+    }),
+    //see possible syntax errors at the browser console instead of hmre overlay
+    new webpack.NoErrorsPlugin()
   ],
 
-  postcss() {
+  postcss: (webpack) => {
     return [
-      postcssImport({
-        addDependencyTo: webpack
+      require('postcss-import')({
+        addDependencyTo: webpack,
+        path: [ 'styles', 'views'],
+        root: path.resolve(__dirname, '/'),
+        skipDuplicates: true
       }),
-      precss,
-      autoprefixer
+      require('postcss-cssnext')()
     ];
   },
 
-  resolve: { alias: {} }
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  }
 };
 
-module.exports = validate(webpackConfig);
+module.exports = validate(webpackConfig, {
+  rules: {
+    'no-root-files-node-modules-nameclash': true, //default
+    'loader-enforce-include-or-exclude': false,
+    'loader-prefer-include': true
+  }
+});
