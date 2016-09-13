@@ -12,3 +12,11 @@ services:
     ports:
       - "3000:3000"
     container_name: wk_api
+  postgres:
+      image: postgres
+      environment:
+        - LANG=en_US.UTF-8
+        - POSTGRES_PASSWORD=writer_key
+        - POSTGRES_USER=writer_key
+      ports:
+        - 5432:5432

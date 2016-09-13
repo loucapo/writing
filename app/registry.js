@@ -12,7 +12,8 @@ module.exports = function(_options) {
         .for('repository').replaceWith('dataRepository') // eslint-disable-line newline-per-chained-call
         .for('winston').renameTo('logger') // eslint-disable-line newline-per-chained-call
         .groupAllInDirectory('./app/src/controllers', 'controllers')
-        .complete());
+        .complete(),
+      i => i.instantiate('repository').asFunc().complete());
   } catch (ex) {
     console.log(ex); // eslint-disable-line no-console
     console.log(ex.stack); // eslint-disable-line no-console
