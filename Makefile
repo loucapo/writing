@@ -6,13 +6,13 @@ clone-api:
 	git clone git@bitbucket.org:mnv_tech/wk_api.git ../wk_api
 
 clone-front-end:
-	git clone git@bitbucket.org:mnv_tech/wk_frontend.git --single-branch ../wk_frontend
+	git clone git@bitbucket.org:mnv_tech/wk_frontend.git ../wk_frontend
 
 clone-data:
-	git clone git@bitbucket.org:mnv_tech/wk_data.git --single-branch ../wk_data
+	git clone git@bitbucket.org:mnv_tech/wk_data.git ../wk_data
 
 clone-yo:
-	git clone git@bitbucket.org:mnv_tech/wk_yo_generators.git --single-branch ../wk_yo_generators
+	git clone git@bitbucket.org:mnv_tech/wk_yo_generators.git ../wk_yo_generators
 
 clone-repos:	clone-api clone-front-end clone-data
 
@@ -31,7 +31,7 @@ docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api #docker-build-front-end
+docker-build-nginx:	docker-build-api docker-build-front-end
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
