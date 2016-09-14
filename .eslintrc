@@ -40,12 +40,12 @@
     "react/jsx-uses-vars": 2,
     "react/require-render-return": 0,
     "react/wrap-multilines": [2, { declaration: true, assignment: true, return: true }],
-
+    "react/display-name": 0,
     "arrow-parens": [2, "as-needed"],
     "camelcase": 2,
     "comma-dangle": [2, "never"],
     "comma-spacing": 2,
-    "consistent-return": 2,
+    "consistent-return": 0,
     "curly": [2, "all"],
     "dot-notation": [2, {
       "allowKeywords": true

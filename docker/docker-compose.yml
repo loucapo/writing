@@ -3,12 +3,10 @@ services:
   wk_frontend:
     image: wk_frontend
     volumes:
-      - ./../app:/home/current/app
-    command: npm start #top -b #
+      - ./../app/dist:/home/current/app
+    #command: npm start #top -b #
 
     environment:
-      DEBUG: 'true'
-      NODE_ENV: development
       APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"

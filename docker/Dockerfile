@@ -1,8 +1,14 @@
-FROM wk_node:latest
+FROM nginx:1.10.1
 
-ADD mocha-webpack.opts .
-ADD package.json .
+# Maintainer
+MAINTAINER MVN
 
-RUN npm install -q
+# set WORKDIR
+#WORKDIR /opt/app/current
 
-ADD ./app /$HOME/app
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+
+#RUN mkdir /usr/share/nginx/html
+COPY app/dist /usr/share/nginx/html
+
+VOLUME app/dist:/usr/share/nginx/html
