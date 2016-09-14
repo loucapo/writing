@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { helloAction } from './../actions';
+import { helloAction } from './../modules/helloModule';
 import Hello from './../components/Hello';
 
 const mapStateToProps = state => {
   console.log(state);
   return {
-    message: state.message
+    message: state.hello
   };
 };
 

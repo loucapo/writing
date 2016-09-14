@@ -1,3 +1,8 @@
-import hellowWorldReducers from './helloWorldReducers';
+import {combineReducers} from 'redux';
+import local from './../modules/index';
 
-export default hellowWorldReducers;
+const reducers = combineReducers({
+  ...local
+});
+
+export default reducers;

@@ -1,13 +1,5 @@
 import React from 'react';
 import HelloContainer from '../containers/HelloContainer';
 
-class App extends React.Component {
+export default () => (<HelloContainer />);
 
-  render() {
-    return (
-      <HelloContainer />
-    );
-  }
-}
-
-export default App;
