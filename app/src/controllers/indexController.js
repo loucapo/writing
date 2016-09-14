@@ -11,7 +11,7 @@ module.exports = function (repository, fs, uuid) {
       ctx.body = {
         status: ctx.status,
         success: true,
-        payload: row
+        data: row
       };
     }
   };
