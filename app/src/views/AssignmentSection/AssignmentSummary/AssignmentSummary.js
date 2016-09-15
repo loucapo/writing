@@ -14,14 +14,14 @@ const AssignmentSection = () => {
         ENG101 Introduction to Writing
       </div>
       <div className={assignmentSummary.rhetoricAndRubric}>
-			<span className={assignmentSummary.label}>
-				Rhetoric Genre:
-			</span>
+        <span className={assignmentSummary.label}>
+          Rhetoric Genre:
+        </span>
         Argument
         <br />
         <span className={assignmentSummary.label}>
-				Rubric:
-			</span>
+        Rubric:
+        </span>
         <a href="#">Argument</a>
       </div>
       <div className={ assignmentSummary['prompt-summary'] }>

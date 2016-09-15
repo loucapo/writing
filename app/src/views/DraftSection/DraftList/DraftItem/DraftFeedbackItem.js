@@ -11,18 +11,11 @@ let DraftFeedbackItem = React.createClass({
   render() {
     let feedback = this.props.feedback;
     return (
-      <div>
-				<span className={draftItem.summaryLabel}>
-					{feedback.label}
-				</span>
-        <span className={draftItem.summaryContainer}>
-					{nl2br(feedback.text)}
-				</span>
+      <div><span className={draftItem.summaryLabel}>{feedback.label}</span>
+        <span className={draftItem.summaryContainer}>{nl2br(feedback.text)}</span>
       </div>
     );
   }
 });
-
-DraftFeedbackItem.
 
 export default DraftFeedbackItem;
