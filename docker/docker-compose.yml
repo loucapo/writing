@@ -3,8 +3,8 @@ services:
   wk_frontend:
     image: wk_frontend
     volumes:
-      - ./../app/dist:/home/current/app
-    #command: npm start #top -b #
+      - ./../app:/home/current/app
+    command: npm start #top -b #
 
     environment:
       APPLICATION_NAME: wk_frontend
