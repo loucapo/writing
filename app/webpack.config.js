@@ -63,6 +63,8 @@ const webpackConfig = {
       {
         test: /\.css$/,
         include: [
+          path.resolve(__dirname, 'src/styles'),
+          path.resolve(__dirname, 'src/views'),
           path.resolve(__dirname, 'src/css')
         ],
         loader: combineLoaders([
@@ -108,8 +110,8 @@ const webpackConfig = {
     return [
       require('postcss-import')({
         addDependencyTo: webpack,
-        path: [ 'css' ],
-        root: path.resolve(__dirname, '/'),
+        path: [ 'css', 'styles', 'views' ],
+        root: path.resolve(__dirname, 'src'),
         skipDuplicates: true
       }),
       require('postcss-cssnext')()

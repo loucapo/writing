@@ -1,0 +1,16 @@
+@import 'mixins.css';
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:light,regular,bold);
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: var(--font-default);
+	font-size: 14px;
+}
+
+a, a:link, a:hover, a:active  {
+	text-decoration: none;
+	color: var(--blue);
+	cursor: pointer;
+}
+

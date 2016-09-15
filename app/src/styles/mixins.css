@@ -1,0 +1,23 @@
+@import 'variables.css';
+
+:root {
+  --error-theme: {
+    color: var(--exLightGrey);
+    background-color: var(--errorRed);
+  };
+
+	--font-light: {
+		font-weight: 100;
+		color: var(--font-default);
+	}
+	--font-default: {
+		color: var(--font-default);
+	};
+	--font-medium: {
+		color: var(--font-medium);
+	};
+	--font-strong: {
+		font-weight: 800;
+		color: var(--font-strong);
+	};
+}
