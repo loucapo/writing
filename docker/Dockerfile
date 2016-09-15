@@ -1,14 +1,9 @@
-FROM nginx:1.10.1
+FROM wk_node:latest
 
-# Maintainer
-MAINTAINER MVN
+MAINTAINER mvn
 
-# set WORKDIR
-#WORKDIR /opt/app/current
+ADD ./package.json ./package.json
 
-COPY docker/nginx.conf /etc/nginx/nginx.conf
+RUN npm install -q
 
-#RUN mkdir /usr/share/nginx/html
-COPY app/dist /usr/share/nginx/html
-
-VOLUME app/dist:/usr/share/nginx/html
+ADD ./app /$HOME/app
