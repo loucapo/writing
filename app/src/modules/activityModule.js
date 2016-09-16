@@ -14,7 +14,6 @@ export default (state = 'Activity', action) => {
       return action.payload.data.Activity;
     }
     case FAILURE_ACTIVITY: {
-      // return Object.assign({}, state, { message: action.payload.data });
       break;
     }
     default: {
