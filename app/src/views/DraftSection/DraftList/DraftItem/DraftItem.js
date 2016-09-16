@@ -7,7 +7,7 @@ import draftItem from './draftItem.css';
 
 let DraftItem = React.createClass({
   propTypes: {
-    draft: PropTypes.string
+    draft: PropTypes.object
   },
   render() {
     let draft = this.props.draft;

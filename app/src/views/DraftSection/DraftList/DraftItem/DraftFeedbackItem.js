@@ -6,7 +6,7 @@ import draftItem from './draftItem.css';
 
 let DraftFeedbackItem = React.createClass({
   propTypes: {
-    feedback: PropTypes.string
+    feedback: PropTypes.object
   },
   render() {
     let feedback = this.props.feedback;
