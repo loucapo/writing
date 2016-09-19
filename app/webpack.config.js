@@ -63,9 +63,7 @@ const webpackConfig = {
       {
         test: /\.css$/,
         include: [
-          path.resolve(__dirname, 'src/styles'),
-          path.resolve(__dirname, 'src/views'),
-          path.resolve(__dirname, 'src/css')
+          path.resolve(__dirname, 'src')
         ],
         loader: combineLoaders([
           {

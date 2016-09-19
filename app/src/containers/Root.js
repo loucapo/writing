@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import App from './../components/App';
+import Activity from './../components/Activity';
 
 const Root = ({ store }) => (
   <Provider store={store} >
-    <App />
+    <Activity />
   </Provider>
 );
 

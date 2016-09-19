@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Header from '../Header/Header';
-import AssignmentSection from '../AssignmentSection/AssignmentSection';
-import DraftSection from '../DraftSection/DraftSection';
+import Header from './Header/Header';
+import AssignmentSection from './AssignmentSection/AssignmentSection';
+import DraftSection from './DraftSection/DraftSection';
 
 const App = () => {
   return (
