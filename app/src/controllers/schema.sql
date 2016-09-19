@@ -22,3 +22,34 @@ WITH (
 );
 ALTER TABLE "writer_key"
   OWNER TO writer_key;
+
+-- Table: "activity"
+
+DROP TABLE IF EXISTS "activity";
+
+CREATE TABLE "activity"
+(
+  id uuid NOT NULL,
+  document jsonb
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "activity"
+  OWNER TO writer_key;
+
+
+-- Table: "draft"
+
+DROP TABLE IF EXISTS "draft";
+
+CREATE TABLE "draft"
+(
+  id uuid NOT NULL,
+  document jsonb
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "draft"
+  OWNER TO writer_key;
