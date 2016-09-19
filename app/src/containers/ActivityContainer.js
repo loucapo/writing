@@ -2,10 +2,8 @@ import { connect } from 'react-redux';
 import { activityAction } from './../modules';
 import App from '../views/App/App';
 
-const mapStateToProps = state => {
-  return {
-    message: state.hello
-  };
+const mapStateToProps = () => {
+  return {};
 };
 
 const ActivityContainer = connect(
