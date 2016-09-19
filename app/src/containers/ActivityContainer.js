@@ -3,7 +3,6 @@ import { activityAction } from './../modules';
 import App from '../views/App/App';
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     message: state.hello
   };
