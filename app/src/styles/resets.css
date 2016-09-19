@@ -1,0 +1,22 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body,
+#root-entry, #root-entry > div {
+  width: 100%;
+  /* height: 100%; */
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

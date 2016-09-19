@@ -1,0 +1,28 @@
+:root {
+  --menuGrey: #272727;    /* Menu background */
+  --darkGrey: #333333;    /* Press state, primary font */
+  --comGrey: #cdcdcd;     /* Divider lines, container outlines, text field outlines */
+  --lightGrey: #e5e5e5;   /* Inactive, text on dark background */
+  --bkGrey: #f8f8f8;      /* Default Background */
+  --exLightGrey: #ffffff; /* Content background, text on dark background */
+
+/* BRAND COLORS */
+  --bbPurple: #c56fd5;      /* Active/selected button states, text links, course color */
+  --bbBrightBlue: #26d7fd;  /* Course color */
+  --bbRedOrange: #ff6600;   /* Course color, FTUE, warning background */
+  --bbYellow: #ffe300;      /* Course color */
+  --bbDarkBlue: #2075a3;    /* (Primarily a web color) Web text links, course color */
+
+/* ERROR COLORS */
+  --errorRed: #FF3B30;
+	
+/* COMMON DESIGN */
+	--blue: #31b4e7;
+	--box-bg-grey: #f4f4f4;
+	--box-border-dark-grey: #b7b7b7;
+	--box-border-light-grey: #d4d4d4;
+	--font-light: #b2b2b2;
+	--font-default: #878787;
+	--font-medium: #6d6d6d;
+	--font-strong: #474747;
+}
