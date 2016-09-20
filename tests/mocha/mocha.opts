@@ -1,4 +1,0 @@
---recursive
---timeout 60000
---reporter mochawesome
---reporter-options reportDir=log,reportName=somename,reportTitle=sometitle
