@@ -1,0 +1,21 @@
+{
+  "baseUrl": "http://wk-qa.macmillantech.com",
+  "featuresDir": "tests/features",
+  "stepsDir": "tests/steps",
+  "resultsDir": "results",
+  "reporter": "moonraker",
+  "threads": 1,
+  "icinga": true,
+
+  "testTimeout": 60000,
+  "elementTimeout": 5000,
+
+  "tags": "!@wip",
+
+  "browser": {
+    "browserName": "chrome",
+    "chromeOptions": {
+      "args": ["--no-sandbox"]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Writing-Tool-Integration-Tests",
+  "version": "0.0.1",
+  "dependencies": {
+    "moonraker": "https://github.com/gjw/moonraker.git"
+  },
+  "scripts": {
+    "test": "node node_modules/moonraker/bin/moonraker.js"
+  }
+}
