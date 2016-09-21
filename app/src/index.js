@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
+import { WKRichTextEditorContainer as RichTextEditorContainer } from 'wk-rich-text-editor-container';
 
 const store = configureStore();
 
@@ -25,9 +26,26 @@ const PageNotFound = React.createClass({
   }
 });
 
+const editorDivStyle = {
+  maxWidth: '800px',
+  marginLeft: 'auto',
+  marginRight: 'auto'
+};
+
+const EditorWrapper = React.createClass({
+  render() {
+    return (
+      <div style={editorDivStyle} className="editor-wrapper">
+        <RichTextEditorContainer store={store} />
+      </div>
+    );
+  }
+});
+
 render((
   <Router history={browserHistory}>
     <Route path="/" component={RootWrapper} />
+    <Route path="/editor" component={EditorWrapper} />
     <Route path="*" component={PageNotFound} />
   </Router>
 ), document.getElementById('root'));
