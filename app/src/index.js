@@ -7,10 +7,26 @@ import { WKRichTextEditorContainer as RichTextEditorContainer } from 'wk-rich-te
 
 const store = configureStore();
 
+const editorDivStyle = {
+  maxWidth: '800px',
+  marginLeft: 'auto',
+  marginRight: 'auto'
+};
+
 const RootWrapper = React.createClass({
   render() {
     return (
       <Root store={store} />
+    );
+  }
+});
+
+const EditorWrapper = React.createClass({
+  render() {
+    return (
+      <div style={editorDivStyle} className="editor-wrapper">
+        <RichTextEditorContainer store={store} />
+      </div>
     );
   }
 });
@@ -21,22 +37,6 @@ const PageNotFound = React.createClass({
       <div>
         <h1>Page Not Found.</h1>
         <p>Go to <Link to="/">Home Page</Link></p>
-      </div>
-    );
-  }
-});
-
-const editorDivStyle = {
-  maxWidth: '800px',
-  marginLeft: 'auto',
-  marginRight: 'auto'
-};
-
-const EditorWrapper = React.createClass({
-  render() {
-    return (
-      <div style={editorDivStyle} className="editor-wrapper">
-        <RichTextEditorContainer store={store} />
       </div>
     );
   }
