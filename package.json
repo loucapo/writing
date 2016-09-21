@@ -31,7 +31,8 @@
     "redux": "^3.3.1",
     "redux-api-middleware": "^1.0.2",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.0.1"
+    "redux-thunk": "^2.0.1",
+    "wk-rich-text-editor-container": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",

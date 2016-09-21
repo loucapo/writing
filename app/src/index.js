@@ -5,6 +5,14 @@ import configureStore from './store/configureStore';
 
 const store = configureStore();
 
-render(<Root store={store} />,
+const RootWrapper = React.createClass({
+  render() {
+    return (
+      <Root store={store} />
+    );
+  }
+});
+
+render(<RootWrapper />,
   document.getElementById('root')
 );
