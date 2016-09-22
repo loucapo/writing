@@ -1,0 +1,11 @@
+{
+  "app": {
+    "port": 3000
+  },
+  "postgres": {
+    "config" :{
+      "max": 10,
+      "idleTimeoutMillis": 30000
+    }
+  }
+}
