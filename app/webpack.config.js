@@ -86,6 +86,9 @@ const webpackConfig = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': process.env
+    }),
     new HtmlWebpackPlugin({
       template: 'index.html',
       inject: true,

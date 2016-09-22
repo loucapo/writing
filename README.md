@@ -3,6 +3,7 @@
     git clone git@bitbucket.org:mnv_tech/wk_frontend.git
     must use node >= 4.0
     cd wk_frontend
+    cp .env.example .env
     npm install
     npm start
     navigate in browser to localhost:8080
