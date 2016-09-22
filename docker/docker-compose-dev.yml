@@ -7,6 +7,8 @@ services:
     command: npm run start_dev #top -b #top -b #
    # external_links:
     #  - cdn:frontend
+    env_file:
+      - ../.env
     environment:
       DEBUG: "true"
       NODE_ENV: development

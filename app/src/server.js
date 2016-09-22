@@ -5,7 +5,7 @@ module.exports = function server(koa,
                                  logger) {
   return function module() {
     logger.info('approot ' + __dirname);
-    logger.info('appTitle ' + config.app.title);
+    logger.info('appTitle WK_API');
 
     const app = new koa();  // eslint-disable-line new-cap
     koaConfig(app);
