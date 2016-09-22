@@ -1,0 +1,10 @@
+version: "2"
+services:
+  wk_data:
+    image: wk_data
+    volumes:
+      - ./../app:/home/current/app
+    command: npm start #top -b #
+    env_file:
+      - ./../.env
+    container_name: wk_data
