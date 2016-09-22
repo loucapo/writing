@@ -27,11 +27,15 @@ docker-build-api:	docker-build-node
 	cd ../wk_api && $(MAKE) docker-build
 	cd ../wk_compose
 
+docker-build-data:	docker-build-node
+	cd ../wk_data && $(MAKE) docker-build
+	cd ../wk_compose
+
 docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api docker-build-front-end
+docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
@@ -58,6 +62,14 @@ kill-nginx:
 kill-api:
 	docker rm -vf wk_api 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_api
+
+kill-data:
+	docker rm -vf wk_data 2>/dev/null || echo "No more containers to remove."
+	docker rmi wk_data
+
+kill-postgres:
+	docker rm -vf postgres 2>/dev/null || echo "No more containers to remove."
+	docker rmi postgres
 
 kill-front-end:
 	docker rm -vf wk_frontend 2>/dev/null || echo "No more containers to remove."

@@ -1,5 +1,15 @@
 version: "2"
 services:
+  data:
+    depends_on:
+      - postgres
+      - front_end
+      - api
+    extends:
+      file: ../../wk_data/docker/docker-compose.yml
+      service: wk_data
+    container_name: wk_data
+
   front_end:
     extends:
       file: ../../wk_frontend/docker/docker-compose.yml
@@ -13,10 +23,12 @@ services:
     container_name: wk_api
 
   postgres:
-      extends:
-        file: ../../wk_api/docker/docker-compose-dev.yml
-        service: postgres
-      container_name: postgres
+    image: postgres
+    ports:
+      - 5432:5432
+    env_file:
+      - ./../.env
+    container_name: postgres
 
   nginx:
     image: nginx_container
