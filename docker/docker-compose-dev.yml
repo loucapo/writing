@@ -13,6 +13,7 @@ services:
       APPLICATION_NAME: wk_api
     ports:
       - "3000:3000"
+<<<<<<< Updated upstream
   postgres:
       image: postgres
       environment:
@@ -21,3 +22,5 @@ services:
         - POSTGRES_USER=writer_key
       ports:
         - 5432:5432
+=======
+>>>>>>> Stashed changes
