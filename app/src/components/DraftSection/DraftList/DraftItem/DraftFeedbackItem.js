@@ -6,13 +6,21 @@ import draftItem from './draftItem.css';
 
 let DraftFeedbackItem = React.createClass({
   propTypes: {
-    feedback: PropTypes.object
+    divKey1: PropTypes.string,
+    divKey2: PropTypes.string,
+    feedbackLabel: PropTypes.string,
+    feedbackText: PropTypes.array
   },
   render() {
-    let feedback = this.props.feedback;
     return (
-      <div><span className={draftItem.summaryLabel}>{feedback.label}</span>
-        <span className={draftItem.summaryContainer}>{nl2br(feedback.text)}</span>
+      <div key={this.props.divKey1} className={draftItem.summaryContainer}>
+        <div key={this.props.divKey2} ><span className={draftItem.summaryLabel}>{this.props.feedbackLabel}:</span>
+          {
+            this.props.feedbackText.map(function( feedbackText, index ) {
+              return <div key={index}>{feedbackText}</div>;
+            })
+          }
+        </div>
       </div>
     );
   }

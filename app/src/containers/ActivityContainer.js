@@ -1,14 +1,24 @@
 import { connect } from 'react-redux';
 import { activityAction } from './../modules';
-import App from '../views/App/App';
+import Activity from '../components/Activity';
 
-const mapStateToProps = () => {
+const mapStateToProps = state => {
+  let myDrafts = state.activity.Drafts ? state.activity.Drafts : [];
+  let data = {
+    Activity: state.activity.Activity,
+    Drafts: myDrafts
+  };
+  return data;
+};
+
+const mapDispatchToProps = dispatch => {
+  dispatch(activityAction('13630184-5955-4dbe-9908-ab065f1bcad2'));
   return {};
 };
 
 const ActivityContainer = connect(
   mapStateToProps,
-  {activityAction}
-)(App);
+  mapDispatchToProps
+)(Activity);
 
 export default ActivityContainer;

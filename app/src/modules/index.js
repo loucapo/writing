@@ -1,5 +1,5 @@
-import helloReducer from './helloModule';
+import activityReducer from './activityModule';
 
-export {helloAction} from './helloModule';
-export default { hello: helloReducer };
+export {activityAction} from './activityModule';
+export default { activity: activityReducer };
 
