@@ -90,4 +90,37 @@ exec:
 	docker exec -it $(con) bash
 
 
+
+##################
+#GIT Helpers
+##################
+
+get-statuses:
+	@echo ================COMPOSE==================
+	@git status
+	@echo ================FRONTEND==================
+	@cd ../wk_frontend && git status
+	@cd ../wk_compose
+	@echo ================API==================
+	@cd ../wk_api && git status
+	@cd ../wk_compose
+	@echo ================DATA==================
+	@cd ../wk_data && git status
+	@cd ../wk_compose
+
+pull-repos:
+	@echo ================COMPOSE==================
+	@git pull origin master
+	@echo ================FRONTEND==================
+	@cd ../wk_frontend && git pull origin master
+	@cd ../wk_compose
+	@echo ================API==================
+	@cd ../wk_api && git pull origin master
+	@cd ../wk_compose
+	@echo ================DATA==================
+	@cd ../wk_data && git pull origin master
+	@cd ../wk_compose
+
+
+
 #.PHONY: clean install docker-build run docker-clean docker-exec
