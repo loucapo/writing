@@ -1,3 +1,7 @@
+#environment variables for run-time/deployment config live here.
+#these get pushed into docker-compose (see .env.example) for examples
+.env
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
