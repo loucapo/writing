@@ -1,23 +1,9 @@
 {
-  "frontend": {},
-  "env": "dev",
   "app": {
-    "title": "Writer Key",
-    "port": 3000,
-    "baseUrl": "http://localhost/",
-    "env": "Dev",
-    "keys": [
-      "WriterKey"
-    ],
-    "root": "./"
+    "port": 3000
   },
   "postgres": {
     "config" :{
-      "user": "writer_key",
-      "database": "writer_key",
-      "host"     : "postgres",
-      "password": "writer_key",
-      "port": 5432,
       "max": 10,
       "idleTimeoutMillis": 30000
     }

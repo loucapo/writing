@@ -1,0 +1,18 @@
+{
+  "app": {
+    "port": "3000",
+    "env": "NODE_ENV",
+    "keys": "APPLICATION_KEYS"
+  },
+  "postgres": {
+    "config" :{
+      "user": "POSTGRES_USER",
+      "database": "POSTGRES_DATABASE",
+      "host"     : "POSTGRES_HOST",
+      "password": "POSTGRES_PASSWORD",
+      "port": "POSTGRES_PORT",
+      "max": "10",
+      "idleTimeoutMillis": "30000"
+    }
+  }
+}
