@@ -16,14 +16,14 @@ const AssignmentSummary = props => {
           {props.Activity.desc}
         </div>
         <div className={assignmentSummary.rhetoricAndRubric}>
-        <span className={assignmentSummary.label}>
+          <span className={assignmentSummary.label}>
           Rhetoric Genre:
-        </span>
+          </span>
           {props.Activity.rhetoricalGenre}
           <br />
           <span className={assignmentSummary.label}>
         Rubric:
-        </span>
+          </span>
           <a href="#">{props.Activity.rubric}</a>
         </div>
         <div className={ assignmentSummary['prompt-summary'] }>

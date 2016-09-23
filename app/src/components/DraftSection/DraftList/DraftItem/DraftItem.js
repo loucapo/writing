@@ -104,13 +104,13 @@ let DraftItem = React.createClass({
               {draft.type}
             </div>
             <div>
-              <a className={ draftItem.editAction } href="#">Edit {draft.id}</a>
+              <a className={ draftItem.editAction } href="#">Edit {this.props.draftName}</a>
             </div>
           </div>
 
           <div><span className={draftItem.strong}>Due:</span>
             &nbsp;
-            {draft.dueDate}
+            {draft.dueData}
           </div>
         </header>
         <section className={ draftItem.summary }>
