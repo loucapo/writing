@@ -87,7 +87,9 @@ const webpackConfig = {
 
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': process.env
+      'process.env': {
+        API_BASE_URL: JSON.stringify(process.env.API_BASE_URL)
+      }
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
