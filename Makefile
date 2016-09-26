@@ -111,7 +111,7 @@ pull-repos:
 	@echo ================COMPOSE==================
 	@git pull origin master
 	@echo ================FRONTEND==================
-	@cd ../wk_frontend && git pull origin newCss
+	@cd ../wk_frontend && git pull origin master
 	@cd ../wk_compose
 	@echo ================API==================
 	@cd ../wk_api && git pull origin master
