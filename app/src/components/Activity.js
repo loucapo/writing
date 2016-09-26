@@ -1,22 +1,20 @@
 import React, {PropTypes} from 'react';
 
-import Header from './Header/Header';
 import AssignmentSection from './AssignmentSection/AssignmentSection';
 import DraftSection from './DraftSection/DraftSection';
 
-const Activity = props => {
+const Activity = ({activity, drafts}) => {
   return (
-    <div className="app-wrapper">
-      <Header />
-      <AssignmentSection Activity={props.Activity} />
-      <DraftSection Drafts={props.Drafts} />
+    <div>
+      <AssignmentSection activity={activity} />
+      <DraftSection drafts={drafts} />
     </div>
   );
 };
 
 Activity.propTypes = {
-  Activity: PropTypes.object,
-  Drafts: PropTypes.array
+  activity: PropTypes.object,
+  drafts: PropTypes.array
 };
 
 

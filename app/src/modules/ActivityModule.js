@@ -5,17 +5,16 @@ export const SUCCESS_ACTIVITY = 'wk_frontend/activity/SUCCESS_ACTIVITY';
 export const FAILURE_ACTIVITY = 'wk_frontend/activity/FAILURE_ACTIVITY';
 
 // Reducer
-export default (state = {}, action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case REQUEST_ACTIVITY: {
       return state;
     }
     case SUCCESS_ACTIVITY: {
-      let newState = (Object.assign({}, state, {
+      return (Object.assign({}, state, {
         Activity: action.payload.data.activity,
         Drafts: action.payload.data.drafts
       }));
-      return newState;
     }
     case FAILURE_ACTIVITY: {
       return {};

@@ -1,0 +1,39 @@
+@import 'mixins.css';
+
+:root {
+	--header-height: 70px;
+}
+
+.strong {
+	@apply --font-strong;
+}
+
+/* DRAFT HEADER */
+.header {
+  height: var(--header-height);
+  line-height: var(--header-height);
+  font-size: 16px;
+  @apply --font-medium;
+  padding: 0 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.draftOrder {
+	margin-right: 10px;
+	@apply --font-strong;
+}
+.draftInfo {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.reviewLabel {
+  margin-right: 15px;
+  @apply --font-default;
+}
+.editAction {
+  font-size: .9em;
+}

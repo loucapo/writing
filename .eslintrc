@@ -41,7 +41,8 @@
     "react/require-render-return": 0,
     "react/jsx-wrap-multilines": [2, { declaration: true, assignment: true, return: true }],
     "react/display-name": 0,
-    "arrow-parens": [2, "as-needed"],
+    // open for debate on this one
+//    "arrow-parens": [2, "as-needed"],
     "camelcase": 2,
     "comma-dangle": [2, "never"],
     "comma-spacing": 2,

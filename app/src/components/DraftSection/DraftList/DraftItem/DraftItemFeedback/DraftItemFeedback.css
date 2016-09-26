@@ -1,0 +1,8 @@
+@import 'mixins.css';
+
+/* DRAFT SECTION -- RIGHT */
+.right {
+  padding: 20px 50px 10px 20px;
+  flex: 1 1 auto;
+}
+

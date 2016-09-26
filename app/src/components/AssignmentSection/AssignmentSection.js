@@ -5,17 +5,17 @@ import AssignmentAction from './AssignmentAction/AssignmentAction';
 
 import assignmentSection from './assignmentSection.css';
 
-const AssignmentSection = props => {
+const AssignmentSection = ({activity}) => {
   return (
     <section className={ assignmentSection.wrapper }>
-      <AssignmentSummary Activity={props.Activity} />
+      <AssignmentSummary activity={activity} />
       <AssignmentAction />
     </section>
   );
 };
 
 AssignmentSection.propTypes = {
-  Activity: PropTypes.object
+  activity: PropTypes.object
 };
 
 export default AssignmentSection;
