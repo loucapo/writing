@@ -6,4 +6,10 @@ module.exports = new Page({
 
   draftEditor: { get: function() { return this.element(".public-DraftEditor-content")}},
 
+  button_bold: { get: function() { return this.element(By.css("[class^='IconButton__icon-bold___']"))}},
+  button_italic: { get: function() { return this.element(By.css("[class^='IconButton__icon-italic___']"))}},
+  button_monospace: { get: function() { return this.element(By.css("[class^='IconButton__icon-monospace___']"))}},
+  button_strikethrough: { get: function() { return this.element(By.css("[class^='IconButton__icon-strikethrough___']"))}},
+  button_unordered_list: { get: function() { return this.element(By.css("[class^='IconButton__icon-unordered-list-item___']"))}},
+
 });
