@@ -59,14 +59,17 @@ kill-nginx:
 	docker rm -vf nginx_container 2>/dev/null || echo "No more containers to remove."
 	docker rmi nginx_container
 
-kill-postgres:
-	docker rm -vf postgres 2>/dev/null || echo "No more containers to remove."
-	docker rmi postgres
-
-
 kill-api:
 	docker rm -vf wk_api 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_api
+
+kill-data:
+	docker rm -vf wk_data 2>/dev/null || echo "No more containers to remove."
+	docker rmi wk_data
+
+kill-postgres:
+	docker rm -vf postgres 2>/dev/null || echo "No more containers to remove."
+	docker rmi postgres
 
 kill-front-end:
 	docker rm -vf wk_frontend 2>/dev/null || echo "No more containers to remove."
