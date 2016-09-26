@@ -18,7 +18,7 @@ module.exports = function () {
     const draft1 = {
         "id": "1b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Instructor Review",
-        "dueData": "Thursday Jan 1, 2016",
+        "dueDate": "Thursday Jan 1, 2016",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
             "learningObjectives": ["[Introduction] Thesis", "[Body] Move bodies with your eloquaint words and such.", "[Conclusion]What you say?"],
@@ -30,7 +30,7 @@ module.exports = function () {
     const draft2 = {
         "id": "2b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Peer Review",
-        "dueData": "Tuesday Jan 5, 2016",
+        "dueDate": "Tuesday Jan 5, 2016",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
             "peerReviewGroups": "Randomized",
@@ -44,7 +44,7 @@ module.exports = function () {
     const draft3 = {
         "id": "3b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Instructor Review",
-        "dueData": "Thursday Jan 8, 2016",
+        "dueDate": "Thursday Jan 8, 2016",
         "details": {
             "gradingPolicy": "Letter Grade",
             "postInstructorFeedback": ["Now that everyone has left the party besides you and I what would you like to philosophize about?"],
@@ -72,7 +72,7 @@ module.exports = function () {
     const draft4 = {
         "id": "4b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Instructor Review",
-        "dueData": "Thursday Jan 1, 2017",
+        "dueDate": "Thursday Jan 1, 2017",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
             "learningObjectives": ["[Introduction] Thesis bla bla bla", "[Body] Move bodies with your eloquaint words and such.", "[Conclusion]What you say?"],
@@ -84,7 +84,7 @@ module.exports = function () {
     const draft5 = {
         "id": "5b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Peer Review",
-        "dueData": "Tuesday Jan 5, 2017",
+        "dueDate": "Tuesday Jan 5, 2017",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
             "peerReviewGroups": "Randomized",
@@ -98,7 +98,7 @@ module.exports = function () {
     const draft6 = {
         "id": "6b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Instructor Review",
-        "dueData": "Thursday Jan 8, 2017",
+        "dueDate": "Thursday Jan 8, 2017",
         "details": {
             "gradingPolicy": "Letter Grade",
             "postInstructorFeedback": ["blah blah blah Now that everyone has left the party besides you and I what would you like to philosophize about?"],
