@@ -4,9 +4,9 @@ import DraftItemDescription from './DraftItemDescription/DraftItemDescription';
 import DraftItemFeedback from './DraftItemFeedback/DraftItemFeedback';
 import draftItemStype from './draftItem.css';
 
-const DraftItem = ({draftItem}) => (
+const DraftItem = ({draftItem, draftName}) => (
   <li className={ draftItemStype.item }>
-    <DraftItemHeader draftItem={draftItem} />
+    <DraftItemHeader draftName={draftName} {...draftItem} />
     <section className={ draftItemStype.summary }>
       <DraftItemDescription id={draftItem.id} details={draftItem.details} />
       <DraftItemFeedback id={draftItem.id} details={draftItem.details} />
@@ -14,7 +14,8 @@ const DraftItem = ({draftItem}) => (
   </li>);
 
 DraftItem.propTypes = {
-  draftItem: PropTypes.object
+  draftItem: PropTypes.object,
+  draftName: PropTypes.string
 };
 
 export default DraftItem;

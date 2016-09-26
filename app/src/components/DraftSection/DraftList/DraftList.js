@@ -7,7 +7,7 @@ let DraftList = ({drafts}) => (
   <div className={ draftList.draftGroup }>
     <ul className={ draftList.items }>
       {drafts.map((draftItem, idx) =>
-        (<DraftItem draftItem={draftItem} draftName={'Draft ' + idx + 1} key={idx} />)
+        (<DraftItem draftItem={draftItem} draftName={'Draft ' + (idx + 1)} key={idx} />)
       )}
     </ul>
     <div className={ draftList.draftAction }>

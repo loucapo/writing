@@ -1,8 +1,8 @@
 import React from 'react';
-import 'editorWrapper.css';
+import editor from './editorWrapper.css';
 import { WKRichTextEditorContainer as RichTextEditorContainer } from 'wk-rich-text-editor-container';
 
 export default () => (
-  <div className="editor-wrapper">
+  <div className={editor.editorWrapper} >
     <RichTextEditorContainer />
   </div>);

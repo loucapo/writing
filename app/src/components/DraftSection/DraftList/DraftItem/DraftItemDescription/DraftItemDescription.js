@@ -17,7 +17,7 @@ const DraftItemDescription = ({id, details}) => (
         divKey1={id + 'peerFeedbackSurveyLabel'}
         divKey2={id + 'peerFeedbackSurveyContainer'}
         feedbackLabel="Post Instructor Feedback Survey Prompt"
-        feedbackText={details.peerFeedbackSurvey}
+        feedbackText={[details.peerReviewGroups]}
       /> : null}
     <div className={ draftItemDescription.grade }><span className={draftItemDescription.summaryLabel}>Grade:</span>
       <span> {details.gradingPolicy}</span>

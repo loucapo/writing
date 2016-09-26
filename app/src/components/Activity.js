@@ -4,6 +4,9 @@ import AssignmentSection from './AssignmentSection/AssignmentSection';
 import DraftSection from './DraftSection/DraftSection';
 
 const Activity = ({activity, drafts}) => {
+  if (!activity) {
+    return null;
+  }
   return (
     <div>
       <AssignmentSection activity={activity} />
