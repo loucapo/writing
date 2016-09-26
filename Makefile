@@ -27,11 +27,15 @@ docker-build-api:	docker-build-node
 	cd ../wk_api && $(MAKE) docker-build
 	cd ../wk_compose
 
+docker-build-data:	docker-build-node
+	cd ../wk_data && $(MAKE) docker-build
+	cd ../wk_compose
+
 docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api docker-build-front-end
+docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
@@ -55,6 +59,11 @@ kill-nginx:
 	docker rm -vf nginx_container 2>/dev/null || echo "No more containers to remove."
 	docker rmi nginx_container
 
+kill-postgres:
+	docker rm -vf postgres 2>/dev/null || echo "No more containers to remove."
+	docker rmi postgres
+
+
 kill-api:
 	docker rm -vf wk_api 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_api
@@ -76,6 +85,37 @@ run:	docker-build-nginx
 
 exec:
 	docker exec -it $(con) bash
+
+
+##################
+#GIT Helpers
+##################
+
+get-statuses:
+	@echo ================COMPOSE==================
+	@git status
+	@echo ================FRONTEND==================
+	@cd ../wk_frontend && git status
+	@cd ../wk_compose
+	@echo ================API==================
+	@cd ../wk_api && git status
+	@cd ../wk_compose
+	@echo ================DATA==================
+	@cd ../wk_data && git status
+	@cd ../wk_compose
+
+pull-repos:
+	@echo ================COMPOSE==================
+	@git pull origin master
+	@echo ================FRONTEND==================
+	@cd ../wk_frontend && git pull origin newCss
+	@cd ../wk_compose
+	@echo ================API==================
+	@cd ../wk_api && git pull origin master
+	@cd ../wk_compose
+	@echo ================DATA==================
+	@cd ../wk_data && git pull origin master
+	@cd ../wk_compose
 
 
 #.PHONY: clean install docker-build run docker-clean docker-exec
