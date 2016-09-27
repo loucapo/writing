@@ -11,13 +11,24 @@ export default (state = [], action) => {
       return state;
     }
     case SUCCESS_ACTIVITY: {
-      return (Object.assign({}, state, {
-        Activity: action.payload.data.activity,
-        Drafts: action.payload.data.drafts
-      }));
+      let activity = action.payload.data.activity;
+      if (!activity) {
+        return state;
+      }
+      let newState = state.map(x=> {
+        return (x.id === activity.id) ? activity : x;
+      });
+
+      if (state.every(x => x.id !== activity.id)) {
+        newState.push(activity);
+      }
+
+      return newState;
+      // return state;
     }
+
     case FAILURE_ACTIVITY: {
-      return {};
+      return state;
     }
     default: {
       return state;

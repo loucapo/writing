@@ -1,43 +1,43 @@
 import React, {PropTypes} from 'react';
+import uuid from 'uuid';
 
-import DraftFeedbackItem from './../DraftFeedbackItem';
 import draftItemFeedback from './DraftItemFeedback.css';
+import draftItem from './../draftItem.css';
 
-const DraftItemFeedback = ({id, details}) =>
-  (<div className={ draftItemFeedback.right }>
-    {details.studentReflectionQuestions
-      ? <DraftFeedbackItem
-        divKey1={id + 'studentReflectionQuestionsLabel'}
-        divKey2={id + 'studentReflectionQuestionsContainer'}
-        feedbackLabel="Student Reflection Questions"
-        feedbackText={details.studentReflectionQuestions}
-        /> : null }
-    {details.finalReflectionSurvey
-      ? <DraftFeedbackItem
-        divKey1={id + 'finalReflectionSurveyLabel'}
-        divKey2={id + 'finalReflectionSurveyContainer'}
-        feedbackLabel="Final Reflection Questions"
-        feedbackText={details.finalReflectionSurvey}
-        /> : null }
-    {details.postInstructorFeedback
-      ? <DraftFeedbackItem
-        divKey1={id + 'postInstructorFeedbackLabel'}
-        divKey2={id + 'postInstructorFeedbackContainer'}
-        feedbackLabel="Post Instructor Feedback Survey Prompt"
-        feedbackText={details.postInstructorFeedback}
-        /> : null }
+const DraftItemFeedback = ({details}) => (
+  <div className={ draftItemFeedback.right }>
+    { details.studentReflectionQuestions
+      ? <div className={draftItem.summaryContainer}><div>
+        <span className={draftItem.summaryLabel}>Student Reflection Questions</span>
+        { details.studentReflectionQuestions.map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
+      </div></div> : null
+    }
 
-    {details.peerFeedbackSurvey
-      ? <DraftFeedbackItem
-        divKey1={id + 'peerFeedbackSurveyLabel'}
-        divKey2={id + 'peerFeedbackSurveyContainer'}
-        feedbackLabel="Post Instructor Feedback Survey Prompt"
-        feedbackText={details.peerFeedbackSurvey}
-        /> : null }
+    { details.finalReflectionSurvey
+      ? <div className={draftItem.summaryContainer}><div>
+        <span className={draftItem.summaryLabel}>Final Reflection Questions</span>
+        { details.finalReflectionSurvey.map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
+      </div> </div> : null
+    }
+
+    { details.postInstructorFeedback
+      ? <div className={draftItem.summaryContainer}><div>
+        <span className={draftItem.summaryLabel}>Post Instructor Feedback Survey Prompt</span>
+        { details.postInstructorFeedback.map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
+      </div></div> : null
+    }
+
+    { details.peerFeedbackSurvey
+      ? <div className={draftItem.summaryContainer}><div>
+        <span className={draftItem.summaryLabel}>Post Instructor Feedback Survey Prompt</span>
+        { details.peerFeedbackSurvey.map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
+      </div></div> : null
+    }
   </div>);
 
 DraftItemFeedback.propTypes = {
   id: PropTypes.string,
   details: PropTypes.object
 };
+
 export default DraftItemFeedback;

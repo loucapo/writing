@@ -1,5 +1,6 @@
 import activityReducer from './activityModule';
+import draftReducer from './draftModule';
 
 export {activityAction} from './activityModule';
-export default { activity: activityReducer };
+export default { activities: activityReducer, drafts: draftReducer };
 

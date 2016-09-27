@@ -1,22 +1,48 @@
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { activityAction } from './../modules';
 import Activity from '../components/Activity';
+import { withRouter } from 'react-router';
 
-const mapStateToProps = (state) => {
+class ActivityContainer extends Component {
+  componentDidMount() { this.loadData(); }
+  // this causes infinte loop for some reason
+  // componentDidUpdate() { this.loadData(); }
+  loadData() { this.props.activityAction(this.props.params.id); }
+
+  render() {
+    if (this.props.isFetching) {
+      return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
+    }
+    if (this.props.errorMessage) {
+      return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
+    }
+    return (<Activity{...this.props} />);
+  }
+}
+
+ActivityContainer.propTypes = {
+  url: PropTypes.string,
+  id: PropTypes.string,
+  isFetching: PropTypes.string,
+  errorMessage: PropTypes.string,
+  activityAction: PropTypes.func,
+  params: PropTypes.object
+
+};
+
+const mapStateToProps = (state, props) => {
+  const activity = state.activities.filter(x => x.id === props.params.id)[0];
+  if (!activity) {
+    return {};
+  }
+  const drafts = activity.drafts.map(x => state.drafts.filter(d => d.id === x)[0]);
   return {
-    activity: state.activity.Activity,
-    drafts: state.activity.Drafts
+    activity,
+    drafts
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
-  dispatch(activityAction(props.params.id));
-  return {};
-};
+export default withRouter(connect(mapStateToProps, {activityAction})(ActivityContainer));
 
-const ActivityContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Activity);
 
-export default ActivityContainer;

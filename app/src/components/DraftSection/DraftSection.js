@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import AssignmentMenu from './AssignmentMenu/AssignmentMenu';
+import AssignmentMenu from '../AssignmentMenu/AssignmentMenu';
 import DraftList from './DraftList/DraftList';
 
 import draftSection from './draftSection.css';

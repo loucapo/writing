@@ -8,8 +8,8 @@ const DraftItem = ({draftItem, draftName}) => (
   <li className={ draftItemStype.item }>
     <DraftItemHeader draftName={draftName} {...draftItem} />
     <section className={ draftItemStype.summary }>
-      <DraftItemDescription id={draftItem.id} details={draftItem.details} />
-      <DraftItemFeedback id={draftItem.id} details={draftItem.details} />
+      <DraftItemDescription details={draftItem.details} />
+      <DraftItemFeedback details={draftItem.details} />
     </section>
   </li>);
 
