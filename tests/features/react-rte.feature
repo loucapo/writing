@@ -7,7 +7,7 @@ Feature: React-RTE wysiwyg editor
 		Then I should see Hello in the content editor
 
 	Scenario: Embolden Text
-		Given I visit the wysiwyg wrapper page
+		Given I visit the wysiwyg bold button
 		When Text-Bold is in the editor
 		And I select Text-Bold
 		And I click the bold button
