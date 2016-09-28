@@ -3,6 +3,7 @@ var moonraker = require('moonraker');
 var keys = require('selenium-webdriver').Key;
 var by = require('selenium-webdriver').By;
 var driver = require('moonraker').session.getDriver();
+var expect = require('chai').expect;
 
 exports.define = function(steps) {
 
@@ -30,52 +31,52 @@ exports.define = function(steps) {
 	/*
 	 *	Embolden Text
 	 */
-	steps.given('I visit the wysiwyg bold button', function(next) {
-		rtePage.visit();
-//		next();
+	steps.given('I visit the wysiwyg bold button', function() {
+		return rtePage.visit();
 	});
-	steps.when('Text-Bold is in the editor', function(next) {
-		rtePage.draftEditor.click();
-		rtePage.draftEditor.sendKeys('Text-Bold')
-		.then(function(next) {
-			console.log('write the bold text');
-//			next();
+	steps.when('Text-Bold is in the editor', function() {
+		// let's try to encapsulate the step's logic
+		return new Promise(function(resolve, reject) {
+			rtePage.draftEditor.click();
+			rtePage.draftEditor.sendKeys('Text-Bold');
+			// let's try to break this step
+			var poops;
+			poops.element('asdasdasd');
+		}).catch(function(reason) {
+			// it's official!
+			console.log('poops failed');
+			// stack trace in stdout
+			console.log(reason);
+			// throwing seems to do nothing
+			throw 'poops failed';
+			// returning false does nothing
+			return false;
+			// the step passes!!!
 		});
 	});
 	steps.when('I select Text-Bold', function() {
-		console.log('select the bolds');
-		var key_chord = keys.chord(keys.COMMAND, 'a');
-		var keysWait = rtePage.draftEditor.sendKeys(key_chord);
-		keysWait.then(function(val) {
-			console.log('keychord success');
-		},
-		function(err) {
-			console.log('error : ' + err);
-		})
-		.catch(function(reason) {
-			console.log('poop ' + reason);
-		});
+		// can't seem to get command+a or control+a to select all
+		// let's use shift and many lefts
+		var lefts = '';
+		for (i=0; i<'bold'.length; i++) {
+			lefts += keys.LEFT;
+		}
+		rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
 	});
 	steps.when('I click the bold button', function(next) {
-		console.log('click button?');
-		console.log('button found!');
 		rtePage.button_bold.click();
-		console.log('clicked the bold button');
 	});
-	steps.then('Text should have bold styling', function(next) {
-		console.log('assert teh bolds');
-
-		console.log(rtePage.draftEditor);
-
-		var bold_span = rtePage.findElement("span[style^='font-wieght: bold;']");
-		//then(function() {
-			console.log(bold_span);
-		console.log('found bold span');
-		//});
-		//var bold_span = rtePage.draftEditor.findElement(By.css("span[style*='bold;']"));
-		//bold_span.length.should.equal(1);
-		console.log('did we find what we were looking for?');
-		next();
+	steps.then('Text should have bold styling', function() {
+		return new Promise(function(resolve, reject) {
+			//return rtePage.element("//span[contains(@style, 'bold;')]", 'xpath').then(function(span) {
+			return rtePage.draftEditor.element("span[style*='bold;']").then(function(span) {
+				return span.getAttribute('style').then(function(style) {
+					// this seems redundant
+					// if the element doesn't exist it would fail higher up
+					return expect(style).to.have.string('bold;');
+				});
+			});
+		});
 	});
 
 	/*
