@@ -1,5 +1,7 @@
 import {connect} from 'react-redux';
 import Layout from './../components/Layout/Layout';
+
+// XXX ???
 //
 // function mapStateToProps(state) {
 //   return {

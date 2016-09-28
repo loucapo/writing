@@ -41,6 +41,7 @@
     "react/require-render-return": 0,
     "react/jsx-wrap-multilines": [2, { declaration: true, assignment: true, return: true }],
     "react/display-name": 0,
+    // XXX debating this
     // open for debate on this one
 //    "arrow-parens": [2, "as-needed"],
     "camelcase": 2,

@@ -1,13 +1,13 @@
 @import 'mixins.css';
 
 :root {
-	--header-height: 70px;
+  --header-height: 70px;
 }
 
 /* DRAFT SECTION*/
 
 .summaryLabel {
-	@apply --font-strong;
+  @apply --font-strong;
 }
 
 /* DRAFT SECTION -- LEFT */

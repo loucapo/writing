@@ -3,6 +3,8 @@ import uuid from 'uuid';
 import draftItemDescription from './draftItemDescription.css';
 import draftItem from './../draftItem.css';
 
+// XXX May need to add id's for testability and accessibility
+
 const DraftItemDescription = ({details}) => {
   const learningObjectives = Array.isArray(details.learningObjectives)
     ? details.learningObjectives

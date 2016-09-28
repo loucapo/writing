@@ -6,8 +6,12 @@ import { withRouter } from 'react-router';
 
 class ActivityContainer extends Component {
   componentDidMount() { this.loadData(); }
+
+  // XXX this componentDidUpdate() was causing inifinte loop, since we aren't updating yet this deferred but will
+  // bee needed next sprint probably
   // this causes infinte loop for some reason
   // componentDidUpdate() { this.loadData(); }
+
   loadData() { this.props.activityAction(this.props.params.id); }
 
   render() {

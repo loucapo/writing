@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 
 import draftItemHeader from './draftItemHeader.css';
 
+// XXX may need id's for testability/accessibility
+
 const DraftItemHeader = ({draftName, type, dueDate}) => (
   <header className={ draftItemHeader.header }>
     <div className={ draftItemHeader.draftInfo}>

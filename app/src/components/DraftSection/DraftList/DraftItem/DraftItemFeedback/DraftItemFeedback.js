@@ -4,6 +4,8 @@ import uuid from 'uuid';
 import draftItemFeedback from './DraftItemFeedback.css';
 import draftItem from './../draftItem.css';
 
+// XXX may need id's to be added for testability/accessibility
+
 const DraftItemFeedback = ({details}) => (
   <div className={ draftItemFeedback.right }>
     { details.studentReflectionQuestions

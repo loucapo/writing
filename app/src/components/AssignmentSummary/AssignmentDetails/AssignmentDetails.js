@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 
 import assignmentDetails from './assignmentDetails.css';
 
+// XXX need id's for testability/accessibility
+
 const AssignmentDetails = ({activity}) => (
   <div className={ assignmentDetails.summary }>
     <h1 className={ assignmentDetails.title }>

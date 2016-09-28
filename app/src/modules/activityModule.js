@@ -8,6 +8,7 @@ export const FAILURE_ACTIVITY = 'wk_frontend/activity/FAILURE_ACTIVITY';
 export default (state = [], action) => {
   switch (action.type) {
     case REQUEST_ACTIVITY: {
+      console.log('REQUEST_ACTIVITY');
       return state;
     }
     case SUCCESS_ACTIVITY: {
@@ -22,11 +23,8 @@ export default (state = [], action) => {
       if (state.every(x => x.id !== activity.id)) {
         newState.push(activity);
       }
-
       return newState;
-      // return state;
     }
-
     case FAILURE_ACTIVITY: {
       return state;
     }
