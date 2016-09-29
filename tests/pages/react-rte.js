@@ -1,4 +1,4 @@
-var Page = require('moonraker').Page;
+var Page = require('marvin-js').Page;
 
 module.exports = new Page({
 
