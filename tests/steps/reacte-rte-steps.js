@@ -18,13 +18,13 @@ exports.define = function(steps) {
     rtePage.draftEditor.click();
   })
 
-  steps.when(['I type in "$text"'], function($text) {
-    rtePage.draftEditor.sendKeys($text);
+  steps.when(['I type in "$text"'], function(text) {
+    rtePage.draftEditor.sendKeys(text);
   })
 
-  steps.then('I should see "$text" in the content editor', function($text) {
+  steps.then('I should see "$text" in the content editor', function(text) {
     rtePage.draftEditor.getText().then(function(text) {
-      text.should.equal($text);
+      text.should.equal(text);
     });
   });
 
@@ -260,9 +260,9 @@ exports.define = function(steps) {
     rtePage.button_undo.click();
   });
 
-  steps.then('Text "$text" should not appear', function($text) {
+  steps.then('Text "$text" should not appear', function(happytext) {
     rtePage.draftEditor.getText().then(function(text) {
-      text.should.not.equal($text);
+      text.should.not.equal(happytext);
     });
   });
 
