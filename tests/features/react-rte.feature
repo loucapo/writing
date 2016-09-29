@@ -6,7 +6,7 @@ Feature: React-RTE wysiwyg editor
     When I focus the content editor and type in Hello
     Then I should see Hello in the content editor
 
-  @Only
+
   Scenario: Embolden Text
     Given I visit the wysiwyg bold button
     When "happy" is in the editor
@@ -14,28 +14,40 @@ Feature: React-RTE wysiwyg editor
     And I click the bold button
     Then Text "happy" should have bold styling
 
+
   Scenario: Italicize Text
-    Given Text-Italics is in the editor
-    When I select Text-Italics
-    And I click the italic button
-    Then Text should have italic styling
+    Given I visit the wysiwyg bold button
+    When "happy" is in the editor
+    And I select "happy"
+    And I click the italics button
+    Then Text "happy" should have italicized styling
+
 
   Scenario: Monospace Text
-    Given Text-Monospace is in the editor
-    When I select Text-Monospace
+    Given I visit the wysiwyg bold button
+    When "happy" is in the editor
+    And I select "happy"
     And I click the monospace button
-    Then Text should have monospace styling
-    
+    Then Text "happy" should have monospace styling
+
+
   Scenario: Strikethrough Text
-    Given Text-Strikethrough is in the editor
-    When I select Text-Strikethrough
+    Given I visit the wysiwyg bold button
+    When "happy" is in the editor
+    And I select "happy"
     And I click the strikethrough button
-    Then Text should have strikethrough styling
+    Then Text "happy" should have strikethrough styling
+
 
   Scenario: Unordered List
-    Given 3 lines exist to become an unordered list
-    When I select the 3 lines for unordered list
+    Given Enter "3" lines of text
+    When I select all "content"
     And I click the unordered list button
-    And I add one more unordered line
-    Then there should be 4 unordered list items
+    Then there should be "3" unordered list items
+  @Only
+  Scenario: Ordered List
+    Given Enter "3" lines of text
+    When I select all "content"
+    And I click the ordered list button
+    Then there should be "3" ordered list items
 

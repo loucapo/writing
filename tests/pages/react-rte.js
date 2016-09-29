@@ -8,11 +8,13 @@ module.exports = new Page({
 
   button_bold: { get: function() { return this.element("button[title='Bold']");}},
 
-/*
-  button_bold: { get: function() { return this.element(By.xpath("//*[contains(@title, 'Bold')]"))}},
-  button_italic: { get: function() { return this.element(By.css("[class^='IconButton__icon-italic___']"))}},
-  button_monospace: { get: function() { return this.element(By.css("[class^='IconButton__icon-monospace___']"))}},
-  button_strikethrough: { get: function() { return this.element(By.css("[class^='IconButton__icon-strikethrough___']"))}},
-  button_unordered_list: { get: function() { return this.element(By.css("[class^='IconButton__icon-unordered-list-item___']"))}},
-*/
+  button_italic: { get: function() { return this.element("button[title='Italic']");}},
+
+  button_monospace: { get: function() { return this.element("button[title='Monospace']");}},
+
+  button_strikethrough: { get: function() { return this.element("button[title='Strikethrough']")}},
+
+  button_unordered_list: { get: function() { return this.element("button[title='UL']")}},
+
+  button_ordered_list: { get: function() { return this.element("button[title='OL']")}},
 });
