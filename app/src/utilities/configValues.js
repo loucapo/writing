@@ -1,5 +1,5 @@
 let config = {
-  apiUrl: 'http://localhost:10080/api/'
+  apiUrl: process.env.API_BASE_URL
   //bunch of default values here;
 };
 
