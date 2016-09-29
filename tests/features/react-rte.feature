@@ -2,15 +2,16 @@
 Feature: React-RTE wysiwyg editor
 
 
-  Scenario: Say Hello
+  Scenario: Say Happy
     Given I visit the wysiwyg editor page
-    When I focus the content editor and type in Hello
-    Then I should see Hello in the content editor
-
+    When I focus the content editor
+    And I type in "happy"
+    Then I should see "happy" in the content editor
 
   Scenario: Embolden Text
     Given I visit the wysiwyg editor page
-    When "happy" is in the editor
+    When I focus the content editor
+    And I type in "happy"
     And I select "happy"
     And I click the bold button
     Then Text "happy" should have bold styling
@@ -18,7 +19,8 @@ Feature: React-RTE wysiwyg editor
 
   Scenario: Italicize Text
     Given I visit the wysiwyg editor page
-    When "happy" is in the editor
+    When I focus the content editor
+    And I type in "happy"
     And I select "happy"
     And I click the italics button
     Then Text "happy" should have italicized styling
@@ -26,7 +28,8 @@ Feature: React-RTE wysiwyg editor
 
   Scenario: Monospace Text
     Given I visit the wysiwyg editor page
-    When "happy" is in the editor
+    When I focus the content editor
+    And I type in "happy"
     And I select "happy"
     And I click the monospace button
     Then Text "happy" should have monospace styling
@@ -34,7 +37,8 @@ Feature: React-RTE wysiwyg editor
 
   Scenario: Strikethrough Text
     Given I visit the wysiwyg editor page
-    When "happy" is in the editor
+    When I focus the content editor
+    And I type in "happy"
     And I select "happy"
     And I click the strikethrough button
     Then Text "happy" should have strikethrough styling
@@ -57,7 +61,8 @@ Feature: React-RTE wysiwyg editor
 
   Scenario: Blockquote Text
     Given I visit the wysiwyg editor page
-    When "happy" is in the editor
+    When I focus the content editor
+    And I type in "happy"
     And I select "happy"
     And I click the blockquote button
     Then Text "happy" should have a blockquote
@@ -65,7 +70,8 @@ Feature: React-RTE wysiwyg editor
 
   Scenario: Link Text
     Given I visit the wysiwyg editor page
-    When "happy" is in the editor
+    When I focus the content editor
+    And I type in "happy"
     And I select "happy"
     And I click the link button
     And Add "google.com"
@@ -74,10 +80,65 @@ Feature: React-RTE wysiwyg editor
   @only
   Scenario: Remove Link Text
     Given I visit the wysiwyg editor page
-    When "happy" is in the editor
+    When I focus the content editor
+    And I type in "happy"
     And I select "happy"
     And I click the link button
     And Add "google.com"
     And Text "happy" should have a link
-    And I click the remove link button
     Then Text "happy" should not have a link
+
+
+  Scenario: Normal Heading
+    Given I visit the wysiwyg editor page
+    When I focus the content editor
+    And I type in "happy"
+    And I select "happy"
+    Then Text "happy" should have a normal header
+
+  Scenario: Large Heading
+    Given I visit the wysiwyg editor page
+    When I focus the content editor
+    And I type in "happy"
+    And I select "happy"
+    And I choose a large heading
+    Then Text "happy" should have a h1 header
+
+  Scenario: Medium Heading
+    Given I visit the wysiwyg editor page
+    When I focus the content editor
+    And I type in "happy"
+    And I select "happy"
+    And I choose a medium heading
+    Then Text "happy" should have a h2 header
+
+  Scenario: Small Heading
+    Given I visit the wysiwyg editor page
+    When I focus the content editor
+    And I type in "happy"
+    And I select "happy"
+    And I choose a small heading
+    Then Text "happy" should have a h3 header
+
+  Scenario: Code Block
+    Given I visit the wysiwyg editor page
+    When I focus the content editor
+    And I type in "happy"
+    And I select "happy"
+    And I choose a code block
+    Then Text "happy" should have a code block
+
+  Scenario: Undo
+    Given I visit the wysiwyg editor page
+    When I focus the content editor
+    And I type in "happy"
+    And I click the undo button
+    Then Text "happy" should not appear
+
+  Scenario: Redo
+    Given I visit the wysiwyg editor page
+    When I focus the content editor
+    And I type in "happy"
+    And I click the undo button
+    And I click the redo button
+    Then I should see "happy" in the content editor

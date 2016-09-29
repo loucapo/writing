@@ -10,38 +10,27 @@ exports.define = function(steps) {
   /*
    *	Say Hello
    */
-  steps.given('I visit the wysiwyg editor page', function(next) {
+  steps.given('I visit the wysiwyg editor page', function() {
     rtePage.visit();
   })
 
-  steps.when(['I focus the content editor and type in Hello'], function(next) {
+  steps.when(['I focus the content editor'], function() {
     rtePage.draftEditor.click();
-    rtePage.draftEditor.sendKeys('Hello');
   })
 
-  steps.then('I should see Hello in the content editor', function() {
+  steps.when(['I type in "$text"'], function($text) {
+    rtePage.draftEditor.sendKeys($text);
+  })
+
+  steps.then('I should see "$text" in the content editor', function($text) {
     rtePage.draftEditor.getText().then(function(text) {
-      text.should.equal('Hello');
-      console.log('Hello done read');
+      text.should.equal($text);
     });
   });
 
   /*
    *	Embolden Text
    */
-
-  steps.when('"$text" is in the editor', function(text) {
-    // let's try to encapsulate the step's logic
-    return new Promise(function(resolve, reject) {
-      rtePage.draftEditor.click();
-      rtePage.draftEditor.sendKeys(text);
-      // let's try to break this step
-      var poops;
-      poops.element('asdasdasd');
-    }).catch(function(reason) {
-      throw 'poops failed';
-    });
-  });
 
   steps.when('I select "$text"', function(text) {
     // can't seem to get command+a or control+a to select all
@@ -175,7 +164,7 @@ exports.define = function(steps) {
     rtePage.linkInput.sendKeys($link + keys.ENTER);
   });
 
-  steps.then('Text "happy" should have a link', function() {
+  steps.then('Text "$text" should have a link', function() {
     return new Promise(function(resolve, reject) {
       return rtePage.draftEditor.findElement({css: "a"})
     });
@@ -183,19 +172,106 @@ exports.define = function(steps) {
 
   /*
    * Remove Link
+   * Needs work to make sure it can fail
    */
 
   steps.when('I click the remove link button', function() {
     rtePage.button_remove_link.click();
   });
 
-  steps.then('Text "happy" should not have a link', function() {
+  steps.then('Text "$text" should not have a link', function() {
     return new Promise(function(resolve, reject) {
       var linkCount = rtePage.draftEditor.findElements({css: "a"});
-      console.log(linkCount);
       }).then(function() {
       return linkCount.length.should.be.empty();
     });
+  });
+
+  /*
+   *	Normal Header
+   */
+  steps.then('Text "$text" should have a normal header', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: ".public-DraftEditor-content > div > div"});
+    });
+  });
+
+  /*
+   * h1 Heading
+   */
+
+  steps.when('I choose a large heading', function() {
+    rtePage.dropdown_heading_large.click();
+  });
+
+  steps.then('Text "$text" should have a h1 header', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: "h1"})
+    });
+  });
+
+  /*
+   * h2 Heading
+   */
+
+  steps.when('I choose a medium heading', function() {
+    rtePage.dropdown_heading_medium.click();
+  });
+
+  steps.then('Text "$text" should have a h2 header', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: "h2"})
+    });
+  });
+
+  /*
+   * h3 Heading
+   */
+
+  steps.when('I choose a small heading', function() {
+    rtePage.dropdown_heading_small.click();
+  });
+
+  steps.then('Text "$text" should have a h3 header', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: "h3"})
+    });
+  });
+
+  /*
+   * Code Block
+   */
+
+  steps.when('I choose a code block', function() {
+    rtePage.dropdown_code_block.click();
+  });
+
+  steps.then('Text "$text" should have a code block', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: "pre[class^='RichTextEditor__block___']"})
+    });
+  });
+
+  /*
+   * Undo
+   */
+
+  steps.when('I click the undo button', function() {
+    rtePage.button_undo.click();
+  });
+
+  steps.then('Text "$text" should not appear', function($text) {
+    rtePage.draftEditor.getText().then(function(text) {
+      text.should.not.equal($text);
+    });
+  });
+
+  /*
+   * Redo
+   */
+
+  steps.when('I click the redo button', function() {
+    rtePage.button_redo.click();
   });
 
 }
