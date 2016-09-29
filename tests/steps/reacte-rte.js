@@ -31,8 +31,9 @@ exports.define = function(steps) {
   /*
    *	Embolden Text
    */
-  steps.given('I visit the wysiwyg bold button', function() {
-    return rtePage.visit();
+  steps.given('I visit the wysiwyg bold button', function(next) {
+    rtePage.visit();
+    next();
   });
 
   steps.when('"$text" is in the editor', function(text) {
