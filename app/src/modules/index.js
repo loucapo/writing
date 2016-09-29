@@ -1,5 +1,6 @@
-import helloReducer from './helloModule';
+import activityReducer from './activityModule';
+import draftReducer from './draftModule';
 
-export {helloAction} from './helloModule';
-export default { hello: helloReducer };
+export {activityAction} from './activityModule';
+export default { activities: activityReducer, drafts: draftReducer };
 

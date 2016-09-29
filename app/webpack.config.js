@@ -63,6 +63,11 @@ const webpackConfig = {
       {
         test: /\.css$/,
         include: [
+          path.resolve(__dirname, 'src/styles'),
+          path.resolve(__dirname, 'src/components'),
+          path.resolve(__dirname, 'src/containers')
+        ],
+        include: [
           path.resolve(__dirname, 'src')
         ],
         loader: combineLoaders([
@@ -74,7 +79,7 @@ const webpackConfig = {
             query: {
               modules: true,
               sourceMap: true,
-              localIdentName: '[folder]---[local]---[hash:base64:10]'
+              // localIdentName: '[folder]---[local]---[hash:base64:10]'
             }
           },
           {

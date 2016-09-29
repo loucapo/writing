@@ -1,17 +1,24 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
-import Header from './Header/Header';
-import AssignmentSection from './AssignmentSection/AssignmentSection';
+import AssignmentSummary from './AssignmentSummary/AssignmentSummary';
 import DraftSection from './DraftSection/DraftSection';
 
-const App = () => {
+const Activity = ({activity, drafts}) => {
+  if (!activity || drafts.length <= 0) {
+    return null;
+  }
   return (
-    <div className="app-wrapper">
-      <Header />
-      <AssignmentSection />
-      <DraftSection />
+    <div>
+      <AssignmentSummary activity={activity} />
+      <DraftSection drafts={drafts} />
     </div>
   );
 };
 
-export default App;
+Activity.propTypes = {
+  activity: PropTypes.object,
+  drafts: PropTypes.array
+};
+
+
+export default Activity;

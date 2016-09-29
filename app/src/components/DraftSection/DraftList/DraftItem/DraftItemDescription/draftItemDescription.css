@@ -1,0 +1,20 @@
+@import 'mixins.css';
+
+:root {
+  --header-height: 70px;
+}
+
+/* DRAFT SECTION*/
+
+.summaryLabel {
+  @apply --font-strong;
+}
+
+/* DRAFT SECTION -- LEFT */
+.left {
+  padding: 20px 20px 30px 50px;
+  flex: 0 0 400px;
+
+  border-right: 2px solid var(--box-border-light-grey);
+}
+
