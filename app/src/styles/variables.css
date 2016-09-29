@@ -15,7 +15,7 @@
 
 /* ERROR COLORS */
   --errorRed: #FF3B30;
-	
+
 /* COMMON DESIGN */
 	--blue: #31b4e7;
 	--box-bg-grey: #f4f4f4;
@@ -25,4 +25,9 @@
 	--font-default: #878787;
 	--font-medium: #6d6d6d;
 	--font-strong: #474747;
+
+/* page layout */
+  --page-margins: 224px;    /* used for both left and right margins */
+  --content-margins: 40px;
 }
+

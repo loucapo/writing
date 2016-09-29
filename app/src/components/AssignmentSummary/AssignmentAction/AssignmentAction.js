@@ -1,12 +1,12 @@
 import React from 'react';
 
-import assignmentAction from './assignmentAction.css';
+import assignmentActionButton from './../../../styles/action-button.css';
 
 const AssignmentAction = () => {
   return (
-    <div className={ assignmentAction['assignment-action'] }>
-      <div className={ assignmentAction['assign-button-wrapper'] }>
-        <button className={ assignmentAction['assign-button'] }>Assign to Students</button>
+    <div className={ assignmentActionButton['assignment-action'] }>
+      <div className={ assignmentActionButton['assign-button-wrapper'] }>
+        <button className={ assignmentActionButton['assign-button'] }>Assign to Students</button>
       </div>
     </div>
   );

@@ -1,8 +1,18 @@
+@import 'mixins.css';
+
 .top-header {
   height: 100px;
 
   display:  flex;
   flex-flow:  row nowrap;
 
-  background-color: #E6E6E6;
+  background-color: var(--menuGrey);
+  align-items: center;
+}
+.logo {
+  margin-left: var(--page-margins);
+}
+.course-name {
+  margin-left: auto;
+  margin-right: var(--page-margins);
 }
