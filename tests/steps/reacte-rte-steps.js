@@ -10,15 +10,13 @@ exports.define = function(steps) {
   /*
    *	Say Hello
    */
-  steps.given('I visit the wysiwyg wrapper page', function(next) {
+  steps.given('I visit the wysiwyg editor page', function(next) {
     rtePage.visit();
-    next();
   })
 
   steps.when(['I focus the content editor and type in Hello'], function(next) {
     rtePage.draftEditor.click();
     rtePage.draftEditor.sendKeys('Hello');
-    next();
   })
 
   steps.then('I should see Hello in the content editor', function() {
@@ -31,9 +29,6 @@ exports.define = function(steps) {
   /*
    *	Embolden Text
    */
-  steps.given('I visit the wysiwyg bold button', function() {
-    return rtePage.visit();
-  });
 
   steps.when('"$text" is in the editor', function(text) {
     // let's try to encapsulate the step's logic
@@ -119,7 +114,6 @@ exports.define = function(steps) {
    * Unordered List
    */
   steps.given('Enter "$number" lines of text', function($number) {
-    rtePage.visit();
     rtePage.draftEditor.click();
     for (i=0; i<$number; i++) {
       rtePage.draftEditor.sendKeys('line ' + i + keys.ENTER);
@@ -155,5 +149,53 @@ exports.define = function(steps) {
     });
   });
 
+  /*
+   * Blockquote
+   */
+
+  steps.when('I click the blockquote button', function() {
+    rtePage.button_blockquote.click();
+  });
+
+  steps.then('Text "happy" should have a blockquote', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: "blockquote"})
+    });
+  });
+
+  /*
+   * Link
+   */
+
+  steps.when('I click the link button', function() {
+    rtePage.button_link.click();
+  });
+
+  steps.when('Add "$link"', function($link) {
+    rtePage.linkInput.sendKeys($link + keys.ENTER);
+  });
+
+  steps.then('Text "happy" should have a link', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: "a"})
+    });
+  });
+
+  /*
+   * Remove Link
+   */
+
+  steps.when('I click the remove link button', function() {
+    rtePage.button_remove_link.click();
+  });
+
+  steps.then('Text "happy" should not have a link', function() {
+    return new Promise(function(resolve, reject) {
+      var linkCount = rtePage.draftEditor.findElements({css: "a"});
+      console.log(linkCount);
+      }).then(function() {
+      return linkCount.length.should.be.empty();
+    });
+  });
 
 }

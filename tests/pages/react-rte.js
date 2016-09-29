@@ -6,6 +6,8 @@ module.exports = new Page({
 
   draftEditor: { get: function() { return this.element(".public-DraftEditor-content");}},
 
+  linkInput: { get: function() { return this.element("input[class^='InputPopover__input___']");}},
+
   button_bold: { get: function() { return this.element("button[title='Bold']");}},
 
   button_italic: { get: function() { return this.element("button[title='Italic']");}},
@@ -17,4 +19,10 @@ module.exports = new Page({
   button_unordered_list: { get: function() { return this.element("button[title='UL']")}},
 
   button_ordered_list: { get: function() { return this.element("button[title='OL']")}},
+
+  button_blockquote: { get: function() { return this.element("button[title='Blockquote']")}},
+
+  button_link: { get: function() { return this.element("button[title='Link']")}},
+
+  button_remove_link: { get: function() { return this.element("button[title='Remove Link']")}},
 });

@@ -1,14 +1,15 @@
 @react-rte
 Feature: React-RTE wysiwyg editor
-  
+
+
   Scenario: Say Hello
-    Given I visit the wysiwyg wrapper page
+    Given I visit the wysiwyg editor page
     When I focus the content editor and type in Hello
     Then I should see Hello in the content editor
 
 
   Scenario: Embolden Text
-    Given I visit the wysiwyg bold button
+    Given I visit the wysiwyg editor page
     When "happy" is in the editor
     And I select "happy"
     And I click the bold button
@@ -16,7 +17,7 @@ Feature: React-RTE wysiwyg editor
 
 
   Scenario: Italicize Text
-    Given I visit the wysiwyg bold button
+    Given I visit the wysiwyg editor page
     When "happy" is in the editor
     And I select "happy"
     And I click the italics button
@@ -24,7 +25,7 @@ Feature: React-RTE wysiwyg editor
 
 
   Scenario: Monospace Text
-    Given I visit the wysiwyg bold button
+    Given I visit the wysiwyg editor page
     When "happy" is in the editor
     And I select "happy"
     And I click the monospace button
@@ -32,7 +33,7 @@ Feature: React-RTE wysiwyg editor
 
 
   Scenario: Strikethrough Text
-    Given I visit the wysiwyg bold button
+    Given I visit the wysiwyg editor page
     When "happy" is in the editor
     And I select "happy"
     And I click the strikethrough button
@@ -40,14 +41,43 @@ Feature: React-RTE wysiwyg editor
 
 
   Scenario: Unordered List
-    Given Enter "3" lines of text
+    Given I visit the wysiwyg editor page
+    And Enter "3" lines of text
     When I select all "content"
     And I click the unordered list button
     Then there should be "3" unordered list items
-  @Only
+
   Scenario: Ordered List
-    Given Enter "3" lines of text
+    Given I visit the wysiwyg editor page
+    And Enter "3" lines of text
     When I select all "content"
     And I click the ordered list button
     Then there should be "3" ordered list items
 
+
+  Scenario: Blockquote Text
+    Given I visit the wysiwyg editor page
+    When "happy" is in the editor
+    And I select "happy"
+    And I click the blockquote button
+    Then Text "happy" should have a blockquote
+
+
+  Scenario: Link Text
+    Given I visit the wysiwyg editor page
+    When "happy" is in the editor
+    And I select "happy"
+    And I click the link button
+    And Add "google.com"
+    Then Text "happy" should have a link
+
+  @only
+  Scenario: Remove Link Text
+    Given I visit the wysiwyg editor page
+    When "happy" is in the editor
+    And I select "happy"
+    And I click the link button
+    And Add "google.com"
+    And Text "happy" should have a link
+    And I click the remove link button
+    Then Text "happy" should not have a link
