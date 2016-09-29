@@ -1,21 +1,23 @@
 {
-  "baseUrl": "http://wk-qa.macmillantech.com",
+  "baseUrl": "http://wk-qa.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
   "resultsDir": "results",
-  "reporter": "moonraker",
+  "reporter": "marvin",
   "threads": 1,
-  "icinga": true,
 
-  "testTimeout": 60000,
-  "elementTimeout": 5000,
+  "clean": true,
+  "verbose": true,
+  "stepDelay": 500,
+  "testTimeout": 15000,
+  "elementTimeout": 15000,
 
   "tags": "!@wip",
 
-  "browser": {
+  "browsers": [{
     "browserName": "chrome",
     "chromeOptions": {
       "args": ["--no-sandbox"]
     }
-  }
+  }]
 }
