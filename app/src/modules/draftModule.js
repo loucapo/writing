@@ -12,7 +12,6 @@ export default (state = [], action) => {
         let draft = drafts.filter(d => d.id === x.id);
         return draft[0] || x;
       });
-
       drafts.forEach(x => {
         if (state.every(d => d.id !== x.id)) {
           newState.push(x);
