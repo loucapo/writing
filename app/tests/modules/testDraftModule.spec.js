@@ -2,7 +2,7 @@ import uuid from 'uuid';
 import draftReducer from './../../src/modules/draftModule';
 import {SUCCESS_ACTIVITY} from './../../src/modules/draftModule';
 
-var chai = require('chai');
+import chai from 'chai';
 var expect = chai.expect;
 chai.should();
 

@@ -1,12 +1,14 @@
-import { expect } from 'chai';
 import uuid from 'uuid'
 import activityReducer from './../../src/modules/activityModule';
 import {SUCCESS_ACTIVITY} from './../../src/modules/activityModule';
 
+import chai from 'chai';
+var expect = chai.expect;
+chai.should();
+
 describe('ACTIVITY MODULE REDUCER', () => {
   let action;
   var activity1Id;
-  var activity2Id;
   var activity1;
   var activity2;
 

@@ -10,7 +10,7 @@
   "scripts": {
     "build": "webpack -p --config ./app/webpack.config.js --progress --profile --colors",
     "start": "webpack-dev-server --progress --config ./app/webpack.config.js",
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha -R spec -w ./app/tests/helpers/browser.js ./app/tests/*/*.spec.js",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register -R spec -w ./app/tests/*/*.spec.js",
     "lint": "eslint .",
     "validate": "npm ls",
     "licenses": "license-checker --production --csv | tee licenses.csv"
@@ -66,6 +66,7 @@
     "redux-devtools-log-monitor": "^1.0.9",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "uuid": "^2.0.3",
     "webpack": "^1.13.1",
     "webpack-combine-loaders": "^2.0.0",
     "webpack-dev-server": "^1.14.1",
