@@ -85,7 +85,7 @@ Feature: React-RTE wysiwyg editor
     And I select "happy"
     And I click the link button
     And Add "google.com"
-    And Text "happy" should have a link
+	 And I click the remove link button
     Then Text "happy" should not have a link
 
 

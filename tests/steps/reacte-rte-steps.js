@@ -3,7 +3,8 @@ var marvin = require('marvin-js');
 var keys = require('selenium-webdriver').Key;
 var by = require('selenium-webdriver').By;
 var driver = require('marvin-js').session.getDriver();
-var should = require('chai').should;
+var should = require('chai').should();
+var expect = require('chai').expect;
 
 exports.define = function(steps) {
 
@@ -180,11 +181,11 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should not have a link', function() {
-    return new Promise(function(resolve, reject) {
-      var linkCount = rtePage.draftEditor.findElements({css: "a"});
-      }).then(function() {
-      return linkCount.length.should.be.empty();
-    });
+      return rtePage.draftEditor.findElements({css: "a"}).then(function(links) {
+			if (links.length != 0) {
+				throw new Error('Anchor tag should not have been found.');
+			}
+    	});
   });
 
   /*
