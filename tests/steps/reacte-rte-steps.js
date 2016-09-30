@@ -3,7 +3,13 @@ var marvin = require('marvin-js');
 var keys = require('selenium-webdriver').Key;
 var by = require('selenium-webdriver').By;
 var driver = require('marvin-js').session.getDriver();
+
+var chai = require('chai');
 var should = require('chai').should;
+var chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
+
+var Promise = require('bluebird');
 
 exports.define = function(steps) {
 
@@ -24,6 +30,14 @@ exports.define = function(steps) {
       text.should.equal('Hello');
       console.log('Hello done read');
     });
+  });
+
+
+  steps.when('make it fail', function(next) {
+    console.log('actually here now...')
+    throw new Error("ugh");
+    console.log('but then we just skipped the error?')
+    next();
   });
 
   /*
@@ -67,11 +81,25 @@ exports.define = function(steps) {
     rtePage.button_bold.click();
   });
 
+
   steps.then('Text "$text" should have bold styling', function(text) {
     return new Promise(function(resolve, reject) {
       return rtePage.draftEditor.findElement({css: "span[style*='bold']"})
+        .then(function(span) {
+	  return span.getAttribute('style')
+            .then(function(style) {
+              // yeah, pretty much redundant
+	      return expect(style).to.have.string('boxld');
+              // but we should assert on the contents of the string?  meh.
+	    });
+        });
     });
   });
+  // steps.then('Text "$text" should have bold styling', function(text) {
+  //   return new Promise(function(resolve, reject) {
+  //     return rtePage.draftEditor.findElement({css: "span[style*='bold']"})
+  //   });
+  // });
 
   /*
    *	Italicize Text
@@ -113,7 +141,7 @@ exports.define = function(steps) {
   /*
    * Unordered List
    */
-  steps.given('Enter "$number" lines of text', function($number) {
+  steps.given('Enter "$number" lines of text', function(number) {
     rtePage.draftEditor.click();
     for (i=0; i<$number; i++) {
       rtePage.draftEditor.sendKeys('line ' + i + keys.ENTER);
@@ -124,11 +152,11 @@ exports.define = function(steps) {
     rtePage.button_unordered_list.click();
   });
 
-  steps.then('there should be "$number" unordered list items', function($number) {
+  steps.then('there should be "$number" unordered list items', function(number) {
     return new Promise(function(resolve, reject) {
       var unordered_list_items = rtePage.draftEditor.findElements({css: "ul > li"});
     }).then(function() {
-          return unordered_list_items.length.should.equal($number);
+      return unordered_list_items.length.should.equal(number);
     });
   });
 
@@ -190,12 +218,25 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "happy" should not have a link', function() {
-    return new Promise(function(resolve, reject) {
-      var linkCount = rtePage.draftEditor.findElements({css: "a"});
-      console.log(linkCount);
-      }).then(function() {
-      return linkCount.length.should.be.empty();
-    });
-  });
+    // console.log('-=-=-=')
+    // rtePage.draftEditor.findElements({css: "a"}).length.should.eventually.be(3);
+    // console.log('-=-=-=')
+    // next();
+    throw 'fuck you';
+    // var linkCount = ''; //rtePage.draftEditor.findElements({css: "a"});
+
+    // return new Promise(function(resolve, reject) {
+    //   linkCount = rtePage.draftEditor.findElements({css: "a"});
+    //   //console.log(linkCount);
+    //   console.log('-=-=-= AA')
+    //   //return linkCount
+    //   //resolve(true)
+    //   throw Exception
+    // }).then(function() {
+    //   console.log('-=-=-=')
+    //   console.log(linkCount);
+    //   return linkCount.length.should.eventually.be(3);
+    // });
+  });//, {}, {mode: 'async'});
 
 }

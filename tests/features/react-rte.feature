@@ -7,7 +7,6 @@ Feature: React-RTE wysiwyg editor
     When I focus the content editor and type in Hello
     Then I should see Hello in the content editor
 
-
   Scenario: Embolden Text
     Given I visit the wysiwyg editor page
     When "happy" is in the editor
@@ -71,13 +70,13 @@ Feature: React-RTE wysiwyg editor
     And Add "google.com"
     Then Text "happy" should have a link
 
-  @only
   Scenario: Remove Link Text
     Given I visit the wysiwyg editor page
     When "happy" is in the editor
     And I select "happy"
     And I click the link button
     And Add "google.com"
-    And Text "happy" should have a link
-    And I click the remove link button
-    Then Text "happy" should not have a link
+    When make it fail
+    # And Text "happy" should have a link
+    # And I click the remove link button
+    # Then Text "happy" should not have a link
