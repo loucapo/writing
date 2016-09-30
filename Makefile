@@ -90,7 +90,6 @@ exec:
 	docker exec -it $(con) bash
 
 
-
 ##################
 #GIT Helpers
 ##################
@@ -120,7 +119,6 @@ pull-repos:
 	@echo ================DATA==================
 	@cd ../wk_data && git pull origin master
 	@cd ../wk_compose
-
 
 
 #.PHONY: clean install docker-build run docker-clean docker-exec
