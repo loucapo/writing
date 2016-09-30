@@ -25,4 +25,17 @@ module.exports = new Page({
   button_link: { get: function() { return this.element("button[title='Link']")}},
 
   button_remove_link: { get: function() { return this.element("button[title='Remove Link']")}},
+
+  dropdown_heading_large: { get: function() { return this.element("option[value='header-one']")}},
+
+  dropdown_heading_medium: { get: function() { return this.element("option[value='header-two']")}},
+
+  dropdown_heading_small: { get: function() { return this.element("option[value='header-three']")}},
+
+  dropdown_code_block: { get: function() { return this.element("option[value='code-block']")}},
+
+  button_undo: { get: function() { return this.element("button[title='Undo']")}},
+
+  button_redo: { get: function() { return this.element("button[title='Redo']")}}
+
 });
