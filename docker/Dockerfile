@@ -5,6 +5,6 @@ MAINTAINER mvn
 ADD ./package.json ./package.json
 ADD ./.npmrc ./.npmrc
 
-RUN npm install -q
+RUN npm install
 
 ADD ./app /$HOME/app
