@@ -25,6 +25,7 @@ CreateAssignmentContainer.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
+  console.log(props);
   return (<div>hi mom</div>);
 };
 export default withRouter(connect(mapStateToProps, {assignmentAction})(CreateAssignmentContainer));
