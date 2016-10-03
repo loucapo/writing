@@ -4,6 +4,9 @@ This project houses our data schemas.
 They are used by swagger-ui for docs as well as for data generation and all validation
 
 ## Installation
+cd docker
+cp .env.example .env
+cd ..
 
 ## Contributing
 1. Clone it!
