@@ -1,0 +1,15 @@
+.pageSize {
+  width: 800px;
+  margin: 64px 0 0 160px;
+}
+
+.description {
+  margin-bottom: 45px;
+}
+.titleTextBox {
+  margin-bottom: 25px;
+}
+
+.promptTextArea {
+  margin-bottom: 25px;
+}
