@@ -1,0 +1,44 @@
+version: "2"
+services:
+  front_end:
+    image: ${wk_frontend_image}
+    command: npm start
+    env_file:
+      - .env
+    environment:
+      APPLICATION_NAME: wk_frontend
+    ports:
+      - "8080:8080"
+    service: wk_frontend
+    container_name: wk_frontend
+api:
+  image: ${wk_api}
+    command: npm run start_dev 
+    env_file:
+      - .env
+    environment:
+      DEBUG: "true"
+      NODE_ENV: development
+      APPLICATION_NAME: wk_api
+    ports:
+      - "3000:3000"
+    service: wk_api
+    container_name: wk_api
+  data:
+    image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/data:latest
+    command: npm start
+    env_file:
+      - .env
+    service: wk_data
+    container_name: wk_data
+  postgres:
+    image: postgres
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+  nginx:
+    image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/nginx:latest
+    ports:
+      - "10080:80"
+    container_name: nginx_container
