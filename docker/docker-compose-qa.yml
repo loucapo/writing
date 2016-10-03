@@ -1,0 +1,15 @@
+version: "2"
+services:
+  wk_api:
+    image: ${wk_api}
+    volumes:
+      - ./../app:/home/current/app
+    command: npm run start_dev
+    env_file:
+      - .env
+    environment:
+      DEBUG: "true"
+      NODE_ENV: development
+      APPLICATION_NAME: wk_api
+    ports:
+      - "3000:3000"
