@@ -1,6 +1,6 @@
 ### Dev
 
-    cp .env.example .env
+    cp ./docker/.env.example ./docker/.env
     docker-compose -f docker-compose-dev.yml up -d
 
 ### Erm, not Dev?
