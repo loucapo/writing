@@ -3,8 +3,13 @@ var marvin = require('marvin-js');
 var keys = require('selenium-webdriver').Key;
 var by = require('selenium-webdriver').By;
 var driver = require('marvin-js').session.getDriver();
-var should = require('chai').should();
-var expect = require('chai').expect;
+
+var chai = require('chai');
+var should = require('chai').should;
+//var chaiAsPromised = require("chai-as-promised");
+//chai.use(chaiAsPromised);
+
+//var Promise = require('bluebird');
 
 exports.define = function(steps) {
 
@@ -19,14 +24,23 @@ exports.define = function(steps) {
     rtePage.draftEditor.click();
   })
 
-  steps.when(['I type in "$text"'], function($text) {
-    rtePage.draftEditor.sendKeys($text);
+  steps.when(['I type in "$text"'], function(text) {
+    rtePage.draftEditor.sendKeys(text);
   })
 
-  steps.then('I should see "$text" in the content editor', function($text) {
+  steps.then('I should see "$text" in the content editor', function(text) {
     rtePage.draftEditor.getText().then(function(text) {
-      text.should.equal($text);
+      text.should.equal(text);
     });
+  });
+
+
+  steps.when('make it fail', function(next) {
+    console.log('actually here now...')
+    throw new Error("ugh");
+    console.log('but then we just skipped the error?')
+    //next();
+	 console.log(next);
   });
 
   /*
@@ -43,24 +57,26 @@ exports.define = function(steps) {
     rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
   });
 
-  steps.when('I select all "$text"', function(text) {
+  steps.when('I select all content', function() {
     // can't seem to get command+a or control+a to select all
     // let's use shift and many lefts
-    var ups = '';
-    for (i = 0; i< text.length; i++) {
-      ups += keys.UP;
-    }
-    rtePage.draftEditor.sendKeys(keys.SHIFT + ups);
+	 rtePage.draftEditor.getText().then(function(content) {
+		 var lefts = '';
+		 var content_length = content.length + 1;
+		 for (i = 0; i < content_length; i++) {
+			lefts += keys.LEFT;
+		 }
+		 rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
+	});
   });
 
   steps.when('I click the bold button', function(next) {
     rtePage.button_bold.click();
   });
-
   steps.then('Text "$text" should have bold styling', function(text) {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='bold']"})
-    });
+     return new Promise(function(resolve, reject) {
+       return rtePage.draftEditor.findElement({css: "span[style*='bold']"})
+     });
   });
 
   /*
@@ -103,9 +119,9 @@ exports.define = function(steps) {
   /*
    * Unordered List
    */
-  steps.given('Enter "$number" lines of text', function($number) {
+  steps.given('Enter "$number" lines of text', function(number) {
     rtePage.draftEditor.click();
-    for (i=0; i<$number; i++) {
+    for (i=0; i<number; i++) {
       rtePage.draftEditor.sendKeys('line ' + i + keys.ENTER);
     }
   });
@@ -114,11 +130,11 @@ exports.define = function(steps) {
     rtePage.button_unordered_list.click();
   });
 
-  steps.then('there should be "$number" unordered list items', function($number) {
+  steps.then('there should be "$number" unordered list items', function(number) {
     return new Promise(function(resolve, reject) {
       var unordered_list_items = rtePage.draftEditor.findElements({css: "ul > li"});
     }).then(function() {
-          return unordered_list_items.length.should.equal($number);
+      return unordered_list_items.length.should.equal(number);
     });
   });
 
@@ -183,7 +199,11 @@ exports.define = function(steps) {
   steps.then('Text "$text" should not have a link', function() {
       return rtePage.draftEditor.findElements({css: "a"}).then(function(links) {
 			if (links.length != 0) {
+				console.log('a != 0 FAILURE');
 				throw new Error('Anchor tag should not have been found.');
+			}
+			else {
+				console.log('a == 0 SUCCESS');
 			}
     	});
   });
@@ -261,9 +281,9 @@ exports.define = function(steps) {
     rtePage.button_undo.click();
   });
 
-  steps.then('Text "$text" should not appear', function($text) {
+  steps.then('Text "$text" should not appear', function(happytext) {
     rtePage.draftEditor.getText().then(function(text) {
-      text.should.not.equal($text);
+      text.should.not.equal(happytext);
     });
   });
 

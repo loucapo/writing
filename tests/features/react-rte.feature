@@ -47,14 +47,14 @@ Feature: React-RTE wysiwyg editor
   Scenario: Unordered List
     Given I visit the wysiwyg editor page
     And Enter "3" lines of text
-    When I select all "content"
+    When I select all content
     And I click the unordered list button
     Then there should be "3" unordered list items
 
   Scenario: Ordered List
     Given I visit the wysiwyg editor page
     And Enter "3" lines of text
-    When I select all "content"
+    When I select all content
     And I click the ordered list button
     Then there should be "3" ordered list items
 
@@ -77,7 +77,7 @@ Feature: React-RTE wysiwyg editor
     And Add "google.com"
     Then Text "happy" should have a link
 
-  @only
+@only
   Scenario: Remove Link Text
     Given I visit the wysiwyg editor page
     When I focus the content editor

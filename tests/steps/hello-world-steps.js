@@ -1,13 +1,13 @@
 var helloPage = require('../pages/hello-world.js');
+var marvin = require('marvin-js');
+var should = require('chai').should;
 
 exports.define = function(steps) {
-  var doot = function() { return console.log('dootDOOT!')};
-
   steps.given("I visit the home page", function() {
-    helloPage.visit().then(doot);
+    helloPage.visit();
   });
 
-  steps.then("I should see header '$HEADER'", function(header) {
+  steps.then('I should see header "$text"', function(header) {
     helloPage.heading.getText()
       .then(function(text) {
         text.should.equal(header);
