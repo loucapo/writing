@@ -11,6 +11,8 @@ services:
       APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
+    service: wk_frontend
+    container_name: wk_frontend
 
   frontend_test:
     image: wk_frontend
@@ -23,3 +25,5 @@ services:
       APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
+    service: wk_frontend_test
+    container_name: wk_frontend_test
