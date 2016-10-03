@@ -1,41 +1,61 @@
-import { expect } from 'chai';
-import assert from 'assert';
+import uuid from 'uuid';
+import draftReducer from './../../src/modules/draftModule';
+import {SUCCESS_ACTIVITY} from './../../src/modules/draftModule';
 
-import draftReducer from './../../src/modules/DraftModule';
-import {SUCCESS_ACTIVITY} from './../../src/modules/DraftModule';
-import {draft1, draft2, draft3, draft4, draft5, draft6} from '../mockData';
-
-const originalState = [draft1, draft2, draft3];
-
-const newAction = {
-  type: SUCCESS_ACTIVITY,
-  payload: {
-    data: {
-      drafts: [draft4, draft5, draft6]
-    }
-  }
-};
+import chai from 'chai';
+var expect = chai.expect;
+chai.should();
 
 describe('DRAFT MODULE REDUCER', () => {
+  let action;
+  var draft1Id;
+  var draft2Id;
+  var draft1;
+  var draft2;
+
+  beforeEach(() => {
+    draft1Id = uuid.v4();
+    draft2Id = uuid.v4();
+    draft1 = {
+      id: draft1Id,
+      type:'Instructor Review'
+    };
+
+    draft2 = {
+      id:draft2Id,
+      type:'Peer Review'
+    };
+
+    action = {
+      type: SUCCESS_ACTIVITY,
+      payload: {
+        data: {
+          drafts: [draft1, draft2]
+        }
+      }
+    };
+  });
+
   describe('When initial state and action are empty objects', () => {
     it('should return the initial state - an empty object', () => {
       let result = draftReducer(undefined, {});
-      expect(Array.isArray(result) && result.length === 0).to.equal(true);
+      result.length.should.equal(0);
     });
   });
 
-  describe('When inital state is empty, valid action is passed in', () => {
-    it('should return the new state', () => {
-      let result = draftReducer(undefined, newAction);
-      expect(result === newAction.payload.data);
+  describe('When inital state is empty and valid action is passed in', () => {
+    it('should put new values in state', () => {
+
+      let result = draftReducer(undefined, action);
+      result[0].type.should.equal('Instructor Review');
+      result[1].type.should.equal('Peer Review');
     });
   });
 
-  describe('When inital state is full object (not empty), action contains full object', () => {
-    const expectedState = [draft1, draft2, draft3, draft4, draft5, draft6 ];
-    it('should return the combined state', () => {
-      let result = draftReducer(originalState, newAction);
-      assert.deepEqual(result, expectedState);
+  describe('When inital state contains object with same id as the one in the action', () => {
+    it('should replace the old with the new', () => {
+      let result = draftReducer([{id:draft1Id,type:"owens type"}], action);
+      result[0].type.should.equal('Instructor Review');
     });
   });
 });

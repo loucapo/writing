@@ -86,6 +86,14 @@ const webpackConfig = {
             loader: 'postcss'
           }
         ])
+      },
+      {
+        test: /\.png$/,
+        loader: 'url-loader',
+        query: { mimetype: 'image/png' } ,
+        include: [
+          path.resolve(__dirname, 'src/images')
+        ]
       }
     ]
   },
