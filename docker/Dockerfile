@@ -1,4 +1,4 @@
-FROM 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk_node:latest
+FROM 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/node:latest
 
 MAINTAINER mvn
 
