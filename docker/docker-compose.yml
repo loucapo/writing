@@ -6,7 +6,7 @@ services:
       - ./../app:/home/current/app
     command: npm start #top -b #
     env_file:
-      - ../.env
+      - ./.env
     environment:
       APPLICATION_NAME: wk_frontend
     ports:
