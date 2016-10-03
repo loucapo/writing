@@ -77,7 +77,6 @@ Feature: React-RTE wysiwyg editor
     And Add "google.com"
     Then Text "happy" should have a link
 
-@only
   Scenario: Remove Link Text
     Given I visit the wysiwyg editor page
     When I focus the content editor

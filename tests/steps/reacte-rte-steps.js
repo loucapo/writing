@@ -196,15 +196,13 @@ exports.define = function(steps) {
     rtePage.button_remove_link.click();
   });
 
-  steps.then('Text "$text" should not have a link', function() {
-      return rtePage.draftEditor.findElements({css: "a"}).then(function(links) {
-			if (links.length != 0) {
-				console.log('a != 0 FAILURE');
-				throw new Error('Anchor tag should not have been found.');
-			}
-			else {
-				console.log('a == 0 SUCCESS');
-			}
+	steps.then('Text "$text" should not have a link', function() {
+		return new Promise(function(resolve, reject) {	
+			return rtePage.draftEditor.findElements({css: "a"}).then(function(links) {
+				if (links.length != 0) {
+					throw new Error('Anchor tag should not have been found.');
+				}
+			});
     	});
   });
 
