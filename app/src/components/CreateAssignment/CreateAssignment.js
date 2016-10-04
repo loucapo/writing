@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+import Header from './../Header/Header';
+import TitleSection from './TitleSection/TitleSection';
 
 import createAssignment from './createAssignment.css';
 
 const CreateAssignment = () => {
+  let contentLeft = <div>Create Assignment</div>;
+  let contentRight = <div>ENG 101 Composition</div>
   return (
     <div className={createAssignment.pageSize}>
-      <h1>Create Assignment</h1>
-      <div className={createAssignment.description}>
-        <div>Drafting and Revising Assignment</div>
-        <div>ENG101 Introduction to Writing</div>
-      </div>
+      <Header
+        contentLeft={contentLeft}
+        contentRight={contentRight}
+      />
+      <TitleSection />
       <div>Assignment Title</div>
       <div>
         <input
