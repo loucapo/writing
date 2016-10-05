@@ -4,8 +4,8 @@ import titleSection from './titleSection.css';
 
 const TitleSection = () => {
   return (
-    <div>
-      <h1>Create a New Assignment</h1>
+    <div className={titleSection.wrapper}>
+      <div className={titleSection.title}>Create a New Assignment</div>
       <span className={titleSection.description}>
         Drafting and Revising Assignment
       </span>

@@ -9,37 +9,39 @@ const CreateAssignment = () => {
   let contentLeft = <div>Create Assignment</div>;
   let contentRight = <div>ENG 101 Composition</div>
   return (
-    <div className={createAssignment.pageSize}>
+    <div>
       <Header
         contentLeft={contentLeft}
         contentRight={contentRight}
       />
-      <TitleSection />
-      <div>Assignment Title</div>
-      <div>
-        <input
-          type="text"
-          size="80"
-          placeholder="Help text"
-          className={createAssignment.titleTextBox}
-        />
-      </div>
-      <div>Assignment Prompt</div>
-      <div>
-        <textArea
-          rows="10"
-          cols="80"
-          placeholder="Help text"
-          className={createAssignment.promptTextArea}
-        />
-      </div>
-      <div>Number of Drafts</div>
-      <div>
-        <input
-          type="text"
-          size="1"
-          defaultValue="1"
-        />
+      <div className={createAssignment.pageSize}>
+        <TitleSection />
+        <div>Assignment Title</div>
+        <div>
+          <input
+            type="text"
+            size="80"
+            placeholder="Help text"
+            className={createAssignment.titleTextBox}
+          />
+        </div>
+        <div>Assignment Prompt</div>
+        <div>
+          <textArea
+            rows="10"
+            cols="80"
+            placeholder="Help text"
+            className={createAssignment.promptTextArea}
+          />
+        </div>
+        <div>Number of Drafts</div>
+        <div>
+          <input
+            type="text"
+            size="1"
+            defaultValue="1"
+          />
+        </div>
       </div>
     </div>
   );
