@@ -12,7 +12,7 @@ let DraftList = ({drafts}) => {
         )}
       </ul>
       <div className={ draftList.draftAction }>
-        <a href="#">
+        <a data-id="add-draft" href="#">
           <span className={draftList.add_draft_icon}>&#8853;</span> Add Another Draft
         </a>
       </div>

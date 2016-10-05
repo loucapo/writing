@@ -13,14 +13,14 @@ const DraftItemDescription = ({details}) => {
     <div data-id="draft-item-description" className={ draftItemDescription.left }>
       { details.learningObjectives
         ? <div className={draftItem.summaryContainer}><div>
-          <span className={draftItem.summaryLabel}>Learning Objectives</span>
+          <span data-id="draft-item-learning-objectives" className={draftItem.summaryLabel}>Learning Objectives</span>
           { learningObjectives.map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
         </div></div> : null
       }
 
       { details.peerReviewGroups
         ? <div className={draftItem.summaryContainer}><div>
-          <span className={draftItem.summaryLabel}>Post Instructor Feedback Survey Prompt</span>
+          <span data-id="draft-item-peer-review" className={draftItem.summaryLabel}>Post Instructor Feedback Survey Prompt</span>
           { [details.peerReviewGroups].map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
         </div></div> : null
       }
