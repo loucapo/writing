@@ -7,8 +7,10 @@ const Header = (props) => {
   let contentRight = props ? (props.contentRight ? props.contentRight : '') : '';
   return (
     <header className={header['top-header']} >
-      <div className={header['content-left']}>{contentLeft}</div>
-      <div className={header['content-right']}>{contentRight}</div>
+      <div className={header.page}>
+        <div className={header['content-left']}>{contentLeft}</div>
+        <div className={header['content-right']}>{contentRight}</div>
+      </div>
     </header>
   );
 };

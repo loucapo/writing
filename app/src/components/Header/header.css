@@ -1,16 +1,31 @@
+@import 'mixins.css';
+
 .top-header {
   height: 100px;
-  background-color: #E6E6E6;
+  background-color: var(--darkGrey);
+  display: flex;
+  flex-flow: row nowrap;
+}
 
-  display:  flex;
-  flex-flow:  row nowrap;
+.page {
+  width: var(--page-width);
+  margin-left: var(--page-margin-left);
+  display: flex;
+  flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+}
 
-}
 .content-left {
-  align-self: flex-start;
+  margin-left: 0;
+  font-size: large;
 }
+
 .content-right {
-  margin: 0 15px 0 auto;
+  margin: 0 0 0 auto;
+  font-size: small;
+}
+
+.box {
+  border: 1px solid black;
 }

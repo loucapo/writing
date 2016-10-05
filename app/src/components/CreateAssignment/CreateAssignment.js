@@ -6,8 +6,8 @@ import TitleSection from './TitleSection/TitleSection';
 import createAssignment from './createAssignment.css';
 
 const CreateAssignment = () => {
-  let contentLeft = <div>Create Assignment</div>;
-  let contentRight = <div>ENG 101 Composition</div>;
+  let contentLeft = <div>Macmillan Writing Dashboard</div>;
+  let contentRight = <div>ENG 101 Introduction to Writing</div>;
   return (
     <div>
       <Header
@@ -19,6 +19,7 @@ const CreateAssignment = () => {
         <div>Assignment Title</div>
         <div>
           <input
+            data-id="activity-title"
             type="text"
             size="80"
             placeholder="Help text"
@@ -28,6 +29,7 @@ const CreateAssignment = () => {
         <div>Assignment Prompt</div>
         <div>
           <textArea
+            data-id="activity-prompt"
             rows="10"
             cols="80"
             placeholder="Help text"
@@ -37,6 +39,7 @@ const CreateAssignment = () => {
         <div>Number of Drafts</div>
         <div>
           <input
+            data-id="activity-number-drafts"
             type="text"
             size="1"
             defaultValue="1"

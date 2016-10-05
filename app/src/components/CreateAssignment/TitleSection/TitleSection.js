@@ -6,12 +6,12 @@ const TitleSection = () => {
   return (
     <div className={titleSection.wrapper}>
       <div className={titleSection.title}>Create a New Assignment</div>
-      <span className={titleSection.description}>
+      <div className={titleSection.description}>
         Drafting and Revising Assignment
-      </span>
-      <span className={titleSection.courseName}>
+      </div>
+      <div>
         ENG101 Introduction to Writing
-      </span>
+      </div>
     </div>
   );
 };

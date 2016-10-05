@@ -1,6 +1,8 @@
+@import 'mixins.css';
+
 .pageSize {
-  width: 800px;
-  margin: 64px 0 0 160px;
+  width: var(--page-width);
+  margin: 0 0 0 var(--page-margin-left);
 }
 
 .description {
