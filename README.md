@@ -16,10 +16,6 @@ This README would normally document whatever steps are necessary to get your app
 
     `npm install`
 
-    `cd node_modules/moonraker`
-
-    `npm install`
-
 * Probably also need chromedriver installed / in your path
 
 ### How to run tests
