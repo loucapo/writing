@@ -15,3 +15,11 @@
 .promptTextArea {
   margin-bottom: 25px;
 }
+
+.header-background-color {
+  background-color: var(--darkGrey);
+}
+
+.footer-background-color {
+  background-color: var(--lightGrey);
+}

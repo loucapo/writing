@@ -2,17 +2,22 @@ import React from 'react';
 
 import Header from './../Header/Header';
 import TitleSection from './TitleSection/TitleSection';
-
+import ActionButton from './../ActionButton/ActionButton';
 import createAssignment from './createAssignment.css';
 
 const CreateAssignment = () => {
   let contentLeft = <div>Macmillan Writing Dashboard</div>;
   let contentRight = <div>ENG 101 Introduction to Writing</div>;
+  let contentLeftFooter = <div>Cancel</div>;
+  let contentRightFooter = <ActionButton content="Save and Continue" />;
+  let headerCss = createAssignment['header-background-color'];
+  let footerCss = createAssignment['footer-background-color'];
   return (
     <div>
       <Header
         contentLeft={contentLeft}
         contentRight={contentRight}
+        css={headerCss}
       />
       <div className={createAssignment.pageSize}>
         <TitleSection />
@@ -46,6 +51,11 @@ const CreateAssignment = () => {
           />
         </div>
       </div>
+      <Header
+        contentLeft={contentLeftFooter}
+        contentRight={contentRightFooter}
+        css={footerCss}
+      />
     </div>
   );
 };

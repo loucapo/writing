@@ -1,8 +1,7 @@
 @import 'mixins.css';
 
 .top-header {
-  height: 100px;
-  background-color: var(--darkGrey);
+  height: 55px;
   display: flex;
   flex-flow: row nowrap;
 }
