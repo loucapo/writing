@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import Header from './../Header/Header';
 import TitleSection from './TitleSection/TitleSection';
@@ -7,7 +7,7 @@ import createAssignment from './createAssignment.css';
 
 const CreateAssignment = () => {
   let contentLeft = <div>Create Assignment</div>;
-  let contentRight = <div>ENG 101 Composition</div>
+  let contentRight = <div>ENG 101 Composition</div>;
   return (
     <div>
       <Header
