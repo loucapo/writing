@@ -7,7 +7,7 @@ import draftItem from './../draftItem.css';
 // XXX may need id's to be added for testability/accessibility
 
 const DraftItemFeedback = ({details}) => (
-  <div className={ draftItemFeedback.right }>
+  <div data-id="draft-item-feedback" className={ draftItemFeedback.right }>
     { details.studentReflectionQuestions
       ? <div className={draftItem.summaryContainer}><div>
         <span className={draftItem.summaryLabel}>Student Reflection Questions</span>
