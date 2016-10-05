@@ -6,7 +6,7 @@ const AssignmentAction = () => {
   return (
     <div className={ assignmentAction['assignment-action'] }>
       <div className={ assignmentAction['assign-button-wrapper'] }>
-        <button className={ assignmentAction['assign-button'] }>Assign to Students</button>
+        <button data-id="assign-button" className={ assignmentAction['assign-button'] }>Assign to Students</button>
       </div>
     </div>
   );

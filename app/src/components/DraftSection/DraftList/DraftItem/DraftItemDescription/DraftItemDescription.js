@@ -10,7 +10,7 @@ const DraftItemDescription = ({details}) => {
     ? details.learningObjectives
     : [details.learningObjectives];
   return (
-    <div className={ draftItemDescription.left }>
+    <div data-id="draft-item-description" className={ draftItemDescription.left }>
       { details.learningObjectives
         ? <div className={draftItem.summaryContainer}><div>
           <span className={draftItem.summaryLabel}>Learning Objectives</span>
@@ -26,7 +26,7 @@ const DraftItemDescription = ({details}) => {
       }
 
       <div className={ draftItemDescription.grade }><span className={draftItemDescription.summaryLabel}>Grade:</span>
-        <span> {details.gradingPolicy}</span>
+        <span data-id="grading-policy"> {details.gradingPolicy}</span>
       </div>
     </div>);
 };

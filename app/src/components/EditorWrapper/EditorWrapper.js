@@ -3,6 +3,6 @@ import editor from './editorWrapper.css';
 import { WKRichTextEditorContainer as RichTextEditorContainer } from 'wk-rich-text-editor-container';
 
 export default () => (
-  <div className={editor.editorWrapper} >
-    <RichTextEditorContainer />
+  <div data-id="editor-wrapper" className={editor.editorWrapper} >
+    <RichTextEditorContainer data-id="rich-text-editor"/>
   </div>);
