@@ -8,10 +8,12 @@ services:
     volumes:
       - /dev/shm:/dev/shm
     container_name: selenium-grid
-    links: 
-      - wk_test
   wk_test:
-    image: wk/test
+    image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/test:latest
     env_file:
-      - ../.env
-    command: /bin/sh -c "npm test"
+      - ./.env
+    command: /bin/sh -c "sleep 30; npm test"
+    volumes_from:
+      - selenium-grid
+    links: 
+      - selenium-grid
