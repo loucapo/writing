@@ -15,7 +15,7 @@
   "tags": "!@wip",
 
   "browsers": [{
-    "seleniumServer": "http://localhost:4444/wd/hub",
+    "seleniumServer": "http://selenium-grid:4444/wd/hub",
     "browserName": "chrome",
     "chromeOptions": {
       "args": ["--no-sandbox"]

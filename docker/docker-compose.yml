@@ -1,0 +1,17 @@
+version: "2"
+services:
+  selenium-grid:
+    image: elgalu/selenium
+    ports:
+      - 4444:24444
+      - 5900:25900
+    volumes:
+      - /dev/shm:/dev/shm
+    container_name: selenium-grid
+    links: 
+      - wk_test
+  wk_test:
+    image: wk/test
+    env_file:
+      - ../.env
+    command: /bin/sh -c "npm test"
