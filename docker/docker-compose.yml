@@ -2,6 +2,8 @@ version: "2"
 services:
   selenium-grid:
     image: elgalu/selenium
+    env_file:
+      - ./.env
     ports:
       - 4444:24444
       - 5900:25900
