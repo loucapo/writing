@@ -2,8 +2,6 @@
 
 .action-button-container {
   flex: 0 0 300px;
-  min-width: 300px;
-  padding: 20px;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -19,9 +17,8 @@
   cursor: pointer;
   color: #ffffff;
   background-color: var(--blue);
-  width: 100%;
   font-size: 16px;
   letter-spacing: 0.02em;
-  padding: 8px 0 10px;
+  padding: 8px 15px 10px 15px;
   border-radius: 3px;
 }

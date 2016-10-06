@@ -1,7 +1,7 @@
 @import 'mixins.css';
 
-.pageSize {
-  width: var(--page-width);
+.panelSize {
+  width: var(--panel-left-width);
   margin: 0 0 0 var(--page-margin-left);
 }
 
@@ -10,16 +10,36 @@
 }
 .titleTextBox {
   margin-bottom: 25px;
+  height: 25px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 0px;
 }
 
 .promptTextArea {
   margin-bottom: 25px;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 0px;
 }
 
-.header-background-color {
+.number-drafts {
+  margin-top: 10px;
+}
+
+.number-drafts {
+  height: 25px;
+  min-width: 25px;
+  text-align: center;
+}
+
+.header {
   background-color: var(--darkGrey);
 }
 
-.footer-background-color {
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: var(--lightGrey);
 }
