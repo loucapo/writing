@@ -1,0 +1,25 @@
+@import 'mixins.css';
+
+.pageSize {
+  width: var(--page-width);
+  margin: 0 0 0 var(--page-margin-left);
+}
+
+.description {
+  margin-bottom: 45px;
+}
+.titleTextBox {
+  margin-bottom: 25px;
+}
+
+.promptTextArea {
+  margin-bottom: 25px;
+}
+
+.header-background-color {
+  background-color: var(--darkGrey);
+}
+
+.footer-background-color {
+  background-color: var(--lightGrey);
+}

@@ -1,6 +1,6 @@
 @import 'mixins.css';
 
-.assignment-action {
+.action-button-container {
   flex: 0 0 300px;
   min-width: 300px;
   padding: 20px;
@@ -8,13 +8,13 @@
   flex-flow: column nowrap;
 }
 
-.assign-button-wrapper {
+.action-button-wrapper {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
 }
 
-.assign-button {
+.action-button {
   border: none;
   cursor: pointer;
   color: #ffffff;
