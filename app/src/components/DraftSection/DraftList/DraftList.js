@@ -10,7 +10,7 @@ let DraftList = ({drafts}) => {
         {
           drafts.map((draftItem, idx) => {
             // substitute 'Final draft' for 'Draft #' on last element in array
-            let draftName = (idx === (drafts.length - 1)) ? 'Final Draft': 'Draft ' + (idx + 1);
+            let draftName = (idx === (drafts.length - 1)) ? 'Final Draft' : 'Draft ' + (idx + 1);
             return <DraftItem draftItem={draftItem} draftName={draftName} key={idx} />;
           })
         }
