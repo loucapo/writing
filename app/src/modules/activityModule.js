@@ -16,13 +16,17 @@ export default (state = [], action) => {
       if (!activity) {
         return state;
       }
+
+      // update if the activity.id already is in the array
       let newState = state.map(x=> {
         return (x.id === activity.id) ? activity : x;
       });
 
+      // add new activity otherwise
       if (state.every(x => x.id !== activity.id)) {
         newState.push(activity);
       }
+
       return newState;
     }
     case FAILURE_ACTIVITY: {
