@@ -1,0 +1,4 @@
+/* useful for debugging layouts, add a box to see the outline of a component */
+.box {
+  border: 1px solid black;
+}
