@@ -12,23 +12,28 @@ const DraftItemDescription = ({details}) => {
   return (
     <div data-id="draft-item-description" className={ draftItemDescription.left }>
       { details.learningObjectives
-        ? <div className={draftItem.summaryContainer}><div>
+        ? <div className={draftItem.summaryContainer}>
+        <div>
           <span
             data-id="draft-item-learning-objectives"
-            className={draftItem.summaryLabel}>Learning Objectives
+            className={draftItem.summaryLabel}>Learning Objectives>
           </span>
           { learningObjectives.map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
-        </div></div> : null
+        </div>
+      </div> : null
       }
 
       { details.peerReviewGroups
-        ? <div className={draftItem.summaryContainer}><div>
+        ? <div className={draftItem.summaryContainer}>
+        <div>
           <span
             data-id="draft-item-peer-review"
             className={draftItem.summaryLabel}>Post Instructor Feedback Survey Prompt
+            >
+              { [details.peerReviewGroups].map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
           </span>
-          { [details.peerReviewGroups].map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
-        </div></div> : null
+        </div>
+      </div> : null
       }
 
       <div className={ draftItemDescription.grade }><span className={draftItemDescription.summaryLabel}>Grade:</span>

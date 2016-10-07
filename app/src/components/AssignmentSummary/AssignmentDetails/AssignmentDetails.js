@@ -13,10 +13,10 @@ const AssignmentDetails = ({activity}) => (
       {activity.desc}
     </div>
     <div data-id="activity-rhetoric-rubric" className={assignmentDetails.rhetoricAndRubric}>
-      <span data-id="activity-rhetorical-genre" className={assignmentDetails.label}>
+      <span className={assignmentDetails.label}>
       Rhetoric Genre:
       </span>
-      {activity.rhetoricalGenre}
+      <span data-id="activity-rhetorical-genre">{activity.rhetoricalGenre}</span>
       <br />
       <span className={assignmentDetails.label}>
     Rubric:
@@ -24,10 +24,10 @@ const AssignmentDetails = ({activity}) => (
       <a data-id="activity-rubric" href="#">{activity.rubric}</a>
     </div>
     <div className={ assignmentDetails['prompt-summary'] }>
-      <div data-id="activity-prompt" className={assignmentDetails.label}>
+      <div className={assignmentDetails.label}>
         Prompt:
       </div>
-      {activity.prompt}
+      <span data-id="activity-prompt">{activity.prompt}</span>
     </div>
     <a data-id="edit-assignment" href="#">Edit Assignment Information</a>
   </div>);
