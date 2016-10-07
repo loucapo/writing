@@ -11,8 +11,8 @@ const CreateAssignment = () => {
   let contentRight = <div>ENG 101 Introduction to Writing</div>;
   let contentLeftFooter = <div>Cancel</div>;
   let contentRightFooter = <ActionButton content="Save and Continue" />;
-  let headerCss = createAssignment['header'];
-  let footerCss = createAssignment['footer'];
+  let headerCss = createAssignment.header;
+  let footerCss = createAssignment.footer;
   return (
     <div>
       <Header
