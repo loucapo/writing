@@ -7,9 +7,13 @@ let DraftList = ({drafts}) => {
   return (
     <div className={ draftList.draftGroup }>
       <ul className={ draftList.items }>
-        {drafts.map((draftItem, idx) =>
-          (<DraftItem draftItem={draftItem} draftName={'Draft ' + (idx + 1)} key={idx} />)
-        )}
+        {
+          drafts.map((draftItem, idx) => {
+            // substitute 'Final draft' for 'Draft #' on last element in array
+            let draftName = (idx === (drafts.length - 1)) ? 'Final Draft': 'Draft ' + (idx + 1);
+            return <DraftItem draftItem={draftItem} draftName={draftName} key={idx} />;
+          })
+        }
       </ul>
       <div className={ draftList.draftAction }>
         <a data-id="add-draft" href="#">
