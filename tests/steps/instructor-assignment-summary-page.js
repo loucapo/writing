@@ -82,7 +82,7 @@ exports.define = function(steps) {
 				var final_draft_grade_policy = draft_grade_policies.pop();
 				var inc_comp = 'Incomplete/Complete';
 				var letter_grade = 'Letter Grade';
-				var precentage = '%';
+				var percentage = '%';
 				draft_grade_policies.forEach(function(policy, index) {
 					policy.getText().then(function(text) {
 						expect(text).to.equal(inc_comp);
