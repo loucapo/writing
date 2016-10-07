@@ -29,4 +29,5 @@
 /* Sizes */
   --page-width: 800px;
   --page-margin-left: 160px;
+  --panel-left-width: 600px; /* remainder would be right panel width */
 }

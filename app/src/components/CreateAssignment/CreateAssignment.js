@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './../Header/Header';
 import TitleSection from './TitleSection/TitleSection';
 import ActionButton from './../ActionButton/ActionButton';
+
 import createAssignment from './createAssignment.css';
 
 const CreateAssignment = () => {
@@ -10,8 +11,8 @@ const CreateAssignment = () => {
   let contentRight = <div>ENG 101 Introduction to Writing</div>;
   let contentLeftFooter = <div>Cancel</div>;
   let contentRightFooter = <ActionButton content="Save and Continue" />;
-  let headerCss = createAssignment['header-background-color'];
-  let footerCss = createAssignment['footer-background-color'];
+  let headerCss = createAssignment.header;
+  let footerCss = createAssignment.footer;
   return (
     <div>
       <Header
@@ -19,7 +20,7 @@ const CreateAssignment = () => {
         contentRight={contentRight}
         css={headerCss}
       />
-      <div className={createAssignment.pageSize}>
+      <div className={createAssignment.panelSize}>
         <TitleSection />
         <div>Assignment Title</div>
         <div>
@@ -41,13 +42,14 @@ const CreateAssignment = () => {
             className={createAssignment.promptTextArea}
           />
         </div>
-        <div>Number of Drafts</div>
+        <div className={createAssignment['number-drafts-label']}>Number of Drafts</div>
         <div>
           <input
             data-id="activity-number-drafts"
             type="text"
             size="1"
             defaultValue="1"
+            className={createAssignment['number-drafts']}
           />
         </div>
       </div>
