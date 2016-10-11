@@ -1,10 +1,16 @@
 
-module.exports = function (validateLTI, koasend) {
+module.exports = function (koasend) {
   return {
     async launch(ctx) {
-      if(validateLTI(ctx.request)){
-        await koasend(ctx, 'app/src/views/index.html');
-      }
+      
+      console.log('==========ctx.isAuthenticated()=========');
+      console.log(ctx.isAuthenticated());
+      console.log(ctx.request.user);
+      console.log(ctx.session);
+
+      console.log('==========END ctx.isAuthenticated()=========');
+      // ctx.status = 200;
+      ctx.redirect('/');
     }
   }
 };
