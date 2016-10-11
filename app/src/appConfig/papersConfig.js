@@ -28,4 +28,3 @@ module.exports = function(paperslti,
 
   return koapapers().registerMiddleware(config);
 };
-
