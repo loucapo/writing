@@ -16,7 +16,7 @@ const DraftItemDescription = ({details}) => {
           <div>
             <span
               data-id="draft-item-learning-objectives"
-              className={draftItem.summaryLabel}>Learning Objectives>
+              className={draftItem.summaryLabel}>Learning Objectives
             </span>
             { learningObjectives.map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
           </div>
@@ -29,7 +29,6 @@ const DraftItemDescription = ({details}) => {
             <span
               data-id="draft-item-peer-review"
               className={draftItem.summaryLabel}>Post Instructor Feedback Survey Prompt
-              >
               { [details.peerReviewGroups].map(fbt => <div key={uuid.v4()}>{fbt}</div>) }
             </span>
           </div>
