@@ -2,12 +2,6 @@ module.exports = function (repository, fs, uuid) {
   return {
     async activity(ctx) {
       var activity = await repository.row(`select * from "activity" where "id" = '${ctx.params.id}'`);
-      console.log('==========activity=========');
-      console.log(activity);
-      console.log('==========END activity=========');
-      console.log('==========ctx.params.id=========');
-      console.log(ctx.params.id);
-      console.log('==========END ctx.params.id=========');
       var removeLastComma = x=> x.substring(0, x.lastIndexOf(','));
       var ids = removeLastComma(activity.document.drafts.reduce((x,y)=> x + `'${y}',`, ``));
 
