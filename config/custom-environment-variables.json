@@ -2,7 +2,8 @@
   "app": {
     "port": "3000",
     "env": "NODE_ENV",
-    "keys": "APPLICATION_KEYS"
+    "keys": "APPLICATION_KEYS",
+    "spa_url": "SPA_URL"
   },
   "postgres": {
     "config" :{
