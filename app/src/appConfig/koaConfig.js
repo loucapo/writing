@@ -1,5 +1,4 @@
-module.exports = function(papersConfig,
-                          koaresponsetime,
+module.exports = function(koaresponsetime,
                           koalogger,
                           koacompress,
                           koaErrorHandler,
@@ -19,7 +18,6 @@ module.exports = function(papersConfig,
     app.use(koaErrorHandler());
     app.use(koaconvert(koasession(app)));
     app.use(koabodyparser());
-    app.use(koaconvert(papersConfig));
     app.use(koacompress());
     app.use(koaresponsetime());
   };
