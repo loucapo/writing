@@ -7,18 +7,18 @@ import draftItemHeader from './draftItemHeader.css';
 const DraftItemHeader = ({draftName, type, dueDate}) => (
   <header className={ draftItemHeader.header }>
     <div className={ draftItemHeader.draftInfo}>
-      <div className={draftItemHeader.draftOrder}>
+      <div data-id="draft-item-draft-name" className={draftItemHeader.draftOrder}>
         {draftName}
       </div>
-      <div className={draftItemHeader.reviewLabel}>
+      <div data-id="draft-item-type" className={draftItemHeader.reviewLabel}>
         {type}
       </div>
       <div>
-        <a className={ draftItemHeader.editAction } href="#">Edit {draftName}</a>
+        <a data-id="draft-item-edit" className={ draftItemHeader.editAction } href="#">Edit {draftName}</a>
       </div>
     </div>
 
-    <div><span className={draftItemHeader.strong}>Due:</span>
+    <div><span data-id="draft-item-due-date" className={draftItemHeader.strong}>Due:</span>
       &nbsp;
       {dueDate}
     </div>

@@ -1,18 +1,38 @@
 @import 'mixins.css';
 
 .top-header {
-  height: 100px;
-
-  display:  flex;
-  flex-flow:  row nowrap;
+  height: 55px;
+  display: flex;
+  flex-flow: row nowrap;
 
   background-color: var(--menuGrey);
   align-items: center;
 }
+
 .logo {
   margin-left: var(--page-margins);
 }
+
 .course-name {
   margin-left: auto;
   margin-right: var(--page-margins);
+}
+
+.page {
+  width: var(--page-width);
+  margin-left: var(--page-margin-left);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-left {
+  margin-left: 0;
+  font-size: large;
+}
+
+.content-right {
+  margin: 0 0 0 auto;
+  font-size: small;
 }

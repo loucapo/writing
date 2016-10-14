@@ -6,30 +6,30 @@ import assignmentDetails from './assignmentDetails.css';
 
 const AssignmentDetails = ({activity}) => (
   <div className={ assignmentDetails.summary }>
-    <h1 className={ assignmentDetails.title }>
+    <h1 data-id="activity-title" className={ assignmentDetails.title }>
       {activity.title}
     </h1>
-    <div className={assignmentDetails.typeAndCourse}>
+    <div data-id="activity-desc" className={assignmentDetails.typeAndCourse}>
       {activity.desc}
     </div>
-    <div className={assignmentDetails.rhetoricAndRubric}>
+    <div data-id="activity-rhetoric-rubric" className={assignmentDetails.rhetoricAndRubric}>
       <span className={assignmentDetails.label}>
       Rhetoric Genre:
       </span>
-      {activity.rhetoricalGenre}
+      <span data-id="activity-rhetorical-genre">{activity.rhetoricalGenre}</span>
       <br />
       <span className={assignmentDetails.label}>
     Rubric:
       </span>
-      <a href="#">{activity.rubric}</a>
+      <a data-id="activity-rubric" href="#">{activity.rubric}</a>
     </div>
     <div className={ assignmentDetails['prompt-summary'] }>
       <div className={assignmentDetails.label}>
         Prompt:
       </div>
-      {activity.prompt}
+      <span data-id="activity-prompt">{activity.prompt}</span>
     </div>
-    <a href="#">Edit Assignment Information</a>
+    <a data-id="edit-assignment" href="#">Edit Assignment Information</a>
   </div>);
 
 AssignmentDetails.propTypes = {

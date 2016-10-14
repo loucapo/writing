@@ -6,11 +6,12 @@ services:
       - ./../app:/home/current/app
     command: npm start #top -b #
     env_file:
-      - ../.env
+      - ./.env
     environment:
       APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
+    container_name: wk_frontend
 
   frontend_test:
     image: wk_frontend
@@ -23,3 +24,4 @@ services:
       APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
+    container_name: wk_frontend_test
