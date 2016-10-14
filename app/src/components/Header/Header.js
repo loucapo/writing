@@ -14,8 +14,8 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  contentLeft: PropTypes.object,  // the left side of the header
-  contentRight: PropTypes.object, // the right side
+  contentLeft: PropTypes.string,  // the left side of the header
+  contentRight: PropTypes.string, // the right side
   css: PropTypes.string
 };
 
