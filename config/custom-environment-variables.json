@@ -14,9 +14,9 @@
       "port": "POSTGRES_PORT",
       "max": "10",
       "idleTimeoutMillis": "30000"
-    },
-    "frontEnd": {
-      "origin": "FRONT_END_ORIGIN"
     }
+  },
+  "frontEnd": {
+    "origin": "FRONT_END_ORIGIN"
   }
 }
