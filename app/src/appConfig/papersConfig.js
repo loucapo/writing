@@ -1,18 +1,19 @@
 
 module.exports = function(papersjwt,
-                          koapapers
+                          koapapers,
+                          config
 ) {
 
   var authLocalUser = async function(token) {
     return token;
   };
   var jwtStrategy = papersjwt.Strategy(authLocalUser, {
-    secretOrKey: 'fu',
+    secretOrKey: config.app.jwt_secret,
     jwtFromRequest: papersjwt.ExtractJwt.fromAuthHeaderWithScheme('bearer')
   });
-  var config = {
+  var papersConfig = {
     strategies: [jwtStrategy]
   };
 
-  return koapapers().registerMiddleware(config);
+  return koapapers().registerMiddleware(papersConfig);
 };
