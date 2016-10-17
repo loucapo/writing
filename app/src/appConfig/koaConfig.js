@@ -18,7 +18,7 @@ module.exports = function(koaresponsetime,
     // hits the routes then comes back up and resolves
     app.use(koalogger());
     app.use(koaErrorHandler());
-    app.use(koacors({origin:'http://localhost:3666', credentials:true}));
+    app.use(koacors({origin:config.frontEnd.origin, credentials:true}));
     app.use(koaconvert(papersConfig));
     app.use(koabodyparser());
     app.use(koacompress());
