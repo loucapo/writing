@@ -11,10 +11,13 @@ clone-front-end:
 clone-data:
 	git clone git@bitbucket.org:mnv_tech/wk_data.git ../wk_data
 
+clone-launch:
+	git clone git@bitbucket.org:mnv_tech/wk_launch.git ../wk_launch
+
 clone-yo:
 	git clone git@bitbucket.org:mnv_tech/wk_yo_generators.git ../wk_yo_generators
 
-clone-repos:	clone-api clone-front-end clone-data
+clone-repos:	clone-api clone-front-end clone-data clone-launch
 
 ##################
 #build
