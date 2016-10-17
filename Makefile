@@ -27,6 +27,10 @@ docker-build-api:	docker-build-node
 	cd ../wk_api && $(MAKE) docker-build
 	cd ../wk_compose
 
+docker-build-launch:	docker-build-node
+	cd ../wk_launch && $(MAKE) docker-build
+	cd ../wk_compose
+
 docker-build-data:	docker-build-node
 	cd ../wk_data && $(MAKE) docker-build
 	cd ../wk_compose
@@ -35,7 +39,7 @@ docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data
+docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data docker-build-launch
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
@@ -75,6 +79,9 @@ kill-front-end:
 	docker rm -vf wk_frontend 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_frontend
 
+kill-orphans:
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
+
 ##################
 #run
 ##################
@@ -106,6 +113,9 @@ get-statuses:
 	@echo ================DATA==================
 	@cd ../wk_data && git status
 	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_launch && git status
+	@cd ../wk_compose
 
 pull-repos:
 	@echo ================COMPOSE==================
@@ -118,6 +128,25 @@ pull-repos:
 	@cd ../wk_compose
 	@echo ================DATA==================
 	@cd ../wk_data && git pull origin master
+	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_launch && git pull origin master
+	@cd ../wk_compose
+
+get-branches:
+	@echo ================COMPOSE==================
+	@git branch | grep \*
+	@echo ================FRONTEND==================
+	@cd ../wk_frontend && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================API==================
+	@cd ../wk_api && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================DATA==================
+	@cd ../wk_data && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_launch && git branch | grep \*
 	@cd ../wk_compose
 
 
