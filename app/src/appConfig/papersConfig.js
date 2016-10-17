@@ -1,29 +1,17 @@
 
-module.exports = function(paperslti,
-                          koapapers,
+module.exports = function(papersjwt,
+                          koapapers
 ) {
 
-  var serialize = function (user) {
-    return user;
+  var authLocalUser = async function(token) {
+    return token;
   };
-
-  var deserialize = function (user) {
-    return user;
-  };
-
-  var authLocalUser = async function(req, payload) {
-    return payload;
-  };
-
-  var ltiStrategy = paperslti(authLocalUser, {
-    consumerKey: 'key',
-    consumerSecret: 'secret'
+  var jwtStrategy = papersjwt.Strategy(authLocalUser, {
+    secretOrKey: 'fu',
+    jwtFromRequest: papersjwt.ExtractJwt.fromAuthHeaderWithScheme('bearer')
   });
   var config = {
-    strategies: [ltiStrategy],
-    useSession: true,
-    serializers: [serialize],
-    deserializers: [deserialize]
+    strategies: [jwtStrategy]
   };
 
   return koapapers().registerMiddleware(config);

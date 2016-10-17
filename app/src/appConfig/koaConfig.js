@@ -4,19 +4,22 @@ module.exports = function(koaresponsetime,
                           koaErrorHandler,
                           koabodyparser,
                           koaconvert,
-                          koasession,
+                          koagenericsession,
+                          koacors,
+                          papersConfig,
                           config) {
   return function(app) {
     if (!config.app.keys) {
       throw new Error('Please add session secret key in the config file!');
     }
-    app.keys = config.app.keys; // eslint-disable-line no-param-reassign
+    app.keys = Array.isArray(app.keys) ? app.keys : [app.keys]; // eslint-disable-line no-param-reassign
 
     // this is basically the middleware chain. it starts here goes down then
     // hits the routes then comes back up and resolves
     app.use(koalogger());
     app.use(koaErrorHandler());
-    app.use(koaconvert(koasession(app)));
+    app.use(koacors({origin:'http://localhost:3666', credentials:true}));
+    app.use(koaconvert(papersConfig));
     app.use(koabodyparser());
     app.use(koacompress());
     app.use(koaresponsetime());
