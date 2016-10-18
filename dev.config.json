@@ -1,0 +1,23 @@
+{
+  "baseUrl": "http://wk-qa.mldev.cloud",
+  "featuresDir": "tests/features",
+  "stepsDir": "tests/steps",
+  "resultsDir": "results",
+  "reporter": "marvin",
+  "threads": 1,
+
+  "clean": true,
+  "verbose": true,
+  "stepDelay": 500,
+  "testTimeout": 60000,
+  "elementTimeout": 5000,
+
+  "tags": "!@wip",
+
+  "browsers": [{
+    "browserName": "chrome",
+    "chromeOptions": {
+      "args": ["--no-sandbox"]
+    }
+  }]
+}

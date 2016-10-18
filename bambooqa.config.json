@@ -1,0 +1,24 @@
+{
+  "baseUrl": "http://wk-qa.mldev.cloud",
+  "featuresDir": "tests/features",
+  "stepsDir": "tests/steps",
+  "resultsDir": "results",
+  "reporter": "marvin",
+  "threads": 1,
+
+  "clean": true,
+  "verbose": true,
+  "stepDelay": 0,
+  "testTimeout": 60000,
+  "elementTimeout": 5000,
+
+  "tags": "!@wip",
+
+  "browsers": [{
+    "seleniumServer": "http://selenium-grid:4444/wd/hub",
+    "browserName": "chrome",
+    "chromeOptions": {
+      "args": ["--no-sandbox"]
+    }
+  }]
+}
