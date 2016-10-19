@@ -1,8 +1,6 @@
 const dagon = require('dagon');
 const path = require('path');
 
-require('papers-lti')
-
 module.exports = function(_options) {
   const options = _options || {};
   const container = dagon(options.dagon).container;
