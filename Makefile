@@ -119,6 +119,25 @@ pull-repos:
 	@echo ================DATA==================
 	@cd ../wk_data && git pull origin master
 	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_launch && git pull origin master
+	@cd ../wk_compose
+
+get-branches:
+	@echo ================COMPOSE==================
+	@git branch | grep \*
+	@echo ================FRONTEND==================
+	@cd ../wk_frontend && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================API==================
+	@cd ../wk_api && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================DATA==================
+	@cd ../wk_data && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_launch && git branch | grep \*
+	@cd ../wk_compose
 
 
 #.PHONY: clean install docker-build run docker-clean docker-exec
