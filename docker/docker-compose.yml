@@ -12,6 +12,12 @@ services:
       service: wk_api
     container_name: wk_api
 
+  launch:
+    extends:
+      file: ../../wk_launch/docker/docker-compose.yml
+      service: wk_launch
+    container_name: wk_launch
+
   data:
     extends:
       file: ../../wk_data/docker/docker-compose.yml
