@@ -75,6 +75,9 @@ kill-front-end:
 	docker rm -vf wk_frontend 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_frontend
 
+kill-orphans:
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
+
 ##################
 #run
 ##################

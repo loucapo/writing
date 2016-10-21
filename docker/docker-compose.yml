@@ -18,6 +18,14 @@ services:
       service: wk_data
     container_name: wk_data
 
+  swagger_ui:
+    image: schickling/swagger-ui
+    environment:
+      API_URL: "http://localhost:3000/swagger"
+      PORT: 80
+    container_name: swagger_ui
+    ports:
+      - "3666:80"
   postgres:
     image: postgres
     env_file:
