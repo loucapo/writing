@@ -1,12 +1,21 @@
 {
   "app": {
-    "port": 3000,
-    "keys": "default"
+    "port": "3000",
+    "env": "dev",
+    "keys": "default",
+    "spa_url": "SPA_URL",
+    "wk_launch_url": "http://localhost:3666",
+    "swagger_ui_url": "http://localhost:4666"
   },
   "postgres": {
     "config" :{
-      "max": 10,
-      "idleTimeoutMillis": 30000
+      "user": "writer_key",
+      "database": "writer_key",
+      "host"     : "127.0.0.1",
+      "password": "writer_key",
+      "port": "5432",
+      "max": "10",
+      "idleTimeoutMillis": "30000"
     }
   }
 }

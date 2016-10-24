@@ -5,18 +5,11 @@ services:
     volumes:
       - ./../app:/home/current/app
     command: npm start #top -b #
+    env_file:
+      - ./.env
     environment:
-      DEBUG: 'true'
+      DEBUG: "true"
       NODE_ENV: development
       APPLICATION_NAME: wk_api
     ports:
       - "3000:3000"
-    container_name: wk_api
-  postgres:
-      image: postgres
-      environment:
-        - LANG=en_US.UTF-8
-        - POSTGRES_PASSWORD=writer_key
-        - POSTGRES_USER=writer_key
-      ports:
-        - 5432:5432

@@ -7,7 +7,7 @@ module.exports = function(papersjwt,
   var authLocalUser = async function(token) {
     return token;
   };
-  var jwtStrategy = papersjwt.Strategy(authLocalUser, {
+  var jwtStrategy = papersjwt.strategy(authLocalUser, {
     secretOrKey: config.app.jwt_secret,
     jwtFromRequest: papersjwt.ExtractJwt.fromAuthHeaderWithScheme('bearer')
   });
