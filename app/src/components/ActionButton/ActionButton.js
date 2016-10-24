@@ -3,13 +3,10 @@ import React, {PropTypes} from 'react';
 import actionButton from './actionButton.css';
 
 const ActionButton = (props) => {
-  console.log('============ props ============');
-  console.log(props);
-  console.log('=================================');
   return (
-    <div className={ actionButton['action-button-container'] + ' ' + props.css}>
-      <div className={ actionButton['action-button-wrapper'] }>
-        <button className={ actionButton['action-button'] }>{props.content}</button>
+    <div className={actionButton.action_button_container + ' ' + props.css}>
+      <div className={actionButton.action_button_wrapper}>
+        <button data-id={props.dataId} className={actionButton.action_button}>{props.content}</button>
       </div>
     </div>
   );
@@ -17,7 +14,8 @@ const ActionButton = (props) => {
 
 ActionButton.propTypes = {
   content: PropTypes.string.isRequired,
-  css: PropTypes.string
+  css: PropTypes.string,
+  dataId: PropTypes.string
 };
 
 export default ActionButton;
