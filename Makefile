@@ -35,7 +35,11 @@ docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data
+docker-build-launch:	docker-build-node
+	cd ../wk_launch && $(MAKE) docker-build
+	cd ../wk_compose
+
+docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data docker-build-launch
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
