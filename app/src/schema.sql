@@ -53,3 +53,40 @@ WITH (
 );
 ALTER TABLE "draft"
   OWNER TO writer_key;
+
+-- Table: "user"
+
+DROP TABLE IF EXISTS "user";
+
+CREATE TABLE "user"
+(
+  id uuid NOT NULL,
+  firstName varchar(255),
+  lastName varchar(255),
+  email varchar(255),
+  IAM uuid NOT NULL,
+  userType varchar(255)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "user"
+  OWNER TO writer_key;
+
+-- Table: "course"
+
+DROP TABLE IF EXISTS "course";
+
+CREATE TABLE "course"
+(
+  id uuid NOT NULL,
+  title varchar(255),
+  abbreviation varchar(255),
+  courseId varchar(255),
+  instructorId uuid NOT NULL
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "course"
+  OWNER TO writer_key;
