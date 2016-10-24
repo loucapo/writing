@@ -1,6 +1,6 @@
 var pgasync = require('pg-async');
 var data = require('./data');
-var fs = require('fs'); 
+var fs = require('fs');
 var config = require('config');
 var cache = require('./objectCache');
 var courseSchemas = require('./schemas/courseSchemas.json');
@@ -39,11 +39,10 @@ var generateDB = function() {
       console.log('==========END ex=========');
     }
   }
-}
+};
 
 module.exports = {
     cache,
-    courseDataGenerator,
     definitions: gatherDefinitions(),
     generateAll,
     generateDB
