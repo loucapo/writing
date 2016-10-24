@@ -1,12 +1,8 @@
 
-module.exports = function(AggregateRootBase, invariant, uuid) {
-  return class Trainer extends AggregateRootBase {
+module.exports = function(AggregateRootBase, invariant, uuid, UserType) {
+  return class User extends AggregateRootBase {
     constructor() {
       super();
-      var _firstName;
-      var _lastName;
-      var _email;
-      var _IAM;
       this.type = 'User';
     }
 
@@ -14,26 +10,19 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       return 'User';
     }
 
-    commandHandlers() {
-      return {
-        'createInstructorFromLTILaunch': function (cmd) {
-          this.raiseEvent({
-            eventName: 'instructorCreatedFromLTILLaunch',
-            data: {
-              id: uuid.v4(),
-              firstName: cmd.firstName,
-              lastName: cmd.lastName,
-              email: cmd.email,
-              IAM: cmd.IAM
-            }
-          });
-        }
-      };
-    }
-
-    expectCorrectPassword(password) {
-      invariant(password != this._password,
-        new Error('Incorrect credentials'));
+    createInstructorFromLTILaunch(cmd) {
+      this.setIsNew();
+      const data = {};
+      data.id = this._id = uuid.v4();
+      data.firstName = this._firstName = cmd.firstName;
+      data.lastName = this._lastName = cmd.lastName;
+      data.email = this._email = cmd.email;
+      data.IAM = this._IAM = cmd.IAM;
+      data.userType = this._userType = UserType.INSTRUCTOR;
+      this.raiseEvent({
+        eventName: 'instructorCreatedFromLTILLaunch',
+        data
+      });
     }
   }
 };

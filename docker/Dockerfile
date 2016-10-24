@@ -7,6 +7,6 @@ ADD ./package.json ./package.json
 
 ADD ./config ./config
 
-RUN npm install --silent
+RUN npm install
 
 ADD ./app /$HOME/app

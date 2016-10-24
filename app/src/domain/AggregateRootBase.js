@@ -3,18 +3,15 @@ module.exports = function(invariant) {
   return class AggregateRootBase {
     constructor() {
       this._id;
+      this._isNew;
       this.uncommittedEvents = [];
-
-      invariant(
-        this.commandHandlers,
-        'An aggregateRoot requires commandHandlers'
-      );
-
-      Object.assign(this, this.commandHandlers());
     }
 
+    setIsNew() {
+      this._isNew = true
+    }
+    
     raiseEvent(event) {
-      this.applyEvent(event);
       this.uncommittedEvents.push(event);
     }
 

@@ -1,8 +1,7 @@
 module.exports = function (enumify) {
   return function () {
-    class UserType extends enumify {}
+    class UserType extends enumify.Enum {}
     UserType.initEnum(['INSTRUCTOR', 'STUDENT']);
-
-    return UserTYpe;
-  }
+    return UserType;
+  }()
 };
