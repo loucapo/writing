@@ -4,7 +4,11 @@
     "env": "NODE_ENV",
     "keys": "APPLICATION_KEYS",
     "spa_url": "SPA_URL",
-    "jwt_secret": "JWT_SECRET"
+    "jwt_secret": "JWT_SECRET",
+    "wk_launch_url": "WK_LAUNCH_URL",
+    "swagger_ui_url": "SWAGGER_UI_URL"
+
+
   },
   "postgres": {
     "config" :{

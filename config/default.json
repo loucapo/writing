@@ -3,7 +3,9 @@
     "port": "3000",
     "env": "dev",
     "keys": "default",
-    "spa_url": "SPA_URL"
+    "spa_url": "SPA_URL",
+    "wk_launch_url": "http://localhost:3666",
+    "swagger_ui_url": "http://localhost:4666"
   },
   "postgres": {
     "config" :{
