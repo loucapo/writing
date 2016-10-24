@@ -13,7 +13,7 @@ services:
     container_name: wk_frontend
 api:
   image: ${wk_api}
-    command: npm run start_dev 
+    command: npm run start
     env_file:
       - .env
     environment:
