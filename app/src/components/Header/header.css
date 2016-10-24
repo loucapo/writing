@@ -1,6 +1,6 @@
 @import 'mixins.css';
 
-.top-header {
+.top_header {
   height: 55px;
   display: flex;
   flex-flow: row nowrap;
@@ -13,7 +13,7 @@
   margin-left: var(--page-margins);
 }
 
-.course-name {
+.course_name {
   margin-left: auto;
   margin-right: var(--page-margins);
 }
@@ -27,12 +27,12 @@
   justify-content: center;
 }
 
-.content-left {
+.content_left {
   margin-left: 0;
   font-size: large;
 }
 
-.content-right {
+.content_right {
   margin: 0 0 0 auto;
   font-size: small;
 }

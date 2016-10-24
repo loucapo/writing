@@ -5,14 +5,23 @@ import ActionButton from './../ActionButton/ActionButton';
 
 export default () => (
   <div className={dashBoard.dashBoard} >
-    <Header contentLeft="Macmillan Writing Center" contentRight="ENG 101 Writing Composition" />
-    <h1 className={dashBoard.heading}>Welcome to Macmillan Writing Center</h1>
-    <h3 className={dashBoard.heading}>Some introductory test</h3>
-    <div className={dashBoard.createAssignment}>
+    <Header
+      contentLeft="Macmillan Writing Center"
+      dataIdLeft="page-title"
+      contentRight="ENG 101 Writing Composition"
+      dataIdRight="class-title"
+    />
+    <h1 data-id="dashboard-heading" className={dashBoard.heading}>Welcome to Macmillan Writing Center</h1>
+    <h3 data-id="dashboard-introductory-text" className={dashBoard.heading}>Some introductory text</h3>
+    <div data-id="create-assignment-block" className={dashBoard.create_assignment}>
       <span className={dashBoard.headers} >
-        <h2 className={dashBoard.content}><strong>Drafting/Revising Assignment</strong></h2>
-        <p className={dashBoard.content + ' ' + dashBoard.description}>Some explanatory text about the assignment type</p>
+        <h2
+          data-id="drafting-revising-assignment-header"
+          className={dashBoard.content}>
+          <strong>Drafting/Revising Assignment</strong>
+        </h2>
+        <p data-id="drafting-revising-assignment-explanation" className={dashBoard.content + ' ' + dashBoard.description}>Some explanatory text about the assignment type</p>
       </span>
-      <ActionButton data-id="action-button" content="Create an Assignment" css={dashBoard['create-button']} />
+      <ActionButton dataId="create-assignment-button" content="Create an Assignment" css={dashBoard.create_button} />
     </div>
   </div>);
