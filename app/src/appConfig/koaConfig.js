@@ -15,14 +15,13 @@ module.exports = function(koaresponsetime,
     }
     app.keys = Array.isArray(app.keys) ? app.keys : [app.keys]; // eslint-disable-line no-param-reassign
 
-    // slsData.generateAll();// also lame
     swaggerSpec();
     
     // this is basically the middleware chain. it starts here goes down then
     // hits the routes then comes back up and resolves
     app.use(koalogger());
     app.use(koaErrorHandler());
-    app.use(koacors({origin:'http://localhost:3666'}));
+    app.use(koacors({origin:'http://localhost:3666', credentials:true}));
     app.use(koacors({origin:'http://localhost:4666'}));
     // app.use(koaconvert(papersConfig));
     app.use(koabodyparser());
