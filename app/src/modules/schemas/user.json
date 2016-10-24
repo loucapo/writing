@@ -1,0 +1,37 @@
+{
+  "title": "User",
+  "description": "User",
+  "type": "object",
+  "required": [
+    "id",
+    "firstName",
+    "lastName",
+    "IAM",
+    "userType"
+  ],
+  "properties": {
+    "id": {
+      "description": "The in system unique identifier for a user",
+      "type": "string",
+      "format": "uuid"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "x-faker": "email"
+    },
+    "IAM": {
+      "description": "The unique foreign key identifier for a user found in our IAM",
+      "type": "string"
+    },
+    "userType": {
+      "description": "Distinguisher on user type.  Currently [Instructor, student]",
+      "type": "string"
+    }
+  }
+}

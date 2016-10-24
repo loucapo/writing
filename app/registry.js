@@ -1,8 +1,6 @@
 const dagon = require('dagon');
 const path = require('path');
 
-require('papers-lti')
-
 module.exports = function(_options) {
   const options = _options || {};
   const container = dagon(options.dagon).container;
@@ -11,11 +9,13 @@ module.exports = function(_options) {
     result = container(x =>
       x.pathToRoot(path.join(__dirname, '/../'))
         .requireDirectoryRecursively('./app/src')
-        .for('repository').replaceWith('dataRepository') // eslint-disable-line newline-per-chained-call
         .for('winston').renameTo('logger') // eslint-disable-line newline-per-chained-call
         .groupAllInDirectory('./app/src/controllers', 'controllers')
+        .groupAllInDirectory('./app/src/modules/schemas', 'schemas',true)
         .complete(),
-      i => i.instantiate('repository').asFunc().complete());
+      i => i.instantiate('readStoreRepository').asFunc()
+    .instantiate('userRepository').asFunc()
+    .instantiate('courseRepository').asFunc().complete());
   } catch (ex) {
     console.log(ex); // eslint-disable-line no-console
     console.log(ex.stack); // eslint-disable-line no-console
