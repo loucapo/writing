@@ -4,16 +4,18 @@ import actionButton from './actionButton.css';
 
 const ActionButton = (props) => {
   return (
-    <div className={ actionButton['action-button-container'] }>
-      <div className={ actionButton['action-button-wrapper'] }>
-        <button className={ actionButton['action-button'] }>{props.content}</button>
+    <div className={actionButton.action_button_container + ' ' + props.css}>
+      <div className={actionButton.action_button_wrapper}>
+        <button data-id={props.dataId} className={actionButton.action_button}>{props.content}</button>
       </div>
     </div>
   );
 };
 
 ActionButton.propTypes = {
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
+  css: PropTypes.string,
+  dataId: PropTypes.string
 };
 
 export default ActionButton;

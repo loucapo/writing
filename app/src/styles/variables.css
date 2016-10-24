@@ -26,8 +26,13 @@
 	--font-medium: #6d6d6d;
 	--font-strong: #474747;
 
-/* Sizes */
+/* page layout */
+  --page-margins: 224px;    /* used for both left and right margins */
+  --content-margins: 40px;
+
+  /* Sizes */
   --page-width: 800px;
   --page-margin-left: 160px;
   --panel-left-width: 600px; /* remainder would be right panel width */
 }
+

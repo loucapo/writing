@@ -1,18 +1,17 @@
 @import 'mixins.css';
 
-.action-button-container {
-  flex: 0 0 300px;
+.action_button_container {
   display: flex;
   flex-flow: column nowrap;
 }
 
-.action-button-wrapper {
+.action_button_wrapper {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
 }
 
-.action-button {
+.action_button {
   border: none;
   cursor: pointer;
   color: #ffffff;
