@@ -113,6 +113,9 @@ get-statuses:
 	@echo ================DATA==================
 	@cd ../wk_data && git status
 	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_launch && git status
+	@cd ../wk_compose
 
 pull-repos:
 	@echo ================COMPOSE==================
