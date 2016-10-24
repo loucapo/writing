@@ -3,7 +3,6 @@ var data = require('./data');
 var fs = require('fs'); 
 var config = require('config');
 var cache = require('./objectCache');
-var courseDataGenerator = require('./courseDataGenerator');
 var courseSchemas = require('./schemas/courseSchemas.json');
 var specificNotifications = require('./schemas/getSpecificNotifications.json');
 var viewModels = require('./schemas/viewModels.json');
