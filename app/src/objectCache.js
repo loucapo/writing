@@ -1,12 +1,12 @@
-//
-// module.exports = {
-//     courses: {
-//
-//     },
-//     sections: {
-//
-//     },
-//     assignments: {
-//
-//     }
-// };
+
+module.exports = {
+    courses: {
+
+    },
+    sections: {
+
+    },
+    assignments: {
+
+    }
+};
