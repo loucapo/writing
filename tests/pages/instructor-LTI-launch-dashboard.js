@@ -1,20 +1,21 @@
 var Page = require('marvin-js').Page;
 
 module.exports = new Page({
-  
-  // XXX placeholder
+
   url: { value: '/dashboard' },
 
-  course_title: { get: function () { return this.element("[data-id='activity-title']"); } },
+  dashboard_landing: { get: function () { return this.element("[data-id='page-title']"); } },
 
-  writing_center: { get: function () { return this.element("[data-id='activity-title']"); } },
+  course_title: { get: function () { return this.element("[data-id='class-title']"); } },
 
-  welcome_text: { get: function () { return this.element("[data-id='activity-title']"); } },
+  writing_center: { get: function () { return this.element("[data-id='dashboard-heading']"); } },
 
-  create_assignment: { get: function () { return this.element("[data-id='activity-title']"); } },
+  welcome_text: { get: function () { return this.element("[data-id='dashboard-introductory-text']"); } },
 
-  assignment_type: { get: function () { return this.element("[data-id='activity-title']"); } },
+  create_assignment: { get: function () { return this.element("[data-id='create-assignment-button']"); } },
 
-  assignment_type_description: { get: function () { return this.element("[data-id='activity-title']"); } },
+  assignment_type: { get: function () { return this.element("[data-id='drafting-revising-assignment-header']"); } },
+
+  assignment_type_description: { get: function () { return this.element("[data-id='drafting-revising-assignment-explanation']"); } },
 
 });
