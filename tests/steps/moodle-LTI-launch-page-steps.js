@@ -2,6 +2,7 @@
  * Created by wayneng on 10/25/16.
  */
 var page = require('../pages/moodle-LTI-launch-page.js');
+var dashboard = require('../pages/instructor-LTI-launch-dashboard.js');
 var credentials = require('../pages/credentials.js');
 var marvin = require('marvin-js');
 var should = require('chai').should;
@@ -24,9 +25,5 @@ exports.define = function(steps) {
     page.test_lti_link.click()
   });
 
-  steps.then('I see "$text" on the page', function (text) {
-    page.moodle_login.getText().then(function (text) {
-      text.should.equal(text);
-    });
-  })
+
 }
