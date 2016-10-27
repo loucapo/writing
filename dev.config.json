@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://wk-qa.mldev.cloud",
+  "baseUrl": "http://wk-qa-1.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
   "resultsDir": "results",
