@@ -1,0 +1,13 @@
+{
+  "app": {
+    "port": 3666,
+    "keys": ["default"],
+    "spa_url": "http://localhost:8080/"
+  },
+  "postgres": {
+    "config" :{
+      "max": 10,
+      "idleTimeoutMillis": 30000
+    }
+  }
+}

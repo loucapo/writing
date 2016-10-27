@@ -1,0 +1,14 @@
+version: "2"
+services:
+  wk_launch:
+    image: ${wk_launch_image}
+    command: npm run start_dev
+    env_file:
+      - ./.env
+    environment:
+      DEBUG: "true"
+      NODE_ENV: development
+      APPLICATION_NAME: wk_launch
+    ports:
+      - "3666:3666"
+    container_name: wk_launch

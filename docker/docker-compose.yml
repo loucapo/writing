@@ -1,0 +1,16 @@
+version: "2"
+services:
+  wk_launch:
+    image: wk_launch
+    volumes:
+      - ./../app:/home/current/app
+    command: npm start #top -b #top -b #
+    env_file:
+      - ./.env
+    environment:
+      DEBUG: "true"
+      NODE_ENV: development
+      APPLICATION_NAME: wk_launch
+    ports:
+      - "3666:3666"
+    container_name: wk_launch
