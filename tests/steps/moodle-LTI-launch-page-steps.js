@@ -1,29 +1,62 @@
 /**
  * Created by wayneng on 10/25/16.
  */
-var page = require('../pages/moodle-LTI-launch-page.js');
-var dashboard = require('../pages/instructor-LTI-launch-dashboard.js');
-var credentials = require('../pages/credentials.js');
+var moodle_login_page = require('../pages/moodle-login-page.js');
+var credentials = require('../pages/moodle-credentials.js');
+var moodle_lti_launch_page = require('../pages/moodle-LTI-launch-page.js');
+var dashboard = require('../pages/instructor-dashboard-page.js');
 var marvin = require('marvin-js');
+var driver = marvin.session.getDriver();
+var until = require('selenium-webdriver').until;
 var should = require('chai').should;
 var expect = require('chai').expect;
 var assert = require('chai').assert;
 
+
 exports.define = function(steps) {
-  steps.given("I visit the Moodle Page", function () {
-    page.visit();
+
+  steps.given("I log in to the Moodle Site", function () {
+    moodle_login_page.visit();
+    moodle_login_page.moodle_username.sendKeys(credentials.moodle_admin_username);
+    moodle_login_page.moodle_password.sendKeys(credentials.moodle_admin_password);
+    moodle_login_page.moodle_login.click();
   });
 
-  steps.when("I log in to the Moodle Site", function () {
+  steps.when("I launch Writing Tools from the Moodle LTI host", function () {
+    moodle_lti_launch_page.visit();
+    let launch_page_url = driver.getCurrentUrl();
+    moodle_lti_launch_page.test_lti_link.click().then(()=> {
+      
+      driver.getCurrentUrl().then((current_url) => {
+        launch_page_url = current_url;
+        console.log(current_url);
+      });
 
-    page.moodle_username.sendKeys(credentials.moodle_admin_username);
-    page.moodle_password.sendKeys(credentials.moodle_admin_password);
-    page.moodle_login.click();
+    }).then(() => {
+      console.log('async af');
+      console.log(launch_page_url);
+    }).then(() => {
+      console.log('async af');
+      driver.getCurrentUrl().then((current_url) => {
+        console.log(current_url);
+      }).then(()=>{
+        console.log('getting handles');
+        driver.getAllWindowHandles((handles) => {
+          console.log('handles got');
+          console.log(handles);
+        });
+      });
+      driver.wait(until.urlContains('3666'), 5000, 'boo').then(() => {
+        console.log('hit that dashboard');
+      });
+    });
   });
 
-  steps.when("I launch Writing Tools from an LTI host", function () {
-    page.test_lti_link.click()
+  steps.then("I see the Writing Center dashboard", function() {
+    console.log('final');
+    driver.getCurrentUrl().then((current_url) => {
+      console.log(current_url);
+    });
   });
-
 
 }

@@ -8,10 +8,6 @@ module.exports = new Page({
   // XXX placeholder
   url: { value: ':8081/course/view.php?id=2' },
 
-  moodle_username: { get: function () { return this.element("[id='username']"); } },
-  moodle_password: { get: function () { return this.element("[id='password']"); } },
-  moodle_login: { get: function () { return this.element("[id='loginbtn']"); } },
-
   //test_lti_link: { get: function () { return this.element("[id='module-2']");}},
   test_lti_link: { get: function () { return this.element(".activityinstance");}},
 });
