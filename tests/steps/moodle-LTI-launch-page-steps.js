@@ -37,19 +37,26 @@ exports.define = function(steps) {
       console.log(launch_page_url);
     }).then(() => {
       console.log('async af');
-      driver.getCurrentUrl().then((current_url) => {
-        console.log(current_url);
-      }).then(()=>{
-        console.log('getting handles');
-        driver.getAllWindowHandles((handles) => {
-          console.log('handles got');
-          console.log(handles);
-        });
+    driver.getCurrentUrl().then((current_url) => {
+      console.log(current_url);
+  }).
+    then(() => {
+      console.log('getting handles');
+    driver.getAllWindowHandles().then((function(handles) {
+      console.log('handles got');
+      console.log(handles);
+      var secondWindowHandle = handles[1];
+      var firstWindowHandle = handles[0];
+      driver.switchTo().window(secondWindowHandle).then(function () { //the focus moves on new tab
+        driver.wait(until.urlContains('3666'), 5000, 'boo').then(() => {
+          console.log('hit that dashboard');
+
+      })
+        ;
       });
-      driver.wait(until.urlContains('3666'), 5000, 'boo').then(() => {
-        console.log('hit that dashboard');
-      });
-    });
+    }));
+  });
+  });
   });
 
   steps.then("I see the Writing Center dashboard", function() {
