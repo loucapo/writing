@@ -25,45 +25,20 @@ exports.define = function(steps) {
   steps.when("I launch Writing Tools from the Moodle LTI host", function () {
     moodle_lti_launch_page.visit();
     let launch_page_url = driver.getCurrentUrl();
-    moodle_lti_launch_page.test_lti_link.click().then(()=> {
-      
-      driver.getCurrentUrl().then((current_url) => {
-        launch_page_url = current_url;
-        console.log(current_url);
-      });
-
-    }).then(() => {
-      console.log('async af');
-      console.log(launch_page_url);
-    }).then(() => {
-      console.log('async af');
-    driver.getCurrentUrl().then((current_url) => {
-      console.log(current_url);
-  }).
-    then(() => {
-      console.log('getting handles');
-    driver.getAllWindowHandles().then((function(handles) {
-      console.log('handles got');
-      console.log(handles);
-      var secondWindowHandle = handles[1];
-      var firstWindowHandle = handles[0];
-      driver.switchTo().window(secondWindowHandle).then(function () { //the focus moves on new tab
-        driver.wait(until.urlContains('3666'), 5000, 'boo').then(() => {
-          console.log('hit that dashboard');
-
-      })
-        ;
-      });
-    }));
+    moodle_lti_launch_page.test_lti_link.click();
   });
-  });
+
+  steps.when("Writing Tools Launch handles the request", function() {
+    driver.getAllWindowHandles().then(function(handles) {
+      if (handles.length > 1) {
+        return driver.switchTo().window(handles[1]);
+      }
+    });
   });
 
   steps.then("I see the Writing Center dashboard", function() {
-    console.log('final');
-    driver.getCurrentUrl().then((current_url) => {
-      console.log(current_url);
-    });
+    let target_url = marvin.config.baseUrl + ':3666/dashboard';
+    driver.wait(until.urlIs(target_url), 5000, 'target url does not equal ' + target_url);
   });
 
 }
