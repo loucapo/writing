@@ -1,5 +1,4 @@
 @WRITE-183
-  @only
 Feature: Instructor Can View the Dashboard After LTI Launch
 
   Scenario: The Instructor Launches the Dashboard from LTI

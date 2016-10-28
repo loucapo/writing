@@ -8,6 +8,5 @@ module.exports = new Page({
   // XXX placeholder
   url: { value: ':8081/course/view.php?id=2' },
 
-  //test_lti_link: { get: function () { return this.element("[id='module-2']");}},
-  test_lti_link: { get: function () { return this.element(".activityinstance");}},
+  test_lti_link: { get: function () { return this.element('a[href*="/mod/lti/view.php"]');}},
 });
