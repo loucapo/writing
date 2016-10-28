@@ -11,13 +11,13 @@ clone-front-end:
 clone-data:
 	git clone git@bitbucket.org:mnv_tech/wk_data.git ../wk_data
 
-clone-launch:
-	git clone git@bitbucket.org:mnv_tech/wk_launch.git ../wk_launch
+clone-serve:
+	git clone git@bitbucket.org:mnv_tech/wk_serve.git ../wk_serve
 
 clone-yo:
 	git clone git@bitbucket.org:mnv_tech/wk_yo_generators.git ../wk_yo_generators
 
-clone-repos:	clone-api clone-front-end clone-data clone-launch
+clone-repos:	clone-api clone-front-end clone-data clone-serve
 
 ##################
 #build
@@ -30,8 +30,8 @@ docker-build-api:	docker-build-node
 	cd ../wk_api && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-launch:	docker-build-node
-	cd ../wk_launch && $(MAKE) docker-build
+docker-build-serve:	docker-build-node
+	cd ../wk_serve && $(MAKE) docker-build
 	cd ../wk_compose
 
 docker-build-data:	docker-build-node
@@ -42,7 +42,7 @@ docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data docker-build-launch
+docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data docker-build-serve
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
@@ -117,7 +117,7 @@ get-statuses:
 	@cd ../wk_data && git status
 	@cd ../wk_compose
 	@echo ================LAUNCH==================
-	@cd ../wk_launch && git status
+	@cd ../wk_serve && git status
 	@cd ../wk_compose
 
 pull-repos:
@@ -133,7 +133,7 @@ pull-repos:
 	@cd ../wk_data && git pull origin master
 	@cd ../wk_compose
 	@echo ================LAUNCH==================
-	@cd ../wk_launch && git pull origin master
+	@cd ../wk_serve && git pull origin master
 	@cd ../wk_compose
 
 get-branches:
@@ -149,7 +149,7 @@ get-branches:
 	@cd ../wk_data && git branch | grep \*
 	@cd ../wk_compose
 	@echo ================LAUNCH==================
-	@cd ../wk_launch && git branch | grep \*
+	@cd ../wk_serve && git branch | grep \*
 	@cd ../wk_compose
 
 
