@@ -6,7 +6,7 @@ module.exports = function(koaresponsetime,
                           koaconvert,
                           koagenericsession,
                           koacors,
-                          papersConfig,
+                          //papersConfig,
                           config,
                           swaggerSpec) {
   return function(app) {
