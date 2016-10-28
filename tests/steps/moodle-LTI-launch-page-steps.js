@@ -4,7 +4,7 @@
 var moodle_login_page = require('../pages/moodle-login-page.js');
 var credentials = require('../pages/moodle-credentials.js');
 var moodle_lti_launch_page = require('../pages/moodle-LTI-launch-page.js');
-var dashboard = require('../pages/instructor-dashboard-page.js');
+var dashboard_page = require('../pages/instructor-dashboard-page.js');
 var marvin = require('marvin-js');
 var driver = marvin.session.getDriver();
 var until = require('selenium-webdriver').until;
@@ -33,12 +33,13 @@ exports.define = function(steps) {
       if (handles.length > 1) {
         return driver.switchTo().window(handles[1]);
       }
+    }).then(function() {
+      driver.wait(until.urlContains(marvin.config.baseUrl), 5000, 'redirect did not hit target');
     });
   });
 
   steps.then("I see the Writing Center dashboard", function() {
-    let target_url = marvin.config.baseUrl + ':3666/dashboard';
-    driver.wait(until.urlIs(target_url), 5000, 'target url does not equal ' + target_url);
+    driver.wait(until.urlContains(dashboard_page.url), 5000, 'target url does not contain ' + dashboard_page.url);
   });
 
 }
