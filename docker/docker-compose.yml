@@ -1,7 +1,7 @@
 version: "2"
 services:
-  wk_launch:
-    image: wk_launch
+  wk_serve:
+    image: wk_serve
     volumes:
       - ./../app:/home/current/app
     command: npm start #top -b #top -b #
@@ -10,7 +10,7 @@ services:
     environment:
       DEBUG: "true"
       NODE_ENV: development
-      APPLICATION_NAME: wk_launch
+      APPLICATION_NAME: wk_serve
     ports:
-      - "3666:3666"
-    container_name: wk_launch
+      - "4777:4777"
+    container_name: wk_serve

@@ -1,5 +1,5 @@
-IMAGENAME=wk_launch
-CONTAINERNAME=wk_launch
+IMAGENAME=wk_serve
+CONTAINERNAME=wk_serve
 
 docker-exec:
 	docker exec -it $(CONTAINERNAME) /bin/bash

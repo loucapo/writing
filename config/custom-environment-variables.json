@@ -1,6 +1,6 @@
 {
   "app": {
-    "port": "3666",
+    "port": "4777",
     "env": "NODE_ENV",
     "keys": "APPLICATION_KEYS",
     "spa_url": "SPA_URL",

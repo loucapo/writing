@@ -1,12 +1,10 @@
 module.exports = function routes(koarouter,
                                  controllers,
-                                 koaconvert,
-                                 papersLTIConfig,
-                                papersSessionConfig) {
+                                 koaconvert
+                                ) {
   return function module(app) {
     const router = koarouter();
-    router.get('index','/', koaconvert(papersSessionConfig), controllers.indexController.index);
-    router.post('LITLaunch','/ltilaunch', koaconvert(papersLTIConfig), controllers.LTILaunchController.launch);
+    router.get('index','/', controllers.indexController.index);
 
     app.use(router.routes());
     app.use(router.allowedMethods());
