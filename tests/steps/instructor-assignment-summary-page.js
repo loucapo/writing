@@ -98,4 +98,8 @@ exports.define = function(steps) {
 	steps.then('I can see the student submission section', function() {
 		page.student_submissions.click();
 	});
+
+	steps.then("I see the activity summary page", function() {
+		driver.wait(until.urlContains(page.url), 5000, 'target url does not contain ' + dashboard_page.url);
+	});
 }
