@@ -36,10 +36,9 @@
         position: relative;
         width: 100px;
 
-        animation-name: spin;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
+        -webkit-animation: spin 2s infinite linear;
+           -moz-animation: spin 2s infinite linear;
+                animation: spin 2s infinite linear;
 
     }
 
@@ -54,10 +53,9 @@
         right: 5px;
         top: 5px;
 
-        animation-name: spin;
-        animation-duration: 3s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
+        -webkit-animation: spin 3s infinite linear;
+           -moz-animation: spin 3s infinite linear;
+                animation: spin 3s infinite linear;
     }
 
     #loader:after {
@@ -71,10 +69,9 @@
         right: 15px;
         top: 15px;
 
-        animation-name: spin;
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
+        -webkit-animation: spin 1.5s infinite linear;
+           -moz-animation: spin 1.5s infinite linear;
+                animation: spin 1.5s infinite linear;
     }
 
     #message {
@@ -82,11 +79,20 @@
     }
 
     /* animation */
-    @keyframes spin {
+    @-webkit-keyframes spin {
         from{-webkit-transform:rotate(0deg);}
         to{-webkit-transform:rotate(360deg);}
     }
 
+    @-moz-keyframes spin {
+        from{-moz-transform:rotate(0deg);}
+        to{-moz-transform:rotate(360deg);}
+    }
+
+    @keyframes spin {
+        from{transform:rotate(0deg);}
+        to{transform:rotate(360deg);}
+    }
 
 </style>
 <script type="text/javascript" src="{{SPA_URL}}"></script>
