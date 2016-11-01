@@ -6,7 +6,6 @@ module.exports = function(koaresponsetime,
                           koaconvert,
                           koagenericsession,
                           koacors,
-                          //papersConfig,
                           config,
                           swaggerSpec) {
   return function(app) {
@@ -23,7 +22,6 @@ module.exports = function(koaresponsetime,
     app.use(koaErrorHandler());
     app.use(koacors({origin:config.app.wk_launch_url, credentials:true}));
     app.use(koacors({origin:config.app.swagger_ui_url}));
-    // app.use(koaconvert(papersConfig));
     app.use(koabodyparser());
     app.use(koacompress());
     app.use(koaresponsetime());
