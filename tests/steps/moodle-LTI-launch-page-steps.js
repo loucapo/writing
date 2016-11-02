@@ -39,4 +39,11 @@ exports.define = function(steps) {
     driver.wait(until.urlContains(dashboard_page.url), 5000, 'target url does not contain ' + dashboard_page.url);
   });
 
+  steps.when("I close the current session", function () {
+    driver.close();
+  });
+
+  steps.when("I open a new session", function () {
+    driver.create();
+  });
 }
