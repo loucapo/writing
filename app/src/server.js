@@ -12,10 +12,6 @@ module.exports = function server(koa,
     logger.debug('debug msg');
     logger.log('silly', 'Logging a silly msg', {source: 'api'});
 
-    console.log('============ logger.rewriters ============');
-    console.log(logger.rewriters);
-    console.log('=================================');
-
     const app = new koa();  // eslint-disable-line new-cap
     koaConfig(app);
     routes(app);
