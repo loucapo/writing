@@ -6,6 +6,10 @@ module.exports = function server(koa,
   return function module() {
     logger.info('approot ' + __dirname);
     logger.info('appTitle WK_API');
+    logger.warn('verbose msg');
+    logger.silly('silly msg');
+    logger.debug('debug msg');
+    logger.log('silly', 'Logging a silly msg', {source: 'api'});
 
     const app = new koa();  // eslint-disable-line new-cap
     koaConfig(app);
