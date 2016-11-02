@@ -22,6 +22,9 @@ docker-build:
 run:	docker-build
 	docker-compose -f docker/docker-compose-dev.yml up
 
+run_local:	docker-build
+	docker-compose -f docker/docker-compose.yml up
+
 test:	docker-build
 	docker-compose -f docker/docker-compose-test.yml run --service-ports --rm $(CONTAINERNAME)
 
