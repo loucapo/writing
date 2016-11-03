@@ -1,5 +1,5 @@
 
--- CREATE SCHEMA IF NOT EXISTS writer_key;
+CREATE SCHEMA IF NOT EXISTS writer_key;
 
 -- DROP SCHEMA public;
 
@@ -7,6 +7,8 @@ GRANT ALL ON SCHEMA public TO writer_key;
 GRANT ALL ON SCHEMA public TO public;
 COMMENT ON SCHEMA public
   IS 'standard public schema';
+
+SET search_path TO writer_key,public;
 
 -- Table: "hello"
 
