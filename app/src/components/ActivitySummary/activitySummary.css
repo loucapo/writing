@@ -1,0 +1,7 @@
+.wrapper {
+  padding:  50px 100px 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}

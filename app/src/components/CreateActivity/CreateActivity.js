@@ -22,7 +22,7 @@ const CreateActivity = () => {
       />
       <div className={createActivity.panelSize}>
         <TitleSection />
-        <div>Activity Title</div>
+        <div>Assignment Title</div>
         <div>
           <input
             data-id="activity-title"

@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { assignmentAction } from './../modules';
-import Assignment from '../components/CreateAssignment/CreateAssignment';
+import { activityAction } from './../modules';
+import Activity from '../components/CreateActivity/CreateActivity';
 
-class CreateAssignmentContainer extends Component {
+class CreateActivityContainer extends Component {
   render() {
     if (this.props.isFetching) {
       return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
@@ -13,11 +13,11 @@ class CreateAssignmentContainer extends Component {
     if (this.props.errorMessage) {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
-    return (<Assignment{...this.props} />);
+    return (<Activity{...this.props} />);
   }
 }
 
-CreateAssignmentContainer.propTypes = {
+CreateActivityContainer.propTypes = {
   id: PropTypes.string,
   isFetching: PropTypes.string,
   errorMessage: PropTypes.string,
@@ -28,6 +28,6 @@ const mapStateToProps = (state, props) => {
   console.log(props);
   return (<div>hi mom</div>);
 };
-export default withRouter(connect(mapStateToProps, {assignmentAction})(CreateAssignmentContainer));
+export default withRouter(connect(mapStateToProps, {activityAction})(CreateActivityContainer));
 
 
