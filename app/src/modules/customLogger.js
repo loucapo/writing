@@ -1,7 +1,7 @@
 function customLogger(winston, config) {
   // LOGGING_USE_JSON - environment flag whether to use json or not - in development may choose the colorized output
   var useJson = false;
-  if (config.app.logging_use_json) {
+  if (config.app.logging_use_json === 'true') {
     useJson = true;
   }
 
