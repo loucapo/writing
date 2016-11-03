@@ -20,7 +20,7 @@ CREATE TABLE "writer_key"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "writer_key"
+ALTER TABLE "writer_key.writer_key"
   OWNER TO writer_key;
 
 -- Table: "activity"
@@ -35,7 +35,7 @@ CREATE TABLE "activity"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "activity"
+ALTER TABLE "writer_key.activity"
   OWNER TO writer_key;
 
 
@@ -51,7 +51,7 @@ CREATE TABLE "draft"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "draft"
+ALTER TABLE "writer_key.draft"
   OWNER TO writer_key;
 
 -- Table: "user"
@@ -70,7 +70,7 @@ CREATE TABLE "user"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "user"
+ALTER TABLE "writer_key.user"
   OWNER TO writer_key;
 
 -- Table: "course"
@@ -88,5 +88,5 @@ CREATE TABLE "course"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "course"
+ALTER TABLE "writer_key.course"
   OWNER TO writer_key;
