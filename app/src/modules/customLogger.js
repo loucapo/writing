@@ -1,16 +1,14 @@
-const logger = require('winston');
-
-function loggerConfig() {
+function customLogger(winston, config) {
   // LOGGING_USE_JSON - environment flag whether to use json or not - in development may choose the colorized output
   var useJson = false;
-  if (process.env['LOGGING_USE_JSON'] === 'true') {
+  if (config.app.logging_use_json) {
     useJson = true;
   }
 
   // logger configuration
-  logger.level = process.env['LOGGING_LEVEL'];
-  logger.remove(logger.transports.Console);
-  logger.add(logger.transports.Console, {
+  winston.level = config.app.logging_level;
+  winston.remove(winston.transports.Console);
+  winston.add(winston.transports.Console, {
     prettyPrint: true,
     colorize: true,
     silent: false,
@@ -19,16 +17,17 @@ function loggerConfig() {
   });
 
   // TODO rewriters aren't doing anything, supposed to be adding a component identifier to the metadata
-  if (! logger.rewriters)
+  if (! winston.rewriters)
   {
-    logger.rewriters = [];
+    winston.rewriters = [];
   }
-  logger.rewriters.push(
+  winston.rewriters.push(
     function(level, msg, meta) {
       meta.app = 'myApp';
       return meta;
     }
   );
+  return winston;
 }
 
-module.exports = loggerConfig;
+module.exports = customLogger;
