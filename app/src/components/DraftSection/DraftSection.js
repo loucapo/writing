@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import AssignmentMenu from '../AssignmentMenu/AssignmentMenu';
+import ActivityMenu from '../ActivityMenu/ActivityMenu';
 import DraftList from './DraftList/DraftList';
 
 import draftSection from './draftSection.css';
@@ -8,7 +8,7 @@ import draftSection from './draftSection.css';
 const DraftSection = ({drafts}) => {
   return (
     <div className={ draftSection.wrapper }>
-      <AssignmentMenu />
+      <ActivityMenu />
       <DraftList drafts={drafts} />
     </div>
   );
