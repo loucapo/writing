@@ -31,12 +31,16 @@ var generateDB = function() {
       var schema = fs.readFileSync(__dirname + '/schema.sql').toString();
       var _data = data();
 
+      console.log('==========BEGIN Schema Load"=========');
       await pg.query(schema);
+      console.log('==========END Schema Load=========');
+      console.log('==========BEGIN Data Load=========');
       await pg.query(_data);
+      console.log('==========END Data Load=========');
     } catch (ex) {
-      console.log('==========ex=========');
+      console.log('==========exeption=========');
       console.log(ex);
-      console.log('==========END ex=========');
+      console.log('==========END exeption=========');
     }
   }
 };
