@@ -15,10 +15,11 @@ let SubmissionList = ({submissions}) => {
                 <option>asdf</option>
                 <option>asdf</option>
               </select>
-              Instructor Review: Due Mon Sep 20, 2016
+              <span className={ submissionList.review_type }>Instructor Review</span>
+              <span className={ submissionList.due_date }>Due Mon Sep 20, 2016</span>
             </th>
             <th>
-              button
+              <button>Send All Completed Reviews</button>
             </th>
           </tr>
         </thead>

@@ -26,3 +26,13 @@ th:first-child {
 th:last-child {
   text-align: right;
 }
+
+select {
+  background-color: var(--comGrey);
+  width: 450px;
+  margin-right: 25px;
+}
+
+.review_type {
+  margin-right: 25px;
+}

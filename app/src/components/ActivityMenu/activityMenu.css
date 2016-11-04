@@ -26,7 +26,12 @@ header {
 	padding: 0 10px;
 	margin-right: 10px;
 }
+
 .active {
 	border-bottom: 5px solid var(--box-border-dark-grey);
 	@apply --font-strong;
+}
+
+.active a {
+  color: var(--darkGrey);
 }
