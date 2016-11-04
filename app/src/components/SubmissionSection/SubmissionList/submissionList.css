@@ -1,0 +1,19 @@
+@import 'mixins.css';
+
+.subList {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.row {
+  background-color: var(--bkGrey);
+  height: 50px;
+}
+
+th {
+  padding: 0 25px;
+}
