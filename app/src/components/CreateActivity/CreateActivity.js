@@ -7,10 +7,10 @@ import ActionButton from './../ActionButton/ActionButton';
 import createActivity from './createActivity.css';
 
 const CreateActivity = () => {
-  let contentLeft = <div>Macmillan Writing Dashboard</div>;
+  let contentLeft = <div >Macmillan Writing Dashboard</div>;
   let contentRight = <div>ENG 101 Introduction to Writing</div>;
-  let contentLeftFooter = <div>Cancel</div>;
-  let contentRightFooter = <ActionButton content="Save and Continue" />;
+  let contentLeftFooter = <div data-id="cancel">Cancel</div>;
+  let contentRightFooter = <ActionButton data-id="save-and-continue" content="Save and Continue" />;
   let headerCss = createActivity.header;
   let footerCss = createActivity.footer;
   return (
