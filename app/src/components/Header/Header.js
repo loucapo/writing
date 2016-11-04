@@ -9,7 +9,7 @@ const Header = (props) => {
   let dataIdRight = props ? (props.dataIdRight ? props.dataIdRight : '') : '';
 
   return (
-    <header className={header.top_header} >
+    <header data-id="header" className={header.top_header} >
       <h2 data-id={dataIdLeft} className={header.logo}>{contentLeft}</h2>
       <span data-id={dataIdRight} className={header.course_name}>{contentRight}</span>
     </header>
