@@ -19,7 +19,9 @@ let SubmissionList = ({submissions}) => {
               <span className={ submissionList.due_date }>Due Mon Sep 20, 2016</span>
             </th>
             <th>
-              <button>Send All Completed Reviews</button>
+              <span className={ submissionList.button }>
+                <a href="#">Send All Completed Reviews</a>
+              </span>
             </th>
           </tr>
         </thead>

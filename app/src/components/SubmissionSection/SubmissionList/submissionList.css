@@ -29,10 +29,16 @@ th:last-child {
 
 select {
   background-color: var(--comGrey);
-  width: 450px;
+  height: 30px;
   margin-right: 25px;
+  width: 450px;
 }
 
 .review_type {
   margin-right: 25px;
+}
+
+.button {
+  background-color: var(--comGrey);
+  padding: 7px 10px;
 }
