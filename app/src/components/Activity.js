@@ -10,7 +10,7 @@ const Activity = ({activity, drafts}) => {
   return (
     <div>
       <ActivitySummary activity={activity} />
-      <ActivityMenu />
+      <ActivityMenu drafts={drafts} />
     </div>
   );
 };

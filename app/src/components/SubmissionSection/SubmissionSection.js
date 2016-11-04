@@ -1,14 +1,11 @@
 import React, { PropTypes } from 'react';
-import ActivityMenu from '../ActivityMenu/ActivityMenu';
 import SubmissionList from './SubmissionList/SubmissionList';
-
 import submissionSection from './submissionSection.css';
 
 const SubmissionSection = ({submissions}) => {
   return (
     <div className={ submissionSection.wrapper }>
       <SubmissionList submissions={submissions} />
-      asdf
     </div>
   );
 };

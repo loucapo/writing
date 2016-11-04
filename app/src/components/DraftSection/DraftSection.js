@@ -1,8 +1,5 @@
 import React, { PropTypes } from 'react';
-
-import ActivityMenu from '../ActivityMenu/ActivityMenu';
 import DraftList from './DraftList/DraftList';
-
 import draftSection from './draftSection.css';
 
 const DraftSection = ({drafts}) => {
