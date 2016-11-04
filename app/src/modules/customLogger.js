@@ -10,6 +10,7 @@ function customLogger(winston, config) {
   winston.level = config.app.logging_level;
   winston.remove(winston.transports.Console);
   winston.add(winston.transports.Console, {
+    handleExceptions: true,
     prettyPrint: true,
     colorize: true,
     silent: false,
@@ -17,17 +18,6 @@ function customLogger(winston, config) {
     json: useJson
   });
 
-  // TODO rewriters aren't doing anything, supposed to be adding a component identifier to the metadata
-  if (! winston.rewriters)
-  {
-    winston.rewriters = [];
-  }
-  winston.rewriters.push(
-    function(level, msg, meta) {
-      meta.app = 'myApp';
-      return meta;
-    }
-  );
   // dagon, our dependency injection container, requires something to be returned from the function exported.
   // The return value is what is exposed to other participants in the container for injection.
   // The name of the function (in this module it is 'customLogger') will be the name by which the return
