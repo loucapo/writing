@@ -45,4 +45,10 @@ Feature: Instructor Can View Assignment Summary Page
 	Scenario: Base URL Redirects to Activity Page
 		Given I visit the home page
 		Then I get redirected to the activity summary page
-		
+@pending
+    Scenario: The Instructor Sees Fresh Data
+      Given I visit the activity page
+      And I close the current session
+      And I open a new session
+      And I visit the activity page
+      Then I see my course data has reset

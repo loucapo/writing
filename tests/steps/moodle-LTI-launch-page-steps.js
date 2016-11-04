@@ -45,8 +45,7 @@ exports.define = function(steps) {
   });
 
   steps.when("I open a new session", function () {
-    //need to at some point figure out why driver.create() is broken
-    driver.create();
+    marvin.session.create(marvin.session.browser);
   });
 
   steps.then("I get redirected to the activity summary page", function () {
