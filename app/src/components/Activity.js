@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 
 import ActivitySummary from './ActivitySummary/ActivitySummary';
-import DraftSection from './DraftSection/DraftSection';
+import ActivityMenu from './ActivityMenu/ActivityMenu';
 
 const Activity = ({activity, drafts}) => {
   if (!activity || drafts.length <= 0) {
@@ -10,7 +10,7 @@ const Activity = ({activity, drafts}) => {
   return (
     <div>
       <ActivitySummary activity={activity} />
-      <DraftSection drafts={drafts} />
+      <ActivityMenu />
     </div>
   );
 };

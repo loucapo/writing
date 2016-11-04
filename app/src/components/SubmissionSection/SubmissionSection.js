@@ -7,7 +7,6 @@ import submissionSection from './submissionSection.css';
 const SubmissionSection = ({submissions}) => {
   return (
     <div className={ submissionSection.wrapper }>
-      <ActivityMenu section="submissions" />
       <SubmissionList submissions={submissions} />
       asdf
     </div>
