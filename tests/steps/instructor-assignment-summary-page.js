@@ -102,7 +102,7 @@ exports.define = function(steps) {
 	});
 
 	steps.then("I see the activity summary page", function() {
-		driver.wait(until.urlContains(page.url), 5000, 'target url does not contain ' + dashboard_page.url);
+		driver.wait(until.urlContains(page.url), 5000, 'target url does not contain ' + page.url);
 	});
 
   steps.when("I see my course data has reset", function () {
