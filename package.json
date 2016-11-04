@@ -5,6 +5,7 @@
     "marvin-js": "0.2.0"
   },
   "scripts": {
-    "test": "node node_modules/marvin-js/bin/marvin.js"
+    "test": "node node_modules/marvin-js/bin/marvin.js",
+    "reportspurge": "node node_modules/marvin-js/bin/reportspurge.js"
   }
 }
