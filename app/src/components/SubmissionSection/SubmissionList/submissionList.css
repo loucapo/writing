@@ -16,4 +16,13 @@
 
 th {
   padding: 0 25px;
+  text-align: left;
+}
+
+th:first-child {
+  padding-left: 100px;
+}
+
+th:last-child {
+  text-align: right;
 }

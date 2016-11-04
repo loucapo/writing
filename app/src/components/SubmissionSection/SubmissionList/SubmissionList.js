@@ -9,7 +9,17 @@ let SubmissionList = ({submissions}) => {
       <table className={ submissionList.table }>
         <thead>
           <tr className={ submissionList.row }>
-            <th colSpan="4">header</th>
+            <th colSpan="3">
+              <select>
+                <option>Submissions Draft 1</option>
+                <option>asdf</option>
+                <option>asdf</option>
+              </select>
+              Instructor Review: Due Mon Sep 20, 2016
+            </th>
+            <th>
+              button
+            </th>
           </tr>
         </thead>
           <SubmissionItem />
