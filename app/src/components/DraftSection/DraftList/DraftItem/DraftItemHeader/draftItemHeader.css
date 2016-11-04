@@ -5,15 +5,14 @@
 }
 
 .strong {
-  @apply --font-strong;
+  @apply(--font-strong);
 }
 
 /* DRAFT HEADER */
 .header {
   height: var(--header-height);
-  line-height: var(--header-height);
   font-size: 16px;
-  @apply --font-medium;
+  @apply(--font-medium);
   padding: 0 50px;
   display: flex;
   flex-flow: row nowrap;
@@ -21,22 +20,35 @@
   align-items: center;
 }
 
-.draftOrder {
-  margin-right: 10px;
-  @apply --font-strong;
+.review_box {
+  background-color: lightgray;
+  line-height: 40px;
+  margin: 20px 5px 20px 5px;
+  padding: 0 15px 0 15px;
 }
 
-.draftInfo {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+.review_type {
+  margin: 0 0 0 10px;
 }
 
-.reviewLabel {
+.header_items_container {
+  float: right;
+}
+
+.review_label {
   margin-right: 15px;
-  @apply --font-default;
+  @apply(--font-default);
 }
 
-.editAction {
-  font-size: .9em;
+.draft_info {
+  width: 100%;
+  poition: relative;
+}
+
+.draft_order {
+  vertical-align: middle;
+  position: absolute;
+  height: 10em;
+  margin-top: 10px;
+  line-height: 20px;
 }
