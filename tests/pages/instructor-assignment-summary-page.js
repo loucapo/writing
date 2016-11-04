@@ -2,7 +2,6 @@ var Page = require('marvin-js').Page;
 
 module.exports = new Page({
 
-
 // assignment header
 	url: { value: '/activity/23630184-5955-4dbe-9908-ab065f1bcad2' },
 	title: { get: function () { return this.element("[data-id='activity-title']"); } },

@@ -1,5 +1,7 @@
 var page = require('../pages/instructor-assignment-summary-page.js');
 var marvin = require('marvin-js');
+var driver = marvin.session.getDriver();
+var until = require('selenium-webdriver').until;
 var should = require('chai').should;
 var expect = require('chai').expect;
 var assert = require('chai').assert;
@@ -105,5 +107,9 @@ exports.define = function(steps) {
 
   steps.when("I see my course data has reset", function () {
     //steps to be added once page has something changeable
+  });
+
+  steps.given("I visit the home page", function () {
+    driver.get(marvin.config.baseUrl);
   });
 }

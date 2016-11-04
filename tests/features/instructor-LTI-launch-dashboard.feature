@@ -1,5 +1,5 @@
 @WRITE-183
-  @WRITE-330
+@MVP
 Feature: Instructor Can View the Dashboard After LTI Launch
 
   # This test is broken until post MVI
@@ -8,7 +8,7 @@ Feature: Instructor Can View the Dashboard After LTI Launch
    # When I launch Writing Tools from the Moodle LTI host
    # And Writing Tools Launch handles the request
    # Then I see the Writing Center dashboard
-@only
+
   Scenario: The Instructor Launches the Activity Summary Page from LTI
     Given I log in to the Moodle Site
     When I launch Writing Tools from the Moodle LTI host

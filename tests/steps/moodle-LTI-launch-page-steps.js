@@ -8,7 +8,6 @@ var dashboard_page = require('../pages/instructor-dashboard-page.js');
 var assignment_summary_page = require('../pages/instructor-assignment-summary-page.js');
 var marvin = require('marvin-js');
 var driver = marvin.session.getDriver();
-var xyz = marvin.session.create();
 var until = require('selenium-webdriver').until;
 
 
@@ -51,7 +50,7 @@ exports.define = function(steps) {
   });
 
   steps.then("I get redirected to the activity summary page", function () {
-    driver.wait(until.urlContains(assignment_summary_page.url), 5000, 'target url does not contain ' + assignment_summary_page.url);
+    driver.wait(until.urlContains(assignment_summary_page.url), 15000, 'target url does not contain ' + assignment_summary_page.url);
   });
 }
 
