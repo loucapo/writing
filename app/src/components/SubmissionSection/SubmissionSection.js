@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-
-import AssignmentMenu from '../AssignmentMenu/AssignmentMenu';
+import ActivityMenu from '../ActivityMenu/ActivityMenu';
 import SubmissionList from './SubmissionList/SubmissionList';
 
 import submissionSection from './submissionSection.css';
@@ -8,7 +7,7 @@ import submissionSection from './submissionSection.css';
 const SubmissionSection = ({submissions}) => {
   return (
     <div className={ submissionSection.wrapper }>
-      <AssignmentMenu section="submissions" />
+      <ActivityMenu section="submissions" />
       <SubmissionList submissions={submissions} />
       asdf
     </div>
