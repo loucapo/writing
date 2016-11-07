@@ -7,6 +7,9 @@ function customLogger(winston, config) {
   }
 
   // logger configuration
+  // @todo Ideally, the configuration below would be done with winston's .configure() method.
+  // I had trouble making that work with dagon for reasons I don't understand. If we stick with winston,
+  // we should try and clean this up and set it all in one pass with .configure()
   winston.level = config.app.logging_level;
   winston.remove(winston.transports.Console);
   winston.add(winston.transports.Console, {
