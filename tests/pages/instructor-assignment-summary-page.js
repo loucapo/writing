@@ -13,7 +13,7 @@ module.exports = new Page({
 	rhetoric_genre: { get: function() { return this.element("[data-id='activity-rhetoric-rubric']"); } },
 	rubric: { get: function () { return this.element("[data-id='activity-rubric']"); } },
 	prompt: { get: function () { return this.element("[data-id='activity-prompt']"); } },
-	prompt_edit: { get: function () { return this.element("[data-id='edit-activity']"); } },
+	prompt_edit: { get: function () { return this.element("[data-id='edit-assignment']"); } },
 
 // sub menu
 	sub_menu: { get: function () { return this.element("[data-id='assignment-menu']"); } },
