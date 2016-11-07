@@ -20,7 +20,7 @@ const DraftItemHeader = ({draftName, type, gradingPolicy, dueDate}) => (
           <a data-id="draft-item-grade-type" className={draftItemHeader.review_type}>{gradingPolicy}</a>
         </span>
         <span className={draftItemHeader.review_box}>
-          <span data-id="draft-item-due-date" className={draftItemHeader.strong}>Due:</span>
+          <span data-id="draft-item-due-date" className={draftItemHeader.strong}>Due: </span>
           {dueDate}
         </span>
       </span>
