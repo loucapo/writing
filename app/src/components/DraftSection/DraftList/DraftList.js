@@ -11,15 +11,17 @@ let DraftList = ({drafts}) => {
           drafts.map((draftItem, idx) => {
             // substitute 'Final draft' for 'Draft #' on last element in array
             let draftName = (idx === (drafts.length - 1)) ? 'Final Draft' : 'Draft ' + (idx + 1);
-            return <DraftItem draftItem={draftItem} draftName={draftName} key={idx} />;
+            return (
+              <DraftItem
+                draftItem={draftItem}
+                draftName={draftName}
+                gradingPolicy={draftItem.details.gradingPolicy}
+                key={idx}
+              />
+            );
           })
         }
       </ul>
-      <div className={ draftList.draftAction }>
-        <a data-id="add-draft" href="#">
-          <span className={draftList.add_draft_icon}>&#8853;</span> Add Another Draft
-        </a>
-      </div>
     </div>
   );
 };

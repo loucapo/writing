@@ -4,15 +4,15 @@ import Header from './../Header/Header';
 import TitleSection from './TitleSection/TitleSection';
 import ActionButton from './../ActionButton/ActionButton';
 
-import createAssignment from './createAssignment.css';
+import createActivity from './createActivity.css';
 
-const CreateAssignment = () => {
+const CreateActivity = () => {
   let contentLeft = <div>Macmillan Writing Dashboard</div>;
   let contentRight = <div>ENG 101 Introduction to Writing</div>;
-  let contentLeftFooter = <div>Cancel</div>;
-  let contentRightFooter = <ActionButton content="Save and Continue" />;
-  let headerCss = createAssignment.header;
-  let footerCss = createAssignment.footer;
+  let contentLeftFooter = <div data-id="cancel">Cancel</div>;
+  let contentRightFooter = <ActionButton data-id="save-and-continue" content="Save and Continue" />;
+  let headerCss = createActivity.header;
+  let footerCss = createActivity.footer;
   return (
     <div>
       <Header
@@ -20,7 +20,7 @@ const CreateAssignment = () => {
         contentRight={contentRight}
         css={headerCss}
       />
-      <div className={createAssignment.panelSize}>
+      <div className={createActivity.panelSize}>
         <TitleSection />
         <div>Assignment Title</div>
         <div>
@@ -29,27 +29,27 @@ const CreateAssignment = () => {
             type="text"
             size="80"
             placeholder="Help text"
-            className={createAssignment.titleTextBox}
+            className={createActivity.titleTextBox}
           />
         </div>
-        <div>Assignment Prompt</div>
+        <div>Activity Prompt</div>
         <div>
           <textArea
             data-id="activity-prompt"
             rows="10"
             cols="80"
             placeholder="Help text"
-            className={createAssignment.promptTextArea}
+            className={createActivity.promptTextArea}
           />
         </div>
-        <div className={createAssignment['number-drafts-label']}>Number of Drafts</div>
+        <div className={createActivity['number-drafts-label']}>Number of Drafts</div>
         <div>
           <input
             data-id="activity-number-drafts"
             type="text"
             size="1"
             defaultValue="1"
-            className={createAssignment['number-drafts']}
+            className={createActivity['number-drafts']}
           />
         </div>
       </div>
@@ -62,4 +62,4 @@ const CreateAssignment = () => {
   );
 };
 
-export default CreateAssignment;
+export default CreateActivity;
