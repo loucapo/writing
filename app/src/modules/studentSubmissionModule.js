@@ -4,8 +4,13 @@ export const REQUEST_STUDENT_SUBMISSION = 'wk_frontend/studentSubmission/REQUEST
 export const SUCCESS_STUDENT_SUBMISSION = 'wk_frontend/studentSubmission/SUCCESS_STUDENT_SUBMISSION';
 export const FAILURE_STUDENT_SUBMISSION = 'wk_frontend/studentSubmission/FAILURE_STUDENT_SUBMISSION';
 
+const dummyData = {
+  id: '123',
+  draft: "sadfghjk"
+}
+
 // Reducer
-export default (state = [], action) => {
+export default (state = [dummyData], action) => {
   switch (action.type) {
     case REQUEST_STUDENT_SUBMISSION: {
       console.log('REQUEST_STUDENT_SUBMISSION');
