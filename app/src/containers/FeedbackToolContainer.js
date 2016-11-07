@@ -31,7 +31,7 @@ FeedbackToolContainer.propTypes = {
 }
 
 const mapStateToProps = (state, props) => {
-  let feedbackTool = state.studentSubmissions.filter(x => x.id === props.id);
+  let feedbackTool = state.feedbackTool.filter(x => x.id === props.id);
 
   return {
     studentDraft: RichTextEditor.createValueFromString(feedbackTool[0] ? feedbackTool[0].draft : '', 'html')

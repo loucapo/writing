@@ -1,10 +1,10 @@
 import activityReducer from './activityModule';
 import draftReducer from './draftModule';
 import assignmentReducer from './assignmentModule';
-import studentSubmissionReducer from './studentSubmissionModule';
+import feedbackToolReducer from './feedbackToolModule';
 
 export {activityAction} from './activityModule';
 export {assignmentAction} from './assignmentModule';
-export {studentSubmissionAction} from './studentSubmissionModule';
-export default { activities: activityReducer, drafts: draftReducer, assignments: assignmentReducer, studentSubmissions: studentSubmissionReducer };
+export {feedbackToolAction} from './feedbackToolModule';
+export default { activities: activityReducer, drafts: draftReducer, assignments: assignmentReducer, feedbackTool: feedbackToolReducer };
 
