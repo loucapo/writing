@@ -2,7 +2,7 @@ version: "2"
 services:
   wk_api:
     image: ${wk_api_image}
-    command: npm run start_dev
+    command: npm run start
     env_file:
       - .env
     environment:
