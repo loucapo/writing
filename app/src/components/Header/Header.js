@@ -3,13 +3,13 @@ import React, { PropTypes } from 'react';
 const header = require('./header.css');
 
 const Header = (props) => {
-  let contentLeft = props ? (props.contentLeft ? props.contentLeft : '') : '';
-  let dataIdLeft = props ? (props.dataIdLeft ? props.dataIdLeft : '') : '';
-  let contentRight = props ? (props.contentRight ? props.contentRight : '') : '';
-  let dataIdRight = props ? (props.dataIdRight ? props.dataIdRight : '') : '';
+  let contentLeft = props.contentLeft ? props.contentLeft : '';
+  let dataIdLeft = props.dataIdLeft ? props.dataIdLeft : '';
+  let contentRight = props.contentRight ? props.contentRight : '';
+  let dataIdRight = props.dataIdRight ? props.dataIdRight : '';
 
   return (
-    <header className={header.top_header} >
+    <header data-id="header" className={header.top_header} >
       <h2 data-id={dataIdLeft} className={header.logo}>{contentLeft}</h2>
       <span data-id={dataIdRight} className={header.course_name}>{contentRight}</span>
     </header>

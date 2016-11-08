@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-import AssignmentSummary from './AssignmentSummary/AssignmentSummary';
+import ActivitySummary from './ActivitySummary/ActivitySummary';
 import DraftSection from './DraftSection/DraftSection';
 
 const Activity = ({activity, drafts}) => {
@@ -9,7 +9,7 @@ const Activity = ({activity, drafts}) => {
   }
   return (
     <div>
-      <AssignmentSummary activity={activity} />
+      <ActivitySummary activity={activity} />
       <DraftSection drafts={drafts} />
     </div>
   );
