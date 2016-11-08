@@ -15,7 +15,6 @@ const dummyData = {
 export default (state = [dummyData], action) => {
   switch (action.type) {
     case STUDENT_SUBMISSION_REQUEST: {
-      console.log('STUDENT_SUBMISSION_REQUEST');
       return state;
     }
     case STUDENT_SUBMISSION_SUCCESS: {
