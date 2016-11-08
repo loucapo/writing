@@ -5,6 +5,7 @@ var moodle_login_page = require('../pages/moodle-login-page.js');
 var credentials = require('../pages/moodle-credentials.js');
 var moodle_lti_launch_page = require('../pages/moodle-LTI-launch-page.js');
 var dashboard_page = require('../pages/instructor-dashboard-page.js');
+var assignment_summary_page = require('../pages/instructor-assignment-summary-page.js');
 var marvin = require('marvin-js');
 var driver = marvin.session.getDriver();
 var until = require('selenium-webdriver').until;
@@ -39,4 +40,17 @@ exports.define = function(steps) {
     driver.wait(until.urlContains(dashboard_page.url), 5000, 'target url does not contain ' + dashboard_page.url);
   });
 
+  steps.when("I close the current session", function () {
+    driver.close();
+  });
+
+  steps.when("I open a new session", function () {
+    marvin.session.create(marvin.session.browser);
+  });
+
+  steps.then("I get redirected to the activity summary page", function () {
+    driver.wait(until.urlContains(assignment_summary_page.url), 15000, 'target url does not contain ' + assignment_summary_page.url);
+  });
 }
+
+
