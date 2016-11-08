@@ -1,9 +1,8 @@
 import React from 'react';
 import RichTextEditor from 'react-rte';
 
-const FeedbackTool = ({studentDraft}) => {
-  console.log(studentDraft);
-  return (<RichTextEditor value={studentDraft} readOnly={true}/>)
+const FeedbackTool = ({document}) => {
+  return (<RichTextEditor value={document} readOnly={true}/>)
 }
 
 export default FeedbackTool;

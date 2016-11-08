@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import RichTextEditor from 'react-rte';
 import { connect } from 'react-redux';
-import { feedbackToolAction } from './../modules';
+import { fetchStudentSubmissionAction } from './../modules';
 import FeedbackTool from '../components/FeedbackTool/FeedbackTool';
 
 class FeedbackToolContainer extends Component {
@@ -9,7 +9,7 @@ class FeedbackToolContainer extends Component {
 
   componentWillReceiveProps(newProps) { this.loadData(); }
 
-  loadData() { this.props.feedbackToolAction(this.props.params.id); }
+  loadData() { this.props.fetchStudentSubmissionAction(this.props.params.id); }
 
   render() {
     if (this.props.isFetching) {
@@ -28,16 +28,15 @@ FeedbackToolContainer.propTypes = {
   isFetching: PropTypes.string,
   errorMessage: PropTypes.string,
   params: PropTypes.object
-}
+};
 
 const mapStateToProps = (state, props) => {
-  let feedbackTool = state.feedbackTool.filter(x => x.id === props.id);
-
+  let studentSubmission = state.studentSubmissions.filter(x => x.id === props.params.id)[0];
   return {
-    studentDraft: RichTextEditor.createValueFromString(feedbackTool[0] ? feedbackTool[0].draft : '', 'html')
+    document: RichTextEditor.createValueFromString(studentSubmission ? studentSubmission.document : '', 'html')
   };
 };
 
-export default connect(mapStateToProps, {feedbackToolAction})(FeedbackToolContainer);
+export default connect(mapStateToProps, {fetchStudentSubmissionAction})(FeedbackToolContainer);
 
 
