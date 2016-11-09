@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import { Link } from 'react-router';
 import submissionItemCss from './submissionItem.css';
 
 const SubmissionItem = () => (
@@ -39,7 +40,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -51,7 +52,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -63,7 +64,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -87,7 +88,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -125,7 +126,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -137,7 +138,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -149,7 +150,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -175,7 +176,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -187,7 +188,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -199,7 +200,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -211,7 +212,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -223,7 +224,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -235,7 +236,7 @@ const SubmissionItem = () => (
       </td>
       <td>Completed 9/18/2016</td>
       <td>
-        <a href="#">Start Review</a>
+        <Link to="/feedbackTool/123">Start Review</Link>
       </td>
       <td>&nbsp;</td>
     </tr>
@@ -266,9 +267,7 @@ const SubmissionItem = () => (
         <a href ="#">Fitzgerald, Francis</a>
       </td>
       <td>&nbsp;</td>
-      <td>
-        &nbsp;
-      </td>
+      <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
 
@@ -278,9 +277,7 @@ const SubmissionItem = () => (
         <a href ="#">Woolf, Virginia</a>
       </td>
       <td>&nbsp;</td>
-      <td>
-        &nbsp;
-      </td>
+      <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
 
