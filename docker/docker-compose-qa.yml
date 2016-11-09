@@ -12,3 +12,7 @@ services:
     ports:
       - "3000:3000"
     container_name: wk_api
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://localhost:12201"
