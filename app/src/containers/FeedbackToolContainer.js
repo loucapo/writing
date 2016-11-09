@@ -5,6 +5,10 @@ import { fetchStudentSubmissionAction } from './../modules';
 import FeedbackTool from '../components/FeedbackTool/FeedbackTool';
 
 class FeedbackToolContainer extends Component {
+  constructor() {
+    super();
+    this.state = {showQuickFeedbackTool: false};
+  }
   componentWillMount() { this.loadData(); }
 
   componentWillReceiveProps(newProps) { this.loadData(); }
@@ -18,8 +22,18 @@ class FeedbackToolContainer extends Component {
     if (this.props.errorMessage) {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
-    return (<FeedbackTool{...this.props} />);
+    return (
+      <FeedbackTool
+        {...this.props}
+        showQuickFeedbackTool={this.state.showQuickFeedbackTool}
+        toggleQuickFeedback={this.toggleQuickFeedback}
+      />
+    );
   }
+
+  toggleQuickFeedback = (event) => {
+    this.setState({showQuickFeedbackTool: ! this.state.showQuickFeedbackTool});
+  };
 }
 
 FeedbackToolContainer.propTypes = {
