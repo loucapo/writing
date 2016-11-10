@@ -33,4 +33,8 @@ exports.define = function(steps) {
     expect(page.comma_error).to.not.exist;
   });
 
+  steps.then("I should see the student essay in the feedback tool", function() {
+    expect(page.student_submission_body).to.exist;
+    expect(page.quick_feedback_library).to.exist;
+  });
 }
