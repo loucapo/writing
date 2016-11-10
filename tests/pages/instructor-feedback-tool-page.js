@@ -22,4 +22,11 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
+  student_reflection_section: { get: function () { return this.element("[data-id='needs_analysis']"); } },
+
+  end_comment_section: { get: function () { return this.element("[data-id='comma_error']"); } },
+
+  end_comment_header: { get: function () { return this.element("[data-id='comma_error']"); } },
+
+  end_comment_textarea: { get: function () { return this.element("[data-id='comma_error']"); } },
 });

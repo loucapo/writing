@@ -33,4 +33,13 @@ exports.define = function(steps) {
     expect(page.comma_error).to.not.exist;
   });
 
+  steps.then("I see responses to the reflection questions", function() {
+    expect(page.student_reflection_section).to.not.exist;
+  });
+
+  steps.then("I see the end comment section", function() {
+    expect(page.end_comment_header).to.not.exist;
+    expect(page.end_comment_section).to.not.exist;
+    expect(page.end_comment_textarea).to.not.exist;
+  });
 }
