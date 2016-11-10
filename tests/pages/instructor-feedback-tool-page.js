@@ -4,6 +4,22 @@ module.exports = new Page({
 
   url: { value: '/feedbackTool/123' },
 
+  comment_thesis: { get: function () { return this.element("[data-id='comment_thesis']"); } },
+
+  comment_reason_support: { get: function () { return this.element("[data-id='comment_reason_support']"); } },
+
+  comment_interpretation_analysis: { get: function () { return this.element("[data-id='comment_interpretation_analysis']"); } },
+
+  comment_expansion_thesis: { get: function () { return this.element("[data-id='comment_expansion_thesis']"); } },
+
+  comment_integration_research: { get: function () { return this.element("[data-id='comment_integration_research']"); } },
+
+  comment_counterarguments: { get: function () { return this.element("[data-id='comment_counterarguments']"); } },
+
+  comment_other: { get: function () { return this.element("[data-id='comment_other']"); } },
+
+  comment_good_job: { get: function () { return this.element("[data-id='comment_good_job']"); } },
+
   quick_feedback_library: { get: function () { return this.element("[data-id='quick-feedback-library']"); } },
 
   comma_splice: { get: function () { return this.element("[data-id='comma_splice']"); } },

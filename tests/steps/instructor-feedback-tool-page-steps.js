@@ -33,4 +33,23 @@ exports.define = function(steps) {
     expect(page.comma_error).to.not.exist;
   });
 
+  steps.then("I see a menu of commenting options", function() {
+    expect(page.comment_thesis).to.exist;
+    expect(page.comment_reason_support).to.exist;
+    expect(page.comment_interpretation_analysis).to.exist;
+    expect(page.comment_expansion_thesis).to.exist;
+    expect(page.comment_integration_research).to.exist;
+    expect(page.comment_counterarguments).to.exist;
+    expect(page.comment_other).to.exist;
+    expect(page.comment_good_job).to.exist;
+  });
+
+  steps.when("I scroll down the screen", function() {
+    window.scrollTo(0,500);
+  });
+
+  steps.then("The header and toolbar remain fixed", function() {
+    // code to be added
+  });
 }
+
