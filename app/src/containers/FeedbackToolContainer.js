@@ -8,10 +8,13 @@ class FeedbackToolContainer extends Component {
   constructor() {
     super();
     this.state = {showQuickFeedbackTool: false};
+    this.toggleQuickFeedback = () => {
+      this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
+    };
   }
   componentWillMount() { this.loadData(); }
 
-  componentWillReceiveProps(newProps) { this.loadData(); }
+  componentWillReceiveProps(newProps) { this.loadData(); } // eslint-disable-line no-unused-vars
 
   loadData() { this.props.fetchStudentSubmissionAction(this.props.params.id); }
 
@@ -30,10 +33,6 @@ class FeedbackToolContainer extends Component {
       />
     );
   }
-
-  toggleQuickFeedback = (event) => {
-    this.setState({showQuickFeedbackTool: ! this.state.showQuickFeedbackTool});
-  };
 }
 
 FeedbackToolContainer.propTypes = {
@@ -41,7 +40,8 @@ FeedbackToolContainer.propTypes = {
   id: PropTypes.string,
   isFetching: PropTypes.string,
   errorMessage: PropTypes.string,
-  params: PropTypes.object
+  params: PropTypes.object,
+  fetchStudentSubmissionAction: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {

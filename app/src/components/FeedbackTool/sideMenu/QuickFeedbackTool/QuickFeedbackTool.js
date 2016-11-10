@@ -1,8 +1,12 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
 import quickFeedbackTool from './quickFeedbackTool.css';
 
-const SideMenu = ({show}) => {
+const spanClicked = (val) => {
+  console.log(val);
+};
+
+const SideMenu = () => {
   return (
     <div className={quickFeedbackTool.quickFeedback}>
       <ul>
@@ -17,10 +21,6 @@ const SideMenu = ({show}) => {
       </ul>
     </div>
   );
-};
-
-const spanClicked = (val) => {
-  console.log(val);
 };
 
 export default SideMenu;
