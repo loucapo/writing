@@ -2,11 +2,11 @@
   "baseUrl": "http://wk-qa-1.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
-  "resultsDir": "results",
+  "reportDir": "reports",
+  "reportSingle": false,
   "reporter": "marvin",
   "threads": 1,
 
-  "clean": true,
   "verbose": true,
   "stepDelay": 500,
   "testTimeout": 60000,
