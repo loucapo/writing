@@ -11,8 +11,8 @@ services:
       - "8080:8080"
     service: wk_frontend
     container_name: wk_frontend
-api:
-  image: ${wk_api}
+  api:
+    image: ${wk_api}
     command: npm run start
     env_file:
       - .env
@@ -37,8 +37,3 @@ api:
       - .env
     ports:
       - 5432:5432
-  nginx:
-    image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/nginx:latest
-    ports:
-      - "10080:80"
-    container_name: nginx_container
