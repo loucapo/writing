@@ -4,8 +4,8 @@ module.exports = new Page({
 
   url: { value: '/activity' },
 
-  // placeholder: where do we want to put this?
-  //student_submissions: { get: function () { return this.element("[data-id='student_submissions']"); } },
+  'student submissions tab': { get: function() { return this.element("[data-id='student-submissions']"); }},
+  'draft 1 header': { get: function() { return this.element("[data-id='draft-item-draft-name']"); }},
 
   draft_dropdown: { get: function () { return this.element("[data-id='draft_dropdown']"); } },
 

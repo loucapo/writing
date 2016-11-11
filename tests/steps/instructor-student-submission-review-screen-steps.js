@@ -1,15 +1,25 @@
 var student_submission_page = require('../pages/instructor-student-submission-review-screen.js');
 var summary_page = require('../pages/instructor-assignment-summary-page.js');
 var marvin = require('marvin-js');
+var driver = require('marvin-js').session.getDriver();
+
+var chai = require('chai');
+var should = require('chai').should;
+var chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
 
 exports.define = function(steps) {
 
-  steps.given("I click on the student submissions tab", function () {
-    summary_page.student_submissions.click();
-  });
-
   steps.when("I see a student roster", function () {
     expect(student_submission_page.student_roster).to.exist;
+  });
+
+  steps.then("I click on the '$element'", function(elem) {
+    student_submission_page[elem].click();
+  });
+
+  steps.then("I see the '$elem'", function(elem) {
+    student_submission_page[elem].isDisplayed().should.eventually.equal(true);
   });
 
   steps.when("I see student submission information for '$text'", function() {
