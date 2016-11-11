@@ -5,9 +5,16 @@ Feature: Instructor Can Review Student Submissions
   Scenario: The Instructor Navigates to Student Submissions
     Given I visit the activity page
     Then I see the 'draft 1 header'
-    # Then I see text 'Move bodies with'
     Then I click on the 'student submissions tab'
-    Then I see a student roster
+    Then I see text 'Shakespeare, William' in 'activity div'
+    And I see text 'Faulkner, William' in 'activity div'
+    And I see text 'Review Complete' in 'activity div'
+    And I see text 'Start Review' in 'activity div'
+    And I see text 'Send Review' in 'activity div'
+    And I see text 'Instructor Review' in 'activity div'
+    And I see text 'Submissions Draft 1' in 'draft-picker option 1'
+    # Then I see the 'student roster'
+
     And I see student submission information for Draft 1
     And I see submission status
     And I see the draft due date
