@@ -10,5 +10,5 @@ services:
       NODE_ENV: development
       APPLICATION_NAME: wk_serve
     ports:
-      - "4777:4777"
+      - "80:80"
     container_name: wk_serve
