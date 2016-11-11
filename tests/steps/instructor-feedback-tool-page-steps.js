@@ -1,9 +1,11 @@
 var page = require('../pages/instructor-feedback-tool-page.js');
+var rtePage = require('../pages/react-rte.js');
 var marvin = require('marvin-js');
 var expect = require('chai').expect;
+var driver = require('marvin-js').session.getDriver();
 
 exports.define = function(steps) {
-  steps.given("I open the feedback tool", function() {
+  steps.when("I open the feedback tool", function() {
     page.visit();
   });
 
@@ -33,4 +35,12 @@ exports.define = function(steps) {
     expect(page.comma_error).to.not.exist;
   });
 
+  steps.then("I should see the student essay in the feedback tool", function() {
+    expect(rtePage.draftEditor).to.exist;
+    expect(rtePage.button_bold).to.not.exist;
+    rtePage.draftEditor.getText().then(function(text) {
+      expect(text).to.have.length.above(10);
+    //expect(page.quick_feedback_library).to.exist;
+  });
+});
 }
