@@ -1,0 +1,44 @@
+@import 'mixins.css';
+
+.subList {
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.row {
+  background-color: var(--bkGrey);
+  height: 50px;
+}
+
+th {
+  padding: 0 25px;
+  text-align: left;
+}
+
+th:first-child {
+  padding-left: 100px;
+}
+
+th:last-child {
+  text-align: right;
+}
+
+select {
+  background-color: var(--comGrey);
+  height: 30px;
+  margin-right: 25px;
+  width: 450px;
+}
+
+.review_type {
+  margin-right: 25px;
+}
+
+.button {
+  background-color: var(--comGrey);
+  padding: 7px 10px;
+}
