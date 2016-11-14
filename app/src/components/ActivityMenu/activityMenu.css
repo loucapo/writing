@@ -4,6 +4,11 @@
 	--container-height: 50px;
 }
 
+header {
+  display: flex;
+  align-items: center;
+}
+
 .container {
 	width: 100%;
 	height: var(--container-height);
@@ -15,14 +20,18 @@
 }
 
 .container div {
-	height: var(--container-height);
-	line-height: var(--container-height);
+	line-height: 45px;
 	font-size: 16px;
-	font-align:center;
+	text-align:center;
 	padding: 0 10px;
 	margin-right: 10px;
 }
+
 .active {
-	border-bottom: 8px solid var(--box-border-dark-grey);
+	border-bottom: 5px solid var(--box-border-dark-grey);
 	@apply --font-strong;
+}
+
+.active a {
+  color: var(--darkGrey);
 }
