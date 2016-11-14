@@ -21,8 +21,10 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
-    "react": "^15.3.2",
+    "classnames": "^2.2.5",
     "file-loader": "^0.9.0",
+    "freakin-react-forms": "reharik/freakin-react-forms",
+    "react": "^15.3.2",
     "react-dom": "^15.0.2",
     "react-hot-loader": "^3.0.0-beta.3",
     "react-nl2br": "^0.2.0",

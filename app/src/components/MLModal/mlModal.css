@@ -1,0 +1,94 @@
+.mlModal{
+    width:100%;
+    height:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.mlModal[hidden]{
+    display: none;
+}
+
+.mlModal-overlay{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    z-index:1002;
+    background: none repeat scroll 0% 0% #000;
+}
+
+.mlModal-content {
+    overflow: hidden;
+}
+
+.mlModal-wrapper {
+    display: flex;
+    flex-direction: column;
+    z-index: 1003;
+}
+
+.mlModal-titleBar {
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+
+.mlModal-btn--close {
+    z-index: 1004;
+}
+
+.mlModal[data-title='bottom'] .mlModal-content { order: 1 }
+.mlModal[data-title='bottom'] .mlModal-titleBar { order: 2 }
+
+/* ----- default theme ----- */
+
+.mlModal-wrapper {
+    border-radius: 3px;
+    overflow: hidden;
+    max-width: 80%;
+    min-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .9);
+    background-color: white;
+}
+
+.mlModal-content {
+    padding: 20px 24px 30px;
+}
+
+.mlModal-titleBar {
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, .2);
+    padding: 11px 37px 11px 24px;
+    border-bottom: 1px #ccc solid;
+}
+
+.mlModal-btn--close {
+    transition: all .5s;
+    position: absolute;
+    right: 11px;
+    top: 11px;
+    color: #c1c1c1;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.mlModal-btn--close:hover {
+    color: #000;
+}
+
+.mlModal.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mlModal[data-title='bottom'] .mlModal-content { box-shadow: 0 1px 1px rgba(0, 0, 0, .3) }
+.mlModal[data-title='bottom'] .mlModal-titleBar { box-shadow: none; border-top: 1px #ccc solid }
