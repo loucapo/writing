@@ -1,0 +1,25 @@
+.sidebarContainer {
+  position: fixed;
+  float: right;
+  margin: 0 20px 0 80%;
+  width: 240px;
+  border: thin #ddd;
+  border-style: solid none;
+}
+
+.sidebar li {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.commentIcon {
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21194/comment.png");
+}
+
+.thumbsUpIcon {
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21935/comment%20thumbsup.svg");
+}
+
+.quickFeedbackIcon {
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21934/comment%20quickfeedback.svg");
+}
