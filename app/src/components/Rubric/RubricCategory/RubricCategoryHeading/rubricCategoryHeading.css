@@ -1,0 +1,15 @@
+.heading {
+  display: flex;
+}
+
+.heading_item {
+  background-color: #eee;
+}
+
+.heading_item {
+  border: 0px solid #999;
+  border-width: 0 1px 1px 0;
+  width: calc(100% * 1/5);
+  height: 100px;
+  padding: 15px;
+}

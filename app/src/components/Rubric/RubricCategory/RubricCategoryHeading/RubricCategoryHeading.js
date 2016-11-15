@@ -42,5 +42,4 @@ RubricCategoryHeading.propTypes = {
   // drafts: PropTypes.array
 };
 
-
 export default RubricCategoryHeading;

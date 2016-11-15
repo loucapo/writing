@@ -1,18 +1,17 @@
 import React, {PropTypes} from 'react';
 
 // import ActivitySummary from './ActivitySummary/ActivitySummary';
-import RubricCategoryName from './RubricCategoryName/RubricCategoryName';
+import RubricCategoryName from './RubricCategory/RubricCategoryName/RubricCategoryName';
 import RubricCategory from './RubricCategory/RubricCategory';
 
 import rubricCss from './rubric.css';
 
-const Rubric = () => {
-  // if (!activity || drafts.length <= 0) {
-  //   return null;
-  // }
+const Rubric = (rubric) => {
+  console.log('rubric\'s rubric');
+  console.log(rubric);
   return (
     <section className={rubricCss.rubric_container}>
-      <RubricCategoryName />
+      <RubricCategoryName categories={rubric.headings} />
 
       <RubricCategory />
     </section>
@@ -20,9 +19,9 @@ const Rubric = () => {
 };
 
 Rubric.propTypes = {
-  // activity: PropTypes.object,
-  // drafts: PropTypes.array
+  rubric: PropTypes.object,
+  headings: PropTypes.array,
+  categories: PropTypes.array
 };
-
 
 export default Rubric;
