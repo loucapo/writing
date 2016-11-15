@@ -41,7 +41,6 @@ const mapStateToProps = (state, props) => {
   let studentSubmission = state.studentSubmissions.filter(x => x.id === props.params.id)[0];
   return {
     document: RichTextEditor.createValueFromString(studentSubmission ? studentSubmission.document : '', 'html')
-    // document: RichTextEditor.createEmptyValue()
   };
 };
 
