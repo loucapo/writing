@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import DraftSection from '../DraftSection/DraftSection';
 import SubmissionSection from '../SubmissionSection/SubmissionSection';
@@ -11,7 +11,7 @@ class ActivityMenu extends Component {
     this.toggleSelection = this.toggleSelection.bind(this);
     this.state = {
       toggle: 'drafts'
-    }
+    };
   }
 
   toggleSelection = (selection, e) => {
@@ -21,9 +21,9 @@ class ActivityMenu extends Component {
     });
   };
 
-  renderContent() {
+  renderContent = () => {
     if (this.state.toggle === 'drafts') {
-      return (<DraftSection drafts={this.props.drafts}/>);
+      return (<DraftSection drafts={this.props.drafts} />);
     }
     return (<SubmissionSection />);
   };
@@ -42,6 +42,10 @@ class ActivityMenu extends Component {
         { this.renderContent() }
       </div>);
   }
+}
+
+ActivityMenu.propTypes = {
+  drafts: PropTypes.array
 };
 
 export default ActivityMenu;

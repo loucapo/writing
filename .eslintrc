@@ -10,6 +10,8 @@
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
 
+  "parser": "babel-eslint",
+
   "globals": {
     "__dirname": true,
     "console": true,
