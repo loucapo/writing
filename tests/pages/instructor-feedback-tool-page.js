@@ -24,4 +24,5 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
+  example_essay: { value: 'TXTing: h8 it or luv it'}
 });

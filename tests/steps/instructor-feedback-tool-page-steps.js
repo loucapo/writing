@@ -36,10 +36,14 @@ exports.define = function(steps) {
   });
 
   steps.then("I should see the student essay in the feedback tool", function() {
-    expect(rtePage.draftEditor).to.exist;
-    expect(rtePage.button_bold).to.not.exist;
+    rtePage.draftEditor.isDisplayed().should.eventually.equal(true);
+    expect(page.button_bold).to.not.exist;
     rtePage.draftEditor.getText().then(function(text) {
-      expect(text).to.have.length.above(10);
+      expect(text).to.have.length.above(500);
+      var essay = text;
+      expect(essay).contains(page.example_essay);
+
+      //future improvements to check if feedback tools exist
     //expect(page.quick_feedback_library).to.exist;
   });
 });
