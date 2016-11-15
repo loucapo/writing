@@ -40,6 +40,8 @@ exports.define = function(steps) {
     expect(page.button_bold).to.not.exist;
     rtePage.draftEditor.getText().then(function(text) {
       expect(text).to.have.length.above(500);
+      var essay = text;
+      expect(essay).contains(page.example_essay);
 
       //future improvements to check if feedback tools exist
     //expect(page.quick_feedback_library).to.exist;
