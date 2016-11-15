@@ -12,14 +12,14 @@ Feature: Instructor Can Review Student Submissions
     And I see text 'Send Review' in 'activity div'
     And I see text 'Instructor Review' in 'activity div'
     And I see text 'Submissions Draft 1' in 'draft-picker option 1'
-
+    
   Scenario: The Instructor initiates feedback on a draft
     Given I visit the activity page
     And I click on the 'student submissions tab'
     When I click link 'Start Review' in 'Jane Austen row'
     Then the url includes '/feedbackTool/123'
     Then I navigate back
-    Then I click link 'Start Review' in 'Alice Walker row'
+    When I click link 'Start Review' in 'Alice Walker row'
     Then the url includes '/feedbackTool/123'
 
   Scenario: The Instructor switches draft views
