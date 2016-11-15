@@ -6,15 +6,15 @@ const SideMenu = () => {
     <div className={sideMenu.sidebarContainer}>
       <div className={sideMenu.sidebar}>
         <ul>
-          <li>Thesis</li>
-          <li>Reason & Supports</li>
-          <li>Interpretation/Analysis</li>
-          <li>Expansion of Thesis</li>
-          <li>Integration of Research</li>
-          <li>Counterarguments</li>
-          <li>Other</li>
-          <li>Good Job!</li>
-          <li>Quick Feedback Library</li>
+          <li className={sideMenu.commentIcon}>Thesis</li>
+          <li className={sideMenu.commentIcon}>Reason & Supports</li>
+          <li className={sideMenu.commentIcon}>Interpretation/Analysis</li>
+          <li className={sideMenu.commentIcon}>Expansion of Thesis</li>
+          <li className={sideMenu.commentIcon}>Integration of Research</li>
+          <li className={sideMenu.commentIcon}>Counterarguments</li>
+          <li className={sideMenu.commentIcon}>Other</li>
+          <li className={sideMenu.thumbsUpIcon}>Good Job!</li>
+          <li className={sideMenu.quickFeedbackIcon}>Quick Feedback Library</li>
         </ul>
       </div>
     </div>
