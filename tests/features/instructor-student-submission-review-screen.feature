@@ -1,4 +1,3 @@
-@only
 @WRITE-278
 Feature: Instructor Can Review Student Submissions
   
