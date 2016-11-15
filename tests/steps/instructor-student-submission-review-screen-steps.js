@@ -26,7 +26,7 @@ exports.define = function(steps) {
       });
   });
 
-  steps.then("I click link '$linkText' in '$element'", function(text, element) {
+  steps.when("I click link '$linkText' in '$element'", function(text, element) {
     student_submission_page[element]
       .then(function(el) {
         return el.findElement({ 'xpath': '//a[text()="' + text + '"]'}).click();

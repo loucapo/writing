@@ -15,8 +15,8 @@ Feature: Instructor Can Review Student Submissions
 
   Scenario: The Instructor initiates feedback on a draft
     Given I visit the activity page
-    Then I click on the 'student submissions tab'
-    Then I click link 'Start Review' in 'Jane Austen row'
+    And I click on the 'student submissions tab'
+    When I click link 'Start Review' in 'Jane Austen row'
     Then the url includes '/feedbackTool/123'
     Then I navigate back
     Then I click link 'Start Review' in 'Alice Walker row'
