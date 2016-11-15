@@ -8,12 +8,12 @@ import feedbackTool from './feedbackTool.css';
 
 const FeedbackTool = ({document, showQuickFeedbackTool, toggleQuickFeedback}) => {
   let badges = [{
-    title: "Integration of Research",
+    title: 'Integration of Research',
     contentParagraphs: [
-        `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
-        Your thesis is buried and unclear.`,
-        `I would begin here with your revisionsto clarify your thesis statement.`
-      ],
+      `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
+      Your thesis is buried and unclear.`,
+      `I would begin here with your revisionsto clarify your thesis statement.`
+    ],
     resources: [
       {
         title: 'what is a Thesis',
@@ -35,7 +35,7 @@ const FeedbackTool = ({document, showQuickFeedbackTool, toggleQuickFeedback}) =>
       <div className={feedbackTool.editorContainer}>
         <RichTextEditor value={document} readOnly={true} />
       </div>
-      <Flags flagElements={badges}/>
+      <Flags flagElements={badges} />
       <SideMenu
         toggleQuickFeedback={toggleQuickFeedback}
         showQuickFeedbackTool={showQuickFeedbackTool}
