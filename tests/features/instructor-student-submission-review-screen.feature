@@ -1,3 +1,4 @@
+@only
 @WRITE-278
 Feature: Instructor Can Review Student Submissions
   
@@ -19,6 +20,7 @@ Feature: Instructor Can Review Student Submissions
     Then I click link 'Start Review' in 'Jane Austen row'
     Then the url includes '/feedbackTool/123'
     Then I navigate back
+    Then I click on the 'student submissions tab'
     Then I click link 'Start Review' in 'Alice Walker row'
     Then the url includes '/feedbackTool/123'
 
