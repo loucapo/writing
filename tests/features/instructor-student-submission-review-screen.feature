@@ -1,8 +1,7 @@
-@only
 @WRITE-278
 Feature: Instructor Can Review Student Submissions
-  @only
-  Scenario: The Instructor Navigates to Student Submissions
+  
+  Scenario: The Instructor navigates to Student Submissions
     Given I visit the activity page
     Then I see the 'draft 1 header'
     Then I click on the 'student submissions tab'
@@ -13,27 +12,23 @@ Feature: Instructor Can Review Student Submissions
     And I see text 'Send Review' in 'activity div'
     And I see text 'Instructor Review' in 'activity div'
     And I see text 'Submissions Draft 1' in 'draft-picker option 1'
-    # Then I see the 'student roster'
 
-    And I see student submission information for Draft 1
-    And I see submission status
-    And I see the draft due date
-    And The review type is Instructor Review
-
-  Scenario: The Instructor Sends All Completed Reviews
+  Scenario: The Instructor initiates feedback on a draft
     Given I visit the activity page
-    When I click on the student submissions tab
-    Then I can send all completed reviews
+    Then I click on the 'student submissions tab'
+    Then I click link 'Start Review' in 'Jane Austen row'
+    Then the url includes '/feedbackTool/123'
+    Then I navigate back
+    Then I click link 'Start Review' in 'Alice Walker row'
+    Then the url includes '/feedbackTool/123'
 
-  Scenario: The Instructor Switches Draft Views
+  Scenario: The Instructor switches draft views
     Given I visit the activity page
-    When I click on the student submissions tab
-    Then I switch drafts to Final Draft
-
-# Given that an instructor is on the "Draft List View" of the activity summary page, when s/he clicks on the "Student Submission" tab,
-# Then the instructor should be taken to the "Student Submission Grid View" of the activity summary page, where the instructor sees:
-# That they are viewing student submission information for Draft 1 (Note: enabling the dropdown will be implemented in another ticket  WRITE-331 TO DO  )
-# List of students roster
-# A mixture of submission status
-# That the review type is "Instructor Review"
-# Implementation Detail: Link to the feedback route to "Start Review" provided by   WRITE-281 READY FOR TEST
+    Then I see the 'draft 1 header'
+    # And I don't see the 'Jane Austen row'
+    Then I click on the 'student submissions tab'
+    Then I see the 'Jane Austen row'
+    # And I don't see the 'Post Instructor Feedback Survey Prompt' in '
+    Then I see text 'Shakespeare, William' in 'activity div'
+    Then I click on the 'Drafts tab'
+    Then I see text 'Student Reflection Questions' in 'drafts div'
