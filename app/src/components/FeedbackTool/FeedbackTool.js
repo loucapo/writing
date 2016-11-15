@@ -1,8 +1,8 @@
 import React from 'react';
-import RichTextEditor from 'react-rte';
+import RichTextEditor from 'ml-react-rte';
 
-const FeedbackTool = ({document}) => {
-  return (<RichTextEditor value={document} readOnly={true}/>)
-}
+const FeedbackTool = ({value,onChange}) => {
+  return (<RichTextEditor onChange={onChange} value={value} readOnly='true'/>)
+};
 
 export default FeedbackTool;

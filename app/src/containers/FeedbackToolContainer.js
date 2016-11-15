@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import RichTextEditor from 'react-rte';
+import RichTextEditor from 'ml-react-rte';
 import { connect } from 'react-redux';
-import { fetchStudentSubmissionAction } from './../modules';
+import { fetchStudentSubmissionAction, submissionOnChange } from './../modules';
 import FeedbackTool from '../components/FeedbackTool/FeedbackTool';
 
 class FeedbackToolContainer extends Component {
@@ -9,7 +9,14 @@ class FeedbackToolContainer extends Component {
 
   componentWillReceiveProps(newProps) { this.loadData(); }
 
-  loadData() { this.props.fetchStudentSubmissionAction(this.props.params.id); }
+  loadData() {
+    this.props.fetchStudentSubmissionAction(this.props.params.id);
+    this.setState({value:this.props.document});
+  }
+
+  onChange(value) {
+    this.setState({value});
+  };
 
   render() {
     if (this.props.isFetching) {
@@ -18,7 +25,7 @@ class FeedbackToolContainer extends Component {
     if (this.props.errorMessage) {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
-    return (<FeedbackTool{...this.props} />);
+    return (<FeedbackTool value={this.state.value} onChange={this.onChange.bind(this)} />);
   }
 }
 
@@ -37,6 +44,6 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, {fetchStudentSubmissionAction})(FeedbackToolContainer);
+export default connect(mapStateToProps, {fetchStudentSubmissionAction, submissionOnChange})(FeedbackToolContainer);
 
 
