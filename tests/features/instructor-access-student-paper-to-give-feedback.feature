@@ -2,7 +2,7 @@
 Feature: Instructor Can Open Student Paper And Give Feedback
   Scenario: The Instructor Opens Student Submission
     Given I visit the activity page
-    And I click on the 'student submissions tab'
-    When I click link 'Start Review' in 'Jane Austen row'
+    Then I click on the 'student submissions tab'
+    Then I click link 'Start Review' in 'Jane Austen row'
     Then the url includes '/feedbackTool/123'
     And I should see the student essay in the feedback tool
