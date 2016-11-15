@@ -1,0 +1,96 @@
+@import 'mixins.css';
+
+.flagContainer {
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: darkgray;
+}
+
+.paragraph {
+  margin-bottom: 10px;
+  color: darkgray;
+}
+
+.resources {
+  color: darkgray;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.resource_icon {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 15px;
+  background-image: url('../../../images/comment_thumbsup.png');
+  background-repeat: no-repeat;
+}
+
+a:link, a:visited, a:hover, a:active {
+  font-weight: bold;
+  color: darkgray;
+  text-decoration: underline;
+  display: inline-block;
+  max-width: 100px;
+  margin-left: 25px;
+  white-space: nowrap;
+}
+
+.triangle_border {
+  background: #fff;
+  border: 1px solid #5fc5eb;
+  border-radius: 0px 4px 4px 4px;
+  color: #333;
+  margin: 25px;
+  padding: 10px;
+  position: relative;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.triangle_border:before {
+  border-color: transparent #5fc5eb;
+  border-style: solid;
+  border-width: 0px 20px 10px 0;
+  bottom: auto;
+  display: block;
+  content: "";
+  left: -20px;
+  position: absolute;
+  top: -1px;
+  width: 0;
+}
+
+.triangle_border:after {
+  border-color: transparent #fff;
+  border-style: solid;
+  border-width: 0px 15px 8px 0;
+  bottom: auto;
+  content: "";
+  display: block;
+  left: -15px;
+  position: absolute;
+  top: 0px;
+  width: 0;
+}
+
+.green {
+  border-color: #7cd34b;
+}
+
+.green:before {
+  border-color: transparent #7cd34b !important;
+}
+
+.orange {
+  border-color: #f5a543;
+}
+
+.orange:before {
+  border-color: transparent  #f5a543 !important;
+}

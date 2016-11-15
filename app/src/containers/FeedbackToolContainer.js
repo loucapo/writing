@@ -16,7 +16,12 @@ class FeedbackToolContainer extends Component {
 
   componentWillReceiveProps(newProps) { this.loadData(); } // eslint-disable-line no-unused-vars
 
-  loadData() { this.props.fetchStudentSubmissionAction(this.props.params.id); }
+  loadData() {
+    console.log('============ this.props.params ============');
+    console.log(this.props.params);
+    console.log('=================================');
+    this.props.fetchStudentSubmissionAction(this.props.params.id);
+  }
 
   render() {
     if (this.props.isFetching) {
