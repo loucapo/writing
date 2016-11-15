@@ -50,4 +50,8 @@ FeedbackTool.propTypes = {
   toggleQuickFeedback: PropTypes.func
 };
 
+FeedbackTool.propTypes = {
+  document: PropTypes.object
+};
+
 export default FeedbackTool;

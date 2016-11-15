@@ -2,11 +2,24 @@
   position: fixed;
   float: right;
   margin: 0 20px 0 80%;
-  width: 200px;
+  width: 240px;
+  border: thin #ddd;
+  border-style: solid none;
 }
 
-.sidebar {
-  position: relative;
-  height: 100px;
-  border: thin solid orange;
+.sidebar li {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.commentIcon {
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg");
+}
+
+.thumbsUpIcon {
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/22111/comment_thumbsup.svg");
+}
+
+.quickFeedbackIcon {
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/22112/comment_quickfeedback.svg");
 }
