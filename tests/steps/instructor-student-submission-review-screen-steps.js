@@ -42,13 +42,4 @@ exports.define = function(steps) {
     driver.navigate().back();
   });
 
-
-  // steps.then("I don't see the '$element'", function(elem) {
-  //   var co = student_submission_page[elem];
-  //   marvin.log.dir(co);
-  // driver.isElementPresent(webdriver.By.id("someId"))
-  //   .then(function(isPresent){
-  //     assert.equal(false, isPresent , "message");
-  //   });
-  // });
 };

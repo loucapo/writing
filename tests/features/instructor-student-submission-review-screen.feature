@@ -25,10 +25,8 @@ Feature: Instructor Can Review Student Submissions
   Scenario: The Instructor switches draft views
     Given I visit the activity page
     Then I see the 'draft 1 header'
-    # And I don't see the 'Jane Austen row'
     Then I click on the 'student submissions tab'
     Then I see the 'Jane Austen row'
-    # And I don't see the 'Post Instructor Feedback Survey Prompt' in '
     Then I see text 'Shakespeare, William' in 'activity div'
     Then I click on the 'Drafts tab'
     Then I see text 'Student Reflection Questions' in 'drafts div'
