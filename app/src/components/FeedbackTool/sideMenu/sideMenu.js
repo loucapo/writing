@@ -14,7 +14,7 @@ const SideMenu = () => {
           <li>Counterarguments</li>
           <li>Other</li>
           <li>Good Job!</li>
-          <li>Qucik Feedback Library</li>
+          <li>Quick Feedback Library</li>
         </ul>
       </div>
     </div>

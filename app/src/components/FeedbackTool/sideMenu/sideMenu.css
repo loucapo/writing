@@ -2,12 +2,20 @@
   position: fixed;
   float: right;
   margin: 0 20px 0 80%;
-  width: 200px;
-  border: thin solid black;
+  width: 240px;
+  border: thin #ddd;
+  border-style: solid none;
 }
 
 .sidebar {
   position: relative;
-  height: 100px;
-  border: thin solid orange;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar li {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
