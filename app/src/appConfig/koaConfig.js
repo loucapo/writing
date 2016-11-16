@@ -20,8 +20,9 @@ module.exports = function(koaresponsetime,
     // hits the routes then comes back up and resolves
     app.use(koalogger());
     app.use(koaErrorHandler());
-    app.use(koacors({origin:config.app.wk_launch_url, credentials:true}));
-    app.use(koacors({origin:config.app.swagger_ui_url}));
+    app.use(koacors({origin:config.app.wk_serve_url}));
+//    app.use(koacors({origin:config.app.swagger_ui_url}));
+//XXX -- it would appear that last CORS wins...  need to revisit this for swagger.
     app.use(koabodyparser());
     app.use(koacompress());
     app.use(koaresponsetime());
