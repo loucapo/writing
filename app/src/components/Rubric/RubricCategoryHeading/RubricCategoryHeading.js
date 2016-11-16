@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-
 import rubricCategoryHeadingCss from './rubricCategoryHeading.css';
 
 const RubricCategoryHeading = ({headings}) => {
@@ -25,7 +24,6 @@ const RubricCategoryHeading = ({headings}) => {
 };
 
 RubricCategoryHeading.propTypes = {
-  // activity: PropTypes.object,
   headings: PropTypes.array
 };
 

@@ -1,8 +1,6 @@
 import React, {PropTypes} from 'react';
-
 import RubricCategoryHeading from '../RubricCategoryHeading/RubricCategoryHeading';
 import RubricCategoryScore from '../RubricCategoryScore/RubricCategoryScore';
-
 import rubricCategoryCss from './rubricCategory.css';
 
 const RubricCategory = ({ categories }) => {
@@ -23,6 +21,5 @@ const RubricCategory = ({ categories }) => {
 RubricCategory.propTypes = {
   categories: PropTypes.array
 };
-
 
 export default RubricCategory;

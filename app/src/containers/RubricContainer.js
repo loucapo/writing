@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { loadRubric } from './../modules';
-// import Activity from '../components/Activity';
 import Rubric from '../components/Rubric/Rubric';
 
 class RubricContainer extends Component {

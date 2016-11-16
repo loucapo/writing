@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-
 import rubricCategoryNameCss from './rubricCategoryName.css';
 
 const RubricCategoryName = ({ categoryNames }) => {
@@ -8,9 +7,6 @@ const RubricCategoryName = ({ categoryNames }) => {
   }
   return (
     <div className={rubricCategoryNameCss.category_name}>
-      {/*<div className={rubricCategoryNameCss.category_name_item}>*/}
-
-      {/*</div>*/}
       {
         categoryNames.map((category, idx) => {
           return (

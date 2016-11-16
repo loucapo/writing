@@ -1,9 +1,6 @@
 import React, {PropTypes} from 'react';
-
-// import ActivitySummary from './ActivitySummary/ActivitySummary';
 import RubricCategoryName from './RubricCategoryName/RubricCategoryName';
 import RubricCategory from './RubricCategory/RubricCategory';
-
 import rubricCss from './rubric.css';
 
 const Rubric = ({ categories, categoryNames }) => {

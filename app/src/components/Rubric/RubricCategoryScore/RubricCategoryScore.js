@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-
 import rubricCategoryScoreCss from './rubricCategoryScore.css';
 
 const RubricCategoryScore = ({scores}) => {
@@ -34,6 +33,5 @@ const RubricCategoryScore = ({scores}) => {
 RubricCategoryScore.propTypes = {
   scores: PropTypes.array
 };
-
 
 export default RubricCategoryScore;
