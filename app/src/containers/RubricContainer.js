@@ -19,25 +19,22 @@ class RubricContainer extends Component {
     if (this.props.errorMessage) {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
-    console.log('rubric');
-console.log(this.props.rubric);
-    return (<Rubric categories={this.props.categories} headings={this.props.headings} />);
+    return (<Rubric categories={this.props.categories} categoryNames={this.props.categoryNames} />);
   }
 }
 
+// todo: first 2 proptypes needed here?
 RubricContainer.propTypes = {
   rubric: PropTypes.object,
+  loadRubric: PropTypes.func,
   categories: PropTypes.array,
-  headings: PropTypes.array,
-  loadRubric: PropTypes.func
+  categoryNames: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => {
-  console.log('state');
-  console.log(state);
   return {
     categories: state.rubric.categories,
-    headings: state.rubric.headings
+    categoryNames: state.rubric.categoryNames
   };
 };
 

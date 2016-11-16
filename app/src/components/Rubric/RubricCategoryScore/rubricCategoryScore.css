@@ -1,11 +1,17 @@
+.column {
+  display: flex;
+}
+
 .category_score {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .category_item {
   border: 0px solid #999;
   border-width: 0 1px 1px 0;
-  width: calc(100% * 1/5);
+  width: calc(100% - 31px);
   height: 100px;
   padding: 15px;
 }

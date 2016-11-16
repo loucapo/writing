@@ -14,3 +14,8 @@
   text-align: right;
   padding: 15px;
 }
+
+.category_name_item:first-child {
+  height: 40px;
+  text-align: left;
+}
