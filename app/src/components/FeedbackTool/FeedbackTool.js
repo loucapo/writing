@@ -8,10 +8,10 @@ import feedbackTool from './feedbackTool.css';
 const FeedbackTool = ({value, onChange}) => {
   return (
     <section>
-      <StudentReflection />
-      <InstructorComment />
       <div className={feedbackTool.editorContainer}>
+        <StudentReflection />
         <RichTextEditor onChange={onChange} value={value} readOnly='true' />
+        <InstructorComment />
       </div>
       <SideMenu />
     </section>

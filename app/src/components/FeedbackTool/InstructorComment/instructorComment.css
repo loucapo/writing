@@ -1,0 +1,16 @@
+.instructorCommentContainer {
+  border-top: solid thin #ddd;
+  padding: 10px;
+}
+
+h5 {
+  font-weight: normal;
+}
+
+textarea {
+  width: 70%;
+  padding: 10px;
+  font-size: 13px;
+  color: #ccc;
+  border: solid thin #ddd;
+}
