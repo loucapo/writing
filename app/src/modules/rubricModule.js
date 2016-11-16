@@ -23,7 +23,10 @@ export function loadRubric() {
     payload: {
       data: {
         rubric: {
-          headings: [
+          categoryNames: [
+            {
+              text: "Rubric: Argument"
+            },
             {
               text: "Exceeds Expectations",
               score: 4

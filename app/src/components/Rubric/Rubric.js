@@ -1,26 +1,25 @@
 import React, {PropTypes} from 'react';
 
 // import ActivitySummary from './ActivitySummary/ActivitySummary';
-import RubricCategoryName from './RubricCategory/RubricCategoryName/RubricCategoryName';
+import RubricCategoryName from './RubricCategoryName/RubricCategoryName';
 import RubricCategory from './RubricCategory/RubricCategory';
 
 import rubricCss from './rubric.css';
 
-const Rubric = (rubric) => {
-  console.log('rubric\'s rubric');
-  console.log(rubric);
+const Rubric = ({ categories, categoryNames }) => {
+
   return (
     <section className={rubricCss.rubric_container}>
-      <RubricCategoryName categories={rubric.headings} />
+      <div className={rubricCss.title}>Final Draft Rubric</div>
+      <RubricCategoryName categoryNames={ categoryNames } />
 
-      <RubricCategory />
+      <RubricCategory categories={ categories }/>
     </section>
   );
 };
 
 Rubric.propTypes = {
-  rubric: PropTypes.object,
-  headings: PropTypes.array,
+  categoryNames: PropTypes.array,
   categories: PropTypes.array
 };
 
