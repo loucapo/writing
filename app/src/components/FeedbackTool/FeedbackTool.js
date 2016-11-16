@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import StudentReflection from './StudentReflection/StudentReflection';
-import InstructorComment from './InstructorComment/InstructorComment';
+import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
 const FeedbackTool = ({value, onChange}) => {
@@ -11,7 +11,7 @@ const FeedbackTool = ({value, onChange}) => {
       <div className={feedbackTool.editorContainer}>
         <StudentReflection />
         <RichTextEditor onChange={onChange} value={value} readOnly='true' />
-        <InstructorComment />
+        <EndComment />
       </div>
       <SideMenu />
     </section>
