@@ -14,15 +14,20 @@ const Flags = ({flagElements}) => {
             })
           }
           <div className={flags.resources}>Resources</div>
+          <ul className={flags.list_container}>
           {
             flagItem.resources.map((resource, resourceIndex) => {
               return (
-                <div key={resourceIndex}>
-                  <div className={flags.resource_icon}><a href={resource.url}>{resource.title}</a></div>
-                </div>
+                <li key={resourceIndex} className={flags.list_item}>
+                  <div className={flags.image} />
+                  <a href={resource.url} className={flags.anchor}>
+                    {resource.title}
+                  </a>
+                </li>
               );
             })
           }
+          </ul>
         </div>
       </div>
     );

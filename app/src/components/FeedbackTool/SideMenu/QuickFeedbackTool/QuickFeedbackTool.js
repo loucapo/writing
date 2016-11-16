@@ -9,15 +9,15 @@ const spanClicked = (val) => {
 const SideMenu = () => {
   return (
     <div className={quickFeedbackTool.quickFeedback}>
-      <ul>
-        <li onClick={() => spanClicked(1)}>Comma Splice</li>
-        <li onClick={() => spanClicked(2)}>Fragment</li>
-        <li onClick={() => spanClicked(3)}>Usage</li>
-        <li onClick={() => spanClicked(4)}>Pronoun Agreement</li>
-        <li onClick={() => spanClicked(5)}>Subject Ver Agreement</li>
-        <li onClick={() => spanClicked(6)}>Wrong Word</li>
-        <li onClick={() => spanClicked(7)}>Needs Analysis</li>
-        <li onClick={() => spanClicked(8)}>Comma Error</li>
+      <ul className={quickFeedbackTool.list_container}>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(1)}>Comma Splice</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(2)}>Fragment</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(3)}>Usage</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(4)}>Pronoun Agreement</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(5)}>Subject Ver Agreement</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(6)}>Wrong Word</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(7)}>Needs Analysis</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(8)}>Comma Error</li>
       </ul>
     </div>
   );

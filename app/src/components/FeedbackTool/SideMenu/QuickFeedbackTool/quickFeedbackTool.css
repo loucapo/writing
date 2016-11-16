@@ -3,13 +3,13 @@
   width: 100%;
 }
 
-ul {
+.list_container {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+.list_Item {
   background-color: lightgray;
   border: solid thin darkgray;
   padding: 5px 0 5px 5px;
