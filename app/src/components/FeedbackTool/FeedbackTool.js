@@ -5,13 +5,13 @@ import StudentReflection from './StudentReflection/StudentReflection';
 import InstructorComment from './InstructorComment/InstructorComment';
 import feedbackTool from './feedbackTool.css';
 
-const FeedbackTool = ({document, onChange}) => {
+const FeedbackTool = ({value, onChange}) => {
   return (
     <section>
       <StudentReflection />
       <InstructorComment />
       <div className={feedbackTool.editorContainer}>
-        <RichTextEditor onChange={onChange} value={document} readOnly='true' />
+        <RichTextEditor onChange={onChange} value={value} readOnly='true' />
       </div>
       <SideMenu />
     </section>
