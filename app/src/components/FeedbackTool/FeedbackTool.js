@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
-import RichTextEditor from 'react-rte';
+import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import feedbackTool from './feedbackTool.css';
 
-const FeedbackTool = ({document}) => {
+const FeedbackTool = ({document, onChange}) => {
   return (
     <section>
       <div className={feedbackTool.editorContainer}>
-        <RichTextEditor value={document} readOnly={true} />
+        <RichTextEditor onChange={onChange} value={document} readOnly='true' />
       </div>
       <SideMenu />
     </section>
