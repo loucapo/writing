@@ -4,7 +4,7 @@ import instructorComment from './instructorComment.css';
 const InstructorComment = () => {
   return (
     <div className={instructorComment.instructorCommentContainer}>
-      <h5>End Comment (Optional)</h5>
+      <h4>End Comment (Optional)</h4>
       <textarea>Write any concluding remarks you want to tell the student...</textarea>
     </div>
   );

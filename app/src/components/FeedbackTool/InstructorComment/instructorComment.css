@@ -1,9 +1,8 @@
 .instructorCommentContainer {
-  border-top: solid thin #ddd;
-  padding: 10px;
+  padding: 0 20px 20px 20px;
 }
 
-h5 {
+h4 {
   font-weight: normal;
 }
 
