@@ -5,29 +5,13 @@ import sideMenu from './sideMenu.css';
 
 const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
   let result;
-  const sideMenuContent = (
-    <div
-      className={sideMenu.sidebar}>
-      <ul>
-        <li className={sideMenu.commentIcon}>Thesis</li>
-        <li className={sideMenu.commentIcon}>Reason & Supports</li>
-        <li className={sideMenu.commentIcon}>Interpretation/Analysis</li>
-        <li className={sideMenu.commentIcon}>Expansion of Thesis</li>
-        <li className={sideMenu.commentIcon}>Integration of Research</li>
-        <li className={sideMenu.commentIcon}>Counterarguments</li>
-        <li className={sideMenu.commentIcon}>Other</li>
-        <li className={sideMenu.thumbsUpIcon}>Good Job!</li>
-        <li
-          className={sideMenu.quickFeedbackIcon}
-          onClick={toggleQuickFeedback}>Quick Feedback Library
-        </li>
-      </ul>
-    </div>
-  );
   if (showQuickFeedbackTool) {
     result = (
       <div className={sideMenu.sidebarContainer}>
-        {sideMenuContent}
+        <div
+          className={sideMenu.sidebar}
+          onClick={toggleQuickFeedback}>hi mom
+        </div>
         <QuickFeedbackTool />
       </div>
     );
@@ -35,7 +19,10 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
   else {
     result = (
       <div className={sideMenu.sidebarContainer}>
-        {sideMenuContent}
+        <div
+          className={sideMenu.sidebar}
+          onClick={toggleQuickFeedback}>hi mom
+        </div>
       </div>
     );
   }
