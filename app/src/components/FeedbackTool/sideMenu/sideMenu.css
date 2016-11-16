@@ -8,18 +8,17 @@
 }
 
 .sidebar li {
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 13px;
 }
 
 .commentIcon {
-  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21194/comment.png");
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg");
 }
 
 .thumbsUpIcon {
-  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21935/comment%20thumbsup.svg");
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/22111/comment_thumbsup.svg");
 }
 
 .quickFeedbackIcon {
-  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/21934/comment%20quickfeedback.svg");
+  list-style-image: url("https://macmillanlearning.atlassian.net/secure/attachment/22112/comment_quickfeedback.svg");
 }

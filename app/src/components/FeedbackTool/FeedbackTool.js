@@ -3,11 +3,11 @@ import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import feedbackTool from './feedbackTool.css';
 
-const FeedbackTool = ({document, onChange}) => {
+const FeedbackTool = ({value, onChange}) => {
   return (
     <section>
       <div className={feedbackTool.editorContainer}>
-        <RichTextEditor onChange={onChange} value={document} readOnly='true' />
+        <RichTextEditor onChange={onChange} value={value} readOnly='true' />
       </div>
       <SideMenu />
     </section>
