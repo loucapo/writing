@@ -4,6 +4,8 @@ module.exports = new Page({
 
   url: { value: '/feedbackTool/123' },
 
+  student_submission_body: { get: function () { return this.element("[data-id='student_submission_body']"); } },
+
   quick_feedback_library: { get: function () { return this.element("[data-id='quick-feedback-library']"); } },
 
   comma_splice: { get: function () { return this.element("[data-id='comma_splice']"); } },
@@ -22,4 +24,5 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
+  example_essay: { value: 'TXTing: h8 it or luv it'}
 });
