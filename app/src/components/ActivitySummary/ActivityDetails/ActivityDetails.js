@@ -1,14 +1,10 @@
 import React, {PropTypes, Component} from 'react';
 
 import activityDetails from './activityDetails.css';
-import MLModal from './../../MLModal/MLModal';
 
 class ActivityDetails extends Component {
   constructor() {
     super();
-    this.state = {isOpen:false};
-    this.onClick = this.onClick.bind(this);
-    this.onClose = this.onClose.bind(this);
   }
 
   render() {
