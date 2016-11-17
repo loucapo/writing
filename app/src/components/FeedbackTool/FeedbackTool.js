@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 
-import RichTextEditor from 'react-rte';
+import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import Flags from './Flags/Flags';
 
 import feedbackTool from './feedbackTool.css';
 
-const FeedbackTool = ({document, showQuickFeedbackTool, toggleQuickFeedback}) => {
+const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedback}) => {
   let badges = [{
     title: 'Integration of Research',
     contentParagraphs: [
@@ -33,7 +33,7 @@ const FeedbackTool = ({document, showQuickFeedbackTool, toggleQuickFeedback}) =>
   return (
     <section>
       <div className={feedbackTool.editorContainer}>
-        <RichTextEditor value={document} readOnly={true} />
+        <RichTextEditor onChange={onChange} value={value} readOnly='true'/>
       </div>
       <Flags flagElements={badges} />
       <SideMenu
@@ -48,10 +48,6 @@ FeedbackTool.propTypes = {
   document: PropTypes.object,
   showQuickFeedbackTool: PropTypes.bool,
   toggleQuickFeedback: PropTypes.func
-};
-
-FeedbackTool.propTypes = {
-  document: PropTypes.object
 };
 
 export default FeedbackTool;
