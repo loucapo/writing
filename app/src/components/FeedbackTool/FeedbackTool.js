@@ -46,7 +46,6 @@ class FeedbackTool extends Component {
     if (this.props.errorMessage) {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
-
     return (
       <div>
         <button onClick={this.onClick} > click me </button>

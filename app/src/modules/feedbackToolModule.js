@@ -27,7 +27,7 @@ export function submitOtherComment(value) {
     type: CREATE_OTHER_COMMENT,
     comment: {
       id: uuid.v4(),
-      comment: value
+      value: value.otherComment
     }
   }
 }

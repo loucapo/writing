@@ -5,7 +5,6 @@ const _Input = ({data,
                validation,
                containerStyle
                 }) => {
-
  let inputStyle = classNames({
      ['input__container__' + (data.type ? data.type : 'input')]:true,
      'input__success' : !data.invalid,
@@ -27,11 +26,11 @@ data.label = `${data.label}${
    switch(data['x-input'] || data.type){
       case 'textarea': {
         return (<textarea className={inputStyle}
-                      placeholder={data.placeholder}
-                      name={data.name}
-                      value={data.value}
-                      onChange={data.onChange}
-       />)
+                          placeholder={data.placeholder}
+                          name={data.name}
+                          value={data.value}
+                          onChange={data.onChange}
+        />)
       }
      case 'number':
      case 'password':
