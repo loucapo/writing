@@ -15,7 +15,7 @@ const SideMenu = () => {
         <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(3)}>Usage</li>
         <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(4)}>Pronoun Agreement</li>
         <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(5)}>Subject Ver Agreement</li>
-        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(6)}>Wrong Word</li>
+        <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(6)}>Appropriate Language</li>
         <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(7)}>Needs Analysis</li>
         <li className={quickFeedbackTool.list_Item} onClick={() => spanClicked(8)}>Comma Error</li>
       </ul>
