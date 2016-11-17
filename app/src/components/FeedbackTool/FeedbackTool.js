@@ -46,7 +46,7 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
 
 FeedbackTool.propTypes = {
   value: PropTypes.object,
-  onChange: PropTypes.function,
+  onChange: PropTypes.func,
   document: PropTypes.object,
   showQuickFeedbackTool: PropTypes.bool,
   toggleQuickFeedback: PropTypes.func
