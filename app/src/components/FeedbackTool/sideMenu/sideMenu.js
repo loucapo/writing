@@ -7,9 +7,9 @@ const SideMenu = () => {
       <div className={sideMenu.sidebar}>
         <ul>
           <li className={sideMenu.commentIcon}>Thesis</li>
-          <li className={sideMenu.commentIcon}>Reason & Supports</li>
+          <li className={sideMenu.commentIcon}>Reason & Support</li>
           <li className={sideMenu.commentIcon}>Interpretation/Analysis</li>
-          <li className={sideMenu.commentIcon}>Expansion of Thesis</li>
+          <li className={sideMenu.commentIcon}>Paragraph Development</li>
           <li className={sideMenu.commentIcon}>Integration of Research</li>
           <li className={sideMenu.commentIcon}>Counterarguments</li>
           <li className={sideMenu.commentIcon}>Other</li>
