@@ -33,7 +33,7 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
   return (
     <section>
       <div className={feedbackTool.editorContainer}>
-        <RichTextEditor onChange={onChange} value={value} readOnly='true'/>
+        <RichTextEditor onChange={onChange} value={value} readOnly="true" />
       </div>
       <Flags flagElements={badges} />
       <SideMenu
@@ -45,6 +45,8 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
 };
 
 FeedbackTool.propTypes = {
+  value: PropTypes.object,
+  onChange: PropTypes.function,
   document: PropTypes.object,
   showQuickFeedbackTool: PropTypes.bool,
   toggleQuickFeedback: PropTypes.func

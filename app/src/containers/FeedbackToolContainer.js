@@ -18,7 +18,7 @@ class FeedbackToolContainer extends Component {
 
   loadData() {
     this.props.fetchStudentSubmissionAction(this.props.params.id);
-    this.setState({value:this.props.document});
+    this.setState({value: this.props.document});
   }
 
   onChange = (value) => {
@@ -49,7 +49,8 @@ FeedbackToolContainer.propTypes = {
   isFetching: PropTypes.string,
   errorMessage: PropTypes.string,
   params: PropTypes.object,
-  fetchStudentSubmissionAction: PropTypes.func
+  fetchStudentSubmissionAction: PropTypes.func,
+  document: PropTypes.object
 };
 
 const mapStateToProps = (state, props) => {
