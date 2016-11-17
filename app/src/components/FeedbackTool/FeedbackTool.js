@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import RichTextEditor from 'ml-react-rte';
 import MLModal from './../MLModal/MLModal';
-
 import {Form} from 'freakin-react-forms';
 import Input from './../FormElements/Input';
+import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {
   constructor() {
@@ -52,13 +52,13 @@ class FeedbackTool extends Component {
         <button onClick={this.onClick} > click me </button>
         <RichTextEditor onChange={this.onChange} value={this.state.value} readOnly='true'/>
         <MLModal position={this.state.modalPosition} titleBar={{enable:false}} isOpen={this.state.isOpen} closeModal={this.onClose} >
-          <Form submitHandler={x => this.props.submitOtherComment(x)} model={this.props.model}>
-            <div>
+          <div className={feedbackTool.modalForm}>
+            <Form submitHandler={x => this.props.submitOtherComment(x)} model={this.props.model}>
               <Input frfProperty={this.props.model.otherComment}/>
-            </div>
-            <button type="submit">Submit</button>
-            <button onClick={this.close}>Cancel</button>
-          </Form>
+              <button type="submit">Save</button>
+              <button onClick={this.close}>Cancel</button>
+            </Form>
+          </div>
         </MLModal>
       </div>
     )
