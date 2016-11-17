@@ -51,15 +51,15 @@ class FeedbackTool extends Component {
       <div>
         <button onClick={this.onClick} > click me </button>
         <RichTextEditor onChange={this.onChange} value={this.state.value} readOnly='true'/>
-        <MLModal position={this.state.modalPosition} titleBar={{enable:false}} isOpen={this.state.isOpen} closeModal={this.onClose} >
-          <div className={feedbackTool.modalForm}>
+        <div className={feedbackTool.modal}>
+          <MLModal position={this.state.modalPosition} titleBar={{enable:false}} isOpen={this.state.isOpen} closeModal={this.onClose} >
             <Form submitHandler={x => this.props.submitOtherComment(x)} model={this.props.model}>
               <Input frfProperty={this.props.model.otherComment}/>
               <button type="submit">Save</button>
               <button onClick={this.close}>Cancel</button>
             </Form>
-          </div>
-        </MLModal>
+          </MLModal>
+        </div>
       </div>
     )
   }
