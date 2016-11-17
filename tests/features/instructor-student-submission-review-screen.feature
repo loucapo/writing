@@ -3,7 +3,7 @@ Feature: Instructor Can Review Student Submissions
   
   Scenario: The Instructor navigates to Student Submissions
     Given I visit the activity page
-    Then I see the 'draft 1 header'
+    Then I see the 'drafts div'
     Then I click on the 'student submissions tab'
     Then I see text 'Shakespeare, William' in 'activity div'
     And I see text 'Faulkner, William' in 'activity div'
@@ -25,7 +25,7 @@ Feature: Instructor Can Review Student Submissions
 
   Scenario: The Instructor switches draft views
     Given I visit the activity page
-    Then I see the 'draft 1 header'
+    Then I see the 'drafts div'
     Then I click on the 'student submissions tab'
     Then I see the 'Jane Austen row'
     Then I see text 'Shakespeare, William' in 'activity div'
