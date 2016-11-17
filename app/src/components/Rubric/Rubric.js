@@ -3,21 +3,20 @@ import RubricCategoryName from './RubricCategoryName/RubricCategoryName';
 import RubricCategory from './RubricCategory/RubricCategory';
 import rubricCss from './rubric.css';
 
-const Rubric = ({ categories, categoryNames }) => {
+const Rubric = ({ rubric }) => {
 
   return (
     <section className={rubricCss.rubric_container}>
       <div className={rubricCss.title}>Final Draft Rubric</div>
-      <RubricCategoryName categoryNames={ categoryNames } />
+      <RubricCategoryName categoryNames={ rubric.categoryNames } />
 
-      <RubricCategory categories={ categories }/>
+      <RubricCategory categories={ rubric.categories }/>
     </section>
   );
 };
 
 Rubric.propTypes = {
-  categoryNames: PropTypes.array,
-  categories: PropTypes.array
+  rubric: PropTypes.object
 };
 
 export default Rubric;

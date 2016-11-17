@@ -25,15 +25,12 @@ class RubricContainer extends Component {
 // todo: first 2 proptypes needed here?
 RubricContainer.propTypes = {
   rubric: PropTypes.object,
-  loadRubric: PropTypes.func,
-  categories: PropTypes.array,
-  categoryNames: PropTypes.array
+  loadRubric: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
   return {
-    categories: state.rubric.categories,
-    categoryNames: state.rubric.categoryNames
+    rubric: state.rubric
   };
 };
 
