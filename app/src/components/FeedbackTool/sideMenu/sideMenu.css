@@ -1,19 +1,19 @@
-.sidebarContainer {
+.sideMenu {
   border: thin #ddd;
   border-style: solid none;
 }
 
-.sidebar ul {
+.sideMenu ul {
   padding: 0 20px;
 }
 
-.sidebar li {
+.sideMenu li {
   display: flex;
   align-items: center;
   font-size: 13px;
   width: 190px;
 }
 
-.sidebar li img {
+.sideMenu li img {
   margin-right: 6px;
 }
