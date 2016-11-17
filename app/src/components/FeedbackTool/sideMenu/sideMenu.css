@@ -1,7 +1,5 @@
 .sidebarContainer {
-  position: fixed;
-  float: right;
-  margin: 0 20px 0 80%;
+  padding: 0 20px;
   width: 240px;
   border: thin #ddd;
   border-style: solid none;
