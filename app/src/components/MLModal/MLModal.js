@@ -71,12 +71,13 @@ export default class MLModal extends Component {
       titleBar,
       overlayOpacity,
       children,
-      className
+      className,
+      position
     } = this.configs;
     return this.props.isOpen ? (
       <div data-title={ (titleBar.enable) ? titleBar.position : null }
           className={mlmodal['mlModal'] }>
-          <div className={ classNames(mlmodal['mlModal-wrapper'], className)}>
+          <div style={ position } className={ classNames(mlmodal['mlModal-wrapper'], className)}>
             { titleBar.enable && this.renderTitleBar() }
             <div className={mlmodal['mlModal-content']}>
               { children }

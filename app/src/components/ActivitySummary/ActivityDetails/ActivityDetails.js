@@ -11,19 +11,10 @@ class ActivityDetails extends Component {
     this.onClose = this.onClose.bind(this);
   }
 
-  onClick() {
-    this.setState({isOpen:true})
-  }
-
-  onClose() {
-    this.setState({isOpen:false})
-  }
-
   render() {
     const {activity} = this.props;
     return (
       <div className={ activityDetails.summary }>
-        <button onClick={this.onClick} > click me </button>
         <h1 data-id="activity-title" className={ activityDetails.title }>
           {activity.title}
         </h1>
@@ -48,9 +39,6 @@ class ActivityDetails extends Component {
           <span data-id="activity-prompt">{activity.prompt}</span>
         </div>
         <a data-id="edit-activity" href="#">Edit Activity Information</a>
-        <MLModal titleBar={{enable:true}} isOpen={this.state.isOpen} closeModal={this.onClose} >
-          <input type="textarea" />
-        </MLModal>
       </div>
     )
   };
