@@ -1,24 +1,18 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 import Flag from './Flag';
 
-class Flags extends Component {
-  constructor() {
-    super();
-  }
-
-  getContent = () => {
-    return (
-      this.props.flagElements.map((flagItem, index) => {
-        return (<Flag flagItem={flagItem} index={index} key={index} />);
-      })
-    );
-  }
-
-  render() {
-    return (<div>{this.getContent()}</div>);
-  }
-}
+const Flags = ({flagElements}) => {
+  return (
+    <div>
+      {
+        flagElements.map((flagItem, index) => {
+          return (<Flag flagItem={flagItem} index={index} key={index} />);
+        })
+      }
+    </div>
+  );
+};
 
 Flags.propTypes = {
   flagElements: PropTypes.array
