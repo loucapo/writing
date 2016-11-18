@@ -1,14 +1,14 @@
 import React from 'react';
 import sideMenu from './../sideMenu.css';
 
-const CounterArgsButton = () => {
+const OtherButton = () => {
   let commentIcon = "https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg";
 
   return (
-    <li data-id="counterargs">
-      <img src={commentIcon}/>Counterarguments
+    <li data-id="other">
+      <img src={commentIcon}/>Other
     </li>
   );
 };
 
-export default CounterArgsButton;
+export default OtherButton;
