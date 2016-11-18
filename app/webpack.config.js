@@ -37,7 +37,7 @@ const webpackConfig = {
     }
   },
 
-  devtool: 'cheap-module-eval-source-map', //javascript sourcemaps
+  devtool: 'eval-source-map', //javascript sourcemaps
 
   entry: {
     app: [

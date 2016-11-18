@@ -35,7 +35,8 @@ class FeedbackToolContainer extends Component {
 
     return (
       <FeedbackTool
-        value={this.state.value} onChange={this.onChange}
+        value={this.state.value}
+        onChange={this.onChange}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
         toggleQuickFeedback={this.toggleQuickFeedback}
       />

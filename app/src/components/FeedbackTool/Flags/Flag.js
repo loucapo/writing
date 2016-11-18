@@ -17,7 +17,10 @@ class Flag extends Component {
       return (
         <div key={this.props.index} className={flag.flagContainer} onClick={this.onClick} >
           <div key={this.props.index} className={flag.triangle_border} >
-            <div className={flag.title}>{this.props.flagItem.title}</div>
+            <span
+              className={flag.title}>{this.props.flagItem.title}
+            </span>
+            <span className={flag.vertical_ellipses}>mom</span>
             {
               this.props.flagItem.contentParagraphs.map((paragraph, contentIndex) => {
                 return <div key={contentIndex} className={flag.paragraph}>{paragraph}</div>;
@@ -30,7 +33,7 @@ class Flag extends Component {
                   return (
                     <li key={resourceIndex} className={flag.list_item}>
                       <div className={flag.image} />
-                      <a href={resource.url} className={flag.anchor}>
+                      <a data-id="resource-url" href={resource.url} className={flag.anchor}>
                         {resource.title}
                       </a>
                     </li>
@@ -46,7 +49,10 @@ class Flag extends Component {
       return (
         <div key={this.props.index} className={flag.flagContainer} onClick={this.onClick} >
           <div key={this.props.index} className={flag.triangle_border} >
-            <div className={flag.title}>{this.props.flagItem.title}</div>
+            <span
+              className={flag.title}>{this.props.flagItem.title}
+            </span>
+            <span className={flag.vertical_ellipses}>mom</span>
           </div>
         </div>
       );
