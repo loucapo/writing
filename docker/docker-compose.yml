@@ -39,9 +39,3 @@ services:
     ports:
       - 5432:5432
     container_name: postgres
-
-  nginx:
-    image: nginx_container
-    ports:
-      - "10080:80"
-    container_name: nginx_container
