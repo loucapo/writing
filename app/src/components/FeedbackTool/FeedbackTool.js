@@ -4,22 +4,32 @@ import MLModal from './../MLModal/MLModal';
 
 import {Form} from 'freakin-react-forms';
 import Input from './../FormElements/Input';
+import {Editor, EditorState, Modifier, RichUtils} from 'draft-js';
 
 class FeedbackTool extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  componentWillMount() { this.loadData(); }
-
-  componentWillReceiveProps(newProps) { this.loadData(); }
-
-  loadData() {
-    this.props.fetchStudentSubmissionAction(this.props.params.id);
+  componentWillMount() {
+    // this.props.fetchStudentSubmissionAction(this.props.params.id);
     this.setState({
-      value: this.props.document,
+      value: this.props.document
+    });
+  }
+
+  componentWillReceiveProps(newProps, oldProps) {
+    // if(newProps.params.id !== oldProps.params.id) {
+    //   this.props.fetchStudentSubmissionAction(newProps.props.params.id);
+    // }
+  }
+
+  onClose(e) {
+    e.preventDefault();
+    this.setState({
       isOpen: false
     });
   }
@@ -28,18 +38,47 @@ class FeedbackTool extends Component {
     this.setState({value});
   };
 
-  onClose() {
-    this.setState({isOpen:false})
+  onSubmit(x) {
+    this.props.submitOtherComment(x);
+    this.setState({
+      isOpen: false
+    });
   }
 
   onClick() {
+    const editorValue = this.state.value;
+    // get Draft.js EditorState from react-rte EditorValue
+    const editorState = editorValue.getEditorState();
+
+    const contentState = editorState.getCurrentContent();
+
+    // not exactly clear on this yet but you need to get a new immutable
+    // EditorState with a description of what happened in it.
+    let nextEditorState = EditorState.push(
+      editorState,
+      contentState,
+      'change-inline-style'
+    );
+    //TODO derive the screen position from the selection
+    const selection = editorState.getSelection();
+    // toggle the inline-style 'green' on the selection.  'green' is one of the
+    // styleMap properties passed to the react-rte
+    nextEditorState = RichUtils.toggleInlineStyle(nextEditorState, 'green');
+
     this.setState({
       isOpen: true,
+      // convert the new Draft.js EditorState back to react-rte EditorValue
+      value: editorValue.setEditorState(nextEditorState),
       modalPosition: {top: '0'}
     })
   }
 
   render() {
+    const colorStyleMap = {
+      green: {
+        backgroundColor: 'lightgreen'
+      },
+    };
     if (this.props.isFetching) {
       return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
     }
@@ -48,15 +87,15 @@ class FeedbackTool extends Component {
     }
     return (
       <div>
-        <button onClick={this.onClick} > click me </button>
-        <RichTextEditor onChange={this.onChange} value={this.state.value} readOnly='true'/>
+        <button  onClick={this.onClick} > click me </button>
+        <RichTextEditor onChange={this.onChange} value={this.state.value} customStyleMap={colorStyleMap} />
         <MLModal position={this.state.modalPosition} titleBar={{enable:false}} isOpen={this.state.isOpen} closeModal={this.onClose} >
-          <Form submitHandler={x => this.props.submitOtherComment(x)} model={this.props.model}>
+          <Form submitHandler={this.onSubmit} model={this.props.model}>
             <div>
               <Input frfProperty={this.props.model.otherComment}/>
             </div>
             <button type="submit">Submit</button>
-            <button onClick={this.close}>Cancel</button>
+            <button onClick={this.onClose}>Cancel</button>
           </Form>
         </MLModal>
       </div>
