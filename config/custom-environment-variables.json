@@ -5,7 +5,7 @@
     "keys": "APPLICATION_KEYS",
     "spa_url": "SPA_URL",
     "jwt_secret": "JWT_SECRET",
-    "wk_launch_url": "WK_LAUNCH_URL",
+    "wk_serve_url": "WK_SERVE_URL",
     "swagger_ui_url": "SWAGGER_UI_URL",
     "logging_use_json": "LOGGING_USE_JSON",
     "logging_level": "LOGGING_LEVEL"

@@ -4,7 +4,7 @@
     "env": "dev",
     "keys": "default",
     "spa_url": "SPA_URL",
-    "wk_launch_url": "http://localhost:3666",
+    "wk_serve_url": "http://localhost:10080",
     "swagger_ui_url": "http://localhost:4666"
   },
   "postgres": {
