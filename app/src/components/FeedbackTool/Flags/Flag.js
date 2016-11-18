@@ -17,7 +17,7 @@ class Flag extends Component {
       return (
         <div key={this.props.index} className={flag.flagContainer} onClick={this.onClick} >
           <div key={this.props.index} className={flag.triangle_border} >
-            <span className={flag.title}>{this.props.flagItem.title}</span>
+            <div className={flag.title}>{this.props.flagItem.title}</div>
             {
               this.props.flagItem.contentParagraphs.map((paragraph, contentIndex) => {
                 return <div key={contentIndex} className={flag.paragraph}>{paragraph}</div>;
