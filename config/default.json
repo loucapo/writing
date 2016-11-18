@@ -1,6 +1,6 @@
 {
   "app": {
-    "port": 4777,
+    "port": 80,
     "keys": ["default"],
     "spa_url": "http://localhost:8080/"
   },
