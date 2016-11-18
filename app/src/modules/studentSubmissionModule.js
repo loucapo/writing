@@ -7,6 +7,7 @@ export const STUDENT_SUBMISSION_ON_CHANGE = 'wk_frontend/studentSubmission/STUDE
 
 const dummyData = {
   id: '123',
+  /* eslint-disable */
   document: {
     "entityMap": {},
     "blocks": [
@@ -92,15 +93,16 @@ const dummyData = {
       }
     ]
   }
+  /* eslint-enable */
 };
 
 // Reducer
 export default (state = [dummyData], action) => {
   switch (action.type) {
-    case STUDENT_SUBMISSION_ON_CHANGE:{
+    case STUDENT_SUBMISSION_ON_CHANGE: {
       return state.map(x=> {
-        if(x.id === "123"){
-          x.document = action.value
+        if( x.id === '123' ) {
+          x.document = action.value;
         }
         return x;
       });
@@ -152,10 +154,9 @@ export function fetchStudentSubmissionAction(id) {
   };
 }
 
-export function submissionOnChange(value){
+export function submissionOnChange(value) {
   return {
-    type:STUDENT_SUBMISSION_ON_CHANGE,
+    type: STUDENT_SUBMISSION_ON_CHANGE,
     value: value.toString('html')
-  } 
+  };
 }
-
