@@ -9,12 +9,16 @@ import {Editor, EditorState, Modifier, RichUtils} from 'draft-js';
 class FeedbackTool extends Component {
   constructor(props) {
     super();
+    //TODO import bind all for this crap
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onSubmit= this.onSubmit.bind(this);
   }
 
   componentWillMount() {
+    // XXX i'd really like to leave this as an example, as we will be needing it and
+    // XXX I'm finally getting clear on how to do the data load stuff
     // this.props.fetchStudentSubmissionAction(this.props.params.id);
     this.setState({
       value: this.props.document
@@ -22,6 +26,8 @@ class FeedbackTool extends Component {
   }
 
   componentWillReceiveProps(newProps, oldProps) {
+    // XXX i'd really like to leave this as an example, as we will be needing it and
+    // XXX I'm finally getting clear on how to do the data load stuff
     // if(newProps.params.id !== oldProps.params.id) {
     //   this.props.fetchStudentSubmissionAction(newProps.props.params.id);
     // }

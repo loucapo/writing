@@ -1,0 +1,16 @@
+.modal textarea {
+  width: 100%;
+}
+
+.modal button {
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  float: right;
+  padding: 10px 20px;
+}
+
+.modal button[type="submit"] {
+  background: #444;
+  color: #fff;
+}
