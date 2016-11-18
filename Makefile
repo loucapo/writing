@@ -24,6 +24,7 @@ docker-build-node:
 	docker build -t wk_node -f nodeDocker/Dockerfile ./nodeDocker
 
 docker-build-api:	docker-build-node
+	aws ecr get-login | bash -e
 	cd ../wk_api && $(MAKE) docker-build
 	cd ../wk_compose
 
@@ -74,6 +75,10 @@ kill-postgres:
 kill-front-end:
 	docker rm -vf wk_frontend 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_frontend
+
+kill-orphans:
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
+
 
 ##################
 #run

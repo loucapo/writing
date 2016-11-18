@@ -8,7 +8,7 @@ services:
 
   api:
     extends:
-      file: ../../wk_api/docker/docker-compose-dev.yml
+      file: ../../wk_api/docker/docker-compose.yml
       service: wk_api
     container_name: wk_api
 
