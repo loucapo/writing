@@ -1,7 +1,8 @@
 .sideMenu {
-  overflow: hidden;
   border: thin #ddd;
   border-style: solid none;
+  float: right;
+  width: 30%;
 }
 
 .sideMenu ul {

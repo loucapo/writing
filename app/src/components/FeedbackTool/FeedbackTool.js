@@ -5,7 +5,7 @@ import feedbackTool from './feedbackTool.css';
 
 const FeedbackTool = ({value, onChange}) => {
   return (
-    <section>
+    <section className={feedbackTool.feedbackToolContainer}>
       <div className={feedbackTool.editorContainer}>
         <RichTextEditor onChange={onChange} value={value} readOnly={true} />
       </div>

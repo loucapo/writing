@@ -1,5 +1,11 @@
-section {
-  display: flex;
-  flex-direction: row;
+.feedbackToolContainer {
+  position: fixed;
   padding: 10px;
+}
+
+.editorContainer {
+  float: left;
+  overflow: auto;
+  height: 100vh;
+  width: 70%;
 }
