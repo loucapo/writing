@@ -4,23 +4,26 @@ module.exports = new Page({
 
   url: { value: '/feedbackTool/123' },
 
-  comment_thesis: { get: function () { return this.element("[data-id='comment_thesis']"); } },
+  sidebar: { get: function() { return this.element("[data-id='sideMenu']"); }},
 
-  comment_reason_support: { get: function () { return this.element("[data-id='comment_reason_support']"); } },
+  thesis: { get: function () { return this.element("[data-id='sideMenu'] [data-id='thesis']"); } },
 
-  comment_interpretation_analysis: { get: function () { return this.element("[data-id='comment_interpretation_analysis']"); } },
+  reason_support: { get: function () { return this.element("[data-id='sideMenu'] [data-id='reason&support']"); } },
 
-  comment_expansion_thesis: { get: function () { return this.element("[data-id='comment_expansion_thesis']"); } },
+  interpretation: { get: function () { return this.element("[data-id='sideMenu'] [data-id='interpretation']"); } },
 
-  comment_integration_research: { get: function () { return this.element("[data-id='comment_integration_research']"); } },
+  paragraphDev: { get: function () { return this.element("[data-id='sideMenu'] [data-id='paragraphDev']"); } },
 
-  comment_counterarguments: { get: function () { return this.element("[data-id='comment_counterarguments']"); } },
+  research: { get: function () { return this.element("[data-id='sideMenu'] [data-id='research']"); } },
 
-  comment_other: { get: function () { return this.element("[data-id='comment_other']"); } },
+  other: { get: function () { return this.element("[data-id='sideMenu'] [data-id='other']"); } },
 
-  comment_good_job: { get: function () { return this.element("[data-id='comment_good_job']"); } },
+  counterargs: { get: function () { return this.element("[data-id='sideMenu'] [data-id='counterargs']"); } },
 
-  quick_feedback_library: { get: function () { return this.element("[data-id='quick-feedback-library']"); } },
+  goodJob: { get: function () { return this.element("[data-id='sideMenu'] [data-id='goodJob']"); } },
+
+  quick_feedback_library: { get: function () { return this.element("[data-id='sideMenu'] [data-id='feedbackLib']"); } },
+
 
   comma_splice: { get: function () { return this.element("[data-id='comma_splice']"); } },
 
@@ -38,4 +41,5 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
+  example_essay: { value: 'TXTing: h8 it or luv it'}
 });
