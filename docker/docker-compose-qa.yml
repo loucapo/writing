@@ -13,7 +13,7 @@ services:
     container_name: wk_frontend
 api:
   image: ${wk_api}
-    command: npm run start_dev 
+    command: npm run start
     env_file:
       - .env
     environment:
@@ -24,21 +24,20 @@ api:
       - "3000:3000"
     service: wk_api
     container_name: wk_api
+	logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://localhost:12201"
   data:
-    image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/data:latest
+    image: ${wk_data_image}
     command: npm start
     env_file:
       - .env
     service: wk_data
     container_name: wk_data
-  postgres:
-    image: postgres
-    env_file:
-      - .env
+  serve:
+    image: ${wk_serve_image}
     ports:
-      - 5432:5432
-  nginx:
-    image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/nginx:latest
-    ports:
-      - "10080:80"
-    container_name: nginx_container
+      - "80:80"
+	service: wk_serve
+    container_name: wk_serve

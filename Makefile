@@ -11,10 +11,13 @@ clone-front-end:
 clone-data:
 	git clone git@bitbucket.org:mnv_tech/wk_data.git ../wk_data
 
+clone-serve:
+	git clone git@bitbucket.org:mnv_tech/wk_serve.git ../wk_serve
+
 clone-yo:
 	git clone git@bitbucket.org:mnv_tech/wk_yo_generators.git ../wk_yo_generators
 
-clone-repos:	clone-api clone-front-end clone-data
+clone-repos:	clone-api clone-front-end clone-data clone-serve
 
 ##################
 #build
@@ -28,6 +31,10 @@ docker-build-api:	docker-build-node
 	cd ../wk_api && $(MAKE) docker-build
 	cd ../wk_compose
 
+docker-build-serve:	docker-build-node
+	cd ../wk_serve && $(MAKE) docker-build
+	cd ../wk_compose
+
 docker-build-data:	docker-build-node
 	cd ../wk_data && $(MAKE) docker-build
 	cd ../wk_compose
@@ -36,7 +43,7 @@ docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data
+docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data docker-build-serve
 	pwd
 	docker build -t nginx_container -f docker/Dockerfile .
 
@@ -79,7 +86,6 @@ kill-front-end:
 kill-orphans:
 	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
-
 ##################
 #run
 ##################
@@ -111,6 +117,9 @@ get-statuses:
 	@echo ================DATA==================
 	@cd ../wk_data && git status
 	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_serve && git status
+	@cd ../wk_compose
 
 pull-repos:
 	@echo ================COMPOSE==================
@@ -123,6 +132,25 @@ pull-repos:
 	@cd ../wk_compose
 	@echo ================DATA==================
 	@cd ../wk_data && git pull origin master
+	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_serve && git pull origin master
+	@cd ../wk_compose
+
+get-branches:
+	@echo ================COMPOSE==================
+	@git branch | grep \*
+	@echo ================FRONTEND==================
+	@cd ../wk_frontend && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================API==================
+	@cd ../wk_api && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================DATA==================
+	@cd ../wk_data && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================LAUNCH==================
+	@cd ../wk_serve && git branch | grep \*
 	@cd ../wk_compose
 
 
