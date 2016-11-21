@@ -10,16 +10,17 @@ const FeedbackTool = ({value, onChange}) => {
     <section>
       <div className={feedbackTool.editorContainer}>
         <StudentReflection />
-        <RichTextEditor onChange={onChange} value={value} readOnly='true' />
+        <RichTextEditor onChange={onChange} value={value} readOnly={true} />
         <EndComment />
       </div>
       <SideMenu />
     </section>
   );
-}
+};
 
 FeedbackTool.propTypes = {
-  document: PropTypes.object
+  value: PropTypes.object,
+  onChange: PropTypes.func
 };
 
 export default FeedbackTool;
