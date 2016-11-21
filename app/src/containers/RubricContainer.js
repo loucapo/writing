@@ -18,7 +18,7 @@ class RubricContainer extends Component {
     if (this.props.errorMessage) {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
-    return (<Rubric categories={this.props.categories} categoryNames={this.props.categoryNames} />);
+    return (<Rubric rubric={this.props.rubric} showRubric={this.props.showRubric} />);
   }
 }
 

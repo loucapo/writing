@@ -9,12 +9,10 @@ const RubricCategoryScore = ({scores}) => {
     <div className={rubricCategoryScoreCss.column}>
       {
         scores.map((scoreRow, idx) => {
-          console.log(idx);
           return (
             <div className={rubricCategoryScoreCss.category_score}>
               {
                 scoreRow.map((score, idx) => {
-                  console.log(idx);
                   return (
                     <div className={rubricCategoryScoreCss.category_item}>
                       { score }

@@ -1,11 +1,12 @@
 .rubric_container {
-  display: flex;
+  display: none;
   color: #444;
-  margin: 25px auto 0;
+  margin: 60px auto 0;
+  position: relative;
   width: 75vw;
 }
 
 .title {
   position: absolute;
-  top: 40px;
+  top: -40px;
 }
