@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import RichTextEditor from 'ml-react-rte';
-
+import SideMenu from './SideMenu/SideMenu';
 import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
 import RubricContainer from '../../containers/RubricContainer';
-import feedbackToolCss from './feedbackTool.css';
+import feedbackTool from './feedbackTool.css';
 
 const FeedbackTool = ({value, onChange, showRubric, toggleRubric}) => {
   let feedbackToolContent;
@@ -13,14 +13,18 @@ const FeedbackTool = ({value, onChange, showRubric, toggleRubric}) => {
     feedbackToolContent = <RichTextEditor onChange={onChange} value={value} readOnly='true' />;
   }
   return (
-    <div>
+  <section className={feedbackTool.feedbackToolContainer}>
+    <div className={feedbackTool.editorContainer}>
       <FeedbackToolHeader toggleRubric={toggleRubric} />
       {feedbackToolContent}
     </div>
+    <SideMenu />
+  </section>
   )
 };
 
 FeedbackTool.propTypes = {
+  value: PropTypes.object,
   showRubric: PropTypes.bool,
   toggleRubric: PropTypes.func
 };
