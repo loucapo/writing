@@ -6,8 +6,8 @@ export default (state = [], action) => {
   switch (action.type) {
     case CREATE_OTHER_COMMENT: {
 
-    let m = new Map();
-      for(let obj of state) {
+      let m = new Map();
+      for (let obj of state) {
         if (obj && obj.id) {
           m.set(obj.id, obj);
         }
@@ -29,6 +29,5 @@ export function submitOtherComment(value) {
       id: uuid.v4(),
       value: value.otherComment
     }
-  }
+  };
 }
-

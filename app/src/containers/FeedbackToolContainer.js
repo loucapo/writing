@@ -1,4 +1,3 @@
-import React, { Component, PropTypes } from 'react';
 import RichTextEditor from 'ml-react-rte';
 import { connect } from 'react-redux';
 import { fetchStudentSubmissionAction, submissionOnChange, submitOtherComment } from './../modules';
@@ -18,7 +17,10 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, {fetchStudentSubmissionAction, submissionOnChange, submitOtherComment})(FeedbackTool);
+export default connect(mapStateToProps,
+  {fetchStudentSubmissionAction,
+    submissionOnChange,
+    submitOtherComment})(FeedbackTool);
 
 
 

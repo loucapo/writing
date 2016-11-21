@@ -18,14 +18,14 @@ class ActivityDetails extends Component {
           {activity.desc}
         </div>
         <div data-id="activity-rhetoric-rubric" className={activityDetails.rhetoricAndRubric}>
-      <span className={activityDetails.label}>
-      Rhetoric Genre:
-      </span>
+          <span className={activityDetails.label}>
+          Rhetoric Genre:
+          </span>
           <span data-id="activity-rhetorical-genre">{activity.rhetoricalGenre}</span>
           <br />
-      <span className={activityDetails.label}>
-    Rubric:
-      </span>
+          <span className={activityDetails.label}>
+            Rubric:
+          </span>
           <a data-id="activity-rubric" href="#">{activity.rubric}</a>
         </div>
         <div className={ activityDetails['prompt-summary'] }>
@@ -36,8 +36,8 @@ class ActivityDetails extends Component {
         </div>
         <a data-id="edit-activity" href="#">Edit Activity Information</a>
       </div>
-    )
-  };
+    );
+  }
 }
 
 ActivityDetails.propTypes = {

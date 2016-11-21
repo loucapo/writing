@@ -4,7 +4,7 @@ export const STUDENT_SUBMISSION_REQUEST = 'wk_frontend/studentSubmission/STUDENT
 export const STUDENT_SUBMISSION_SUCCESS = 'wk_frontend/studentSubmission/STUDENT_SUBMISSION_SUCCESS';
 export const STUDENT_SUBMISSION_FAILURE = 'wk_frontend/studentSubmission/STUDENT_SUBMISSION_FAILURE';
 export const STUDENT_SUBMISSION_ON_CHANGE = 'wk_frontend/studentSubmission/STUDENT_SUBMISSION_ON_CHANGE';
-
+/* eslint-disable */
 const dummyData = {
   id: '123',
   document: `<div><center>TXTing: h8 it or luv it</center></div>
@@ -19,14 +19,14 @@ const dummyData = {
 <div>Whether people like it or not, texting and its language are not going to go away anytime soon. This generation is going to use it and become more comfortable with communicating via texting. It has shown the continuation of development in the English language and has proven to have a large impact on today's world. Though texting is a distraction when abused, it has helped put the written word back into our lives making people more comfortable with the skill of writing. &amp; its a fast, EZ way 2 communic8.</div>
 <div>The <a href="http://htmltidy.net/">online HTML tidy tool</a> lets you compose your articles easily in your web browser without downloading and installing <a href="http://html5tools.net/">other HTML tools</a>.</div>`
 };
-
+/* eslint-enable */
 // Reducer
 export default (state = [dummyData], action) => {
   switch (action.type) {
-    case STUDENT_SUBMISSION_ON_CHANGE:{
+    case STUDENT_SUBMISSION_ON_CHANGE: {
       return state.map(x=> {
-        if(x.id === "123"){
-          x.document = action.value
+        if (x.id === '123') {
+          x.document = action.value;
         }
         return x;
       });
@@ -78,10 +78,10 @@ export function fetchStudentSubmissionAction(id) {
   };
 }
 
-export function submissionOnChange(value){
+export function submissionOnChange(value) {
   return {
-    type:STUDENT_SUBMISSION_ON_CHANGE,
+    type: STUDENT_SUBMISSION_ON_CHANGE,
     value: value.toString('html')
-  } 
+  };
 }
 
