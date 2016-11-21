@@ -5,9 +5,9 @@ import feedbackTool from './feedbackTool.css';
 
 const FeedbackTool = ({value, onChange}) => {
   return (
-    <section>
+    <section className={feedbackTool.feedbackToolContainer}>
       <div className={feedbackTool.editorContainer}>
-        <RichTextEditor onChange={onChange} value={value} readOnly='true' />
+        <RichTextEditor onChange={onChange} value={value} readOnly={true} />
       </div>
       <SideMenu />
     </section>
@@ -15,7 +15,7 @@ const FeedbackTool = ({value, onChange}) => {
 }
 
 FeedbackTool.propTypes = {
-  document: PropTypes.object
+  value: PropTypes.object
 };
 
 export default FeedbackTool;
