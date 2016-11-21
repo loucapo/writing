@@ -7,16 +7,16 @@ import FeedbackTool from '../components/FeedbackTool/FeedbackTool';
 class FeedbackToolContainer extends Component {
   componentWillMount() { this.loadData(); }
 
-  componentWillReceiveProps(newProps) { this.loadData(); }
+  componentWillReceiveProps() { this.loadData(); }
 
   loadData() {
     this.props.fetchStudentSubmissionAction(this.props.params.id);
-    this.setState({value:this.props.document});
+    this.setState({ value: this.props.document });
   }
 
   onChange(value) {
     this.setState({value});
-  };
+  }
 
   render() {
     if (this.props.isFetching) {
@@ -30,17 +30,17 @@ class FeedbackToolContainer extends Component {
 }
 
 FeedbackToolContainer.propTypes = {
-  url: PropTypes.string,
-  id: PropTypes.string,
   isFetching: PropTypes.string,
   errorMessage: PropTypes.string,
-  params: PropTypes.object
+  document: PropTypes.object,
+  params: PropTypes.object,
+  fetchStudentSubmissionAction: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
   let studentSubmission = state.studentSubmissions.filter(x => x.id === props.params.id)[0];
   return {
-    document: RichTextEditor.createValueFromString(studentSubmission ? studentSubmission.document : '', 'html')
+    document: RichTextEditor.fromRaw(studentSubmission ? studentSubmission.document : '')
   };
 };
 

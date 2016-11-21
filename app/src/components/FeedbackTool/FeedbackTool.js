@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import feedbackTool from './feedbackTool.css';
@@ -15,7 +15,8 @@ const FeedbackTool = ({value, onChange}) => {
 }
 
 FeedbackTool.propTypes = {
-  value: PropTypes.object
+  value: PropTypes.object,
+  onChange: PropTypes.func
 };
 
 export default FeedbackTool;
