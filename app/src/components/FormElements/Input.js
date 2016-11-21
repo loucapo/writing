@@ -51,7 +51,6 @@ const _Input = ({data,
 
 
 _Input.propTypes = {
-  data: PropTypes.object.required,
   containerStyle: PropTypes.string
 };
 

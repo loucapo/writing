@@ -90,7 +90,7 @@ class MLModal extends Component {
 MLModal.propTypes = {
   isOpen: PropTypes.bool,
   closeModal: PropTypes.func,
-  titleBar: PropTypes.func
+  titleBar: PropTypes.object
 };
 
 export default MLModal;

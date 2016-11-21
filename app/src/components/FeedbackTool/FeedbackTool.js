@@ -1,23 +1,20 @@
 import React, {Component, PropTypes} from 'react';
 import RichTextEditor from 'ml-react-rte';
-import MLModal from './../MLModal/MLModal';
+import highlightSelection from './utilities/highlightSelection'
 
 import {Form} from 'freakin-react-forms';
-import Input from './../FormElements/Input';
 import {EditorState, RichUtils} from 'draft-js';
+import OtherButton from './FeedbackButtons/OtherButton'
 
 class FeedbackTool extends Component {
   constructor() {
     super();
     //TODO import bind all for this crap
-    this.onClick = this.onClick.bind(this);
-    this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.highlight = this.highlight.bind(this);
   }
 
   componentDidMount() {
-    this.onClick();
   }
 
   componentWillMount() {
@@ -37,52 +34,22 @@ class FeedbackTool extends Component {
     // }
   }
 
-  onClose(e) {
-    e.preventDefault();
-    this.setState({
-      isOpen: false
-    });
-  }
-
   onChange(value) {
-    const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
+    console.log('==========windo.getSelection()=========');
+    console.log(window.getSelection());
+    console.log('==========END windo.getSelection()=========');
+    const rect = window.getSelection().anchorOffset > 0 ? window.getSelection().getRangeAt(0).getBoundingClientRect() : null;
+    console.log('==========rect=========');
+    console.log(rect);
+    console.log('==========END rect=========');
     this.setState({value, rect});
   }
 
-  onSubmit(x) {
-    this.props.submitOtherComment(x);
-    this.setState({
-      isOpen: false
-    });
-  }
-
-  onClick() {
+  highlight(color) {
     const editorValue = this.state.value;
-    // get Draft.js EditorState from react-rte EditorValue
-    const editorState = editorValue.getEditorState();
-
-    const contentState = editorState.getCurrentContent();
-    // not exactly clear on this yet but you need to get a new immutable
-    // EditorState with a description of what happened in it.
-    let nextEditorState = EditorState.push(
-      editorState,
-      contentState,
-      'change-inline-style'
-    );
-
-    nextEditorState = RichUtils.toggleInlineStyle(nextEditorState, 'green');
-    const rect = this.state.rect;
-    let left = rect.left - 150 + rect.width / 2;
-    left = left > 0 ? left : 0;
-
-    const pos = {top: rect.bottom + 20, left};
-
-    this.setState({
-      isOpen: true,
-      // convert the new Draft.js EditorState back to react-rte EditorValue
-      value: editorValue.setEditorState(nextEditorState),
-      modalPosition: pos
-    });
+    var editorState = editorValue.getEditorState();
+    const value =  editorValue.setEditorState(highlightSelection(editorState, color));
+    this.setState({value});
   }
 
   render() {
@@ -99,18 +66,8 @@ class FeedbackTool extends Component {
     }
     return (
       <div>
-        <button onClick={this.onClick}> click me</button>
+        <OtherButton submitOtherComment={this.props.submitOtherComment} position={this.state.rect} highlight={this.highlight}> click me</OtherButton>
         <RichTextEditor onChange={this.onChange} value={this.state.value} customStyleMap={colorStyleMap} />
-        <MLModal position={this.state.modalPosition} titleBar={{enable: false}} isOpen={this.state.isOpen}
-          closeModal={this.onClose}>
-          <Form submitHandler={this.onSubmit} model={this.props.model}>
-            <div>
-              <Input frfProperty={this.props.model.otherComment} />
-            </div>
-            <button type="submit">Submit</button>
-            <button onClick={x=>this.onClose(x)}>Cancel</button>
-          </Form>
-        </MLModal>
       </div>
     );
   }
@@ -120,8 +77,7 @@ FeedbackTool.propTypes = {
   document: PropTypes.object,
   isFetching: PropTypes.bool,
   errorMessage: PropTypes.string,
-  submitOtherComment: PropTypes.func,
-  model: PropTypes.object
+  submitOtherComment: PropTypes.func
 };
 
 export default FeedbackTool;
