@@ -74,6 +74,32 @@ exports.define = function(steps) {
         //expect(page.quick_feedback_library).to.exist;
       });
   });
+
+  steps.then("I click on the '$element' feedback", function(elem) {
+    page[elem].click();
+  });
+
+  steps.then("I see a comment popup appear", function() {
+    page.comment_popup.isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.then("I click '$element' on the comment popup", function() {
+    page[elem].click();
+  });
+
+  steps.then("I add '$text' to the comment popup", function(text) {
+    page.comment_popup.sendKeys(text);
+  });
+
+  steps.then("The '$text' should persist on the page", function(text) {
+    page.comment_popup.getText().then(function(text) {
+      text.should.equal(text);
+    });
+  });
+
+  steps.then("The '$text' should not persist on the page", function(text) {
+    page.comment_popup.isDisplayed().should.eventually.equal(false);
+  });
 };
 
 

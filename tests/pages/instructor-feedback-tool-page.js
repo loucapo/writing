@@ -41,5 +41,11 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
-  example_essay: { value: 'TXTing: h8 it or wuv it'}
+  example_essay: { value: 'TXTing: h8 it or wuv it'},
+
+  comment_popup: { get: function () { return this.element(".input__container"); } },
+
+  submit: { get: function() { return this.element("button[type='submit']");}},
+
+  cancel: { get: function() { return this.element("button[type='Cancel']");}},
 });
