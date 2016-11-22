@@ -17,11 +17,11 @@ Feature: Instructor Can Review Student Submissions
     Given I visit the activity page
     Then I click on the 'student submissions tab'
     Then I click link 'Start Review' in 'Jane Austen row'
-    Then the url includes '/feedbackTool/123'
+    Then the extended url is 'feedbackTool/123'
     Then I navigate back
     Then I click on the 'student submissions tab'
     Then I click link 'Start Review' in 'Alice Walker row'
-    Then the url includes '/feedbackTool/123'
+    Then the extended url is 'feedbackTool/123'
 
   Scenario: The Instructor switches draft views
     Given I visit the activity page

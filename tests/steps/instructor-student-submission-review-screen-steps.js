@@ -1,13 +1,5 @@
 var student_submission_page = require('../pages/instructor-student-submission-review-screen.js');
 var summary_page = require('../pages/instructor-assignment-summary-page.js');
-var marvin = require('marvin-js');
-var driver = require('marvin-js').session.getDriver();
-var until = require('selenium-webdriver').until;
-
-var chai = require('chai');
-var assert = chai.assert;
-var chaiAsPromised = require("chai-as-promised");
-chai.use(chaiAsPromised);
 
 exports.define = function(steps) {
 
@@ -33,9 +25,9 @@ exports.define = function(steps) {
       });
   });
 
-  steps.then("the url includes '$url'", function(url) {
-    var expected_url = marvin.config.baseUrl + '/feedbackTool/123';
-    driver.wait(until.urlContains(expected_url), 5000, 'target url does not contain ' + expected_url);
+  steps.then("the extended url is '$url'", function(url) {
+    var extended_url = marvin.config.baseUrl + '/' + url;
+    driver.wait(until.urlContains(extended_url), 5000, 'extended url failed to be' + extended_url);
   });
 
   steps.then("I navigate back", function() {
