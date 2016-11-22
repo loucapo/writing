@@ -1,12 +1,11 @@
-section {
-  width: 100%;
-  height: 100%;
-  margin: auto;
+.feedbackToolContainer {
+  position: fixed;
   padding: 10px;
 }
 
 .editorContainer {
-  width: 60%;
-  height: 100%;
   float: left;
+  overflow: auto;
+  height: 100vh;
+  width: 70%;
 }

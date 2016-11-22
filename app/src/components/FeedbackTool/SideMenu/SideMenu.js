@@ -1,26 +1,31 @@
 import React, {PropTypes} from 'react';
 import QuickFeedbackTool from './QuickFeedbackTool/QuickFeedbackTool';
+import ThesisButton from './Buttons/Thesis';
+import ReasonSupportButton from './Buttons/ReasonSupport';
+import InterpretationButton from './Buttons/Interpretation';
+import ParagraphDevButton from './Buttons/ParagraphDev';
+import ResearchButton from './Buttons/Research';
+import CounterArgsButton from './Buttons/CounterArgs';
+import OtherButton from './Buttons/Other';
+import GoodJobButton from './Buttons/GoodJob';
+import FeedbackLibButton from './Buttons/FeedbackLib';
 
 import sideMenu from './sideMenu.css';
 
 const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
   let result;
   const sideMenuContent = (
-    <div
-      className={sideMenu.sidebar}>
+    <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>
-        <li className={sideMenu.commentIcon}>Thesis</li>
-        <li className={sideMenu.commentIcon}>Reason & Supports</li>
-        <li className={sideMenu.commentIcon}>Interpretation/Analysis</li>
-        <li className={sideMenu.commentIcon}>Expansion of Thesis</li>
-        <li className={sideMenu.commentIcon}>Integration of Research</li>
-        <li className={sideMenu.commentIcon}>Counterarguments</li>
-        <li className={sideMenu.commentIcon}>Other</li>
-        <li className={sideMenu.thumbsUpIcon}>Good Job!</li>
-        <li
-          className={sideMenu.quickFeedbackIcon}
-          onClick={toggleQuickFeedback}>Quick Feedback Library
-        </li>
+        <ThesisButton/>
+        <ReasonSupportButton/>
+        <InterpretationButton/>
+        <ParagraphDevButton/>
+        <ResearchButton/>
+        <CounterArgsButton/>
+        <OtherButton/>
+        <GoodJobButton/>
+        <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback}/>
       </ul>
     </div>
   );

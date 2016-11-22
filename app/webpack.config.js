@@ -94,6 +94,13 @@ const webpackConfig = {
         include: [
           path.resolve(__dirname, 'src/images')
         ]
+      },
+      {
+        test: /\.(svg)$/,
+        loader: 'raw-loader',
+        include: [
+          path.resolve(__dirname, 'src/images')
+        ]
       }
     ]
   },

@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import Flags from './Flags/Flags';
@@ -29,11 +28,10 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
       }
     ]
   }];
-
   return (
-    <section>
+    <section className={feedbackTool.feedbackToolContainer}>
       <div className={feedbackTool.editorContainer}>
-        <RichTextEditor onChange={onChange} value={value} readOnly="true" />
+        <RichTextEditor onChange={onChange} value={value} readOnly={true} />
       </div>
       <Flags flagElements={badges} />
       <SideMenu
