@@ -11,15 +11,15 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
     contentParagraphs: [
       `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
       Your thesis is buried and unclear.`,
-      `I would begin here with your revisionsto clarify your thesis statement.`
+      `I would begin here with your revisions to clarify your thesis statement.`
     ],
     resources: [
       {
-        title: 'what is a Thesis',
+        title: 'What is a Thesis',
         url: 'http://www.google.com'
       },
       {
-        title: 'Examples of a good thesis',
+        title: 'Examples of a good Thesis',
         url: 'http://www.facebook.com'
       },
       {
@@ -45,7 +45,6 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
 FeedbackTool.propTypes = {
   value: PropTypes.object,
   onChange: PropTypes.func,
-  document: PropTypes.object,
   showQuickFeedbackTool: PropTypes.bool,
   toggleQuickFeedback: PropTypes.func
 };
