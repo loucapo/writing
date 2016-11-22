@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 
-const _Input = ({data,
-               containerStyle
-                }) => {
+const _Input = ({ data,
+                containerStyle, options }) => {
+  if(!data) {return null;}
   let inputStyle = classNames({
     ['input__container__' + (data.type ? data.type : 'input')]: true,
     input__success: !data.invalid, // eslint-disable-line camelcase
@@ -26,6 +26,13 @@ const _Input = ({data,
           value={data.value}
           onChange={data.onChange}
         />);
+      }
+      case 'select':{
+        return (<select name={data.name}
+                        value={data.value}
+                        onChange={data.onChange} >
+          {options}
+          </select>)
       }
       case 'number':
       case 'password':

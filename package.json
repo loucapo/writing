@@ -24,6 +24,9 @@
     "classnames": "^2.2.5",
     "file-loader": "^0.9.0",
     "freakin-react-forms": "reharik/freakin-react-forms",
+    "file-loader": "^0.9.0",
+    "ml-react-rte": "^0.0.5",
+    "precommit-hook-eslint": "^3.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.0.2",
     "react-hot-loader": "^3.0.0-beta.3",
@@ -35,8 +38,7 @@
     "redux-api-middleware": "^1.0.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "url-loader": "^0.5.7",
-    "ml-react-rte": "^0.0.5"
+    "url-loader": "^0.5.7"   
   },
   "devDependencies": {
     "babel-core": "^6.11.4",
@@ -80,3 +82,4 @@
     "validate"
   ]
 }
+

@@ -1,20 +1,16 @@
 import React, {Component, PropTypes} from 'react';
 import RichTextEditor from 'ml-react-rte';
-import highlightSelection from './utilities/highlightSelection'
-
+import SideMenu from './SideMenu/SideMenu';
+import feedbackTool from './feedbackTool.css';
+import toggleHighlightSelection from './utilities/toggleHighlightSelection';
 import {Form} from 'freakin-react-forms';
 import {EditorState, RichUtils} from 'draft-js';
-import OtherButton from './FeedbackButtons/OtherButton'
 
 class FeedbackTool extends Component {
   constructor() {
     super();
-    //TODO import bind all for this crap
     this.onChange = this.onChange.bind(this);
-    this.highlight = this.highlight.bind(this);
-  }
-
-  componentDidMount() {
+    this.toggleHighlight = this.toggleHighlight.bind(this);
   }
 
   componentWillMount() {
@@ -35,20 +31,20 @@ class FeedbackTool extends Component {
   }
 
   onChange(value) {
-    console.log('==========windo.getSelection()=========');
-    console.log(window.getSelection());
-    console.log('==========END windo.getSelection()=========');
-    const rect = window.getSelection().anchorOffset > 0 ? window.getSelection().getRangeAt(0).getBoundingClientRect() : null;
-    console.log('==========rect=========');
-    console.log(rect);
-    console.log('==========END rect=========');
-    this.setState({value, rect});
+    const rect = window.getSelection().anchorOffset > 0
+      ? window.getSelection().getRangeAt(0).getBoundingClientRect()
+      : null;
+    // this is ugly
+    this.setState({value});
+    if(rect) {
+      this.setState({rect})
+    }
   }
 
-  highlight(color) {
+  toggleHighlight(color) {
     const editorValue = this.state.value;
     var editorState = editorValue.getEditorState();
-    const value =  editorValue.setEditorState(highlightSelection(editorState, color));
+    const value =  editorValue.setEditorState(toggleHighlightSelection(editorState, color));
     this.setState({value});
   }
 
@@ -65,10 +61,15 @@ class FeedbackTool extends Component {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
     return (
-      <div>
-        <OtherButton submitOtherComment={this.props.submitOtherComment} position={this.state.rect} highlight={this.highlight}> click me</OtherButton>
-        <RichTextEditor onChange={this.onChange} value={this.state.value} customStyleMap={colorStyleMap} />
-      </div>
+      <section className={feedbackTool.feedbackToolContainer}>
+        <div className={feedbackTool.editorContainer}>
+          <RichTextEditor onChange={this.onChange}
+                          value={this.state.value}
+                          customStyleMap={colorStyleMap}
+                          readOnly={false} />
+        </div>
+        <SideMenu toggleHighlight={this.toggleHighlight} position={this.state.rect} submitOtherComment={this.props.submitOtherComment}  />
+      </section>
     );
   }
 }

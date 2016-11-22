@@ -1,6 +1,6 @@
 import { RichUtils, EditorState } from 'draft-js';
 
-export default function(editorState, color) {
+export default function(editorState, color, off) {
 
   const contentState = editorState.getCurrentContent();
   // not exactly clear on this yet but you need to get a new immutable

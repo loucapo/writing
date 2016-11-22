@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import FeedbackModal from './../FeedbackModal/FeedbackModal'
+import FeedbackModal from '../../FeedbackModal/FeedbackModal'
 
 class FeedbackButton extends Component {
   constructor() {
@@ -18,6 +18,7 @@ class FeedbackButton extends Component {
   }
   onClose(e) {
     e.preventDefault();
+    this.props.toggleHighlight(this.props.color);
     this.setState({
       isOpen: false
     });
@@ -32,6 +33,7 @@ class FeedbackButton extends Component {
 
   onClick(e) {
     e.preventDefault();
+    this.props.toggleHighlight(this.props.color);
     let pos;
     if(this.props.position) {
       const rect = this.props.position;
@@ -40,10 +42,6 @@ class FeedbackButton extends Component {
       pos = {top: rect.bottom + 20, left};
     }
 
-    this.props.highlight(this.props.color);
-    console.log('==========pos=========');
-    console.log(pos);
-    console.log('==========END pos=========');
     this.setState({
       isOpen: true,
       // convert the new Draft.js EditorState back to react-rte EditorValue
@@ -57,9 +55,8 @@ class FeedbackButton extends Component {
           <img src={this.props.commentIcon} onClick={this.onClick}/>{this.props.buttonName}
           <FeedbackModal isOpen={this.state.isOpen}
                          position={this.state.position}
-                         model={this.props.model}
                          onClose={this.onClose}
-                         onSubmit={this.props.onSubmit} />
+                        form={this.props.form(this.onSubmit,this.onClose)}/>
         </li>
       );
     };
