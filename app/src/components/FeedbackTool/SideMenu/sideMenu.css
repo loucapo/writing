@@ -1,0 +1,20 @@
+.sideMenu {
+  border: thin #ddd;
+  border-style: solid none;
+  float: right;
+}
+
+.sideMenu ul {
+  padding: 0 20px;
+}
+
+.sideMenu li {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  width: 190px;
+}
+
+.sideMenu li img {
+  margin-right: 6px;
+}
