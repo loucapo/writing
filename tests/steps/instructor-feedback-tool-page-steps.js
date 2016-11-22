@@ -32,6 +32,36 @@ exports.define = function(steps) {
     expect(page.comma_error).to.not.exist;
   });
 
+  steps.then("I see a menu of commenting options", function() {
+    expect(page.thesis).to.exist;
+    expect(page.reason_support).to.exist;
+    expect(page.interpretation).to.exist;
+    expect(page.paragraphDev).to.exist;
+    expect(page.research).to.exist;
+    expect(page.other).to.exist;
+    expect(page.counterargs).to.exist;
+    expect(page.goodJob).to.exist;
+    expect(page.quick_feedback_library).to.exist;
+  });
+
+  steps.when("I scroll down the screen", function() {
+    page.sidebar.getLocation().then(function(position) {
+      var y = position.y;
+      driver.executeScript(function() {
+        window.scrollTo(0,500);
+      }).then(function() {
+        page.sidebar.getLocation().then(function(position) {
+          var new_y = position.y;
+          expect(y).to.not.equal(new_y);
+        });
+      });
+    });
+  });
+
+  steps.then("The header and toolbar remain fixed", function() {
+    // code to be added
+  });
+
   steps.then("I should see the student essay in the feedback tool", function() {
     rtePage.draftEditor.isDisplayed().should.eventually.equal(true);
     expect(page.button_bold).to.not.exist;
@@ -45,3 +75,5 @@ exports.define = function(steps) {
       });
   });
 };
+
+
