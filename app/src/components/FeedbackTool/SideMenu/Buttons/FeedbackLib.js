@@ -11,7 +11,7 @@ const FeedbackLibButton = ({toggleQuickFeedback}) => {
         className={sideMenu.sideMenuCaption}
         onClick={toggleQuickFeedback}>Quick Feedback Library
       </span>
-  </li>
+    </li>
   );
 };
 

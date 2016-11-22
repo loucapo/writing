@@ -17,15 +17,15 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
   const sideMenuContent = (
     <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>
-        <ThesisButton/>
-        <ReasonSupportButton/>
-        <InterpretationButton/>
-        <ParagraphDevButton/>
-        <ResearchButton/>
-        <CounterArgsButton/>
-        <OtherButton/>
-        <GoodJobButton/>
-        <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback}/>
+        <ThesisButton />
+        <ReasonSupportButton />
+        <InterpretationButton />
+        <ParagraphDevButton />
+        <ResearchButton />
+        <CounterArgsButton />
+        <OtherButton />
+        <GoodJobButton />
+        <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback} />
       </ul>
     </div>
   );
