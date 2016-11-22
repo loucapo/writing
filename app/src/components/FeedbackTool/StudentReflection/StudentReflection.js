@@ -3,7 +3,7 @@ import studentReflection from './studentReflection.css';
 
 const StudentReflection = () => {
   return (
-    <div className={studentReflection.studentReflectionContainer}>
+    <div data-id="studentReflections" className={studentReflection.studentReflectionContainer}>
       <h4>Student Reflection</h4>
       <p>
         <strong>The most challenging part of this assignment was...</strong> Coming up with an "arguable" claim. In the final draft, I tried to argue against someone, so I think that took the whole essay more in the direction of argument than summary.
