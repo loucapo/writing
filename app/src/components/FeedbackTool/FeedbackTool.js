@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import Flags from './Flags/Flags';

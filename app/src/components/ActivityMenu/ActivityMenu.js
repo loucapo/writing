@@ -14,19 +14,19 @@ class ActivityMenu extends Component {
     };
   }
 
-  toggleSelection = (selection, e) => {
+  toggleSelection(selection, e) {
     e.preventDefault();
     this.setState({
       toggle: selection
     });
-  };
+  }
 
   renderContent = () => {
     if (this.state.toggle === 'drafts') {
       return (<DraftSection drafts={this.props.drafts} />);
     }
     return (<SubmissionSection />);
-  };
+  }
 
   render() {
     return (
@@ -45,7 +45,7 @@ class ActivityMenu extends Component {
 }
 
 ActivityMenu.propTypes = {
-  drafts: PropTypes.array
+  drafts: PropTypes.object
 };
 
 export default ActivityMenu;
