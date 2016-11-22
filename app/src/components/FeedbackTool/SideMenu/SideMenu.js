@@ -14,15 +14,15 @@ const SideMenu = () => {
   return (
     <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>
-        <ThesisButton/>
-        <ReasonSupportButton/>
-        <InterpretationButton/>
-        <ParagraphDevButton/>
-        <ResearchButton/>
-        <CounterArgsButton/>
-        <OtherButton/>
-        <GoodJobButton/>
-        <FeedbackLibButton/>
+        <ThesisButton />
+        <ReasonSupportButton />
+        <InterpretationButton />
+        <ParagraphDevButton />
+        <ResearchButton />
+        <CounterArgsButton />
+        <OtherButton />
+        <GoodJobButton />
+        <FeedbackLibButton />
       </ul>
     </div>
   );
