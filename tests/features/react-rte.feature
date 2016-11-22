@@ -1,6 +1,9 @@
+# This was never really a full feature, just a stop-gap implementation
+# to test out tooling, and the story to remove it happened unnoticed.
+# The actual tests might still be useful to reapply somewhere somewhen else though.
+@pending=retired
 @react-rte
 Feature: React-RTE wysiwyg editor
-
 
   Scenario: Say Happy
     Given I visit the wysiwyg editor page
@@ -33,7 +36,6 @@ Feature: React-RTE wysiwyg editor
     And I select "happy"
     And I click the monospace button
     Then Text "happy" should have monospace styling
-
 
   Scenario: Strikethrough Text
     Given I visit the wysiwyg editor page
@@ -84,7 +86,7 @@ Feature: React-RTE wysiwyg editor
     And I select "happy"
     And I click the link button
     And Add "google.com"
-	 And I click the remove link button
+    And I click the remove link button
     Then Text "happy" should not have a link
 
 
