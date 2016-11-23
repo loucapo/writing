@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import image from './../../../../images/comment_thumbsup.svg';
+import image from './../../../../images/comment_quickfeedback.svg';
 
 import sideMenu from './../sideMenu.css';
 
