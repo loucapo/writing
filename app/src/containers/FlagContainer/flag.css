@@ -1,7 +1,7 @@
 @import 'mixins.css';
 
 .image {
-  background: url('../../../images/comment_thumbsup.png') no-repeat;
+  background: url('../../images/comment_thumbsup.png') no-repeat;
   width: 30px;
   height: 20px;
   display: inline-block;
