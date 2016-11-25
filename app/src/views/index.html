@@ -15,12 +15,21 @@
 <div data-val="{{token}}" id="token" ></div>
 <!-- TODO: This stuff really does not belong in here. we need to move it ASAP. -->
 <style>
+    html, body, #root, #root > div, .app {
+        height: 100%;
+    }
 
     body {
         color: #4e4e4e;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 14px;
         margin: 0;
+        overflow: hidden;
+    }
+
+    .app {
+        display: flex;
+        flex-direction: column;
     }
 
     a, a:link, a:hover, a:active  {
