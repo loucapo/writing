@@ -6,11 +6,13 @@ import RubricContainer from '../../containers/RubricContainer';
 import feedbackTool from './feedbackTool.css';
 
 const FeedbackTool = ({value, onChange, showRubric, toggleRubric}) => {
-  let feedbackToolContent;
+  let feedbackToolContent, sideMenu;
   if (showRubric) {
     feedbackToolContent = <RubricContainer showRubric={showRubric}/>
+    sideMenu = null;
   } else {
     feedbackToolContent = <RichTextEditor onChange={onChange} value={value} readOnly='true' />;
+    sideMenu = <SideMenu />;
   }
   return (
   <section className={feedbackTool.feedbackToolContainer}>
@@ -18,7 +20,7 @@ const FeedbackTool = ({value, onChange, showRubric, toggleRubric}) => {
       <FeedbackToolHeader toggleRubric={toggleRubric} />
       {feedbackToolContent}
     </div>
-    <SideMenu />
+    {sideMenu}
   </section>
   )
 };

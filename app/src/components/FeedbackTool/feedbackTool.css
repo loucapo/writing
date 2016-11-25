@@ -6,6 +6,7 @@
 
 .editorContainer {
   display: flex;
-  height: 100%;
   flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
 }

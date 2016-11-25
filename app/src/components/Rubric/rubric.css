@@ -1,6 +1,8 @@
 .rubric_container {
   color: #444;
+  display: flex;
   margin: 60px auto 0;
+  overflow: auto;
   position: relative;
   width: 75vw;
 }
