@@ -1,9 +1,9 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import SubmissionItem from './SubmissionItem/SubmissionItem';
 
 import submissionList from './submissionList.css';
 
-let SubmissionList = ({submissions}) => {
+let SubmissionList = () => {
   return (
     <div className={ submissionList.subList }>
       <table className={ submissionList.table }>
@@ -22,7 +22,7 @@ let SubmissionList = ({submissions}) => {
             </th>
           </tr>
         </thead>
-          <SubmissionItem />
+        <SubmissionItem />
       </table>
     </div>
   );
