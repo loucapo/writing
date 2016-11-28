@@ -1,6 +1,6 @@
 var rtePage = require('../pages/react-rte.js');
 
-var by = require('selenium-webdriver').By;
+//var by = require('selenium-webdriver').By;
 var Promise = require('bluebird');
 
 exports.define = function(steps) {

@@ -24,9 +24,11 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
-  student_reflection_section: { get: function () { return this.element("[data-id='needs_analysis']"); } },
+  'Student Reflection Section': { get: function () { return this.element("[data-id='studentReflections']"); } },
 
-  end_comment_section: { get: function () { return this.element("[data-id='comma_error']"); } },
+  'End Comment Section': { get: function () { return this.element("[data-id='endComment']"); } },
+
+  'End Comment textarea': { get: function () { return this.element("//*[@data-id='endComment']/textarea", 'xpath'); } },
 
   end_comment_header: { get: function () { return this.element("[data-id='comma_error']"); } },
 

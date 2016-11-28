@@ -2,8 +2,8 @@
   "baseUrl": "http://wk-qa-1.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
-  "reportDir": "reports",
   "reportSingle": false,
+  "reportDir": "results",
   "reporter": "marvin",
   "threads": 1,
 
