@@ -1,0 +1,12 @@
+.heading {
+  display: flex;
+  height: 71px;
+}
+
+.heading_item {
+  background-color: #eee;
+  border: 0px solid #999;
+  border-width: 0 1px 1px 0;
+  width: calc(100% * 1/5);
+  padding: 15px;
+}

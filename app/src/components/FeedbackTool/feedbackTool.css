@@ -1,11 +1,12 @@
 .feedbackToolContainer {
-  position: fixed;
+  display: flex;
+  height: 100%;
   padding: 10px;
 }
 
 .editorContainer {
-  float: left;
-  overflow: auto;
-  height: 100vh;
-  width: 70%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 auto;
 }

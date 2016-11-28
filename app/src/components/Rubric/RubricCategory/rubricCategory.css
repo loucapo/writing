@@ -1,0 +1,5 @@
+.category {
+  border: 0 solid #999;
+  border-width: 1px 0 0 0;
+  flex: 1;
+}
