@@ -8,7 +8,7 @@ import feedbackTool from './feedbackTool.css';
 const FeedbackTool = ({value, onChange, showRubric, toggleRubric}) => {
   let feedbackToolContent, sideMenu;
   if (showRubric) {
-    feedbackToolContent = <RubricContainer showRubric={showRubric}/>
+    feedbackToolContent = <RubricContainer showRubric={showRubric} toggleRubric={toggleRubric} />
     sideMenu = null;
   } else {
     feedbackToolContent = <RichTextEditor onChange={onChange} value={value} readOnly='true' />;
