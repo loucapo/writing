@@ -11,25 +11,25 @@ exports.define = function(steps) {
   });
 
   steps.then("I see a menu of common feedback marks", function() {
-    expect(page.comma_splice).to.exist;
-    expect(page.fragment).to.exist;
-    expect(page.usage).to.exist;
-    expect(page.pronoun_agreement).to.exist;
-    expect(page.subject_verb_agreement).to.exist;
-    expect(page.wrong_word).to.exist;
-    expect(page.needs_analysis).to.exist;
-    expect(page.comma_error).to.exist;
+    page.comma_splice.isDisplayed().should.eventually.equal(true);
+    page.fragment.isDisplayed().should.eventually.equal(true);
+    page.usage.isDisplayed().should.eventually.equal(true);
+    page.pronoun_agreement.isDisplayed().should.eventually.equal(true);
+    page.subject_verb_agreement.isDisplayed().should.eventually.equal(true);
+    page.appropriate_language.isDisplayed().should.eventually.equal(true);
+    page.needs_analysis.isDisplayed().should.eventually.equal(true);
+    page.comma_error.isDisplayed().should.eventually.equal(true);
   });
 
   steps.then("The Quick Feedback Library should be closed", function() {
-    expect(page.comma_splice).to.not.exist;
-    expect(page.fragment).to.not.exist;
-    expect(page.usage).to.not.exist;
-    expect(page.pronoun_agreement).to.not.exist;
-    expect(page.subject_verb_agreement).to.not.exist;
-    expect(page.wrong_word).to.not.exist;
-    expect(page.needs_analysis).to.not.exist;
-    expect(page.comma_error).to.not.exist;
+    page.comma_splice.isDisplayed().should.eventually.equal(false);
+    page.fragment.isDisplayed().should.eventually.equal(false);
+    page.usage.isDisplayed().should.eventually.equal(false);
+    page.pronoun_agreement.isDisplayed().should.eventually.equal(false);
+    page.subject_verb_agreement.isDisplayed().should.eventually.equal(false);
+    page.appropriate_language.isDisplayed().should.eventually.equal(false);
+    page.needs_analysis.isDisplayed().should.eventually.equal(false);
+    page.comma_error.isDisplayed().should.eventually.equal(false);
   });
 
   steps.then("I should see the student essay in the feedback tool", function() {
