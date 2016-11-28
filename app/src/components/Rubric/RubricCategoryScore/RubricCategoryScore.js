@@ -14,7 +14,7 @@ const RubricCategoryScore = ({scores}) => {
               {
                 scoreRow.map((score, idx) => {
                   return (
-                    <div className={rubricCategoryScoreCss.category_item}>
+                    <div data-id="category-score" className={rubricCategoryScoreCss.category_item}>
                       { score }
                     </div>
                   );

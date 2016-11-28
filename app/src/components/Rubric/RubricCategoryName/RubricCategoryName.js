@@ -10,7 +10,7 @@ const RubricCategoryName = ({ categoryNames }) => {
       {
         categoryNames.map((category, idx) => {
           return (
-            <div className={rubricCategoryNameCss.category_name_item}>
+            <div data-id="category-name" className={rubricCategoryNameCss.category_name_item}>
               { category.score }
               <div>
                 { category.text }
