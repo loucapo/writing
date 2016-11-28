@@ -1,6 +1,9 @@
 var rtePage = require('../pages/react-rte.js');
 
-//var by = require('selenium-webdriver').By;
+//  don't actually require bluebird here or anywhere
+// to remove it though, this file needs to be rewritten
+// but then the tests here are waiting to be migrated elsewhere
+// whenever the editor actually comes back...
 var Promise = require('bluebird');
 
 exports.define = function(steps) {
