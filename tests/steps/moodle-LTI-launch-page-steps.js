@@ -6,10 +6,6 @@ var credentials = require('../pages/moodle-credentials.js');
 var moodle_lti_launch_page = require('../pages/moodle-LTI-launch-page.js');
 var dashboard_page = require('../pages/instructor-dashboard-page.js');
 var assignment_summary_page = require('../pages/instructor-assignment-summary-page.js');
-var marvin = require('marvin-js');
-var driver = marvin.session.getDriver();
-var until = require('selenium-webdriver').until;
-
 
 exports.define = function(steps) {
 
@@ -22,16 +18,18 @@ exports.define = function(steps) {
 
   steps.when("I launch Writing Tools from the Moodle LTI host", function () {
     moodle_lti_launch_page.visit();
-    let launch_page_url = driver.getCurrentUrl();
+    // unused?
+    // let launch_page_url = driver.getCurrentUrl();
     moodle_lti_launch_page.test_lti_link.click();
   });
 
   steps.when("Writing Tools Launch handles the request", function() {
-    driver.getAllWindowHandles().then(function(handles) {
-      if (handles.length > 1) {
-        return driver.switchTo().window(handles[1]);
-      }
-    }).then(function() {
+    driver.getAllWindowHandles()
+      .then(function(handles) {
+        if (handles.length > 1) {
+          return driver.switchTo().window(handles[1]);
+        }
+      }).then(function() {
       driver.wait(until.urlContains(marvin.config.baseUrl), 5000, 'redirect did not hit target');
     });
   });
@@ -45,12 +43,10 @@ exports.define = function(steps) {
   });
 
   steps.when("I open a new session", function () {
-    marvin.session.create(marvin.session.browser);
+    session.create(session.browser);
   });
 
   steps.then("I get redirected to the activity summary page", function () {
-    driver.wait(until.urlContains(assignment_summary_page.url), 15000, 'target url does not contain ' + assignment_summary_page.url);
+    driver.wait(until.urlContains(assignment_summary_page.url), 5000, 'redirect did not hit target');
   });
-}
-
-
+};
