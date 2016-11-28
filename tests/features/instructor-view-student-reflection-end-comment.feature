@@ -1,4 +1,3 @@
-@only
 @WRITE-305
 Feature: Instructor Can Open Quick Feedback Section
 
