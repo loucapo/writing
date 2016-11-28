@@ -3,7 +3,7 @@ Feature: Instructor Can Review Student Submissions
   
   Scenario: The Instructor navigates to Student Submissions
     Given I visit the activity page
-    Then I see the 'draft 1 header'
+    Then I see the 'drafts div'
     Then I click on the 'student submissions tab'
     Then I see text 'Shakespeare, William' in 'activity div'
     And I see text 'Faulkner, William' in 'activity div'
@@ -17,15 +17,15 @@ Feature: Instructor Can Review Student Submissions
     Given I visit the activity page
     Then I click on the 'student submissions tab'
     Then I click link 'Start Review' in 'Jane Austen row'
-    Then the url includes '/feedbackTool/123'
+    Then the extended url is 'feedbackTool/123'
     Then I navigate back
     Then I click on the 'student submissions tab'
     Then I click link 'Start Review' in 'Alice Walker row'
-    Then the url includes '/feedbackTool/123'
+    Then the extended url is 'feedbackTool/123'
 
   Scenario: The Instructor switches draft views
     Given I visit the activity page
-    Then I see the 'draft 1 header'
+    Then I see the 'drafts div'
     Then I click on the 'student submissions tab'
     Then I see the 'Jane Austen row'
     Then I see text 'Shakespeare, William' in 'activity div'

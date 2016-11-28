@@ -5,7 +5,7 @@ module.exports = new Page({
   url: { value: '/activity' },
 
   'student submissions tab': { get: function() { return this.element("[data-id='student-submissions']"); }},
-  'draft 1 header': { get: function() { return this.element("[data-id='draft-item-draft-name']"); }},
+  'draft 1 header': { get: function() { return this.elements("(//*[@data-id='draft-item-draft-name'])[1]", 'xpath'); }},
   'Drafts tab': { get: function() { return this.element("[data-id='drafts']"); }},
   'drafts div': { get: function() { return this.element("//*[@data-id='draft-item-description']/../../../..", 'xpath'); }},
   'activity div': { get: function() { return this.element("//*[@data-id='activity-menu']/..", 'xpath'); }},
