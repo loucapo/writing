@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import QuickFeedbackTool from './QuickFeedbackTool/QuickFeedbackTool';
 import ThesisButton from './Buttons/Thesis';
 import ReasonSupportButton from './Buttons/ReasonSupport';
 import InterpretationButton from './Buttons/Interpretation';
@@ -11,6 +10,10 @@ import GoodJobButton from './Buttons/GoodJob';
 import FeedbackLibButton from './Buttons/FeedbackLib';
 
 import sideMenu from './sideMenu.css';
+
+const spanClicked = (val) => {
+  console.log(val); // just for verification that the links are clicking
+};
 
 const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
   let result;
@@ -26,6 +29,17 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
         <OtherButton />
         <GoodJobButton />
         <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback} />
+        <div className={showQuickFeedbackTool?'':sideMenu.hiddenItem}>
+          <li data-id="span1" className={sideMenu.list_Item} onClick={() => spanClicked(1)}>Citation</li>
+          <li data-id="span1" className={sideMenu.list_Item} onClick={() => spanClicked(2)}>Comma Splice</li>
+          <li data-id="span8" className={sideMenu.list_Item} onClick={() => spanClicked(3)}>Comma Error</li>
+          <li data-id="span2" className={sideMenu.list_Item} onClick={() => spanClicked(4)}>Fragment</li>
+          <li data-id="span4" className={sideMenu.list_Item} onClick={() => spanClicked(5)}>Pronoun Agreement</li>
+          <li data-id="span4" className={sideMenu.list_Item} onClick={() => spanClicked(6)}>Spelling</li>
+          <li data-id="span5" className={sideMenu.list_Item} onClick={() => spanClicked(7)}>Subject Verb Agreement</li>
+          <li data-id="span6" className={sideMenu.list_Item} onClick={() => spanClicked(8)}>Wrong Word</li>
+          <li data-id="span3" className={sideMenu.list_Item} onClick={() => spanClicked(9)}>Usage</li>
+        </div>
       </ul>
     </div>
   );
@@ -33,7 +47,6 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
     result = (
       <div className={sideMenu.sidebarContainer}>
         {sideMenuContent}
-        <QuickFeedbackTool />
       </div>
     );
   }

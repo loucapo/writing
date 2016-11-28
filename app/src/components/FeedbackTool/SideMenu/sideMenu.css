@@ -28,3 +28,13 @@
 .sideMenuCaption {
   margin-left: 5px;
 }
+
+.list_Item {
+  background-color: lightgray;
+  border: solid thin darkgray;
+  padding: 5px 0 5px 5px;
+}
+
+.hiddenItem {
+  display: none;
+}
