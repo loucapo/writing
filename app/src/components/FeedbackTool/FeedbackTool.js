@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import Flags from './../../containers/FlagContainer/Flags';
-
+import StudentReflection from './StudentReflection/StudentReflection';
+import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
 const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedback}) => {
@@ -31,7 +32,9 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
   return (
     <section className={feedbackTool.feedbackToolContainer}>
       <div className={feedbackTool.editorContainer}>
+        <StudentReflection />
         <RichTextEditor onChange={onChange} value={value} readOnly={true} />
+        <EndComment />
       </div>
       <Flags flagElements={badges} />
       <SideMenu
