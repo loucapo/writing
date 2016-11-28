@@ -19,6 +19,7 @@
   align-items: center;
   font-size: 13px;
   width: 190px;
+  cursor: pointer;
 }
 
 .sideMenu li img {

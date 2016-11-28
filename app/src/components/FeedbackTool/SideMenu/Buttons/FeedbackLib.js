@@ -5,11 +5,10 @@ import sideMenu from './../sideMenu.css';
 
 const FeedbackLibButton = ({toggleQuickFeedback}) => {
   return (
-    <li data-id="feedbackLib">
+    <li data-id="feedbackLib" onClick={toggleQuickFeedback}>
       <div className="Icon" dangerouslySetInnerHTML={{__html: image}} />
       <span
-        className={sideMenu.sideMenuCaption}
-        onClick={toggleQuickFeedback}>Quick Feedback Library
+        className={sideMenu.sideMenuCaption}>Quick Feedback Library
       </span>
     </li>
   );

@@ -29,7 +29,7 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
         <OtherButton />
         <GoodJobButton />
         <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback} />
-        <div className={showQuickFeedbackTool?'':sideMenu.hiddenItem}>
+        <div className={showQuickFeedbackTool ? '' : sideMenu.hiddenItem}>
           <li data-id="span1" className={sideMenu.list_Item} onClick={() => spanClicked(1)}>Citation</li>
           <li data-id="span1" className={sideMenu.list_Item} onClick={() => spanClicked(2)}>Comma Splice</li>
           <li data-id="span8" className={sideMenu.list_Item} onClick={() => spanClicked(3)}>Comma Error</li>
