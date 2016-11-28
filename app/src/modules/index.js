@@ -4,10 +4,11 @@ import studentSubmissionReducer from './studentSubmissionModule';
 import feedbackToolReducer from './feedbackToolModule';
 
 export {activityAction} from './activityModule';
-export {fetchStudentSubmissionAction} from './studentSubmissionModule';
+export {fetchStudentSubmissionAction, submissionOnChange} from './studentSubmissionModule';
 export {submitOtherComment} from './feedbackToolModule';
 export default {
   activities: activityReducer,
   drafts: draftReducer,
   studentSubmissions: studentSubmissionReducer,
-  feedbackTool: feedbackToolReducer };
+  feedbackTool: feedbackToolReducer
+};

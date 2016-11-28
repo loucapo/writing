@@ -14,15 +14,15 @@ const SideMenu = (props) => {
   return (
     <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>
-        <ThesisButton/>
-        <ReasonSupportButton/>
-        <InterpretationButton/>
-        <ParagraphDevButton/>
-        <ResearchButton/>
-        <CounterArgsButton/>
+        <ThesisButton />
+        <ReasonSupportButton />
+        <InterpretationButton />
+        <ParagraphDevButton />
+        <ResearchButton />
+        <CounterArgsButton />
         <OtherButton {...props} />
-        <GoodJobButton/>
-        <FeedbackLibButton/>
+        <GoodJobButton />
+        <FeedbackLibButton />
       </ul>
     </div>
   );

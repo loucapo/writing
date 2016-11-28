@@ -1,20 +1,20 @@
-import React from 'react';
-import FeedbackButton from './FeedbackButton'
+import React, {PropTypes} from 'react';
+import FeedbackButton from './FeedbackButton';
 import {Form} from 'freakin-react-forms';
-import Input from './../../../FormElements/Input'
+import Input from './../../../FormElements/Input';
 import uuid from 'uuid';
 
-const Other = ({submitOtherComment,position, toggleHighlight}) => {
+const Other = ({submitOtherComment, position, toggleHighlight}) => {
   let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
   let model = {
     otherComment: {
       type: 'textarea',
-        name: 'otherComment',
-        placeholder: 'Add a comment'
+      name: 'otherComment',
+      placeholder: 'Add a comment'
     },
     sentimentLevel: {
       type: 'select',
-        name: 'sentimentLevel',
+      name: 'sentimentLevel',
       options: [
         <option value="grapefruit" key={uuid.v4()}>Grapefruit</option>,
         <option value="lime" key={uuid.v4()}>Lime</option>,
@@ -23,8 +23,8 @@ const Other = ({submitOtherComment,position, toggleHighlight}) => {
       ]
     }
   };
-  
-  const form =(onSubmit, onClose) => (
+
+  const form = (onSubmit, onClose) => (
     <Form submitHandler={onSubmit} model={model}>
       <div>
         {<Input frfProperty={model.sentimentLevel} options={model.sentimentLevel.options} />}
@@ -37,18 +37,24 @@ const Other = ({submitOtherComment,position, toggleHighlight}) => {
     </Form>);
 
   return (<div>
-      <FeedbackButton
-        form={form}
-        toggleHighlight={toggleHighlight}
-        color="green"
-        buttonName="other"
-        commentIcon={commentIcon}
-        onSubmit={submitOtherComment}
-        model={model}
-        position={position}
-        />
-    </div>
+    <FeedbackButton
+      form={form}
+      toggleHighlight={toggleHighlight}
+      color="green"
+      buttonName="other"
+      commentIcon={commentIcon}
+      onSubmit={submitOtherComment}
+      model={model}
+      position={position}
+    />
+  </div>
   );
+};
+
+Other.propTypes = {
+  submitOtherComment: PropTypes.func,
+  position: PropTypes.object,
+  toggleHighlight: PropTypes.func
 };
 
 export default Other;

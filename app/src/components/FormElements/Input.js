@@ -27,12 +27,13 @@ const _Input = ({ data,
           onChange={data.onChange}
         />);
       }
-      case 'select':{
-        return (<select name={data.name}
-                        value={data.value}
-                        onChange={data.onChange} >
-          {options}
-          </select>)
+      case 'select': {
+        return (
+          <select name={data.name}
+            value={data.value}
+            onChange={data.onChange} >
+            {options}
+          </select>);
       }
       case 'number':
       case 'password':
@@ -58,7 +59,9 @@ const _Input = ({ data,
 
 
 _Input.propTypes = {
-  containerStyle: PropTypes.string
+  containerStyle: PropTypes.string,
+  data: PropTypes.object,
+  options: PropTypes.object
 };
 
 export default _Input;

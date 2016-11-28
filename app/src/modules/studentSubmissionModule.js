@@ -98,9 +98,9 @@ const dummyData = {
 export default (state = [dummyData], action) => {
   switch (action.type) {
     case STUDENT_SUBMISSION_ON_CHANGE: {
-      return state.map(x=> {
-        if(x.id === "123"){
-          x.document = action.value
+      return state.map(x => {
+        if(x.id === action.value.id) {
+          x.document = action.value.document;
         }
         return x;
       });
@@ -155,6 +155,6 @@ export function fetchStudentSubmissionAction(id) {
 export function submissionOnChange(value) {
   return {
     type: STUDENT_SUBMISSION_ON_CHANGE,
-    value: value.toString('html')
+    value
   };
 }

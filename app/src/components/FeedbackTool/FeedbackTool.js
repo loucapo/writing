@@ -3,8 +3,6 @@ import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import feedbackTool from './feedbackTool.css';
 import toggleHighlightSelection from './utilities/toggleHighlightSelection';
-import {Form} from 'freakin-react-forms';
-import {EditorState, RichUtils} from 'draft-js';
 
 class FeedbackTool extends Component {
   constructor() {
@@ -18,12 +16,12 @@ class FeedbackTool extends Component {
     // XXX I'm finally getting clear on how to do the data load stuff
     // this.props.fetchStudentSubmissionAction(this.props.params.id);
     this.setState({
-      value: this.props.document
+      value: RichTextEditor.fromRaw(this.props.document ? this.props.document : '')
     });
   }
 
   componentWillReceiveProps() {
-    // XXX i'd really like to leave this as an example, as we will be needing it and
+    // // XXX i'd really like to leave this as an example, as we will be needing it and
     // XXX I'm finally getting clear on how to do the data load stuff
     // if(newProps.params.id !== oldProps.params.id) {
     //   this.props.fetchStudentSubmissionAction(newProps.props.params.id);
@@ -31,21 +29,33 @@ class FeedbackTool extends Component {
   }
 
   onChange(value) {
+
     const rect = window.getSelection().anchorOffset > 0
       ? window.getSelection().getRangeAt(0).getBoundingClientRect()
       : null;
     // this is ugly
-    this.setState({value});
     if(rect) {
-      this.setState({rect})
+      this.setState({value, rect});
+    } else {
+      this.setState({value});
     }
+    const submission = {
+      id: this.props.submissionId,
+      document: RichTextEditor.toRaw(value)
+    };
+    this.props.submissionOnChange(submission);
   }
 
   toggleHighlight(color) {
     const editorValue = this.state.value;
-    var editorState = editorValue.getEditorState();
-    const value =  editorValue.setEditorState(toggleHighlightSelection(editorState, color));
+    let editorState = editorValue.getEditorState();
+    const value = editorValue.setEditorState(toggleHighlightSelection(editorState, color));
     this.setState({value});
+    const submission = {
+      id: this.props.submissionId,
+      document: RichTextEditor.toRaw(value)
+    };
+    this.props.submissionOnChange(submission);
   }
 
   render() {
@@ -63,12 +73,16 @@ class FeedbackTool extends Component {
     return (
       <section className={feedbackTool.feedbackToolContainer}>
         <div className={feedbackTool.editorContainer}>
-          <RichTextEditor onChange={this.onChange}
-                          value={this.state.value}
-                          customStyleMap={colorStyleMap}
-                          readOnly={false} />
+          <RichTextEditor
+            onChange={this.onChange}
+            value={this.state.value}
+            customStyleMap={colorStyleMap}
+            readOnly={false} />
         </div>
-        <SideMenu toggleHighlight={this.toggleHighlight} position={this.state.rect} submitOtherComment={this.props.submitOtherComment}  />
+        <SideMenu
+          toggleHighlight={this.toggleHighlight}
+          position={this.state.rect}
+          submitOtherComment={this.props.submitOtherComment} />
       </section>
     );
   }
@@ -78,7 +92,9 @@ FeedbackTool.propTypes = {
   document: PropTypes.object,
   isFetching: PropTypes.bool,
   errorMessage: PropTypes.string,
-  submitOtherComment: PropTypes.func
+  submitOtherComment: PropTypes.func,
+  submissionId: PropTypes.func,
+  submissionOnChange: PropTypes.func
 };
 
 export default FeedbackTool;

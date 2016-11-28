@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import FeedbackModal from '../../FeedbackModal/FeedbackModal'
+import FeedbackModal from '../../FeedbackModal/FeedbackModal';
 
 class FeedbackButton extends Component {
   constructor() {
@@ -50,17 +50,27 @@ class FeedbackButton extends Component {
   }
 
   render() {
-      return (
-        <li data-id={this.props.buttonName}>
-          <img src={this.props.commentIcon} onClick={this.onClick}/>{this.props.buttonName}
-          <FeedbackModal isOpen={this.state.isOpen}
-                         position={this.state.position}
-                         onClose={this.onClose}
-                        form={this.props.form(this.onSubmit,this.onClose)}/>
-        </li>
-      );
-    };
-
+    return (
+      <li data-id={this.props.buttonName}>
+        <img src={this.props.commentIcon} onClick={this.onClick} />{this.props.buttonName}
+        <FeedbackModal
+          isOpen={this.state.isOpen}
+          position={this.state.position}
+          onClose={this.onClose}
+          form={this.props.form(this.onSubmit, this.onClose)} />
+      </li>
+    );
   }
+}
 
-export default FeedbackButton
+FeedbackButton.propTypes = {
+  toggleHighlight: PropTypes.func,
+  color: PropTypes.string,
+  onSubmit: PropTypes.func,
+  position: PropTypes.object,
+  buttonName: PropTypes.string,
+  commentIcon: PropTypes.string,
+  form: PropTypes.func
+};
+
+export default FeedbackButton;
