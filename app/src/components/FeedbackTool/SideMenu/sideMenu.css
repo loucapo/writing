@@ -1,6 +1,11 @@
+.sidebarContainer {
+  position: fixed;
+  float: right;
+  margin: 0 20px 0 80%;
+  width: 80px;
+}
+
 .sideMenu {
-  border: thin #ddd;
-  border-style: solid none;
   float: right;
   width: 30%;
 }
@@ -18,4 +23,18 @@
 
 .sideMenu li img {
   margin-right: 6px;
+}
+
+.sideMenuCaption {
+  margin-left: 5px;
+}
+
+.list_Item {
+  background-color: lightgray;
+  border: solid thin darkgray;
+  padding: 5px 0 5px 5px;
+}
+
+.hiddenItem {
+  display: none;
 }

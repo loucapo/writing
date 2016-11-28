@@ -1,0 +1,112 @@
+@import 'mixins.css';
+
+.image {
+  background: url('../../images/comment_thumbsup.png') no-repeat;
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+}
+
+.anchor {
+  margin-left: 5px;
+}
+
+.list_container {
+  display: flex;
+  flex-direction: column;
+  list-style-position: inside;
+  list-style-type: none;
+  padding-left: 0;
+  vertical-align: middle;
+}
+
+.list_item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.flagContainer {
+  width: 250px;
+  height: 100%;
+  float: left;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: darkgray;
+}
+
+.title:after {
+  content: '\2807';
+  font-size: 30px;
+  position: absolute;
+  top: 2px;
+  left: 180px;
+}
+
+.paragraph {
+  margin-bottom: 10px;
+  color: darkgray;
+}
+
+.resources {
+  color: darkgray;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.triangle_border {
+  background: #fff;
+  border: 1px solid #5fc5eb;
+  border-radius: 0px 4px 4px 4px;
+  color: #333;
+  margin: 25px;
+  padding: 10px;
+  position: relative;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.triangle_border:before {
+  border-color: transparent #5fc5eb;
+  border-style: solid;
+  border-width: 0px 20px 10px 0;
+  bottom: auto;
+  display: block;
+  content: "";
+  left: -20px;
+  position: absolute;
+  top: -1px;
+  width: 0;
+}
+
+.triangle_border:after {
+  border-color: transparent #fff;
+  border-style: solid;
+  border-width: 0px 15px 8px 0;
+  bottom: auto;
+  content: "";
+  display: block;
+  left: -15px;
+  position: absolute;
+  top: 0px;
+  width: 0;
+}
+
+.green {
+  border-color: #7cd34b;
+}
+
+.green:before {
+  border-color: transparent #7cd34b !important;
+}
+
+.orange {
+  border-color: #f5a543;
+}
+
+.orange:before {
+  border-color: transparent  #f5a543 !important;
+}

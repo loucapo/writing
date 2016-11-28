@@ -5,6 +5,7 @@ export const STUDENT_SUBMISSION_SUCCESS = 'wk_frontend/studentSubmission/STUDENT
 export const STUDENT_SUBMISSION_FAILURE = 'wk_frontend/studentSubmission/STUDENT_SUBMISSION_FAILURE';
 export const STUDENT_SUBMISSION_ON_CHANGE = 'wk_frontend/studentSubmission/STUDENT_SUBMISSION_ON_CHANGE';
 
+/* eslint-disable max-len */
 const dummyData = {
   id: '123',
   /* eslint-disable */
@@ -95,13 +96,14 @@ const dummyData = {
   }
   /* eslint-enable */
 };
+/* eslint-enable max-len */
 
 // Reducer
 export default (state = [dummyData], action) => {
   switch (action.type) {
     case STUDENT_SUBMISSION_ON_CHANGE: {
       return state.map(x=> {
-        if( x.id === '123' ) {
+        if (x.id === '123') {
           x.document = action.value;
         }
         return x;

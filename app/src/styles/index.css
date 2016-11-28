@@ -5,9 +5,3 @@ body {
 	color: var(--font-default);
 	font-size: 14px;
 }
-
-a, a:link, a:hover, a:active  {
-	text-decoration: none;
-	color: var(--blue);
-	cursor: pointer;
-}

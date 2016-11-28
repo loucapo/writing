@@ -1,12 +1,13 @@
 import React from 'react';
+import image from './../../../../images/comment.svg';
+
 import sideMenu from './../sideMenu.css';
 
 const ThesisButton = () => {
-  let commentIcon = "https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg";
-
   return (
     <li data-id="thesis">
-      <img src={commentIcon}/>Thesis
+      <div className="Icon" dangerouslySetInnerHTML={{__html: image}} />
+      <span className={sideMenu.sideMenuCaption}>Thesis</span>
     </li>
   );
 };
