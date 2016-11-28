@@ -64,10 +64,6 @@
       "beforeColon": false,
       "afterColon": true
     }],
-    "keyword-spacing": [2, {
-      "before": true,
-      "after": true
-    }],
 
     "max-len": [2, { "code": 120, "ignoreStrings": true }],
 

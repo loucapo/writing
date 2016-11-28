@@ -7,6 +7,10 @@
 .editorContainer {
   display: flex;
   flex-direction: column;
-  height: 100%;
   margin: 0 auto;
+  float: left;
+  border-right: solid thin #ddd;
+  overflow: auto;
+  height: 100vh;
+  width: 70%;
 }

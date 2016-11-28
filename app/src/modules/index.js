@@ -2,7 +2,6 @@ import activityReducer from './activityModule';
 import draftReducer from './draftModule';
 import rubricReducer from './rubricModule';
 import studentSubmissionReducer from './studentSubmissionModule';
-import submissionOnChange from './studentSubmissionModule';
 
 export {activityAction} from './activityModule';
 export {loadRubric} from './rubricModule';
