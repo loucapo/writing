@@ -12,14 +12,14 @@ class RubricContainer extends Component {
   }
 
   render() {
-    return (<Rubric rubric={this.props.rubric} showRubric={this.props.showRubric} />);
+    return (<Rubric rubric={this.props.rubric} showRubric={this.props.showRubric} toggleRubric={this.props.toggleRubric} />);
   }
 }
 
-// todo: first 2 proptypes needed here?
 RubricContainer.propTypes = {
   rubric: PropTypes.object,
-  loadRubric: PropTypes.func
+  loadRubric: PropTypes.func,
+  toggleRubric: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
