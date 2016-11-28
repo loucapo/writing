@@ -1,15 +1,7 @@
 var rtePage = require('../pages/react-rte.js');
-var marvin = require('marvin-js');
-var keys = require('selenium-webdriver').Key;
+
 var by = require('selenium-webdriver').By;
-var driver = require('marvin-js').session.getDriver();
-
-var chai = require('chai');
-var should = require('chai').should;
-//var chaiAsPromised = require("chai-as-promised");
-//chai.use(chaiAsPromised);
-
-//var Promise = require('bluebird');
+var Promise = require('bluebird');
 
 exports.define = function(steps) {
 
@@ -18,15 +10,15 @@ exports.define = function(steps) {
    */
   steps.given('I visit the wysiwyg editor page', function() {
     rtePage.visit();
-  })
+  });
 
   steps.when(['I focus the content editor'], function() {
     rtePage.draftEditor.click();
-  })
+  });
 
   steps.when(['I type in "$text"'], function(text) {
     rtePage.draftEditor.sendKeys(text);
-  })
+  });
 
   steps.then('I should see "$text" in the content editor', function(text) {
     rtePage.draftEditor.getText().then(function(text) {
@@ -34,19 +26,9 @@ exports.define = function(steps) {
     });
   });
 
-
-  steps.when('make it fail', function(next) {
-    console.log('actually here now...')
-    throw new Error("ugh");
-    console.log('but then we just skipped the error?')
-    //next();
-	 console.log(next);
-  });
-
   /*
    *	Embolden Text
    */
-
   steps.when('I select "$text"', function(text) {
     // can't seem to get command+a or control+a to select all
     // let's use shift and many lefts
@@ -60,23 +42,25 @@ exports.define = function(steps) {
   steps.when('I select all content', function() {
     // can't seem to get command+a or control+a to select all
     // let's use shift and many lefts
-	 rtePage.draftEditor.getText().then(function(content) {
-		 var lefts = '';
-		 var content_length = content.length + 1;
-		 for (i = 0; i < content_length; i++) {
-			lefts += keys.LEFT;
-		 }
-		 rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
-	});
+    rtePage.draftEditor.getText()
+      .then(function(content) {
+        var lefts = '';
+        var content_length = content.length + 1;
+        for (i = 0; i < content_length; i++) {
+	  lefts += keys.LEFT;
+        }
+        rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
+      });
   });
 
   steps.when('I click the bold button', function(next) {
     rtePage.button_bold.click();
   });
+
   steps.then('Text "$text" should have bold styling', function(text) {
-     return new Promise(function(resolve, reject) {
-       return rtePage.draftEditor.findElement({css: "span[style*='bold']"})
-     });
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElement({css: "span[style*='bold']"});
+    });
   });
 
   /*
@@ -85,9 +69,10 @@ exports.define = function(steps) {
   steps.when('I click the italics button', function() {
     rtePage.button_italic.click();
   });
+
   steps.then('Text "$text" should have italicized styling', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='italic']"})
+      return rtePage.draftEditor.findElement({css: "span[style*='italic']"});
     });
   });
 
@@ -97,22 +82,23 @@ exports.define = function(steps) {
   steps.when('I click the monospace button', function() {
     rtePage.button_monospace.click();
   });
+
   steps.then('Text "$text" should have monospace styling', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='monospace;']"})
+      return rtePage.draftEditor.findElement({css: "span[style*='monospace;']"});
     });
   });
 
   /*
    *	Strikethrough Text
    */
-
   steps.when('I click the strikethrough button', function() {
     rtePage.button_strikethrough.click();
   });
+
   steps.then('Text "$text" should have strikethrough styling', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='line-through;']"})
+      return rtePage.draftEditor.findElement({css: "span[style*='line-through;']"});
     });
   });
 
@@ -138,11 +124,9 @@ exports.define = function(steps) {
     });
   });
 
-
   /*
    * Ordered List
    */
-
   steps.when('I click the ordered list button', function() {
     rtePage.button_ordered_list.click();
   });
@@ -158,21 +142,19 @@ exports.define = function(steps) {
   /*
    * Blockquote
    */
-
   steps.when('I click the blockquote button', function() {
     rtePage.button_blockquote.click();
   });
 
   steps.then('Text "happy" should have a blockquote', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "blockquote"})
+      return rtePage.draftEditor.findElement({css: "blockquote"});
     });
   });
 
   /*
    * Link
    */
-
   steps.when('I click the link button', function() {
     rtePage.button_link.click();
   });
@@ -183,7 +165,7 @@ exports.define = function(steps) {
 
   steps.then('Text "$text" should have a link', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "a"})
+      return rtePage.draftEditor.findElement({css: "a"});
     });
   });
 
@@ -191,19 +173,19 @@ exports.define = function(steps) {
    * Remove Link
    * Needs work to make sure it can fail
    */
-
   steps.when('I click the remove link button', function() {
     rtePage.button_remove_link.click();
   });
 
-	steps.then('Text "$text" should not have a link', function() {
-		return new Promise(function(resolve, reject) {	
-			return rtePage.draftEditor.findElements({css: "a"}).then(function(links) {
-				if (links.length != 0) {
-					throw new Error('Anchor tag should not have been found.');
-				}
-			});
-    	});
+  steps.then('Text "$text" should not have a link', function() {
+    return new Promise(function(resolve, reject) {
+      return rtePage.draftEditor.findElements({css: "a"})
+        .then(function(links) {
+	  if (links.length !== 0) {
+	    throw new Error('Anchor tag should not have been found.');
+	  }
+        });
+    });
   });
 
   /*
@@ -218,79 +200,74 @@ exports.define = function(steps) {
   /*
    * h1 Heading
    */
-
   steps.when('I choose a large heading', function() {
     rtePage.dropdown_heading_large.click();
   });
 
   steps.then('Text "$text" should have a h1 header', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "h1"})
+      return rtePage.draftEditor.findElement({css: "h1"});
     });
   });
 
   /*
    * h2 Heading
    */
-
   steps.when('I choose a medium heading', function() {
     rtePage.dropdown_heading_medium.click();
   });
 
   steps.then('Text "$text" should have a h2 header', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "h2"})
+      return rtePage.draftEditor.findElement({css: "h2"});
     });
   });
 
   /*
    * h3 Heading
    */
-
   steps.when('I choose a small heading', function() {
     rtePage.dropdown_heading_small.click();
   });
 
   steps.then('Text "$text" should have a h3 header', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "h3"})
+      return rtePage.draftEditor.findElement({css: "h3"});
     });
   });
 
   /*
    * Code Block
    */
-
   steps.when('I choose a code block', function() {
     rtePage.dropdown_code_block.click();
   });
 
   steps.then('Text "$text" should have a code block', function() {
     return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "pre[class^='RichTextEditor__block___']"})
+      return rtePage.draftEditor.findElement({css: "pre[class^='RichTextEditor__block___']"});
     });
   });
 
   /*
    * Undo
    */
-
   steps.when('I click the undo button', function() {
     rtePage.button_undo.click();
   });
 
   steps.then('Text "$text" should not appear', function(happytext) {
-    rtePage.draftEditor.getText().then(function(text) {
-      text.should.not.equal(happytext);
-    });
+    rtePage.draftEditor.getText()
+      .then(function(text) {
+        text.should.not.equal(happytext);
+      });
   });
 
   /*
    * Redo
    */
-
   steps.when('I click the redo button', function() {
     rtePage.button_redo.click();
   });
 
-}
+};
