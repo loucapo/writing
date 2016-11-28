@@ -61,7 +61,7 @@ const _Input = ({ data,
 _Input.propTypes = {
   containerStyle: PropTypes.string,
   data: PropTypes.object,
-  options: PropTypes.object
+  options: PropTypes.array
 };
 
 export default _Input;

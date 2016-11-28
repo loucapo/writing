@@ -93,7 +93,7 @@ FeedbackTool.propTypes = {
   isFetching: PropTypes.bool,
   errorMessage: PropTypes.string,
   submitOtherComment: PropTypes.func,
-  submissionId: PropTypes.func,
+  submissionId: PropTypes.string,
   submissionOnChange: PropTypes.func
 };
 
