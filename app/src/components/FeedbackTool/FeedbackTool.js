@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react';
+import { RichUtils, SelectionState, EditorState } from 'draft-js';
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import feedbackTool from './feedbackTool.css';
-import toggleHighlightSelection from './utilities/toggleHighlightSelection';
 
 class FeedbackTool extends Component {
   constructor() {
@@ -28,40 +28,50 @@ class FeedbackTool extends Component {
     // }
   }
 
+  isSelection(value) {
+    const selection = value.getEditorState().getSelection();
+    const start = selection.getStartOffset();
+    const end = selection.getEndOffset();
+    return start !== end;
+  }
+
   onChange(value) {
+    if (!this.isSelection(value)) {
+      return;
+    }
 
     const rect = window.getSelection().anchorOffset > 0
       ? window.getSelection().getRangeAt(0).getBoundingClientRect()
       : null;
-    // this is ugly
-    if(rect) {
-      this.setState({value, rect});
-    } else {
-      this.setState({value});
-    }
-    const submission = {
-      id: this.props.submissionId,
-      document: RichTextEditor.toRaw(value)
-    };
-    this.props.submissionOnChange(submission);
+
+    this.setState({value, rect, isNotSelection: false});
   }
 
   toggleHighlight(color) {
     const editorValue = this.state.value;
-    let editorState = editorValue.getEditorState();
-    const value = editorValue.setEditorState(toggleHighlightSelection(editorState, color));
+    if(!this.isSelection(editorValue)) {
+      return;
+    }
+    let newEditorState = RichUtils.toggleInlineStyle(editorValue.getEditorState(), color);
+    newEditorState = EditorState.acceptSelection(newEditorState, new SelectionState());
+    const value = editorValue.setEditorState(newEditorState);
     this.setState({value});
+
     const submission = {
       id: this.props.submissionId,
       document: RichTextEditor.toRaw(value)
     };
     this.props.submissionOnChange(submission);
+    return true;
   }
 
   render() {
     const colorStyleMap = {
       green: {
         backgroundColor: 'lightgreen'
+      },
+      blue: {
+        backgroundColor: '#B4D5FE'
       }
     };
     if (this.props.isFetching) {
@@ -77,6 +87,7 @@ class FeedbackTool extends Component {
             onChange={this.onChange}
             value={this.state.value}
             customStyleMap={colorStyleMap}
+            customHandleKeyCommand={()=>{}}
             readOnly={false} />
         </div>
         <SideMenu

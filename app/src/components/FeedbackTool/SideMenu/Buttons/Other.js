@@ -40,7 +40,7 @@ const Other = ({submitOtherComment, position, toggleHighlight}) => {
     <FeedbackButton
       form={form}
       toggleHighlight={toggleHighlight}
-      color="green"
+      color="blue"
       buttonName="other"
       commentIcon={commentIcon}
       onSubmit={submitOtherComment}

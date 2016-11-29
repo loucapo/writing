@@ -33,7 +33,9 @@ class FeedbackButton extends Component {
 
   onClick(e) {
     e.preventDefault();
-    this.props.toggleHighlight(this.props.color);
+    if(!this.props.toggleHighlight(this.props.color)) {
+      return;
+    }
     let pos;
     if(this.props.position) {
       const rect = this.props.position;
