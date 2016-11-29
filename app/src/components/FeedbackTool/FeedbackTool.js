@@ -27,9 +27,11 @@ const FeedbackTool = ({value, onChange, showRubric, toggleRubric}) => {
     <section className={feedbackTool.feedbackToolContainer}>
       <div className={feedbackTool.editorContainer}>
         <FeedbackToolHeader toggleRubric={toggleRubric} />
-        {studentReflection}
-        {feedbackToolContent}
-        {endComment}
+        <div className={feedbackTool.scrollContainer} >
+          {studentReflection}
+          {feedbackToolContent}
+          {endComment}
+        </div>
       </div>
       {sideMenu}
     </section>
