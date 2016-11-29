@@ -1,7 +1,5 @@
 .sideMenu {
-  border: thin #ddd;
-  border-style: solid none;
-  float: right;
+  border-left: solid thin #ddd;
 }
 
 .sideMenu ul {
