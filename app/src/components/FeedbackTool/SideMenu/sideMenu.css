@@ -1,8 +1,5 @@
 .sideMenu {
-  border: thin #ddd;
-  border-style: solid none;
-  float: right;
-  width: 30%;
+  border-left: solid thin #ddd;
 }
 
 .sideMenu ul {
@@ -10,8 +7,8 @@
 }
 
 .sideMenu li {
-  display: flex;
   align-items: center;
+  display: flex;
   font-size: 13px;
   width: 190px;
 }

@@ -15,13 +15,18 @@
   color: #fff;
 }
 .feedbackToolContainer {
-  position: fixed;
+  display: flex;
+  height: 100%;
   padding: 10px;
 }
 
-.editorContainer {
-  float: left;
+.scrollContainer {
   overflow: auto;
-  height: 100vh;
-  width: 70%;
+}
+
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  float: left;
 }
