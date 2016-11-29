@@ -67,18 +67,6 @@ exports.define = function(steps) {
       });
   });
 
-  steps.then("I do not see a '$elem' in '$elem2'", function(elem, container) {
-    return new Promise(function(resolve, reject) {
-      return page[container].findElements(page[elem])
-        .then(function(links) {
-          console.log(links.length);
-          if (links.length !== 0) {
-            throw new Error('Element should not have been found.');
-          }
-        });
-    });
-  });
-
   steps.then("I see publisher content", function() {
     page.resource_url.isDisplayed().should.eventually.equal(true);
   });
