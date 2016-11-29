@@ -24,5 +24,11 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
+  'pre-defined feedback comment': { get: function () { return this.element(".Z7w9xyRDPPrxo2G9E_yBB"); } },
+
+  'instructor feedback content': { get: function () { return this.element("._2UmKyh4Gg9lDJDi6C-lrUZ"); } },
+
+  resource_url: { get: function () { return this.element("[data-id='resource-url']"); } },
+
   example_essay: { value: 'TXTing: h8 it or wuv it'}
 });
