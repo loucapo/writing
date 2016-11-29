@@ -7,11 +7,20 @@ import FeedbackTool from '../components/FeedbackTool/FeedbackTool';
 class FeedbackToolContainer extends Component {
   constructor() {
     super();
-    this.state = {showQuickFeedbackTool: false};
+    this.state = {
+      showRubric: false,
+      showQuickFeedbackTool: false
+    };
     this.toggleQuickFeedback = () => {
       this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
     };
+    this.toggleRubric = () => {
+      this.setState({
+        showRubric: !this.state.showRubric
+      });
+    };
   }
+
   componentWillMount() { this.loadData(); }
 
   componentWillReceiveProps() { this.loadData(); }
@@ -32,15 +41,15 @@ class FeedbackToolContainer extends Component {
     if (this.props.errorMessage) {
       return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
     }
-
     return (
       <FeedbackTool
         value={this.state.value}
-        onChange={this.onChange}
+        onChange={this.onChange.bind(this)}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
         toggleQuickFeedback={this.toggleQuickFeedback}
-      />
-    );
+        toggleRubric={this.toggleRubric}
+        showRubric={this.state.showRubric}
+      />);
   }
 }
 

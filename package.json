@@ -35,7 +35,8 @@
     "redux-api-middleware": "^1.0.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "url-loader": "^0.5.7"
+    "url-loader": "^0.5.7",
+    "ml-react-rte": "^0.0.16"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",
@@ -81,4 +82,3 @@
     "validate"
   ]
 }
-

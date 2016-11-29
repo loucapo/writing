@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { activityAction } from './../modules';
-import Activity from '../components/Activity';
+import Activity from '../components/Activity/Activity';
 import { withRouter } from 'react-router';
 
 class ActivityContainer extends Component {

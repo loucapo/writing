@@ -2,11 +2,13 @@ import React, { PropTypes } from 'react';
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
 import Flags from './../../containers/FlagContainer/Flags';
+import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
+import RubricContainer from '../../containers/RubricContainer';
 import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
-const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedback}) => {
+const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedback, showRubric, toggleRubric}) => {
   let badges = [{
     title: 'Integration of Research',
     contentParagraphs: [
@@ -29,18 +31,36 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
       }
     ]
   }];
+  let feedbackToolContent;
+  let sideMenu;
+  let studentReflection;
+  let endComment;
+  if (showRubric) {
+    feedbackToolContent = <RubricContainer showRubric={showRubric} toggleRubric={toggleRubric} />;
+    sideMenu = null;
+    studentReflection = null;
+    endComment = null;
+  } else {
+    feedbackToolContent = <RichTextEditor onChange={onChange} value={value} readOnly={true} />;
+    sideMenu = <SideMenu
+      toggleQuickFeedback={toggleQuickFeedback}
+      showQuickFeedbackTool={showQuickFeedbackTool}
+    />;
+    studentReflection = <StudentReflection />;
+    endComment = <EndComment />;
+  }
   return (
     <section className={feedbackTool.feedbackToolContainer}>
       <div className={feedbackTool.editorContainer}>
-        <StudentReflection />
-        <RichTextEditor onChange={onChange} value={value} readOnly={true} />
-        <EndComment />
+        <FeedbackToolHeader toggleRubric={toggleRubric} />
+        <div className={feedbackTool.scrollContainer} >
+          {studentReflection}
+          {feedbackToolContent}
+          {endComment}
+        </div>
       </div>
       <Flags flagElements={badges} />
-      <SideMenu
-        toggleQuickFeedback={toggleQuickFeedback}
-        showQuickFeedbackTool={showQuickFeedbackTool}
-      />
+      {sideMenu}
     </section>
   );
 };
@@ -49,7 +69,9 @@ FeedbackTool.propTypes = {
   value: PropTypes.object,
   onChange: PropTypes.func,
   showQuickFeedbackTool: PropTypes.bool,
-  toggleQuickFeedback: PropTypes.func
+  toggleQuickFeedback: PropTypes.func,
+  showRubric: PropTypes.bool,
+  toggleRubric: PropTypes.func,
 };
 
 export default FeedbackTool;

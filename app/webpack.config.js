@@ -79,7 +79,7 @@ const webpackConfig = {
             query: {
               modules: true,
               sourceMap: true,
-              // localIdentName: '[folder]---[local]---[hash:base64:10]'
+              localIdentName: '[folder]__[local]__[hash:base64:5]'
             }
           },
           {
