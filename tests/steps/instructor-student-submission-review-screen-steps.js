@@ -1,5 +1,4 @@
 var page = require('../pages/instructor-student-submission-review-screen.js');
-// var summary_page = require('../pages/instructor-assignment-summary-page.js');
 
 exports.define = function(steps) {
 
