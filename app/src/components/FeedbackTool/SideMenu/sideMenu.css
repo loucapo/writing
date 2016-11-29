@@ -1,0 +1,18 @@
+.sideMenu {
+  border-left: solid thin #ddd;
+}
+
+.sideMenu ul {
+  padding: 0 20px;
+}
+
+.sideMenu li {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  width: 190px;
+}
+
+.sideMenu li img {
+  margin-right: 6px;
+}
