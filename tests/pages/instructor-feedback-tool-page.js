@@ -6,23 +6,23 @@ module.exports = new Page({
 
   student_submission_body: { get: function () { return this.element("[data-id='student_submission_body']"); } },
 
-  quick_feedback_library: { get: function () { return this.element("[data-id='quick-feedback-library']"); } },
+  quick_feedback_library: { get: function () { return this.element("[data-id='feedbackLib']"); } },
 
-  comma_splice: { get: function () { return this.element("[data-id='comma_splice']"); } },
+  comma_splice: { get: function () { return this.element("[data-id='comma-splice']"); } },
 
   fragment: { get: function () { return this.element("[data-id='fragment']"); } },
 
   usage: { get: function () { return this.element("[data-id='usage']"); } },
 
-  pronoun_agreement: { get: function () { return this.element("[data-id='pronoun_agreement']"); } },
+  pronoun_agreement: { get: function () { return this.element("[data-id='pronoun-agreement']"); } },
 
-  subject_verb_agreement: { get: function () { return this.element("[data-id='subject_verb_agreement']"); } },
+  subject_verb_agreement: { get: function () { return this.element("[data-id='subject-verb-agreement']"); } },
 
-  wrong_word: { get: function () { return this.element("[data-id='wrong_word']"); } },
+  appropriate_language: { get: function () { return this.element("[data-id='appropriate-language']"); } },
 
-  needs_analysis: { get: function () { return this.element("[data-id='needs_analysis']"); } },
+  needs_analysis: { get: function () { return this.element("[data-id='needs-analysis']"); } },
 
-  comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
+  comma_error: { get: function () { return this.element("[data-id='comma-error']"); } },
 
   'Student Reflection Section': { get: function () { return this.element("[data-id='studentReflections']"); } },
 
