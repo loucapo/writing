@@ -37,7 +37,7 @@ const webpackConfig = {
     }
   },
 
-  devtool: 'cheap-module-eval-source-map', //javascript sourcemaps
+  devtool: 'eval-source-map', //javascript sourcemaps
 
   entry: {
     app: [
@@ -91,6 +91,13 @@ const webpackConfig = {
         test: /\.png$/,
         loader: 'url-loader',
         query: { mimetype: 'image/png' } ,
+        include: [
+          path.resolve(__dirname, 'src/images')
+        ]
+      },
+      {
+        test: /\.(svg)$/,
+        loader: 'raw-loader',
         include: [
           path.resolve(__dirname, 'src/images')
         ]
