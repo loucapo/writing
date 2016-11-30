@@ -32,6 +32,41 @@ exports.define = function(steps) {
     expect(page.comma_error).to.not.exist;
   });
 
+  steps.then("I see the '$elem'", function(elem) {
+    page[elem].isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.then("I see text '$text' in '$elem'", function(text, elem) {
+    page[elem].getText()
+      .then(function(t) {
+        assert.include(t, text);
+      });
+  });
+
+  steps.then("I see the '$elem' is empty", function(elem) {
+    page[elem].getText()
+      .then(function(t) {
+        assert.equal(t, "");
+      });
+  });
+
+  steps.then("I see the '$elem' has placeholder text '$str'", function(elem, str) {
+    page[elem].getAttribute('placeholder')
+      .then(function(t) {
+        assert.equal(t, str);
+      });
+  });
+
+  steps.then("I see responses to the reflection questions", function() {
+    expect(page['Student Reflection Section']).to.exist;
+  });
+
+  steps.then("I see the end comment section", function() {
+    expect(page.end_comment_header).to.not.exist;
+    expect(page.end_comment_section).to.not.exist;
+    expect(page.end_comment_textarea).to.not.exist;
+  });
+
   steps.then("I should see the student essay in the feedback tool", function() {
     rtePage.draftEditor.isDisplayed().should.eventually.equal(true);
     expect(page.button_bold).to.not.exist;

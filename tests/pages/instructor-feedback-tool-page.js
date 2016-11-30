@@ -24,5 +24,16 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
+  'Student Reflection Section': { get: function () { return this.element("[data-id='studentReflections']"); } },
+
+  'End Comment Section': { get: function () { return this.element("[data-id='endComment']"); } },
+
+  'End Comment textarea': { get: function () { return this.element("//*[@data-id='endComment']/textarea", 'xpath'); } },
+
+  end_comment_header: { get: function () { return this.element("[data-id='comma_error']"); } },
+
+  end_comment_textarea: { get: function () { return this.element("[data-id='comma_error']"); } },
+
   example_essay: { value: 'TXTing: h8 it or wuv it'}
+
 });
