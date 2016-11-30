@@ -24,11 +24,12 @@ module.exports = new Page({
 
   comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
 
-  'pre-defined feedback comment': { get: function () { return this.element(".Z7w9xyRDPPrxo2G9E_yBB"); } },
+  'pre-defined feedback comment': { get: function () { return this.element("div[class^='Flag__triangle_border']"); } },
 
-  'instructor feedback content': { get: function () { return this.element("._2UmKyh4Gg9lDJDi6C-lrUZ"); } },
+  'instructor feedback content': { get: function () { return this.element("div[class^='Flag__paragraph'"); } },
 
   resource_url: { get: function () { return this.element("[data-id='resource-url']"); } },
+
   'Student Reflection Section': { get: function () { return this.element("[data-id='studentReflections']"); } },
 
   'End Comment Section': { get: function () { return this.element("[data-id='endComment']"); } },
