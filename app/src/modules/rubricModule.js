@@ -1,4 +1,5 @@
 export const RUBRIC_SUCCESS = 'wk_frontend/rubric/RUBRIC_SUCCESS';
+export const RUBRIC_ON_CHANGE = 'wk_frontend/rubric/RUBRIC_ON_CHANGE';
 
 // Reducer
 export default (state = {}, action) => {
@@ -9,6 +10,15 @@ export default (state = {}, action) => {
         return state;
       }
       state = rubric;
+      return state;
+    }
+    case RUBRIC_ON_CHANGE: {
+      let rubric = action.payload.data.rubric;
+      if (!rubric) {
+        return state;
+      }
+      rubric.rubric.categories[action.payload.data.value[1].column].catSelection = action.payload.data.value[0].row;
+      state = rubric.rubric;
       return state;
     }
     default: {
@@ -52,7 +62,8 @@ export function loadRubric() {
                 "Introduces an arguable thesis that lacks focus",
                 "Introduces a vague or broad thesis",
                 "Lacks an arguable thesis"
-              ]
+              ],
+              catSelection: -1
             },
             {
               catName: "Claims",
@@ -61,7 +72,8 @@ export function loadRubric() {
                 "Introduces relevant claims that need further development",
                 "Introduces claims that do not all support the thesis",
                 "Lacks sufficient claims to support thesis"
-              ]
+              ],
+              catSelection: -1
             },
             {
               catName: "Evidence",
@@ -70,7 +82,8 @@ export function loadRubric() {
                 "Evidence supports claim",
                 "Evidence does not support claim",
                 "Limited or no evidence"
-              ]
+              ],
+              catSelection: -1
             },
             {
               catName: "Logical Appeals",
@@ -79,7 +92,8 @@ export function loadRubric() {
                 "Develops an effective appeal",
                 "Introduces an effective appeal that needs further development",
                 "Uses weak or no appeals"
-              ]
+              ],
+              catSelection: -1
             },
             {
               catName: "Counterargument",
@@ -88,7 +102,8 @@ export function loadRubric() {
                 "Introduces a credible counterargument",
                 "Introduces a weak counterargument",
                 "Does not address counterarguments"
-              ]
+              ],
+              catSelection: -1
             }
           ]
         }
@@ -96,3 +111,15 @@ export function loadRubric() {
     }
   }
 };
+
+export function rubricOnChange(rubric, row, column) {
+  return {
+    type: RUBRIC_ON_CHANGE,
+    payload: {
+      data: {
+        rubric: {rubric},
+        value: [{row}, {column}]
+      }
+    }
+  };
+}

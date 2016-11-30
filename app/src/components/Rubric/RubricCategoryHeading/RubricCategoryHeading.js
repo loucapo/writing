@@ -11,7 +11,7 @@ const RubricCategoryHeading = ({headings}) => {
       {
         headings.map((headingName, idx) => {
           return (
-            <div className={rubricCategoryHeadingCss.heading_item}>
+            <div className={rubricCategoryHeadingCss.heading_item} key={idx}>
               <div data-id="category-heading" className={rubricCategoryHeadingCss.heading_name}>
                 { headingName }
               </div>
