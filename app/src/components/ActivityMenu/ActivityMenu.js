@@ -23,7 +23,7 @@ class ActivityMenu extends Component {
 
   renderContent() {
     if (this.state.toggle === 'drafts') {
-      return (<DraftSection drafts={this.props.drafts} /> );
+      return (<DraftSection drafts={this.props.drafts} />);
     }
     return (<SubmissionSection />);
   }
