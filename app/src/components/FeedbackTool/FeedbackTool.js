@@ -53,7 +53,9 @@ class FeedbackTool extends Component {
       return;
     }
     let newEditorState = RichUtils.toggleInlineStyle(editorValue.getEditorState(), color);
-    newEditorState = EditorState.acceptSelection(newEditorState, new SelectionState());
+    const newSelection = editorValue.getEditorState().getSelection().toJS();
+    newSelection.anchorOffset = newSelection.focusOffset;
+    newEditorState = EditorState.acceptSelection(newEditorState, new SelectionState(newSelection));
     const value = editorValue.setEditorState(newEditorState);
     this.setState({value});
 
