@@ -2,6 +2,10 @@ import React, {Component, PropTypes} from 'react';
 import { RichUtils, SelectionState, EditorState } from 'draft-js';
 import RichTextEditor from 'ml-react-rte';
 import SideMenu from './SideMenu/SideMenu';
+import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
+import RubricContainer from '../../containers/RubricContainer';
+import StudentReflection from './StudentReflection/StudentReflection';
+import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {
@@ -9,17 +13,20 @@ class FeedbackTool extends Component {
     super();
     this.onChange = this.onChange.bind(this);
     this.toggleHighlight = this.toggleHighlight.bind(this);
+    this.toggleRubric = this.toggleRubric.bind(this);
   }
 
   componentWillMount() {
     // XXX i'd really like to leave this as an example, as we will be needing it and
     // XXX I'm finally getting clear on how to do the data load stuff
     // this.props.fetchStudentSubmissionAction(this.props.params.id);
+
     this.setState({
-      value: RichTextEditor.fromRaw(this.props.document ? this.props.document : '')
+      value: RichTextEditor.fromRaw(this.props.document ? this.props.document : ''),
+      showRubric: false
     });
   }
-
+ 
   componentWillReceiveProps() {
     // // XXX i'd really like to leave this as an example, as we will be needing it and
     // XXX I'm finally getting clear on how to do the data load stuff
@@ -28,10 +35,21 @@ class FeedbackTool extends Component {
     // }
   }
 
+  toggleRubric() {
+    this.setState({
+      showRubric: !this.state.showRubric
+    });
+  }
+
+
   isSelection(value) {
     const selection = value.getEditorState().getSelection();
     const start = selection.getStartOffset();
     const end = selection.getEndOffset();
+    console.log('==========start=========');
+    console.log(start);
+    console.log(end);
+    console.log('==========END start=========');
     return start !== end;
   }
 
@@ -39,7 +57,6 @@ class FeedbackTool extends Component {
     if (!this.isSelection(value)) {
       return;
     }
-
     const rect = window.getSelection().anchorOffset > 0
       ? window.getSelection().getRangeAt(0).getBoundingClientRect()
       : null;
@@ -49,9 +66,12 @@ class FeedbackTool extends Component {
 
   toggleHighlight(color) {
     const editorValue = this.state.value;
-    if(!this.isSelection(editorValue)) {
+    if (!this.isSelection(editorValue)) {
       return;
     }
+    console.log('=========="here"=========');
+    console.log("here");
+    console.log('==========END "here"=========');
     let newEditorState = RichUtils.toggleInlineStyle(editorValue.getEditorState(), color);
     const newSelection = editorValue.getEditorState().getSelection().toJS();
     newSelection.anchorOffset = newSelection.focusOffset;
@@ -68,6 +88,13 @@ class FeedbackTool extends Component {
   }
 
   render() {
+    if (this.props.isFetching) {
+      return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
+    }
+    if (this.props.errorMessage) {
+      return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
+    }
+
     const colorStyleMap = {
       green: {
         backgroundColor: 'lightgreen'
@@ -76,29 +103,42 @@ class FeedbackTool extends Component {
         backgroundColor: '#B4D5FE'
       }
     };
-    if (this.props.isFetching) {
-      return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
-    }
-    if (this.props.errorMessage) {
-      return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
+
+    let feedbackToolContent;
+    let sideMenu;
+    let studentReflection;
+    let endComment;
+    if (this.state.showRubric) {
+      feedbackToolContent =
+        <RubricContainer showRubric={this.state.showRubric} toggleRubric={this.toggleRubric}/>;
+    } else {
+      feedbackToolContent = ( <RichTextEditor
+        onChange={this.onChange}
+        value={this.state.value}
+        customStyleMap={colorStyleMap}
+        customHandleKeyCommand={()=>{}}
+        readOnly={false}/>);
+      sideMenu = <SideMenu
+        toggleHighlight={this.toggleHighlight}
+        position={this.state.rect}
+        submitOtherComment={this.props.submitOtherComment} />;
+      studentReflection = <StudentReflection />;
+      endComment = <EndComment />;
     }
     return (
       <section className={feedbackTool.feedbackToolContainer}>
         <div className={feedbackTool.editorContainer}>
-          <RichTextEditor
-            onChange={this.onChange}
-            value={this.state.value}
-            customStyleMap={colorStyleMap}
-            customHandleKeyCommand={()=>{}}
-            readOnly={false} />
+          <FeedbackToolHeader toggleRubric={this.toggleRubric}/>
+          <div className={feedbackTool.scrollContainer}>
+            {studentReflection || null}
+            {feedbackToolContent}
+            {endComment || null}
+          </div>
         </div>
-        <SideMenu
-          toggleHighlight={this.toggleHighlight}
-          position={this.state.rect}
-          submitOtherComment={this.props.submitOtherComment} />
+        {sideMenu || null}
       </section>
     );
-  }
+  };
 }
 
 FeedbackTool.propTypes = {
@@ -107,7 +147,9 @@ FeedbackTool.propTypes = {
   errorMessage: PropTypes.string,
   submitOtherComment: PropTypes.func,
   submissionId: PropTypes.string,
-  submissionOnChange: PropTypes.func
-};
+  submissionOnChange: PropTypes.func,
+  showRubric: PropTypes.bool,
+  toggleRubric: PropTypes.func
+  };
 
 export default FeedbackTool;

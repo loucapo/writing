@@ -37,7 +37,7 @@ const webpackConfig = {
     }
   },
 
-  devtool: 'eval', //javascript sourcemaps
+  devtool:'cheap-module-eval-source-map', //javascript sourcemaps
 
   entry: {
     app: [
@@ -79,7 +79,7 @@ const webpackConfig = {
             query: {
               modules: true,
               sourceMap: true,
-              // localIdentName: '[folder]---[local]---[hash:base64:10]'
+              localIdentName: '[folder]__[local]__[hash:base64:5]'
             }
           },
           {
