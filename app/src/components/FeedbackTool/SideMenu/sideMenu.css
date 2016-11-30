@@ -1,23 +1,18 @@
-.sidebarContainer {
-  position: fixed;
-  float: right;
-  margin: 0 20px 0 80%;
-  width: 80px;
-}
-
 .sideMenu {
   border-left: solid thin #ddd;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .sideMenu ul {
-  padding: 0 20px;
+  padding: 20px;
+  margin: 0;
 }
 
 .sideMenu li {
   align-items: center;
   display: flex;
   font-size: 13px;
-  width: 190px;
   cursor: pointer;
 }
 
@@ -35,6 +30,11 @@
   padding: 5px 0 5px 5px;
 }
 
+.quickFeedback {
+  height: 100%;
+  overflow: hidden;
+}
+
 .hiddenItem {
-  display: none;
+  height: 0px;
 }

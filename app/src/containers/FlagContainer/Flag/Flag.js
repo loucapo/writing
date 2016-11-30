@@ -47,6 +47,7 @@ class Flag extends Component {
         <div key={this.props.index} className={flag.flagContainer} onClick={this.onClick} >
           <div key={this.props.index} className={flag.triangle_border} >
             <span className={flag.title}>{this.props.flagItem.title}</span>
+            <span className={flag.icon}></span>
           </div>
         </div>
       );

@@ -29,7 +29,8 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
         <OtherButton />
         <GoodJobButton />
         <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback} />
-        <div className={showQuickFeedbackTool ? '' : sideMenu.hiddenItem}>
+
+        <div className={showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
           <li
             data-id="appropriate-language"
             className={sideMenu.list_Item}
@@ -74,21 +75,10 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
       </ul>
     </div>
   );
-  if (showQuickFeedbackTool) {
-    result = (
-      <div className={sideMenu.sidebarContainer}>
-        {sideMenuContent}
-      </div>
-    );
-  }
-  else {
-    result = (
-      <div className={sideMenu.sidebarContainer}>
-        {sideMenuContent}
-      </div>
-    );
-  }
-  return result;
+
+  return (<div className={sideMenu.sidebarContainer}>
+    {sideMenuContent}
+  </div>);
 };
 
 SideMenu.propTypes = {

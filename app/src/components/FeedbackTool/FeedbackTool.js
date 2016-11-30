@@ -54,12 +54,14 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
       <div className={feedbackTool.editorContainer}>
         <FeedbackToolHeader toggleRubric={toggleRubric} />
         <div className={feedbackTool.scrollContainer} >
-          {studentReflection}
-          {feedbackToolContent}
-          {endComment}
+          <div>
+            {studentReflection}
+            {feedbackToolContent}
+            {endComment}
+          </div>
+          <Flags flagElements={badges} />
         </div>
       </div>
-      <Flags flagElements={badges} />
       {sideMenu}
     </section>
   );

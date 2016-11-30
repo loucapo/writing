@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import Flag from './Flag';
+import Flag from './Flag/Flag';
 
 const Flags = ({flagElements}) => {
   return (
