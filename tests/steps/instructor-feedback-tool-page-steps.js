@@ -79,4 +79,37 @@ exports.define = function(steps) {
         //expect(page.quick_feedback_library).to.exist;
       });
   });
+
+  steps.then("I see a '$elem'", function(elem) {
+    page[elem].isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.then("I click a '$element'", function(elem) {
+    page[elem].click();
+  });
+
+  steps.then("I see content '$text' in '$elem'", function(text, elem) {
+    page[elem].getText()
+      .then(function(t) {
+        assert.include(t, text);
+      });
+  });
+
+  steps.then("I do not see the instructor feedback content", function() {
+    driver.findElements({css: '._2UmKyh4Gg9lDJDi6C-lrUZ'})
+      .then(function(els) {
+        expect(els.length).to.equal(0);
+      });
+  });
+
+  steps.then("I see publisher content", function() {
+    page.resource_url.isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.then("I do not see the publisher content", function() {
+    driver.findElements({css: '#resource_url'})
+      .then(function(els) {
+        expect(els.length).to.equal(0);
+      });
+  });
 };
