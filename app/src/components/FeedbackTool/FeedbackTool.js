@@ -32,16 +32,19 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
     ]
   }];
   let feedbackToolContent;
+  let flags;
   let sideMenu;
   let studentReflection;
   let endComment;
   if (showRubric) {
     feedbackToolContent = <RubricContainer showRubric={showRubric} toggleRubric={toggleRubric} />;
+    flags = null;
     sideMenu = null;
     studentReflection = null;
     endComment = null;
   } else {
     feedbackToolContent = <RichTextEditor onChange={onChange} value={value} readOnly={true} />;
+    flags = <Flags flagElements={badges} />;
     sideMenu = <SideMenu
       toggleQuickFeedback={toggleQuickFeedback}
       showQuickFeedbackTool={showQuickFeedbackTool}
@@ -59,7 +62,7 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
             {feedbackToolContent}
             {endComment}
           </div>
-          <Flags flagElements={badges} />
+          {flags}
         </div>
       </div>
       {sideMenu}
