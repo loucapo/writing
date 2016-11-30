@@ -1,14 +1,21 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import image from './../../../../images/comment_quickfeedback.svg';
+
 import sideMenu from './../sideMenu.css';
 
-const FeedbackLibButton = () => {
-  let quickFeedbackIcon = "https://macmillanlearning.atlassian.net/secure/attachment/22112/comment_quickfeedback.svg";
-
+const FeedbackLibButton = ({toggleQuickFeedback}) => {
   return (
-    <li data-id="feedbackLib">
-      <img src={quickFeedbackIcon}/>Quick Feedback Library
+    <li data-id="feedbackLib" onClick={toggleQuickFeedback}>
+      <div className="Icon" dangerouslySetInnerHTML={{__html: image}} />
+      <span
+        className={sideMenu.sideMenuCaption}>Quick Feedback Library
+      </span>
     </li>
   );
+};
+
+FeedbackLibButton.propTypes = {
+  toggleQuickFeedback: PropTypes.func
 };
 
 export default FeedbackLibButton;

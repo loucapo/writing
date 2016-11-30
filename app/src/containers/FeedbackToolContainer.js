@@ -8,7 +8,11 @@ class FeedbackToolContainer extends Component {
   constructor() {
     super();
     this.state = {
-      showRubric: false
+      showRubric: false,
+      showQuickFeedbackTool: false
+    };
+    this.toggleQuickFeedback = () => {
+      this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
     };
     this.toggleRubric = () => {
       this.setState({
@@ -26,7 +30,7 @@ class FeedbackToolContainer extends Component {
     this.setState({ value: this.props.document });
   }
 
-  onChange(value) {
+  onChange = (value) => {
     this.setState({value});
   }
 
@@ -41,6 +45,8 @@ class FeedbackToolContainer extends Component {
       <FeedbackTool
         value={this.state.value}
         onChange={this.onChange.bind(this)}
+        showQuickFeedbackTool={this.state.showQuickFeedbackTool}
+        toggleQuickFeedback={this.toggleQuickFeedback}
         toggleRubric={this.toggleRubric}
         showRubric={this.state.showRubric}
       />);

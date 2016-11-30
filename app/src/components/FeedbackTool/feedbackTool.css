@@ -1,16 +1,16 @@
 .feedbackToolContainer {
   display: flex;
   height: 100%;
-  padding: 10px;
 }
 
 .scrollContainer {
+  display: flex;
   overflow: auto;
+  padding-left: 10px;
 }
 
 .editorContainer {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  float: left;
 }
