@@ -3,9 +3,14 @@ import FeedbackButton from './FeedbackButton';
 import {Form} from 'freakin-react-forms';
 import Input from './../../../FormElements/Input';
 import uuid from 'uuid';
-
+import OtherSVG from './OtherSVG';
+console.log('==========OtherSVG=========');
+console.log(OtherSVG);
+console.log('==========END OtherSVG=========');
 const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) => {
-  let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
+  console.log('==========onHighlight=========');
+  console.log(onHighlight);
+  console.log('==========END onHighlight=========');
   let model = {
     otherComment: {
       type: 'textarea',
@@ -35,7 +40,7 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
       <button type="submit">Submit</button>
       <button onClick={onClose}>Cancel</button>
     </Form>);
-
+  const icon = (<OtherSVG className="Icon" />);
   return (<div>
     <FeedbackButton
       form={form}
@@ -43,7 +48,7 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
       completeHighlight={completeHighlight}
       color="blue"
       buttonName="other"
-      commentIcon={commentIcon}
+      commentIcon={icon}
       onSubmit={submitOtherComment}
       model={model}
       position={position}

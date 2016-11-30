@@ -73,7 +73,7 @@ FeedbackButton.propTypes = {
   onSubmit: PropTypes.func,
   position: PropTypes.object,
   buttonName: PropTypes.string,
-  commentIcon: PropTypes.string,
+  commentIcon: PropTypes.object,
   form: PropTypes.func
 };
 

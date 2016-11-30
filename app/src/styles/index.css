@@ -1,0 +1,7 @@
+@import 'mixins.css';
+
+body {
+	font-family: sans-serif;
+	color: var(--font-default);
+	font-size: 14px;
+}

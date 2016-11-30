@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import rubricCategoryHeadingCss from './rubricCategoryHeading.css';
+import uuid from 'uuid';
 
 const RubricCategoryHeading = ({headings}) => {
   if (!headings || headings.length <= 0) {
@@ -9,8 +10,8 @@ const RubricCategoryHeading = ({headings}) => {
   return (
     <div className={rubricCategoryHeadingCss.heading}>
       { headings.map(headingName => (
-        <div className={rubricCategoryHeadingCss.heading_item}>
-          <div data-id="category-heading" className={rubricCategoryHeadingCss.heading_name}>
+        <div key={uuid.v4()} className={rubricCategoryHeadingCss.heading_item}>
+          <div key={uuid.v4()} data-id="category-heading" className={rubricCategoryHeadingCss.heading_name}>
             { headingName }
           </div>
         </div>)

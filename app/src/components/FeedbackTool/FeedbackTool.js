@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import { RichUtils, SelectionState, EditorState } from 'draft-js';
 import RichTextEditor from 'ml-react-rte';
+import Flags from './../../containers/FlagContainer/Flags';
 import SideMenu from './SideMenu/SideMenu';
 import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
 import RubricContainer from '../../containers/RubricContainer';
@@ -23,9 +24,12 @@ class FeedbackTool extends Component {
 
     this.setState({
       value: RichTextEditor.fromRaw(this.props.document ? this.props.document : ''),
-      showRubric: false
+      showRubric: false,
+      showQuickFeedbackTool: false
     });
   }
+
+
 
   componentWillReceiveProps() {
     // // XXX i'd really like to leave this as an example, as we will be needing it and
@@ -34,6 +38,36 @@ class FeedbackTool extends Component {
     //   this.props.fetchStudentSubmissionAction(newProps.props.params.id);
     // }
   }
+
+
+  badges = [{
+    title: 'Integration of Research',
+    contentParagraphs: [
+      `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
+      Your thesis is buried and unclear.`,
+      `I would begin here with your revisions to clarify your thesis statement.`
+    ],
+    resources: [
+      {
+        title: 'What is a Thesis',
+        url: 'http://www.google.com'
+      },
+      {
+        title: 'Examples of a good Thesis',
+        url: 'http://www.facebook.com'
+      },
+      {
+        title: 'Where should I put my Thesis',
+        url: 'http://www.yahoo.com'
+      }
+    ]
+  }];
+
+
+  toggleQuickFeedback = () => {
+    this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
+  };
+
 
   toggleRubric() {
     this.setState({
@@ -136,6 +170,7 @@ class FeedbackTool extends Component {
     let sideMenu;
     let studentReflection;
     let endComment;
+    let flags;
     if (this.state.showRubric) {
       feedbackToolContent =
         <RubricContainer showRubric={this.state.showRubric} toggleRubric={this.toggleRubric} />;
@@ -153,15 +188,19 @@ class FeedbackTool extends Component {
         submitOtherComment={this.props.submitOtherComment} />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
+      flags = (<Flags flagElements={this.badges} />);
     }
     return (
       <section className={feedbackTool.feedbackToolContainer}>
         <div className={feedbackTool.editorContainer}>
           <FeedbackToolHeader toggleRubric={this.toggleRubric} />
           <div className={feedbackTool.scrollContainer}>
-            {studentReflection || null}
-            {feedbackToolContent}
-            {endComment || null}
+            <div>
+              {studentReflection || null}
+              {feedbackToolContent}
+              {endComment || null}
+            </div>
+            {flags || null}
           </div>
         </div>
         {sideMenu || null}
@@ -178,6 +217,8 @@ FeedbackTool.propTypes = {
   submissionId: PropTypes.string,
   submissionOnChange: PropTypes.func,
   showRubric: PropTypes.bool,
+  showQuickFeedbackTool: PropTypes.bool,
+  toggleQuickFeedback: PropTypes.func,
   toggleRubric: PropTypes.func
 };
 

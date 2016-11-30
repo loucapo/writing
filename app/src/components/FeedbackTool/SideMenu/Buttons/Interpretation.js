@@ -1,11 +1,13 @@
 import React from 'react';
+import InterpretationSVG from './InterpretationSVG';
+
+import sideMenu from './../sideMenu.css';
 
 const InterpretationButton = () => {
-  let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
-
   return (
     <li data-id="interpretation">
-      <img src={commentIcon} />Interpretation/Analysis
+      <InterpretationSVG className="Icon" />
+      <span className={sideMenu.sideMenuCaption}>Interpretation/Analysis</span>
     </li>
   );
 };

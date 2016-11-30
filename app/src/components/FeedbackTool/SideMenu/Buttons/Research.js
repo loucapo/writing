@@ -1,11 +1,13 @@
 import React from 'react';
+import ResearchSVG from './ResearchSVG';
+
+import sideMenu from './../sideMenu.css';
 
 const ResearchButton = () => {
-  let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
-
   return (
     <li data-id="research">
-      <img src={commentIcon} />Integration of Research
+      <ResearchSVG className="Icon" />
+      <span className={sideMenu.sideMenuCaption}>Integration of Research</span>
     </li>
   );
 };

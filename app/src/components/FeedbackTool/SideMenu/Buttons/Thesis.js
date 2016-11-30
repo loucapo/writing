@@ -1,11 +1,13 @@
 import React from 'react';
+import ThesisSVG from './ThesisSVG';
+
+import sideMenu from './../sideMenu.css';
 
 const ThesisButton = () => {
-  let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg"';
-
   return (
     <li data-id="thesis">
-      <img src={commentIcon} />Thesis
+      <ThesisSVG className="Icon" />
+      <span className={sideMenu.sideMenuCaption}>Thesis</span>
     </li>
   );
 };

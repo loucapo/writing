@@ -1,11 +1,13 @@
 import React from 'react';
+import ParagraphDevSVG from './ParagraphDevSVG';
+
+import sideMenu from './../sideMenu.css';
 
 const ParagraphDevButton = () => {
-  let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
-
   return (
     <li data-id="paragraphDev">
-      <img src={commentIcon} />Paragraph Development
+      <ParagraphDevSVG className="Icon" />
+      <span className={sideMenu.sideMenuCaption}>Paragraph Development</span>
     </li>
   );
 };

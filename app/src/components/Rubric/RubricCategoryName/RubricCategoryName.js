@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import rubricCategoryNameCss from './rubricCategoryName.css';
+import uuid from 'uuid';
 
 const RubricCategoryName = ({ categoryNames }) => {
   if (!categoryNames || categoryNames.length <= 0) {
@@ -8,7 +9,10 @@ const RubricCategoryName = ({ categoryNames }) => {
   return (
     <div className={rubricCategoryNameCss.category_name}>
       { categoryNames.map(category => (
-        <div data-id="category-name" className={rubricCategoryNameCss.category_name_item}>
+        <div
+          data-id="category-name"
+          className={rubricCategoryNameCss.category_name_item}
+          key={uuid.v4()}>
           { category.score }
           <div>
             { category.text }

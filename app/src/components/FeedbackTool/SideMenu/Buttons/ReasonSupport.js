@@ -1,11 +1,13 @@
 import React from 'react';
+import ReasonSupportSVG from './ReasonSupportSVG';
+
+import sideMenu from './../sideMenu.css';
 
 const ReasonSupportButton = () => {
-  let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
-
   return (
     <li data-id="reason&support">
-      <img src={commentIcon} />Reason & Support
+      <ReasonSupportSVG className="Icon" />
+      <span className={sideMenu.sideMenuCaption}>Reason & Support</span>
     </li>
   );
 };

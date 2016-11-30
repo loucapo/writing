@@ -1,11 +1,12 @@
 import React from 'react';
+import CounterArgsSVG from './CounterArgsSVG';
+import sideMenu from './../sideMenu.css';
 
 const CounterArgsButton = () => {
-  let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
-
   return (
     <li data-id="counterargs">
-      <img src={commentIcon} />Counterarguments
+      <CounterArgsSVG className="Icon" />
+      <span className={sideMenu.sideMenuCaption}>Counterarguments</span>
     </li>
   );
 };
