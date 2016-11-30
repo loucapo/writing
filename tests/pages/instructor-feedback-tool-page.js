@@ -40,6 +40,10 @@ module.exports = new Page({
 
   end_comment_textarea: { get: function () { return this.element("[data-id='comma_error']"); } },
 
-  example_essay: { value: 'TXTing: h8 it or wuv it'}
+  example_essay: { value: 'TXTing: h8 it or wuv it'},
+  
+  // RUBRIC
+  'header button': { get: function() { return this.element("[data-id='header-button']"); } },
+  'X button': { get: function() { return this.find_elements_by_xpath('//div[contains(text(), "X")]'); } }
 
 });
