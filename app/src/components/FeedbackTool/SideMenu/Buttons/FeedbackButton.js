@@ -18,7 +18,7 @@ class FeedbackButton extends Component {
   }
   onClose(e) {
     e.preventDefault();
-    this.props.toggleHighlight(this.props.color);
+    this.props.completeHighlight(this.props.color);
     this.setState({
       isOpen: false
     });
@@ -26,6 +26,7 @@ class FeedbackButton extends Component {
 
   onSubmit(x) {
     this.props.onSubmit(x);
+    this.props.completeHighlight();
     this.setState({
       isOpen: false
     });
@@ -33,7 +34,7 @@ class FeedbackButton extends Component {
 
   onClick(e) {
     e.preventDefault();
-    if(!this.props.toggleHighlight(this.props.color)) {
+    if(!this.props.onHighlight(this.props.color)) {
       return;
     }
     let pos;
@@ -66,7 +67,8 @@ class FeedbackButton extends Component {
 }
 
 FeedbackButton.propTypes = {
-  toggleHighlight: PropTypes.func,
+  onHighlight: PropTypes.func,
+  completeHighlight: PropTypes.func,
   color: PropTypes.string,
   onSubmit: PropTypes.func,
   position: PropTypes.object,

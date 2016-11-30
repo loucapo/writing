@@ -42,8 +42,8 @@ class FeedbackTool extends Component {
   }
 
 
-  isSelection(value) {
-    const selection = value.getEditorState().getSelection();
+  isSelection(editorState) {
+    const selection = editorState.getSelection();
     const start = selection.getStartOffset();
     const end = selection.getEndOffset();
 
@@ -51,7 +51,7 @@ class FeedbackTool extends Component {
   }
 
   onChange(value) {
-    if (!this.isSelection(value)) {
+    if (!this.isSelection(value.getEditorState())) {
       return;
     }
     const rect = window.getSelection().anchorOffset > 0
@@ -60,28 +60,59 @@ class FeedbackTool extends Component {
 
     this.setState({value, rect, isNotSelection: false});
   }
-
-  toggleHighlight(color) {
-    const editorValue = this.state.value;
-    if (!this.isSelection(editorValue)) {
+  
+  resetSelection = (editorState) => {
+    if (!this.isSelection(editorState)) {
       return;
     }
 
-    const newSelection = editorValue.getEditorState().getSelection().toJS();
+    const newSelection = editorState.getSelection().toJS();
     newSelection.anchorOffset = newSelection.focusOffset;
+    return  EditorState.acceptSelection(editorState, new SelectionState(newSelection));
+  }
 
-    let newEditorState = RichUtils.toggleInlineStyle(editorValue.getEditorState(), color);
-    newEditorState = EditorState.acceptSelection(newEditorState, new SelectionState(newSelection));
-
-    const value = editorValue.setEditorState(newEditorState);
-    this.setState({value});
-
+  persistDocumentChange = (value) => {
     const submission = {
       id: this.props.submissionId,
       document: RichTextEditor.toRaw(value)
     };
     this.props.submissionOnChange(submission);
+  }
+  
+  toggleHighlight(editorState, color) {
+    return RichUtils.toggleInlineStyle(editorState, color);
+  }
+
+  onHighlight = (color) => {
+    const editorValue = this.state.value;
+    let editorState = editorValue.getEditorState();
+
+    if (!this.isSelection(editorState)) {
+      return false;
+    }
+    editorState = this.toggleHighlight(editorState, color);
+    const value = editorValue.setEditorState(editorState);
+    this.setState({value});
+
     return true;
+  }
+
+  completeHighlight = (color) => {
+    const editorValue = this.state.value;
+    let editorState = editorValue.getEditorState();
+    
+    if(color) {
+      editorState = this.toggleHighlight(editorState, color);
+    }
+
+    editorState = this.resetSelection(editorState);
+    
+    const value = editorValue.setEditorState(editorState);
+    this.setState({value});
+
+    if(!color) {
+      this.persistDocumentChange(value);
+    }
   }
 
   render() {
@@ -116,7 +147,8 @@ class FeedbackTool extends Component {
         customHandleKeyCommand={()=>{}}
         readOnly={false} />);
       sideMenu = (<SideMenu
-        toggleHighlight={this.toggleHighlight}
+        onHighlight={this.onHighlight}
+        completeHighlight={this.completeHighlight}
         position={this.state.rect}
         submitOtherComment={this.props.submitOtherComment} />);
       studentReflection = (<StudentReflection />);

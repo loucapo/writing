@@ -4,7 +4,7 @@ import {Form} from 'freakin-react-forms';
 import Input from './../../../FormElements/Input';
 import uuid from 'uuid';
 
-const Other = ({submitOtherComment, position, toggleHighlight}) => {
+const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) => {
   let commentIcon = 'https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg';
   let model = {
     otherComment: {
@@ -39,7 +39,8 @@ const Other = ({submitOtherComment, position, toggleHighlight}) => {
   return (<div>
     <FeedbackButton
       form={form}
-      toggleHighlight={toggleHighlight}
+      onHighlight={onHighlight}
+      completeHighlight={completeHighlight}
       color="blue"
       buttonName="other"
       commentIcon={commentIcon}
@@ -54,7 +55,8 @@ const Other = ({submitOtherComment, position, toggleHighlight}) => {
 Other.propTypes = {
   submitOtherComment: PropTypes.func,
   position: PropTypes.object,
-  toggleHighlight: PropTypes.func
+  onHighlight: PropTypes.func,
+  completeHighlight: PropTypes.func
 };
 
 export default Other;
