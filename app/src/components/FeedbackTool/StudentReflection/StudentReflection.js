@@ -7,12 +7,9 @@ const StudentReflection = () => {
     <div data-id="studentReflections" className={studentReflection.studentReflectionContainer}>
       <h4>Student Reflection</h4>
       <p>
-
         <strong>The most challenging part of this assignment was...</strong> Coming up with an "arguable" claim. In the final draft, I tried to argue against someone, so I think that took the whole essay more in the direction of argument than summary.
-
       </p>
       <p>
-        // eslint-disable-next-line max-len
         <strong>I want my reader to...</strong> Pay attention to the research I included. I tried hard on this part, and I'm proud of the result.
       </p>
       <p>
@@ -20,7 +17,7 @@ const StudentReflection = () => {
       </p>
     </div>
   );
-  /*eslint-enable */
+ /*eslint-enable */
 };
 
 export default StudentReflection;
