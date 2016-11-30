@@ -60,7 +60,7 @@ class FeedbackTool extends Component {
 
     this.setState({value, rect, isNotSelection: false});
   }
-  
+
   resetSelection = (editorState) => {
     if (!this.isSelection(editorState)) {
       return;
@@ -68,7 +68,7 @@ class FeedbackTool extends Component {
 
     const newSelection = editorState.getSelection().toJS();
     newSelection.anchorOffset = newSelection.focusOffset;
-    return  EditorState.acceptSelection(editorState, new SelectionState(newSelection));
+    return EditorState.acceptSelection(editorState, new SelectionState(newSelection));
   }
 
   persistDocumentChange = (value) => {
@@ -78,7 +78,7 @@ class FeedbackTool extends Component {
     };
     this.props.submissionOnChange(submission);
   }
-  
+
   toggleHighlight(editorState, color) {
     return RichUtils.toggleInlineStyle(editorState, color);
   }
@@ -100,13 +100,13 @@ class FeedbackTool extends Component {
   completeHighlight = (color) => {
     const editorValue = this.state.value;
     let editorState = editorValue.getEditorState();
-    
+
     if(color) {
       editorState = this.toggleHighlight(editorState, color);
     }
 
     editorState = this.resetSelection(editorState);
-    
+
     const value = editorValue.setEditorState(editorState);
     this.setState({value});
 
