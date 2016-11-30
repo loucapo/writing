@@ -8,19 +8,14 @@ const RubricCategoryHeading = ({headings}) => {
 
   return (
     <div className={rubricCategoryHeadingCss.heading}>
-      {
-        headings.map((headingName, idx) => {
-          return (
-            <div className={rubricCategoryHeadingCss.heading_item}>
-              <div data-id="category-heading" className={rubricCategoryHeadingCss.heading_name}>
-                { headingName }
-              </div>
-            </div>
-          );
-        })
-      }
-    </div>
-  );
+      { headings.map(headingName => (
+        <div className={rubricCategoryHeadingCss.heading_item}>
+          <div data-id="category-heading" className={rubricCategoryHeadingCss.heading_name}>
+            { headingName }
+          </div>
+        </div>)
+      )}
+    </div>);
 };
 
 RubricCategoryHeading.propTypes = {

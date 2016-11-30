@@ -25,74 +25,74 @@ export function loadRubric() {
         rubric: {
           categoryNames: [
             {
-              text: "Rubric: Argument"
+              text: 'Rubric: Argument'
             },
             {
-              text: "Exceeds Expectations",
+              text: 'Exceeds Expectations',
               score: 4
             },
             {
-              text: "Meets Expectations",
+              text: 'Meets Expectations',
               score: 3
             },
             {
-              text: "Nearly Meets Expectations",
+              text: 'Nearly Meets Expectations',
               score: 2
             },
             {
-              text: "Fails to Meet Expectations",
+              text: 'Fails to Meet Expectations',
               score: 1
             }
           ],
           categories: [
             {
-              catName: "Thesis",
+              catName: 'Thesis',
               catScores: [
-                "Introduces a focused, arguable thesis",
-                "Introduces an arguable thesis that lacks focus",
-                "Introduces a vague or broad thesis",
-                "Lacks an arguable thesis"
+                'Introduces a focused, arguable thesis',
+                'Introduces an arguable thesis that lacks focus',
+                'Introduces a vague or broad thesis',
+                'Lacks an arguable thesis'
               ]
             },
             {
-              catName: "Claims",
+              catName: 'Claims',
               catScores: [
-                "Claims clearly relate to thesis",
-                "Introduces relevant claims that need further development",
-                "Introduces claims that do not all support the thesis",
-                "Lacks sufficient claims to support thesis"
+                'Claims clearly relate to thesis',
+                'Introduces relevant claims that need further development',
+                'Introduces claims that do not all support the thesis',
+                'Lacks sufficient claims to support thesis'
               ]
             },
             {
-              catName: "Evidence",
+              catName: 'Evidence',
               catScores: [
-                "Evidence supports claims and is well-chosen",
-                "Evidence supports claim",
-                "Evidence does not support claim",
-                "Limited or no evidence"
+                'Evidence supports claims and is well-chosen',
+                'Evidence supports claim',
+                'Evidence does not support claim',
+                'Limited or no evidence'
               ]
             },
             {
-              catName: "Logical Appeals",
+              catName: 'Logical Appeals',
               catScores: [
-                "Develops multiple effective appeals",
-                "Develops an effective appeal",
-                "Introduces an effective appeal that needs further development",
-                "Uses weak or no appeals"
+                'Develops multiple effective appeals',
+                'Develops an effective appeal',
+                'Introduces an effective appeal that needs further development',
+                'Uses weak or no appeals'
               ]
             },
             {
-              catName: "Counterargument",
+              catName: 'Counterargument',
               catScores: [
-                "Develops a credible counterargument and addresses it adequately",
-                "Introduces a credible counterargument",
-                "Introduces a weak counterargument",
-                "Does not address counterarguments"
+                'Develops a credible counterargument and addresses it adequately',
+                'Introduces a credible counterargument',
+                'Introduces a weak counterargument',
+                'Does not address counterarguments'
               ]
             }
           ]
         }
       }
     }
-  }
-};
+  };
+}
