@@ -44,4 +44,23 @@ exports.define = function(steps) {
         //expect(page.quick_feedback_library).to.exist;
       });
   });
+
+
+  steps.then("I click the 'header button'", function(elem) {
+    page[elem].click();
+  });
+
+  steps.then("I should see the score rubric", function() {
+    // XXX need a way to find the rubric
+  });
+
+  steps.then("I click the 'X button'", function(elem) {
+    page[elem].click();
+  });
+
+  steps.then("I rubric should disappear", function() {
+    // XXX need a way to find the rubric
+  });
+
+
 };
