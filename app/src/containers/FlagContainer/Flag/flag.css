@@ -12,17 +12,14 @@
 }
 
 .list_container {
-  display: flex;
-  flex-direction: column;
-  list-style-position: inside;
-  list-style-type: none;
   padding-left: 0;
-  vertical-align: middle;
+  margin: 0;
 }
 
 .list_item {
   display: flex;
-  flex-direction: row;
+  margin-bottom: 10px;
+  align-items: center;
   margin-bottom: 10px;
 }
 
@@ -56,11 +53,27 @@
   margin: 25px;
   padding: 5px 10px;
   position: relative;
-  width: 200px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
+  width: 170px;
+  font-size: 12px;
+  -webkit-border-radius: 0px 4px 4px 4px;
+  -moz-border-radius: 0px 4px 4px 4px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  top: 300px; /* for placement example */
+}
+
+.flagContainer .triangle_border {
+  align-items: flex-start;
+  flex-direction: column;
+  width: 200px;
+}
+
+.flagContainer .title {
+  margin: 0 0 5px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   align-items: center;
 }
 
