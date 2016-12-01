@@ -46,13 +46,13 @@ const FeedbackTool = ({
   let studentReflection;
   let endComment;
   if (showRubric) {
-    feedbackToolContent =
+    feedbackToolContent = (
       <RubricContainer
         showRubric={showRubric}
         toggleRubric={toggleRubric}
         isRubricLoaded={isRubricLoaded}
         toggleIsRubricLoaded={toggleIsRubricLoaded}
-      />;
+      />);
     flags = null;
     sideMenu = null;
     studentReflection = null;
