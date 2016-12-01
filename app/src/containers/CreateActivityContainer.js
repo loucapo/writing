@@ -24,8 +24,7 @@ CreateActivityContainer.propTypes = {
   activityAction: PropTypes.func
 };
 
-const mapStateToProps = (state, props) => {
-  console.log(props);
+const mapStateToProps = () => {
   return (<div>hi mom</div>);
 };
 export default withRouter(connect(mapStateToProps, {activityAction})(CreateActivityContainer));

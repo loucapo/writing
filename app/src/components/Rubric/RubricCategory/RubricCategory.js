@@ -3,8 +3,7 @@ import RubricCategoryHeading from '../RubricCategoryHeading/RubricCategoryHeadin
 import RubricCategoryScore from '../RubricCategoryScore/RubricCategoryScore';
 import rubricCategoryCss from './rubricCategory.css';
 
-const RubricCategory = ({ categories }) => {
-
+const RubricCategory = ({ categories, selectCell }) => {
   if (!categories || categories.length <= 0) {
     return null;
   }
@@ -12,14 +11,18 @@ const RubricCategory = ({ categories }) => {
   return (
     <div className={rubricCategoryCss.category}>
       <RubricCategoryHeading headings={ categories.map(x=>x.catName) } />
-
-      <RubricCategoryScore scores={ categories.map(x=>x.catScores) } />
+      <RubricCategoryScore
+        scores={ categories.map(x=>x.catScores) }
+        selections={ categories.map(x=>x.catSelection) }
+        selectCell={selectCell} // onClick callback
+      />
     </div>
   );
 };
 
 RubricCategory.propTypes = {
-  categories: PropTypes.array
+  categories: PropTypes.array,
+  selectCell: PropTypes.func
 };
 
 export default RubricCategory;

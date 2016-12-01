@@ -16,7 +16,6 @@ const spanClicked = (val) => {
 };
 
 const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
-  let result;
   const sideMenuContent = (
     <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>

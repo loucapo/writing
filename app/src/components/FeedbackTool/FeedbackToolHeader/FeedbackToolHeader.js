@@ -3,10 +3,10 @@ import feedbackToolHeaderCss from './feedbackToolHeader.css';
 
 const FeedbackToolHeader = ({toggleRubric}) => {
   return (
-      <section className={feedbackToolHeaderCss.headerContainer}>
-        <button data-id="header-button" className={feedbackToolHeaderCss.headerButton} onClick={toggleRubric}>Score Rubric</button>
-      </section>
-  )
+    <section className={feedbackToolHeaderCss.headerContainer}>
+      <button data-id="header-button" className={feedbackToolHeaderCss.headerButton} onClick={toggleRubric}>Score Rubric</button>
+    </section>
+  );
 };
 
 FeedbackToolHeader.propTypes = {

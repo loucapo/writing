@@ -3,13 +3,13 @@ import RubricCategoryName from './RubricCategoryName/RubricCategoryName';
 import RubricCategory from './RubricCategory/RubricCategory';
 import rubricCss from './rubric.css';
 
-const Rubric = ({ rubric, toggleRubric, showRubric }) => {
+const Rubric = ({ rubric, toggleRubric, selectCell }) => {
   return (
-    <section className={(showRubric) ? rubricCss.rubric_container + ' ' + rubricCss.show : rubricCss.rubric_container}>
+    <section className={rubricCss.rubric_container}>
       <div className={rubricCss.title}>Final Draft Rubric</div>
       <div className={rubricCss.close} onClick={toggleRubric}>X</div>
       <RubricCategoryName categoryNames={ rubric.categoryNames } />
-      <RubricCategory categories={ rubric.categories }/>
+      <RubricCategory categories={rubric.categories} selectCell={selectCell} />
     </section>
   );
 };
@@ -17,7 +17,7 @@ const Rubric = ({ rubric, toggleRubric, showRubric }) => {
 Rubric.propTypes = {
   rubric: PropTypes.object,
   toggleRubric: PropTypes.func,
-  showRubric: PropTypes.bool
+  selectCell: PropTypes.func // onClick callback for a cell
 };
 
 export default Rubric;

@@ -9,10 +9,14 @@ class FeedbackToolContainer extends Component {
     super();
     this.state = {
       showRubric: false,
-      showQuickFeedbackTool: false
+      showQuickFeedbackTool: false,
+      isRubricLoaded: false
     };
     this.toggleQuickFeedback = () => {
       this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
+    };
+    this.toggleIsRubricLoaded = () => {
+      this.setState({isRubricLoaded: !this.state.isRubricLoaded});
     };
     this.toggleRubric = () => {
       this.setState({
@@ -27,7 +31,9 @@ class FeedbackToolContainer extends Component {
 
   loadData() {
     this.props.fetchStudentSubmissionAction(this.props.params.id);
-    this.setState({ value: this.props.document });
+    this.setState({
+      value: this.props.document
+    });
   }
 
   onChange = (value) => {
@@ -49,6 +55,8 @@ class FeedbackToolContainer extends Component {
         toggleQuickFeedback={this.toggleQuickFeedback}
         toggleRubric={this.toggleRubric}
         showRubric={this.state.showRubric}
+        isRubricLoaded={this.state.isRubricLoaded}
+        toggleIsRubricLoaded={this.toggleIsRubricLoaded}
       />);
   }
 }
