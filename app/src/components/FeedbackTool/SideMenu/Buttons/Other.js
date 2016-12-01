@@ -4,13 +4,8 @@ import {Form} from 'freakin-react-forms';
 import Input from './../../../FormElements/Input';
 import uuid from 'uuid';
 import OtherSVG from './OtherSVG';
-console.log('==========OtherSVG=========');
-console.log(OtherSVG);
-console.log('==========END OtherSVG=========');
+
 const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) => {
-  console.log('==========onHighlight=========');
-  console.log(onHighlight);
-  console.log('==========END onHighlight=========');
   let model = {
     otherComment: {
       type: 'textarea',
