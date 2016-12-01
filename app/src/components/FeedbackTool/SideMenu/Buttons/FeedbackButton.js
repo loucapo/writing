@@ -55,7 +55,10 @@ class FeedbackButton extends Component {
   render() {
     return (
       <li data-id={this.props.buttonName}>
-        <img src={this.props.commentIcon} onClick={this.onClick} />{this.props.buttonName}
+        <a onClick={this.onClick}>
+           {this.props.commentIcon}
+           {this.props.buttonName}
+        </a>
         <FeedbackModal
           isOpen={this.state.isOpen}
           position={this.state.position}
