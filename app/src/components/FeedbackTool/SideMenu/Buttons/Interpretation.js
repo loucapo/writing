@@ -1,12 +1,13 @@
 import React from 'react';
+import image from './../../../../images/comment.svg';
+
 import sideMenu from './../sideMenu.css';
 
 const InterpretationButton = () => {
-  let commentIcon = "https://macmillanlearning.atlassian.net/secure/attachment/21936/comment.svg";
-
   return (
     <li data-id="interpretation">
-      <img src={commentIcon}/>Interpretation/Analysis
+      <div className="Icon" dangerouslySetInnerHTML={{__html: image}} />
+      <span className={sideMenu.sideMenuCaption}>Interpretation/Analysis</span>
     </li>
   );
 };
