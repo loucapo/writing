@@ -9,7 +9,7 @@ const RubricCategoryName = ({ categoryNames }) => {
   return (
     <div className={rubricCategoryNameCss.category_name}>
       {
-        categoryNames.map((category, idx) => {
+        categoryNames.map((category) => {
           return (
             <div
               data-id="category-name"
