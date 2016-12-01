@@ -8,7 +8,16 @@ import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
-const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedback, showRubric, toggleRubric}) => {
+const FeedbackTool = ({
+    value,
+    onChange,
+    showQuickFeedbackTool,
+    toggleQuickFeedback,
+    showRubric,
+    toggleRubric,
+    isRubricLoaded,
+    toggleIsRubricLoaded
+  }) => {
   let badges = [{
     title: 'Integration of Research',
     contentParagraphs: [
@@ -37,7 +46,13 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
   let studentReflection;
   let endComment;
   if (showRubric) {
-    feedbackToolContent = <RubricContainer showRubric={showRubric} toggleRubric={toggleRubric} />;
+    feedbackToolContent =
+      <RubricContainer
+        showRubric={showRubric}
+        toggleRubric={toggleRubric}
+        isRubricLoaded={isRubricLoaded}
+        toggleIsRubricLoaded={toggleIsRubricLoaded}
+      />;
     flags = null;
     sideMenu = null;
     studentReflection = null;
@@ -76,7 +91,9 @@ FeedbackTool.propTypes = {
   showQuickFeedbackTool: PropTypes.bool,
   toggleQuickFeedback: PropTypes.func,
   showRubric: PropTypes.bool,
-  toggleRubric: PropTypes.func
+  toggleRubric: PropTypes.func,
+  isRubricLoaded: PropTypes.bool,
+  toggleIsRubricLoaded: PropTypes.func
 };
 
 export default FeedbackTool;

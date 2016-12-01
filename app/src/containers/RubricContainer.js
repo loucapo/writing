@@ -4,8 +4,8 @@ import { loadRubric, rubricOnChange } from './../modules';
 import Rubric from '../components/Rubric/Rubric';
 
 class RubricContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   // onClick callback for individual cell
@@ -17,7 +17,10 @@ class RubricContainer extends Component {
 
   // TODO: this should load from redux using a rubric action in a rubric module. see activity module
   loadData() {
-    this.props.loadRubric();
+    if (this.props.isRubricLoaded === false) {
+      this.props.loadRubric();
+      this.props.toggleIsRubricLoaded();
+    }
   }
 
   render() {
@@ -38,7 +41,9 @@ RubricContainer.propTypes = {
   rubricOnChange: PropTypes.func,
   toggleRubric: PropTypes.func,
   selectCell: PropTypes.func,
-  showRubric: PropTypes.bool
+  showRubric: PropTypes.bool,
+  isRubricLoaded: PropTypes.bool,
+  toggleIsRubricLoaded: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
