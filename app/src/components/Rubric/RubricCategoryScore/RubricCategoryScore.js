@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import rubricCategoryScoreCss from './rubricCategoryScore.css';
+import uuid from 'uuid';
 
 const RubricCategoryScore = ({scores}) => {
   if (!scores || scores.length <= 0) {
@@ -7,23 +8,16 @@ const RubricCategoryScore = ({scores}) => {
   }
   return (
     <div className={rubricCategoryScoreCss.column}>
-      {
-        scores.map((scoreRow, idx) => {
-          return (
-            <div className={rubricCategoryScoreCss.category_score}>
-              {
-                scoreRow.map((score, idx) => {
-                  return (
-                    <div data-id="category-score" className={rubricCategoryScoreCss.category_item}>
-                      { score }
-                    </div>
-                  );
-                })
-              }
+      { scores.map(scoreRow => (
+        <div className={rubricCategoryScoreCss.category_score} key={uuid.v4()}>
+          { scoreRow.map(score => (
+            <div key={uuid.v4()} data-id="category-score" className={rubricCategoryScoreCss.category_item}>
+              { score }
             </div>
-          );
-        })
-      }
+            )
+          )}
+        </div>)
+      )}
     </div>
   );
 };

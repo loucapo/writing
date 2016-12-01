@@ -45,7 +45,7 @@ class ActivityMenu extends Component {
 }
 
 ActivityMenu.propTypes = {
-  drafts: PropTypes.object
+  drafts: PropTypes.array
 };
 
 export default ActivityMenu;
