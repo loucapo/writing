@@ -36,7 +36,7 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
       <button onClick={onClose}>Cancel</button>
     </Form>);
   const icon = (<OtherSVG className="Icon" />);
-  return (<div>
+  return (
     <FeedbackButton
       form={form}
       onHighlight={onHighlight}
@@ -48,7 +48,6 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
       model={model}
       position={position}
     />
-  </div>
   );
 };
 

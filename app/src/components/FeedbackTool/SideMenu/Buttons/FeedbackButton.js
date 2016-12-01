@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import FeedbackModal from '../../FeedbackModal/FeedbackModal';
+import sideMenu from './../sideMenu.css';
 
 class FeedbackButton extends Component {
   constructor() {
@@ -57,7 +58,9 @@ class FeedbackButton extends Component {
       <li data-id={this.props.buttonName}>
         <a onClick={this.onClick}>
            {this.props.commentIcon}
-           {this.props.buttonName}
+           <span className={sideMenu.sideMenuCaption}>
+             {this.props.buttonName}
+           </span>
         </a>
         <FeedbackModal
           isOpen={this.state.isOpen}
