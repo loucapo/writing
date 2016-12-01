@@ -18,27 +18,12 @@ class FeedbackTool extends Component {
   }
 
   componentWillMount() {
-    // XXX i'd really like to leave this as an example, as we will be needing it and
-    // XXX I'm finally getting clear on how to do the data load stuff
-    // this.props.fetchStudentSubmissionAction(this.props.params.id);
-
     this.setState({
       value: RichTextEditor.fromRaw(this.props.document ? this.props.document : ''),
       showRubric: false,
       showQuickFeedbackTool: false
     });
   }
-
-
-
-  componentWillReceiveProps() {
-    // // XXX i'd really like to leave this as an example, as we will be needing it and
-    // XXX I'm finally getting clear on how to do the data load stuff
-    // if(newProps.params.id !== oldProps.params.id) {
-    //   this.props.fetchStudentSubmissionAction(newProps.props.params.id);
-    // }
-  }
-
 
   badges = [{
     title: 'Integration of Research',
@@ -150,13 +135,6 @@ class FeedbackTool extends Component {
   }
 
   render() {
-    if (this.props.isFetching) {
-      return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
-    }
-    if (this.props.errorMessage) {
-      return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
-    }
-
     const colorStyleMap = {
       green: {
         backgroundColor: 'lightgreen'

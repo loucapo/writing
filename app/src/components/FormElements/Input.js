@@ -1,8 +1,7 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 
-const _Input = ({ data,
-                containerStyle, options }) => {
+const _Input = ({ data, containerStyle, options }) => {
   if(!data) {return null;}
   let inputStyle = classNames({
     ['input__container__' + (data.type ? data.type : 'input')]: true,
