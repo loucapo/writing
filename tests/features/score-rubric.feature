@@ -1,6 +1,4 @@
 @WRITE-56
-
-@only
 Feature: Instructor Can Open the Rubric in Feedback Tool
 
   Scenario: The Instructor Can Open the Rubric

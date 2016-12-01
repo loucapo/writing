@@ -44,6 +44,10 @@ module.exports = new Page({
   
   // RUBRIC
   'header button': { get: function() { return this.element("[data-id='header-button']"); } },
-  'X button': { get: function() { return this.find_elements_by_xpath('//div[contains(text(), "X")]'); } }
+  'X button': { get: function() { return this.find_elements_by_xpath('//div[contains(text(), "X")]'); } },
+  thesis_4: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(1)"); } },
+  thesis_3: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(2)"); } },
+  thesis_2: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(3)"); } },
+  thesis_1: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(4)"); } },
 
 });
