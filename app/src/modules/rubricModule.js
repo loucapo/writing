@@ -9,17 +9,25 @@ export default (state = {}, action) => {
       if (!rubric) {
         return state;
       }
-      let newState = rubric; // trying to be obvious that we are not mutating state
-      return newState;
+      return Object.assign({}, state, rubric);
     }
     case RUBRIC_ON_CHANGE: {
       let rubric = action.payload.data.rubric;
       if (!rubric) {
         return state;
       }
-      rubric.rubric.categories[action.payload.data.value[1].column].catSelection = action.payload.data.value[0].row;
-      let newState = rubric.rubric;
-      return newState;
+      // Check if the current level for the category is already selected, clicking it again should de-select
+      if (rubric.rubric.categories[action.payload.data.value[1].column].catSelection ===
+        action.payload.data.value[0].row)
+      {
+        rubric.rubric.categories[action.payload.data.value[1].column].catSelection = -1; // -1 indicates no selection
+
+      }
+      else {
+        rubric.rubric.categories[action.payload.data.value[1].column].catSelection = action.payload.data.value[0].row;
+      }
+
+      return Object.assign({}, state, rubric);
     }
     default: {
       return state;

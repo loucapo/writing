@@ -17,7 +17,7 @@ const Rubric = ({ rubric, toggleRubric, selectCell }) => {
 Rubric.propTypes = {
   rubric: PropTypes.object,
   toggleRubric: PropTypes.func,
-  selectCell: PropTypes.func
+  selectCell: PropTypes.func // onClick callback for a cell
 };
 
 export default Rubric;

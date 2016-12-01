@@ -23,6 +23,7 @@
 .category_item:active,
 .selected {
   background-color: #00758E;
+  opacity: .5;
 }
 
 .category_item:hover {

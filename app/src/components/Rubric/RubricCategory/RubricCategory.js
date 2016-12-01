@@ -14,7 +14,7 @@ const RubricCategory = ({ categories, selectCell }) => {
       <RubricCategoryScore
         scores={ categories.map(x=>x.catScores) }
         selections={ categories.map(x=>x.catSelection) }
-        selectCell={selectCell}
+        selectCell={selectCell} // onClick callback
       />
     </div>
   );

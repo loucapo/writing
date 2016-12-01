@@ -8,6 +8,7 @@ class RubricContainer extends Component {
     super();
   }
 
+  // onClick callback for individual cell
   selectCell = (rowNumber, colNumber) => {
     this.props.rubricOnChange(this.props.rubric, rowNumber, colNumber);
   };
