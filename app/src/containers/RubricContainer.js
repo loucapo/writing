@@ -36,10 +36,11 @@ RubricContainer.propTypes = {
   loadRubric: PropTypes.func,
   rubricOnChange: PropTypes.func,
   toggleRubric: PropTypes.func,
-  selectCell: PropTypes.func
+  selectCell: PropTypes.func,
+  showRubric: PropTypes.bool
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     rubric: state.rubric
   };

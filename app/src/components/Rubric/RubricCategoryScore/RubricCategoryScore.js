@@ -13,23 +13,14 @@ const RubricCategoryScore = ({scores, selectCell, selections}) => {
             <div className={rubricCategoryScoreCss.category_score} key={column}>
               {
                 scoreRow.map((score, row) => {
-                  console.log('============ selections ============');
-                  console.log(selections);
-                  console.log('=================================');
-                  console.log('============ row ============');
-                  console.log(row);
-                  console.log('=================================');
-                  console.log('============ column ============');
-                  console.log(column);
-                  console.log('=================================');
                   let classname = rubricCategoryScoreCss.category_item;
                   if (selections[column] === row) {
-                    classname += '' + rubricCategoryScoreCss.selected
+                    classname += '' + rubricCategoryScoreCss.selected;
                   }
                   return (
                     <div
                       data-id="category-score"
-                      className={rubricCategoryScoreCss.category_item}
+                      className={classname}
                       onClick={selectCell.bind(null, row, column)}
                       key={row}
                     >

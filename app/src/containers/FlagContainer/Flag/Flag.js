@@ -12,8 +12,6 @@ class Flag extends Component {
     this.setState({clicked: !this.state.clicked});
   };
 
-  //TODO: this should probably be refactored later to be stateless and moved to the components folder...it could be 2 mini components with the state controlled but the flags container, choosing which to show.
-
   render() {
     if (this.state.clicked) {
       return (
@@ -21,7 +19,7 @@ class Flag extends Component {
           <div key={this.props.index} className={flag.triangle_border} >
             <div className={flag.title}>
               <span>{this.props.flagItem.title}</span>
-              <span className={flag.icon}></span>
+              <span className={flag.icon} />
             </div>
             {
               this.props.flagItem.contentParagraphs.map((paragraph, contentIndex) => {
@@ -52,7 +50,7 @@ class Flag extends Component {
         <div key={this.props.index} onClick={this.onClick} >
           <div key={this.props.index} className={flag.triangle_border} >
             <span className={flag.title}>{this.props.flagItem.title}</span>
-            <span className={flag.icon}></span>
+            <span className={flag.icon} />
           </div>
         </div>
       );

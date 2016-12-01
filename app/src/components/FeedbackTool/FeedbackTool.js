@@ -45,10 +45,10 @@ const FeedbackTool = ({value, onChange, showQuickFeedbackTool, toggleQuickFeedba
   } else {
     feedbackToolContent = <RichTextEditor onChange={onChange} value={value} readOnly={true} />;
     flags = <Flags flagElements={badges} />;
-    sideMenu = <SideMenu
+    sideMenu = (<SideMenu
       toggleQuickFeedback={toggleQuickFeedback}
       showQuickFeedbackTool={showQuickFeedbackTool}
-    />;
+    />);
     studentReflection = <StudentReflection />;
     endComment = <EndComment />;
   }
@@ -76,7 +76,7 @@ FeedbackTool.propTypes = {
   showQuickFeedbackTool: PropTypes.bool,
   toggleQuickFeedback: PropTypes.func,
   showRubric: PropTypes.bool,
-  toggleRubric: PropTypes.func,
+  toggleRubric: PropTypes.func
 };
 
 export default FeedbackTool;
