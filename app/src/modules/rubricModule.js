@@ -24,6 +24,8 @@ export default (state = {}, action) => {
 
       }
       else {
+        // Note row # increases from top to bottom, but score increases bottom to top
+        // there are 4 rows so 4 - row # is the score
         rubric.rubric.categories[action.payload.data.value[1].column].catSelection =
           4 - action.payload.data.value[0].row;
       }
