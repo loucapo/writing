@@ -15,6 +15,9 @@ const RubricCategoryScore = ({scores, selectCell, selections}) => {
               {
                 scoreRow.map((score, row) => {
                   let classname = rubricCategoryScoreCss.category_item;
+
+                  // Note row # increases from top to bottom, but score increases bottom to top
+                  // there are 4 rows so 4 - row # is the score
                   if (selections[column] === 4 - row) {
                     classname += ' ' + rubricCategoryScoreCss.selected;
                   }
