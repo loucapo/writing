@@ -5,4 +5,5 @@ exports.define = function(steps) {
   steps.given("I go to the launch url", function () {
     page.visit();
   });
+
 };
