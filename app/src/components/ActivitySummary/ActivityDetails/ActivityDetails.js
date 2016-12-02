@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import ActionButton from '../../ActionButton/ActionButton';
-import activityDetails from './activityDetails.css';
 import coreCss from '../../../styles/core.css';
 
 // XXX need id's for testability/accessibility
@@ -48,6 +47,7 @@ const ActivityDetails = ({activity}) => (
       {activity.prompt}
     </div>
   </div>
+  // TODO: need to remove this but i want to leave it for now in case i need to pull anything back from it.
   // <div className={ coreCss.box + ' ' + activityDetails.summary }>
   //   <h1 data-id="activity-title" className={ activityDetails.title }>
   //     {activity.title}
