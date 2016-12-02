@@ -3,6 +3,7 @@ export const RUBRIC_ON_CHANGE = 'wk_frontend/rubric/RUBRIC_ON_CHANGE';
 
 // Reducer
 export default (state = {}, action) => {
+  const numberRows = 4;
   switch (action.type) {
     case RUBRIC_SUCCESS: {
       let rubric = action.payload.data.rubric;
@@ -25,9 +26,9 @@ export default (state = {}, action) => {
       }
       else {
         // Note row # increases from top to bottom, but score increases bottom to top
-        // there are 4 rows so 4 - row # is the score
+        // there are numberRows rows so (numberRows - row #) is the score
         rubric.rubric.categories[action.payload.data.value[1].column].catSelection =
-          4 - action.payload.data.value[0].row;
+          numberRows - action.payload.data.value[0].row;
       }
 
       return Object.assign({}, state, rubric);

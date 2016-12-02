@@ -3,6 +3,7 @@ import rubricCategoryScoreCss from './rubricCategoryScore.css';
 import uuid from 'uuid';
 
 const RubricCategoryScore = ({scores, selectCell, selections}) => {
+  const numberRows = 4;
   if (!scores || scores.length <= 0) {
     return null;
   }
@@ -17,8 +18,8 @@ const RubricCategoryScore = ({scores, selectCell, selections}) => {
                   let classname = rubricCategoryScoreCss.category_item;
 
                   // Note row # increases from top to bottom, but score increases bottom to top
-                  // there are 4 rows so 4 - row # is the score
-                  if (selections[column] === 4 - row) {
+                  // there are numberRows rows so (numberRows - row #) is the score
+                  if (selections[column] === numberRows - row) {
                     classname += ' ' + rubricCategoryScoreCss.selected;
                   }
                   return (
