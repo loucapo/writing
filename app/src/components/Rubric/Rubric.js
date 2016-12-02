@@ -9,7 +9,7 @@ const Rubric = ({ rubric, toggleRubric, showRubric }) => {
       <div className={rubricCss.title}>Final Draft Rubric</div>
       <div className={rubricCss.close} onClick={toggleRubric}>X</div>
       <RubricCategoryName categoryNames={ rubric.categoryNames } />
-      <RubricCategory categories={ rubric.categories }/>
+      <RubricCategory categories={ rubric.categories } />
     </section>
   );
 };

@@ -1,7 +1,5 @@
 import React, {PropTypes} from 'react';
-
 import ActivityDetails from './ActivityDetails/ActivityDetails';
-
 
 const ActivitySummary = ({activity}) => {
   return (
