@@ -4,7 +4,7 @@ import coreCss from '../../../styles/core.css';
 
 // XXX need id's for testability/accessibility
 
-//TODO: need to add data-ids
+//TODO: need to add data-ids and pull from redux
 const ActivityDetails = ({activity}) => (
   <div className={ coreCss.panel }>
     <h1 data-id="activity-title">

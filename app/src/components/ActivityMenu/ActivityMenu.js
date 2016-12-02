@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import DraftSection from '../DraftSection/DraftSection';
 import SubmissionSection from '../SubmissionSection/SubmissionSection';
 import activityMenu from './activityMenu.css';
+import coreCss from '../../styles/core.css';
 
 class ActivityMenu extends Component {
   constructor() {
@@ -30,7 +31,7 @@ class ActivityMenu extends Component {
 
   render() {
     return (
-      <div>
+      <div className={ coreCss.panel }>
         <header data-id="activity-menu" className={activityMenu.container}>
           <div className={ (this.state.toggle === 'drafts') ? activityMenu.active : '' }>
             <a data-id="drafts" href="#" onClick={x => this.toggleSelection('drafts', x)}>Drafts</a>

@@ -1,6 +1,6 @@
 @import 'variables/colors.css';
 
-a, a:link, a:hover, a:active  {
+a, a:link, a:hover, a:active, a:visited  {
   text-decoration: none;
   color: var(--blue);
   cursor: pointer;
