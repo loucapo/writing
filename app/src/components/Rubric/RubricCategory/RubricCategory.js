@@ -10,10 +10,10 @@ const RubricCategory = ({ categories, selectCell }) => {
 
   // building single array of name-value objects
   let nameValues = [];
-  for(let counter=0; counter < categories.length; counter++) {
+  for(let counter = 0; counter < categories.length; counter++) {
     let nameValue = {};
     nameValue.name = categories[counter].catName;
-    nameValue.value = (categories[counter].catSelection === -1)? '': categories[counter].catSelection;
+    nameValue.value = (categories[counter].catSelection === -1) ? '' : categories[counter].catSelection;
     nameValues.push(nameValue);
   }
 
