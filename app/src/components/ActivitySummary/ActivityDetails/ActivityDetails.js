@@ -4,8 +4,9 @@ import coreCss from '../../../styles/core.css';
 
 // XXX need id's for testability/accessibility
 
+//TODO: need to add data-ids
 const ActivityDetails = ({activity}) => (
-  <div className={ coreCss.panel + ' ' + activityDetails.summary }>
+  <div className={ coreCss.panel }>
     <h1 data-id="activity-title">
       <div>Assignment Prompt</div>
       <ActionButton content="Edit" />
