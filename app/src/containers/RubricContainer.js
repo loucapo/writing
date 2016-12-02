@@ -12,17 +12,21 @@ class RubricContainer extends Component {
   }
 
   render() {
-    return (<Rubric rubric={this.props.rubric} showRubric={this.props.showRubric} toggleRubric={this.props.toggleRubric} />);
+    return (<Rubric
+      rubric={this.props.rubric}
+      showRubric={this.props.showRubric}
+      toggleRubric={this.props.toggleRubric} />);
   }
 }
 
 RubricContainer.propTypes = {
   rubric: PropTypes.object,
   loadRubric: PropTypes.func,
-  toggleRubric: PropTypes.func
+  toggleRubric: PropTypes.func,
+  showRubric: PropTypes.bool
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
     rubric: state.rubric
   };

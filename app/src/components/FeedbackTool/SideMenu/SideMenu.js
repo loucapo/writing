@@ -11,12 +11,12 @@ import FeedbackLibButton from './Buttons/FeedbackLib';
 
 import sideMenu from './sideMenu.css';
 
-const spanClicked = (val) => {
-  console.log(val); // just for verification that the links are clicking
-};
 
-const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
-  let result;
+const SideMenu = (props) => {
+  const spanClicked = (val) => {
+    console.log(val); // just for verification that the links are clicking
+  };
+
   const sideMenuContent = (
     <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>
@@ -26,11 +26,11 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
         <ParagraphDevButton />
         <ResearchButton />
         <CounterArgsButton />
-        <OtherButton />
+        <OtherButton {...props} />
         <GoodJobButton />
-        <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback} />
+        <FeedbackLibButton toggleQuickFeedback={props.toggleQuickFeedback} />
 
-        <div className={showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
+        <div className={props.showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
           <li
             data-id="appropriate-language"
             className={sideMenu.list_Item}

@@ -15,12 +15,6 @@ class ActivityContainer extends Component {
   loadData() { this.props.activityAction(this.props.params.id); }
 
   render() {
-    if (this.props.isFetching) {
-      return (<p style={{ 'padding-top': '100px' }}> Loading... </p>);
-    }
-    if (this.props.errorMessage) {
-      return (<p style={{ 'padding-top': '100px' }}>ERROR! -> {this.props.errorMessage}</p>);
-    }
     return (<Activity{...this.props} />);
   }
 }
