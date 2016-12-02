@@ -15,7 +15,7 @@ const RubricCategoryScore = ({scores, selectCell, selections}) => {
               {
                 scoreRow.map((score, row) => {
                   let classname = rubricCategoryScoreCss.category_item;
-                  if (selections[column] === row) {
+                  if (selections[column] === 4 - row) {
                     classname += ' ' + rubricCategoryScoreCss.selected;
                   }
                   return (

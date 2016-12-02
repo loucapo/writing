@@ -24,7 +24,8 @@ export default (state = {}, action) => {
 
       }
       else {
-        rubric.rubric.categories[action.payload.data.value[1].column].catSelection = action.payload.data.value[0].row;
+        rubric.rubric.categories[action.payload.data.value[1].column].catSelection =
+          4 - action.payload.data.value[0].row;
       }
 
       return Object.assign({}, state, rubric);

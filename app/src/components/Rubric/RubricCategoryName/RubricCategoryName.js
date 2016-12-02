@@ -7,19 +7,17 @@ const RubricCategoryName = ({ categoryNames }) => {
     return null;
   }
   return (
-    <div className={rubricCategoryNameCss.category_name}>
+    <div className={rubricCategoryNameCss.category_levels}>
       {
         categoryNames.map((category) => {
           return (
             <div
-              data-id="category-name"
-              className={rubricCategoryNameCss.category_name_item}
+              data-id="category-nameLevel"
+              className={rubricCategoryNameCss.category_nameLevelContainer}
               key={uuid.v4()}
             >
-              { category.score }
-              <div>
-                { category.text }
-              </div>
+              <span>{ category.score }</span>
+              <span className={rubricCategoryNameCss.name}>{ category.text }</span>
             </div>
           );
         })

@@ -8,9 +8,20 @@ const RubricCategory = ({ categories, selectCell }) => {
     return null;
   }
 
+  // building single array of name-value objects
+  let nameValues = [];
+  for(let counter=0; counter < categories.length; counter++) {
+    let nameValue = {};
+    nameValue.name = categories[counter].catName;
+    nameValue.value = (categories[counter].catSelection === -1)? '': categories[counter].catSelection;
+    nameValues.push(nameValue);
+  }
+
   return (
     <div className={rubricCategoryCss.category}>
-      <RubricCategoryHeading headings={ categories.map(x=>x.catName) } />
+      <RubricCategoryHeading
+        nameValues={ nameValues }
+      />
       <RubricCategoryScore
         scores={ categories.map(x=>x.catScores) }
         selections={ categories.map(x=>x.catSelection) }
