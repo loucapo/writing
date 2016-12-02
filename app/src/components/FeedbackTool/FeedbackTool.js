@@ -121,6 +121,9 @@ class FeedbackTool extends Component {
     let editorState = editorValue.getEditorState();
 
     if(color) {
+      console.log('=========="wtf"=========');
+      console.log("wtf");
+      console.log('==========END "wtf"=========');
       editorState = this.toggleHighlight(editorState, color);
     }
 
