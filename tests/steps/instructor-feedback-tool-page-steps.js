@@ -128,4 +128,201 @@ exports.define = function(steps) {
       });
   });
 
+  steps.when("I click '$grade' for '$criteria'", function(elem,criteria) {
+    if (elem == 'exceeds expectations') {
+      var grade = 4;
+    }
+    else if (elem == 'meets expectations') {
+      var grade = 3;
+    }
+    else if (elem == 'nearly meets expectations') {
+      var grade = 2;
+    }
+    else if (elem == 'fails to meet expectations') {
+      var grade = 1;
+    }
+    else {
+      throw new Error('Unknown rubric grade selected');
+    };
+
+    if (criteria == 'thesis') {
+      var column = 1;
+    }
+    else if (criteria == 'claims') {
+      var column = 2;
+    }
+    else if (criteria == 'evidence') {
+      var column = 3;
+    }
+    else if (criteria == 'logical appeals') {
+      var column = 4;
+    }
+    else if (criteria == 'counterargument') {
+      var column = 5;
+    }
+    else {
+      throw new Error('Unknown rubric column selected');
+    };
+    var butter = (5-grade);
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")"}).click();
+  });
+
+  steps.then("I see the '$grade' '$criteria' box highlighted", function(elem,criteria) {
+    if (elem == 'exceeds expectations') {
+      var grade = 4;
+    }
+    else if (elem == 'meets expectations') {
+      var grade = 3;
+    }
+    else if (elem == 'nearly meets expectations') {
+      var grade = 2;
+    }
+    else if (elem == 'fails to meet expectations') {
+      var grade = 1;
+    }
+    else {
+      throw new Error('Unknown rubric grade selected');
+    };
+
+    if (criteria == 'thesis') {
+      var column = 1;
+    }
+    else if (criteria == 'claims') {
+      var column = 2;
+    }
+    else if (criteria == 'evidence') {
+      var column = 3;
+    }
+    else if (criteria == 'logical appeals') {
+      var column = 4;
+    }
+    else if (criteria == 'counterargument') {
+      var column = 5;
+    }
+    else {
+      throw new Error('Unknown rubric column selected');
+    };
+    var butter = (5-grade);
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"});
+  });
+
+  steps.then("I see the score '$grade' next to '$criteria'", function(elem,criteria) {
+    if (elem == 'exceeds expectations') {
+      var grade = 4;
+    }
+    else if (elem == 'meets expectations') {
+      var grade = 3;
+    }
+    else if (elem == 'nearly meets expectations') {
+      var grade = 2;
+    }
+    else if (elem == 'fails to meet expectations') {
+      var grade = 1;
+    }
+    else {
+      throw new Error('Unknown rubric grade selected');
+    };
+
+    if (criteria == 'thesis') {
+      var column = 1;
+    }
+    else if (criteria == 'claims') {
+      var column = 2;
+    }
+    else if (criteria == 'evidence') {
+      var column = 3;
+    }
+    else if (criteria == 'logical appeals') {
+      var column = 4;
+    }
+    else if (criteria == 'counterargument') {
+      var column = 5;
+    }
+    else {
+      throw new Error('Unknown rubric column selected');
+    };
+    var butter = (5-grade);
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"});
+  });
+
+  steps.then("I do not see the '$grade' '$criteria' box highlighted", function(elem,criteria) {
+    if (elem == 'exceeds expectations') {
+      var grade = 4;
+    }
+    else if (elem == 'meets expectations') {
+      var grade = 3;
+    }
+    else if (elem == 'nearly meets expectations') {
+      var grade = 2;
+    }
+    else if (elem == 'fails to meet expectations') {
+      var grade = 1;
+    }
+    else {
+      throw new Error('Unknown rubric grade selected');
+    };
+
+    if (criteria == 'thesis') {
+      var column = 1;
+    }
+    else if (criteria == 'claims') {
+      var column = 2;
+    }
+    else if (criteria == 'evidence') {
+      var column = 3;
+    }
+    else if (criteria == 'logical appeals') {
+      var column = 4;
+    }
+    else if (criteria == 'counterargument') {
+      var column = 5;
+    }
+    else {
+      throw new Error('Unknown rubric column selected');
+    };
+    var butter = (5-grade);
+    driver.findElements({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"})
+      .then(function(els) {
+        expect(els.length).to.equal(0);
+    });
+  });
+
+  steps.then("I do not see the score '$grade' next to '$criteria'", function(elem,criteria) {
+    if (elem == 'exceeds expectations') {
+      var grade = 4;
+    }
+    else if (elem == 'meets expectations') {
+      var grade = 3;
+    }
+    else if (elem == 'nearly meets expectations') {
+      var grade = 2;
+    }
+    else if (elem == 'fails to meet expectations') {
+      var grade = 1;
+    }
+    else {
+      throw new Error('Unknown rubric grade selected');
+    };
+
+    if (criteria == 'thesis') {
+      var column = 1;
+    }
+    else if (criteria == 'claims') {
+      var column = 2;
+    }
+    else if (criteria == 'evidence') {
+      var column = 3;
+    }
+    else if (criteria == 'logical appeals') {
+      var column = 4;
+    }
+    else if (criteria == 'counterargument') {
+      var column = 5;
+    }
+    else {
+      throw new Error('Unknown rubric column selected');
+    };
+    var butter = (5-grade);
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"});
+  });
 };

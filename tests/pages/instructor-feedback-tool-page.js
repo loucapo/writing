@@ -46,9 +46,4 @@ module.exports = new Page({
   rubric: { get: function () { return this.element("[class^='Rubric__rubric_container"); } },
   'header button': { get: function() { return this.element("[data-id='header-button']"); } },
   'X button': { get: function() { return this.element("div[class^='Rubric__close"); } },
-  thesis_4: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(1)"); } },
-  thesis_3: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(2)"); } },
-  thesis_2: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(3)"); } },
-  thesis_1: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(4)"); } },
-
 });
