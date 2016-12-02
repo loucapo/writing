@@ -2,6 +2,7 @@ import React from 'react';
 import studentReflection from './studentReflection.css';
 
 const StudentReflection = () => {
+  /*eslint-disable */
   return (
     <div data-id="studentReflections" className={studentReflection.studentReflectionContainer}>
       <h4>Student Reflection</h4>
@@ -19,6 +20,7 @@ const StudentReflection = () => {
       </p>
     </div>
   );
+ /*eslint-enable */
 };
 
 export default StudentReflection;

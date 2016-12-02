@@ -1,12 +1,12 @@
 import React from 'react';
-import image from './../../../../images/comment.svg';
+import ReasonSupportSVG from './ReasonSupportSVG';
 
 import sideMenu from './../sideMenu.css';
 
 const ReasonSupportButton = () => {
   return (
     <li data-id="reason&support">
-      <div className="Icon" dangerouslySetInnerHTML={{__html: image}} />
+      <ReasonSupportSVG className="Icon" />
       <span className={sideMenu.sideMenuCaption}>Reason & Support</span>
     </li>
   );
