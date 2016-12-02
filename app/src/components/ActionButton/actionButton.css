@@ -1,4 +1,4 @@
-@import 'mixins.css';
+@import '../../styles/core.css';
 
 .action_button_container {
   display: flex;
@@ -12,12 +12,23 @@
 }
 
 .action_button {
-  border: none;
+  background-color: var(--pureWhite);
+  border: 1px solid var(--blue);
   cursor: pointer;
-  color: #ffffff;
-  background-color: var(--blue);
-  font-size: 16px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: normal;
   letter-spacing: 0.02em;
-  padding: 8px 15px 10px 15px;
+  padding: 8px 10px;
   border-radius: 3px;
+}
+
+.action_button:hover {
+  opacity: 0.8;
+}
+
+.action_button_blue {
+  background-color: var(--blue);
+  border: none;
+  color: var(--pureWhite);
 }

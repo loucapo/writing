@@ -1,20 +1,20 @@
-@import 'mixins.css';
+@import '../../../styles/core.css';
 
 .summary {
   flex: 0 1 960px;
 }
 
-h1.title {
-  @apply --font-light;
-  color: var(--font-medium);
-  font-size: 32px;
-  margin-bottom: 12px;
-}
+/*h1.title {*/
+  /*@apply --font-light;*/
+  /*color: var(--font-medium);*/
+  /*font-size: 32px;*/
+  /*margin-bottom: 12px;*/
+/*}*/
 
 .typeAndCourse {
 	font-size: 16px;
 	line-height: 1.5em;
-	color: var(--font-light);
+	color: var(--blue);
 	margin-bottom: 20px;
 }
 
