@@ -43,8 +43,9 @@ module.exports = new Page({
   example_essay: { value: 'TXTing: h8 it or wuv it'},
   
   // RUBRIC
+  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container"); } },
   'header button': { get: function() { return this.element("[data-id='header-button']"); } },
-  'X button': { get: function() { return this.find_elements_by_xpath('//div[contains(text(), "X")]'); } },
+  'X button': { get: function() { return this.element("div[class^='Rubric__close"); } },
   thesis_4: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(1)"); } },
   thesis_3: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(2)"); } },
   thesis_2: { get: function() { return this.element("div[class^='RubricCategory__category' div:nth-child(2) div div:nth-child(3)"); } },

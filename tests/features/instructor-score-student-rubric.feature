@@ -1,16 +1,17 @@
 @WRITE-60
-@only
 Feature: Instructor Can Open the Rubric in Feedback Tool
 
   Scenario: The Instructor Gives Student a Score on the Rubric
-    Given I open the feedback tool
+    Given I visit the activity page
+    And I open the feedback tool
     When I click the 'header button'
     And I click 'exceeds expectation' for 'thesis'
     Then I see the 'exceeds expectation' thesis box highlighted
     And I see the score '4' next to thesis
 
   Scenario: The Instructor Gives Student a Different Score on the Rubric
-    Given I open the feedback tool
+    Given I visit the activity page
+    And I open the feedback tool
     When I click the 'header button'
     And I click 'exceeds expectation' for 'thesis'
     And I click 'meets expectation' for 'thesis'
@@ -20,7 +21,8 @@ Feature: Instructor Can Open the Rubric in Feedback Tool
     And I do not see the score '4' next to thesis
 
   Scenario: The Instructor Grades Student Across Whole Rubric
-    Given I open the feedback tool
+    Given I visit the activity page
+    And I open the feedback tool
     When I click the 'header button'
     And I click 'exceeds expectation' for 'thesis'
     And I click 'meets expectation' for 'claims'

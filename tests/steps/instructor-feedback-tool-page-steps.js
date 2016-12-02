@@ -113,20 +113,19 @@ exports.define = function(steps) {
       });
   });
 
-  steps.then("I click the 'header button'", function(elem) {
-    page[elem].click();
-  });
-
   steps.then("I should see the score rubric", function() {
-    // XXX need a way to find the rubric
+    page.rubric.isDisplayed().should.eventually.equal(true);
   });
 
-  steps.then("I click the 'X button'", function(elem) {
+  steps.when("I click the '$elem'", function(elem) {
     page[elem].click();
   });
 
-  steps.then("I rubric should disappear", function() {
-    // XXX need a way to find the rubric
+  steps.then("The rubric should disappear", function() {
+    driver.findElements({css: "div[class^='Rubric__rubric_container"})
+      .then(function(els) {
+        expect(els.length).to.equal(0);
+      });
   });
 
 };
