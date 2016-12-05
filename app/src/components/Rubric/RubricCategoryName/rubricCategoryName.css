@@ -11,7 +11,7 @@
   border: 0 solid #999;
   border-width: 1px 0px 0 1px;
   min-height: 100px;
-  text-align: right;
+  text-align: left;
   padding: 15px;
   display: flex;
   flex-direction: row;

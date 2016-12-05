@@ -16,8 +16,7 @@ const RubricCategoryName = ({ categoryNames }) => {
               className={rubricCategoryNameCss.category_nameLevelContainer}
               key={uuid.v4()}
             >
-              <span>{ category.score }</span>
-              <span className={rubricCategoryNameCss.name}>{ category.text }</span>
+              <span className={rubricCategoryNameCss.name}>{ category.score + ' ' + category.text }</span>
             </div>
           );
         })
