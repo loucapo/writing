@@ -24,28 +24,48 @@ module.exports = new Page({
 
   quick_feedback_library: { get: function () { return this.element("[data-id='sideMenu'] [data-id='feedbackLib']"); } },
 
+  quick_feedback_library: { get: function () { return this.element("[data-id='feedbackLib']"); } },
 
-  comma_splice: { get: function () { return this.element("[data-id='comma_splice']"); } },
+  comma_splice: { get: function () { return this.element("[data-id='comma-splice']"); } },
 
   fragment: { get: function () { return this.element("[data-id='fragment']"); } },
 
   usage: { get: function () { return this.element("[data-id='usage']"); } },
 
-  pronoun_agreement: { get: function () { return this.element("[data-id='pronoun_agreement']"); } },
+  pronoun_agreement: { get: function () { return this.element("[data-id='pronoun-agreement']"); } },
 
-  subject_verb_agreement: { get: function () { return this.element("[data-id='subject_verb_agreement']"); } },
+  subject_verb_agreement: { get: function () { return this.element("[data-id='subject-verb-agreement']"); } },
 
-  wrong_word: { get: function () { return this.element("[data-id='wrong_word']"); } },
+  appropriate_language: { get: function () { return this.element("[data-id='appropriate-language']"); } },
 
-  needs_analysis: { get: function () { return this.element("[data-id='needs_analysis']"); } },
+  needs_analysis: { get: function () { return this.element("[data-id='needs-analysis']"); } },
 
-  comma_error: { get: function () { return this.element("[data-id='comma_error']"); } },
+  comma_error: { get: function () { return this.element("[data-id='comma-error']"); } },
+
+  'pre-defined feedback comment': { get: function () { return this.element("div[class^='Flag__triangle_border']"); } },
+
+  'instructor feedback content': { get: function () { return this.element("div[class^='Flag__paragraph'"); } },
+
+  resource_url: { get: function () { return this.element("[data-id='resource-url']"); } },
+
+  'Student Reflection Section': { get: function () { return this.element("[data-id='studentReflections']"); } },
+
+  'End Comment Section': { get: function () { return this.element("[data-id='endComment']"); } },
+
+  'End Comment textarea': { get: function () { return this.element("//*[@data-id='endComment']/textarea", 'xpath'); } },
+
+  end_comment_header: { get: function () { return this.element("[data-id='comma_error']"); } },
+
+  end_comment_textarea: { get: function () { return this.element("[data-id='comma_error']"); } },
 
   example_essay: { value: 'TXTing: h8 it or wuv it'},
 
   comment_popup: { get: function () { return this.element(".input__container"); } },
 
+  comment_popup__textarea: { get: function() { return this.element(".input__container textarea"); } },
+
   submit: { get: function() { return this.element("button[type='submit']");}},
 
-  cancel: { get: function() { return this.element("button[type='Cancel']");}},
+  cancel: { get: function() { return this.element("button[type!='submit']");}},
+
 });
