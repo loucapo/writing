@@ -163,6 +163,8 @@ class FeedbackTool extends Component {
         onHighlight={this.onHighlight}
         completeHighlight={this.completeHighlight}
         position={this.state.rect}
+        showQuickFeedbackTool={this.state.showQuickFeedbackTool}
+        toggleQuickFeedback={this.toggleQuickFeedback}
         submitOtherComment={this.props.submitOtherComment} />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
