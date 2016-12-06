@@ -8,12 +8,12 @@ a, a:link, a:hover, a:active, a:visited  {
 
 .panel {
   background-color: var(--pureWhite);
-  -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-     -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
-          box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.15);
+     -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.15);
+          box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.15);
   font-size: 15px;
   margin: 50px 150px 50px;
-  padding: 0;
+  padding: 0 0 20px 0;
 }
 
 .panel h1 {

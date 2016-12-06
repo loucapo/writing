@@ -8,11 +8,10 @@
 .action_button_wrapper {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
 }
 
 .action_button {
-  background-color: var(--pureWhite);
+  background-color: transparent;
   border: 1px solid var(--blue);
   cursor: pointer;
   color: var(--blue);

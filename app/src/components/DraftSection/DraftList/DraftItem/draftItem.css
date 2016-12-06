@@ -1,82 +1,108 @@
-@import 'mixins.css';
+@import '../../../../styles/core.css';
+/*@import 'mixins.css';*/
 
-:root {
-	--header-height: 70px;
+.bold {
+  font-weight: bold;
 }
 
-.strong {
-	@apply(--font-strong);
+.drafts {
+  border-top: 1px solid var(--lightGrey);
 }
 
-/* DRAFT CONTAINER */
-li.item {
+.drafts section {
   display: flex;
-  flex-flow: column nowrap;
-  margin-bottom: 20px;
-  background-color: var(--box-bg-grey);
-}
-li.item:last-child {
-	margin-bottom: 0px;
+  padding: 15px 20px;
 }
 
-/* DRAFT HEADER */
-.header {
-  height: var(--header-height);
-  line-height: var(--header-height);
-  font-size: 16px;
-  @apply(--font-medium);
-  padding: 0 50px;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
+.draftParam {
+  min-width: 25%;
 }
 
-.draftOrder {
-	margin-right: 10px;
-	@apply --font-strong;
-}
-.draftInfo {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-}
-.reviewLabel {
-  margin-right: 15px;
-  @apply(--font-default);
-}
-.editAction {
-  font-size: .9em;
+.draftLeft, .draftRight {
+  min-width: 50%;
 }
 
-
-/* DRAFT SECTION*/
-.summary {
-  display: flex;
-  flex-flow: row nowrap;
-  @apply(--font-medium);
-  border-top: 2px solid var(--box-border-light-grey);
+.instructions {
+  height: 50%;
+  width: 95%;
 }
-.summaryLabel {
-	@apply(--font-strong);
-}
-.summaryContainer {
-	display:block;
-	margin-bottom:20px;
-}
+/*:root {*/
+	/*--header-height: 70px;*/
+/*}*/
+
+/*.strong {*/
+	/*@apply(--font-strong);*/
+/*}*/
+
+/*!* DRAFT CONTAINER *!*/
+/*li.item {*/
+  /*display: flex;*/
+  /*flex-flow: column nowrap;*/
+  /*margin-bottom: 20px;*/
+  /*background-color: var(--box-bg-grey);*/
+/*}*/
+/*li.item:last-child {*/
+	/*margin-bottom: 0px;*/
+/*}*/
+
+/*!* DRAFT HEADER *!*/
+/*.header {*/
+  /*height: var(--header-height);*/
+  /*line-height: var(--header-height);*/
+  /*font-size: 16px;*/
+  /*@apply(--font-medium);*/
+  /*padding: 0 50px;*/
+  /*display: flex;*/
+  /*flex-flow: row nowrap;*/
+  /*justify-content: space-between;*/
+  /*align-items: center;*/
+/*}*/
+
+/*.draftOrder {*/
+	/*margin-right: 10px;*/
+	/*@apply --font-strong;*/
+/*}*/
+/*.draftInfo {*/
+  /*display: flex;*/
+  /*flex-flow: row nowrap;*/
+  /*justify-content: space-between;*/
+/*}*/
+/*.reviewLabel {*/
+  /*margin-right: 15px;*/
+  /*@apply(--font-default);*/
+/*}*/
+/*.editAction {*/
+  /*font-size: .9em;*/
+/*}*/
 
 
-/* DRAFT SECTION -- LEFT */
-.left {
-  padding: 20px 20px 30px 50px;
-  flex: 0 0 400px;
+/*!* DRAFT SECTION*!*/
+/*.summary {*/
+  /*display: flex;*/
+  /*flex-flow: row nowrap;*/
+  /*@apply(--font-medium);*/
+  /*border-top: 2px solid var(--box-border-light-grey);*/
+/*}*/
+/*.summaryLabel {*/
+	/*@apply(--font-strong);*/
+/*}*/
+/*.summaryContainer {*/
+	/*display:block;*/
+	/*margin-bottom:20px;*/
+/*}*/
 
-  border-right: 2px solid var(--box-border-light-grey);
-}
 
-/* DRAFT SECTION -- RIGHT */
-.right {
-  padding: 20px 50px 10px 20px;
-  flex: 1 1 auto;
-}
+/*!* DRAFT SECTION -- LEFT *!*/
+/*.left {*/
+  /*padding: 20px 20px 30px 50px;*/
+  /*flex: 0 0 400px;*/
+
+  /*border-right: 2px solid var(--box-border-light-grey);*/
+/*}*/
+
+/*!* DRAFT SECTION -- RIGHT *!*/
+/*.right {*/
+  /*padding: 20px 50px 10px 20px;*/
+  /*flex: 1 1 auto;*/
+/*}*/
 

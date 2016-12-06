@@ -3,7 +3,6 @@ import React, { Component, PropTypes } from 'react';
 import DraftSection from '../DraftSection/DraftSection';
 import SubmissionSection from '../SubmissionSection/SubmissionSection';
 import activityMenu from './activityMenu.css';
-import coreCss from '../../styles/core.css';
 
 class ActivityMenu extends Component {
   constructor() {
@@ -22,6 +21,7 @@ class ActivityMenu extends Component {
     });
   }
 
+  //TODO: this really doesnt make sense in the menu. it should be moved to activity or a separate component
   renderContent = () => {
     if (this.state.toggle === 'drafts') {
       return (<DraftSection drafts={this.props.drafts} />);
@@ -31,7 +31,7 @@ class ActivityMenu extends Component {
 
   render() {
     return (
-      <div className={ coreCss.panel }>
+      <div>
         <header data-id="activity-menu" className={activityMenu.container}>
           <div className={ (this.state.toggle === 'drafts') ? activityMenu.active : '' }>
             <a data-id="drafts" href="#" onClick={x => this.toggleSelection('drafts', x)}>Drafts</a>

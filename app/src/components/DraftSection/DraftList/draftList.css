@@ -1,25 +1,28 @@
-.draftGroup {
+@import '../../../styles/core.css';
+
+.addDraft {
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column;
+  padding: 15px 20px;
 }
 
-.items {
-  padding: 40px 100px 10px;
-  display: flex;
-  flex-flow: column nowrap;
-}
+/*.items {*/
+  /*padding: 40px 100px 10px;*/
+  /*display: flex;*/
+  /*flex-flow: column nowrap;*/
+/*}*/
 
-.draftAction {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: 100px;
-  margin-bottom: 50px;
-}
+/*.draftAction {*/
+  /*display: flex;*/
+  /*flex-flow: row nowrap;*/
+  /*justify-content: flex-end;*/
+  /*align-items: center;*/
+  /*padding-right: 100px;*/
+  /*margin-bottom: 50px;*/
+/*}*/
 
-.add_draft_icon {
-	font-size: 1.5em;
-	position: relative;
-	top: 1px;
-}
+/*.add_draft_icon {*/
+	/*font-size: 1.5em;*/
+	/*position: relative;*/
+	/*top: 1px;*/
+/*}*/
