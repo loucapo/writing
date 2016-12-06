@@ -14,18 +14,34 @@
   padding: 15px 20px;
 }
 
-.draftParam {
-  min-width: 25%;
+.draftParam, .draftParamSelect {
+  min-width: 32%;
+}
+
+.draftParamSelect {
+  color: var(--blue);
+  margin-top: 10px;
 }
 
 .draftLeft, .draftRight {
   min-width: 50%;
 }
 
+.filters {
+  color: var(--darkGrey);
+  flex-wrap: wrap;
+  font-size: 14px;
+  overflow: hidden;
+  width: 75%;
+}
+
 .instructions {
+  font-style: italic;
+  font-weight: normal;
   height: 50%;
   width: 95%;
 }
+
 /*:root {*/
 	/*--header-height: 70px;*/
 /*}*/

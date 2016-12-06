@@ -10,20 +10,20 @@ let DraftList = ({drafts}) => {
         <ActionButton content="+ Add Another Draft" />
       </div>
       {/*<ul className={ draftList.items }>*/}
-        {
-          drafts.map((draftItem, idx) => {
-            // substitute 'Final draft' for 'Draft #' on last element in array
-            let draftName = (idx === (drafts.length - 1)) ? 'Final Draft' : 'Draft ' + (idx + 1);
-            return (
-              <DraftItem
-                draftItem={draftItem}
-                draftName={draftName}
-                gradingPolicy={draftItem.details.gradingPolicy}
-                key={idx}
-              />
-            );
-          })
-        }
+      {
+        drafts.map((draftItem, idx) => {
+          // substitute 'Final draft' for 'Draft #' on last element in array
+          let draftName = (idx === (drafts.length - 1)) ? 'Final Draft' : 'Draft ' + (idx + 1);
+          return (
+            <DraftItem
+              draftItem={draftItem}
+              draftName={draftName}
+              gradingPolicy={draftItem.details.gradingPolicy}
+              key={idx}
+            />
+          );
+        })
+      }
       {/*</ul>*/}
     </div>
   );
