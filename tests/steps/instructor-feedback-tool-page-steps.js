@@ -242,7 +242,7 @@ exports.define = function(steps) {
       throw new Error('Unknown rubric column selected');
     };
     var butter = (5-grade);
-    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"});
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") [class*='RubricCategoryScore__selected"});
   });
 
   steps.then("I do not see the '$grade' '$criteria' box highlighted", function(elem,criteria) {
@@ -302,7 +302,8 @@ exports.define = function(steps) {
     }
     else {
       throw new Error('Unknown rubric grade selected');
-    };
+    }
+    ;
 
     if (criteria == 'thesis') {
       var column = 1;
@@ -321,8 +322,12 @@ exports.define = function(steps) {
     }
     else {
       throw new Error('Unknown rubric column selected');
-    };
-    var butter = (5-grade);
-    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"});
+    }
+    ;
+    var butter = (5 - grade);
+    driver.findElements({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child(" + column + ") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"})
+      .then(function (els) {
+        expect(els.length).to.equal(0);
+      });
   });
 };
