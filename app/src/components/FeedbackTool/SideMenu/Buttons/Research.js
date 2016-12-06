@@ -1,12 +1,12 @@
 import React from 'react';
-import image from './../../../../images/comment.svg';
+import ResearchSVG from './ResearchSVG';
 
 import sideMenu from './../sideMenu.css';
 
 const ResearchButton = () => {
   return (
     <li data-id="research">
-      <div className="Icon" dangerouslySetInnerHTML={{__html: image}} />
+      <ResearchSVG className="Icon" />
       <span className={sideMenu.sideMenuCaption}>Integration of Research</span>
     </li>
   );

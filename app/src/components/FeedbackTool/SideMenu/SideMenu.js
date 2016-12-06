@@ -15,7 +15,8 @@ const spanClicked = (val) => {
   console.log(val); // just for verification that the links are clicking
 };
 
-const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
+const SideMenu = (props) => {
+  const {showQuickFeedbackTool, toggleQuickFeedback} = this.props;
   const sideMenuContent = (
     <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>
@@ -25,7 +26,7 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
         <ParagraphDevButton />
         <ResearchButton />
         <CounterArgsButton />
-        <OtherButton />
+        <OtherButton {...props} />
         <GoodJobButton />
         <FeedbackLibButton toggleQuickFeedback={toggleQuickFeedback} />
 
@@ -81,8 +82,8 @@ const SideMenu = ({showQuickFeedbackTool, toggleQuickFeedback}) => {
 };
 
 SideMenu.propTypes = {
-  showQuickFeedbackTool: PropTypes.bool,
-  toggleQuickFeedback: PropTypes.func
+  showQuickFeedbackTool: PropTypes.bool.isRequired,
+  toggleQuickFeedback: PropTypes.func.isRequired
 };
 
 export default SideMenu;

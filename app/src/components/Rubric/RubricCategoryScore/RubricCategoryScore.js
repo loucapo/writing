@@ -36,8 +36,8 @@ const RubricCategoryScore = ({scores, selectCell, selections}) => {
               }
             </div>
           );
-        })
-      }
+        }
+      )}
     </div>
   );
 };
