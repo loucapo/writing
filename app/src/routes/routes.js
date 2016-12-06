@@ -4,6 +4,7 @@ module.exports = function routes(koarouter,
                                 ) {
   return function module(app) {
     const router = koarouter();
+    router.get('launch','/launch', controllers.launchController.launch);
     router.get('index','*', controllers.indexController.index);
 
     app.use(router.routes());
