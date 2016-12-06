@@ -29,7 +29,7 @@ const _Input = ({ data, containerStyle, options }) => {
       case 'select': {
         return (
           <select name={data.name}
-            value={data.value}
+            value={data.value || data.default}
             onChange={data.onChange} >
             {options}
           </select>);

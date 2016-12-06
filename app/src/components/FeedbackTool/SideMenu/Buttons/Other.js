@@ -15,13 +15,33 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
     sentimentLevel: {
       type: 'select',
       name: 'sentimentLevel',
+      default: 'needsWork',
       options: [
-        <option value="grapefruit" key={uuid.v4()}>Grapefruit</option>,
-        <option value="lime" key={uuid.v4()}>Lime</option>,
-        <option value="coconut" key={uuid.v4()}>Coconut</option>,
-        <option value="mango" key={uuid.v4()}>Mango</option>
+        <option className="goodJob" value="goodJob" key={uuid.v4()}>
+          Great job! Reasons and evidence are convincing.
+        </option>,
+        <option className="needsWork" value="needsWork" key={uuid.v4()}>
+          Needs work. Needs additional reasons/support.
+        </option>,
+        <option className="extensiveRevision" value="extensiveRevision" key={uuid.v4()}>
+          Needs extensive revision. Inadequate reasons/support.
+        </option>
       ]
     }
+  };
+
+  const onFormSubmit = (x) => {
+    let shouldChangeColor;
+    if(x.sentimentLevel === 'goodJob') {
+      shouldChangeColor = true;
+    }
+
+    completeHighlight({
+      success: true,
+      removeColor: shouldChangeColor ? 'blue' : null,
+      changeColor: shouldChangeColor ? 'green' : null});
+
+    submitOtherComment(x);
   };
 
   const form = (onSubmit, onClose) => (
@@ -44,7 +64,7 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
       color="blue"
       buttonName="other"
       commentIcon={icon}
-      onSubmit={submitOtherComment}
+      onSubmit={onFormSubmit}
       model={model}
       position={position}
     />
