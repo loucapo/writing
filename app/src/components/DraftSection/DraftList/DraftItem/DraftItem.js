@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import DraftItemHeader from './DraftItemHeader/DraftItemHeader';
 // import DropDown from '../../../Dropdown/DropDown.js';
+import uuid from 'uuid';
 import draftItemCss from './draftItem.css';
 
 const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
@@ -31,7 +32,7 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
         <h4>Feedback Criteria</h4>
         <ul>
           { draftItem.details.learningObjectives.map(x => (
-            <li>
+            <li key={uuid.v4()}>
               <span className={draftItemCss.bold}>{ x.key }:</span> { x.value }
             </li>
           )) }
@@ -40,7 +41,7 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
         <h4>Student Reflection</h4>
         <ul>
           { draftItem.details.studentReflectionQuestions.map(x => (
-            <li>{ x }</li>
+            <li key={uuid.v4()}>{ x }</li>
           ))}
         </ul>
       </div>

@@ -1,19 +1,16 @@
-@import 'mixins.css';
+@import '../../../../styles/core.css';
 
 .row {
+  border-top: 1px solid var(--lightGrey);
   height: 50px;
 }
 
-.row:nth-child(even) {
-  background-color: var(--bkGrey);
-}
-
 td {
-  border-right: 1px solid var(--comGrey);
-  padding: 0 25px;
+  padding: 0 20px !important;
   width: 25%;
 }
 
-td:first-child {
-  padding-left: 100px;
+.reviewSent {
+  color: var(--darkGrey);
+  font-style: italic;
 }

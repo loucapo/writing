@@ -9,7 +9,6 @@ let DraftList = ({drafts}) => {
       <div className={draftList.addDraft}>
         <ActionButton content="+ Add Another Draft" />
       </div>
-      {/*<ul className={ draftList.items }>*/}
       {
         drafts.map((draftItem, idx) => {
           // substitute 'Final draft' for 'Draft #' on last element in array
@@ -24,7 +23,6 @@ let DraftList = ({drafts}) => {
           );
         })
       }
-      {/*</ul>*/}
     </div>
   );
 };
