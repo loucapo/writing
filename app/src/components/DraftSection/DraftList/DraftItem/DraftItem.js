@@ -1,7 +1,5 @@
 import React, {PropTypes} from 'react';
 import DraftItemHeader from './DraftItemHeader/DraftItemHeader';
-// import DraftItemDescription from './DraftItemDescription/DraftItemDescription';
-// import DraftItemFeedback from './DraftItemFeedback/DraftItemFeedback';
 // import DropDown from '../../../Dropdown/DropDown.js';
 import draftItemCss from './draftItem.css';
 
@@ -18,13 +16,13 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
 
       <div className={draftItemCss.draftParamSelect}>
         {/*<DropDown ddPosition='right' ddTitle={props.ddTitle} {...ddOptions} />*/}
-        Instructor Review
+        { draftItem.details.gradingPolicy }
       </div>
       <div className={draftItemCss.draftParamSelect}>
-        Complete / Incomplete
+        { draftItem.type }
       </div>
       <div className={draftItemCss.draftParamSelect}>
-        Apr 4, 2017
+        { draftItem.dueDate }
       </div>
     </section>
 
@@ -32,19 +30,18 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
       <div className={draftItemCss.draftLeft}>
         <h4>Feedback Criteria</h4>
         <ul>
-          <li><span className={draftItemCss.bold}>Introduction:</span> Thesis</li>
-          <li><span className={draftItemCss.bold}>Body:</span> Reasons & Support, Interpretation / Analysis</li>
-          <li><span className={draftItemCss.bold}>Conclusion:</span> Expansion/Significance of Thesis</li>
-          <li>
-            <span className={draftItemCss.bold}>Research/Evidence:</span> Integration of Research, Counterarguments
-          </li>
+          { draftItem.details.learningObjectives.map(x => (
+            <li>
+              <span className={draftItemCss.bold}>{ x.key }:</span> { x.value }
+            </li>
+          )) }
         </ul>
 
         <h4>Student Reflection</h4>
         <ul>
-          <li>The primary argument I'm making is...</li>
-          <li>One piece of evidence I want to call attention to in my essay is...</li>
-          <li>One idea I need to develop further is...</li>
+          { draftItem.details.studentReflectionQuestions.map(x => (
+            <li>{ x }</li>
+          ))}
         </ul>
       </div>
 
@@ -54,10 +51,6 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
       </div>
     </section>
 
-    {/*<section className={ draftItemCss.summary }>*/}
-    {/*<DraftItemDescription details={draftItem.details} />*/}
-    {/*<DraftItemFeedback details={draftItem.details} />*/}
-    {/*</section>*/}
   </div>);
 
 DraftItem.propTypes = {
