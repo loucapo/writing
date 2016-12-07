@@ -49,6 +49,9 @@ class FeedbackTool extends Component {
     });
   }
 
+  showQuickFeedbackTool: PropTypes.bool.isRequired,
+  isRubricLoaded: PropTypes.bool.isRequired
+
   toggleQuickFeedback = () => {
     this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
@@ -172,8 +175,8 @@ class FeedbackTool extends Component {
         completeHighlight={this.completeHighlight}
         position={this.state.rect}
         submitOtherComment={this.props.submitOtherComment}
+        showQuickFeedbackTool={this.state.showQuickFeedbackTool}
         toggleQuickFeedback={this.toggleQuickFeedback}
-        showQuickFeedbackTool={this.showQuickFeedbackTool}
       />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
@@ -204,13 +207,8 @@ FeedbackTool.propTypes = {
   errorMessage: PropTypes.string,
   submitOtherComment: PropTypes.func,
   submissionId: PropTypes.string,
-  submissionOnChange: PropTypes.func,
-  showRubric: PropTypes.bool,
-  toggleRubric: PropTypes.func,
-  showQuickFeedbackTool: PropTypes.bool,
-  toggleQuickFeedback: PropTypes.func,
-  isRubricLoaded: PropTypes.bool,
-  toggleIsRubricLoaded: PropTypes.func
+  submissionOnChange: PropTypes.func
+
 };
 
 export default FeedbackTool;
