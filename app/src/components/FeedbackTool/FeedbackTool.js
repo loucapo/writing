@@ -49,9 +49,6 @@ class FeedbackTool extends Component {
     });
   }
 
-  showQuickFeedbackTool: PropTypes.bool.isRequired,
-  isRubricLoaded: PropTypes.bool.isRequired
-
   toggleQuickFeedback = () => {
     this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
