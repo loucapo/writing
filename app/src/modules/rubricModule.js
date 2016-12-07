@@ -19,7 +19,7 @@ export default (state = {}, action) => {
       }
       // Check if the current level for the category is already selected, clicking it again should de-select
       if (rubric.rubric.categories[action.payload.data.value[1].column].catSelection ===
-        action.payload.data.value[0].row)
+        numberRows - action.payload.data.value[0].row) // zero-based
       {
         rubric.rubric.categories[action.payload.data.value[1].column].catSelection = -1; // -1 indicates no selection
 
@@ -47,7 +47,8 @@ export function loadRubric() {
         rubric: {
           categoryNames: [
             {
-              text: 'Rubric: Argument'
+              text: 'Argument Essay',
+              score: ''
             },
             {
               text: 'Exceeds Expectations',

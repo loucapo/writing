@@ -9,7 +9,6 @@ import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
-
 class FeedbackTool extends Component {
   constructor(props) {
     super(props);
@@ -157,7 +156,7 @@ class FeedbackTool extends Component {
         <RubricContainer
           showRubric={this.state.showRubric}
           toggleRubric={this.toggleRubric}
-          isRubricLoaded={this.isRubricLoaded}
+          isRubricLoaded={this.state.isRubricLoaded}
           toggleIsRubricLoaded={this.toggleIsRubricLoaded}
         />);
     } else {
