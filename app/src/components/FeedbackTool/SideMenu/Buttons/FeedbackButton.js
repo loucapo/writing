@@ -19,7 +19,7 @@ class FeedbackButton extends Component {
   }
   onClose(e) {
     e.preventDefault();
-    this.props.completeHighlight(this.props.color);
+    this.props.completeHighlight({success: false, removeColor: this.props.color});
     this.setState({
       isOpen: false
     });
@@ -27,7 +27,6 @@ class FeedbackButton extends Component {
 
   onSubmit(x) {
     this.props.onSubmit(x);
-    this.props.completeHighlight();
     this.setState({
       isOpen: false
     });
@@ -56,11 +55,11 @@ class FeedbackButton extends Component {
   render() {
     return (
       <li data-id={this.props.buttonName}>
-        <div onClick={this.onClick} style={{width:'100%'}}>
-           {this.props.commentIcon}
-           <span className={sideMenu.sideMenuCaption}>
-             {this.props.buttonName}
-           </span>
+        <div onClick={this.onClick} style={{width: '100%'}}>
+          {this.props.commentIcon}
+          <span className={sideMenu.sideMenuCaption}>
+            {this.props.buttonName}
+          </span>
         </div>
         <FeedbackModal
           isOpen={this.state.isOpen}
