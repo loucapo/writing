@@ -206,23 +206,7 @@ exports.define = function(steps) {
     driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"});
   });
 
-  steps.then("I see the score '$grade' next to '$criteria'", function(elem,criteria) {
-    if (elem == 'exceeds expectations') {
-      var grade = 4;
-    }
-    else if (elem == 'meets expectations') {
-      var grade = 3;
-    }
-    else if (elem == 'nearly meets expectations') {
-      var grade = 2;
-    }
-    else if (elem == 'fails to meet expectations') {
-      var grade = 1;
-    }
-    else {
-      throw new Error('Unknown rubric grade selected');
-    };
-
+  steps.then("I see the score '$grade' '$score' next to '$criteria'", function(elem,score,criteria) {
     if (criteria == 'thesis') {
       var column = 1;
     }
@@ -241,8 +225,9 @@ exports.define = function(steps) {
     else {
       throw new Error('Unknown rubric column selected');
     };
-    var butter = (5-grade);
-    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") [class*='RubricCategoryScore__selected"});
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryHeading'] div:nth-child("+ column +") [data-id='category-heading-value']"}).getText().then(function(text) {
+      text.should.equal(score);
+    });;
   });
 
   steps.then("I do not see the '$grade' '$criteria' box highlighted", function(elem,criteria) {
@@ -287,24 +272,7 @@ exports.define = function(steps) {
     });
   });
 
-  steps.then("I do not see the score '$grade' next to '$criteria'", function(elem,criteria) {
-    if (elem == 'exceeds expectations') {
-      var grade = 4;
-    }
-    else if (elem == 'meets expectations') {
-      var grade = 3;
-    }
-    else if (elem == 'nearly meets expectations') {
-      var grade = 2;
-    }
-    else if (elem == 'fails to meet expectations') {
-      var grade = 1;
-    }
-    else {
-      throw new Error('Unknown rubric grade selected');
-    }
-    ;
-
+  steps.then("I do not see the score '$grade' '$score' next to '$criteria'", function(elem,score,criteria) {
     if (criteria == 'thesis') {
       var column = 1;
     }
@@ -324,10 +292,8 @@ exports.define = function(steps) {
       throw new Error('Unknown rubric column selected');
     }
     ;
-    var butter = (5 - grade);
-    driver.findElements({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child(" + column + ") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"})
-      .then(function (els) {
-        expect(els.length).to.equal(0);
-      });
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryHeading'] div:nth-child("+ column +") [data-id='category-heading-value']"}).getText().then(function(text) {
+      text.should.not.equal(score);
+    });;
   });
 };
