@@ -12,6 +12,9 @@ class Flag extends Component {
     this.setState({clicked: !this.state.clicked});
   };
 
+  //TODO: this should probably be refactored later to be stateless and moved to the components
+  // folder...it could be 2 mini components with the state controlled but the flags container, choosing which to show.
+
   render() {
     if (this.state.clicked) {
       return (

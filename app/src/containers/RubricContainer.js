@@ -44,6 +44,7 @@ RubricContainer.propTypes = {
   showRubric: PropTypes.bool,
   isRubricLoaded: PropTypes.bool,
   toggleIsRubricLoaded: PropTypes.func
+
 };
 
 const mapStateToProps = (state) => {
