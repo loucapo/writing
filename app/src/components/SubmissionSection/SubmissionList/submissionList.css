@@ -12,6 +12,10 @@
   padding: 20px;
 }
 
+.dropDown {
+  color: var(--blue);
+}
+
 .table {
   border-collapse: collapse;
   width: 100%;
