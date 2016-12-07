@@ -27,4 +27,5 @@ const ThesisSVG = () => {
     </svg>
   );
 };
+
 export default ThesisSVG;

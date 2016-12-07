@@ -25,6 +25,7 @@ const RubricCategoryHeading = ({nameValues}) => {
       }
     </div>
   );
+
 };
 
 RubricCategoryHeading.propTypes = {

@@ -27,4 +27,6 @@ const ReasonSupportSVG = () => {
     </svg>
   );
 };
+
 export default ReasonSupportSVG;
+

@@ -24,6 +24,7 @@ const RubricCategoryName = ({ categoryNames }) => {
 
     </div>
   );
+
 };
 
 RubricCategoryName.propTypes = {
