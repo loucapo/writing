@@ -21,7 +21,12 @@ module.exports = function () {
         "dueDate": "Thursday Jan 1, 2016",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
-            "learningObjectives": ["[Introduction] Thesis", "[Body] Move bodies with your eloquaint words and such.", "[Conclusion]What you say?"],
+            "learningObjectives": [
+                {key: "Introduction", value: "Thesis"},
+                {key: "Body", value: "Reasons & Support, Interpretation / Analysis"},
+                {key: "Conclusion", value: "Expansion/Significance of Thesis"},
+                {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
+            ],
             "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
             "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
@@ -29,28 +34,35 @@ module.exports = function () {
 
     const draft2 = {
         "id": "2b4318e5-8e45-40dd-a1de-0cd1424b94ef",
-        "type": "Peer Review",
-        "dueDate": "Tuesday Jan 5, 2016",
+        "type": "Instructor Review",
+        "dueDate": "Thursday Jan 1, 2016",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
-            "peerReviewGroups": "Randomized",
-            "peerFeedbackSurvey": ["Did the writer grab you by the ears and bury your face in their attention gnabbing miracle work of literacy?",
-                "Did the organization approach you in a Big Brother context?",
-                "Did the ending come soon enough?",
-                "Did the voice and style make you think of a whimsical limerick?"]
+            "learningObjectives": [
+                {key: "Introduction", value: "Thesis"},
+                {key: "Body", value: "Reasons & Support, Interpretation / Analysis"},
+                {key: "Conclusion", value: "Expansion/Significance of Thesis"},
+                {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
+            ],
+            "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
+            "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
     }
 
     const draft3 = {
         "id": "3b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Instructor Review",
-        "dueDate": "Thursday Jan 8, 2016",
+        "dueDate": "Thursday Jan 1, 2016",
         "details": {
-            "gradingPolicy": "Letter Grade",
-            "postInstructorFeedback": ["Now that everyone has left the party besides you and I what would you like to philosophize about?"],
-            "finalReflectionSurvey": ["The most challenging part of this assignment was learning to read and write or...",
-                "I think my readers will not faint because...",
-                "Finally, I want you to know that I called to say I love you."]
+            "gradingPolicy": "Incomplete/Complete",
+            "learningObjectives": [
+                {key: "Introduction", value: "Thesis"},
+                {key: "Body", value: "Reasons & Support, Interpretation / Analysis"},
+                {key: "Conclusion", value: "Expansion/Significance of Thesis"},
+                {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
+            ],
+            "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
+            "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
     }
 
@@ -72,39 +84,51 @@ module.exports = function () {
     const draft4 = {
         "id": "4b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Instructor Review",
-        "dueDate": "Thursday Jan 1, 2017",
+        "dueDate": "Thursday Jan 1, 2016",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
-            "learningObjectives": ["[Introduction] Thesis bla bla bla", "[Body] Move bodies with your eloquaint words and such.", "[Conclusion]What you say?"],
-            "studentReflectionQuestions": ["The primary argumentations...", "blah blah blah","Evidence can and will be used against you..."],
-            "postInstructorFeedback": ["blah blah blah Put the microphone against the speaker to make everyone leave."]
+            "learningObjectives": [
+                {key: "Introduction", value: "Thesis"},
+                {key: "Body", value: "Reasons & Support, Interpretation / Analysis"},
+                {key: "Conclusion", value: "Expansion/Significance of Thesis"},
+                {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
+            ],
+            "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
+            "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
     }
 
     const draft5 = {
         "id": "5b4318e5-8e45-40dd-a1de-0cd1424b94ef",
-        "type": "Peer Review",
-        "dueDate": "Tuesday Jan 5, 2017",
+        "type": "Instructor Review",
+        "dueDate": "Thursday Jan 1, 2016",
         "details": {
             "gradingPolicy": "Incomplete/Complete",
-            "peerReviewGroups": "Randomized",
-            "peerFeedbackSurvey": ["blah blah blah Did the writer grab you by the ears and bury your face in their attention gnabbing miracle work of literacy?",
-                "blah blah blah Did the organization approach you in a Big Brother context?",
-                "vblah blah blahDid the ending come soon enough?",
-                "blah blah blahDid the voice and style make you think of a whimsical limerick?"]
+            "learningObjectives": [
+                {key: "Introduction", value: "Thesis"},
+                {key: "Body", value: "Reasons & Support, Interpretation / Analysis"},
+                {key: "Conclusion", value: "Expansion/Significance of Thesis"},
+                {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
+            ],
+            "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
+            "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
     }
 
     const draft6 = {
         "id": "6b4318e5-8e45-40dd-a1de-0cd1424b94ef",
         "type": "Instructor Review",
-        "dueDate": "Thursday Jan 8, 2017",
+        "dueDate": "Thursday Jan 1, 2016",
         "details": {
-            "gradingPolicy": "Letter Grade",
-            "postInstructorFeedback": ["blah blah blah Now that everyone has left the party besides you and I what would you like to philosophize about?"],
-            "finalReflectionSurvey": ["blah blah blah The most challenging part of this assignment was learning to read and write or...",
-                "blah blah blahI think my readers will not faint because...",
-                "blah blah blahFinally, I want you to know that I called to say I love you."]
+            "gradingPolicy": "Incomplete/Complete",
+            "learningObjectives": [
+                {key: "Introduction", value: "Thesis"},
+                {key: "Body", value: "Reasons & Support, Interpretation / Analysis"},
+                {key: "Conclusion", value: "Expansion/Significance of Thesis"},
+                {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
+            ],
+            "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
+            "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
     }
 
