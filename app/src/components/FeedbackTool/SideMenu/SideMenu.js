@@ -12,11 +12,10 @@ import FeedbackLibButton from './Buttons/FeedbackLib';
 import sideMenu from './sideMenu.css';
 
 
+const spanClicked = (val) => {
+  console.log(val); // just for verification that the links are clicking
+};
 const SideMenu = (props) => {
-  const spanClicked = (val) => {
-    console.log(val); // just for verification that the links are clicking
-  };
-
   const sideMenuContent = (
     <div data-id="sideMenu" className={sideMenu.sideMenu}>
       <ul>

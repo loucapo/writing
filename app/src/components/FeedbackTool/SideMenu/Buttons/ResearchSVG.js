@@ -28,6 +28,5 @@ const ResearchSVG = () => {
   );
 };
 
-
 export default ResearchSVG;
 

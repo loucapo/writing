@@ -43,6 +43,7 @@ RubricContainer.propTypes = {
   showRubric: PropTypes.bool.isRequired,
   isRubricLoaded: PropTypes.bool.isRequired,
   toggleIsRubricLoaded: PropTypes.func.isRequired
+
 };
 
 const mapStateToProps = (state) => {

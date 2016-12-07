@@ -61,7 +61,6 @@ class FeedbackButton extends Component {
           <span className={sideMenu.sideMenuCaption}>
             {this.props.buttonName}
           </span>
-
         </div>
         <FeedbackModal
           isOpen={this.state.isOpen}

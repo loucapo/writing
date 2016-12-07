@@ -28,6 +28,4 @@ const CounterArgsSVG = () => {
   );
 };
 
-
 export default CounterArgsSVG;
-

@@ -29,4 +29,3 @@ const InterpretationsSVG = () => {
 };
 
 export default InterpretationsSVG;
-

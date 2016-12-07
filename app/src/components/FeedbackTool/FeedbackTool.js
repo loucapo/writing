@@ -14,30 +14,28 @@ class FeedbackTool extends Component {
     super(props);
   }
 
-  badges = [
-    {
-      title: 'Integration of Research',
-      contentParagraphs: [
-        `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
-          Your thesis is buried and unclear.`,
-        `I would begin here with your revisions to clarify your thesis statement.`
-      ],
-      resources: [
-        {
-          title: 'What is a Thesis',
-          url: 'http://www.google.com'
-        },
-        {
-          title: 'Examples of a good Thesis',
-          url: 'http://www.facebook.com'
-        },
-        {
-          title: 'Where should I put my Thesis',
-          url: 'http://www.yahoo.com'
-        }
-      ]
-    }
-  ];
+  badges = [{
+    title: 'Integration of Research',
+    contentParagraphs: [
+      `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
+      Your thesis is buried and unclear.`,
+      `I would begin here with your revisions to clarify your thesis statement.`
+    ],
+    resources: [
+      {
+        title: 'What is a Thesis',
+        url: 'http://www.google.com'
+      },
+      {
+        title: 'Examples of a good Thesis',
+        url: 'http://www.facebook.com'
+      },
+      {
+        title: 'Where should I put my Thesis',
+        url: 'http://www.yahoo.com'
+      }
+    ]
+  }];
 
   componentWillMount() {
     this.setState({
@@ -204,7 +202,6 @@ FeedbackTool.propTypes = {
   submitOtherComment: PropTypes.func,
   submissionId: PropTypes.string,
   submissionOnChange: PropTypes.func
-
 };
 
 export default FeedbackTool;
