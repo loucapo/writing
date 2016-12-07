@@ -117,7 +117,6 @@ exports.define = function(steps) {
     "range.selectNode(textNode);" +
     "window.getSelection().addRange(range);";
     driver.executeScript(script);
-    console.log('selection attempted');
   });
 
   steps.then("I click on the '$element' feedback", function(elem) {

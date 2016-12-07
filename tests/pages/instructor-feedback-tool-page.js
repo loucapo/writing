@@ -60,12 +60,12 @@ module.exports = new Page({
 
   example_essay: { value: 'TXTing: h8 it or wuv it'},
 
-  comment_popup: { get: function () { return this.element(".input__container"); } },
+  comment_popup: { get: function () { return this.element("div[data-id='MLModal']"); } },
 
-  comment_popup__textarea: { get: function() { return this.element(".input__container textarea"); } },
+  comment_popup__textarea: { get: function() { return this.element("div[data-id='MLModal'] textarea"); } },
 
-  submit: { get: function() { return this.element("button[type='submit']");}},
+  submit: { get: function() { return this.element("div[data-id='MLModal'] button[type='submit']");}},
 
-  cancel: { get: function() { return this.element("button[type!='submit']");}},
+  cancel: { get: function() { return this.element("div[data-id='MLModal'] button:not([type='submit'])");}},
 
 });
