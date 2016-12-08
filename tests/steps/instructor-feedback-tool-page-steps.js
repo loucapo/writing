@@ -132,16 +132,6 @@ exports.define = function(steps) {
     page.comment_popup__textarea.sendKeys(text);
   });
 
-  steps.then("The '$text' should persist on the page", function(text) {
-    page.comment_popup.getText().then(function(text) {
-      text.should.equal(text);
-    });
-  });
-
-  steps.then("The '$text' should not persist on the page", function(text) {
-    page.comment_popup.isDisplayed().should.eventually.equal(false);
-  });
-
   steps.then("the selected text highlight should persist", function(text) {
     page.draft_content_first_span.getAttribute('style').then(function (style) {
       expect(style.indexOf('background-color')).to.not.equal(-1);
