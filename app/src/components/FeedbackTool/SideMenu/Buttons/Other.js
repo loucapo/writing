@@ -1,15 +1,15 @@
 import React, {PropTypes} from 'react';
-import FeedbackButton from './FeedbackButton';
+import ModalFeedbackButton from './ModalFeedbackButton';
 import {Form} from 'freakin-react-forms';
 import Input from './../../../FormElements/Input';
 import uuid from 'uuid';
 import OtherSVG from './OtherSVG';
 
-const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) => {
+const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHighlight, submissionId}) => {
   let model = {
-    otherComment: {
+    comment: {
       type: 'textarea',
-      name: 'otherComment',
+      name: 'comment',
       placeholder: 'Add a comment'
     },
     sentimentLevel: {
@@ -41,7 +41,14 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
       removeColor: shouldChangeColor ? 'blue' : null,
       changeColor: shouldChangeColor ? 'green' : null});
 
-    submitOtherComment(x);
+    const result = {
+      type: 'other',
+      instructorContent: x,
+      position,
+      submissionId,
+      id: uuid.v4()
+    };
+    submitFeedbackToolContentItem(result);
   };
 
   const form = (onSubmit, onClose) => (
@@ -50,22 +57,23 @@ const Other = ({submitOtherComment, position, onHighlight, completeHighlight}) =
         {<Input frfProperty={model.sentimentLevel} options={model.sentimentLevel.options} />}
       </div>
       <div>
-        <Input frfProperty={model.otherComment} />
+        <Input frfProperty={model.comment} />
       </div>
       <button type="submit">Submit</button>
       <button onClick={onClose}>Cancel</button>
     </Form>);
   const icon = (<OtherSVG className="Icon" />);
   return (
-    <FeedbackButton
+    <ModalFeedbackButton
       form={form}
       onHighlight={onHighlight}
       completeHighlight={completeHighlight}
       color="blue"
-      buttonName="other"
+      contentType="other"
       commentIcon={icon}
       onSubmit={onFormSubmit}
       model={model}
+      submissionId={submissionId}
       position={position}
     />
   );
@@ -75,7 +83,9 @@ Other.propTypes = {
   submitOtherComment: PropTypes.func,
   position: PropTypes.object,
   onHighlight: PropTypes.func,
-  completeHighlight: PropTypes.func
+  completeHighlight: PropTypes.func,
+  submitFeedbackToolContentItem: PropTypes.func,
+  submissionId: PropTypes.string
 };
 
 export default Other;

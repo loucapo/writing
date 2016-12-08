@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { fetchStudentSubmissionAction, submissionOnChange, submitOtherComment } from './../modules';
+import { fetchStudentSubmissionAction, submissionOnChange } from './../modules';
+import {submitFeedbackToolContentItem} from './../modules/feedbackToolContentModule';
+
 import FeedbackTool from '../components/FeedbackTool/FeedbackTool';
 
 const mapStateToProps = (state, props) => {
@@ -11,6 +13,5 @@ const mapStateToProps = (state, props) => {
 };
 
 export default connect(mapStateToProps,
-  {fetchStudentSubmissionAction,
-    submissionOnChange,
-    submitOtherComment})(FeedbackTool);
+  {fetchStudentSubmissionAction, submitFeedbackToolContentItem,
+    submissionOnChange})(FeedbackTool);
