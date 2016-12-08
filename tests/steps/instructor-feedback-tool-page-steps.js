@@ -68,15 +68,16 @@ exports.define = function(steps) {
   });
 
   steps.then("I see a menu of commenting options", function() {
-    expect(page.thesis).to.exist;
-    expect(page.reason_support).to.exist;
-    expect(page.interpretation).to.exist;
-    expect(page.paragraphDev).to.exist;
-    expect(page.research).to.exist;
-    expect(page.other).to.exist;
-    expect(page.counterargs).to.exist;
-    expect(page.goodJob).to.exist;
-    expect(page.quick_feedback_library).to.exist;
+    console.log('ass');
+    page.thesis.isDisplayed().should.eventually.equal(true);
+    page.reason_support.isDisplayed().should.eventually.equal(true);
+    page.interpretation.isDisplayed().should.eventually.equal(true);
+    page.paragraphDev.isDisplayed().should.eventually.equal(true);
+    page.research.isDisplayed().should.eventually.equal(true);
+    page.other.isDisplayed().should.eventually.equal(true);
+    page.counterargs.isDisplayed().should.eventually.equal(true);
+    page.goodJob.isDisplayed().should.eventually.equal(true);
+    page.quick_feedback_library.isDisplayed().should.eventually.equal(true);
   });
 
   steps.when("I scroll down the screen", function() {

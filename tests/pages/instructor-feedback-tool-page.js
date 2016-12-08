@@ -24,8 +24,6 @@ module.exports = new Page({
 
   quick_feedback_library: { get: function () { return this.element("[data-id='sideMenu'] [data-id='feedbackLib']"); } },
 
-  quick_feedback_library: { get: function () { return this.element("[data-id='feedbackLib']"); } },
-
   comma_splice: { get: function () { return this.element("[data-id='comma-splice']"); } },
 
   fragment: { get: function () { return this.element("[data-id='fragment']"); } },
