@@ -125,7 +125,10 @@ class FeedbackTool extends Component {
         onHighlight={this.onHighlight}
         completeHighlight={this.completeHighlight}
         position={this.state.rect}
-        submissionId={this.props.submissionId} />);
+        submissionId={this.props.submissionId}
+        showQuickFeedbackTool={this.state.showQuickFeedbackTool}
+        toggleQuickFeedback={this.toggleQuickFeedback}
+        submitOtherComment={this.props.submitOtherComment} />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
       flags = (<FeedbackToolContentFlagsContainer submissionId={this.props.submissionId} />);

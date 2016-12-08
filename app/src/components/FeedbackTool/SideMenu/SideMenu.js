@@ -21,6 +21,65 @@ class SideMenu extends Component {
     this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
 
+  const sideMenuContent = (
+    <div data-id="sideMenu" className={sideMenu.sideMenu}>
+      <ul>
+        <ThesisButton />
+        <ReasonSupportButton />
+        <InterpretationButton />
+        <ParagraphDevButton />
+        <ResearchButton />
+        <CounterArgsButton />
+        <OtherButton {...props} />
+        <GoodJobButton />
+        <FeedbackLibButton toggleQuickFeedback={props.toggleQuickFeedback} />
+        <div className={props.showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
+          <li
+            data-id="appropriate-language"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(1)}>Appropriate Language
+          </li>
+          <li
+            data-id="comma-splice"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(2)}>Comma Splice
+          </li>
+          <li
+            data-id="comma-error"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(3)}>Comma Error
+          </li>
+          <li
+            data-id="fragment"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(4)}>Fragment
+          </li>
+          <li
+            data-id="pronoun-agreement"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(5)}>Pronoun Agreement
+          </li>
+          <li
+            data-id="subject-verb-agreement"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(6)}>Subject Verb Agreement
+          </li>
+          <li
+            data-id="needs-analysis"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(7)}>Needs Analysis
+          </li>
+          <li
+            data-id="usage"
+            className={sideMenu.list_Item}
+            onClick={() => spanClicked(8)}>Usage
+          </li>
+        </div>
+      </ul>
+    </div>
+  );
+>>>>>>> WRITE-57
+
   render() {
     return (
       <div className={sideMenu.sidebarContainer}>
