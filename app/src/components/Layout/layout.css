@@ -5,3 +5,21 @@
   flex-direction: column;
   height: 100%;
 }
+
+.header {
+  align-items: center;
+  background-color: var(--darkBlue);
+  color: var(--lightBlue);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.activity {
+  color: var(--pureWhite);
+  font-size: 21px;
+}
+
+.assignDate {
+  font-style: italic;
+}
