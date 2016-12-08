@@ -60,6 +60,8 @@ module.exports = new Page({
 
   example_essay: { value: 'TXTing: h8 it or wuv it'},
 
+  draft_content_first_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:first-child span"); }},
+
   comment_popup: { get: function () { return this.element("div[data-id='MLModal']"); } },
 
   comment_popup__textarea: { get: function() { return this.element("div[data-id='MLModal'] textarea"); } },

@@ -113,7 +113,7 @@ exports.define = function(steps) {
   steps.then("I select some text in the text body", function() {
     var script = "var range = document.createRange();" +
     "var studentText = document.querySelector('div.public-DraftEditor-content div');" +
-    "var textNode = studentText.getElementsByTagName('span')[0].firstChild;" +
+    "var textNode = studentText.getElementsByTagName('span')[0];" +
     "range.selectNode(textNode);" +
     "window.getSelection().addRange(range);";
     driver.executeScript(script);
@@ -143,6 +143,18 @@ exports.define = function(steps) {
 
   steps.then("The '$text' should not persist on the page", function(text) {
     page.comment_popup.isDisplayed().should.eventually.equal(false);
+  });
+
+  steps.then("the selected text highlight should persist", function(text) {
+    page.draft_content_first_span.getAttribute('style').then(function (style) {
+      expect(style.indexOf('background-color')).to.not.equal(-1);
+    });
+  });
+
+  steps.then("the selected text highlight should not persist", function(text) {
+    page.draft_content_first_span.getAttribute('style').then(function (style) {
+      expect(style.indexOf('background-color')).to.equal(-1);
+    });
   });
 
   steps.then("I see a '$elem'", function(elem) {
