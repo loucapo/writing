@@ -19,6 +19,7 @@ const _Input = ({ data, containerStyle, options }) => {
     switch (data['x-input'] || data.type) {
       case 'textarea': {
         return (<textarea
+          data-id={`${data.name}-textarea`}
           className={inputStyle}
           placeholder={data.placeholder}
           name={data.name}
@@ -29,6 +30,7 @@ const _Input = ({ data, containerStyle, options }) => {
       case 'select': {
         return (
           <select name={data.name}
+            data-id={`${data.name}-select`}
             value={data.value}
             onChange={data.onChange} >
             {options}
@@ -40,6 +42,7 @@ const _Input = ({ data, containerStyle, options }) => {
         const password = data['x-input'] === 'password' ? {type: 'password'} : '';
         return (<input className={inputStyle}
           {...password}
+          data-id={`${data.name}-input`}
           placeholder={data.placeholder}
           name={data.name}
           value={data.value}
@@ -49,8 +52,13 @@ const _Input = ({ data, containerStyle, options }) => {
     }
   };
 
-  return (<div className={_containerStyle}>
-    {/*<label className="input__container__label" htmlFor={data.name}>{data.label}</label>*/}
+  return (<div className={_containerStyle} data-id={`${data.name}-inputContainer`}>
+    {/*<label
+        className="input__container__label"
+        htmlFor={data.name}
+        data-id={`${data.name}-label`}>
+        {data.label}
+     </label>*/}
     {input()}
     {/*{validationEl}*/}
   </div>);
