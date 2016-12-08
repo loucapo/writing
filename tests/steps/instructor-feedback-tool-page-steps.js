@@ -67,6 +67,37 @@ exports.define = function(steps) {
     expect(page.end_comment_textarea).to.not.exist;
   });
 
+  steps.then("I see a menu of commenting options", function() {
+    console.log('ass');
+    page.thesis.isDisplayed().should.eventually.equal(true);
+    page.reason_support.isDisplayed().should.eventually.equal(true);
+    page.interpretation.isDisplayed().should.eventually.equal(true);
+    page.paragraphDev.isDisplayed().should.eventually.equal(true);
+    page.research.isDisplayed().should.eventually.equal(true);
+    page.other.isDisplayed().should.eventually.equal(true);
+    page.counterargs.isDisplayed().should.eventually.equal(true);
+    page.goodJob.isDisplayed().should.eventually.equal(true);
+    page.quick_feedback_library.isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.when("I scroll down the screen", function() {
+    page.sidebar.getLocation().then(function(position) {
+      var y = position.y;
+      driver.executeScript(function() {
+        window.scrollTo(0,500);
+      }).then(function() {
+        page.sidebar.getLocation().then(function(position) {
+          var new_y = position.y;
+          expect(y).to.equal(new_y);
+        });
+      });
+    });
+  });
+
+  steps.then("The header and toolbar remain fixed", function() {
+    // code to be added
+  });
+
   steps.then("I should see the student essay in the feedback tool", function() {
     rtePage.draftEditor.isDisplayed().should.eventually.equal(true);
     expect(page.button_bold).to.not.exist;
@@ -78,6 +109,39 @@ exports.define = function(steps) {
         //future improvements to check if feedback tools exist
         //expect(page.quick_feedback_library).to.exist;
       });
+  });
+
+  steps.then("I select some text in the text body", function() {
+    var script = "var range = document.createRange();" +
+    "var studentText = document.querySelector('div.public-DraftEditor-content div');" +
+    "var textNode = studentText.getElementsByTagName('span')[0];" +
+    "range.selectNode(textNode);" +
+    "window.getSelection().addRange(range);";
+    driver.executeScript(script);
+  });
+
+  steps.then("I see a comment popup appear", function() {
+    page.comment_popup.isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.then("on the feedback page I click the '$element' element", function(elem) {
+    page[elem].click();
+  });
+
+  steps.then("I add '$text' to the comment popup", function(text) {
+    page.comment_popup__textarea.sendKeys(text);
+  });
+
+  steps.then("the selected text highlight should persist", function(text) {
+    page.draft_content_first_span.getAttribute('style').then(function (style) {
+      expect(style.indexOf('background-color')).to.not.equal(-1);
+    });
+  });
+
+  steps.then("the selected text highlight should not persist", function(text) {
+    page.draft_content_first_span.getAttribute('style').then(function (style) {
+      expect(style.indexOf('background-color')).to.equal(-1);
+    });
   });
 
   steps.then("I see a '$elem'", function(elem) {
@@ -113,3 +177,5 @@ exports.define = function(steps) {
       });
   });
 };
+
+
