@@ -28,7 +28,6 @@ const SideMenu = (props) => {
         <OtherButton {...props} />
         <GoodJobButton />
         <FeedbackLibButton toggleQuickFeedback={props.toggleQuickFeedback} />
-
         <div className={props.showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
           <li
             data-id="appropriate-language"
