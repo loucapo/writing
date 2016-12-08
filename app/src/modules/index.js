@@ -6,7 +6,7 @@ import feedbackToolContentItems from './feedbackToolContentModule';
 
 
 export {activityAction} from './activityModule';
-export {loadRubric} from './rubricModule';
+export {loadRubric, rubricOnChange} from './rubricModule';
 export {fetchStudentSubmissionAction, submissionOnChange} from './studentSubmissionModule';
 export {submitFeedbackToolContentItem} from './feedbackToolContentModule';
 

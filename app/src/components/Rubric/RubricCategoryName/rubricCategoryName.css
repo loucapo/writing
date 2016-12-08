@@ -1,4 +1,4 @@
-.category_name {
+.category_levels {
   border: 0 solid #999;
   border-width: 0 1px 1px 0;
   display: flex;
@@ -6,16 +6,23 @@
   width: calc(100% * 1/6);
 }
 
-.category_name_item {
+.category_nameLevelContainer {
   background-color: #eee;
   border: 0 solid #999;
   border-width: 1px 0px 0 1px;
   min-height: 100px;
-  text-align: right;
+  text-align: left;
   padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.category_name_item:first-child {
+.category_nameLevelContainer:first-child {
   min-height: 40px;
   text-align: left;
+}
+
+.name {
+  margin-left: 5px;
 }

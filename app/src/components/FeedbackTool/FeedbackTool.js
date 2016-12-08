@@ -10,16 +10,49 @@ import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {
-
   state = {
     value: RichTextEditor.fromRaw(this.props.document ? this.props.document : ''),
-    showRubric: false
+    showRubric: false,
+    showQuickFeedbackTool: false,
+    isRubricLoaded: false
+  };
+
+  badges = [{
+    title: 'Integration of Research',
+    contentParagraphs: [
+      `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
+      Your thesis is buried and unclear.`,
+      `I would begin here with your revisions to clarify your thesis statement.`
+    ],
+    resources: [
+      {
+        title: 'What is a Thesis',
+        url: 'http://www.google.com'
+      },
+      {
+        title: 'Examples of a good Thesis',
+        url: 'http://www.facebook.com'
+      },
+      {
+        title: 'Where should I put my Thesis',
+        url: 'http://www.yahoo.com'
+      }
+    ]
+  }];
+
+
+  toggleQuickFeedback = () => {
+    this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
 
   toggleRubric = () => {
     this.setState({
       showRubric: !this.state.showRubric
     });
+  };
+
+  toggleIsRubricLoaded = () => {
+    this.setState({isRubricLoaded: !this.state.isRubricLoaded});
   };
 
   isSelection = (editorState) => {
@@ -106,13 +139,18 @@ class FeedbackTool extends Component {
     };
 
     let feedbackToolContent;
+    let flags;
     let sideMenu;
     let studentReflection;
     let endComment;
-    let flags;
     if (this.state.showRubric) {
-      feedbackToolContent =
-        <RubricContainer showRubric={this.state.showRubric} toggleRubric={this.toggleRubric} />;
+      feedbackToolContent = (
+        <RubricContainer
+          showRubric={this.state.showRubric}
+          toggleRubric={this.toggleRubric}
+          isRubricLoaded={this.state.isRubricLoaded}
+          toggleIsRubricLoaded={this.toggleIsRubricLoaded}
+        />);
     } else {
       feedbackToolContent = ( <RichTextEditor
         onChange={this.onChange}
@@ -128,7 +166,7 @@ class FeedbackTool extends Component {
         submissionId={this.props.submissionId}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
         toggleQuickFeedback={this.toggleQuickFeedback}
-        submitOtherComment={this.props.submitOtherComment} />);
+      />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
       flags = (<FeedbackToolContentFlagsContainer submissionId={this.props.submissionId} />);
