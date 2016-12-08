@@ -31,7 +31,7 @@ const _Input = ({ data, containerStyle, options }) => {
         return (
           <select name={data.name}
             data-id={`${data.name}-select`}
-            value={data.value}
+            value={data.value || data.default}
             onChange={data.onChange} >
             {options}
           </select>);

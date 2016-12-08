@@ -1,5 +1,5 @@
 import React from 'react';
-
+/* eslint-disable */
 const InterpretationsSVG = () => {
   return (
     <svg
@@ -25,5 +25,5 @@ const InterpretationsSVG = () => {
     </svg>
   );
 };
-
+/* eslint-enable */
 export default InterpretationsSVG;

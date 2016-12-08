@@ -116,12 +116,17 @@ class FeedbackTool extends Component {
     return true;
   }
 
-  completeHighlight = (color) => {
+  completeHighlight = (opts) => {
     const editorValue = this.state.value;
     let editorState = editorValue.getEditorState();
 
-    if(color) {
-      editorState = this.toggleHighlight(editorState, color);
+    if(opts.removeColor) {
+      editorState = this.toggleHighlight(editorState, opts.removeColor);
+    }
+
+    if(opts.changeColor) {
+      editorState = this.toggleHighlight(editorState, opts.removeColor);
+      editorState = this.toggleHighlight(editorState, opts.changeColor);
     }
 
     editorState = this.resetSelection(editorState);
@@ -129,10 +134,10 @@ class FeedbackTool extends Component {
     const value = editorValue.setEditorState(editorState);
     this.setState({value});
 
-    if(!color) {
+    if(opts.success) {
       this.persistDocumentChange(value);
     }
-  }
+  };
 
   render() {
     const colorStyleMap = {
@@ -140,7 +145,7 @@ class FeedbackTool extends Component {
         backgroundColor: 'lightgreen'
       },
       blue: {
-        backgroundColor: '#B4D5FE'
+        backgroundColor: '#b0daff'
       }
     };
 
