@@ -1,39 +1,40 @@
 import React, {Component, PropTypes} from 'react';
-import FeedbackModal from '../../FeedbackModal/FeedbackModal';
 import sideMenu from './../sideMenu.css';
+import FeedbackModal from './../../FeedbackModal/FeedbackModal';
+import uuid from 'uuid';
+import feedbackToolTypeMap from './../../feedbackToolTypeMap';
 
-class FeedbackButton extends Component {
-  constructor() {
-    super();
-    this.onClick = this.onClick.bind(this);
-    this.onClose = this.onClose.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+class ModalFeedbackButton extends Component {
 
-    //highlight color, specificSubmitFormAction, editorStateUpdateAction, specificFormModels
+  state = {
+    isOpen: false
+  };
 
-  }
-  componentWillMount() {
-    this.setState({
-      isOpen: false
-    });
-  }
-  onClose(e) {
+  onClose = (e) => {
     e.preventDefault();
     this.props.completeHighlight(this.props.color);
     this.setState({
       isOpen: false
     });
-  }
+  };
 
-  onSubmit(x) {
-    this.props.onSubmit(x);
+  onFormSubmit = (x) => {
+    const result = {
+      type: this.props.contentType,
+      instructorContent: x,
+      position: this.props.position,
+      submissionId: this.props.submissionId,
+      id: uuid.v4()
+    };
+
+    this.props.submitAction(result);
     this.props.completeHighlight();
     this.setState({
       isOpen: false
     });
-  }
+  };
 
-  onClick(e) {
+  onClick = (e) => {
     e.preventDefault();
     if(!this.props.onHighlight(this.props.color)) {
       return;
@@ -48,39 +49,41 @@ class FeedbackButton extends Component {
 
     this.setState({
       isOpen: true,
-      // convert the new Draft.js EditorState back to react-rte EditorValue
       position: pos
     });
-  }
+  };
 
   render() {
     return (
-      <li data-id={this.props.buttonName}>
+      <li data-id={this.props.contentType}>
         <div onClick={this.onClick} style={{width: '100%'}}>
           {this.props.commentIcon}
           <span className={sideMenu.sideMenuCaption}>
-            {this.props.buttonName}
+            {feedbackToolTypeMap[this.props.contentType].title}
           </span>
         </div>
         <FeedbackModal
           isOpen={this.state.isOpen}
           position={this.state.position}
           onClose={this.onClose}
-          form={this.props.form(this.onSubmit, this.onClose)} />
+          form={this.props.form(this.onFormSubmit, this.onClose)} />
       </li>
     );
   }
 }
 
-FeedbackButton.propTypes = {
-  onHighlight: PropTypes.func,
+ModalFeedbackButton.propTypes = {
+  onFormSubmit: PropTypes.func,
   completeHighlight: PropTypes.func,
   color: PropTypes.string,
   onSubmit: PropTypes.func,
   position: PropTypes.object,
-  buttonName: PropTypes.string,
+  contentType: PropTypes.string,
   commentIcon: PropTypes.object,
-  form: PropTypes.func
+  form: PropTypes.func,
+  submissionId: PropTypes.string,
+  submitAction: PropTypes.func,
+  onHighlight: PropTypes.func
 };
 
-export default FeedbackButton;
+export default ModalFeedbackButton;
