@@ -6,12 +6,9 @@ module.exports = function () {
         "desc": "Drafting/Revising Assignment\nENG101 Introduction to writing",
         "rhetoricalGenre": "Argument",
         "rubric": "Argument",
-        "prompt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor ex tincidunt auctor placerat. Etiam "
-        + "nec dui id mauris sagittis dignissim. Praesent ultricies pharetra suscipit. Donec a tempor arcu. Suspendisse "
-        + "tempor arcu massa, sit amet rutrum arcu ultricies non. Morbi gravida elit eu mauris malesuada gravida. "
-        + "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse fringilla "
-        + "ac velit non ornare. Etiam dignissim at odio nec tincidunt. Aliquam venenatis consequat vehicula. Donec "
-        + "maximus sodales risus, at ultricies dui tincidunt eu.",
+        "prompt": "Choose a contemporary issue in public life and write a 3-5 page essay in which you take a side and " +
+        "argue in favor of one point of view. Your paper should integrate information and quotations from at least 2-3 " +
+        "sources.",
         "drafts": ["1b4318e5-8e45-40dd-a1de-0cd1424b94ef", "2b4318e5-8e45-40dd-a1de-0cd1424b94ef", "3b4318e5-8e45-40dd-a1de-0cd1424b94ef"]
     }
 
@@ -61,7 +58,11 @@ module.exports = function () {
                 {key: "Conclusion", value: "Expansion/Significance of Thesis"},
                 {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
             ],
-            "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
+            "studentReflectionQuestions": [
+                "The most challenging part of the assignment was...",
+                "I want my reader to...",
+                "Finally, I want you to know..."
+            ],
             "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
     }
@@ -72,12 +73,9 @@ module.exports = function () {
         "desc": "Drafting/Revising Assignment\nENG101 Introduction to writing",
         "rhetoricalGenre": "Argument",
         "rubric": "Argument",
-        "prompt": "blah blah blahblah blah blahblah blah blahLorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor ex tincidunt auctor placerat. Etiam "
-        + "nec dui id mauris sagittis dignissim. Praesent ultricies pharetra suscipit. Donec a tempor arcu. Suspendisse "
-        + "tempor arcu massa, sit amet rutrum arcu ultricies non. Morbi gravida elit eu mauris malesuada gravida. "
-        + "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse fringilla "
-        + "ac velit non ornare. Etiam dignissim at odio nec tincidunt. Aliquam venenatis consequat vehicula. Donec "
-        + "maximus sodales risus, at ultricies dui tincidunt eu.",
+        "prompt": "Choose a contemporary issue in public life and write a 3-5 page essay in which you take a side and " +
+        "argue in favor of one point of view. Your paper should integrate information and quotations from at least 2-3 " +
+        "sources.",
         "drafts": ["4b4318e5-8e45-40dd-a1de-0cd1424b94ef", "5b4318e5-8e45-40dd-a1de-0cd1424b94ef", "6b4318e5-8e45-40dd-a1de-0cd1424b94ef"]
     }
 
@@ -127,7 +125,11 @@ module.exports = function () {
                 {key: "Conclusion", value: "Expansion/Significance of Thesis"},
                 {key: "Research/Evidence", value: "Integration of Research, Counterarguments"}
             ],
-            "studentReflectionQuestions": ["The primary argumentations...", "Evidence can and will be used against you..."],
+            "studentReflectionQuestions": [
+                "The most challenging part of the assignment was...",
+                "I want my reader to...",
+                "Finally, I want you to know..."
+            ],
             "postInstructorFeedback": ["Put the microphone against the speaker to make everyone leave."]
         }
     }
