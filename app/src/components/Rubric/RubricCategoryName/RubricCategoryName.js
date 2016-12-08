@@ -7,20 +7,23 @@ const RubricCategoryName = ({ categoryNames }) => {
     return null;
   }
   return (
-    <div className={rubricCategoryNameCss.category_name}>
-      { categoryNames.map(category => (
-        <div
-          data-id="category-name"
-          className={rubricCategoryNameCss.category_name_item}
-          key={uuid.v4()}>
-          { category.score }
-          <div>
-            { category.text }
-          </div>
-        </div>)
-      )}
-    </div>);
+    <div className={rubricCategoryNameCss.category_levels}>
+      {
+        categoryNames.map((category) => {
+          return (
+            <div
+              data-id="category-nameLevel"
+              className={rubricCategoryNameCss.category_nameLevelContainer}
+              key={uuid.v4()}
+            >
+              <span className={rubricCategoryNameCss.name}>{ category.score + ' ' + category.text }</span>
+            </div>
+          );
+        })
+      }
 
+    </div>
+  );
 };
 
 RubricCategoryName.propTypes = {

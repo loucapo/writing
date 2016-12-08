@@ -1,5 +1,6 @@
 import React from 'react';
 /* eslint-disable */
+
 const ParagraphDevSVG = () => {
   return (
     <svg
@@ -25,5 +26,4 @@ const ParagraphDevSVG = () => {
     </svg>
   );
 };
-/* eslint-enable */
 export default ParagraphDevSVG;

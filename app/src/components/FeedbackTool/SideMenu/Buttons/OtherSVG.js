@@ -1,5 +1,6 @@
 import React from 'react';
 /* eslint-disable */
+
 const OtherSVG = () => (
   <svg
     width="26px"
@@ -22,5 +23,5 @@ const OtherSVG = () => (
       </g>
     </g>
   </svg>);
-/* eslint-enable */
 export default OtherSVG;
+

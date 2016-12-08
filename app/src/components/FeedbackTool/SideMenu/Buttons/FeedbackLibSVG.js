@@ -1,5 +1,6 @@
 import React from 'react';
 /* eslint-disable */
+
 const FeedbackLibSVG = () => {
   return (
     <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -29,5 +30,4 @@ const FeedbackLibSVG = () => {
     </svg>
   )
 }
-/* eslint-enable */
 export default FeedbackLibSVG;
