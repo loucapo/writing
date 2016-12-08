@@ -26,3 +26,4 @@ const OtherSVG = () => (
   </svg>);
 
 export default OtherSVG;
+

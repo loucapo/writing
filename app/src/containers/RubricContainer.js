@@ -36,14 +36,13 @@ class RubricContainer extends Component {
 }
 
 RubricContainer.propTypes = {
-  rubric: PropTypes.object,
-  loadRubric: PropTypes.func,
+  rubric: PropTypes.object.isRequired,
+  loadRubric: PropTypes.func.isRequired,
   rubricOnChange: PropTypes.func,
-  toggleRubric: PropTypes.func,
-  selectCell: PropTypes.func,
-  showRubric: PropTypes.bool,
-  isRubricLoaded: PropTypes.bool,
-  toggleIsRubricLoaded: PropTypes.func
+  toggleRubric: PropTypes.func.isRequired,
+  showRubric: PropTypes.bool.isRequired,
+  isRubricLoaded: PropTypes.bool.isRequired,
+  toggleIsRubricLoaded: PropTypes.func.isRequired
 
 };
 

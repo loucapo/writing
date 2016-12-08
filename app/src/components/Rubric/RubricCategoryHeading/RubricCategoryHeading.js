@@ -17,7 +17,7 @@ const RubricCategoryHeading = ({nameValues}) => {
                 { nameValue.name }
               </div>
               <div key={uuid.v4()} data-id="category-heading-value" className={rubricCategoryHeadingCss.heading_value}>
-                { nameValue.value }
+                { ' ' + nameValue.value }
               </div>
             </div>
           );

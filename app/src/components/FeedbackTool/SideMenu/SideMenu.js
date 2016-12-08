@@ -11,6 +11,7 @@ import FeedbackLibButton from './Buttons/FeedbackLib';
 
 import sideMenu from './sideMenu.css';
 
+
 const spanClicked = (val) => {
   console.log(val); // just for verification that the links are clicking
 };
@@ -80,8 +81,8 @@ const SideMenu = (props) => {
 };
 
 SideMenu.propTypes = {
-  showQuickFeedbackTool: PropTypes.bool,
-  toggleQuickFeedback: PropTypes.func
+  showQuickFeedbackTool: PropTypes.bool.isRequired,
+  toggleQuickFeedback: PropTypes.func.isRequired
 };
 
 export default SideMenu;
