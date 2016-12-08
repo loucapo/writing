@@ -75,7 +75,7 @@ class MLModal extends Component {
       position
     } = this.configs;
     return this.props.isOpen ? (
-      <div data-title={ (titleBar.enable) ? titleBar.position : null }
+      <div data-id="MLModal" data-title={ (titleBar.enable) ? titleBar.position : null }
         className={mlmodal.mlModal}>
         <div style={ position } className={ classNames(mlmodal['mlModal-wrapper'], className)} >
           { titleBar.enable && this.renderTitleBar() }
