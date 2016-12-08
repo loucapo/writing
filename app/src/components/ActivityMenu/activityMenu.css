@@ -1,11 +1,7 @@
 @import '../../styles/core.css';
 
-header {
-  display: flex;
-  align-items: center;
-}
-
 .container {
+  align-items: center;
   border-bottom: 1px solid var(--lightGrey);
   display: flex;
   justify-content: center;
