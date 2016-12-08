@@ -38,3 +38,13 @@ Feature: Instructor Can Open the Rubric in Feedback Tool
     And I see the score 'nearly meets expectations' '2' next to 'logical appeals'
     And I see the 'fails to meet expectations' 'counterargument' box highlighted
     And I see the score 'fails to meet expectations' '1' next to 'counterargument'
+
+  Scenario: Scores Should Persist on Session
+    Given I visit the activity page
+    And I open the feedback tool
+    When I click the 'header button'
+    And I click 'exceeds expectations' for 'thesis'
+    And I click the 'X button'
+    And I click the 'header button'
+    Then I see the 'exceeds expectations' 'thesis' box highlighted
+    And I see the score 'exceeds expectations' '4' next to 'thesis'
