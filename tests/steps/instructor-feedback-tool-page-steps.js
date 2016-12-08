@@ -120,15 +120,11 @@ exports.define = function(steps) {
     driver.executeScript(script);
   });
 
-  steps.then("I click on the '$element' feedback", function(elem) {
-    page[elem].click();
-  });
-
   steps.then("I see a comment popup appear", function() {
     page.comment_popup.isDisplayed().should.eventually.equal(true);
   });
 
-  steps.then("I click '$element' on the comment popup", function(elem) {
+  steps.then("on the feedback page I click the '$element' element", function(elem) {
     page[elem].click();
   });
 
