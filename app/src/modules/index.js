@@ -5,7 +5,7 @@ import studentSubmissionReducer from './studentSubmissionModule';
 import feedbackToolReducer from './feedbackToolModule';
 
 export {activityAction} from './activityModule';
-export {loadRubric} from './rubricModule';
+export {loadRubric, rubricOnChange} from './rubricModule';
 export {fetchStudentSubmissionAction, submissionOnChange} from './studentSubmissionModule';
 export {submitOtherComment} from './feedbackToolModule';
 export default {

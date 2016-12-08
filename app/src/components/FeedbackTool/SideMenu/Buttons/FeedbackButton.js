@@ -56,11 +56,11 @@ class FeedbackButton extends Component {
   render() {
     return (
       <li data-id={this.props.buttonName}>
-        <div onClick={this.onClick} style={{width:'100%'}}>
-           {this.props.commentIcon}
-           <span className={sideMenu.sideMenuCaption}>
-             {this.props.buttonName}
-           </span>
+        <div onClick={this.onClick} style={{width: '100%'}}>
+          {this.props.commentIcon}
+          <span className={sideMenu.sideMenuCaption}>
+            {this.props.buttonName}
+          </span>
         </div>
         <FeedbackModal
           isOpen={this.state.isOpen}

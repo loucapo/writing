@@ -1,5 +1,7 @@
 import React from 'react';
 
+/* eslint-disable */
+
 const ReasonSupportSVG = () => {
   return (
     <svg
@@ -25,4 +27,6 @@ const ReasonSupportSVG = () => {
     </svg>
   );
 };
+
 export default ReasonSupportSVG;
+

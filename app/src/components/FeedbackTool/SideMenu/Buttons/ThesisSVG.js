@@ -1,5 +1,7 @@
 import React from 'react';
 
+/* eslint-disable */
+
 const ThesisSVG = () => {
   return (
     <svg
@@ -25,4 +27,5 @@ const ThesisSVG = () => {
     </svg>
   );
 };
+
 export default ThesisSVG;

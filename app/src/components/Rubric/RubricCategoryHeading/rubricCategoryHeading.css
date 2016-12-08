@@ -9,4 +9,11 @@
   border-width: 0 1px 1px 0;
   width: calc(100% * 1/5);
   padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading_value {
+  margin-left: auto;
 }

@@ -10,19 +10,8 @@ import EndComment from './EndComment/EndComment';
 import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {
-  constructor() {
-    super();
-    this.onChange = this.onChange.bind(this);
-    this.toggleHighlight = this.toggleHighlight.bind(this);
-    this.toggleRubric = this.toggleRubric.bind(this);
-  }
-
-  componentWillMount() {
-    this.setState({
-      value: RichTextEditor.fromRaw(this.props.document ? this.props.document : ''),
-      showRubric: false,
-      showQuickFeedbackTool: false
-    });
+  constructor(props) {
+    super(props);
   }
 
   badges = [{
@@ -48,18 +37,29 @@ class FeedbackTool extends Component {
     ]
   }];
 
+  componentWillMount() {
+    this.setState({
+      value: RichTextEditor.fromRaw(this.props.document ? this.props.document : ''),
+      showRubric: false,
+      showQuickFeedbackTool: false,
+      isRubricLoaded: false
+    });
+  }
 
   toggleQuickFeedback = () => {
     this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
 
 
-  toggleRubric() {
+  toggleRubric = () => {
     this.setState({
       showRubric: !this.state.showRubric
     });
   }
 
+  toggleIsRubricLoaded = () => {
+    this.setState({isRubricLoaded: !this.state.isRubricLoaded});
+  };
 
   isSelection(editorState) {
     const selection = editorState.getSelection();
@@ -69,7 +69,7 @@ class FeedbackTool extends Component {
     return start !== end;
   }
 
-  onChange(value) {
+  onChange = (value) => {
     if (!this.isSelection(value.getEditorState())) {
       return;
     }
@@ -98,7 +98,7 @@ class FeedbackTool extends Component {
     this.props.submissionOnChange(submission);
   }
 
-  toggleHighlight(editorState, color) {
+  toggleHighlight = (editorState, color) => {
     return RichUtils.toggleInlineStyle(editorState, color);
   }
 
@@ -145,13 +145,18 @@ class FeedbackTool extends Component {
     };
 
     let feedbackToolContent;
+    let flags;
     let sideMenu;
     let studentReflection;
     let endComment;
-    let flags;
     if (this.state.showRubric) {
-      feedbackToolContent =
-        <RubricContainer showRubric={this.state.showRubric} toggleRubric={this.toggleRubric} />;
+      feedbackToolContent = (
+        <RubricContainer
+          showRubric={this.state.showRubric}
+          toggleRubric={this.toggleRubric}
+          isRubricLoaded={this.state.isRubricLoaded}
+          toggleIsRubricLoaded={this.toggleIsRubricLoaded}
+        />);
     } else {
       feedbackToolContent = ( <RichTextEditor
         onChange={this.onChange}
@@ -195,11 +200,7 @@ FeedbackTool.propTypes = {
   errorMessage: PropTypes.string,
   submitOtherComment: PropTypes.func,
   submissionId: PropTypes.string,
-  submissionOnChange: PropTypes.func,
-  showRubric: PropTypes.bool,
-  showQuickFeedbackTool: PropTypes.bool,
-  toggleQuickFeedback: PropTypes.func,
-  toggleRubric: PropTypes.func
+  submissionOnChange: PropTypes.func
 };
 
 export default FeedbackTool;
