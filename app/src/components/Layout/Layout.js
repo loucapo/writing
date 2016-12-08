@@ -1,7 +1,8 @@
 import React, {PropTypes} from 'react';
+import layoutCss from './layout.css';
 
 const Layout = ({children}) => (
-  <div className="app">
+  <div className={layoutCss.app}>
     {children}
   </div>);
 

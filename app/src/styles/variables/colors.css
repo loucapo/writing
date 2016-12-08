@@ -1,0 +1,18 @@
+:root {
+  --pureWhite: #FFFFFF;
+  --offWhite: #F8F8F8;
+  --lightGrey: #DDDDDD;
+  --mediumLightGrey: #C8C8C8;
+  --veryLightGrey: #F3F3F3;
+  --darkGrey: #686868;
+  --veryDarkGrey: #383838;
+  --blackish: #080808;
+  --blue: #00758E;
+  --green: #3B822E;
+  --orange: #DD5714;
+  --red: #DA1B2C;
+
+  /* these two are in the comps but not in the color palette or CDL */
+  --lightBlue: #A0ACB2;
+  --darkGreen: #143A35;
+}

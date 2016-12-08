@@ -1,0 +1,7 @@
+@import './../../styles/core.css';
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

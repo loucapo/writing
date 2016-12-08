@@ -8,9 +8,23 @@ const SubmissionItem = () => (
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Shakespeare, William</a>
+        Shakespeare, William
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
+      <td>
+        <a href="#">Review Complete</a>
+      </td>
+      <td className={submissionItemCss.reviewSent}>
+        Review sent Sep 22, 2016
+      </td>
+    </tr>
+
+
+    <tr className={ submissionItemCss.row }>
+      <td>
+        Faulkner, William
+      </td>
+      <td>Sep 18, 2016</td>
       <td>
         <a href="#">Review Complete</a>
       </td>
@@ -22,9 +36,69 @@ const SubmissionItem = () => (
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Faulkner, William</a>
+        Austen, Jane
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
+      <td>
+        <Link to="/feedbackTool/123">Start Review</Link>
+      </td>
+      <td>&mdash;</td>
+    </tr>
+
+
+    <tr className={ submissionItemCss.row }>
+      <td>
+        O'Connor, Flannery
+      </td>
+      <td>Sep 18, 2016</td>
+      <td>
+        <Link to="/feedbackTool/123">Start Review</Link>
+      </td>
+      <td>&mdash;</td>
+    </tr>
+
+
+    <tr className={ submissionItemCss.row }>
+      <td>
+        Walker, Alice
+      </td>
+      <td>Sep 18, 2016</td>
+      <td>
+        <Link to="/feedbackTool/123">Start Review</Link>
+      </td>
+      <td>&mdash;</td>
+    </tr>
+
+
+    <tr className={ submissionItemCss.row }>
+      <td>
+        Jackson, Shirley
+      </td>
+      <td>&mdash;</td>
+      <td>
+        &mdash;
+      </td>
+      <td>&mdash;</td>
+    </tr>
+
+
+    <tr className={ submissionItemCss.row }>
+      <td>
+        Chopin, Kate
+      </td>
+      <td>Sep 18, 2016</td>
+      <td>
+        <Link to="/feedbackTool/123">Start Review</Link>
+      </td>
+      <td>&mdash;</td>
+    </tr>
+
+
+    <tr className={ submissionItemCss.row }>
+      <td>
+        Hurston, Zora
+      </td>
+      <td>Sep 18, 2016</td>
       <td>
         <a href="#">Review Complete</a>
       </td>
@@ -36,69 +110,57 @@ const SubmissionItem = () => (
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Austen, Jane</a>
+        Wollstonecraft, Mary
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>&mdash;</td>
+      <td>
+        &mdash;
+      </td>
+      <td>&mdash;</td>
+    </tr>
+
+
+    <tr className={ submissionItemCss.row }>
+      <td>
+        Morrison, Toni
+      </td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">O'Connor, Flannery</a>
+        Conrad, Joseph
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Walker, Alice</a>
+        Dickens, Charles
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Jackson, Shirley</a>
+        Hawthorne, Nathaniel
       </td>
-      <td>&nbsp;</td>
-      <td>
-        &nbsp;
-      </td>
-      <td>&nbsp;</td>
-    </tr>
-
-
-    <tr className={ submissionItemCss.row }>
-      <td>
-        <a href ="#">Chopin, Kate</a>
-      </td>
-      <td>Completed 9/18/2016</td>
-      <td>
-        <Link to="/feedbackTool/123">Start Review</Link>
-      </td>
-      <td>&nbsp;</td>
-    </tr>
-
-
-    <tr className={ submissionItemCss.row }>
-      <td>
-        <a href ="#">Hurston, Zora</a>
-      </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <a href="#">Review Complete</a>
       </td>
@@ -110,175 +172,113 @@ const SubmissionItem = () => (
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Wollstonecraft, Mary</a>
+        Chaucer, Geoffrey
       </td>
-      <td>&nbsp;</td>
-      <td>
-        &nbsp;
-      </td>
-      <td>&nbsp;</td>
-    </tr>
-
-
-    <tr className={ submissionItemCss.row }>
-      <td>
-        <a href ="#">Morrison, Toni</a>
-      </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Conrad, Joseph</a>
+        Melville, Herman
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Dickens, Charles</a>
+        Wilde, Oscar
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Hawthorne, Nathaniel</a>
+        Gilman, Charlotte
       </td>
-      <td>Completed 9/18/2016</td>
-      <td>
-        <a href="#">Review Complete</a>
-      </td>
-      <td>
-        <a href="#">Send Review</a>
-      </td>
-    </tr>
-
-
-    <tr className={ submissionItemCss.row }>
-      <td>
-        <a href ="#">Chaucer, Geoffrey</a>
-      </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Melville, Herman</a>
+        Milton, John
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Wilde, Oscar</a>
+        Cisneros, Sandra
       </td>
-      <td>Completed 9/18/2016</td>
+      <td>Sep 18, 2016</td>
       <td>
         <Link to="/feedbackTool/123">Start Review</Link>
       </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Gilman, Charlotte</a>
+        James, Henry
       </td>
-      <td>Completed 9/18/2016</td>
-      <td>
-        <Link to="/feedbackTool/123">Start Review</Link>
-      </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Milton, John</a>
+        Joyce, James
       </td>
-      <td>Completed 9/18/2016</td>
-      <td>
-        <Link to="/feedbackTool/123">Start Review</Link>
-      </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">Cisneros, Sandra</a>
+        Fitzgerald, Francis
       </td>
-      <td>Completed 9/18/2016</td>
-      <td>
-        <Link to="/feedbackTool/123">Start Review</Link>
-      </td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
     </tr>
 
 
     <tr className={ submissionItemCss.row }>
       <td>
-        <a href ="#">James, Henry</a>
+        Woolf, Virginia
       </td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-
-
-    <tr className={ submissionItemCss.row }>
-      <td>
-        <a href ="#">Joyce, James</a>
-      </td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-
-
-    <tr className={ submissionItemCss.row }>
-      <td>
-        <a href ="#">Fitzgerald, Francis</a>
-      </td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-    </tr>
-
-
-    <tr className={ submissionItemCss.row }>
-      <td>
-        <a href ="#">Woolf, Virginia</a>
-      </td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
-      <td>&nbsp;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
     </tr>
 
   </tbody>

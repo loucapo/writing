@@ -1,54 +1,5 @@
-@import 'mixins.css';
+@import '../../../../../styles/core.css';
 
-:root {
-  --header-height: 70px;
-}
-
-.strong {
-  @apply(--font-strong);
-}
-
-/* DRAFT HEADER */
-.header {
-  height: var(--header-height);
-  font-size: 16px;
-  @apply(--font-medium);
-  padding: 0 50px;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.review_box {
-  background-color: lightgray;
-  line-height: 40px;
-  margin: 20px 5px 20px 5px;
-  padding: 0 15px 0 15px;
-}
-
-.review_type {
-  margin: 0 0 0 10px;
-}
-
-.header_items_container {
-  float: right;
-}
-
-.review_label {
-  margin-right: 15px;
-  @apply(--font-default);
-}
-
-.draft_info {
-  width: 100%;
-  poition: relative;
-}
-
-.draft_order {
-  vertical-align: middle;
-  position: absolute;
-  height: 10em;
-  margin-top: 10px;
-  line-height: 20px;
+.header h1 {
+  background-color: var(--offWhite);
 }

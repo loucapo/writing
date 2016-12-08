@@ -1,7 +1,19 @@
-@import 'mixins.css';
+@import '../../../styles/core.css';
 
 .subList {
   width: 100%;
+}
+
+.filter {
+  color: var(--darkGrey);
+  display: flex;
+  font-size: 13px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.dropDown {
+  color: var(--blue);
 }
 
 .table {
@@ -10,21 +22,16 @@
 }
 
 .row {
-  background-color: var(--bkGrey);
+  border-bottom: 1px solid var(--lightGrey);
   height: 50px;
 }
 
 th {
-  padding: 0 25px;
+  color: var(--darkGrey);
+  font-size: 13px;
+  font-weight: normal;
+  padding: 0 20px !important;
   text-align: left;
-}
-
-th:first-child {
-  padding-left: 100px;
-}
-
-th:last-child {
-  text-align: right;
 }
 
 select {
