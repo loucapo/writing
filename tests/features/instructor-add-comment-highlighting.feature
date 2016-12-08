@@ -1,6 +1,5 @@
 @WRITE-355
 @WRITE-50
-@only
 Feature: Instructor Can Add Comments to Highlighting
 
   Scenario: The Instructor Adds An Other Comment
@@ -12,7 +11,6 @@ Feature: Instructor Can Add Comments to Highlighting
     And I add 'Other text feedback' to the comment popup
     And I click 'submit' on the comment popup
     Then the selected text highlight should persist
-    # Then The 'Other text feedback' should persist on the page
 
   Scenario: The Instructor Does not Saves An Other Comment
     Given I visit the activity page
@@ -23,4 +21,3 @@ Feature: Instructor Can Add Comments to Highlighting
     And I add 'Other text feedback' to the comment popup
     And I click 'cancel' on the comment popup
     Then the selected text highlight should not persist
-    # Then The 'Other text feedback' should not persist on the page
