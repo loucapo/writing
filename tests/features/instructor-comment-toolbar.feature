@@ -1,5 +1,4 @@
 @WRITE-354
-// XXX maybe unnecessary
 Feature: Instructor Can View Commenting Tool Bar
 
   Scenario: The Instructor Views Commenting Tool Bar
