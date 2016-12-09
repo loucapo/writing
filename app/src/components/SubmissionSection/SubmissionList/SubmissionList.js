@@ -7,7 +7,7 @@ let SubmissionList = () => {
   return (
     <div className={ submissionList.subList }>
       <div className={ submissionList.filter }>
-        <div>Showing: <span className={submissionList.dropDown}>Final Draft - Due: Sep 24, 2016</span></div>
+        <div>Showing: <span data-id="submission-filter" className={submissionList.dropDown}>Final Draft - Due: Sep 24, 2016</span></div>
         <ActionButton content="Send All Completed Reviews" />
       </div>
       <table className={ submissionList.table }>
