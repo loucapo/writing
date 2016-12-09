@@ -360,6 +360,13 @@ exports.define = function(steps) {
       text.should.not.equal(score);
     });;
   });
+
+  steps.then("I should see three sentiment levels", function() {
+    page.sentiment_goodJob.isDisplayed().should.eventually.equal(true);
+    page.sentiment_extensiveRevision.isDisplayed().should.eventually.equal(true);
+    page.sentiment_needsWork.isDisplayed().should.eventually.equal(true);
+  });
+
 };
 
 
