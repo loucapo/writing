@@ -15,27 +15,19 @@
 <div data-val="{{token}}" id="token" ></div>
 <!-- TODO: This stuff really does not belong in here. we need to move it ASAP. -->
 <style>
-    html, body, #root, #root > div, .app {
+    html, body, #root, #root > div {
         height: 100%;
     }
 
     body {
-        color: #4e4e4e;
+        background-color: #F3F3F3;
+        color: #080808;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 14px;
         margin: 0;
         overflow: hidden;
-    }
-
-    .app {
-        display: flex;
-        flex-direction: column;
-    }
-
-    a, a:link, a:hover, a:active  {
-        text-decoration: none;
-        color: #31b4e7;
-        cursor: pointer;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     #loader-wrapper {
