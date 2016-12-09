@@ -1,5 +1,4 @@
 import React from 'react';
-
 /* eslint-disable */
 
 const ResearchSVG = () => {
@@ -27,6 +26,5 @@ const ResearchSVG = () => {
     </svg>
   );
 };
-
 export default ResearchSVG;
 

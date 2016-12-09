@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import sideMenu from './../sideMenu.css';
 import FeedbackModal from './../../FeedbackModal/FeedbackModal';
-import uuid from 'uuid';
 import feedbackToolTypeMap from './../../feedbackToolTypeMap';
 
 class ModalFeedbackButton extends Component {
@@ -12,23 +11,14 @@ class ModalFeedbackButton extends Component {
 
   onClose = (e) => {
     e.preventDefault();
-    this.props.completeHighlight(this.props.color);
+    this.props.completeHighlight({success: false, removeColor: this.props.color});
     this.setState({
       isOpen: false
     });
   };
 
   onFormSubmit = (x) => {
-    const result = {
-      type: this.props.contentType,
-      instructorContent: x,
-      position: this.props.position,
-      submissionId: this.props.submissionId,
-      id: uuid.v4()
-    };
-
-    this.props.submitAction(result);
-    this.props.completeHighlight();
+    this.props.onSubmit(x);
     this.setState({
       isOpen: false
     });

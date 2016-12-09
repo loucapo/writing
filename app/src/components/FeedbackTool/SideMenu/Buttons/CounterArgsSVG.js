@@ -1,5 +1,4 @@
 import React from 'react';
-
 /* eslint-disable */
 
 const CounterArgsSVG = () => {
@@ -27,5 +26,4 @@ const CounterArgsSVG = () => {
     </svg>
   );
 };
-
 export default CounterArgsSVG;

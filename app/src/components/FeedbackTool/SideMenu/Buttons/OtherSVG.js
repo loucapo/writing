@@ -1,5 +1,4 @@
 import React from 'react';
-
 /* eslint-disable */
 
 const OtherSVG = () => (
@@ -24,6 +23,5 @@ const OtherSVG = () => (
       </g>
     </g>
   </svg>);
-
 export default OtherSVG;
 

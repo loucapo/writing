@@ -15,13 +15,40 @@ const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHi
     sentimentLevel: {
       type: 'select',
       name: 'sentimentLevel',
+      default: 'needsWork',
       options: [
-        <option value="grapefruit" key={uuid.v4()}>Grapefruit</option>,
-        <option value="lime" key={uuid.v4()}>Lime</option>,
-        <option value="coconut" key={uuid.v4()}>Coconut</option>,
-        <option value="mango" key={uuid.v4()}>Mango</option>
+        <option className="goodJob" value="goodJob" key={uuid.v4()}>
+          Great job! Reasons and evidence are convincing.
+        </option>,
+        <option className="needsWork" value="needsWork" key={uuid.v4()}>
+          Needs work. Needs additional reasons/support.
+        </option>,
+        <option className="extensiveRevision" value="extensiveRevision" key={uuid.v4()}>
+          Needs extensive revision. Inadequate reasons/support.
+        </option>
       ]
     }
+  };
+
+  const onFormSubmit = (x) => {
+    let shouldChangeColor;
+    if(x.sentimentLevel === 'goodJob') {
+      shouldChangeColor = true;
+    }
+
+    completeHighlight({
+      success: true,
+      removeColor: shouldChangeColor ? 'blue' : null,
+      changeColor: shouldChangeColor ? 'green' : null});
+
+    const result = {
+      type: 'other',
+      instructorContent: x,
+      position,
+      submissionId,
+      id: uuid.v4()
+    };
+    submitFeedbackToolContentItem(result);
   };
 
   const form = (onSubmit, onClose) => (
@@ -44,7 +71,8 @@ const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHi
       color="blue"
       contentType="other"
       commentIcon={icon}
-      submitAction={submitFeedbackToolContentItem}
+      onSubmit={onFormSubmit}
+      model={model}
       submissionId={submissionId}
       position={position}
     />
