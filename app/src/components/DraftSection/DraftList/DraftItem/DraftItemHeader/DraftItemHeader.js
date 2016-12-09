@@ -5,10 +5,10 @@ import draftItemHeader from './draftItemHeader.css';
 // XXX may need id's for testability/accessibility
 
 const DraftItemHeader = ({draftName}) => (
-  <div className={ draftItemHeader.header }>
+  <div data-id="draft-name" className={ draftItemHeader.header }>
     <h1>
       {draftName}
-      <ActionButton content="Edit" />
+      <ActionButton dataId="draft-edit-button" content="Edit" />
     </h1>
   </div>);
 
