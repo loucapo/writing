@@ -8,7 +8,8 @@ const mapStateToProps = (state, props) => {
   let studentSubmission = state.studentSubmissions.filter(x => x.id === props.params.id)[0];
   return {
     submissionId: studentSubmission.id,
-    document: studentSubmission.document
+    document: studentSubmission.document,
+    resourceLinks: state.resourceLinks
   };
 };
 
