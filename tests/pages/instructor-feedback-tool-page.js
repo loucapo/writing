@@ -57,6 +57,11 @@ module.exports = new Page({
   end_comment_textarea: { get: function () { return this.element("[data-id='comma_error']"); } },
 
   example_essay: { value: 'TXTing: h8 it or wuv it'},
+  
+  // RUBRIC
+  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container"); } },
+  'header button': { get: function() { return this.element("[data-id='header-button']"); } },
+  'X button': { get: function() { return this.element("div[class^='Rubric__close"); } },
 
   draft_content_first_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:first-child span"); }},
 
@@ -66,6 +71,6 @@ module.exports = new Page({
 
   submit: { get: function() { return this.element("div[data-id='MLModal'] button[type='submit']");}},
 
-  cancel: { get: function() { return this.element("div[data-id='MLModal'] button:not([type='submit'])");}},
+  cancel: { get: function() { return this.element("div[data-id='MLModal'] button:not([type='submit'])");}}
 
 });
