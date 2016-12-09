@@ -1,9 +1,20 @@
 @import './../../styles/core.css';
 
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url('./../../styles/fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'SourceSerifPro-Regular';
+  src: url('./../../styles/fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf');
+}
+
 .app {
   display: flex;
   flex-direction: column;
   height: 100%;
+  font-family: 'SourceSansPro-Regular', sans-serif;
 }
 
 .header {

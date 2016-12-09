@@ -61,6 +61,17 @@ const webpackConfig = {
         ]
       },
       {
+        test: /\.ttf$/,
+        loader: 'file',
+        query: {
+          name: 'font/[hash].[ext]'
+        },
+        include: [
+          path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro'),
+          path.resolve(__dirname, 'src/styles/fonts/Source_Serif_Pro')
+        ]
+      },
+      {
         test: /\.css$/,
         include: [
           path.resolve(__dirname, 'src/styles'),
