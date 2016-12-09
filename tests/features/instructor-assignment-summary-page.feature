@@ -1,6 +1,6 @@
 @WRITE-95
 @WRITE-330
-@only
+
 Feature: Instructor Can View Assignment Summary Page
 
   # Assignment Header
