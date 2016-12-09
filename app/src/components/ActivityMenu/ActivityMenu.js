@@ -21,6 +21,7 @@ class ActivityMenu extends Component {
     });
   }
 
+  //TODO: this really doesnt make sense in the menu. it should be moved to activity or a separate component
   renderContent = () => {
     if (this.state.toggle === 'drafts') {
       return (<DraftSection drafts={this.props.drafts} />);

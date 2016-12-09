@@ -1,10 +1,11 @@
 import React from 'react';
-import studentReflection from './studentReflection.css';
+import studentReflectionCss from './studentReflection.css';
+import coreCss from './../../../styles/core.css';
 
 const StudentReflection = () => {
   /*eslint-disable */
   return (
-    <div data-id="studentReflections" className={studentReflection.studentReflectionContainer}>
+    <div data-id="studentReflections" className={coreCss.box + ' ' + studentReflectionCss.studentReflectionContainer}>
       <h4>Student Reflection</h4>
       <p>
         <strong>The most challenging part of this assignment was...</strong>
