@@ -61,14 +61,6 @@ const webpackConfig = {
         ]
       },
       {
-        test: /\.ttf$/,
-        loader: 'file?name=fonts/[name].[ext]',
-        include: [
-          path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro'),
-          path.resolve(__dirname, 'src/styles/fonts/Source_Serif_Pro')
-        ]
-      },
-      {
         test: /\.css$/,
         include: [
           path.resolve(__dirname, 'src/styles'),
@@ -101,6 +93,15 @@ const webpackConfig = {
         query: { mimetype: 'image/png' } ,
         include: [
           path.resolve(__dirname, 'src/images')
+        ]
+      },
+      {
+        test: /\.ttf$/,
+        loader: 'url-loader',
+        query: { mimetype: 'application/x-font-ttf' } ,
+        include: [
+          path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro'),
+          path.resolve(__dirname, 'src/styles/fonts/Source_Serif_Pro')
         ]
       },
       {
