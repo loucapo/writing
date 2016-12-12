@@ -67,10 +67,12 @@ class FeedbackTool extends Component {
     if (!this.isSelection(value.getEditorState())) {
       return;
     }
-    const rect = window.getSelection().anchorOffset > 0
-      ? window.getSelection().getRangeAt(0).getBoundingClientRect()
-      : null;
 
+    if(window.getSelection().rangeCount <= 0) {
+      return;
+    }
+
+    const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
     this.setState({value, rect, isNotSelection: false});
   };
 
