@@ -77,6 +77,6 @@ module.exports = new Page({
 
   'header button': { get: function() { return this.element("[data-id='header-button']"); } },
 
-  'X button': { get: function() { return this.element("div[class^='Rubric__close"); } },
+  'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
 
 });
