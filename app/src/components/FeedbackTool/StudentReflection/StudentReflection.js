@@ -3,10 +3,8 @@ import studentReflectionCss from './studentReflection.css';
 import coreCss from './../../../styles/core.css';
 
 const StudentReflection = () => {
-  /*eslint-disable */
   return (
     <div className={ coreCss.panel }>
-    {/*<div data-id="studentReflections" className={coreCss.box + ' ' + studentReflectionCss.studentReflectionContainer}>*/}
       <div data-id="studentReflections">
         <h1>
           Student Reflection
@@ -17,7 +15,7 @@ const StudentReflection = () => {
         <div>
           Coming up with an "arguable" claim. In the final draft, I tried to argue against someone,
           so I think that took the whole essay more in the direction of argument than summary.
-          <p></p>
+          <p />
         </div>
 
         <h4>I want my reader to...</h4>
@@ -35,7 +33,6 @@ const StudentReflection = () => {
       </section>
     </div>
   );
- /*eslint-enable */
 };
 
 export default StudentReflection;
