@@ -178,8 +178,7 @@ FeedbackTool.propTypes = {
   showQuickFeedbackTool: PropTypes.bool,
   toggleQuickFeedback: PropTypes.func,
   toggleRubric: PropTypes.func,
-  submitFeedbackToolContentItem: PropTypes.func,
-  resourceLinks: PropTypes.array
+  submitFeedbackToolContentItem: PropTypes.func
 };
 
 export default FeedbackTool;
