@@ -1,5 +1,4 @@
 @WRITE-305
-@WRITE-304
 Feature: Instructor Can Open Quick Feedback Section
   Scenario: The Instructor Views Responses From The Student To The Reflection Questions
     Given I visit the activity page
