@@ -58,11 +58,7 @@ module.exports = new Page({
 
   example_essay: { value: 'TXTing: h8 it or wuv it'},
   
-  // RUBRIC
-  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container"); } },
-  'header button': { get: function() { return this.element("[data-id='header-button']"); } },
-  'X button': { get: function() { return this.element("div[class^='Rubric__close"); } },
-
+  // FEEDBACK FLAGS
   draft_content_first_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:first-child span"); }},
 
   comment_popup: { get: function () { return this.element("div[data-id='MLModal']"); } },
@@ -71,8 +67,14 @@ module.exports = new Page({
 
   submit: { get: function() { return this.element("div[data-id='MLModal'] button[type='submit']");}},
 
-  cancel: { get: function() { return this.element("div[data-id='MLModal'] button:not([type='submit'])");}}
+  cancel: { get: function() { return this.element("div[data-id='MLModal'] button:not([type='submit'])");}},
 
-  feedback_flags: { get: function() { return this.elements("div[class^='FeedbackToolContentFlag__flagContainer__']");}},
+  feedback_flags: { get: function() { return this.elements("div[class^='FeedbackToolContentFlag__triangleBorder']");}},
+
+  
+  // RUBRIC
+  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container"); } },
+  'header button': { get: function() { return this.element("[data-id='header-button']"); } },
+  'X button': { get: function() { return this.element("div[class^='Rubric__close"); } },
 
 });

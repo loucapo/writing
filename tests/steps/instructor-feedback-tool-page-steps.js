@@ -137,14 +137,11 @@ exports.define = function(steps) {
     });
   });
   
-  steps.then("the comment '$text' is inside a feedback flag", function(text) {
+  steps.then("the comment '$text' is inside a feedback flag", function(feedback_comment) {
     page.feedback_flags.then(function(flags) {
-      driver.findElements({css: "div[class^='FeedbackToolContentFlag'] ~ div"}).then(function(flags) {
-        flags.forEach(function(flag) {
-          flag.getText().then(function(text) {
-            console.log(text);
-          });
-        });
+      flags[0].click();
+      flags[0].getText().then(function(text) {
+        expect(text).to.contain(feedback_comment);
       });
     });
   });
@@ -152,6 +149,12 @@ exports.define = function(steps) {
   steps.then("the selected text highlight should not persist", function(text) {
     page.draft_content_first_span.getAttribute('style').then(function (style) {
       expect(style.indexOf('background-color')).to.equal(-1);
+    });
+  });
+
+  steps.then("the feedback flag should not exist", function() {
+    page.feedback_flags.then(function(flags) {
+      expect(flags.length).to.equal(0);
     });
   });
 

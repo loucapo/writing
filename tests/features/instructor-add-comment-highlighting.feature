@@ -23,4 +23,4 @@ Feature: Instructor Can Add Comments to Highlighting
     And I add 'Other text feedback' to the comment popup
     And on the feedback page I click the 'cancel' element
     Then the selected text highlight should not persist
-#    And the comment text is not inside a feedback flag
+    And the feedback flag should not exist
