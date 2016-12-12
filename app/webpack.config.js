@@ -100,8 +100,7 @@ const webpackConfig = {
         loader: 'url-loader',
         query: { mimetype: 'application/x-font-ttf' } ,
         include: [
-          path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro'),
-          path.resolve(__dirname, 'src/styles/fonts/Source_Serif_Pro')
+          path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro')
         ]
       },
       {

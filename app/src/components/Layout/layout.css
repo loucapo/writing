@@ -7,13 +7,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'SourceSerifPro-Regular';
-  src: url('./../../styles/fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .app {
   display: flex;
   flex-direction: column;
