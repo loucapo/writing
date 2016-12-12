@@ -68,4 +68,6 @@ module.exports = new Page({
 
   cancel: { get: function() { return this.element("div[data-id='MLModal'] button:not([type='submit'])");}},
 
+  feedback_flags: { get: function() { return this.elements("div[class^='FeedbackToolContentFlag__flagContainer__']");}},
+
 });

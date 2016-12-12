@@ -68,7 +68,6 @@ exports.define = function(steps) {
   });
 
   steps.then("I see a menu of commenting options", function() {
-    console.log('ass');
     page.thesis.isDisplayed().should.eventually.equal(true);
     page.reason_support.isDisplayed().should.eventually.equal(true);
     page.interpretation.isDisplayed().should.eventually.equal(true);
@@ -135,6 +134,18 @@ exports.define = function(steps) {
   steps.then("the selected text highlight should persist", function(text) {
     page.draft_content_first_span.getAttribute('style').then(function (style) {
       expect(style.indexOf('background-color')).to.not.equal(-1);
+    });
+  });
+  
+  steps.then("the comment '$text' is inside a feedback flag", function(text) {
+    page.feedback_flags.then(function(flags) {
+      driver.findElements({css: "div[class^='FeedbackToolContentFlag'] ~ div"}).then(function(flags) {
+        flags.forEach(function(flag) {
+          flag.getText().then(function(text) {
+            console.log(text);
+          });
+        });
+      });
     });
   });
 
