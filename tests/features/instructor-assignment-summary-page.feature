@@ -26,9 +26,10 @@ Feature: Instructor Can View Assignment Summary Page
 
   # Draft Learning Objectives
   # XXX should there be one for every draft item or just one or more on the page?
-  Scenario: Assignment Draft Objectives
-    Given I visit the activity page
-    Then I should see some draft learning objectives
+  # Removed by CDL 12/8/16
+  #Scenario: Assignment Draft Objectives
+    #Given I visit the activity page
+    #Then I should see some draft learning objectives
     
   # Draft Scoring Details
   Scenario: Assignment Draft Scoring Details
