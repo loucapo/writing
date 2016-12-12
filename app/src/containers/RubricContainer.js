@@ -47,6 +47,9 @@ RubricContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+  console.log('============ this.state.rubric ============');
+  console.log(state.rubric);
+  console.log('=================================');
   return {
     rubric: state.rubric
   };
