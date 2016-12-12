@@ -1,5 +1,13 @@
 /*@import 'core.css';*/
 
 .section {
-  padding: 15px 20px;
+  padding: 15px 20px 0;
+}
+
+.contentItem {
+  margin-bottom: 15px;
+}
+
+.contentItem:last-child {
+  margin: 0;
 }
