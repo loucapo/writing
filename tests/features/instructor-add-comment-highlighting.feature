@@ -1,6 +1,5 @@
 @WRITE-355
 @WRITE-50
-@only
 Feature: Instructor Can Add Comments to Highlighting
 
   Scenario: The Instructor Adds An Other Comment
@@ -14,7 +13,7 @@ Feature: Instructor Can Add Comments to Highlighting
     Then the selected text highlight should persist
     And the comment 'Other text feedback' is inside a feedback flag
 
-  Scenario: The Instructor Does not Saves An Other Comment
+  Scenario: The Instructor Cancels An Other Comment
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body

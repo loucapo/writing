@@ -28,7 +28,6 @@ exports.define = function(steps) {
       return page.draft_names.then(function(draft_names) {
 	var final_draft_name = draft_names.pop();
 	draft_names.forEach(function(name, index) {
-  console.log(name);
 	  name.getText()
             .then(function(text) {
 	      var expected_name = 'Draft ' + (index + 1);
