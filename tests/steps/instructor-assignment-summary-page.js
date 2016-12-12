@@ -12,12 +12,13 @@ exports.define = function(steps) {
   steps.then('I should see the Assignment Header elements', function() {
     expect(page.title).to.exist;
     expect(page.type).to.exist;
-    //expect(assignmentSummaryPage.course).to.exist;
+    expect(page.course).to.exist;
+    expect(page.assign_date).to.exist;
   });
 
   steps.then('I should see the Assignment Details elements', function() {
-    expect(page.rhetoric_genre).to.exist;
-    expect(page.rubric).to.exist;
+    expect(page.activity_purpose).to.exist;
+    expect(page.activity_requirements).to.exist;
     expect(page.prompt).to.exist;
     expect(page.prompt_edit).to.exist;
   });
@@ -31,13 +32,13 @@ exports.define = function(steps) {
 	  name.getText()
             .then(function(text) {
 	      var expected_name = 'Draft ' + (index + 1);
-	      expect(text).to.equal(expected_name);
+	      expect(text).contains(expected_name);
 	    });
 	});
 	final_draft_name.getText()
           .then(function(text) {
 	    var expected_name = 'Final Draft';
-	    expect(text).to.equal(expected_name);
+	    expect(text).contains(expected_name);
 	  });
       });
     });

@@ -1,4 +1,6 @@
 @WRITE-374
+  @pending
+  #post-CDL fixes removed the pre-set example feedback flag
 Feature: Instructor Can View Feedback Flags
 
   Scenario: The Instructor views predefined feedback flag
