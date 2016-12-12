@@ -47,7 +47,7 @@ const webpackConfig = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:8080/',
+    publicPath: '/',
     filename: '[name].bundle.js'
   },
 
