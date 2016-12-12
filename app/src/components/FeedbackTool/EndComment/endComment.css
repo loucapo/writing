@@ -1,14 +1,18 @@
-.endCommentContainer {
-  padding: 0 20px 20px 20px;
+@import '../../../styles/core.css';
+
+.optional {
+  color: var(--darkGrey);
 }
 
-h4 {
-  font-weight: normal;
+.form {
+  display: flex;
+  padding: 15px 20px;
 }
 
 textarea {
-  width: 60%;
-  padding: 10px;
+  border: solid thin var(--mediumLightGrey);
+  flex: 1;
   font-size: 13px;
-  border: solid thin #ddd;
+  height: 80px;
+  padding: 10px;
 }
