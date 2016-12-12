@@ -12,7 +12,7 @@ a, a:link, a:hover, a:active, a:visited  {
      -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
           box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   font-size: 15px;
-  margin: 50px 150px 50px;
+  margin: 50px;
   padding: 0 0 20px 0;
 }
 
@@ -33,7 +33,7 @@ a, a:link, a:hover, a:active, a:visited  {
 
 .panel h4 {
   font-weight: bold;
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 }
 
 .panel ol {
