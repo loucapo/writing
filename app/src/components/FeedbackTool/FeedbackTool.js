@@ -144,7 +144,6 @@ class FeedbackTool extends Component {
         position={this.state.rect}
         submissionId={this.props.submissionId}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
-        resourceLinks={this.props.resourceLinks}
       />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
