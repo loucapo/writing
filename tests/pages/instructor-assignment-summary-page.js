@@ -4,17 +4,16 @@ module.exports = new Page({
 
   // assignment header
   url: { value: '/activity/23630184-5955-4dbe-9908-ab065f1bcad2' },
-  title: { get: function () { return this.element("[data-id='activity-title']"); } },
-  // course still needs to be separated from the class name in db
-  //course: { get: function () { return this.element("[data-id='activity-course']"); } },
-  type: { get: function () { return this.element("[data-id='activity-desc']"); } },
+  title: { get: function () { return this.element("[data-id='activity-type']"); } },
+  course: { get: function () { return this.element("[data-id='course-name']"); } },
+  type: { get: function () { return this.element("[data-id='activity-type']"); } },
+  assign_date: { get: function () { return this.element("[data-id='due-date']"); } },
 
   // assignment details
-  rhetoric_genre: { get: function() { return this.element("[data-id='activity-rhetoric-rubric']"); } },
-  rubric: { get: function () { return this.element("[data-id='activity-rubric']"); } },
+  activity_purpose: { get: function() { return this.element("[data-id='activity-purpose']"); } },
+  activity_requirements: { get: function () { return this.element("[data-id='activity-requirements']"); } },
   prompt: { get: function () { return this.element("[data-id='activity-prompt']"); } },
-  //QQQ was assignment intended to be renamed to activity?
-  prompt_edit: { get: function () { return this.element("[data-id='edit-activity']"); } },
+  prompt_edit: { get: function () { return this.element("[data-id='activity-edit-button']"); } },
 
   // sub menu
   sub_menu: { get: function () { return this.element("[data-id='assignment-menu']"); } },
@@ -22,7 +21,7 @@ module.exports = new Page({
 
 
   // draft sequence
-  draft_names: { get: function () { return this.elements("[data-id='draft-item-draft-name']"); } },
+  draft_names: { get: function () { return this.elements("[data-id='draft-name']"); } },
 
 
   // draft details
