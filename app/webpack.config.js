@@ -47,7 +47,7 @@ const webpackConfig = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: 'http://localhost:8080/',
     filename: '[name].bundle.js'
   },
 
@@ -62,10 +62,7 @@ const webpackConfig = {
       },
       {
         test: /\.ttf$/,
-        loader: 'file',
-        query: {
-          name: 'font/[hash].[ext]'
-        },
+        loader: 'file?name=fonts/[name].[ext]',
         include: [
           path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro'),
           path.resolve(__dirname, 'src/styles/fonts/Source_Serif_Pro')
