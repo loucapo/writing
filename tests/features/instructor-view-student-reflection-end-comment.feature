@@ -1,6 +1,6 @@
 @WRITE-305
+@WRITE-304
 Feature: Instructor Can Open Quick Feedback Section
-
   Scenario: The Instructor Views Responses From The Student To The Reflection Questions
     Given I visit the activity page
     When I open the feedback tool
@@ -19,4 +19,4 @@ Feature: Instructor Can Open Quick Feedback Section
     Then I see the 'End Comment Section'
     Then I see text 'End Comment (Optional)' in 'End Comment Section'
     Then I see the 'End Comment textarea' is empty
-Then I see the 'End Comment textarea' has placeholder text 'Write any concluding remarks you want to tell the student...'
+    Then I see the 'End Comment textarea' has placeholder text 'Write any concluding remarks you want to tell the student...'

@@ -46,7 +46,9 @@ module.exports = new Page({
 
   resource_url: { get: function () { return this.element("[data-id='resource-url']"); } },
 
-  'Student Reflection Section': { get: function () { return this.element("[data-id='studentReflections']"); } },
+  'Student Reflection Header': { get: function () { return this.element("[data-id='studentReflections']"); } },
+
+  'Student Reflection Section': { get: function () { return this.element("[class^='StudentReflection__section']"); } },
 
   'End Comment Section': { get: function () { return this.element("[data-id='endComment']"); } },
 
@@ -59,9 +61,9 @@ module.exports = new Page({
   example_essay: { value: 'TXTing: h8 it or wuv it'},
   
   // RUBRIC
-  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container"); } },
+  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container]"); } },
   'header button': { get: function() { return this.element("[data-id='header-button']"); } },
-  'X button': { get: function() { return this.element("div[class^='Rubric__close"); } },
+  'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
 
   draft_content_first_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:first-child span"); }},
 
