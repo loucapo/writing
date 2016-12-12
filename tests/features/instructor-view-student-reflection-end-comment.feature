@@ -11,11 +11,10 @@ Feature: Instructor Can Open Quick Feedback Section
     Then I see text 'Finally, I want you' in 'Student Reflection Section'
     Then I see text 'ever had to write!' in 'Student Reflection Section'
 
-
   Scenario: The Instructor Can View A Field to Enter End Comments
     Given I visit the activity page
     When I open the feedback tool
     Then I see the 'End Comment Section'
-    Then I see text 'End Comment (Optional)' in 'End Comment Section'
+    Then I see text 'End Comment (optional)' in 'End Comment Section'
     Then I see the 'End Comment textarea' is empty
-    Then I see the 'End Comment textarea' has placeholder text 'Write any concluding remarks you want to tell the student...'
+    Then I see the 'End Comment textarea' has placeholder text 'Add comment'

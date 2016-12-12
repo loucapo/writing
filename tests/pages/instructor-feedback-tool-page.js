@@ -52,7 +52,7 @@ module.exports = new Page({
 
   'End Comment Section': { get: function () { return this.element("[data-id='endComment']"); } },
 
-  'End Comment textarea': { get: function () { return this.element("//*[@data-id='endComment']/textarea", 'xpath'); } },
+  'End Comment textarea': { get: function () { return this.element("//*[@data-id='endComment']/div/textarea", 'xpath'); } },
 
   end_comment_header: { get: function () { return this.element("[data-id='comma_error']"); } },
 
