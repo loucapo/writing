@@ -68,7 +68,6 @@ exports.define = function(steps) {
   });
 
   steps.then("I see a menu of commenting options", function() {
-    console.log('ass');
     page.thesis.isDisplayed().should.eventually.equal(true);
     page.reason_support.isDisplayed().should.eventually.equal(true);
     page.interpretation.isDisplayed().should.eventually.equal(true);
@@ -137,10 +136,25 @@ exports.define = function(steps) {
       expect(style.indexOf('background-color')).to.not.equal(-1);
     });
   });
+  
+  steps.then("the comment '$text' is inside a feedback flag", function(feedback_comment) {
+    page.feedback_flags.then(function(flags) {
+      flags[0].click();
+      flags[0].getText().then(function(text) {
+        expect(text).to.contain(feedback_comment);
+      });
+    });
+  });
 
   steps.then("the selected text highlight should not persist", function(text) {
     page.draft_content_first_span.getAttribute('style').then(function (style) {
       expect(style.indexOf('background-color')).to.equal(-1);
+    });
+  });
+
+  steps.then("the feedback flag should not exist", function() {
+    page.feedback_flags.then(function(flags) {
+      expect(flags.length).to.equal(0);
     });
   });
 
