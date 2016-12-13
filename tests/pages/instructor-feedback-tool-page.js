@@ -67,9 +67,20 @@ module.exports = new Page({
 
   comment_popup__textarea: { get: function() { return this.element("div[data-id='MLModal'] textarea"); } },
 
-  submit: { get: function() { return this.element("div[data-id='MLModal'] button[type='submit']");}},
+  submit: { get: function() { return this.element("div[data-id='MLModal'] div div form button[type='submit']");}},
 
   cancel: { get: function() { return this.element("div[data-id='MLModal'] button:not([type='submit'])");}},
+
+
+  'sentiment level selection dropdown': { get: function() { return this.element("[data-id='sentimentLevel-select']"); }},
+
+  sentiment_goodJob: { get: function() { return this.element("[class^='goodJob']"); } },
+
+  sentiment_needsWork: { get: function() { return this.element("[class^='needsWork']"); } },
+
+  sentiment_extensiveRevision: { get: function() { return this.element("[class^='extensiveRevision']"); } },
+
+  'Other Feedback Flag': { get: function() { return this.element("[class^='FeedbackToolContentFlag']"); }},
 
   feedback_flags: { get: function() { return this.elements("div[class^='FeedbackToolContentFlag__triangleBorder']");}},
 
@@ -80,5 +91,6 @@ module.exports = new Page({
   'header button': { get: function() { return this.element("[data-id='header-button']"); } },
 
   'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
+
 
 });
