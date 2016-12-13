@@ -3,8 +3,10 @@ import FlagPublisherContent from '../FlagPublisherContent/FlagPublisherContent';
 
 const FlagDetails = ({item}) => (
   <div>
-    {item.instructorContent.comment}
-    <FlagPublisherContent publisherContent={item.publisherContent} />
+    <strong>{item.instructorContent && item.instructorContent.sentimentLevel}</strong>
+    <br />
+    {item.instructorContent && item.instructorContent.comment}
+    <FlagPublisherContent item={item} />
   </div>
 );
 
