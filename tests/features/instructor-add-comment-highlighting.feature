@@ -1,6 +1,5 @@
 @WRITE-355
 @WRITE-50
-
 Feature: Instructor Can Add Comments to Highlighting
 
   Scenario: The Instructor Adds An Other Comment

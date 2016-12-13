@@ -245,18 +245,22 @@ exports.define = function(steps) {
     driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")"}).click();
   });
 
-  steps.then("I see the '$grade' '$criteria' box highlighted", function(elem,criteria) {
+  steps.then("I see the '$grade' '$criteria' box highlighted '$color'", function(elem,criteria) {
     if (elem == 'exceeds expectations') {
       var grade = 4;
+      var color = 'green';
     }
     else if (elem == 'meets expectations') {
       var grade = 3;
+      var color = 'yellow';
     }
     else if (elem == 'nearly meets expectations') {
       var grade = 2;
+      var color = 'orange';
     }
     else if (elem == 'fails to meet expectations') {
       var grade = 1;
+      var color = 'red';
     }
     else {
       throw new Error('Unknown rubric grade selected');
@@ -281,7 +285,8 @@ exports.define = function(steps) {
       throw new Error('Unknown rubric column selected');
     };
     var butter = (5-grade);
-    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"});
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected'][class*='RubricCategoryScore__category_item_"+ color +"']"});
+
   });
 
   steps.then("I see the score '$grade' '$score' next to '$criteria'", function(elem,score,criteria) {
@@ -344,7 +349,7 @@ exports.define = function(steps) {
       throw new Error('Unknown rubric column selected');
     };
     var butter = (5-grade);
-    driver.findElements({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected"})
+    driver.findElements({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected']"})
       .then(function(els) {
         expect(els.length).to.equal(0);
     });
