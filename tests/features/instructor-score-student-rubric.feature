@@ -1,4 +1,5 @@
 @WRITE-60
+@WRITE-304
 Feature: Instructor Can Open the Rubric in Feedback Tool
   Scenario: The Instructor Gives Student a Score on the Rubric
     Given I visit the activity page
