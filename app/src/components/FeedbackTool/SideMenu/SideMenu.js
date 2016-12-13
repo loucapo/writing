@@ -24,7 +24,7 @@ class SideMenu extends Component {
 
     this.props.completeHighlight({
       success: true,
-      changeColor: 'orange'
+      changeColor: 'green'
     });
   };
 
