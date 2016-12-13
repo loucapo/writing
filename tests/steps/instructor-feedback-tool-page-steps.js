@@ -374,6 +374,19 @@ exports.define = function(steps) {
       text.should.not.equal(score);
     });;
   });
+
+  steps.then("I should see three sentiment levels", function() {
+    page.sentiment_goodJob.isDisplayed().should.eventually.equal(true);
+    page.sentiment_extensiveRevision.isDisplayed().should.eventually.equal(true);
+    page.sentiment_needsWork.isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.then("the highlighting style should be '$color'", function(color) {
+    page.draft_content_first_span.getAttribute('style')
+      .then(function(t) {
+        assert.equal(t, color);
+      });
+  });
 };
 
 
