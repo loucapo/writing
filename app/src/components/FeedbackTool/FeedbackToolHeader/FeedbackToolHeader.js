@@ -21,13 +21,6 @@ const FeedbackToolHeader = ({toggleRubric}) => {
         <ActionButton content="Done" css={actionButton.action_button_green} />
       </div>
     </header>
-    // <section className={feedbackToolHeaderCss.headerContainer}>
-    //   <button
-    //     data-id="header-button"
-    //     className={feedbackToolHeaderCss.headerButton}
-    //     onClick={toggleRubric}>Score Rubric
-    //   </button>
-    // </section>
   );
 };
 
