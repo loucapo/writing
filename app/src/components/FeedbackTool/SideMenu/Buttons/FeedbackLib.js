@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
-import FeedbackLibSVG from './FeedbackLibSVG';
-
+import FeedbackLibSVG from './Icons/FeedbackLibSVG';
 import sideMenu from './../sideMenu.css';
 
 const FeedbackLibButton = ({toggleQuickFeedback}) => {

@@ -3,7 +3,7 @@ import ModalFeedbackButton from './ModalFeedbackButton';
 import {Form} from 'freakin-react-forms';
 import Input from './../../../FormElements/Input';
 import uuid from 'uuid';
-import OtherSVG from './OtherSVG';
+import CommentSVG from './Icons/CommentSVG';
 
 const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHighlight, submissionId}) => {
   let model = {
@@ -62,7 +62,7 @@ const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHi
       <button type="submit">Submit</button>
       <button onClick={onClose}>Cancel</button>
     </Form>);
-  const icon = (<OtherSVG className="Icon" />);
+  const icon = (<CommentSVG className="Icon" />);
   return (
     <ModalFeedbackButton
       form={form}
