@@ -118,4 +118,11 @@ exports.define = function(steps) {
   steps.given("I visit the home page", function () {
     driver.get(marvin.config.baseUrl);
   });
+
+  steps.then("the activity page should show $font font", function(display) {
+   page.activity_page_layout.getCssValue('font').then(function(t) {
+     var myDisplay = display.replace('\'','').replace('\'','');
+     expect(t).to.contain(myDisplay);
+     });
+  });
 };

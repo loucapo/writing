@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://wk-red.mldev.cloud",
+  "baseUrl": "https://wk-red.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
   "reportSingle": false,
