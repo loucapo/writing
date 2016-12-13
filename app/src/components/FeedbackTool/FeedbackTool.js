@@ -7,6 +7,7 @@ import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
 import RubricContainer from '../../containers/RubricContainer';
 import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
+import coreCss from '../../styles/core.css';
 import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {
@@ -179,20 +180,34 @@ class FeedbackTool extends Component {
       flags = (<FeedbackToolContentFlagsContainer submissionId={this.props.submissionId} />);
     }
     return (
-      <section className={feedbackTool.feedbackToolContainer}>
-        <div className={feedbackTool.editorContainer}>
-          <FeedbackToolHeader toggleRubric={this.toggleRubric} />
-          <div className={feedbackTool.scrollContainer}>
-            <div>
-              {studentReflection || null}
-              {feedbackToolContent}
-              {endComment || null}
+      <div className={ feedbackTool.feedbackToolPage }>
+        <FeedbackToolHeader toggleRubric={this.toggleRubric} />
+        <section className={feedbackTool.feedbackToolContainer}>
+          <div className={feedbackTool.editorContainer}>
+            <div className={feedbackTool.scrollContainer}>
+              <div>
+                {studentReflection || null}
+                <div className={ coreCss.panel }>
+                  <div data-id="studentSubmission">
+                    <h1>
+                      Final Draft
+                    </h1>
+                  </div>
+                  <div className={ feedbackTool.draftContainer }>
+                    {feedbackToolContent}
+                    <div className={ feedbackTool.flagContainer }>
+                      &nbsp;
+                    </div>
+                  </div>
+                </div>
+                {endComment || null}
+              </div>
+              {flags || null}
             </div>
-            {flags || null}
           </div>
-        </div>
-        {sideMenu || null}
-      </section>
+          {sideMenu || null}
+        </section>
+      </div>
     );
   }
 }
