@@ -8,6 +8,8 @@ GRANT ALL ON SCHEMA public TO public;
 COMMENT ON SCHEMA public
   IS 'standard public schema';
 
+SET search_path TO writer_key,public;
+
 -- Table: "hello"
 
 DROP TABLE IF EXISTS "writer_key";
