@@ -1,12 +1,11 @@
 import React from 'react';
-import ThesisSVG from './ThesisSVG';
-
+import CommentSVG from './CommentSVG';
 import sideMenu from './../sideMenu.css';
 
 const ThesisButton = () => {
   return (
     <li data-id="thesis">
-      <ThesisSVG className="Icon" />
+      <CommentSVG className="Icon" />
       <span className={sideMenu.sideMenuCaption}>Thesis</span>
     </li>
   );
