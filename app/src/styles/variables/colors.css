@@ -8,9 +8,21 @@
   --veryDarkGrey: #383838;
   --blackish: #080808;
   --blue: #00758E;
+
   --green: #3B822E;
+  --lightGreen: #acdba2;
+  --veryLightGreen: daf4d4;
+
+  --lightYellow: #faf2a9;
+  --veryLightYellow: #fffbd7;
+
   --orange: #DD5714;
+  --lightOrange: #ffc196;
+  --veryLightOrange: #ffe5d3;
+
   --red: #DA1B2C;
+  --lightRed: #ffafaf;
+  --veryLightRed: very light red;
 
   /* these two are in the comps but not in the color palette or CDL */
   --lightBlue: #A0ACB2;
