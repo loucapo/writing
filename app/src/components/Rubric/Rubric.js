@@ -10,7 +10,7 @@ import rubricCategoryHeadingCss from './RubricCategoryHeading/rubricCategoryHead
 const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
   if (showHeaderOnly) {
     let categories = rubric.categories.slice(); // clone array
-    categories.splice(0, 0, {catName: "Argument Rubric"}); // insert first category for levels column
+    categories.splice(0, 0, {catName: 'Argument Rubric'}); // insert first category for levels column
     let firstPass = true; // only bold first heading
     return (
       <div className={ coreCss.panel }>

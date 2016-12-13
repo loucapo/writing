@@ -19,12 +19,7 @@ class ActivityContainer extends Component {
   }
 
   // onClick callback for individual cell
-  selectCell = (rowNumber, colNumber) => {
-    // to be implemented real soon now
-    //this.props.rubricOnChange(this.props.rubric, rowNumber, colNumber);
-    console.log('============ rowNumber, colNumber ============');
-    console.log(rowNumber, colNumber);
-    console.log('=================================');
+  selectCell = (rowNumber, colNumber) => { // eslint-disable-line no-unused-vars
   };
 
   render() {
