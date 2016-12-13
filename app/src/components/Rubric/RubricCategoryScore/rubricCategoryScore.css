@@ -1,3 +1,5 @@
+@import 'variables/colors.css';
+
 .column {
   display: flex;
 }
@@ -20,13 +22,76 @@
   transition: background-color 300ms linear;
 }
 
-.category_item:active,
-.selected {
-  background-color: #00758E;
-  opacity: .5;
-}
-
 .category_item:hover {
+  background-color: var(--veryLightGreen);
   opacity: .2;
 }
 
+.category_item_green {
+  background-color: var(--lightGreen);
+}
+
+.category_item_green:active,
+.category_item_green.selected {
+  background-color: var(--lightGreen);
+}
+
+.category_item_green:hover {
+  background-color: var(--veryLightGreen);
+  opacity: .2;
+}
+
+.category_item_yellow {
+  background-color: var(--lightYellow);
+}
+
+.category_item_yellow:active,
+.category_item_yellow.selected {
+  background-color: var(--lightYellow);
+}
+
+.category_item_yellow:hover {
+  background-color: var(--veryLightYellow);
+  opacity: .2;
+}
+
+.category_item_orange {
+  background-color: var(--lightOrange);
+}
+
+.category_item_orange:active,
+.category_item_orange.selected {
+  background-color: var(--lightOrange);
+}
+
+.category_item_orange:hover {
+  background-color: var(--veryLightOrange);
+  opacity: .2;
+}
+.category_item_red {
+  background-color: var(--lightRed);
+}
+
+.category_item_red:active,
+.category_item_red.selected {
+  background-color: var(--lightRed);
+}
+
+.category_item_red:hover {
+  background-color: var(--veryLightRed);
+  opacity: .2;
+}
+
+/*--lightGreen: #acdba2;*/
+/*--veryLightGreen: daf4d4;*/
+
+/*--lightYellow: #faf2a9;*/
+/*--veryLightYello: #fffbd7;*/
+
+/*--orange: #DD5714;*/
+/*--lightOrange: #ffc196;*/
+/*--veryLightOrange: #ffe5d3;*/
+
+/*--red: #DA1B2C;*/
+/*--lightRed: #ffafaf;*/
+/*--veryLightRed: very light red;*/
