@@ -381,6 +381,12 @@ exports.define = function(steps) {
     page.sentiment_needsWork.isDisplayed().should.eventually.equal(true);
   });
 
+  steps.then("the highlighting style should be '$color'", function(color) {
+    page.draft_content_first_span.getAttribute('style')
+      .then(function(t) {
+        assert.equal(t, color);
+      });
+  });
 };
 
 
