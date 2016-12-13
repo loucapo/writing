@@ -375,6 +375,20 @@ exports.define = function(steps) {
     });;
   });
 
+  steps.then("the feedback tool page shows $font font", function(display) {
+    page.feedback_tool_page_layout.getCssValue('font').then(function(t) {
+      var myDisplay = display.replace('\'','').replace('\'','');
+      expect(t).to.contain(myDisplay);
+    });
+  });
+
+  steps.then("the RTE shows $font font", function(display) {
+    page.draft_content_first_span.getCssValue('font').then(function(t) {
+      var myDisplay = display.replace('\'','').replace('\'','');
+      expect(t).to.contain(myDisplay);
+    });
+  });
+
   steps.then("I should see three sentiment levels", function() {
     page.sentiment_goodJob.isDisplayed().should.eventually.equal(true);
     page.sentiment_extensiveRevision.isDisplayed().should.eventually.equal(true);
@@ -386,7 +400,7 @@ exports.define = function(steps) {
       .then(function(t) {
         assert.equal(t, color);
       });
-  });
+    });
 };
 
 
