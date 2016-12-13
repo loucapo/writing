@@ -16,6 +16,7 @@ const Activity = ({activity, drafts, rubric, selectCell}) => {
         rubric={rubric}
         showRubric={false}
         selectCell={selectCell}
+        showHeaderOnly={true}
       />
       <div className={ coreCss.panel }>
         <ActivityMenu drafts={drafts} />

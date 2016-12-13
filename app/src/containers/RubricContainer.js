@@ -30,6 +30,7 @@ class RubricContainer extends Component {
         showRubric={this.props.showRubric}
         toggleRubric={this.props.toggleRubric}
         selectCell={this.selectCell}
+        showHeaderOnly={false}
       />
     );
   }

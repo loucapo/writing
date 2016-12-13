@@ -22,10 +22,13 @@ class ActivityContainer extends Component {
   selectCell = (rowNumber, colNumber) => {
     // to be implemented real soon now
     //this.props.rubricOnChange(this.props.rubric, rowNumber, colNumber);
+    console.log('============ rowNumber, colNumber ============');
+    console.log(rowNumber, colNumber);
+    console.log('=================================');
   };
 
   render() {
-    return (<Activity{...this.props} selectCell={this.selectCell}/>);
+    return (<Activity{...this.props} selectCell={this.selectCell} />);
   }
 }
 
@@ -35,7 +38,8 @@ ActivityContainer.propTypes = {
   isFetching: PropTypes.string,
   errorMessage: PropTypes.string,
   activityAction: PropTypes.func,
-  params: PropTypes.object
+  params: PropTypes.object,
+  loadRubric: PropTypes.func
 
 };
 
