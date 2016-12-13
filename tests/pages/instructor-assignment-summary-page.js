@@ -9,6 +9,8 @@ module.exports = new Page({
   type: { get: function () { return this.element("[data-id='activity-type']"); } },
   assign_date: { get: function () { return this.element("[data-id='due-date']"); } },
 
+  activity_page_layout: { get: function () { return this.element("div[class^='Layout__app']"); } },
+
   // assignment details
   activity_purpose: { get: function() { return this.element("[data-id='activity-purpose']"); } },
   activity_requirements: { get: function () { return this.element("[data-id='activity-requirements']"); } },

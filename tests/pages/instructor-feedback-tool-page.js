@@ -4,6 +4,8 @@ module.exports = new Page({
 
   url: { value: '/feedbackTool/123' },
 
+  feedback_tool_page_layout: { get: function () { return this.element("div[class^='Layout__app']"); } },
+
   sidebar: { get: function() { return this.element("[data-id='sideMenu']"); }},
 
   thesis: { get: function () { return this.element("[data-id='sideMenu'] [data-id='thesis']"); } },
