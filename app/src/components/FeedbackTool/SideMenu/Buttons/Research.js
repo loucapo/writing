@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentSVG from './CommentSVG';
+import CommentSVG from './Icons/CommentSVG';
 import sideMenu from './../sideMenu.css';
 
 const ResearchButton = () => {
