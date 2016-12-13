@@ -1,4 +1,30 @@
+@import '../../styles/core.css';
+
+.activityPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .activity_container {
   flex: 1;
   overflow-y: auto;
+}
+
+.header {
+  align-items: center;
+  background-color: var(--darkBlue);
+  color: var(--lightBlue);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.activity {
+  color: var(--pureWhite);
+  font-size: 21px;
+}
+
+.assignDate {
+  font-style: italic;
 }
