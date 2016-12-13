@@ -16,9 +16,9 @@ const FeedbackToolHeader = ({toggleRubric}) => {
       </div>
       <div className={ feedbackToolHeaderCss.headerRight }>
         <span>Final Grade: Select</span>
-        <ActionButton content="Draft Revision History" css={actionButton.action_button_blue} />
-        <ActionButton content="Score Rubric" css={actionButton.action_button_blue} onClick={toggleRubric} />
-        <ActionButton content="Done" css={actionButton.action_button_green} />
+        <ActionButton dataId="draft-revision-history-button" content="Draft Revision History" css={actionButton.action_button_blue} />
+        <ActionButton dataId="score-rubric-button" content="Score Rubric" css={actionButton.action_button_blue} onClick={toggleRubric} />
+        <ActionButton dataId="done-button" content="Done" css={actionButton.action_button_green} />
       </div>
     </header>
   );
