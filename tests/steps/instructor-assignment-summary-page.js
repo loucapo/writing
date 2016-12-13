@@ -28,14 +28,12 @@ exports.define = function(steps) {
       return page.draft_names.then(function(draft_names) {
       var final_draft_name = draft_names.pop();
       draft_names.forEach(function(name, index) {
-        name.getText()
-        .then(function(text) {
+        name.getText().then(function(text) {
             var expected_name = 'Draft ' + (index + 1);
             expect(text).contains(expected_name);
           });
         });
-        final_draft_name.getText()
-        .then(function(text) {
+        final_draft_name.getText().then(function(text) {
           var expected_name = 'Final Draft';
           expect(text).contains(expected_name);
         });
@@ -47,8 +45,7 @@ exports.define = function(steps) {
     return new Promise(function(resolve, reject) {
       return page.drafts_review_type.then(function(review_types) {
         review_types.forEach(function(type) {
-          type.getText()
-          .then(function(text) {
+          type.getText().then(function(text) {
             var peer = 'Peer Review';
             var inst = 'Instructor Review';
             assert((text == peer || text == inst), 'draft review type is not peer or instructor review');
@@ -60,11 +57,9 @@ exports.define = function(steps) {
 
   steps.then('I can also see the due dates', function() {
     return new Promise(function(resolve, reject) {
-      return page.drafts_due_dates
-        .then(function(due_dates) {
+      return page.drafts_due_dates.then(function(due_dates) {
         due_dates.forEach(function(date) {
-          date.getText()
-          .then(function(text) {
+          date.getText().then(function(text) {
             expect(text).to.be.not.empty;
           });
         });
@@ -74,8 +69,7 @@ exports.define = function(steps) {
 
   steps.then('I should see some draft learning objectives', function() {
     return new Promise(function(resolve, reject) {
-      return page.draft_learning_objectives
-      .then(function(objectives) {
+      return page.draft_learning_objectives.then(function(objectives) {
         expect(objectives.length).to.be.above(0);
       });
     });
@@ -83,20 +77,17 @@ exports.define = function(steps) {
 
   steps.then('I know how each draft will be graded', function() {
     return new Promise(function(resolve, reject) {
-      return page.draft_grade_policies
-      .then(function(draft_grade_policies) {
+      return page.draft_grade_policies.then(function(draft_grade_policies) {
         var final_draft_grade_policy = draft_grade_policies.pop();
         var inc_comp = 'Incomplete/Complete';
         var letter_grade = 'Letter Grade';
         var percentage = '%';
         draft_grade_policies.forEach(function(policy, index) {
-          policy.getText()
-                  .then(function(text) {
-              expect(text).to.equal(inc_comp);
-            });
+          policy.getText().then(function(text) {
+            expect(text).to.equal(inc_comp);
+          });
         });
-        final_draft_grade_policy.getText()
-        .then(function(text) {
+        final_draft_grade_policy.getText().then(function(text) {
           assert((text == inc_comp || text == letter_grade || text == percentage), 'Final Draft grading policy incompatible');
         });
       });
