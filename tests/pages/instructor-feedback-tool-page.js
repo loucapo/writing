@@ -10,7 +10,7 @@ module.exports = new Page({
 
   thesis: { get: function () { return this.element("[data-id='sideMenu'] [data-id='thesis']"); } },
 
-  reason_support: { get: function () { return this.element("[data-id='sideMenu'] [data-id='reason&support']"); } },
+  reason_support: { get: function () { return this.element("[data-id='sideMenu'] [data-id='reasonSupport']"); } },
 
   interpretation: { get: function () { return this.element("[data-id='sideMenu'] [data-id='interpretation']"); } },
 
