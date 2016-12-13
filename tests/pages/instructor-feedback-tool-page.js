@@ -91,7 +91,11 @@ module.exports = new Page({
   // RUBRIC
   rubric: { get: function () { return this.element("[class^='Rubric__rubric_container']"); } },
 
-  'header button': { get: function() { return this.element("[data-id='header-button']"); } },
+  score_rubric_button: { get: function() { return this.element("[data-id='score-rubric-button']"); } },
+
+  draft_revision_history: { get: function() { return this.element("[data-id='draft-revision-history-button']"); } },
+
+  done_button: { get: function() { return this.element("[data-id='done-button']"); } },
 
   'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
 

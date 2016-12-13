@@ -4,7 +4,7 @@ Feature: Instructor Can Open the Rubric in Feedback Tool
   Scenario: The Instructor Gives Student a Score on the Rubric
     Given I visit the activity page
     And I open the feedback tool
-    When I click the 'header button'
+    When I click the 'score_rubric_button'
     And I click 'exceeds expectations' for 'thesis'
     Then I see the 'exceeds expectations' 'thesis' box highlighted 'green'
     And I see the score 'exceeds expectations' '4' next to 'thesis'
@@ -12,7 +12,7 @@ Feature: Instructor Can Open the Rubric in Feedback Tool
   Scenario: The Instructor Gives Student a Different Score on the Rubric
     Given I visit the activity page
     And I open the feedback tool
-    When I click the 'header button'
+    When I click the 'score_rubric_button'
     And I click 'exceeds expectations' for 'thesis'
     And I click 'meets expectations' for 'thesis'
     Then I see the 'meets expectations' 'thesis' box highlighted 'yellow'
@@ -23,7 +23,7 @@ Feature: Instructor Can Open the Rubric in Feedback Tool
   Scenario: The Instructor Grades Student Across Whole Rubric
     Given I visit the activity page
     And I open the feedback tool
-    When I click the 'header button'
+    When I click the 'score_rubric_button'
     And I click 'exceeds expectations' for 'thesis'
     And I click 'meets expectations' for 'claims'
     And I click 'meets expectations' for 'evidence'
@@ -43,9 +43,9 @@ Feature: Instructor Can Open the Rubric in Feedback Tool
   Scenario: Scores Should Persist on Session
     Given I visit the activity page
     And I open the feedback tool
-    When I click the 'header button'
+    When I click the 'score_rubric_button'
     And I click 'exceeds expectations' for 'thesis'
     And I click the 'X button'
-    And I click the 'header button'
+    And I click the 'score_rubric_button'
     Then I see the 'exceeds expectations' 'thesis' box highlighted 'green'
     And I see the score 'exceeds expectations' '4' next to 'thesis'
