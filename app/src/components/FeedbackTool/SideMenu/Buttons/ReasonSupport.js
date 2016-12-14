@@ -10,6 +10,7 @@ const ReasonSupportButton = (props) => {
       color="blue"
       contentType="reasonSupport"
       commentIcon={icon}
+      title="Reason and Support"
       {...props}
     />
   );

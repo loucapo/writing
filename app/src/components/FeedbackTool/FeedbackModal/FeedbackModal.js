@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import MLModal from './../../MLModal/MLModal';
+import feedbackModalStyles from './FeedbackModal.css';
 
 const FeedbackToolModal = ({form, position, onClose, isOpen, title}) => {
   const screenHeight = window.screen.height;
@@ -11,7 +12,7 @@ const FeedbackToolModal = ({form, position, onClose, isOpen, title}) => {
   }
   return (
     <MLModal position={modalPosition} titleBar={{enable: false}} isOpen={isOpen} closeModal={onClose}>
-      {title}
+      <h3 className={feedbackModalStyles.heading}>{title}</h3>
       {form}
     </MLModal>
   );

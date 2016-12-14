@@ -1,17 +1,8 @@
-.image {
-    background: url('../../images/comment_thumbsup.png') no-repeat;
-    width: 30px;
-    height: 20px;
-    display: inline-block;
+.resourceContainer ul{
+  padding: 0;
 }
 
-.icon:after {
-    color: darkgray;
-    content: '\2807';
-    font-size: 20px;
-}
-
-.resources {
-    margin-bottom: 10px;
-    font-weight: bold;
+.header {
+  margin-bottom: 10px;
+  font-weight: bold;
 }
