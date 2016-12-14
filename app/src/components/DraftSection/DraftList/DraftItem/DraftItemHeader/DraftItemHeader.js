@@ -1,13 +1,22 @@
 import React, {PropTypes} from 'react';
 import ActionButton from '../../../../ActionButton/ActionButton';
 import draftItemHeader from './draftItemHeader.css';
-
-// XXX may need id's for testability/accessibility
+import MLIcon from 'ml-react-cdl-icons';
 
 const DraftItemHeader = ({draftName}) => (
   <div data-id="draft-name" className={ draftItemHeader.header }>
     <h1>
-      {draftName}
+      <span>
+        <MLIcon
+          iconTitle="minus"
+          iconFill="#ffffff"
+          iconType="minus"
+          iconWidth="12"
+          iconHeight="12"
+          viewBox="0 0 24 24"
+        />
+        <span className={draftItemHeader.draftName}>{draftName}</span>
+      </span>
       <ActionButton dataId="draft-edit-button" content="Edit" />
     </h1>
   </div>);
