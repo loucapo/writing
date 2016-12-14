@@ -3,6 +3,7 @@ import RubricCategoryName from './RubricCategoryName/RubricCategoryName';
 import RubricCategory from './RubricCategory/RubricCategory';
 import ActionButton from '../ActionButton/ActionButton';
 import uuid from 'uuid';
+import classnames from 'classnames';
 import rubricCss from './rubric.css';
 import coreCss from '../../styles/core.css';
 import rubricCategoryHeadingCss from './RubricCategoryHeading/rubricCategoryHeading.css';
@@ -25,7 +26,7 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
                 let classname = rubricCategoryHeadingCss.heading_name;
                 if (firstPass) {
                   firstPass = false;
-                  classname = classname + ' ' + rubricCss.argumentRubric;
+                  classname = classnames(classname, rubricCss.argumentRubric);
                 }
                 return (
                   <div key={uuid.v4()} className={rubricCategoryHeadingCss.heading_item}>
