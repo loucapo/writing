@@ -14,7 +14,7 @@ class FeedbackToolContentFlag extends Component {
     <div className={feedbackToolContentFlag.flagContainer} onClick={this.onClick} >
       <div className={feedbackToolContentFlag.triangleBorder} style={{top: `${this.props.item.position.top - 65 }px`}} >
         <div className={feedbackToolContentFlag.title}>
-          <strong>{feedbackToolTypeMap[this.props.item.type].title}</strong>
+          <span>{feedbackToolTypeMap[this.props.item.type].title}</span>
           <span className={feedbackToolContentFlag.icon} />
         </div>
         {this.state.clicked ? <FlagDetails item={this.props.item} /> : null}

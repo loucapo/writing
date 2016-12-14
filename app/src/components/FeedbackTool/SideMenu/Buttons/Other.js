@@ -65,6 +65,7 @@ const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHi
   const icon = (<OtherSVG className="Icon" />);
   return (
     <ModalFeedbackButton
+      title="Other"
       form={form}
       onHighlight={onHighlight}
       completeHighlight={completeHighlight}

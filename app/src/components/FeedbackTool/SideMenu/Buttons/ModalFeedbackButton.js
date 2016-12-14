@@ -53,6 +53,7 @@ class ModalFeedbackButton extends Component {
           </span>
         </div>
         <FeedbackModal
+          title={this.props.title}
           isOpen={this.state.isOpen}
           position={this.state.position}
           onClose={this.onClose}
@@ -70,6 +71,7 @@ ModalFeedbackButton.propTypes = {
   position: PropTypes.object,
   contentType: PropTypes.string,
   commentIcon: PropTypes.object,
+  title: PropTypes.string,
   form: PropTypes.func,
   submissionId: PropTypes.string,
   submitAction: PropTypes.func,
