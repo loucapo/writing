@@ -1,30 +1,32 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import FlagDetails from './FlagDetails/FlagDetails';
 import feedbackToolTypeMap from '../../feedbackToolTypeMap';
 import feedbackToolContentFlag from './feedbackToolContentFlag.css';
 
-class FeedbackToolContentFlag extends Component {
-  state = {clicked: false};
-
-  onClick = () => {
-    this.setState({clicked: !this.state.clicked});
+const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
+  const triangleStyles = {
+    top: `${item.position.top - 20 }px`,
+    zIndex: topFlag ? 1001 : 1
   };
 
-  render = () => (
-    <div className={feedbackToolContentFlag.flagContainer} onClick={this.onClick} >
-      <div className={feedbackToolContentFlag.triangleBorder} style={{top: `${this.props.item.position.top - 25}px`}} >
+  return (
+    <div className={feedbackToolContentFlag.flagContainer} onClick={() => onClick(!expanded, item.id)}>
+      <div className={feedbackToolContentFlag.triangleBorder} style={triangleStyles}>
         <div className={feedbackToolContentFlag.title}>
-          <strong>{feedbackToolTypeMap[this.props.item.type].title}</strong>
+          <strong>{feedbackToolTypeMap[item.type].title}</strong>
           <span className={feedbackToolContentFlag.icon} />
         </div>
-        {this.state.clicked ? <FlagDetails item={this.props.item} /> : null}
+        {expanded ? <FlagDetails item={item} /> : null}
       </div>
     </div>
   );
-}
+};
 
 FeedbackToolContentFlag.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  expanded: PropTypes.bool,
+  topFlag: PropTypes.bool,
+  onClick: PropTypes.func
 };
 
 export default FeedbackToolContentFlag;
