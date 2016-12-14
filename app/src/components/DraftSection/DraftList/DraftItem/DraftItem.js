@@ -33,14 +33,14 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
       <div className={draftItemCss.draftParamSelect}>
         { draftItem.type }
         <MLIcon
-        className={draftItemCss.dropdown_caret}
-        iconTitle="caret down"
-        iconFill="#ffffff"
-        iconType="caret_down"
-        iconWidth="12"
-        iconHeight="12"
-        viewBox="0 0 24 24"
-      />
+          className={draftItemCss.dropdown_caret}
+          iconTitle="caret down"
+          iconFill="#ffffff"
+          iconType="caret_down"
+          iconWidth="12"
+          iconHeight="12"
+          viewBox="0 0 24 24"
+        />
       </div>
       <div className={draftItemCss.draftParamSelect}>
         <MLIcon
