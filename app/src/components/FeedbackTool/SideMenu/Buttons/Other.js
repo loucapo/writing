@@ -4,6 +4,7 @@ import {Form} from 'freakin-react-forms';
 import Input from './../../../FormElements/Input';
 import uuid from 'uuid';
 import OtherSVG from './OtherSVG';
+import FlagPublisherContent from './../../FeedbackToolContentFlags/FeedbackToolContentFlag/FlagPublisherContent/FlagPublisherContent';
 
 const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHighlight, submissionId}) => {
   let model = {
@@ -51,21 +52,33 @@ const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHi
     submitFeedbackToolContentItem(result);
   };
 
+  //Bottom resources const is temp. Should be removed.
+  const resources = {resources: [
+    {
+      title: 'What is a Thesis',
+      url: 'http://www.google.com'
+    },
+    {
+      title: 'Examples of a good Thesis',
+      url: 'http://www.facebook.com'
+    },
+    {
+      title: 'Where should I put my Thesis',
+      url: 'http://www.yahoo.com'
+    }
+  ]};
   const form = (onSubmit, onClose) => (
     <Form submitHandler={onSubmit} model={model}>
-      <div>
-        {<Input frfProperty={model.sentimentLevel} options={model.sentimentLevel.options} />}
-      </div>
-      <div>
-        <Input frfProperty={model.comment} />
-      </div>
-      <button type="submit">Submit</button>
+      <Input frfProperty={model.sentimentLevel} options={model.sentimentLevel.options} />
+      <Input frfProperty={model.comment} />
+      <FlagPublisherContent publisherContent={resources} />
+      <button type="submit">Save</button>
       <button onClick={onClose}>Cancel</button>
     </Form>);
   const icon = (<OtherSVG className="Icon" />);
+
   return (
     <ModalFeedbackButton
-      title="Other"
       form={form}
       onHighlight={onHighlight}
       completeHighlight={completeHighlight}
@@ -76,6 +89,7 @@ const Other = ({submitFeedbackToolContentItem, position, onHighlight, completeHi
       model={model}
       submissionId={submissionId}
       position={position}
+      title="Other"
     />
   );
 };

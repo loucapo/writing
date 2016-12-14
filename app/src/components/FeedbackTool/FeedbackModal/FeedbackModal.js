@@ -1,8 +1,7 @@
 import React, {PropTypes} from 'react';
 import MLModal from './../../MLModal/MLModal';
 
-
-const FeedbackToolModal = ({title, form, position, onClose, isOpen}) => {
+const FeedbackToolModal = ({form, position, onClose, isOpen, title}) => {
   return (
     <MLModal position={position} titleBar={{enable: false}} isOpen={isOpen} closeModal={onClose}>
       {title}
@@ -12,11 +11,11 @@ const FeedbackToolModal = ({title, form, position, onClose, isOpen}) => {
 };
 
 FeedbackToolModal.propTypes = {
-  title: PropTypes.string,
   form: PropTypes.object,
   position: PropTypes.object,
   onClose: PropTypes.func,
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
+  title: PropTypes.string
 };
 
 export default FeedbackToolModal;

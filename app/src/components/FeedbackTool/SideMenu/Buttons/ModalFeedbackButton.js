@@ -53,11 +53,11 @@ class ModalFeedbackButton extends Component {
           </span>
         </div>
         <FeedbackModal
-          title={this.props.title}
           isOpen={this.state.isOpen}
           position={this.state.position}
           onClose={this.onClose}
-          form={this.props.form(this.onFormSubmit, this.onClose)} />
+          form={this.props.form(this.onFormSubmit, this.onClose)}
+          title={this.props.title} />
       </li>
     );
   }
@@ -71,11 +71,11 @@ ModalFeedbackButton.propTypes = {
   position: PropTypes.object,
   contentType: PropTypes.string,
   commentIcon: PropTypes.object,
-  title: PropTypes.string,
   form: PropTypes.func,
   submissionId: PropTypes.string,
   submitAction: PropTypes.func,
-  onHighlight: PropTypes.func
+  onHighlight: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default ModalFeedbackButton;
