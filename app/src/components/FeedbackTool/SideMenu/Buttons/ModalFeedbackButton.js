@@ -1,13 +1,18 @@
 import React, {Component, PropTypes} from 'react';
 import sideMenu from './../sideMenu.css';
 import FeedbackModal from './../../FeedbackModal/FeedbackModal';
-import feedbackToolTypeMap from './../../feedbackToolTypeMap';
+import feedbackToolContentMap from './../../feedbackToolContentMap';
+import { standardSentiment } from './modalFormSentimentLevel';
+
+import uuid from 'uuid';
 
 class ModalFeedbackButton extends Component {
 
   state = {
     isOpen: false
   };
+
+  contentMap = feedbackToolContentMap[this.props.contentType];
 
   onClose = (e) => {
     e.preventDefault();
@@ -18,7 +23,35 @@ class ModalFeedbackButton extends Component {
   };
 
   onFormSubmit = (x) => {
-    this.props.onSubmit(x);
+    let shouldChangeColor;
+    if (x.sentimentLevel === 'goodJob') {
+      shouldChangeColor = true;
+    }
+
+    this.props.completeHighlight({
+      success: true,
+      removeColor: shouldChangeColor ? 'blue' : null,
+      changeColor: shouldChangeColor ? 'green' : null
+    });
+
+    // get the text value from the sentiment level select.
+    const sentimentLevel = standardSentiment.find(o => o.value === x.sentimentLevel);
+    const instructorContent = {
+      comment: x.comment,
+      sentimentLevel: sentimentLevel ? sentimentLevel.text : ''
+    };
+
+    // build the result for redux
+    const result = {
+      contentType: this.props.contentType,
+      title: this.contentMap.title,
+      instructorContent,
+      position: this.props.position,
+      submissionId: this.props.submissionId,
+      id: uuid.v4()
+    };
+    this.props.submitFeedbackToolContentItem(result);
+
     this.setState({
       isOpen: false
     });
@@ -44,19 +77,20 @@ class ModalFeedbackButton extends Component {
   };
 
   render() {
+    const form = this.contentMap.form(this.onFormSubmit, this.onClose, this.contentMap);
     return (
       <li data-id={this.props.contentType}>
         <div onClick={this.onClick} style={{width: '100%'}}>
           {this.props.commentIcon}
           <span className={sideMenu.sideMenuCaption}>
-            {feedbackToolTypeMap[this.props.contentType].title}
+            {this.contentMap.title}
           </span>
         </div>
         <FeedbackModal
           isOpen={this.state.isOpen}
           position={this.state.position}
           onClose={this.onClose}
-          form={this.props.form(this.onFormSubmit, this.onClose)}
+          form={form}
           title={this.props.title} />
       </li>
     );
@@ -75,6 +109,7 @@ ModalFeedbackButton.propTypes = {
   submissionId: PropTypes.string,
   submitAction: PropTypes.func,
   onHighlight: PropTypes.func,
+  submitFeedbackToolContentItem: PropTypes.func,
   title: PropTypes.string
 };
 

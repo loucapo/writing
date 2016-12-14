@@ -1,3 +1,10 @@
+.image {
+    background: url('../../images/comment_thumbsup.png') no-repeat;
+    width: 30px;
+    height: 20px;
+    display: inline-block;
+}
+
 .icon:after {
     color: darkgray;
     content: '\2807';
