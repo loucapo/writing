@@ -17,3 +17,7 @@
 .heading_value {
   margin-left: auto;
 }
+
+.headingId > .heading_item:first-child {
+  font-weight: bold;
+}

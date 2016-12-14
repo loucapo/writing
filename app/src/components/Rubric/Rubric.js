@@ -12,7 +12,7 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
   if (showHeaderOnly) {
     let categories = rubric.categories.slice(); // clone array
     categories.splice(0, 0, {catName: 'Argument Rubric'}); // insert first category for levels column
-    let firstPass = true; // only bold first heading
+    let classname = classnames(rubricCategoryHeadingCss.heading, rubricCategoryHeadingCss.headingId);
     return (
       <div className={ coreCss.panel }>
         <h1 data-id="rubric-title">
@@ -20,17 +20,15 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
           <ActionButton dataId="activity-rubric-edit-button" content="Edit" />
         </h1>
         <div className={ coreCss.panelBottom }>
-          <div className={rubricCategoryHeadingCss.heading}>
+          <div className={classname}>
             {
               categories.map((category) => {
-                let classname = rubricCategoryHeadingCss.heading_name;
-                if (firstPass) {
-                  firstPass = false;
-                  classname = classnames(classname, rubricCss.argumentRubric);
-                }
                 return (
                   <div key={uuid.v4()} className={rubricCategoryHeadingCss.heading_item}>
-                    <div key={uuid.v4()} data-id="activity-rubric-category-heading" className={classname}>
+                    <div
+                      key={uuid.v4()}
+                      data-id="activity-rubric-category-heading"
+                      className={rubricCategoryHeadingCss.heading_name}>
                       { category.catName }
                     </div>
                   </div>
