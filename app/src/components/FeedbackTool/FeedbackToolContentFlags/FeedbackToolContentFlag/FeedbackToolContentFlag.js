@@ -12,7 +12,7 @@ class FeedbackToolContentFlag extends Component {
 
   render = () => (
     <div className={feedbackToolContentFlag.flagContainer} onClick={this.onClick} >
-      <div className={feedbackToolContentFlag.triangleBorder} style={{top: `${this.props.item.position.top - 65 }px`}} >
+      <div className={feedbackToolContentFlag.triangleBorder} style={{top: `${this.props.item.position.top - 25}px`}} >
         <div className={feedbackToolContentFlag.title}>
           <span>{feedbackToolTypeMap[this.props.item.type].title}</span>
           <span className={feedbackToolContentFlag.icon} />
