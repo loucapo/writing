@@ -33,7 +33,7 @@ input:-moz-placeholder {
   padding: 0 0 20px 0;
 }
 
-.panel h1 {
+h1 {
   align-items: center;
   border-bottom: 1px solid var(--lightGrey);
   display: flex;
