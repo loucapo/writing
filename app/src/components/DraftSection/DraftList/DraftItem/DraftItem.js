@@ -42,7 +42,8 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
             iconHeight="12"
             viewBox="0 0 24 24"
           />
-        </span>      </div>
+        </span>
+      </div>
       <div className={draftItemCss.draftParamSelect}>
         <span className={draftItemCss.calendar}>
           <MLIcon
