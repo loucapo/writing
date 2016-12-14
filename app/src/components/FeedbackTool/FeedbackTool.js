@@ -74,7 +74,15 @@ class FeedbackTool extends Component {
     }
 
     const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
-    this.setState({value, rect, isNotSelection: false});
+    const offSet = rect.top + window.scrollY - 516;
+    const coordinates = {
+      top: offSet,
+      left: rect.left,
+      width: rect.width,
+      bottom: rect.bottom
+    };
+
+    this.setState({value, rect: coordinates, isNotSelection: false});
   };
 
   resetSelection = (editorState) => {
@@ -195,14 +203,11 @@ class FeedbackTool extends Component {
                   </div>
                   <div className={ feedbackTool.draftContainer }>
                     {feedbackToolContent}
-                    <div className={ feedbackTool.flagContainer }>
-                      &nbsp;
-                    </div>
+                    {flags || null}
                   </div>
                 </div>
                 {endComment || null}
               </div>
-              {flags || null}
             </div>
           </div>
           {sideMenu || null}
