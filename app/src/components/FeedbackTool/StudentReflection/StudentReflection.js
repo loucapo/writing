@@ -25,7 +25,7 @@ const StudentReflection = () => {
           </p>
         </div>
 
-        <h4>Finally, I want you to know that...</h4>
+        <h4>Finally, I want you to know...</h4>
         <div className={ studentReflectionCss.contentItem }>
           This is the longest essay I've ever had to write!
         </div>
