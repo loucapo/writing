@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import FlagDetails from './FlagDetails/FlagDetails';
-import feedbackToolTypeMap from '../../feedbackToolTypeMap';
+import feedbackToolContentMap from './../../feedbackToolContentMap';
 import feedbackToolContentFlag from './feedbackToolContentFlag.css';
 
 const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
@@ -13,7 +13,7 @@ const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
     <div className={feedbackToolContentFlag.flagContainer} onClick={() => onClick(!expanded, item.id)}>
       <div className={feedbackToolContentFlag.triangleBorder} style={triangleStyles}>
         <div className={feedbackToolContentFlag.title}>
-          <strong>{feedbackToolTypeMap[item.type].title}</strong>
+          <strong>{feedbackToolContentMap[item.contentType].title}</strong>
           <span className={feedbackToolContentFlag.icon} />
         </div>
         {expanded ? <FlagDetails item={item} /> : null}

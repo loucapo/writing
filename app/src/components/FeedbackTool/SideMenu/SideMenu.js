@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PropTypes, Component} from 'react';
 import ThesisButton from './Buttons/Thesis';
 import ReasonSupportButton from './Buttons/ReasonSupport';
 import InterpretationButton from './Buttons/Interpretation';
@@ -9,12 +9,23 @@ import OtherButton from './Buttons/Other';
 import GoodJobButton from './Buttons/GoodJob';
 import FeedbackLibButton from './Buttons/FeedbackLib';
 import sideMenu from './sideMenu.css';
+import uuid from 'uuid';
 
 class SideMenu extends Component {
   state = {showQuickFeedbackTool: false};
 
-  spanClicked = (val) => {
-    console.log(val); // just for verification that the links are clicking
+  spanClicked = (contentType) => {
+    this.props.submitFeedbackToolContentItem({
+      id: uuid.v4(),
+      position: this.props.position,
+      submissionId: this.props.submissionId,
+      contentType
+    });
+
+    this.props.completeHighlight({
+      success: true,
+      changeColor: 'green'
+    });
   };
 
   toggleQuickFeedback = () => {
@@ -25,9 +36,9 @@ class SideMenu extends Component {
     return (
       <div className={sideMenu.sidebarContainer}>
         <div data-id="sideMenu" className={sideMenu.sideMenu}>
-          <ul>
+          <ul className={sideMenu.buttons}>
             <ThesisButton />
-            <ReasonSupportButton />
+            <ReasonSupportButton {...this.props} />
             <InterpretationButton />
             <ParagraphDevButton />
             <ResearchButton />
@@ -41,7 +52,7 @@ class SideMenu extends Component {
               <li
                 data-id="appropriate-language"
                 className={sideMenu.list_Item}
-                onClick={() => this.spanClicked(1)}>Appropriate Language
+                onClick={() => this.spanClicked(4)}>Appropriate Language
               </li>
               <li
                 data-id="comma-splice"
@@ -56,7 +67,7 @@ class SideMenu extends Component {
               <li
                 data-id="fragment"
                 className={sideMenu.list_Item}
-                onClick={() => this.spanClicked(4)}>Fragment
+                onClick={() => this.spanClicked('fragment')}>Fragment
               </li>
               <li
                 data-id="pronoun-agreement"
@@ -84,5 +95,12 @@ class SideMenu extends Component {
       </div>);
   }
 }
+
+SideMenu.propTypes = {
+  submitFeedbackToolContentItem: PropTypes.func,
+  completeHighlight: PropTypes.func,
+  position: PropTypes.object,
+  submissionId: PropTypes.string
+};
 
 export default SideMenu;

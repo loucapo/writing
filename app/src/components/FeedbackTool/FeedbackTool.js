@@ -18,34 +18,6 @@ class FeedbackTool extends Component {
     isRubricLoaded: false
   };
 
-  badges = [{
-    title: 'Integration of Research',
-    contentParagraphs: [
-      `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
-      Your thesis is buried and unclear.`,
-      `I would begin here with your revisions to clarify your thesis statement.`
-    ],
-    resources: [
-      {
-        title: 'What is a Thesis',
-        url: 'http://www.google.com'
-      },
-      {
-        title: 'Examples of a good Thesis',
-        url: 'http://www.facebook.com'
-      },
-      {
-        title: 'Where should I put my Thesis',
-        url: 'http://www.yahoo.com'
-      }
-    ]
-  }];
-
-
-  toggleQuickFeedback = () => {
-    this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
-  };
-
   toggleRubric = () => {
     this.setState({
       showRubric: !this.state.showRubric
@@ -72,7 +44,6 @@ class FeedbackTool extends Component {
     if(window.getSelection().rangeCount <= 0) {
       return;
     }
-
     const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
     const offSet = rect.top + window.scrollY - 516;
     const coordinates = {
@@ -181,7 +152,6 @@ class FeedbackTool extends Component {
         position={this.state.rect}
         submissionId={this.props.submissionId}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
-        toggleQuickFeedback={this.toggleQuickFeedback}
       />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
