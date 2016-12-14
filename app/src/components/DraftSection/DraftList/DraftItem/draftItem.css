@@ -39,3 +39,17 @@
   height: 50%;
   width: 95%;
 }
+
+.calendar {
+  position: relative;
+  left: -3px;
+  top: 3px;
+  fill: var(--blue);
+}
+
+.dropdown_caret {
+  position: relative;
+  left: 5px;
+  top: 3px;
+  fill: var(--blue);
+}

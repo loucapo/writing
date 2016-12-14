@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import DraftItemHeader from './DraftItemHeader/DraftItemHeader';
 // import DropDown from '../../../Dropdown/DropDown.js';
 import uuid from 'uuid';
+import MLIcon from 'ml-react-cdl-icons';
+
 import draftItemCss from './draftItem.css';
 
 const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
@@ -18,12 +20,51 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
       <div className={draftItemCss.draftParamSelect}>
         {/*<DropDown ddPosition='right' ddTitle={props.ddTitle} {...ddOptions} />*/}
         { draftItem.details.gradingPolicy }
+        <span className={draftItemCss.dropdown_caret}>
+          <MLIcon
+            iconTitle="caret down"
+            iconFill="#ffffff"
+            iconType="caret_down"
+            iconWidth="12"
+            iconHeight="12"
+            viewBox="0 0 24 24"
+          />
+        </span>
       </div>
       <div className={draftItemCss.draftParamSelect}>
         { draftItem.type }
-      </div>
+        <span className={draftItemCss.dropdown_caret}>
+          <MLIcon
+            iconTitle="caret down"
+            iconFill="#ffffff"
+            iconType="caret_down"
+            iconWidth="12"
+            iconHeight="12"
+            viewBox="0 0 24 24"
+          />
+        </span>      </div>
       <div className={draftItemCss.draftParamSelect}>
+        <span className={draftItemCss.calendar}>
+          <MLIcon
+            iconTitle="calendar"
+            iconFill="#ffffff"
+            iconType="calendar"
+            iconWidth="20"
+            iconHeight="20"
+            viewBox="0 0 24 24"
+          />
+        </span>
         { draftItem.dueDate }
+        <span className={draftItemCss.dropdown_caret}>
+          <MLIcon
+            iconTitle="caret down"
+            iconFill="#ffffff"
+            iconType="caret_down"
+            iconWidth="12"
+            iconHeight="12"
+            viewBox="0 0 24 24"
+          />
+        </span>
       </div>
     </section>
 
