@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import ActionButton from '../../ActionButton/ActionButton';
 import coreCss from '../../../styles/core.css';
+import activityDetailsCss from './activityDetails.css';
+import MLIcon from 'ml-react-cdl-icons';
 
 // XXX need id's for testability/accessibility
 
@@ -8,7 +10,17 @@ import coreCss from '../../../styles/core.css';
 const ActivityDetails = ({activity}) => (
   <div className={ coreCss.panel }>
     <h1 data-id="activity-title">
-      <div>Assignment Prompt</div>
+      <span>
+        <MLIcon
+          iconTitle="minus"
+          iconFill="#000000"
+          iconType="minus"
+          iconWidth="12"
+          iconHeight="12"
+          viewBox="0 0 24 24"
+        />
+        <span className={activityDetailsCss.name}>Assignment Prompt</span>
+      </span>
       <ActionButton dataId="activity-edit-button" content="Edit" />
     </h1>
     <div className={ coreCss.panelBottom }>

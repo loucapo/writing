@@ -2,12 +2,23 @@ import React from 'react';
 import SubmissionItem from './SubmissionItem/SubmissionItem';
 import ActionButton from '../../ActionButton/ActionButton';
 import submissionList from './submissionList.css';
+import MLIcon from 'ml-react-cdl-icons';
 
 let SubmissionList = () => {
   return (
     <div className={ submissionList.subList }>
       <div className={ submissionList.filter }>
-        <div>Showing: <span data-id="submission-filter" className={submissionList.dropDown}>Final Draft - Due: Sep 24, 2016</span></div>
+        <div>Showing: <span data-id="submission-filter" className={submissionList.dropDown}>Final Draft - Due: Sep 24, 2016</span>
+          <MLIcon
+            className={submissionList.dropdown_caret}
+            iconTitle="caret down"
+            iconFill="#ffffff"
+            iconType="caret_down"
+            iconWidth="12"
+            iconHeight="12"
+            viewBox="0 0 24 24"
+          />
+        </div>
         <ActionButton content="Send All Completed Reviews" />
       </div>
       <table className={ submissionList.table }>
