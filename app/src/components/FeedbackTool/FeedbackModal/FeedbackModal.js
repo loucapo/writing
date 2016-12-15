@@ -5,8 +5,8 @@ import feedbackModalStyles from './FeedbackModal.css';
 const FeedbackToolModal = ({form, position, onClose, isOpen, title}) => {
   const screenHeight = window.screen.height;
   const modalPosition = position;
-  if(position && position.top + 400 > screenHeight) {
-    const offset = position.top + 400 - screenHeight;
+  if(position && position.top + 450 > screenHeight) {
+    const offset = position.top + 450 - screenHeight;
     window.scrollBy(0, offset);
     modalPosition.top = modalPosition.top - offset;
   }
