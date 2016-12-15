@@ -1,10 +1,9 @@
 import React from 'react';
 import ModalFeedbackButton from './ModalFeedbackButton';
-import OtherSVG from './OtherSVG';
+import CommentSVG from './Icons/CommentSVG';
 
 const Other = (props) => {
-  const icon = (<OtherSVG className="Icon" />);
-
+  const icon = (<CommentSVG className="Icon" />);
   return (
     <ModalFeedbackButton
       color="blue"

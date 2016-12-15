@@ -1,10 +1,9 @@
 import React from 'react';
 import ModalFeedbackButton from './ModalFeedbackButton';
-import ReasonSupportSVG from './ReasonSupportSVG';
+import CommentSVG from './Icons/CommentSVG';
 
 const ReasonSupportButton = (props) => {
-
-  const icon = (<ReasonSupportSVG className="Icon" />);
+  const icon = (<CommentSVG className="Icon" />);
   return (
     <ModalFeedbackButton
       color="blue"
