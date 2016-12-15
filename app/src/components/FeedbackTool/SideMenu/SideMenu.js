@@ -29,6 +29,7 @@ class SideMenu extends Component {
   };
 
   toggleQuickFeedback = () => {
+    this.props.focus();
     this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
 
@@ -99,6 +100,7 @@ class SideMenu extends Component {
 SideMenu.propTypes = {
   submitFeedbackToolContentItem: PropTypes.func,
   completeHighlight: PropTypes.func,
+  focus: PropTypes.func,
   position: PropTypes.object,
   submissionId: PropTypes.string
 };
