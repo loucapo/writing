@@ -25,6 +25,7 @@ const _Input = ({ data, containerStyle, options }) => {
           name={data.name}
           value={data.value}
           onChange={data.onChange}
+          autoFocus={data.autoFocus}
         />);
       }
       case 'select': {
@@ -33,6 +34,7 @@ const _Input = ({ data, containerStyle, options }) => {
             data-id={`${data.name}-select`}
             value={data.value || data.default}
             onChange={data.onChange} >
+            autoFocus={data.autoFocus}
             {options}
           </select>);
       }
@@ -47,6 +49,7 @@ const _Input = ({ data, containerStyle, options }) => {
           name={data.name}
           value={data.value}
           onChange={data.onChange}
+          autoFocus={data.autoFocus}
         />);
       }
     }

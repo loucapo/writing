@@ -3,8 +3,15 @@ import MLModal from './../../MLModal/MLModal';
 
 
 const FeedbackToolModal = ({form, position, onClose, isOpen}) => {
+  const screenHeight = window.screen.height;
+  const modalPosition = position;
+  if(position && position.top + 400 > screenHeight) {
+    const offset = position.top + 400 - screenHeight;
+    window.scrollBy(0, offset);
+    modalPosition.top = modalPosition.top - offset;
+  }
   return (
-    <MLModal position={position} titleBar={{enable: false}} isOpen={isOpen} closeModal={onClose}>
+    <MLModal position={modalPosition} titleBar={{enable: false}} isOpen={isOpen} closeModal={onClose}>
       {form}
     </MLModal>
   );

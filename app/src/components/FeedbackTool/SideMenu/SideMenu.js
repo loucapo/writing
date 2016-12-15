@@ -1,20 +1,27 @@
-import React, {Component} from 'react';
-import ThesisButton from './Buttons/Thesis';
-import ReasonSupportButton from './Buttons/ReasonSupport';
-import InterpretationButton from './Buttons/Interpretation';
-import ParagraphDevButton from './Buttons/ParagraphDev';
-import ResearchButton from './Buttons/Research';
-import CounterArgsButton from './Buttons/CounterArgs';
-import OtherButton from './Buttons/Other';
-import GoodJobButton from './Buttons/GoodJob';
+import React, {PropTypes, Component} from 'react';
+// import OtherSVG from './Buttons/OtherSVG';
+// import GoodJobSVG from './Buttons/GoodJobSVG';
+import MLIcon from 'ml-react-cdl-icons';
+import ModalFeedbackButton from './Buttons/ModalFeedbackButton';
 import FeedbackLibButton from './Buttons/FeedbackLib';
 import sideMenu from './sideMenu.css';
+import uuid from 'uuid';
 
 class SideMenu extends Component {
   state = {showQuickFeedbackTool: false};
 
-  spanClicked = (val) => {
-    console.log(val); // just for verification that the links are clicking
+  spanClicked = (contentType) => {
+    this.props.submitFeedbackToolContentItem({
+      id: uuid.v4(),
+      position: this.props.position,
+      submissionId: this.props.submissionId,
+      contentType
+    });
+
+    this.props.completeHighlight({
+      success: true,
+      changeColor: 'green'
+    });
   };
 
   toggleQuickFeedback = () => {
@@ -22,6 +29,31 @@ class SideMenu extends Component {
   };
 
   render() {
+    const icon = (<MLIcon
+      iconTitle="Feedback"
+      iconFill="#00758E"
+      iconType="comment"
+      iconWidth="24"
+      iconHeight="24"
+      viewBox="0 0 24 24"
+      className="icon" />);
+    const goodJobIcon = (<MLIcon
+      iconTitle="Good Job"
+      iconFill="#3B822E"
+      iconType="comment_thumbs_up"
+      iconWidth="24"
+      iconHeight="24"
+      viewBox="0 0 24 24"
+      className="icon" />);
+    const quickFeedbackIcon = (<MLIcon
+      iconTitle="Quick Feedback"
+      iconFill="#DD5714"
+      iconType="comment_text"
+      iconWidth="24"
+      iconHeight="24"
+      viewBox="0 0 24 24"
+      className="icon" />);
+
     return (
       <div className={sideMenu.sidebarContainer}>
         <div data-id="sideMenu" className={sideMenu.sideMenu}>
@@ -29,15 +61,91 @@ class SideMenu extends Component {
             Feedback
           </h1>
           <ul>
-            <li>Thesis</li>
-            <li>Reason & Support</li>
-            <li>Interpretation / Analysis</li>
-            <li>Significance of Thesis</li>
-            <li>Integration of Research</li>
-            <li>Counterarguments</li>
-            <li>Other</li>
-            <li>Good Job</li>
-            <li>Quick Feedback</li>
+            <ModalFeedbackButton
+              contentType="thesis"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="reasonSupport"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="interpretation"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="paragraphDev"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="research"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="counterarg"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="other"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="goodJob"
+              commentIcon={goodJobIcon}
+              {...this.props}
+            />
+
+            <FeedbackLibButton toggleQuickFeedback={this.toggleQuickFeedback} />
+            <div
+              className={this.state.showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
+              <li
+                data-id="appropriate-language"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked(4)}>Appropriate Language
+              </li>
+              <li
+                data-id="comma-splice"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked(2)}>Comma Splice
+              </li>
+              <li
+                data-id="comma-error"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked(3)}>Comma Error
+              </li>
+              <li
+                data-id="fragment"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked('fragment')}>Fragment
+              </li>
+              <li
+                data-id="pronoun-agreement"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked(5)}>Pronoun Agreement
+              </li>
+              <li
+                data-id="subject-verb-agreement"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked(6)}>Subject Verb Agreement
+              </li>
+              <li
+                data-id="needs-analysis"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked(7)}>Needs Analysis
+              </li>
+              <li
+                data-id="usage"
+                className={sideMenu.list_Item}
+                onClick={() => this.spanClicked(8)}>Usage
+              </li>
+            </div>
           </ul>
           {/*<ul>*/}
             {/*<ThesisButton />*/}
@@ -98,5 +206,12 @@ class SideMenu extends Component {
       </div>);
   }
 }
+
+SideMenu.propTypes = {
+  submitFeedbackToolContentItem: PropTypes.func,
+  completeHighlight: PropTypes.func,
+  position: PropTypes.object,
+  submissionId: PropTypes.string
+};
 
 export default SideMenu;
