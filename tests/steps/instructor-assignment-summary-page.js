@@ -116,4 +116,8 @@ exports.define = function(steps) {
       expect(t).to.contain(myDisplay);
     });
   });
+
+  steps.then("I see a '$elem' icon", function(elem) {
+    page[elem].isDisplayed().should.eventually.equal(true);
+  });
 };
