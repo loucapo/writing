@@ -10,7 +10,7 @@ module.exports = new Page({
 
   thesis: { get: function () { return this.element("[data-id='sideMenu'] [data-id='thesis']"); } },
 
-  reason_support: { get: function () { return this.element("[data-id='sideMenu'] [data-id='reason&support']"); } },
+  reason_support: { get: function () { return this.element("[data-id='sideMenu'] [data-id='reasonSupport']"); } },
 
   interpretation: { get: function () { return this.element("[data-id='sideMenu'] [data-id='interpretation']"); } },
 
@@ -74,11 +74,11 @@ module.exports = new Page({
 
   'sentiment level selection dropdown': { get: function() { return this.element("[data-id='sentimentLevel-select']"); }},
 
-  sentiment_goodJob: { get: function() { return this.element("[class^='goodJob']"); } },
+  sentiment_goodJob: { get: function() { return this.element("[data-id='sentimentLevel-select'] [value='goodJob']"); } },
 
-  sentiment_needsWork: { get: function() { return this.element("[class^='needsWork']"); } },
+  sentiment_needsWork: { get: function() { return this.element("[data-id='sentimentLevel-select'] [value='needsWork']"); } },
 
-  sentiment_extensiveRevision: { get: function() { return this.element("[class^='extensiveRevision']"); } },
+  sentiment_extensiveRevision: { get: function() { return this.element("[data-id='sentimentLevel-select'] [value='extensiveRevision']"); } },
 
   'Other Feedback Flag': { get: function() { return this.element("[class^='FeedbackToolContentFlag']"); }},
 
