@@ -14,7 +14,7 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          className={submissionItemCss.check}
+          iconFill="#3B822E"
           iconTitle="check"
           iconType="check"
           iconWidth="20"
@@ -35,7 +35,7 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          className={submissionItemCss.check}
+          iconFill="#3B822E"
           iconTitle="check"
           iconType="check"
           iconWidth="20"
@@ -116,7 +116,7 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          className={submissionItemCss.check}
+          iconFill="#3B822E"
           iconTitle="check"
           iconType="check"
           iconWidth="20"
@@ -185,7 +185,7 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          className={submissionItemCss.check}
+          iconFill="#3B822E"
           iconTitle="check"
           iconType="check"
           iconWidth="20"
