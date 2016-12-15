@@ -1,6 +1,5 @@
 import React from 'react';
-import GoodJobSVG from './GoodJobSVG';
-
+import GoodJobSVG from './Icons/GoodJobSVG';
 import sideMenu from './../sideMenu.css';
 
 const GoodJobButton = () => {
