@@ -16,11 +16,9 @@
 
 .sideMenu li {
   border-bottom: 1px solid var(--lightGrey);
-  /*align-items: center;*/
-  /*display: flex;*/
+  display: flex;
   font-size: 13px;
   padding: 10px 20px;
-  /*cursor: pointer;*/
 }
 
 .sideMenu li:hover {

@@ -33,26 +33,20 @@ class SideMenu extends Component {
       iconTitle="Feedback"
       iconFill="#00758E"
       iconType="comment"
-      iconWidth="24"
-      iconHeight="24"
-      viewBox="0 0 24 24"
-      className="icon" />);
+      iconWidth="20"
+      iconHeight="20" />);
     const goodJobIcon = (<MLIcon
       iconTitle="Good Job"
       iconFill="#3B822E"
       iconType="comment_thumbs_up"
-      iconWidth="24"
-      iconHeight="24"
-      viewBox="0 0 24 24"
-      className="icon" />);
+      iconWidth="20"
+      iconHeight="20" />);
     const quickFeedbackIcon = (<MLIcon
       iconTitle="Quick Feedback"
       iconFill="#DD5714"
       iconType="comment_text"
-      iconWidth="24"
-      iconHeight="24"
-      viewBox="0 0 24 24"
-      className="icon" />);
+      iconWidth="20"
+      iconHeight="20" />);
 
     return (
       <div className={sideMenu.sidebarContainer}>
