@@ -20,52 +20,48 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
       <div className={draftItemCss.draftParamSelect}>
         {/*<DropDown ddPosition='right' ddTitle={props.ddTitle} {...ddOptions} />*/}
         { draftItem.details.gradingPolicy }
-        <span className={draftItemCss.dropdown_caret}>
-          <MLIcon
-            iconTitle="caret down"
-            iconFill="#ffffff"
-            iconType="caret_down"
-            iconWidth="12"
-            iconHeight="12"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={draftItemCss.dropdown_caret}
+          iconTitle="caret down"
+          iconFill="#ffffff"
+          iconType="caret_down"
+          iconWidth="12"
+          iconHeight="12"
+          viewBox="0 0 24 24"
+        />
       </div>
       <div className={draftItemCss.draftParamSelect}>
         { draftItem.type }
-        <span className={draftItemCss.dropdown_caret}>
-          <MLIcon
-            iconTitle="caret down"
-            iconFill="#ffffff"
-            iconType="caret_down"
-            iconWidth="12"
-            iconHeight="12"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={draftItemCss.dropdown_caret}
+          iconTitle="caret down"
+          iconFill="#ffffff"
+          iconType="caret_down"
+          iconWidth="12"
+          iconHeight="12"
+          viewBox="0 0 24 24"
+        />
       </div>
       <div className={draftItemCss.draftParamSelect}>
-        <span className={draftItemCss.calendar}>
-          <MLIcon
-            iconTitle="calendar"
-            iconFill="#ffffff"
-            iconType="calendar"
-            iconWidth="20"
-            iconHeight="20"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={draftItemCss.calendar}
+          iconTitle="calendar"
+          iconFill="#ffffff"
+          iconType="calendar"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
         { draftItem.dueDate }
-        <span className={draftItemCss.dropdown_caret}>
-          <MLIcon
-            iconTitle="caret down"
-            iconFill="#ffffff"
-            iconType="caret_down"
-            iconWidth="12"
-            iconHeight="12"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={draftItemCss.dropdown_caret}
+          iconTitle="caret down"
+          iconFill="#ffffff"
+          iconType="caret_down"
+          iconWidth="12"
+          iconHeight="12"
+          viewBox="0 0 24 24"
+        />
       </div>
     </section>
 
