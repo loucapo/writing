@@ -114,7 +114,11 @@ class FeedbackTool extends Component {
       },
       blue: {
         backgroundColor: '#b0daff'
+      },
+      orange: {
+        backgroundColor: '#ff8a57'
       }
+
     };
 
     let feedbackToolContent;
