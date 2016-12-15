@@ -16,7 +16,6 @@ const SubmissionItem = () => (
         <MLIcon
           className={submissionItemCss.check}
           iconTitle="check"
-          iconFill="#ffffff"
           iconType="check"
           iconWidth="20"
           iconHeight="20"
@@ -38,7 +37,6 @@ const SubmissionItem = () => (
         <MLIcon
           className={submissionItemCss.check}
           iconTitle="check"
-          iconFill="#ffffff"
           iconType="check"
           iconWidth="20"
           iconHeight="20"
@@ -120,7 +118,6 @@ const SubmissionItem = () => (
         <MLIcon
           className={submissionItemCss.check}
           iconTitle="check"
-          iconFill="#ffffff"
           iconType="check"
           iconWidth="20"
           iconHeight="20"
@@ -190,7 +187,6 @@ const SubmissionItem = () => (
         <MLIcon
           className={submissionItemCss.check}
           iconTitle="check"
-          iconFill="#ffffff"
           iconType="check"
           iconWidth="20"
           iconHeight="20"

@@ -12,7 +12,6 @@ let SubmissionList = () => {
           <MLIcon
             className={submissionList.dropdown_caret}
             iconTitle="caret down"
-            iconFill="#ffffff"
             iconType="caret_down"
             iconWidth="12"
             iconHeight="12"
