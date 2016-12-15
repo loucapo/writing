@@ -13,8 +13,8 @@ exports.define = function(steps) {
   steps.then("I see some text '$text' in '$elem'", function(text, elem) {
     page[elem].getText()
       .then(function(t) {
-
-        assert.include(t, text);
+        var myDisplay = t.replace('\n','').replace('\n','');
+        assert.include(myDisplay, text);
       });
   });
 
@@ -35,3 +35,4 @@ exports.define = function(steps) {
   });
 
 };
+
