@@ -1,0 +1,5 @@
+@import '../../../styles/core.css';
+
+.flagContainer {
+    min-width: 250px;
+}
