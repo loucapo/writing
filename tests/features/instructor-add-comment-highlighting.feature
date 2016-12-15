@@ -1,7 +1,6 @@
 @WRITE-355
 @WRITE-50
 @WRITE-553
-@only
 
 Feature: Instructor Can Add Comments to Highlighting
 
