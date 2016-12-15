@@ -13,16 +13,15 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <span className={submissionItemCss.check}>
-          <MLIcon
-            iconTitle="check"
-            iconFill="#ffffff"
-            iconType="check"
-            iconWidth="20"
-            iconHeight="20"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={submissionItemCss.check}
+          iconTitle="check"
+          iconFill="#ffffff"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td className={submissionItemCss.reviewSent}>
         Review sent Sep 22, 2016
@@ -36,16 +35,15 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <span className={submissionItemCss.check}>
-          <MLIcon
-            iconTitle="check"
-            iconFill="#ffffff"
-            iconType="check"
-            iconWidth="20"
-            iconHeight="20"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={submissionItemCss.check}
+          iconTitle="check"
+          iconFill="#ffffff"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td>
         <a href="#">Send Review</a>
@@ -119,16 +117,15 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <span className={submissionItemCss.check}>
-          <MLIcon
-            iconTitle="check"
-            iconFill="#ffffff"
-            iconType="check"
-            iconWidth="20"
-            iconHeight="20"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={submissionItemCss.check}
+          iconTitle="check"
+          iconFill="#ffffff"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td>
         <a href="#">Send Review</a>
@@ -190,16 +187,15 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <span className={submissionItemCss.check}>
-          <MLIcon
-            iconTitle="check"
-            iconFill="#ffffff"
-            iconType="check"
-            iconWidth="20"
-            iconHeight="20"
-            viewBox="0 0 24 24"
-          />
-        </span>
+        <MLIcon
+          className={submissionItemCss.check}
+          iconTitle="check"
+          iconFill="#ffffff"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td>
         <a href="#">Send Review</a>
