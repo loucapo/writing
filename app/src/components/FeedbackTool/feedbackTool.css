@@ -1,4 +1,8 @@
-/*@import 'core.css';*/
+@import '../../styles/core.css';
+
+.feedbackToolPage {
+  height: 100%;
+}
 
 .feedbackToolContainer {
   display: flex;
@@ -16,4 +20,12 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+}
+
+.draftContainer {
+  display: flex;
+}
+
+.flagContainer {
+  min-width: 250px;
 }

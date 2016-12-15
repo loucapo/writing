@@ -96,6 +96,14 @@ const webpackConfig = {
         ]
       },
       {
+        test: /\.ttf$/,
+        loader: 'url-loader',
+        query: { mimetype: 'application/x-font-ttf' } ,
+        include: [
+          path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro')
+        ]
+      },
+      {
         test: /\.(svg)$/,
         loader: 'raw-loader',
         include: [

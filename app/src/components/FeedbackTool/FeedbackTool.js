@@ -7,6 +7,7 @@ import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
 import RubricContainer from '../../containers/RubricContainer';
 import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
+import coreCss from '../../styles/core.css';
 import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {
@@ -15,34 +16,6 @@ class FeedbackTool extends Component {
     showRubric: false,
     showQuickFeedbackTool: false,
     isRubricLoaded: false
-  };
-
-  badges = [{
-    title: 'Integration of Research',
-    contentParagraphs: [
-      `You do a nice job presenting these two sides; however, you're not staking a claim in this argument.
-      Your thesis is buried and unclear.`,
-      `I would begin here with your revisions to clarify your thesis statement.`
-    ],
-    resources: [
-      {
-        title: 'What is a Thesis',
-        url: 'http://www.google.com'
-      },
-      {
-        title: 'Examples of a good Thesis',
-        url: 'http://www.facebook.com'
-      },
-      {
-        title: 'Where should I put my Thesis',
-        url: 'http://www.yahoo.com'
-      }
-    ]
-  }];
-
-
-  toggleQuickFeedback = () => {
-    this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
 
   toggleRubric = () => {
@@ -71,8 +44,8 @@ class FeedbackTool extends Component {
     if(window.getSelection().rangeCount <= 0) {
       return;
     }
-
     const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
+
     this.setState({value, rect, isNotSelection: false});
   };
 
@@ -172,27 +145,40 @@ class FeedbackTool extends Component {
         position={this.state.rect}
         submissionId={this.props.submissionId}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
-        toggleQuickFeedback={this.toggleQuickFeedback}
       />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
       flags = (<FeedbackToolContentFlagsContainer submissionId={this.props.submissionId} />);
     }
     return (
-      <section className={feedbackTool.feedbackToolContainer}>
-        <div className={feedbackTool.editorContainer}>
-          <FeedbackToolHeader toggleRubric={this.toggleRubric} />
-          <div className={feedbackTool.scrollContainer}>
-            <div>
-              {studentReflection || null}
-              {feedbackToolContent}
-              {endComment || null}
+      <div className={ feedbackTool.feedbackToolPage }>
+        <FeedbackToolHeader toggleRubric={this.toggleRubric} />
+        <section className={feedbackTool.feedbackToolContainer}>
+          <div className={feedbackTool.editorContainer}>
+            <div className={feedbackTool.scrollContainer}>
+              <div>
+                {studentReflection || null}
+                <div className={ coreCss.panel }>
+                  <div data-id="studentSubmission">
+                    <h1>
+                      Final Draft
+                    </h1>
+                  </div>
+                  <div className={ feedbackTool.draftContainer }>
+                    {feedbackToolContent}
+                    <div className={ feedbackTool.flagContainer }>
+                      &nbsp;
+                    </div>
+                  </div>
+                </div>
+                {endComment || null}
+              </div>
+              {flags || null}
             </div>
-            {flags || null}
           </div>
-        </div>
-        {sideMenu || null}
-      </section>
+          {sideMenu || null}
+        </section>
+      </div>
     );
   }
 }

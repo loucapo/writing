@@ -3,7 +3,8 @@ import draftReducer from './draftModule';
 import rubricReducer from './rubricModule';
 import studentSubmissionReducer from './studentSubmissionModule';
 import feedbackToolContentItems from './feedbackToolContentModule';
-
+import publisherContent from './publisherContentModule';
+import resourceLinks from './resourceLinksModule';
 
 export {activityAction} from './activityModule';
 export {loadRubric, rubricOnChange} from './rubricModule';
@@ -15,5 +16,7 @@ export default {
   drafts: draftReducer,
   studentSubmissions: studentSubmissionReducer,
   feedbackToolContentItems,
-  rubric: rubricReducer
+  rubric: rubricReducer,
+  publisherContent,
+  resourceLinks
 };

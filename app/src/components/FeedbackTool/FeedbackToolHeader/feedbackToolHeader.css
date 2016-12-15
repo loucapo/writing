@@ -1,14 +1,22 @@
+@import '../../../styles/core.css';
+
 .headerContainer {
-  border-bottom: 1px solid #ccc;
-  padding: 20px 260px 20px 20px;
-  text-align: right;
+  align-items: center;
+  background-color: var(--darkBlue);
+  color: var(--lightBlue);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.headerButton {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  color: #999;
-  font-size: 14px;
-  padding: 5px 10px;
+.headerRight {
+  align-items: center;
+  display: flex;
+  min-width: 35%;
+  justify-content: space-between;
+}
+
+.activity {
+  color: var(--pureWhite);
+  font-size: 21px;
 }

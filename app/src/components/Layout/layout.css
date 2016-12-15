@@ -1,25 +1,15 @@
 @import './../../styles/core.css';
 
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url(./../../styles/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .app {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-.header {
-  align-items: center;
-  background-color: var(--darkBlue);
-  color: var(--lightBlue);
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-.activity {
-  color: var(--pureWhite);
-  font-size: 21px;
-}
-
-.assignDate {
-  font-style: italic;
+  font-family: 'SourceSansPro-Regular', sans-serif;
 }
