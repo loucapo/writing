@@ -1,12 +1,11 @@
 import React from 'react';
-import InterpretationSVG from './InterpretationSVG';
-
+import CommentSVG from './Icons/CommentSVG';
 import sideMenu from './../sideMenu.css';
 
 const InterpretationButton = () => {
   return (
     <li data-id="interpretation">
-      <InterpretationSVG className="Icon" />
+      <CommentSVG className="Icon" />
       <span className={sideMenu.sideMenuCaption}>Interpretation/Analysis</span>
     </li>
   );

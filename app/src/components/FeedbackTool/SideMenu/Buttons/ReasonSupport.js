@@ -1,14 +1,16 @@
 import React from 'react';
-import ReasonSupportSVG from './ReasonSupportSVG';
+import ModalFeedbackButton from './ModalFeedbackButton';
+import CommentSVG from './Icons/CommentSVG';
 
-import sideMenu from './../sideMenu.css';
-
-const ReasonSupportButton = () => {
+const ReasonSupportButton = (props) => {
+  const icon = (<CommentSVG className="Icon" />);
   return (
-    <li data-id="reason&support">
-      <ReasonSupportSVG className="Icon" />
-      <span className={sideMenu.sideMenuCaption}>Reason & Support</span>
-    </li>
+    <ModalFeedbackButton
+      color="blue"
+      contentType="reasonSupport"
+      commentIcon={icon}
+      {...props}
+    />
   );
 };
 
