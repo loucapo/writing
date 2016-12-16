@@ -13,3 +13,52 @@
   height: 100%;
   font-family: 'SourceSansPro-Regular', sans-serif;
 }
+
+.header {
+  align-items: center;
+  background-color: var(--darkBlue);
+  color: var(--lightBlue);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: center;
+}
+
+.activity {
+  color: var(--pureWhite);
+  font-size: 21px;
+}
+
+.assignDate {
+  font-style: italic;
+  align-self: center;
+}
+
+.left_arrow {
+  fill: white;
+  margin: auto auto;
+}
+
+.leftArrowContainer {
+  width: 40px;
+  display:flex;
+}
+
+.leftSide {
+  margin-right:auto;
+  display:flex;
+  flex-direction: column;
+}
+
+.headerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:flex-end;
+}
+
