@@ -7,6 +7,7 @@ const ActionButton = (props) => {
     <div className={actionButton.action_button_container + ' ' + props.css}>
       <div className={actionButton.action_button_wrapper}>
         <button
+          type={props.type}
           data-id={props.dataId}
           className={actionButton.action_button}
           onClick={props.onClick}>
@@ -21,7 +22,8 @@ ActionButton.propTypes = {
   content: PropTypes.string.isRequired,
   css: PropTypes.string,
   dataId: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  type: PropTypes.string
 };
 
 export default ActionButton;

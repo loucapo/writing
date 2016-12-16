@@ -4,19 +4,19 @@
   overflow-y: auto;
 }
 
-.sideMenu ul {
+.sideMenu .buttons {
   padding: 20px;
   margin: 0;
 }
 
-.sideMenu li {
+.sideMenu .buttons li {
   align-items: center;
   display: flex;
   font-size: 13px;
   cursor: pointer;
 }
 
-.sideMenu li img {
+.sideMenu .buttons li img {
   margin-right: 6px;
 }
 

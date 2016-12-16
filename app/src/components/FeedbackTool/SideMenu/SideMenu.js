@@ -37,7 +37,7 @@ class SideMenu extends Component {
     return (
       <div className={sideMenu.sidebarContainer}>
         <div data-id="sideMenu" className={sideMenu.sideMenu}>
-          <ul>
+          <ul className={sideMenu.buttons}>
             <ThesisButton />
             <ReasonSupportButton {...this.props} />
             <InterpretationButton />

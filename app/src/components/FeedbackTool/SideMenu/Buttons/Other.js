@@ -9,6 +9,7 @@ const Other = (props) => {
       color="blue"
       contentType="other"
       commentIcon={icon}
+      title="Other"
       {...props}
     />
   );

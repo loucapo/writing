@@ -90,7 +90,8 @@ class ModalFeedbackButton extends Component {
           isOpen={this.state.isOpen}
           position={this.state.position}
           onClose={this.onClose}
-          form={form} />
+          form={form}
+          title={this.props.title} />
       </li>
     );
   }
@@ -108,7 +109,8 @@ ModalFeedbackButton.propTypes = {
   submissionId: PropTypes.string,
   submitAction: PropTypes.func,
   onHighlight: PropTypes.func,
-  submitFeedbackToolContentItem: PropTypes.func
+  submitFeedbackToolContentItem: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default ModalFeedbackButton;
