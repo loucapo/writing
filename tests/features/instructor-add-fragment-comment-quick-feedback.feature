@@ -1,4 +1,5 @@
 @WRITE-52
+
 Feature: Instructor Can Add Fragment Comment
   Scenario: The Instructor Adds Fragment Comment From Quick Feedback Library
     Given I visit the activity page
@@ -7,6 +8,7 @@ Feature: Instructor Can Add Fragment Comment
     And I click on the Quick Feedback Library
     And on the feedback page I click the 'fragment' element
     Then the selected text highlight should persist
-    #this should be background-color: orange; - waiting for CDL fix
-    And the highlighting style should be 'background-color: green;'
+    # this should be background-color: orange; - waiting for CDL fix
+    # this should be fixed in 284
+    #And the highlighting style should be 'background-color: green;'
     And the comment 'Fragment' is inside a feedback flag
