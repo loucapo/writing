@@ -9,12 +9,27 @@ exports.define = function(steps) {
     page.visit();
   });
 
-  steps.then("I see '$elem' in elem '$component'", function(elem, component) {
+  steps.then("I see '$elem' in component '$component'", function(elem, component) {
+    component = 'co_' + component;
     expect(page[component][elem]).to.exist;
   });
 
-  steps.then("I see link with text '$text' in elem '$component'", function(text, component) {
-    page[component].elements("//a[text()='" + text + "']", 'xpath')
+  steps.then("I see a link with text '$text' in element '$element'", function(text, element) {
+    page[element].findElements({xpath: ".//a[text()='" + text + "']"})
+      .then(function(ls) {
+        expect(ls.length).to.equal(1);
+      });
+  });
+
+  steps.then("I see a button with text '$text' in element '$element'", function(text, element) {
+    page[element].findElements({xpath: ".//button[text()='" + text + "']"})
+      .then(function(ls) {
+        expect(ls.length).to.equal(1);
+      });
+  });
+
+  steps.then("I see text '$text' in element '$element'", function(text, element) {
+    page[element].findElements({xpath: ".//*[contains(text(), '" + text + "')]"})
       .then(function(ls) {
         expect(ls.length).to.equal(1);
       });

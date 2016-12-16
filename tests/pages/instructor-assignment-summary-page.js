@@ -2,8 +2,9 @@ var Page = require('marvin-js').Page;
 var rubric = require('./components/final-rubric');
 
 module.exports = new Page({
-
-  'final rubric': { get: function() { return this.component(rubric, '[class^="Activity__activity_container"] > div:nth-child(2)')}},
+  // Oh, if only they'd designed components to be accessible as elements themselves...
+  'co_final rubric': { get: function() { return this.component(rubric, '[class^="Activity__activity_container"] > div:nth-child(2)'); }},
+  'final rubric': { get: function() { return this.element('[class^="Activity__activity_container"] > div:nth-child(2)'); }},
 
   // assignment header
   url: { value: '/activity/23630184-5955-4dbe-9908-ab065f1bcad2' },
