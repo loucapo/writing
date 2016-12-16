@@ -116,6 +116,10 @@ class FeedbackTool extends Component {
     }
   };
 
+  focus = () => {
+    this.refs.ml_rte.refs.editor.focus();
+  };
+
   render = () => {
     const colorStyleMap = {
       green: {
@@ -123,7 +127,11 @@ class FeedbackTool extends Component {
       },
       blue: {
         backgroundColor: '#b0daff'
+      },
+      orange: {
+        backgroundColor: '#ff8a57'
       }
+
     };
 
     let feedbackToolContent;
@@ -145,7 +153,8 @@ class FeedbackTool extends Component {
         value={this.state.value}
         customStyleMap={colorStyleMap}
         customHandleKeyCommand={()=>{}}
-        readOnly={false} />);
+        readOnly={false}
+        ref="ml_rte" />);
       sideMenu = (<SideMenu
         submitFeedbackToolContentItem={this.props.submitFeedbackToolContentItem}
         onHighlight={this.onHighlight}
@@ -153,6 +162,7 @@ class FeedbackTool extends Component {
         position={this.state.rect}
         submissionId={this.props.submissionId}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
+        focus={this.focus}
       />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
