@@ -1,3 +1,5 @@
+@import './../../../styles/variables/variables.css';
+
 .heading {
   display: flex;
   height: 71px;
@@ -5,8 +7,8 @@
 
 .heading_item {
   background-color: #eee;
-  border: 0px solid #999;
-  border-width: 0 1px 1px 0;
+  border: 1px solid var(--lightGrey);
+  border-width: 1px;
   width: calc(100% * 1/5);
   padding: 15px;
   display: flex;
@@ -20,4 +22,8 @@
 
 .headingId > .heading_item:first-child {
   font-weight: bold;
+}
+
+.heading_name {
+  color: var(--darkGrey);
 }
