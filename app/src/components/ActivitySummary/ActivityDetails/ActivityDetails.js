@@ -13,7 +13,7 @@ const ActivityDetails = ({activity}) => (
       <span>
         <MLIcon
           iconTitle="minus"
-          iconFill="var(--black)"
+          iconFill="#000000" // black
           iconType="minus"
           iconWidth="12"
           iconHeight="12"
