@@ -1,3 +1,5 @@
+@import '../../../../styles/core.css';
+
 .flagContainer {
   height: 0;
 }
@@ -9,8 +11,8 @@
 }
 
 .triangleBorder {
-  background: #fff;
-  border: 1px solid #5fc5eb;
+  background: var(--pureWhite);
+  border: 1px solid var(--blue);
   border-radius: 0px 4px 4px 4px;
   color: #333;
   margin: 0 25px;
@@ -26,7 +28,7 @@
 }
 
 .triangleBorder:before {
-  border-color: transparent #5fc5eb;
+  border-color: transparent var(--blue);
   border-style: solid;
   border-width: 0px 20px 10px 0;
   bottom: auto;
@@ -39,7 +41,7 @@
 }
 
 .triangleBorder:after {
-  border-color: transparent #fff;
+  border-color: transparent var(--pureWhite);
   border-style: solid;
   border-width: 0px 15px 8px 0;
   bottom: auto;
@@ -51,7 +53,7 @@
   width: 0;
 }
 
-.flagContainer .title {
+.flagContainer .heading {
   font-weight: bold;
   margin: 0 0 5px 0;
   display: flex;
