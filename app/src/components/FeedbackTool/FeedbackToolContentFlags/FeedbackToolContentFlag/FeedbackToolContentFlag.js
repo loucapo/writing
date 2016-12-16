@@ -5,7 +5,7 @@ import feedbackToolContentFlag from './feedbackToolContentFlag.css';
 
 const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
   const triangleStyles = {
-    top: `${item.position.top - 20 }px`,
+    top: `${item.position.top}px`,
     zIndex: topFlag ? 1001 : 1
   };
 
