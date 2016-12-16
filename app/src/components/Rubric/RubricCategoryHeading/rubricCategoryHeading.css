@@ -1,3 +1,5 @@
+@import './../../../styles/variables/variables.css';
+
 .heading {
   display: flex;
   height: 71px;
@@ -5,7 +7,7 @@
 
 .heading_item {
   background-color: #eee;
-  border: 1px solid #DDDDDD;
+  border: 1px solid var(--lightGrey);
   border-width: 1px;
   width: calc(100% * 1/5);
   padding: 15px;
@@ -23,5 +25,5 @@
 }
 
 .heading_name {
-  color: #686868;
+  color: var(--darkGrey);
 }
