@@ -45,7 +45,8 @@ class FeedbackTool extends Component {
       return;
     }
     const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
-    const offSet = rect.top + window.scrollY - 516;
+    const offSet = rect.top + this.refs.scroll.scrollTop - this.refs.draftContainer.offsetTop;
+
     const coordinates = {
       top: offSet,
       left: rect.left,
@@ -162,7 +163,7 @@ class FeedbackTool extends Component {
         <FeedbackToolHeader toggleRubric={this.toggleRubric} />
         <section className={feedbackTool.feedbackToolContainer}>
           <div className={feedbackTool.editorContainer}>
-            <div className={feedbackTool.scrollContainer}>
+            <div className={feedbackTool.scrollContainer} ref="scroll">
               <div>
                 {studentReflection || null}
                 <div className={ coreCss.panel }>
@@ -171,7 +172,7 @@ class FeedbackTool extends Component {
                       Final Draft
                     </h1>
                   </div>
-                  <div className={ feedbackTool.draftContainer }>
+                  <div className={ feedbackTool.draftContainer } ref="draftContainer" >
                     {feedbackToolContent}
                     {flags || null}
                   </div>
