@@ -11,21 +11,6 @@ const Activity = ({activity, drafts, rubric, selectCell}) => {
   }
   return (
     <div className={ activityCss.activityPage }>
-      <header className={ activityCss.header }>
-        <div className={ activityCss.headerLeft }>
-          <div data-id="course-name" className={ activityCss.courseName }>
-            ENG 101: Introduction to Writing
-          </div>
-          <div data-id="activity-type" className={ activityCss.activity }>
-            Argument Essay
-          </div>
-        </div>
-        <div className={ activityCss.headerRight }>
-          <div data-id="due-date" className={ activityCss.assignDate }>
-            Assigned:  Mon. Feb 23, 2017
-          </div>
-        </div>
-      </header>
       <div className={activityCss.activity_container}>
         <ActivitySummary activity={activity} />
         <Rubric
