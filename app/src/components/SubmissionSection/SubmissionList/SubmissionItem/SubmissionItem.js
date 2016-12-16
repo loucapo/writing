@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import submissionItemCss from './submissionItem.css';
+import MLIcon from 'ml-react-cdl-icons';
 
 const SubmissionItem = () => (
   <tbody>
@@ -12,7 +13,14 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <a href="#">Review Complete</a>
+        <MLIcon
+          iconFill="#3B822E"
+          iconTitle="check"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td className={submissionItemCss.reviewSent}>
         Review sent Sep 22, 2016
@@ -26,7 +34,14 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <a href="#">Review Complete</a>
+        <MLIcon
+          iconFill="#3B822E"
+          iconTitle="check"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td>
         <a href="#">Send Review</a>
@@ -100,7 +115,14 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <a href="#">Review Complete</a>
+        <MLIcon
+          iconFill="#3B822E"
+          iconTitle="check"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td>
         <a href="#">Send Review</a>
@@ -162,7 +184,14 @@ const SubmissionItem = () => (
       </td>
       <td>Sep 18, 2016</td>
       <td>
-        <a href="#">Review Complete</a>
+        <MLIcon
+          iconFill="#3B822E"
+          iconTitle="check"
+          iconType="check"
+          iconWidth="20"
+          iconHeight="20"
+          viewBox="0 0 24 24"
+        />
       </td>
       <td>
         <a href="#">Send Review</a>

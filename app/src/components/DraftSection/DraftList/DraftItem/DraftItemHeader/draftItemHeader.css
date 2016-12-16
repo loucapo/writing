@@ -3,3 +3,7 @@
 .header h1 {
   background-color: var(--offWhite);
 }
+
+.draftName {
+  margin-left: 5px;
+}
