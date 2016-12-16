@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { activityAction } from './../modules';
 import Activity from '../components/Activity/Activity';
 import { withRouter } from 'react-router';
+import { loadRubric } from './../modules';
 
 class ActivityContainer extends Component {
   componentDidMount() { this.loadData(); }
@@ -12,10 +13,17 @@ class ActivityContainer extends Component {
   // this causes infinte loop for some reason
   // componentDidUpdate() { this.loadData(); }
 
-  loadData() { this.props.activityAction(this.props.params.id); }
+  loadData() {
+    this.props.activityAction(this.props.params.id);
+    this.props.loadRubric();
+  }
+
+  // onClick callback for individual cell
+  selectCell = (rowNumber, colNumber) => { // eslint-disable-line no-unused-vars
+  };
 
   render() {
-    return (<Activity{...this.props} />);
+    return (<Activity{...this.props} selectCell={this.selectCell} />);
   }
 }
 
@@ -25,7 +33,8 @@ ActivityContainer.propTypes = {
   isFetching: PropTypes.string,
   errorMessage: PropTypes.string,
   activityAction: PropTypes.func,
-  params: PropTypes.object
+  params: PropTypes.object,
+  loadRubric: PropTypes.func
 
 };
 
@@ -35,12 +44,14 @@ const mapStateToProps = (state, props) => {
     return {};
   }
   const drafts = activity.drafts.map(x => state.drafts.filter(d => d.id === x)[0]);
+  const rubric = state.rubric;
   return {
     activity,
-    drafts
+    drafts,
+    rubric
   };
 };
 
-export default withRouter(connect(mapStateToProps, {activityAction})(ActivityContainer));
+export default withRouter(connect(mapStateToProps, {loadRubric, activityAction})(ActivityContainer));
 
 
