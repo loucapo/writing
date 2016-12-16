@@ -9,7 +9,7 @@ const DraftItemHeader = ({draftName}) => (
       <span>
         <MLIcon
           iconTitle="minus"
-          iconFill="#ffffff"
+          iconFill="#000000" // black
           iconType="minus"
           iconWidth="12"
           iconHeight="12"

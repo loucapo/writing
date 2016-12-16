@@ -14,7 +14,3 @@ td {
   color: var(--darkGrey);
   font-style: italic;
 }
-
-.check {
-  fill: green;
-}
