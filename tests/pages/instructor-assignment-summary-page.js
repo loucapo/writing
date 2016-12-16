@@ -1,6 +1,9 @@
 var Page = require('marvin-js').Page;
+var rubric = require('./components/final-rubric');
 
 module.exports = new Page({
+
+  'final rubric': { get: function() { return this.component(rubric, '[class^="Activity__activity_container"] > div:nth-child(2)')}},
 
   // assignment header
   url: { value: '/activity/23630184-5955-4dbe-9908-ab065f1bcad2' },

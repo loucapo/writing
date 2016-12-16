@@ -9,6 +9,17 @@ exports.define = function(steps) {
     page.visit();
   });
 
+  steps.then("I see '$elem' in elem '$component'", function(elem, component) {
+    expect(page[component][elem]).to.exist;
+  });
+
+  steps.then("I see link with text '$text' in elem '$component'", function(text, component) {
+    page[component].elements("//a[text()='" + text + "']", 'xpath')
+      .then(function(ls) {
+        expect(ls.length).to.equal(1);
+      });
+  });
+
   steps.then('I should see the Assignment Header elements', function() {
     expect(page.title).to.exist;
     expect(page.type).to.exist;
