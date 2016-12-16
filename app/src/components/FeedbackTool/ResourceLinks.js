@@ -10,7 +10,9 @@ const ResourceLinks = ({resourceLinks}) =>(
         return (
           <li key={uuid.v4()}>
             <div className={resourceLinksStyle.image} />
-            <a href={link.url} target="_blank">{link.title}</a>
+            {/*<a href={link.url} target="_blank">*/}
+            {link.title}
+            {/* </a>*/}
           </li>
         );
       })}
