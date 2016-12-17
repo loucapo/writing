@@ -16,24 +16,22 @@ exports.define = function(steps) {
 
   steps.then("I see a link with text '$text' in element '$element'", function(text, element) {
     page[element].findElements({xpath: ".//a[text()='" + text + "']"})
-      .then(function(ls) {
-        expect(ls.length).to.equal(1);
-      });
+      .then(gimme_just_one);
   });
 
   steps.then("I see a button with text '$text' in element '$element'", function(text, element) {
     page[element].findElements({xpath: ".//button[text()='" + text + "']"})
-      .then(function(ls) {
-        expect(ls.length).to.equal(1);
-      });
+      .then(gimme_just_one);
   });
 
   steps.then("I see text '$text' in element '$element'", function(text, element) {
     page[element].findElements({xpath: ".//*[contains(text(), '" + text + "')]"})
-      .then(function(ls) {
-        expect(ls.length).to.equal(1);
-      });
+      .then(gimme_just_one);
   });
+
+  function gimme_just_one(arr) {
+    expect(arr.length).to.equal(1);
+  };
 
   steps.then('I should see the Assignment Header elements', function() {
     expect(page.title).to.exist;
