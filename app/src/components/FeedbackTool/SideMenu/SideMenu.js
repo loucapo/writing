@@ -40,12 +40,6 @@ class SideMenu extends Component {
       iconType="comment_thumbs_up"
       iconWidth="20"
       iconHeight="20" />);
-    const quickFeedbackIcon = (<MLIcon
-      iconTitle="Quick Feedback"
-      iconFill="#DD5714"
-      iconType="comment_text"
-      iconWidth="20"
-      iconHeight="20" />);
 
     return (
       <div className={sideMenu.sidebarContainer}>
