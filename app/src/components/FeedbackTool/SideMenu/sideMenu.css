@@ -22,28 +22,28 @@
 }
 
 .sideMenu li:hover {
-  border: 1px solid var(  --mediumLightGrey);
+  border: 1px solid var(--mediumLightGrey);
 }
 
-/*.sideMenu li img {*/
-  /*margin-right: 6px;*/
-/*}*/
+.sideMenu li img {
+  margin-right: 6px;
+}
 
-/*.sideMenuCaption {*/
-  /*margin-left: 5px;*/
-/*}*/
+.sideMenuCaption {
+  margin-left: 5px;
+}
 
-/*.list_Item {*/
-  /*background-color: lightgray;*/
-  /*border: solid thin darkgray;*/
-  /*padding: 5px 0 5px 5px;*/
-/*}*/
+.list_Item {
+  background-color: var(--offWhite);
+  border: solid thin darkgray;
+  padding: 5px 0 5px 5px;
+}
 
-/*.quickFeedback {*/
-  /*height: 100%;*/
-  /*overflow: hidden;*/
-/*}*/
+.quickFeedback {
+  height: 100%;
+  overflow: hidden;
+}
 
-/*.hiddenItem {*/
-  /*height: 0px;*/
-/*}*/
+.hiddenItem {
+  height: 0px;
+}

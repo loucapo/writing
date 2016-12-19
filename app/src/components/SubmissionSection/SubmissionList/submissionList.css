@@ -49,3 +49,10 @@ select {
   background-color: var(--comGrey);
   padding: 7px 10px;
 }
+
+.dropdown_caret {
+  position: relative;
+  left: 5px;
+  top: 3px;
+  fill: var(--blue);
+}

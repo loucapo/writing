@@ -45,8 +45,16 @@ class FeedbackTool extends Component {
       return;
     }
     const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
+    const offSet = rect.top + this.refs.scroll.scrollTop - this.refs.draftContainer.offsetTop;
 
-    this.setState({value, rect, isNotSelection: false});
+    const coordinates = {
+      top: offSet,
+      left: rect.left,
+      width: rect.width,
+      bottom: rect.bottom
+    };
+
+    this.setState({value, rect: coordinates, isNotSelection: false});
   };
 
   resetSelection = (editorState) => {
@@ -108,6 +116,10 @@ class FeedbackTool extends Component {
     }
   };
 
+  focus = () => {
+    this.refs.ml_rte.refs.editor.focus();
+  };
+
   render = () => {
     const colorStyleMap = {
       green: {
@@ -115,7 +127,11 @@ class FeedbackTool extends Component {
       },
       blue: {
         backgroundColor: '#b0daff'
+      },
+      orange: {
+        backgroundColor: '#ff8a57'
       }
+
     };
 
     let feedbackToolContent;
@@ -137,7 +153,8 @@ class FeedbackTool extends Component {
         value={this.state.value}
         customStyleMap={colorStyleMap}
         customHandleKeyCommand={()=>{}}
-        readOnly={false} />);
+        readOnly={false}
+        ref="ml_rte" />);
       sideMenu = (<SideMenu
         submitFeedbackToolContentItem={this.props.submitFeedbackToolContentItem}
         onHighlight={this.onHighlight}
@@ -145,6 +162,7 @@ class FeedbackTool extends Component {
         position={this.state.rect}
         submissionId={this.props.submissionId}
         showQuickFeedbackTool={this.state.showQuickFeedbackTool}
+        focus={this.focus}
       />);
       studentReflection = (<StudentReflection />);
       endComment = (<EndComment />);
@@ -155,7 +173,7 @@ class FeedbackTool extends Component {
         <FeedbackToolHeader toggleRubric={this.toggleRubric} />
         <section className={feedbackTool.feedbackToolContainer}>
           <div className={feedbackTool.editorContainer}>
-            <div className={feedbackTool.scrollContainer}>
+            <div className={feedbackTool.scrollContainer} ref="scroll">
               <div>
                 {studentReflection || null}
                 <div className={ coreCss.panel }>
@@ -164,16 +182,13 @@ class FeedbackTool extends Component {
                       Final Draft
                     </h1>
                   </div>
-                  <div className={ feedbackTool.draftContainer }>
+                  <div className={ feedbackTool.draftContainer } ref="draftContainer" >
                     {feedbackToolContent}
-                    <div className={ feedbackTool.flagContainer }>
-                      &nbsp;
-                    </div>
+                    {flags || null}
                   </div>
                 </div>
                 {endComment || null}
               </div>
-              {flags || null}
             </div>
           </div>
           {sideMenu || null}

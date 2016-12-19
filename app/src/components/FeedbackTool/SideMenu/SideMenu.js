@@ -1,6 +1,4 @@
 import React, {PropTypes, Component} from 'react';
-// import OtherSVG from './Buttons/OtherSVG';
-// import GoodJobSVG from './Buttons/GoodJobSVG';
 import MLIcon from 'ml-react-cdl-icons';
 import ModalFeedbackButton from './Buttons/ModalFeedbackButton';
 import FeedbackLibButton from './Buttons/FeedbackLib';
@@ -25,6 +23,7 @@ class SideMenu extends Component {
   };
 
   toggleQuickFeedback = () => {
+    this.props.focus();
     this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
 
@@ -95,7 +94,6 @@ class SideMenu extends Component {
               commentIcon={goodJobIcon}
               {...this.props}
             />
-
             <FeedbackLibButton toggleQuickFeedback={this.toggleQuickFeedback} />
             <div
               className={this.state.showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
@@ -141,61 +139,6 @@ class SideMenu extends Component {
               </li>
             </div>
           </ul>
-          {/*<ul>*/}
-            {/*<ThesisButton />*/}
-            {/*<ReasonSupportButton />*/}
-            {/*<InterpretationButton />*/}
-            {/*<ParagraphDevButton />*/}
-            {/*<ResearchButton />*/}
-            {/*<CounterArgsButton />*/}
-            {/*<OtherButton {...this.props} />*/}
-            {/*<GoodJobButton />*/}
-            {/*<FeedbackLibButton toggleQuickFeedback={this.toggleQuickFeedback} />*/}
-            {/**/}
-            {/*<div*/}
-              {/*className={this.state.showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>*/}
-              {/*<li*/}
-                {/*data-id="appropriate-language"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(1)}>Appropriate Language*/}
-              {/*</li>*/}
-              {/*<li*/}
-                {/*data-id="comma-splice"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(2)}>Comma Splice*/}
-              {/*</li>*/}
-              {/*<li*/}
-                {/*data-id="comma-error"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(3)}>Comma Error*/}
-              {/*</li>*/}
-              {/*<li*/}
-                {/*data-id="fragment"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(4)}>Fragment*/}
-              {/*</li>*/}
-              {/*<li*/}
-                {/*data-id="pronoun-agreement"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(5)}>Pronoun Agreement*/}
-              {/*</li>*/}
-              {/*<li*/}
-                {/*data-id="subject-verb-agreement"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(6)}>Subject Verb Agreement*/}
-              {/*</li>*/}
-              {/*<li*/}
-                {/*data-id="needs-analysis"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(7)}>Needs Analysis*/}
-              {/*</li>*/}
-              {/*<li*/}
-                {/*data-id="usage"*/}
-                {/*className={sideMenu.list_Item}*/}
-                {/*onClick={() => this.spanClicked(8)}>Usage*/}
-              {/*</li>*/}
-            {/*</div>*/}
-          {/*</ul>*/}
         </div>
       </div>);
   }
@@ -204,6 +147,7 @@ class SideMenu extends Component {
 SideMenu.propTypes = {
   submitFeedbackToolContentItem: PropTypes.func,
   completeHighlight: PropTypes.func,
+  focus: PropTypes.func,
   position: PropTypes.object,
   submissionId: PropTypes.string
 };

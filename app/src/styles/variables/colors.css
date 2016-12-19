@@ -2,6 +2,7 @@
   --pureWhite: #FFFFFF;
   --offWhite: #F8F8F8;
   --lightGrey: #DDDDDD;
+  --comGrey: #cdcdcd;
   --mediumLightGrey: #C8C8C8;
   --veryLightGrey: #F3F3F3;
   --darkGrey: #686868;
@@ -11,6 +12,7 @@
   --green: #3B822E;
   --orange: #DD5714;
   --red: #DA1B2C;
+  --black: #000000;
 
   /* these two are in the comps but not in the color palette or CDL */
   --lightBlue: #A0ACB2;
