@@ -1,0 +1,10 @@
+@import '../../../../../styles/core.css';
+
+.flagDetailContainer {
+  border-top: 1px solid var(--lightGrey);
+  padding-top: 5px;
+}
+
+h4 {
+  margin: 0;
+}

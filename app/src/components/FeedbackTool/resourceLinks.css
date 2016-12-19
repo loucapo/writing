@@ -1,0 +1,12 @@
+.resourceContainer {
+  margin-top: 20px;
+}
+
+.resourceContainer ul{
+  padding: 0;
+}
+
+.header {
+  margin-bottom: 10px;
+  font-weight: bold;
+}

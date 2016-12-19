@@ -22,7 +22,7 @@ const RubricCategoryScore = ({scores, selectCell, selections}) => {
             <div className={rubricCategoryScoreCss.category_score} key={uuid.v4()}>
               {
                 scoreRow.map((score, row) => {
-                  let classname = rubricCategoryScoreCss.category_item ;
+                  let classname = rubricCategoryScoreCss.category_item;
 
                   // Note row # increases from top to bottom, but score increases bottom to top
                   // there are numberRows rows so (numberRows - row #) is the score

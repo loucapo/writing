@@ -19,3 +19,11 @@
   right: 0;
   top: 20px;
 }
+
+.argumentRubric {
+  font-weight: bold;
+}
+
+.show_rubric_levels {
+  margin-top: 10px;
+}
