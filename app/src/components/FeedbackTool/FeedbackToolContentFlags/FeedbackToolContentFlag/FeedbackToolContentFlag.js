@@ -17,7 +17,7 @@ const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
           <MLIcon
             iconTitle={feedbackToolContentMap[item.contentType].title}
             iconType="comment"
-            iconFill="#00758E"
+            iconFill={item.color}
             iconWidth="26"
             iconHeight="26"
             viewBox="0 0 24 24"
