@@ -3,7 +3,7 @@
   display: flex;
   margin: 0 auto;
   overflow: auto;
-  padding-top: 60px;
+  padding: 60px 20px 20px 20px;
   position: relative;
   width: 75vw;
 }
