@@ -11,6 +11,8 @@ import coreCss from '../../styles/core.css';
 import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {
+  flagCounter = 1;
+
   state = {
     value: RichTextEditor.fromRaw(this.props.document ? this.props.document : ''),
     showRubric: false,
@@ -44,8 +46,33 @@ class FeedbackTool extends Component {
     if(window.getSelection().rangeCount <= 0) {
       return;
     }
+
+    // TODO: we should revisit with Raif about concerns he had about doing it this way from the get-go
+    // new, maybe hacky fix for flag positioning
+
+    // create a new wrapper node for your selection
+    const newNode = document.createElement('span');
+    newNode.id = 'marker' + this.flagCounter;
+    newNode.classList.add('FeedbackTool__selected__2SpeA');
+    window.getSelection().getRangeAt(0).surroundContents(newNode);
+
+    // if you already had a selection, kill it first
+    if (document.querySelectorAll('.FeedbackTool__selected__2SpeA').length > 1) {
+      const lastNode = document.querySelector('#marker' + (this.flagCounter - 1));
+      lastNode.outerHTML = lastNode.innerHTML;
+    }
+
+    // the selected element
+    const elemOffset = document.querySelector('#marker' + this.flagCounter).offsetTop;
+
+    // the parent container
+    const contOffset = this.refs.draftContainer.offsetTop;
+
+    this.flagCounter ++;
     const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
-    const offSet = rect.top + this.refs.scroll.scrollTop - this.refs.draftContainer.offsetTop;
+
+    // the position of the marked content inside the parent container
+    const offSet = elemOffset - contOffset;
 
     const coordinates = {
       top: offSet,

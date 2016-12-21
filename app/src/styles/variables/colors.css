@@ -28,5 +28,6 @@
 
   /* these two are in the comps but not in the color palette or CDL */
   --lightBlue: #A0ACB2;
+  --selectBlue: #b0daff;
   --darkBlue: #142A35;
 }
