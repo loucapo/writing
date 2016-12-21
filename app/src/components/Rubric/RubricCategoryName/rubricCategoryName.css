@@ -21,6 +21,7 @@
 .category_nameLevelContainer:first-child {
   min-height: 40px;
   text-align: left;
+  height: 71px;
 }
 
 .name {
