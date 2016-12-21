@@ -26,4 +26,11 @@
   display: flex;
 }
 
+span.selected,
+::selection {
+  background-color: var(--selectBlue);
+}
 
+::-moz-selection { /* Code for Firefox */
+  background: var(--selectBlue);
+}
