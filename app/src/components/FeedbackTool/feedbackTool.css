@@ -24,6 +24,7 @@
 
 .draftContainer {
   display: flex;
+  padding: 0 0 0 40px;
 }
 
 span.selected,
