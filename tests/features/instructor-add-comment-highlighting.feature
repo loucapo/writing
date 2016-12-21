@@ -1,6 +1,7 @@
 @WRITE-355
 @WRITE-50
 @WRITE-553
+@WRITE-560
 
 Feature: Instructor Can Add Comments to Highlighting
 
@@ -37,3 +38,11 @@ Feature: Instructor Can Add Comments to Highlighting
     Feedback Type
     other
     reason_support
+
+  Scenario: The Modal Stays Above the Fold
+    Given I visit the activity page
+    When I open the feedback tool
+    And I select a lower span of the essay
+    And on the feedback page I click the 'other' element
+    And I see a comment popup appear
+    Then the modal completely appears above the fold
