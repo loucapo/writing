@@ -88,7 +88,7 @@ module.exports = new Page({
   // RUBRIC
   rubric: { get: function () { return this.element("[class^='Rubric__rubric_container']"); } },
 
-  'header button': { get: function() { return this.element("[data-id='header-button']"); } },
+  'header button': { get: function() { return this.element("[data-id='score-rubric-button']"); } },
 
   'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
 
