@@ -12,7 +12,7 @@ const feedbackToolContentMap = {
   reasonSupport: {
     title: 'Reason and Support',
     color: 'blue',
-    resourceLinks: [4, 5, 6],
+    resourceLinks: [7, 8, 9],
     model: standardModel,
     form: standardForm
   },
