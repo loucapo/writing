@@ -24,7 +24,7 @@
     "classnames": "^2.2.5",
     "file-loader": "^0.9.0",
     "freakin-react-forms": "reharik/freakin-react-forms",
-    "ml-react-cdl-icons": "^1.0.8",
+    "ml-react-cdl-icons": "^1.1.1",
     "ml-react-rte": "^0.0.22",
     "precommit-hook-eslint": "^3.0.0",
     "react": "^15.3.2",

@@ -14,7 +14,7 @@ export const standardForm = (onSubmit, onClose, contentMap) => {
       <MLIcon
         className={modalFormStyles.commentMic}
         iconTitle="comment microphone"
-        iconType="comment_microphone"
+        iconType="microphone"
         iconFill="#676767"
         iconWidth="26"
         iconHeight="26"
