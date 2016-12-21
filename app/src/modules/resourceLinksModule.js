@@ -29,6 +29,21 @@ const resourceLinks = [
     id: 6,
     title: 'LearningCurve: Sentence fragments',
     url: 'http://www.yahoo.com'
+  },
+  {
+    id: 7,
+    title: 'Supporting claims with evidence',
+    url: 'http://www.zombo.com'
+  },
+  {
+    id: 8,
+    title: 'Including details that support the main idea',
+    url: 'http://www.zombo.com'
+  },
+  {
+    id: 9,
+    title: 'Using appeals (ethos, logos, pathos) as a writer',
+    url: 'http://www.zombo.com'
   }
 ];
 
