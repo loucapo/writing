@@ -18,6 +18,7 @@ const mapStateToProps = (state, props) => {
 
     newX.title = feedbackMap.title;
     newX.color = feedbackMap.color;
+    newX.icon = feedbackMap.icon;
     newX.resources = feedbackMap.resourceLinks
       && feedbackMap.resourceLinks.map(r => state.resourceLinks.find(rl => rl.id === r));
     return newX;
