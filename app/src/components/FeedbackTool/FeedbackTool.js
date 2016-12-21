@@ -141,7 +141,7 @@ class FeedbackTool extends Component {
     let endComment;
     let heading;
     if (this.state.showRubric) {
-      heading='';
+      heading = '';
       feedbackToolContent = (
         <RubricContainer
           showRubric={this.state.showRubric}
