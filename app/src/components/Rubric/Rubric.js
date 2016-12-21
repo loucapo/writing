@@ -4,6 +4,8 @@ import RubricCategory from './RubricCategory/RubricCategory';
 import ActionButton from '../ActionButton/ActionButton';
 import uuid from 'uuid';
 import classnames from 'classnames';
+import MLIcon from 'ml-react-cdl-icons';
+
 import rubricCss from './rubric.css';
 import coreCss from '../../styles/core.css';
 import rubricCategoryHeadingCss from './RubricCategoryHeading/rubricCategoryHeading.css';
@@ -46,10 +48,24 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
   }
   return (
     <section className={rubricCss.rubric_container}>
-      <div className={rubricCss.title}>Final Draft Rubric</div>
-      <div className={rubricCss.close} onClick={toggleRubric}>X</div>
-      <RubricCategoryName categoryNames={ rubric.categoryNames } />
-      <RubricCategory categories={rubric.categories} selectCell={selectCell} />
+      <div className={rubricCss.heading}>
+        <span className={rubricCss.title}>Final Draft Rubric</span>
+        <span className={rubricCss.close}>
+          <MLIcon
+            iconTitle="x"
+            iconFill="#000000" // black
+            iconType="x"
+            iconWidth="24"
+            iconHeight="24"
+            viewBox="0 0 24 24"
+            onClick={toggleRubric}
+          />
+        </span>
+      </div>
+      <div className={rubricCss.rubricTable}>
+        <RubricCategoryName categoryNames={ rubric.categoryNames } />
+        <RubricCategory categories={rubric.categories} selectCell={selectCell} />
+      </div>
     </section>
   );
 };
