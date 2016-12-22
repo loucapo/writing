@@ -9,9 +9,7 @@ const ResourceLinks = ({resourceLinks}) =>(
       {resourceLinks.map(link => {
         return (
           <li key={uuid.v4()}>
-            {/*<a href={link.url} target="_blank">*/}
-            {link.title}
-            {/* </a>*/}
+            <a href="#">{link.title}</a>
           </li>
         );
       })}
