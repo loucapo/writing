@@ -47,8 +47,8 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
     );
   }
   return (
-    <section className={rubricCss.rubric_container}>
-      <div className={rubricCss.heading}>
+    <div className={ coreCss.panel }>
+      <h1 data-id="rubric-title">
         <span className={rubricCss.title}>Final Draft Rubric</span>
         <span className={rubricCss.close}>
           <MLIcon
@@ -61,12 +61,12 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
             onClick={toggleRubric}
           />
         </span>
-      </div>
+      </h1>
       <div className={rubricCss.rubricTable}>
         <RubricCategoryName categoryNames={ rubric.categoryNames } />
         <RubricCategory categories={rubric.categories} selectCell={selectCell} />
       </div>
-    </section>
+    </div>
   );
 };
 
