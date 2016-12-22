@@ -1,16 +1,39 @@
 import React from 'react';
 import ActionButton from '../../ActionButton/ActionButton';
+import MLIcon from 'ml-react-cdl-icons';
+import classnames from 'classnames';
+
 import coreCss from './../../../styles/core.css';
 import endComment from './endComment.css';
-import actionButton from '../../ActionButton/actionButton.css';
+import actionButton from './../../ActionButton/actionButton.css';
+import feedbackTool from './../feedbackTool.css';
 
 const EndComment = () => {
   return (
     <div data-id="endComment" className={ coreCss.panel }>
-      <h1><span>End Comment <span className={ endComment.optional }>(optional)</span></span></h1>
+      <h1 className={feedbackTool.titleSpan}>
+        <span>
+          <MLIcon
+            iconTitle="minus"
+            iconFill="#000000" // black
+            iconType="minus"
+            iconWidth="12"
+            iconHeight="12"
+            viewBox="0 0 24 24"
+          />
+        </span>
+        <span
+          className={feedbackTool.title}>End Comment
+          <span className={ endComment.optional }>(optional)</span>
+        </span>
+      </h1>
       <div className={ endComment.form }>
         <textarea placeholder="Add comment" />
-        <ActionButton dataId="end-comment-add-button" css={ actionButton.action_button_blue } content="Add Comment" />
+        <ActionButton
+          dataId="end-comment-add-button"
+          css={ classnames( actionButton.action_button_blue, endComment.button ) }
+          content="Add Comment"
+        />
       </div>
     </div>
   );

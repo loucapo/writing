@@ -7,6 +7,8 @@ import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
 import RubricContainer from '../../containers/RubricContainer';
 import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
+import MLIcon from 'ml-react-cdl-icons';
+
 import coreCss from '../../styles/core.css';
 import feedbackTool from './feedbackTool.css';
 
@@ -158,7 +160,6 @@ class FeedbackTool extends Component {
       orange: {
         backgroundColor: '#ffc196'
       }
-
     };
 
     let feedbackToolContent;
@@ -166,7 +167,9 @@ class FeedbackTool extends Component {
     let sideMenu;
     let studentReflection;
     let endComment;
+    let heading;
     if (this.state.showRubric) {
+      heading = '';
       feedbackToolContent = (
         <RubricContainer
           showRubric={this.state.showRubric}
@@ -175,6 +178,23 @@ class FeedbackTool extends Component {
           toggleIsRubricLoaded={this.toggleIsRubricLoaded}
         />);
     } else {
+      heading = (
+        <div className={feedbackTool.heading} data-id="studentSubmission">
+          <h1 className={feedbackTool.titleSpan}>
+            <span>
+              <MLIcon
+                iconTitle="minus"
+                iconFill="#000000" // black
+                iconType="minus"
+                iconWidth="12"
+                iconHeight="12"
+                viewBox="0 0 24 24"
+              />
+            </span>
+            <span className={feedbackTool.title}>Final Draft</span>
+          </h1>
+        </div>
+      );
       feedbackToolContent = ( <RichTextEditor
         onChange={this.onChange}
         value={this.state.value}
@@ -204,11 +224,7 @@ class FeedbackTool extends Component {
               <div>
                 {studentReflection || null}
                 <div className={ coreCss.panel }>
-                  <div data-id="studentSubmission">
-                    <h1>
-                      Final Draft
-                    </h1>
-                  </div>
+                  {heading}
                   <div className={ feedbackTool.draftContainer } ref="draftContainer" >
                     {feedbackToolContent}
                     {flags || null}

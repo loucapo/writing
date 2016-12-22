@@ -12,11 +12,52 @@
 .headerRight {
   align-items: center;
   display: flex;
-  min-width: 35%;
+  min-width: 30%;
   justify-content: space-between;
 }
 
 .activity {
   color: var(--pureWhite);
   font-size: 21px;
+}
+
+.dropdown_caret {
+  position: relative;
+  left: -20px;
+  top: 3px;
+  fill: var(--darkGrey);
+}
+
+.studentName {
+  font-size: 21px;
+}
+
+.left_arrow {
+  fill: white;
+  margin: auto auto;
+}
+
+.leftArrowContainer {
+  width: 40px;
+  display:flex;
+}
+
+.leftSide {
+  margin-right:auto;
+  display:flex;
+  flex-direction: column;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: space-between;
+}
+
+.assignDate {
+  font-style: italic;
+  align-self: center;
+}
+
+.finalGradeSelect {
+  margin-right: 15px;
 }
