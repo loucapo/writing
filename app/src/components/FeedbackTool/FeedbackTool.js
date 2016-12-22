@@ -7,6 +7,8 @@ import FeedbackToolHeader from './FeedbackToolHeader/FeedbackToolHeader';
 import RubricContainer from '../../containers/RubricContainer';
 import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
+import MLIcon from 'ml-react-cdl-icons';
+
 import coreCss from '../../styles/core.css';
 import feedbackTool from './feedbackTool.css';
 
@@ -158,7 +160,6 @@ class FeedbackTool extends Component {
       orange: {
         backgroundColor: '#ff8a57'
       }
-
     };
 
     let feedbackToolContent;
@@ -179,8 +180,18 @@ class FeedbackTool extends Component {
     } else {
       heading = (
         <div className={feedbackTool.heading} data-id="studentSubmission">
-          <h1>
-            Final Draft
+          <h1 className={feedbackTool.titleSpan}>
+            <span>
+              <MLIcon
+                iconTitle="minus"
+                iconFill="#000000" // black
+                iconType="minus"
+                iconWidth="12"
+                iconHeight="12"
+                viewBox="0 0 24 24"
+              />
+            </span>
+            <span className={feedbackTool.title}>Final Draft</span>
           </h1>
         </div>
       );
