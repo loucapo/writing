@@ -50,7 +50,7 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
     <div className={ coreCss.panel }>
       <h1 data-id="rubric-title">
         <span>Final Draft Rubric</span>
-        <span className={rubricCss.close}>
+        <span className={rubricCss.close} onClick={toggleRubric}>
           <MLIcon
             iconTitle="x"
             iconFill="#000000" // black
@@ -58,7 +58,6 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
             iconWidth="24"
             iconHeight="24"
             viewBox="0 0 24 24"
-            onClick={toggleRubric}
           />
         </span>
       </h1>

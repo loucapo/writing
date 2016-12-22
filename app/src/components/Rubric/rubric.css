@@ -16,6 +16,7 @@
 }
 
 .close {
+  cursor: pointer;
   margin-left: auto;
 }
 
