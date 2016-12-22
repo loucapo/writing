@@ -12,7 +12,7 @@
 .headerRight {
   align-items: center;
   display: flex;
-  min-width: 35%;
+  min-width: 30%;
   justify-content: space-between;
 }
 
