@@ -49,7 +49,7 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
   return (
     <div className={ coreCss.panel }>
       <h1 data-id="rubric-title">
-        <span className={rubricCss.title}>Final Draft Rubric</span>
+        <span>Final Draft Rubric</span>
         <span className={rubricCss.close}>
           <MLIcon
             iconTitle="x"
