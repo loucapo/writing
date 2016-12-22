@@ -170,7 +170,6 @@ class FeedbackTool extends Component {
     let endComment;
     let heading;
     if (this.state.showRubric) {
-      console.log("Showing rubric");
       heading = '';
       feedbackToolContent = (
         <RubricContainer
@@ -180,7 +179,6 @@ class FeedbackTool extends Component {
           toggleIsRubricLoaded={this.toggleIsRubricLoaded}
         />);
     } else {
-      console.log("Not Showing rubric");
       heading = (
         <div className={feedbackTool.heading} data-id="studentSubmission">
           <h1 className={feedbackTool.titleSpan}>
