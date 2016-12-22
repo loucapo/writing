@@ -19,7 +19,6 @@
   cursor: pointer;
   display: flex;
   font-size: 13px;
-  padding: 10px 20px;
 }
 
 .sideMenu li:hover {
@@ -34,8 +33,15 @@
   margin-left: 5px;
 }
 
+.listDiv {
+  display: flex;
+  flex-grow: 1;
+  padding: 10px 20px;
+}
+
 .list_Item {
   background-color: var(--offWhite);
+  padding: 10px 20px;
 }
 
 .list_Item:last-child {

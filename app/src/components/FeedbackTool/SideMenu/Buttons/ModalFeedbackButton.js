@@ -79,11 +79,13 @@ class ModalFeedbackButton extends Component {
   render() {
     const form = this.contentMap.form(this.onFormSubmit, this.onClose, this.contentMap);
     return (
-      <li data-id={this.props.contentType} onClick={this.onClick}>
-        {this.props.commentIcon}
-        <span className={sideMenu.sideMenuCaption}>
-          {this.contentMap.title}
-        </span>
+      <li data-id={this.props.contentType}>
+        <div className={ sideMenu.listDiv } onClick={this.onClick}>
+          {this.props.commentIcon}
+          <span className={sideMenu.sideMenuCaption}>
+            {this.contentMap.title}
+          </span>
+        </div>
         <FeedbackModal
           isOpen={this.state.isOpen}
           position={this.state.position}

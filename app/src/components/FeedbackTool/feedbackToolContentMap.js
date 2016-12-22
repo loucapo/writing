@@ -46,6 +46,8 @@ const feedbackToolContentMap = {
   },
   other: {
     title: 'Other',
+    color: 'blue',
+    resourceLinks: [4, 5, 6],
     model: standardModel,
     form: standardForm
   },
