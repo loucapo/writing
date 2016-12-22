@@ -1,13 +1,26 @@
 import React from 'react';
 import studentReflectionCss from './studentReflection.css';
+import MLIcon from 'ml-react-cdl-icons';
+
 import coreCss from './../../../styles/core.css';
+import feedbackTool from './../feedbackTool.css';
 
 const StudentReflection = () => {
   return (
     <div className={ coreCss.panel }>
       <div data-id="studentReflections">
-        <h1>
-          Student Reflection
+        <h1 className={feedbackTool.titleSpan}>
+          <span>
+            <MLIcon
+              iconTitle="minus"
+              iconFill="#000000" // black
+              iconType="minus"
+              iconWidth="12"
+              iconHeight="12"
+              viewBox="0 0 24 24"
+            />
+          </span>
+          <span className={feedbackTool.title}>Student Reflection</span>
         </h1>
       </div>
       <section className={ studentReflectionCss.section }>

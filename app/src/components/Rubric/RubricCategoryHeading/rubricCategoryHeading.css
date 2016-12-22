@@ -1,4 +1,4 @@
-@import './../../../styles/variables/variables.css';
+@import './../../../styles/core.css';
 
 .heading {
   display: flex;
@@ -6,7 +6,7 @@
 }
 
 .heading_item {
-  background-color: #eee;
+  background-color: var(--veryLightGrey);
   border: 1px solid var(--lightGrey);
   border-width: 1px;
   width: calc(100% * 1/5);
