@@ -10,6 +10,10 @@
   padding: 15px 20px;
 }
 
+.button {
+  margin-top: 15px;
+}
+
 textarea {
   border: solid thin var(--mediumLightGrey);
   flex: 1;
