@@ -23,7 +23,6 @@
   width: 100%;
   height: 100%;
   z-index: 1002;
-  background: none repeat scroll 0% 0% #000;
 }
 
 .mlModal-content {
@@ -63,7 +62,7 @@
 
 .mlModal-content {
   background: var(--veryLightGrey);
-  padding: 20px 24px 30px;
+  padding: 20px 24px 36px;
 }
 
 .mlModal-titleBar {
@@ -104,7 +103,7 @@
 }
 
 .mlModal textarea {
-  width: 95%;
+  width: 100%;
 }
 
 .mlModal button {
