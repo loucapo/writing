@@ -12,6 +12,9 @@ const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
   };
 
   let borderPointerColor;
+  let sentiment = item.instructorContent && item.instructorContent.sentimentLevel;
+  let color = item.color;
+
   switch(item.color) {
     case '#00758E':
       borderPointerColor = flagStyles.blueTriangleBorder;
@@ -23,6 +26,11 @@ const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
       borderPointerColor = flagStyles.greenTriangleBorder;
   }
 
+  if(sentiment && sentiment.slice(0, 10) === 'Great job!') {
+    borderPointerColor = flagStyles.greenTriangleBorder;
+    color = '#3b822e';
+  }
+
   return (
     <div className={flagStyles.flagContainer} onClick={() => onClick(!expanded, item.id)}>
       <div className={`${flagStyles.triangleBorder} ${borderPointerColor}`} style={triangleStyles}>
@@ -30,7 +38,7 @@ const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
           <MLIcon
             iconTitle={feedbackToolContentMap[item.contentType].title}
             iconType={item.icon}
-            iconFill={item.color}
+            iconFill={color}
             iconWidth="26"
             iconHeight="26"
             viewBox="0 0 24 24"
