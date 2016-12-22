@@ -150,13 +150,13 @@ class FeedbackTool extends Component {
   render = () => {
     const colorStyleMap = {
       green: {
-        backgroundColor: 'lightgreen'
+        backgroundColor: '#acdba2'
       },
       blue: {
         backgroundColor: '#b0daff'
       },
       orange: {
-        backgroundColor: '#ff8a57'
+        backgroundColor: '#ffc196'
       }
 
     };
