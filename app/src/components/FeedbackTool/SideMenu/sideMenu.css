@@ -16,6 +16,7 @@
 
 .sideMenu li {
   border-bottom: 1px solid var(--lightGrey);
+  cursor: pointer;
   display: flex;
   font-size: 13px;
   padding: 10px 20px;
@@ -35,8 +36,14 @@
 
 .list_Item {
   background-color: var(--offWhite);
-  border: solid thin darkgray;
-  padding: 5px 0 5px 5px;
+}
+
+.list_Item:last-child {
+  border-bottom-color: var(--mediumLightGrey);
+}
+
+.list_item li:hover {
+  border: 1px solid var(--darkGrey);
 }
 
 .quickFeedback {
