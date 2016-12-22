@@ -23,7 +23,6 @@ class SideMenu extends Component {
   };
 
   toggleQuickFeedback = () => {
-    this.props.focus();
     this.setState({showQuickFeedbackTool: !this.state.showQuickFeedbackTool});
   };
 
