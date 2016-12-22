@@ -166,7 +166,9 @@ class FeedbackTool extends Component {
     let sideMenu;
     let studentReflection;
     let endComment;
+    let heading;
     if (this.state.showRubric) {
+      heading = '';
       feedbackToolContent = (
         <RubricContainer
           showRubric={this.state.showRubric}
@@ -175,6 +177,13 @@ class FeedbackTool extends Component {
           toggleIsRubricLoaded={this.toggleIsRubricLoaded}
         />);
     } else {
+      heading = (
+        <div className={feedbackTool.heading} data-id="studentSubmission">
+          <h1>
+            Final Draft
+          </h1>
+        </div>
+      );
       feedbackToolContent = ( <RichTextEditor
         onChange={this.onChange}
         value={this.state.value}
@@ -204,11 +213,7 @@ class FeedbackTool extends Component {
               <div>
                 {studentReflection || null}
                 <div className={ coreCss.panel }>
-                  <div data-id="studentSubmission">
-                    <h1>
-                      Final Draft
-                    </h1>
-                  </div>
+                  {heading}
                   <div className={ feedbackTool.draftContainer } ref="draftContainer" >
                     {feedbackToolContent}
                     {flags || null}
