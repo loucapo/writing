@@ -4,7 +4,7 @@ import sideMenu from './../sideMenu.css';
 
 const FeedbackLibButton = ({toggleQuickFeedback}) => {
   return (
-    <li data-id="feedbackLib" onClick={toggleQuickFeedback}>
+    <li className={ sideMenu.menu } data-id="feedbackLib" onClick={toggleQuickFeedback}>
       <div className={ sideMenu.listDiv }>
         <MLIcon
           iconTitle="Quick Feedback"

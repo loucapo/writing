@@ -42,6 +42,7 @@
 .list_Item {
   background-color: var(--offWhite);
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 .list_Item:last-child {
