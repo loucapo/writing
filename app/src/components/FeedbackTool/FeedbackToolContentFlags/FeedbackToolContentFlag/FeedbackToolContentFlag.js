@@ -5,31 +5,35 @@ import feedbackToolContentMap from './../../feedbackToolContentMap';
 import flagStyles from './feedbackToolContentFlag.css';
 
 const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
-  const triangleStyles = {
-    top: `${item.position.top}px`,
-    zIndex: topFlag ? 1001 : 1,
-    border: `1px solid ${item.color}`
-  };
 
   let borderPointerColor;
   let sentiment = item.instructorContent && item.instructorContent.sentimentLevel;
   let color = item.color;
 
-  switch(item.color) {
-    case '#00758E':
+  switch(color) {
+    case 'blue':
       borderPointerColor = flagStyles.blueTriangleBorder;
+      color = '#00758E';
       break;
-    case '#dd5714':
+    case 'orange':
       borderPointerColor = flagStyles.orangeTriangleBorder;
+      color = '#dd5714';
       break;
-    case '#3b822e':
+    case 'green':
       borderPointerColor = flagStyles.greenTriangleBorder;
+      color = '#3B822E';
   }
 
   if(sentiment && sentiment.slice(0, 10) === 'Great job!') {
     borderPointerColor = flagStyles.greenTriangleBorder;
     color = '#3b822e';
   }
+
+  const triangleStyles = {
+    top: `${item.position.top}px`,
+    zIndex: topFlag ? 1001 : 1,
+    border: `1px solid ${color}`
+  };
 
   return (
     <div className={flagStyles.flagContainer} onClick={() => onClick(!expanded, item.id)}>

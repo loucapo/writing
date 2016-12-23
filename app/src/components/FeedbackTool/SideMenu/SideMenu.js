@@ -1,12 +1,6 @@
 import React, {PropTypes, Component} from 'react';
-import ThesisButton from './Buttons/Thesis';
-import ReasonSupportButton from './Buttons/ReasonSupport';
-import InterpretationButton from './Buttons/Interpretation';
-import ParagraphDevButton from './Buttons/ParagraphDev';
-import ResearchButton from './Buttons/Research';
-import CounterArgsButton from './Buttons/CounterArgs';
-import OtherButton from './Buttons/Other';
-import GoodJobButton from './Buttons/GoodJob';
+import MLIcon from 'ml-react-cdl-icons';
+import ModalFeedbackButton from './Buttons/ModalFeedbackButton';
 import FeedbackLibButton from './Buttons/FeedbackLib';
 import sideMenu from './sideMenu.css';
 import uuid from 'uuid';
@@ -33,20 +27,67 @@ class SideMenu extends Component {
   };
 
   render() {
+    const icon = (<MLIcon
+      iconTitle="Feedback"
+      iconFill="#00758E"
+      iconType="comment"
+      iconWidth="20"
+      iconHeight="20" />);
+    const goodJobIcon = (<MLIcon
+      iconTitle="Good Job"
+      iconFill="#3B822E"
+      iconType="comment_thumbs_up"
+      iconWidth="20"
+      iconHeight="20" />);
+
     return (
       <div className={sideMenu.sidebarContainer}>
         <div data-id="sideMenu" className={sideMenu.sideMenu}>
-          <ul className={sideMenu.buttons}>
-            <ThesisButton />
-            <ReasonSupportButton {...this.props} />
-            <InterpretationButton />
-            <ParagraphDevButton />
-            <ResearchButton />
-            <CounterArgsButton />
-            <OtherButton {...this.props} />
-            <GoodJobButton />
+          <h1>
+            Feedback
+          </h1>
+          <ul>
+            <ModalFeedbackButton
+              contentType="thesis"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="reasonSupport"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="interpretation"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="paragraphDev"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="research"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="counterarg"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="other"
+              commentIcon={icon}
+              {...this.props}
+            />
+            <ModalFeedbackButton
+              contentType="goodJob"
+              commentIcon={goodJobIcon}
+              {...this.props}
+            />
             <FeedbackLibButton toggleQuickFeedback={this.toggleQuickFeedback} />
-
             <div
               className={this.state.showQuickFeedbackTool ? sideMenu.quickFeedback : sideMenu.quickFeedback + ' ' + sideMenu.hiddenItem}>
               <li

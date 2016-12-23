@@ -16,7 +16,7 @@ class ModalFeedbackButton extends Component {
 
   onClose = (e) => {
     e.preventDefault();
-    this.props.completeHighlight({success: false, removeColor: this.props.color});
+    this.props.completeHighlight({success: false, removeColor: this.contentMap.color});
     this.setState({
       isOpen: false
     });
@@ -59,7 +59,7 @@ class ModalFeedbackButton extends Component {
 
   onClick = (e) => {
     e.preventDefault();
-    if(!this.props.onHighlight(this.props.color)) {
+    if(!this.props.onHighlight(this.contentMap.color)) {
       return;
     }
     let pos;
@@ -79,8 +79,8 @@ class ModalFeedbackButton extends Component {
   render() {
     const form = this.contentMap.form(this.onFormSubmit, this.onClose, this.contentMap);
     return (
-      <li data-id={this.props.contentType}>
-        <div onClick={this.onClick} style={{width: '100%'}}>
+      <li className={ sideMenu.menu } data-id={this.props.contentType}>
+        <div className={ sideMenu.listDiv } onClick={this.onClick}>
           {this.props.commentIcon}
           <span className={sideMenu.sideMenuCaption}>
             {this.contentMap.title}

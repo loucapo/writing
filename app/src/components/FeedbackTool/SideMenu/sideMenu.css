@@ -1,22 +1,31 @@
+@import '../../../styles/core.css';
+
 .sideMenu {
-  border-left: solid thin #ddd;
+  background-color: var(--pureWhite);
+  border-left: 1px solid var(--lightGrey);
   height: 100%;
+  min-width: 200px;
   overflow-y: auto;
 }
 
-.sideMenu .buttons {
-  padding: 20px;
+.sideMenu ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
-.sideMenu .buttons li {
-  align-items: center;
+.sideMenu li.menu {
+  border-bottom: 1px solid var(--lightGrey);
+  cursor: pointer;
   display: flex;
   font-size: 13px;
-  cursor: pointer;
 }
 
-.sideMenu .buttons li img {
+.sideMenu li.menu:hover {
+  border: 1px solid var(--mediumLightGrey);
+}
+
+.sideMenu li.menu img {
   margin-right: 6px;
 }
 
@@ -24,10 +33,24 @@
   margin-left: 5px;
 }
 
+.listDiv {
+  display: flex;
+  flex-grow: 1;
+  padding: 10px 20px;
+}
+
 .list_Item {
-  background-color: lightgray;
-  border: solid thin darkgray;
-  padding: 5px 0 5px 5px;
+  background-color: var(--offWhite);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.list_Item:last-child {
+  border-bottom-color: var(--mediumLightGrey);
+}
+
+.list_item li:hover {
+  border: 1px solid var(--darkGrey);
 }
 
 .quickFeedback {
