@@ -8,48 +8,54 @@ const feedbackToolContentMap = {
     model: standardModel,
     form: standardForm,
     icon: 'comment',
-    color: '#00758E'
+    color: 'blue'
   },
   reasonSupport: {
     title: 'Reason and Support',
-    color: '#00758E',
+    color: 'blue',
     resourceLinks: [7, 8, 9],
     model: standardModel,
+    icon: 'comment',
     form: standardForm
   },
   interpretation: {
     title: 'Interpretation',
-    color: '#00758E',
+    color: 'blue',
     resourceLinks: [4, 5, 6],
     model: standardModel,
+    icon: 'comment',
     form: standardForm
   },
   paragraphDev: {
     title: 'Paragraph Development',
-    color: '#00758E',
+    color: 'blue',
     resourceLinks: [4, 5, 6],
     model: standardModel,
+    icon: 'comment',
     form: standardForm
   },
   research: {
     title: 'Integration of Research',
-    color: '#00758E',
+    color: 'blue',
     resourceLinks: [4, 5, 6],
     model: standardModel,
+    icon: 'comment',
     form: standardForm
   },
   counterarg: {
     title: 'Counterarguments',
-    color: '#00758E',
+    color: 'blue',
     resourceLinks: [4, 5, 6],
     model: standardModel,
+    icon: 'comment',
     form: standardForm
   },
   other: {
     title: 'Other',
-    color: '#00758E',
+    color: 'blue',
     resourceLinks: [4, 5, 6],
     model: standardModel,
+    icon: 'comment',
     form: standardForm
   },
   goodJob: {

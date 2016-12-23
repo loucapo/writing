@@ -59,7 +59,7 @@ class ModalFeedbackButton extends Component {
 
   onClick = (e) => {
     e.preventDefault();
-    if(!this.props.onHighlight(this.props.color)) {
+    if(!this.props.onHighlight(this.contentMap.color)) {
       return;
     }
     let pos;
