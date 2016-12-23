@@ -14,18 +14,18 @@
   padding: 0;
 }
 
-.sideMenu li {
+.sideMenu li.menu {
   border-bottom: 1px solid var(--lightGrey);
   cursor: pointer;
   display: flex;
   font-size: 13px;
 }
 
-.sideMenu li:hover {
+.sideMenu li.menu:hover {
   border: 1px solid var(--mediumLightGrey);
 }
 
-.sideMenu li img {
+.sideMenu li.menu img {
   margin-right: 6px;
 }
 
