@@ -64,14 +64,14 @@ const feedbackToolContentMap = {
     model: standardModel,
     form: standardForm,
     icon: 'comment_thumbs_up',
-    color: '#3b822e'
+    color: 'green'
   },
   fragment: {
     title: 'Fragment',
     resourceLinks: [4, 5, 6],
     form: standardForm,
     icon: 'comment_text',
-    color: '#dd5714'
+    color: 'orange'
   }
 };
 

@@ -10,15 +10,18 @@ const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
   let sentiment = item.instructorContent && item.instructorContent.sentimentLevel;
   let color = item.color;
 
-  switch(item.color) {
+  switch(color) {
     case 'blue':
       borderPointerColor = flagStyles.blueTriangleBorder;
+      color = '#00758E';
       break;
-    case '#dd5714':
+    case 'orange':
       borderPointerColor = flagStyles.orangeTriangleBorder;
+      color = '#dd5714';
       break;
     case 'green':
       borderPointerColor = flagStyles.greenTriangleBorder;
+      color = '#3B822E';
   }
 
   if(sentiment && sentiment.slice(0, 10) === 'Great job!') {

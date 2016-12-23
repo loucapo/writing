@@ -2,7 +2,8 @@
 
 .flagDetailContainer {
   border-top: 1px solid var(--lightGrey);
-  padding-top: 5px;
+  margin-top: 10px;
+  padding-top: 10px;
 }
 
 h4 {
