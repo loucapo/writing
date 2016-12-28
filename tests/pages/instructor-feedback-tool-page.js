@@ -20,7 +20,7 @@ module.exports = new Page({
 
   other: { get: function () { return this.element("[data-id='sideMenu'] [data-id='other']"); } },
 
-  counterargs: { get: function () { return this.element("[data-id='sideMenu'] [data-id='counterargs']"); } },
+  counterargs: { get: function () { return this.element("[data-id='sideMenu'] [data-id='counterarg']"); } },
 
   goodJob: { get: function () { return this.element("[data-id='sideMenu'] [data-id='goodJob']"); } },
 
@@ -90,11 +90,11 @@ module.exports = new Page({
 
   
   // RUBRIC
-  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container']"); } },
+  rubric: { get: function () { return this.element("[class^='FeedbackTool__draftContainer']"); } },
 
   'header button': { get: function() { return this.element("[data-id='score-rubric-button']"); } },
 
-  'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
+  'X button': { get: function() { return this.element("span[class^='Rubric__close']"); } },
 
 
 });
