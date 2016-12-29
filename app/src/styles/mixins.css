@@ -1,8 +1,9 @@
 @import 'variables/variables.css';
+@import 'variables/colors.css';
 
 :root {
   --error-theme: {
-    color: var(--exLightGrey);
+    color: var(--pureWhite);
     background-color: var(--errorRed);
   };
 
