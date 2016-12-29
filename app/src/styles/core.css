@@ -37,7 +37,7 @@ h1 {
   align-items: center;
   border-bottom: 1px solid var(--lightGrey);
   display: flex;
-  font-size: 18px;
+  font-size: 18px !important;
   font-weight: normal;
   justify-content: space-between;
   margin: 0;
