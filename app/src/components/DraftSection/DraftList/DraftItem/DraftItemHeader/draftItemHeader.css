@@ -1,4 +1,4 @@
-@import '../../../../../styles/core.css';
+@import 'mixins.css';
 
 .header h1 {
   background-color: var(--offWhite);

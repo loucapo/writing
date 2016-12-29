@@ -1,4 +1,4 @@
-@import '../../../../styles/core.css';
+@import 'mixins.css';
 
 .flagContainer {
   height: 0;

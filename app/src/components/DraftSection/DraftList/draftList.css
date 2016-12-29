@@ -1,5 +1,3 @@
-@import '../../../styles/core.css';
-
 .addDraft {
   display: flex;
   flex-direction: column;

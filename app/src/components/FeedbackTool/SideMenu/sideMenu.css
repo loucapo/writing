@@ -1,4 +1,4 @@
-@import '../../../styles/core.css';
+@import 'mixins.css';
 
 .sideMenu {
   background-color: var(--pureWhite);

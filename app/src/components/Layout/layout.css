@@ -1,4 +1,4 @@
-@import './../../styles/core.css';
+@import 'mixins.css';
 
 @font-face {
   font-family: 'SourceSansPro-Regular';

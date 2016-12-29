@@ -1,4 +1,4 @@
-@import '../../styles/core.css';
+@import 'mixins.css';
 
 .container {
   align-items: center;

@@ -1,4 +1,4 @@
-@import './../../../styles/core.css';
+@import 'mixins.css';
 
 .category_levels {
   display: flex;
