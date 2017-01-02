@@ -9,7 +9,7 @@ Feature: Instructor Can Review Student Submissions
     Then I click on the 'student submissions tab'
     Then I see some text 'Shakespeare, William' in 'activity div'
     And I see some text 'Faulkner, William' in 'activity div'
-    And I see some text 'Review Complete' in 'activity div'
+    And I see a svg in 'activity div'
     And I see some text 'Start Review' in 'activity div'
     And I see some text 'Send Review' in 'activity div'
     #And I see some text 'Instructor Review' in 'activity div'

@@ -17,6 +17,11 @@ exports.define = function(steps) {
       });
   });
 
+  // XXX this svg needs a data-id
+  steps.then("I see a svg in '$elem'", function(elem) {
+    page['checkmark svg'].isDisplayed().should.eventually.equal(true);
+  });
+
   steps.then("I click link '$linkText' in '$element'", function(text, element) {
     page[element]
       .then(function(el) {
