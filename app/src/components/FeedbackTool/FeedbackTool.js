@@ -180,7 +180,7 @@ class FeedbackTool extends Component {
     } else {
       heading = (
         <div className={feedbackTool.heading} data-id="studentSubmission">
-          <h1 className={feedbackTool.titleSpan}>
+          <h1>
             <span>
               <MLIcon
                 iconTitle="minus"
@@ -190,8 +190,8 @@ class FeedbackTool extends Component {
                 iconHeight="12"
                 viewBox="0 0 24 24"
               />
+              <span>Final Draft</span>
             </span>
-            <span className={feedbackTool.title}>Final Draft</span>
           </h1>
         </div>
       );
