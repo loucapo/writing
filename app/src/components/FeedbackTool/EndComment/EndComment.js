@@ -6,7 +6,6 @@ import classnames from 'classnames';
 import coreCss from './../../../styles/core.css';
 import endComment from './endComment.css';
 import actionButton from './../../ActionButton/actionButton.css';
-import feedbackTool from './../feedbackTool.css';
 
 const EndComment = () => {
   return (
