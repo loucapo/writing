@@ -48,19 +48,22 @@ module.exports = new Page({
 
   resource_url: { get: function () { return this.element("[data-id='resource-url']"); } },
 
-  'Student Reflection Section': { get: function () { return this.element("[data-id='studentReflections']"); } },
+  'Student Reflection Header': { get: function () { return this.element("[data-id='studentReflections']"); } },
+
+  'Student Reflection Section': { get: function () { return this.element("[class^='StudentReflection__section']"); } },
 
   'End Comment Section': { get: function () { return this.element("[data-id='endComment']"); } },
 
-  'End Comment textarea': { get: function () { return this.element("//*[@data-id='endComment']/textarea", 'xpath'); } },
+  'End Comment textarea': { get: function () { return this.element("//*[@data-id='endComment']/div/textarea", 'xpath'); } },
 
   end_comment_header: { get: function () { return this.element("[data-id='comma_error']"); } },
 
   end_comment_textarea: { get: function () { return this.element("[data-id='comma_error']"); } },
 
   example_essay: { value: 'TXTing: h8 it or wuv it'},
-  
+
   // FEEDBACK FLAGS
+
   draft_content_first_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:first-child span"); }},
   
   draft_content_forth_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:nth-child(4) span"); }},
@@ -92,7 +95,11 @@ module.exports = new Page({
   // RUBRIC
   rubric: { get: function () { return this.element("[class^='FeedbackTool__draftContainer']"); } },
 
-  'header button': { get: function() { return this.element("[data-id='score-rubric-button']"); } },
+  score_rubric_button: { get: function() { return this.element("[data-id='score-rubric-button']"); } },
+
+  draft_revision_history: { get: function() { return this.element("[data-id='draft-revision-history-button']"); } },
+
+  done_button: { get: function() { return this.element("[data-id='done-button']"); } },
 
   'X button': { get: function() { return this.element("span[class^='Rubric__close']"); } },
 
