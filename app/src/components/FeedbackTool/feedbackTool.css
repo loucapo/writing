@@ -12,20 +12,9 @@
   height: 100%;
 }
 
-h1.titleSpan {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.title {
-  margin-left: 5px;
-}
-
 .scrollContainer {
   display: flex;
   overflow: auto;
-  padding-left: 10px;
 }
 
 .editorContainer {
