@@ -275,22 +275,22 @@ exports.define = function(steps) {
     driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")"}).click();
   });
 
-  steps.then("I see the '$grade' '$criteria' box highlighted '$color'", function(elem,criteria) {
+  steps.then("I see the '$grade' '$criteria' box highlighted '$color'", function(elem,criteria,colorcode) {
     if (elem == 'exceeds expectations') {
       var grade = 4;
-      var color = 'green';
+      expect(colorcode).to.equal('green')
     }
     else if (elem == 'meets expectations') {
       var grade = 3;
-      var color = 'yellow';
+      expect(colorcode).to.equal('yellow')
     }
     else if (elem == 'nearly meets expectations') {
       var grade = 2;
-      var color = 'orange';
+      expect(colorcode).to.equal('orange')
     }
     else if (elem == 'fails to meet expectations') {
       var grade = 1;
-      var color = 'red';
+      expect(colorcode).to.equal('red')
     }
     else {
       throw new Error('Unknown rubric grade selected');
@@ -315,7 +315,7 @@ exports.define = function(steps) {
       throw new Error('Unknown rubric column selected');
     };
     var butter = (5-grade);
-    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected'][class*='RubricCategoryScore__category_item_"+ color +"']"});
+    driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")[class*='RubricCategoryScore__selected'][class*='RubricCategoryScore__category_item_"+ colorcode +"']"});
 
   });
 
