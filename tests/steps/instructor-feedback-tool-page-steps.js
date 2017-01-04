@@ -275,7 +275,7 @@ exports.define = function(steps) {
     driver.findElement({css: "div[class^='RubricCategory__category'] div[class^='RubricCategoryScore'] div:nth-child("+ column +") div:nth-child(" + butter + ")"}).click();
   });
 
-  steps.then("I see the '$grade' '$criteria' box highlighted '$color'", function(elem,criteria) {
+  steps.then("I see the '$grade' '$criteria' box highlighted '$color'", function(elem,criteria,colorcode) {
     if (elem == 'exceeds expectations') {
       var grade = 4;
       var color = 'green';
