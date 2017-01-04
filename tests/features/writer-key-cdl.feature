@@ -1,5 +1,4 @@
 @WRITE-558
-
 Feature: CDL Fonts
   Scenario: Fonts on The Activity Page Should Be CDL Fonts
     Given I visit the activity page
