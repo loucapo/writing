@@ -9,6 +9,30 @@ exports.define = function(steps) {
     page.visit();
   });
 
+  steps.then("I see '$elem' in component '$component'", function(elem, component) {
+    component = 'co_' + component;
+    expect(page[component][elem]).to.exist;
+  });
+
+  steps.then("I see a link with text '$text' in element '$element'", function(text, element) {
+    page[element].findElements({xpath: ".//a[text()='" + text + "']"})
+      .then(gimme_just_one);
+  });
+
+  steps.then("I see a button with text '$text' in element '$element'", function(text, element) {
+    page[element].findElements({xpath: ".//button[text()='" + text + "']"})
+      .then(gimme_just_one);
+  });
+
+  steps.then("I see text '$text' in element '$element'", function(text, element) {
+    page[element].findElements({xpath: ".//*[contains(text(), '" + text + "')]"})
+      .then(gimme_just_one);
+  });
+
+  function gimme_just_one(arr) {
+    expect(arr.length).to.equal(1);
+  };
+
   steps.then('I should see the Assignment Header elements', function() {
     expect(page.title).to.exist;
     expect(page.type).to.exist;

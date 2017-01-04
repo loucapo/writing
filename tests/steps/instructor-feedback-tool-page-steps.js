@@ -1,6 +1,15 @@
 var page = require('../pages/instructor-feedback-tool-page.js');
 var rtePage = require('../pages/react-rte.js');
 
+
+create_essay_selection = function(child_span_id) {
+    return `var range = document.createRange();
+    var studentText = document.querySelector('div.public-DraftEditor-content div');
+    var textNode = studentText.getElementsByTagName('span')[${child_span_id}];
+    range.selectNode(textNode);
+    window.getSelection().addRange(range);`;
+};
+
 exports.define = function(steps) {
   steps.when("I open the feedback tool", function() {
     page.visit();
@@ -111,12 +120,33 @@ exports.define = function(steps) {
   });
 
   steps.then("I select some text in the text body", function() {
-    var script = "var range = document.createRange();" +
-    "var studentText = document.querySelector('div.public-DraftEditor-content div');" +
-    "var textNode = studentText.getElementsByTagName('span')[0];" +
-    "range.selectNode(textNode);" +
-    "window.getSelection().addRange(range);";
-    driver.executeScript(script);
+    driver.executeScript(create_essay_selection(1));
+  });
+
+  steps.then("I select a lower span of the essay", function() {
+    driver.executeScript(create_essay_selection(8));
+  });
+
+  steps.then("the modal completely appears above the fold", function() {
+    var modal_y, modal_height, viewport_height;
+    driver.manage().window().getSize().then(function(viewport_size) {
+      viewport_height = viewport_size.height;
+    }).then(function() {
+      page.comment_popup_wrapper.then(function(modal) {
+        modal.getLocation().then(function(modal_location) {
+          modal_y = modal_location.y;
+        })
+        .then(function() {
+          modal.getSize().then(function(modal_size) {
+            modal_height = modal_size.height;
+          });
+        });
+      });
+    })
+    .then(function() {
+      // semantic fail : value below value not modal below page
+      expect(modal_y + modal_height).to.be.below(viewport_height);
+    });
   });
 
   steps.then("I see a comment popup appear", function() {

@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://wk-red.mldev.cloud",
+  "baseUrl": "https://wk-staging.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
   "reportSingle": false,
@@ -13,6 +13,11 @@
   "elementTimeout": 5000,
 
   "tags": "!@wip",
+
+  "screenSize": {
+    "x": 1600,
+    "y": 900
+  },
 
   "browsers": [{
     "browserName": "chrome",

@@ -20,7 +20,7 @@ module.exports = new Page({
 
   other: { get: function () { return this.element("[data-id='sideMenu'] [data-id='other']"); } },
 
-  counterargs: { get: function () { return this.element("[data-id='sideMenu'] [data-id='counterargs']"); } },
+  counterargs: { get: function () { return this.element("[data-id='sideMenu'] [data-id='counterarg']"); } },
 
   goodJob: { get: function () { return this.element("[data-id='sideMenu'] [data-id='goodJob']"); } },
 
@@ -62,8 +62,12 @@ module.exports = new Page({
   
   // FEEDBACK FLAGS
   draft_content_first_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:first-child span"); }},
+  
+  draft_content_forth_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:nth-child(4) span"); }},
 
   comment_popup: { get: function () { return this.element("div[data-id='MLModal']"); } },
+
+  comment_popup_wrapper: { get: function () { return this.element("div[data-id='MLModal'] > div"); } },
 
   comment_popup__textarea: { get: function() { return this.element("div[data-id='MLModal'] textarea"); } },
 
@@ -86,11 +90,11 @@ module.exports = new Page({
 
   
   // RUBRIC
-  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container']"); } },
+  rubric: { get: function () { return this.element("[class^='FeedbackTool__draftContainer']"); } },
 
-  'header button': { get: function() { return this.element("[data-id='header-button']"); } },
+  'header button': { get: function() { return this.element("[data-id='score-rubric-button']"); } },
 
-  'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
+  'X button': { get: function() { return this.element("span[class^='Rubric__close']"); } },
 
 
 });
