@@ -25,7 +25,7 @@ Feature: Instructor Changes Sentiment Level on Comment
     And on the feedback page I click the 'sentiment_goodJob' element
     And on the feedback page I click the 'submit' element
     Then the selected text highlight should persist
-    And the highlighting style should be 'background-color: lightgreen;'
+    And the highlighting style should be 'background-color: rgb(172, 219, 162);'
     And I see the 'Other Feedback Flag'
 
   Scenario: The Instructor Uses Middle Sentiment

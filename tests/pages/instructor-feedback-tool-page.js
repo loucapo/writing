@@ -10,7 +10,7 @@ module.exports = new Page({
 
   thesis: { get: function () { return this.element("[data-id='sideMenu'] [data-id='thesis']"); } },
 
-  reason_support: { get: function () { return this.element("[data-id='sideMenu'] [data-id='reason&support']"); } },
+  reason_support: { get: function () { return this.element("[data-id='sideMenu'] [data-id='reasonSupport']"); } },
 
   interpretation: { get: function () { return this.element("[data-id='sideMenu'] [data-id='interpretation']"); } },
 
@@ -20,7 +20,7 @@ module.exports = new Page({
 
   other: { get: function () { return this.element("[data-id='sideMenu'] [data-id='other']"); } },
 
-  counterargs: { get: function () { return this.element("[data-id='sideMenu'] [data-id='counterargs']"); } },
+  counterargs: { get: function () { return this.element("[data-id='sideMenu'] [data-id='counterarg']"); } },
 
   goodJob: { get: function () { return this.element("[data-id='sideMenu'] [data-id='goodJob']"); } },
 
@@ -65,8 +65,12 @@ module.exports = new Page({
   // FEEDBACK FLAGS
 
   draft_content_first_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:first-child span"); }},
+  
+  draft_content_forth_span: { get: function() { return this.element("div.public-DraftEditor-content div div.css-RichTextEditor-block:nth-child(4) span"); }},
 
   comment_popup: { get: function () { return this.element("div[data-id='MLModal']"); } },
+
+  comment_popup_wrapper: { get: function () { return this.element("div[data-id='MLModal'] > div"); } },
 
   comment_popup__textarea: { get: function() { return this.element("div[data-id='MLModal'] textarea"); } },
 
@@ -77,11 +81,11 @@ module.exports = new Page({
 
   'sentiment level selection dropdown': { get: function() { return this.element("[data-id='sentimentLevel-select']"); }},
 
-  sentiment_goodJob: { get: function() { return this.element("[class^='goodJob']"); } },
+  sentiment_goodJob: { get: function() { return this.element("[data-id='sentimentLevel-select'] [value='goodJob']"); } },
 
-  sentiment_needsWork: { get: function() { return this.element("[class^='needsWork']"); } },
+  sentiment_needsWork: { get: function() { return this.element("[data-id='sentimentLevel-select'] [value='needsWork']"); } },
 
-  sentiment_extensiveRevision: { get: function() { return this.element("[class^='extensiveRevision']"); } },
+  sentiment_extensiveRevision: { get: function() { return this.element("[data-id='sentimentLevel-select'] [value='extensiveRevision']"); } },
 
   'Other Feedback Flag': { get: function() { return this.element("[class^='FeedbackToolContentFlag']"); }},
 
@@ -89,7 +93,7 @@ module.exports = new Page({
 
   
   // RUBRIC
-  rubric: { get: function () { return this.element("[class^='Rubric__rubric_container']"); } },
+  rubric: { get: function () { return this.element("[class^='FeedbackTool__draftContainer']"); } },
 
   score_rubric_button: { get: function() { return this.element("[data-id='score-rubric-button']"); } },
 
@@ -97,7 +101,7 @@ module.exports = new Page({
 
   done_button: { get: function() { return this.element("[data-id='done-button']"); } },
 
-  'X button': { get: function() { return this.element("div[class^='Rubric__close']"); } },
+  'X button': { get: function() { return this.element("span[class^='Rubric__close']"); } },
 
 
 });
