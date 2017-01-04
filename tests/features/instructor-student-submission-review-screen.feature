@@ -1,8 +1,6 @@
 @WRITE-278
-  #commented code wait to see post-CDL what to do with it
-  #Broken by CDL on 12/8/16
+
 Feature: Instructor Can Review Student Submissions
-@only
   Scenario: The Instructor navigates to Student Submissions
     Given I visit the activity page
     Then I see thee 'Drafts tab'

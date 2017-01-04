@@ -1,6 +1,6 @@
 @WRITE-558
 @WRITE-552
-
+#pending and commented out lines are missing class names from CDL
 Feature: CDL Updates
   Scenario: Fonts on The Activity Page Should Be CDL Fonts
     Given I visit the activity page
@@ -20,10 +20,11 @@ Feature: CDL Updates
   ---
   icon
   arrow
-  minus
+  #minus
   calendar
   dropdown_caret
 
+  @pending
   Scenario: Checkmarks should Appear on student submission page
     Given I visit the activity page
     And I click on the 'student submissions tab'

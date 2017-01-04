@@ -42,7 +42,7 @@ module.exports = new Page({
   draft_grading_policies: { get: function () { return this.element("[data-id='grading-policy']"); } },
 
   //icons
-  arrow: { get: function () { return this.element("[class^='Layout__left_arrow']"); } },
+  arrow: { get: function () { return this.element("[class^='Activity__left_arrow']"); } },
   dropdown_caret: { get: function () { return this.element("[class^='DraftItem__dropdown_caret']"); } },
   calendar: { get: function () { return this.element("[class^='DraftItem__calendar']"); } },
   minus: { get: function () { return this.element("[class^='DraftItem__minus']"); } },
