@@ -1,4 +1,4 @@
-@import 'mixins.css';
+@import 'core.css';
 
 .flagDetailContainer {
   border-top: 1px solid var(--lightGrey);

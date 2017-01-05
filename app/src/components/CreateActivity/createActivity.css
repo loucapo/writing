@@ -1,4 +1,4 @@
-@import 'mixins.css';
+@import 'core.css';
 
 .panelSize {
   width: var(--panel-left-width);

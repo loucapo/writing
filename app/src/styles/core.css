@@ -1,3 +1,4 @@
+@import 'variables/variables.css';
 @import 'variables/colors.css';
 
 a, a:link, a:hover, a:active, a:visited  {
@@ -37,7 +38,7 @@ h1 {
   align-items: center;
   border-bottom: 1px solid var(--lightGrey);
   display: flex;
-  font-size: 18px !important;
+  font-size: 18px;
   font-weight: normal;
   justify-content: space-between;
   margin: 0;

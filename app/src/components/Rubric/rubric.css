@@ -1,4 +1,4 @@
-@import 'mixins.css';
+@import 'core.css';
 
 .rubric_container {
   color: var(--darkGrey);
