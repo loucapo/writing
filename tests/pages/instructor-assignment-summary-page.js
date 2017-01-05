@@ -27,19 +27,19 @@ module.exports = new Page({
 
 
   // draft sequence
-  draft_names: { get: function () { return this.element("[data-id='draft-name']"); } },
+  draft_names: { get: function () { return this.elements("[data-id='draft-name']"); } },
 
 
   // draft details
-  drafts_review_type: { get: function() { return this.element("[data-id='draft-item-type']"); } },
-  drafts_due_dates: { get: function() { return this.element("[data-id='draft-item-due-date']"); } },
+  drafts_review_type: { get: function() { return this.elements("[data-id='draft-item-type']"); } },
+  drafts_due_dates: { get: function() { return this.elements("[data-id='draft-item-due-date']"); } },
 
 
   // draft learning objectives
-  draft_learning_objectives: { get: function() { return this.element("[data-id='draft-item-learning-objectives']"); } },
+  draft_learning_objectives: { get: function() { return this.elements("[data-id='draft-item-learning-objectives']"); } },
 
   // draft grading policies
-  draft_grading_policies: { get: function () { return this.element("[data-id='grading-policy']"); } },
+  draft_grading_policies: { get: function () { return this.elements("[data-id='grading-policy']"); } },
 
   //icons
   arrow: { get: function () { return this.element("[class^='Activity__left_arrow']"); } },
