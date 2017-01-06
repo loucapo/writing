@@ -1,4 +1,4 @@
-@import '../../../styles/core.css';
+@import 'variables.css';
 
 .headerContainer {
   align-items: center;
@@ -39,12 +39,12 @@
 
 .leftArrowContainer {
   width: 40px;
-  display:flex;
+  display: flex;
 }
 
 .leftSide {
-  margin-right:auto;
-  display:flex;
+  margin-right: auto;
+  display: flex;
   flex-direction: column;
 }
 

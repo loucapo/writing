@@ -1,4 +1,4 @@
-@import './../../../styles/core.css';
+@import 'variables.css';
 
 .heading {
   display: flex;

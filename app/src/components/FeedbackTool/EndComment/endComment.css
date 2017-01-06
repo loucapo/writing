@@ -1,4 +1,4 @@
-@import '../../../styles/core.css';
+@import 'variables.css';
 
 .optional {
   color: var(--darkGrey);

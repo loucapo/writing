@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
-import layoutCss from './layout.css';
+import indexCss from '../../styles/index.css';
 
 const Layout = ({children}) => (
-  <div className={layoutCss.app}>
+  <div className={indexCss.app}>
     {children}
   </div>);
 
