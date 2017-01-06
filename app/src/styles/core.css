@@ -45,6 +45,10 @@ h1 {
   padding: 0 20px;
 }
 
+.headingText {
+  margin: 0 5px;
+}
+
 .panelBottom {
   padding: 15px 20px;
 }

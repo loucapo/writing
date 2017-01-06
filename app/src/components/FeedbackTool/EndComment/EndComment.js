@@ -20,7 +20,7 @@ const EndComment = () => {
             iconHeight="12"
             viewBox="0 0 24 24"
           />
-          <span>
+          <span className={ coreCss.headingText }>
             End Comment
           </span>
           <span className={ endComment.optional }>(optional)</span>

@@ -18,7 +18,9 @@ const StudentReflection = () => {
               iconHeight="12"
               viewBox="0 0 24 24"
             />
-            <span>Student Reflection</span>
+            <span className={ coreCss.headingText }>
+              Student Reflection
+            </span>
           </span>
         </h1>
       </div>

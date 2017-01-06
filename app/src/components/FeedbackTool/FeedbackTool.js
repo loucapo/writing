@@ -190,7 +190,9 @@ class FeedbackTool extends Component {
                 iconHeight="12"
                 viewBox="0 0 24 24"
               />
-              <span>Final Draft</span>
+              <span className={ coreCss.headingText }>
+                Final Draft
+              </span>
             </span>
           </h1>
         </div>
