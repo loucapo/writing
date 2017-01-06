@@ -41,7 +41,12 @@ h1 {
   font-weight: normal;
   justify-content: space-between;
   margin: 0;
-  padding: 15px 20px;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.headingText {
+  margin: 0 5px;
 }
 
 .panelBottom {

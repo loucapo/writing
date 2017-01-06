@@ -3,13 +3,12 @@ import studentReflectionCss from './studentReflection.css';
 import MLIcon from 'ml-react-cdl-icons';
 
 import coreCss from './../../../styles/core.css';
-import feedbackTool from './../feedbackTool.css';
 
 const StudentReflection = () => {
   return (
     <div className={ coreCss.panel }>
       <div data-id="studentReflections">
-        <h1 className={feedbackTool.titleSpan}>
+        <h1>
           <span>
             <MLIcon
               iconTitle="minus"
@@ -19,8 +18,10 @@ const StudentReflection = () => {
               iconHeight="12"
               viewBox="0 0 24 24"
             />
+            <span className={ coreCss.headingText }>
+              Student Reflection
+            </span>
           </span>
-          <span className={feedbackTool.title}>Student Reflection</span>
         </h1>
       </div>
       <section className={ studentReflectionCss.section }>

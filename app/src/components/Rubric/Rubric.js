@@ -19,7 +19,19 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
     return (
       <div className={ coreCss.panel }>
         <h1 data-id="rubric-title">
-          <div>Final Rubric</div>
+          <span>
+            <MLIcon
+              iconTitle="minus"
+              iconFill="#000000" // black
+              iconType="minus"
+              iconWidth="12"
+              iconHeight="12"
+              viewBox="0 0 24 24"
+            />
+            <span className={ coreCss.headingText }>
+              Final Rubric
+            </span>
+          </span>
           <ActionButton dataId="activity-rubric-edit-button" content="Edit" />
         </h1>
         <div className={ coreCss.panelBottom }>

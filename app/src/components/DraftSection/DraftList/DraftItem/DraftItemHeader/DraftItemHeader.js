@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import ActionButton from '../../../../ActionButton/ActionButton';
+import coreCss from '../../../../../styles/core.css';
 import draftItemHeader from './draftItemHeader.css';
 import MLIcon from 'ml-react-cdl-icons';
 
@@ -15,7 +16,9 @@ const DraftItemHeader = ({draftName}) => (
           iconHeight="12"
           viewBox="0 0 24 24"
         />
-        <span className={draftItemHeader.draftName}>{draftName}</span>
+        <span className={ coreCss.headingText }>
+          {draftName}
+        </span>
       </span>
       <ActionButton dataId="draft-edit-button" content="Edit" />
     </h1>
