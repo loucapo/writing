@@ -2,7 +2,7 @@ import React from 'react';
 import studentReflectionCss from './studentReflection.css';
 import MLIcon from 'ml-react-cdl-icons';
 
-import coreCss from './../../../styles/core.css';
+import coreCss from './../../../styles/index.css';
 import feedbackTool from './../feedbackTool.css';
 
 const StudentReflection = () => {
