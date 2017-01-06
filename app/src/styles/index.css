@@ -1,9 +1,25 @@
 @import 'variables.css';
 
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url(./fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app, body {
+  font-family: 'SourceSansPro-Regular', Arial, sans-serif;
+}
+
 body {
 	background-color: var(--veryLightGrey);
 	color: var(--blackish);
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	margin: 0;
 	overflow: hidden;
