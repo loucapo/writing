@@ -1,3 +1,5 @@
+@import 'colors.css';
+
 :root {
   /* Page layout */
   --page-margins: 224px;    /* used for both left and right margins */

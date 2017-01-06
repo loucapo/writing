@@ -1,4 +1,4 @@
-@import 'core.css';
+@import 'variables.css';
 
 .rubric_container {
   color: var(--darkGrey);

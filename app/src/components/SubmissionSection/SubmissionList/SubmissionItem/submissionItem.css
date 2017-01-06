@@ -1,4 +1,4 @@
-@import 'core.css';
+@import 'variables.css';
 
 .row {
   border-top: 1px solid var(--lightGrey);
