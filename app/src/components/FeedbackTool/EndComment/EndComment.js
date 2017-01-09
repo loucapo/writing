@@ -6,12 +6,11 @@ import classnames from 'classnames';
 import coreCss from './../../../styles/index.css';
 import endComment from './endComment.css';
 import actionButton from './../../ActionButton/actionButton.css';
-import feedbackTool from './../feedbackTool.css';
 
 const EndComment = () => {
   return (
     <div data-id="endComment" className={ coreCss.panel }>
-      <h1 className={feedbackTool.titleSpan}>
+      <h1>
         <span>
           <MLIcon
             iconTitle="minus"
@@ -21,9 +20,9 @@ const EndComment = () => {
             iconHeight="12"
             viewBox="0 0 24 24"
           />
-        </span>
-        <span
-          className={feedbackTool.title}>End Comment
+          <span className={ coreCss.headingText }>
+            End Comment
+          </span>
           <span className={ endComment.optional }>(optional)</span>
         </span>
       </h1>
