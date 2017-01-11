@@ -1,18 +1,21 @@
 :root {
   --pureWhite: #FFFFFF;
   --offWhite: #F8F8F8;
+
   --lightGrey: #DDDDDD;
-  --comGrey: #cdcdcd;
   --mediumLightGrey: #C8C8C8;
   --veryLightGrey: #F3F3F3;
   --darkGrey: #686868;
   --veryDarkGrey: #383838;
+  --comGrey: #cdcdcd;
+  --menuGrey: #272727;
+
   --blackish: #080808;
-  --blue: #00758E;
+  --black: #000000;
 
   --green: #3B822E;
   --lightGreen: #acdba2;
-  --veryLightGreen: daf4d4;
+  --veryLightGreen: #daf4d4;
 
   --lightYellow: #faf2a9;
   --veryLightYellow: #fffbd7;
@@ -24,10 +27,16 @@
   --red: #DA1B2C;
   --lightRed: #ffafaf;
   --veryLightRed: very light red;
-  --black: #000000;
+  --errorRed: #FF3B30;
 
-  /* these few are in the comps but not in the color palette or CDL */
+  --blue: #00758E;
   --lightBlue: #A0ACB2;
   --selectBlue: #b0daff;
   --darkBlue: #142A35;
+
+  /* Font weight colors */
+  --font-light: #b2b2b2;
+  --font-default: #878787;
+  --font-medium: #6d6d6d;
+  --font-strong: #474747;
 }

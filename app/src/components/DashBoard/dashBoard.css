@@ -1,4 +1,4 @@
-@import 'mixins.css';
+@import 'variables.css';
 
 .dashBoard {
   width: 100%;
@@ -35,7 +35,7 @@
   float: right;
   align-items: center;
   flex-direction: row;
-  margin-left:auto;
+  margin-left: auto;
 }
 
 .headers {

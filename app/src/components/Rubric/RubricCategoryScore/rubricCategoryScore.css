@@ -1,4 +1,4 @@
-@import './../../../styles/core.css';
+@import 'variables.css';
 
 .column {
   display: flex;
@@ -80,17 +80,3 @@
   background-color: var(--veryLightRed);
   opacity: .2;
 }
-
-/*--lightGreen: #acdba2;*/
-/*--veryLightGreen: daf4d4;*/
-
-/*--lightYellow: #faf2a9;*/
-/*--veryLightYello: #fffbd7;*/
-
-/*--orange: #DD5714;*/
-/*--lightOrange: #ffc196;*/
-/*--veryLightOrange: #ffe5d3;*/
-
-/*--red: #DA1B2C;*/
-/*--lightRed: #ffafaf;*/
-/*--veryLightRed: very light red;*/

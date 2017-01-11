@@ -1,13 +1,91 @@
-@import 'mixins.css';
+@import 'variables.css';
+
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url(./fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app, body {
+  font-family: 'SourceSansPro-Regular', Arial, sans-serif;
+}
 
 body {
-	background-color: #F3F3F3;
-	color: #080808;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: var(--veryLightGrey);
+	color: var(--blackish);
 	font-size: 14px;
 	margin: 0;
 	overflow: hidden;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
 
+a, a:link, a:hover, a:active, a:visited  {
+  text-decoration: none;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+}
+::-moz-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+} /* firefox 19+ */
+:-ms-input-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+} /* ie */
+input:-moz-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+}
+
+.panel {
+  background-color: var(--pureWhite);
+  -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
+     -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
+          box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
+  font-size: 15px;
+  margin: 50px;
+  padding: 0 0 20px 0;
+}
+
+h1 {
+  align-items: center;
+  border-bottom: 1px solid var(--lightGrey);
+  display: flex;
+  font-size: 18px;
+  font-weight: normal;
+  justify-content: space-between;
+  margin: 0;
+  height: 70px;
+  padding: 0 20px;
+}
+
+.headingText {
+  margin: 0 5px;
+}
+
+.panelBottom {
+  padding: 15px 20px;
+}
+
+.panel h4 {
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+
+.panel ol {
+  line-height: 24px;
+  margin: 0 0 20px;
 }

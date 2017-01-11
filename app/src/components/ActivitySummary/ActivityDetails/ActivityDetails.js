@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import ActionButton from '../../ActionButton/ActionButton';
-import coreCss from '../../../styles/core.css';
+
+import coreCss from '../../../styles/index.css';
 import MLIcon from 'ml-react-cdl-icons';
 
 // XXX need id's for testability/accessibility
