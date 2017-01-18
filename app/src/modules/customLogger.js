@@ -1,3 +1,5 @@
+// var OS = require("os");
+
 module.exports = function customLogger(winston, config) {
   return function () {
     // config.app.logging_use_json - environment flag whether to use json or not
@@ -16,6 +18,12 @@ module.exports = function customLogger(winston, config) {
       silent: false,
       timestamp: true,
       json: useJson
+    });
+
+    winston.add(winston.transports.Logstash, {
+        port : 28777,
+        node_name : 'asdf',
+        host: "127.0.0.1"
     });
 
     return winston;
