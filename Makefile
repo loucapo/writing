@@ -20,7 +20,7 @@ docker-build:
 	docker build -t $(IMAGENAME) -f docker/Dockerfile .
 
 run:	docker-build
-	docker-compose -f docker/docker-compose-dev.yml up
+	docker-compose -f docker/docker-compose-dev.yml up --verbose
 
 run_local:	docker-build
 	docker-compose -f docker/docker-compose.yml up

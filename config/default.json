@@ -5,7 +5,8 @@
     "keys": "default",
     "spa_url": "SPA_URL",
     "wk_serve_url": "http://localhost:10080",
-    "swagger_ui_url": "http://localhost:4666"
+    "swagger_ui_url": "http://localhost:4666",
+    "applicationName": "wk_api"
   },
   "postgres": {
     "config" :{
