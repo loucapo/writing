@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app/index.js",
     "start_dev": "nodemon app/index.js",
-    "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
+    "test": "mocha --opts ./app/tests/mocha.opts -w --compilers js:babel-register ./app/tests/*/*.js",
     "lint": "eslint .",
     "validate": "npm ls",
     "licenses": "license-checker --production --csv | tee licenses.csv"
@@ -46,10 +46,11 @@
     "chai": "^3.5.0",
     "eslint": "^3.4.0",
     "license-checker": "^5.1.2",
-    "mocha": "^3.0.2",
+    "mocha": "^3.2.0",
     "nodemon": "^1.10.2",
     "precommit-hook-eslint": "^3.0.0",
-    "supertest": "^2.0.0"
+    "supertest": "^2.0.0",
+    "testdouble": "^1.10.2"
   },
   "babel": {
     "presets": [

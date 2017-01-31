@@ -26,28 +26,6 @@ module.exports = function routes(koarouter, controllers) {
      */
     router.get('activity','/activity/:id', controllers.activityController.activity);
 
-    /**
-     * @swagger
-     * /CreateInstructorAndCourse:
-     *   post:
-     *     x-name: CreateInstructorAndCourse
-     *     description: Check for existence of instructor and course and create them if they do not exist
-     *     operationId: CreateInstructorAndCourse
-     *     parameters:
-     *       - name: body
-     *         in: body
-     *         required: true
-     *         type: object
-     *         schema:
-     *            - $ref: "#/definitions/instructorAndCourse"
-     *     responses:
-     *       200:
-     *         description: Success
-     *         schema:
-     *             $ref: "#/definitions/notification"
-     */
-    router.post('CreateInstructorAndCourse', '/CreateInstructorAndCourse', controllers.CreateInstructorAndCourseController.CreateInstructorAndCourse);
-
     app.use(router.routes());
     app.use(router.allowedMethods());
   };
