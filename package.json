@@ -7,13 +7,17 @@
     "start": "babel-node app/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
     "lint": "eslint .",
-    "validate": "npm ls"
+    "validate": "npm ls",
+    "migrate": "db-migrate",
+    "migrate-new": "./node_modules/db-migrate/bin/db-migrate --sql-file create"
   },
   "publishConfig": {
     "registry": "http://npm.macmillantech.com:8080/"
   },
   "dependencies": {
     "config": "^1.21.0",
+    "db-migrate": "^0.10.0-beta.20",
+    "db-migrate-pg": "^0.1.11",
     "pg-async": "2.4.0"
   },
   "devDependencies": {

@@ -1,6 +1,7 @@
 require('babel-polyfill');
 require('babel-register');
 
-const data = require('./src/index').generateDB;
+const data = require('./src/index');
 //horrible @#$@## hack
-setTimeout( data(), 5000);
+// setTimeout( data.generateDB(), 5000);
+data.generateDB()

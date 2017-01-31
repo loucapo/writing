@@ -4,7 +4,9 @@ MAINTAINER wk@saplinglearning.com
 
 ADD ./package.json ./package.json
 COPY ./.babelrc ./.babelrc
-ADD ./app/config ./config
+ADD ./config ./config
+
+ADD ./migrations ./migrations
 
 RUN npm install --silent
 

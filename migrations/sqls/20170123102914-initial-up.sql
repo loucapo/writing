@@ -1,4 +1,4 @@
-
+/* Replace with your SQL commands */
 CREATE SCHEMA IF NOT EXISTS writer_key;
 
 -- DROP SCHEMA public;
@@ -10,7 +10,7 @@ COMMENT ON SCHEMA public
 
 SET search_path TO writer_key,public;
 
--- Table: "hello"
+-- Table: "writer_key"
 
 DROP TABLE IF EXISTS "writer_key";
 
