@@ -6,11 +6,7 @@ export default (state = {}, action) => {
   const numberRows = 4;
   switch (action.type) {
     case RUBRIC_SUCCESS: {
-      let rubric = action.payload.data.rubric;
-      if (!rubric) {
-        return state;
-      }
-      return Object.assign({}, state, rubric);
+      return action.payload.data.rubric || {};
     }
     case RUBRIC_ON_CHANGE: {
       let rubric = action.payload.data.rubric;

@@ -23,7 +23,7 @@ class ActivityContainer extends Component {
   };
 
   render() {
-    return (<Activity{...this.props} selectCell={this.selectCell} />);
+    return (<Activity {...this.props} selectCell={this.selectCell} />);
   }
 }
 
@@ -35,7 +35,6 @@ ActivityContainer.propTypes = {
   activityAction: PropTypes.func,
   params: PropTypes.object,
   loadRubric: PropTypes.func
-
 };
 
 const mapStateToProps = (state, props) => {

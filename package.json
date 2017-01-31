@@ -10,7 +10,8 @@
   "scripts": {
     "build": "webpack -p --config ./app/webpack.config.js --progress --profile --colors",
     "start": "webpack-dev-server --progress --config ./app/webpack.config.js",
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register -R spec -w ./app/tests/*/*.spec.js",
+    "test": "BABEL_DISABLE_CACHE=1 NODE_ENV=test mocha --compilers js:babel-core/register --opts ./tests/mocha.opts -w ./app/tests/*/*.tests.js",
+    "testOnce": "BABEL_DISABLE_CACHE=1 NODE_ENV=test mocha --compilers js:babel-core/register --opts ./tests/mocha.opts ./app/tests/*/*.tests.js",
     "lint": "eslint .",
     "validate": "npm ls",
     "licenses": "license-checker --production --csv | tee licenses.csv"
@@ -24,11 +25,11 @@
     "classnames": "^2.2.5",
     "file-loader": "^0.9.0",
     "freakin-react-forms": "reharik/freakin-react-forms",
+    "ml-react-cdl-icons": "^1.2.0",
     "ml-react-rte": "^0.1.1",
-    "ml-react-cdl-icons": "^1.1.1",
     "precommit-hook-eslint": "^3.0.0",
-    "react": "^15.3.2",
-    "react-dom": "^15.0.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-hot-loader": "^3.0.0-beta.3",
     "react-nl2br": "^0.2.0",
     "react-redux": "^4.4.0",
@@ -38,6 +39,7 @@
     "redux-api-middleware": "^1.0.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
+    "resolve-url-loader": "^1.6.1",
     "url-loader": "^0.5.7"
   },
   "devDependencies": {
@@ -45,13 +47,14 @@
     "babel-eslint": "^7.0.0",
     "babel-istanbul": "^0.11.0",
     "babel-loader": "^6.2.4",
+    "babel-plugin-webpack-loaders": "^0.8.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
-    "enzyme": "^2.4.1",
+    "enzyme": "^2.7.0",
     "eslint": "^3.12.1",
     "eslint-plugin-react": "^6.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -66,7 +69,7 @@
     "precss": "^1.4.0",
     "raw-loader": "^0.5.1",
     "react": "^15.3.2",
-    "react-addons-test-utils": "^15.3.2",
+    "react-addons-test-utils": "^15.4.2",
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.9",
@@ -81,6 +84,6 @@
   },
   "pre-commit": [
     "lint",
-    "validate"
+    "testOnce"
   ]
 }

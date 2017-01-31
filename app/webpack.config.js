@@ -97,11 +97,14 @@ const webpackConfig = {
       },
       {
         test: /\.ttf$/,
-        loader: 'url-loader',
-        query: { mimetype: 'application/x-font-ttf' } ,
         include: [
-          path.resolve(__dirname, 'src/styles/fonts/Source_Sans_Pro')
-        ]
+          path.resolve(__dirname, 'src/styles/fonts')
+        ],
+        loader: 'file-loader',
+        query: {
+          mimetype: 'application/octet-stream',
+          name: 'assets/fonts/[name].[ext]'
+        }
       },
       {
         test: /\.(svg)$/,
@@ -150,7 +153,10 @@ const webpackConfig = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias:{
+      Styles: path.resolve(__dirname, 'src/styles')
+    }
   }
 };
 

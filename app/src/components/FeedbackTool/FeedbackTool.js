@@ -9,7 +9,7 @@ import StudentReflection from './StudentReflection/StudentReflection';
 import EndComment from './EndComment/EndComment';
 import MLIcon from 'ml-react-cdl-icons';
 
-import coreCss from '../../styles/index.css';
+import coreCss from 'Styles/index.css';
 import feedbackTool from './feedbackTool.css';
 
 class FeedbackTool extends Component {

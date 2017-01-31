@@ -4,8 +4,8 @@ import actionButton from './actionButton.css';
 
 const ActionButton = (props) => {
   return (
-    <div className={actionButton.action_button_container + ' ' + props.css}>
-      <div className={actionButton.action_button_wrapper}>
+    <div className={props.css || ''}>
+      <div>
         <button
           type={props.type}
           data-id={props.dataId}

@@ -1,5 +1,5 @@
 import uuid from 'uuid'
-import activityReducer from './../../src/modules/activityModule';
+import mut from './../../src/modules/activityModule';
 import {SUCCESS_ACTIVITY} from './../../src/modules/activityModule';
 
 import chai from 'chai';
@@ -28,30 +28,30 @@ describe('ACTIVITY MODULE REDUCER', () => {
       type: SUCCESS_ACTIVITY,
       payload: {
         data: {
-          activity: activity1
-        }
+            activity: activity1
+          }
       }
     };
   });
 
-  describe('When initial state and action are empty objects', () => {
+  context('When initial state and action are empty objects', () => {
     it('should return the initial state - an empty object', () => {
-      let result = activityReducer(undefined, {});
+      let result = mut(undefined, {});
       result.length.should.equal(0);
     });
   });
 
-  describe('When inital state is empty and valid action is passed in', () => {
-    it('should put new values in state', () => {
+  context('When inital state is empty and valid SUCCESS_ACTIVITY is passed in', () => {
+    it('should put new activity in state', () => {
 
-      let result = activityReducer(undefined, action);
+      let result = mut(undefined, action);
       result[0].title.should.equal('Instructor Review');
     });
   });
 
-  describe('When inital state contains object with same id as the one in the action', () => {
+  context('When inital state contains object with same id as the one in the action', () => {
     it('should replace the old with the new', () => {
-      let result = activityReducer([activity2], action);
+      let result = mut([activity2], action);
       result[0].title.should.equal('Instructor Review');
     });
   });

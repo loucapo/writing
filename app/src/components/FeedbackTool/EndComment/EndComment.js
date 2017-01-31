@@ -3,7 +3,7 @@ import ActionButton from '../../ActionButton/ActionButton';
 import MLIcon from 'ml-react-cdl-icons';
 import classnames from 'classnames';
 
-import coreCss from './../../../styles/index.css';
+import coreCss from 'Styles/index.css';
 import endComment from './endComment.css';
 import actionButton from './../../ActionButton/actionButton.css';
 

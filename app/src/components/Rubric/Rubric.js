@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import MLIcon from 'ml-react-cdl-icons';
 
 import rubricCss from './rubric.css';
-import coreCss from '../../styles/index.css';
+import coreCss from 'Styles/index.css';
 import rubricCategoryHeadingCss from './RubricCategoryHeading/rubricCategoryHeading.css';
 
 // TODO refactor it to be a rubric component that contains a rubric header component and a rubric content component

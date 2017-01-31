@@ -5,7 +5,7 @@ import Rubric from '../Rubric/Rubric';
 import MLIcon from 'ml-react-cdl-icons';
 
 import activityCss from './activity.css';
-import coreCss from '../../styles/index.css';
+import coreCss from 'Styles/index.css';
 
 const Activity = ({activity, drafts, rubric, selectCell}) => {
   if (!activity || drafts.length <= 0) {

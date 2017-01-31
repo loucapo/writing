@@ -1,5 +1,7 @@
 import { CALL_API } from 'redux-api-middleware';
 import {config} from './../utilities/configValues';
+import reducerMerge from './../utilities/reducerMerge';
+
 export const REQUEST_ACTIVITY = 'wk_frontend/activity/REQUEST_ACTIVITY ';
 export const SUCCESS_ACTIVITY = 'wk_frontend/activity/SUCCESS_ACTIVITY';
 export const FAILURE_ACTIVITY = 'wk_frontend/activity/FAILURE_ACTIVITY';
@@ -12,22 +14,10 @@ export default (state = [], action) => {
       return state;
     }
     case SUCCESS_ACTIVITY: {
-      let activity = action.payload.data.activity;
-      if (!activity) {
-        return state;
-      }
-
-      // update if the activity.id already is in the array
-      let newState = state.map(x=> {
-        return (x.id === activity.id) ? activity : x;
-      });
-
-      // add new activity otherwise
-      if (state.every(x => x.id !== activity.id)) {
-        newState.push(activity);
-      }
-
-      return newState;
+      console.log(`==========action.payload.data.activity=========`);
+      console.log(action);
+      console.log(`==========END action.payload.data.activity=========`);
+      return reducerMerge(state, action.payload.data.activity);
     }
     case FAILURE_ACTIVITY: {
       return state;

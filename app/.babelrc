@@ -6,10 +6,15 @@
   ],
   "plugins": ["react-hot-loader/babel"],
   "env": {
-    "development": {
-      "ignore": [
-        "node_module",
-        "src/sass/image"
+    "test": {
+      "plugins": [
+        [
+          "babel-plugin-webpack-loaders",
+          {
+            "config": "./app/tests/runtime.webpack.config.js",
+            "verbose": false
+          }
+        ]
       ]
     }
   }
