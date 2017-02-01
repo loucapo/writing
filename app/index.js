@@ -7,6 +7,9 @@ if (env === 'development') {
   // for development use babel/register for faster runtime compilation
   require('babel-register');
 }
+
+
+
 module.exports = (function() {
   const container = registry();
   const api = container.getInstanceOf('server');

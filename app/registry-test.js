@@ -7,12 +7,14 @@ module.exports = function(_options) {
   let result;
   try {
     result = container(x =>
-      x.pathToRoot(path.join(__dirname, '/../'))
-        .requireDirectoryRecursively('./app/src')
-        .for('winston').renameTo('logger') // eslint-disable-line newline-per-chained-call
-        .for('repository').replaceWith('mockDataRepository') // eslint-disable-line newline-per-chained-call
-        .groupAllInDirectory('./app/src/controllers', 'controllers')
-        .complete());
+        x.pathToRoot(path.join(__dirname, '/../'))
+          .requireDirectoryRecursively('./app/src')
+          .for('customLogger').renameTo('logger') // eslint-disable-line newline-per-chained-call
+          .groupAllInDirectory('./app/src/controllers', 'controllers')
+          .groupAllInDirectory('./app/src/modules/schemas', 'schemas', true)
+          .for('readStoreRepository').subWith(options.repositoryStub)
+          .complete(),
+      i => i.instantiate('logger').asFunc().complete());
   } catch (ex) {
     console.log(ex); // eslint-disable-line no-console
     console.log(ex.stack); // eslint-disable-line no-console
