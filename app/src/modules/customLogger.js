@@ -1,27 +1,21 @@
-// var OS = require("os");
-
 module.exports = function customLogger(winston, config, moment, winstonlogstash, os) {
   return function () {
     var useJson = config.app.logging_use_json;
     winston.level = config.app.logging_level;
     winston.remove(winston.transports.Console);
-    // if (useJson) {
       winston.add(winston.transports.Logstash, {
         port: 13302,
         node_name: os.hostname(),
         host: "wk_logstash"
       });
-    // }
-    // else {
       winston.add(winston.transports.Console, {
         handleExceptions: true,
         prettyPrint: true,
         colorize: true,
         silent: false,
         timestamp: true,
-        json: useJson
+        json: false
       });
-    // }
 
     var message = {
       system: {
