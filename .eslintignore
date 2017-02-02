@@ -4,3 +4,4 @@ app/dist
 app/tests
 app/webpack.config.js
 app/webpack.config-testing.js
+coverage

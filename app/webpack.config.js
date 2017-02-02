@@ -54,6 +54,11 @@ const webpackConfig = {
   module: {
     loaders: [
       {
+        test: /\.js$/,
+        include: path.resolve('src/components/'),
+        loader: 'istanbul-instrumenter-loader'
+      },
+      {
         test: /\.jsx?$/,
         loader: 'babel',
         include: [

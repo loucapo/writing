@@ -260,7 +260,7 @@ describe('RUBRIC MODULE REDUCER', () => {
     });
 
     context('when action has initial category click', () => {
-      it('should return rebric with category selected', () => {
+      it('should return rubric with category selected', () => {
         let result = mut(rubric1, action1);
         result.categories[1].catSelection.should.equal(1);
       });
