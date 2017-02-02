@@ -50,7 +50,7 @@ describe('Container Test', function() {
     ];
   });
 
-  describe('#ACTIVITY CONTOLLER', () => {
+  describe('#ACTIVITY CONTROLLER', () => {
     describe('ACTIVITY', function () {
       context('when calling activity with proper input', function () {
         it('should return proper body properties', async function () {
