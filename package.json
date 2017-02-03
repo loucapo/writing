@@ -10,8 +10,9 @@
   "scripts": {
     "build": "webpack -p --config ./app/webpack.config.js --progress --profile --colors",
     "start": "webpack-dev-server --progress --config ./app/webpack.config.js",
-    "test": "BABEL_DISABLE_CACHE=1 NODE_ENV=test ./node_modules/.bin/istanbul cover _mocha -- --opts ./tests/mocha.opts --compilers js:babel-core/register --require babel-polyfill ./app/tests/*/*.tests.js",
+    "test": "BABEL_DISABLE_CACHE=1 NODE_ENV=test mocha --opts ./tests/mocha.opts --compilers js:babel-core/register --require babel-polyfill ./app/tests/*/*.tests.js",
     "testOnce": "BABEL_DISABLE_CACHE=1 NODE_ENV=test mocha --compilers js:babel-core/register --require babel-polyfill --opts ./tests/mocha.opts ./app/tests/*/*.tests.js",
+    "coverage": "nyc npm run testOnce",
     "lint": "eslint .",
     "validate": "npm ls",
     "licenses": "license-checker --production --csv | tee licenses.csv"
@@ -67,6 +68,7 @@
     "jsdom": "^9.5.0",
     "json-loader": "^0.5.4",
     "mocha": "^3.1.0",
+    "nyc": "^10.1.2",
     "postcss-cssnext": "^2.8.0",
     "postcss-import": "^8.1.2",
     "postcss-loader": "^0.9.1",
