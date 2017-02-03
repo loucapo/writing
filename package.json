@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node app/index.js",
     "start_dev": "nodemon app/index.js",
-    "test": "./node_modules/.bin/istanbul cover _mocha -- --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/*/*.js",
+    "test": "mocha --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/*/*.js -w",
+    "testOnce": "mocha --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/*/*.js",
+    "coverage": "nyc npm run testOnce",
     "lint": "eslint .",
     "validate": "npm ls",
     "licenses": "license-checker --production --csv | tee licenses.csv"
@@ -51,6 +53,7 @@
     "license-checker": "^5.1.2",
     "mocha": "^3.2.0",
     "nodemon": "^1.10.2",
+    "nyc": "^10.1.2",
     "precommit-hook-eslint": "^3.0.0",
     "supertest": "^2.0.0",
     "testdouble": "^1.10.2"
@@ -62,5 +65,6 @@
     ]
   },
   "pre-commit": [
+    "testOnce"
   ]
 }

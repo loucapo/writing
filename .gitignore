@@ -12,6 +12,7 @@ node_modules
 
 # Code coverage
 coverage
+.nyc_output
 
 #Compiled sources
 public
