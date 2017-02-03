@@ -6,7 +6,7 @@ export const SUCCESS_ACTIVITY = 'wk_frontend/activity/SUCCESS_ACTIVITY';
 export default (state = [], action) => {
   switch (action.type) {
     case SUCCESS_ACTIVITY: {
-      let drafts = action.payload.data.drafts;
+      let drafts = action.result.data.drafts;
       if (!drafts) {
         return state;
       }

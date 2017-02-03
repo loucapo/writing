@@ -1,25 +1,21 @@
-import { CALL_API } from 'redux-api-middleware';
+
 import {config} from './../utilities/configValues';
 import reducerMerge from './../utilities/reducerMerge';
+import { requestStates } from '../sagas/requestSaga';
 
-export const REQUEST_ACTIVITY = 'wk_frontend/activity/REQUEST_ACTIVITY ';
-export const SUCCESS_ACTIVITY = 'wk_frontend/activity/SUCCESS_ACTIVITY';
-export const FAILURE_ACTIVITY = 'wk_frontend/activity/FAILURE_ACTIVITY';
+const ACTIVITY = requestStates('activity');
 
 // Reducer
 export default (state = [], action) => {
   switch (action.type) {
-    case REQUEST_ACTIVITY: {
+    case ACTIVITY.REQUEST: {
       console.log('REQUEST_ACTIVITY');
       return state;
     }
-    case SUCCESS_ACTIVITY: {
-      console.log(`==========action.payload.data.activity=========`);
-      console.log(action);
-      console.log(`==========END action.payload.data.activity=========`);
-      return reducerMerge(state, action.payload.data.activity);
+    case ACTIVITY.SUCCESS: {
+      return reducerMerge(state, action.result.data.activity);
     }
-    case FAILURE_ACTIVITY: {
+    case ACTIVITY.FAILURE: {
       return state;
     }
     default: {
@@ -30,17 +26,12 @@ export default (state = [], action) => {
 
 // Action
 export function activityAction(id) {
-  let apiUrl = config.apiUrl + 'activity/' + id;
   return {
-    [CALL_API]: {
-      endpoint: apiUrl,
-      method: 'GET',
-      types: [
-        REQUEST_ACTIVITY,
-        SUCCESS_ACTIVITY,
-        FAILURE_ACTIVITY
-      ]
+    type: ACTIVITY.REQUEST,
+    states: ACTIVITY,
+    url: `${config.apiUrl}activity/${id}`,
+    params: {
+      method: 'GET'
     }
   };
 }
-

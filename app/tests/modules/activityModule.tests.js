@@ -1,6 +1,8 @@
 import uuid from 'uuid'
 import mut from './../../src/modules/activityModule';
-import {SUCCESS_ACTIVITY} from './../../src/modules/activityModule';
+import { requestStates } from '../../src/sagas/requestSaga';
+
+const ACTIVITY = requestStates('activity');
 
 import chai from 'chai';
 var expect = chai.expect;
@@ -25,8 +27,8 @@ describe('ACTIVITY MODULE REDUCER', () => {
     };
 
     action = {
-      type: SUCCESS_ACTIVITY,
-      payload: {
+      type: ACTIVITY.SUCCESS,
+      result: {
         data: {
             activity: activity1
           }

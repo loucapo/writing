@@ -28,7 +28,7 @@ describe('DRAFT MODULE REDUCER', () => {
 
     action = {
       type: SUCCESS_ACTIVITY,
-      payload: {
+      result: {
         data: {
           drafts: [draft1, draft2]
         }
