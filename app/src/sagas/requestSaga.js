@@ -1,5 +1,5 @@
-import reduxSaga from 'redux-saga';
-const { takeEvery, call, put } = reduxSaga;
+import { takeEvery, call, put } from 'redux-saga/effects';
+
 const standardSuccessResponse = (action, result) => {
   return {type: action.states.SUCCESS, action, result};
 };
@@ -27,8 +27,14 @@ function fetchFn(url, params) {
     .then(res => res.json());
 }
 
+
 function* request(action) {
   try {
+    const token = document.getElementById('token').getAttribute('data-val');
+    let headers = new Headers();
+    headers.append('Authorization', 'bearer ' + token);
+    action.params.headers = headers;
+
     const response = yield call(fetchFn, action.url, action.params);
     const success = action.successFunction ? action.successFunction : standardSuccessResponse;
     yield put(success(action, response));
@@ -41,7 +47,6 @@ function* request(action) {
 export default function* () {
   yield takeEvery(action => action.type.includes('REQUEST'), request);
 }
-
 
 
 //TODO validate the action received by the request saga and dispatch an error if it's not valid
