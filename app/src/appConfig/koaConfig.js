@@ -22,7 +22,6 @@ module.exports = function(koagenericsession,
     app.use(koabodyparser());
     app.use(koaconvert(koagenericsession()));
 
-
     app.use(async function (ctx, next){
       ctx.render = coviews("./app/src/views", {
         map: {html: "swig"}

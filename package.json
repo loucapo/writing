@@ -29,12 +29,9 @@
     "koa-errorhandler": "^0.1.1",
     "koa-generic-session": "^1.11.3",
     "koa-logger": "^2.0.0",
-    "koa-papers": "reharik/koa-papers",
     "koa-response-time": "^2.0.0",
     "koa-router": "^7.0.1",
     "koa-send": "^3.2.0",
-    "papers-local": "reharik/papers-local",
-    "papers-lti": "reharik/papers-lti",
     "pg-async": "^2.4.0",
     "superagent": "^2.3.0",
     "winston": "^2.2.0"
