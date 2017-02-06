@@ -10,6 +10,8 @@ module.exports = function (readStoreRepository, logger) {
       logger.info('Selecting drafts ' + ids + ' from readStoreRepository');
       var drafts = await readStoreRepository.rows(`select * from "draft" where "id" IN (${ids})`);
 
+      logger.info("JWT payload: "+JSON.stringify(ctx.state.user));
+
       ctx.status = 200;
       ctx.body = {
         status: ctx.status,
