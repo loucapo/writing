@@ -7,11 +7,11 @@ const FeedbackLibButton = ({toggleQuickFeedback}) => {
     <li className={ sideMenu.menu } data-id="feedbackLib" onClick={toggleQuickFeedback}>
       <div className={ sideMenu.listDiv }>
         <MLIcon
-          iconTitle="Quick Feedback"
-          iconFill="#DD5714"
-          iconType="comment_text"
-          iconWidth="20"
-          iconHeight="20"
+          title="Quick Feedback"
+          fill="#DD5714"
+          type="comment_text"
+          width="20"
+          height="20"
         />
         <span
           className={sideMenu.sideMenuCaption}>Quick Feedback Library

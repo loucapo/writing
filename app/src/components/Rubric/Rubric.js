@@ -21,11 +21,11 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
         <h1 data-id="rubric-title">
           <span>
             <MLIcon
-              iconTitle="minus"
-              iconFill="#000000" // black
-              iconType="minus"
-              iconWidth="12"
-              iconHeight="12"
+              title="minus"
+              fill="#000000" // black
+              type="minus"
+              width="12"
+              height="12"
               viewBox="0 0 24 24"
             />
             <span className={ coreCss.headingText }>
@@ -64,11 +64,11 @@ const Rubric = ({ rubric, toggleRubric, selectCell, showHeaderOnly }) => {
         <span>Final Draft Rubric</span>
         <span className={rubricCss.close} onClick={toggleRubric}>
           <MLIcon
-            iconTitle="x"
-            iconFill="#000000" // black
-            iconType="x"
-            iconWidth="24"
-            iconHeight="24"
+            title="x"
+            fill="#000000" // black
+            type="x"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
           />
         </span>

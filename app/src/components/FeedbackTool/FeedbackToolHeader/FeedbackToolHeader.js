@@ -10,11 +10,11 @@ const FeedbackToolHeader = ({toggleRubric}) => {
       <div className={feedbackToolHeaderCss.leftArrowContainer}>
         <MLIcon
           className={feedbackToolHeaderCss.left_arrow}
-          iconTitle="arrow left"
-          iconFill="#ffffff"
-          iconType="arrow_left"
-          iconWidth="24"
-          iconHeight="24"
+          title="arrow left"
+          fill="#ffffff"
+          type="arrow_left"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
         />
       </div>
@@ -30,11 +30,11 @@ const FeedbackToolHeader = ({toggleRubric}) => {
         <span className={feedbackToolHeaderCss.finalGradeSelect}>Final Grade: Select</span>
         <MLIcon
           className={feedbackToolHeaderCss.dropdown_caret}
-          iconTitle="caret down"
-          iconFill="#ffffff"
-          iconType="caret_down"
-          iconWidth="12"
-          iconHeight="12"
+          title="caret down"
+          fill="#ffffff"
+          type="caret_down"
+          width="12"
+          height="12"
           viewBox="0 0 24 24"
         />
         <ActionButton dataId="draft-revision-history-button" content="Draft Revision History" css={actionButton.action_button_blue} />

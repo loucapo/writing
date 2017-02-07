@@ -12,11 +12,11 @@ const ActivityDetails = ({activity}) => (
     <h1 data-id="activity-title">
       <span>
         <MLIcon
-          iconTitle="minus"
-          iconFill="#000000" // black
-          iconType="minus"
-          iconWidth="12"
-          iconHeight="12"
+          title="minus"
+          fill="#000000" // black
+          type="minus"
+          width="12"
+          height="12"
           viewBox="0 0 24 24"
         />
         <span className={ coreCss.headingText }>

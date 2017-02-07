@@ -18,11 +18,11 @@ const Activity = ({activity, drafts, rubric, selectCell}) => {
           <div className={activityCss.leftArrowContainer}>
             <MLIcon
               className={activityCss.left_arrow}
-              iconTitle="arrow left"
-              iconFill="#ffffff"
-              iconType="arrow_left"
-              iconWidth="24"
-              iconHeight="24"
+              title="arrow left"
+              fill="#ffffff"
+              type="arrow_left"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
             />
           </div>

@@ -13,11 +13,11 @@ export const standardForm = (onSubmit, onClose, contentMap) => {
       <Input frfProperty={contentMap.model.sentimentLevel} options={contentMap.model.sentimentLevel.options} />
       <MLIcon
         className={modalFormStyles.commentMic}
-        iconTitle="comment microphone"
-        iconType="microphone"
-        iconFill="#676767"
-        iconWidth="26"
-        iconHeight="26"
+        title="comment microphone"
+        type="microphone"
+        fill="#676767"
+        width="26"
+        height="26"
         viewBox="0 0 24 24"
       />
       <Input frfProperty={contentMap.model.comment} />

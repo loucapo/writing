@@ -11,10 +11,10 @@ let SubmissionList = () => {
         <div>Showing: <span data-id="submission-filter" className={submissionList.dropDown}>Final Draft - Due: Sep 24, 2016</span>
           <MLIcon
             className={submissionList.dropdown_caret}
-            iconTitle="caret down"
-            iconType="caret_down"
-            iconWidth="12"
-            iconHeight="12"
+            title="caret down"
+            type="caret_down"
+            width="12"
+            height="12"
             viewBox="0 0 24 24"
           />
         </div>

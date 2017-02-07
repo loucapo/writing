@@ -40,11 +40,11 @@ const FeedbackToolContentFlag = ({item, expanded, topFlag, onClick}) => {
       <div className={`${flagStyles.triangleBorder} ${borderPointerColor}`} style={triangleStyles}>
         <div className={flagStyles.heading}>
           <MLIcon
-            iconTitle={feedbackToolContentMap[item.contentType].title}
-            iconType={item.icon}
-            iconFill={color}
-            iconWidth="26"
-            iconHeight="26"
+            title={feedbackToolContentMap[item.contentType].title}
+            type={item.icon}
+            fill={color}
+            width="26"
+            height="26"
             viewBox="0 0 24 24"
           />
           <strong>{feedbackToolContentMap[item.contentType].title}</strong>

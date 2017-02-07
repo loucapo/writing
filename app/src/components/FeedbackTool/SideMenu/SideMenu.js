@@ -28,17 +28,17 @@ class SideMenu extends Component {
 
   render() {
     const icon = (<MLIcon
-      iconTitle="Feedback"
-      iconFill="#00758E"
-      iconType="comment"
-      iconWidth="20"
-      iconHeight="20" />);
+      title="Feedback"
+      fill="#00758E"
+      type="comment"
+      width="20"
+      height="20" />);
     const goodJobIcon = (<MLIcon
-      iconTitle="Good Job"
-      iconFill="#3B822E"
-      iconType="comment_thumbs_up"
-      iconWidth="20"
-      iconHeight="20" />);
+      title="Good Job"
+      fill="#3B822E"
+      type="comment_thumbs_up"
+      width="20"
+      height="20" />);
 
     return (
       <div className={sideMenu.sidebarContainer}>

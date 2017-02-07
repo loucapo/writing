@@ -14,11 +14,11 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          iconFill="#3B822E"
-          iconTitle="check"
-          iconType="check"
-          iconWidth="20"
-          iconHeight="20"
+          fill="#3B822E"
+          title="check"
+          type="check"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
         />
       </td>
@@ -35,11 +35,11 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          iconFill="#3B822E"
-          iconTitle="check"
-          iconType="check"
-          iconWidth="20"
-          iconHeight="20"
+          fill="#3B822E"
+          title="check"
+          type="check"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
         />
       </td>
@@ -116,11 +116,11 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          iconFill="#3B822E"
-          iconTitle="check"
-          iconType="check"
-          iconWidth="20"
-          iconHeight="20"
+          fill="#3B822E"
+          title="check"
+          type="check"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
         />
       </td>
@@ -185,11 +185,11 @@ const SubmissionItem = () => (
       <td>Sep 18, 2016</td>
       <td>
         <MLIcon
-          iconFill="#3B822E"
-          iconTitle="check"
-          iconType="check"
-          iconWidth="20"
-          iconHeight="20"
+          fill="#3B822E"
+          title="check"
+          type="check"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
         />
       </td>

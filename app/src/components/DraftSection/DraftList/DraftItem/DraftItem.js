@@ -22,11 +22,11 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
         { draftItem.details.gradingPolicy }
         <MLIcon
           className={draftItemCss.dropdown_caret}
-          iconTitle="caret down"
-          iconFill="#ffffff"
-          iconType="caret_down"
-          iconWidth="12"
-          iconHeight="12"
+          title="caret down"
+          fill="#ffffff"
+          type="caret_down"
+          width="12"
+          height="12"
           viewBox="0 0 24 24"
         />
       </div>
@@ -34,32 +34,32 @@ const DraftItem = ({draftItem, draftName, gradingPolicy}) => (
         { draftItem.type }
         <MLIcon
           className={draftItemCss.dropdown_caret}
-          iconTitle="caret down"
-          iconFill="#ffffff"
-          iconType="caret_down"
-          iconWidth="12"
-          iconHeight="12"
+          title="caret down"
+          fill="#ffffff"
+          type="caret_down"
+          width="12"
+          height="12"
           viewBox="0 0 24 24"
         />
       </div>
       <div className={draftItemCss.draftParamSelect}>
         <MLIcon
           className={draftItemCss.calendar}
-          iconTitle="calendar"
-          iconFill="#ffffff"
-          iconType="calendar"
-          iconWidth="20"
-          iconHeight="20"
+          title="calendar"
+          fill="#ffffff"
+          type="calendar"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
         />
         { draftItem.dueDate }
         <MLIcon
           className={draftItemCss.dropdown_caret}
-          iconTitle="caret down"
-          iconFill="#ffffff"
-          iconType="caret_down"
-          iconWidth="12"
-          iconHeight="12"
+          title="caret down"
+          fill="#ffffff"
+          type="caret_down"
+          width="12"
+          height="12"
           viewBox="0 0 24 24"
         />
       </div>
