@@ -41,4 +41,12 @@ module.exports = new Page({
   // draft grading policies
   draft_grading_policies: { get: function () { return this.elements("[data-id='grading-policy']"); } },
 
+  //icons
+  arrow: { get: function () { return this.element("[class^='Activity__left_arrow']"); } },
+  dropdown_caret: { get: function () { return this.element("[class^='DraftItem__dropdown_caret']"); } },
+  calendar: { get: function () { return this.element("[class^='DraftItem__calendar']"); } },
+  minus: { get: function () { return this.element("[class^='DraftItem__minus']"); } },
+  plus: { get: function () { return this.element("[class^='DraftItem__plus']"); } },
+  checkmark: { get: function () { return this.element("[class^='SubmissionItem__check']"); } },
+
 });

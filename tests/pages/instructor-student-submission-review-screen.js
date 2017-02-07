@@ -14,10 +14,10 @@ module.exports = new Page({
   
   'activity div': { get: function() { return this.element("//*[@data-id='activity-menu']/..", 'xpath'); }},
 
+  'draft-picker option 1': { get: function() { return this.element("[data-id='submission-filter']"); }},
+
   'checkmark svg': { get: function() { return this.element("table[class^='SubmissionList__table'] svg"); }},
-  
-  'draft-picker option 1': { get: function() { return this.element("//select/option[1]", 'xpath'); }},
-  
+
   'Jane Austen row': { get: function() { return this.element("//td[text()='Austen, Jane']/..", 'xpath'); }},
 
   'Alice Walker row': { get: function() { return this.element("//td[text()='Walker, Alice']/..", 'xpath'); }},

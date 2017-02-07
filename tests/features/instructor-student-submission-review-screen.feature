@@ -1,19 +1,18 @@
 @WRITE-278
-  #commented code wait to see post-CDL what to do with it
-  #Broken by CDL on 12/8/16
-Feature: Instructor Can Review Student Submissions
 
+Feature: Instructor Can Review Student Submissions
   Scenario: The Instructor navigates to Student Submissions
     Given I visit the activity page
     Then I see thee 'Drafts tab'
     Then I click on the 'student submissions tab'
     Then I see some text 'Shakespeare, William' in 'activity div'
     And I see some text 'Faulkner, William' in 'activity div'
+    And I see some text 'Review sent' in 'activity div'
     And I see a svg in 'activity div'
     And I see some text 'Start Review' in 'activity div'
     And I see some text 'Send Review' in 'activity div'
     #And I see some text 'Instructor Review' in 'activity div'
-    #And I see some text 'Submissions Draft 1' in 'draft-picker option 1'
+    And I see some text 'Final Draft - Due: Sep 24, 2016' in 'draft-picker option 1'
 
   Scenario: The Instructor initiates feedback on a draft
     Given I visit the activity page
