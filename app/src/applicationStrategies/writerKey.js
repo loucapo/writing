@@ -8,7 +8,7 @@ module.exports = function (jsonwebtoken, config) {
           as_id : launchData.user_data.as_id,
           first_name : launchData.user_data.first_name,
           last_name : launchData.user_data.last_name,
-          role : launchData.role,
+          role : launchData.user_data.role
         },
         launch_data : {
           resource_link_id : launchData.launch_data.resource_link_id,

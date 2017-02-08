@@ -12,7 +12,7 @@ module.exports = function (applicationStrategies) {
           as_id : '123',
           first_name : 'Judy',
           last_name : 'Smith',
-          role : 'instructor',
+          role : 'instructor'
         },
         launch_data : {
           resource_link_id : 'ABCD',
