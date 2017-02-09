@@ -16,29 +16,29 @@ exports.define = function(steps) {
   });
 
   steps.when("I click on the Quick Feedback Library", function() {
-    page.quick_feedback_library.click();
+    page.sidemenu.quick_feedback_library.click();
   });
 
   steps.then("I see a menu of common feedback marks", function() {
-    page.comma_splice.isDisplayed().should.eventually.equal(true);
-    page.fragment.isDisplayed().should.eventually.equal(true);
-    page.usage.isDisplayed().should.eventually.equal(true);
-    page.pronoun_agreement.isDisplayed().should.eventually.equal(true);
-    page.subject_verb_agreement.isDisplayed().should.eventually.equal(true);
-    page.appropriate_language.isDisplayed().should.eventually.equal(true);
-    page.needs_analysis.isDisplayed().should.eventually.equal(true);
-    page.comma_error.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.comma_splice.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.fragment.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.usage.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.pronoun_agreement.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.subject_verb_agreement.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.appropriate_language.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.needs_analysis.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.comma_error.isDisplayed().should.eventually.equal(true);
   });
 
   steps.then("The Quick Feedback Library should be closed", function() {
-    page.comma_splice.isDisplayed().should.eventually.equal(false);
-    page.fragment.isDisplayed().should.eventually.equal(false);
-    page.usage.isDisplayed().should.eventually.equal(false);
-    page.pronoun_agreement.isDisplayed().should.eventually.equal(false);
-    page.subject_verb_agreement.isDisplayed().should.eventually.equal(false);
-    page.appropriate_language.isDisplayed().should.eventually.equal(false);
-    page.needs_analysis.isDisplayed().should.eventually.equal(false);
-    page.comma_error.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.comma_splice.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.fragment.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.usage.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.pronoun_agreement.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.subject_verb_agreement.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.appropriate_language.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.needs_analysis.isDisplayed().should.eventually.equal(false);
+    page.sidemenu.comma_error.isDisplayed().should.eventually.equal(false);
   });
 
   steps.then("I see the '$elem'", function(elem) {
@@ -77,15 +77,15 @@ exports.define = function(steps) {
   });
 
   steps.then("I see a menu of commenting options", function() {
-    page.thesis.isDisplayed().should.eventually.equal(true);
-    page.reason_support.isDisplayed().should.eventually.equal(true);
-    page.interpretation.isDisplayed().should.eventually.equal(true);
-    page.paragraphDev.isDisplayed().should.eventually.equal(true);
-    page.research.isDisplayed().should.eventually.equal(true);
-    page.other.isDisplayed().should.eventually.equal(true);
-    page.counterargs.isDisplayed().should.eventually.equal(true);
-    page.goodJob.isDisplayed().should.eventually.equal(true);
-    page.quick_feedback_library.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.thesis.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.reason_support.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.interpretation.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.paragraphDev.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.research.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.other.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.counterargs.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.goodJob.isDisplayed().should.eventually.equal(true);
+    page.sidemenu.quick_feedback_library.isDisplayed().should.eventually.equal(true);
   });
 
   steps.when("I scroll down the screen", function() {
@@ -153,6 +153,10 @@ exports.define = function(steps) {
     page.comment_popup.isDisplayed().should.eventually.equal(true);
   });
 
+  steps.then("on the quick feedback tools I click the '$element' element", function(elem) {
+    page.sidemenu[elem].click();
+  });
+  
   steps.then("on the feedback page I click the '$element' element", function(elem) {
     page[elem].click();
   });
