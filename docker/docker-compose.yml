@@ -3,7 +3,7 @@ services:
   wk_frontend:
     image: wk_frontend
     volumes:
-      - ./../app:/home/current/app
+      - ./../app:/home/current/app:rw
     command: npm start #top -b #
     env_file:
       - ./.env
@@ -16,7 +16,7 @@ services:
   frontend_test:
     image: wk_frontend
     volumes:
-      - ./../app:/home/current/app
+      - ./../app:/home/current/app:rw
     command: npm test #top -b #
     environment:
       DEBUG: 'true'
