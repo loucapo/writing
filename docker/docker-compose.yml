@@ -3,7 +3,7 @@ services:
   wk_api:
     image: wk_api
     volumes:
-      - ./../app:/home/current/app
+      - ./../app:/home/current/app:rw
     command: npm start #top -b #
     env_file:
       - ./.env
