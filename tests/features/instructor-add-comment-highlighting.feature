@@ -8,7 +8,7 @@ Feature: Instructor Can Add Comments to Highlighting
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body
-    And on the feedback page I click the '[Feedback Type]' element
+    And on the quick feedback tools I click the '[Feedback Type]' element
     And I see a comment popup appear
     And I add 'textual feedback' to the comment popup
     And on the feedback page I click the 'submit' element
@@ -25,7 +25,7 @@ Feature: Instructor Can Add Comments to Highlighting
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body
-    And on the feedback page I click the '[Feedback Type]' element
+    And on the quick feedback tools I click the '[Feedback Type]' element
     And I see a comment popup appear
     And I add 'me gonna cancel this feedback' to the comment popup
     And on the feedback page I click the 'cancel' element
@@ -42,6 +42,6 @@ Feature: Instructor Can Add Comments to Highlighting
     Given I visit the activity page
     When I open the feedback tool
     And I select a lower span of the essay
-    And on the feedback page I click the 'other' element
+    And on the quick feedback tools I click the 'other' element
     And I see a comment popup appear
     Then the modal completely appears above the fold

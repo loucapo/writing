@@ -5,7 +5,7 @@ Feature: Instructor Changes Sentiment Level on Comment
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body
-    And on the feedback page I click the 'other' element
+    And on the quick feedback tools I click the 'other' element
     And I see a comment popup appear
     And I see a 'sentiment level selection dropdown'
 
@@ -13,7 +13,7 @@ Feature: Instructor Changes Sentiment Level on Comment
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body
-    And on the feedback page I click the 'other' element
+    And on the quick feedback tools I click the 'other' element
     And on the feedback page I click the 'sentiment level selection dropdown' element
     Then I should see three sentiment levels
 
@@ -21,7 +21,7 @@ Feature: Instructor Changes Sentiment Level on Comment
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body
-    And on the feedback page I click the 'other' element
+    And on the quick feedback tools I click the 'other' element
     And on the feedback page I click the 'sentiment_goodJob' element
     And on the feedback page I click the 'submit' element
     Then the selected text highlight should persist
@@ -32,7 +32,7 @@ Feature: Instructor Changes Sentiment Level on Comment
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body
-    And on the feedback page I click the 'other' element
+    And on the quick feedback tools I click the 'other' element
     And on the feedback page I click the 'sentiment_needsWork' element
     And on the feedback page I click the 'submit' element
     Then the selected text highlight should persist
@@ -43,7 +43,7 @@ Feature: Instructor Changes Sentiment Level on Comment
     Given I visit the activity page
     When I open the feedback tool
     And I select some text in the text body
-    And on the feedback page I click the 'other' element
+    And on the quick feedback tools I click the 'other' element
     And on the feedback page I click the 'sentiment_extensiveRevision' element
     And on the feedback page I click the 'submit' element
     Then the selected text highlight should persist
