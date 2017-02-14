@@ -93,6 +93,9 @@ kill-orphans:
 run:	docker-build-nginx
 	docker-compose -f docker/docker-compose.yml up
 
+run-dev:docker-build-nginx
+	docker-compose -f docker/docker-compose-dev.yml up
+
 ##################
 #Other Docker Helpers
 ##################
