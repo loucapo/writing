@@ -1,0 +1,16 @@
+version: "2"
+services:
+  wk_serve:
+    image: wk_serve
+    volumes:
+      - ./../app:/home/current/app:rw
+    command: npm run start_dev #top -b #top -b #
+    env_file:
+      - ./.env
+    environment:
+      DEBUG: "true"
+      NODE_ENV: development
+      APPLICATION_NAME: wk_serve
+    ports:
+      - "10080:80"
+    container_name: wk_serve
