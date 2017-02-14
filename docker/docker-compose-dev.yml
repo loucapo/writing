@@ -3,10 +3,8 @@ services:
   wk_api:
     image: wk_api
     volumes:
-      - ./../app:/home/current/app
+      - ./../app:/home/current/app:rw
     command: npm run start_dev #top -b #top -b #
-   # external_links:
-    #  - cdn:frontend
     env_file:
       - ./.env
     environment:
