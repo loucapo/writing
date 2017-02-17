@@ -12,6 +12,8 @@
   "testTimeout": 60000,
   "elementTimeout": 5000,
 
+  "copyReport": false,
+
   "tags": "!@wip",
 
   "screenSize": {
