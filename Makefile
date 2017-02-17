@@ -14,7 +14,7 @@ clean:
 
 install:
 	rm -rf ./node_modules
-	npm install --silent
+	yarn install
 
 docker-build:
 	docker build -t $(IMAGENAME) -f docker/Dockerfile .

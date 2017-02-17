@@ -4,7 +4,7 @@ services:
     image: wk_api
     volumes:
       - ./../app:/home/current/app:rw
-    command: npm run start_dev #top -b #top -b #
+    command: yarn run start_dev
     env_file:
       - ./.env
     environment:
