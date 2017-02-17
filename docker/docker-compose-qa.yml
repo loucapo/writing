@@ -2,7 +2,7 @@ version: "2"
 services:
   wk_serve:
     image: ${wk_serve_image}
-    command: npm run start
+    command: yarn run start
     env_file:
       - ./.env
     environment:
