@@ -1,4 +1,4 @@
-FROM 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/node:latest
+FROM 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/node-yarn:latest
 
 MAINTAINER wk@saplinglearning.com
 
@@ -8,6 +8,6 @@ ADD ./config ./config
 
 ADD ./migrations ./migrations
 
-RUN npm install --silent
+RUN yarn install
 
 ADD ./app /$HOME/app
