@@ -4,7 +4,7 @@ services:
     image: wk_frontend
     volumes:
       - ./../app:/home/current/app:rw
-    command: npm start #top -b #
+    command: yarn run start
     env_file:
       - ./.env
     environment:
@@ -17,7 +17,7 @@ services:
     image: wk_frontend
     volumes:
       - ./../app:/home/current/app:rw
-    command: npm test #top -b #
+    command: yarn run test
     environment:
       DEBUG: 'true'
       NODE_ENV: development
