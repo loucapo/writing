@@ -1,21 +1,33 @@
 module.exports = function customLogger(winston, config, moment, winstonlogstash, os) {
   return function () {
-    var useJson = config.app.logging_use_json;
-    winston.level = config.app.logging_level;
-    winston.remove(winston.transports.Console);
-      winston.add(winston.transports.Logstash, {
-        port: 13302,
-        node_name: os.hostname(),
-        host: "wk_logstash"
-      });
-      winston.add(winston.transports.Console, {
-        handleExceptions: true,
-        prettyPrint: true,
-        colorize: true,
-        silent: false,
-        timestamp: true,
-        json: false
-      });
+    var useTransports = process.env.LOGGING_TRANSPORTS;
+
+    var transports = [];
+    if(useTransports.indexOf('logstash') >=0 )
+      transports.push(
+        new (winston.transports.Logstash)({
+          port: 13302,
+          node_name: os.hostname(),
+          host: "wk_logstash"
+        }));
+    if(useTransports.indexOf('console') >= 0)
+      transports.push(
+        new (winston.transports.Console)({
+          handleExceptions: true,
+          prettyPrint: true,
+          colorize: true,
+          silent: false,
+          timestamp: true,
+          json: false,
+          formatter: (x) => {
+            return `[${x.meta.level}] module: ${config.app.applicationName} msg: ${x.meta.message} | ${moment().format('h:mm:ss a')}`;
+          }
+        }));
+
+    winston.configure({
+      transports,
+      level: process.env.LOGGING_LEVEL || 'silly'
+    });
 
     var message = {
       system: {

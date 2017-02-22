@@ -7,7 +7,7 @@
     "jwt_secret": "JWT_SECRET",
     "wk_serve_url": "WK_SERVE_URL",
     "swagger_ui_url": "SWAGGER_UI_URL",
-    "logging_use_json": "LOGGING_USE_JSON",
+    "logging_transports": "LOGGING_TRANSPORTS",
     "logging_level": "LOGGING_LEVEL"
   },
   "postgres": {
