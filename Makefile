@@ -96,6 +96,12 @@ run:	docker-build-nginx
 run-dev:docker-build-nginx
 	docker-compose -f docker/docker-compose-dev.yml up
 
+run-data:	docker-build-data
+	docker-compose -f docker/docker-compose-data.yml up
+
+run-logging:
+	docker-compose -f docker/docker-compose-logging.yml up -d
+
 ##################
 #Other Docker Helpers
 ##################
