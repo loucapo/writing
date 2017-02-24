@@ -5,7 +5,7 @@
   "main": "app/index.js",
   "scripts": {
     "start": "node app/index.js",
-    "start_dev": "NODE_ENV=local LOGGING_TRANSPORTS=console nodemon --ignore app/src/swagger --harmony-async-await app/index.js",
+    "start_dev": "nodemon --ignore app/src/swagger --harmony-async-await app/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/*/*.js -w",
     "testOnce": "NODE_ENV=local LOGGING_TRANSPORTS=console mocha --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/*/*.js",
     "coverage": "nyc npm run testOnce",
