@@ -26,8 +26,7 @@ clone-repos:	clone-api clone-front-end clone-data clone-serve
 docker-build-node:
 	docker build -t wk_node -f nodeDocker/Dockerfile ./nodeDocker
 
-docker-build-api:	docker-build-node
-	aws ecr get-login | bash -e
+docker-build-api:	docker-build-node ecr-login
 	cd ../wk_api && $(MAKE) docker-build
 	cd ../wk_compose
 
@@ -86,6 +85,21 @@ kill-front-end:
 kill-orphans:
 	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
+kill-elasticsearch:
+	docker rm -vf wk_elasticsearch 2>/dev/null || echo "No more containers to remove."
+	docker rmi $$(docker images | grep elasticsearch | awk '{print $3}') 2>/dev/null || echo "No more containers to remove."
+
+kill-kibana:
+	docker rm -vf wk_kibana 2>/dev/null || echo "No more containers to remove."
+	docker rmi $$(docker images | grep kibana | awk '{print $3}') 2>/dev/null || echo "No more containers to remove."
+
+kill-logstash:
+	docker rm -vf wk_logstash 2>/dev/null || echo "No more containers to remove."
+	docker rmi $$(docker images | grep logstash | awk '{print $3}') 2>/dev/null || echo "No more containers to remove."
+
+kill-logging:	kill-elasticsearch kill-kibana kill-logstash
+
+
 ##################
 #run
 ##################
@@ -99,8 +113,15 @@ run-dev:docker-build-nginx
 run-data:	docker-build-data
 	docker-compose -f docker/docker-compose-data.yml up
 
-run-logging:
+run-logging:	ecr-login
 	docker-compose -f docker/docker-compose-logging.yml up -d
+
+##################
+#AWS helpers
+##################
+
+ecr-login:
+	aws ecr get-login | bash -e
 
 ##################
 #Other Docker Helpers
