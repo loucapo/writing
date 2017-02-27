@@ -1,3 +1,7 @@
+
+# default target
+default: run-dev
+
 ##################
 #clone
 ##################
@@ -184,4 +188,4 @@ get-branches:
 	@cd ../wk_compose
 
 
-#.PHONY: clean install docker-build run docker-clean docker-exec
+.PHONY: default docker-build run docker-exec clone-api clone-front-end clone-data clone-serve clone-yo clone-repos docker-build-node docker-build-api docker-build-serve docker-build-data docker-build-front-end docker-build-nginx kill-all kill-all-but-bases kill-all-but-node kill-nginx kill-api kill-data kill-postgres kill-front-end kill-orphans run run-dev run-data run-logging exec get-statuses pull-repos get-branches 
