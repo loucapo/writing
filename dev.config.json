@@ -16,6 +16,7 @@
   "pending": true,
 
   "tags": "!@wip",
+  "buildtag": "test",
 
   "screenSize": {
     "x": 1600,
