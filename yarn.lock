@@ -177,8 +177,8 @@ async@^1.4.0, async@^1.4.2, async@^1.5.2:
   resolved "http://npm.macmillantech.com:8080/a/async/_attachments/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
 async@^2.1.4:
-  version "2.1.4"
-  resolved "http://npm.macmillantech.com:8080/a/async/_attachments/async-2.1.4.tgz#2d2160c7788032e4dd6cbe2502f1f9a2c8f6cde4"
+  version "2.1.5"
+  resolved "http://npm.macmillantech.com:8080/a/async/_attachments/async-2.1.5.tgz#e587c68580994ac67fc56ff86d3ac56bdbe810bc"
   dependencies:
     lodash "^4.14.0"
 
@@ -709,8 +709,8 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.22.0, babel-types@^6.23
     to-fast-properties "^1.0.1"
 
 babylon@^6.11.0, babylon@^6.13.0, babylon@^6.15.0:
-  version "6.15.0"
-  resolved "http://npm.macmillantech.com:8080/b/babylon/_attachments/babylon-6.15.0.tgz#ba65cfa1a80e1759b0e89fb562e27dccae70348e"
+  version "6.16.1"
+  resolved "http://npm.macmillantech.com:8080/b/babylon/_attachments/babylon-6.16.1.tgz#30c5a22f481978a9e7f8cdfdf496b11d94b404d3"
 
 balanced-match@^0.4.1:
   version "0.4.2"
@@ -739,10 +739,6 @@ block-stream@*:
   resolved "http://npm.macmillantech.com:8080/b/block-stream/_attachments/block-stream-0.0.9.tgz#13ebfe778a03205cfe03751481ebb4b3300c126a"
   dependencies:
     inherits "~2.0.0"
-
-bluebird@^2.9.27:
-  version "2.11.0"
-  resolved "http://npm.macmillantech.com:8080/b/bluebird/_attachments/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
 
 bluebird@^3.4.6:
   version "3.4.7"
@@ -1072,23 +1068,16 @@ dag-map@~1.0.0:
   resolved "http://npm.macmillantech.com:8080/d/dag-map/_attachments/dag-map-1.0.2.tgz#e8379f041000ed561fc515475c1ed2c85eece8d7"
 
 dagon@reharik/dagon:
-  version "1.1.0"
-  resolved "https://codeload.github.com/reharik/dagon/tar.gz/bd39bab57ae1d5d402bccea130d0a75aa8521f51"
+  version "1.2.0"
+  resolved "https://codeload.github.com/reharik/dagon/tar.gz/8d0f1fbb230125814d93329ddf6dcefc22481cd2"
   dependencies:
     JSON "^1.0.0"
-    bluebird "^2.9.27"
-    extend "^3.0.0"
-    fn-args "^1.0.0"
+    fn-args "^2.0.0"
     invariant "^2.1.0"
-    joi "^6.0.8"
-    lodash "^3.6.0"
     moment "^2.10.6"
-    nested-error "^1.0.0"
     ono "^2.2.1"
-    ramda "^0.18.0"
-    uuid "^2.0.1"
-    winston "^1.0.0"
-    winston-logstash "^0.1.11"
+    ramda "^0.23.0"
+    winston "^2.3.1"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -1327,8 +1316,8 @@ escope@^3.6.0:
     estraverse "^4.1.1"
 
 eslint@^3.4.0:
-  version "3.15.0"
-  resolved "http://npm.macmillantech.com:8080/e/eslint/_attachments/eslint-3.15.0.tgz#bdcc6a6c5ffe08160e7b93c066695362a91e30f2"
+  version "3.16.1"
+  resolved "http://npm.macmillantech.com:8080/e/eslint/_attachments/eslint-3.16.1.tgz#9bc31fc7341692cf772e80607508f67d711c5609"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1511,19 +1500,19 @@ flat-cache@^1.2.1:
     graceful-fs "^4.1.2"
     write "^0.2.1"
 
-fn-args@^1.0.0:
-  version "1.0.0"
-  resolved "http://npm.macmillantech.com:8080/f/fn-args/_attachments/fn-args-1.0.0.tgz#974dafa1aeac4ac7c21fa09cc3b80f650106ed32"
+fn-args@^2.0.0:
+  version "2.0.0"
+  resolved "http://npm.macmillantech.com:8080/f/fn-args/_attachments/fn-args-2.0.0.tgz#1779f8ffce0ec3a31b85ba3647ae050a5ad9cf74"
 
-for-in@^0.1.5:
-  version "0.1.6"
-  resolved "http://npm.macmillantech.com:8080/f/for-in/_attachments/for-in-0.1.6.tgz#c9f96e89bfad18a545af5ec3ed352a1d9e5b4dc8"
+for-in@^1.0.1:
+  version "1.0.1"
+  resolved "http://npm.macmillantech.com:8080/f/for-in/_attachments/for-in-1.0.1.tgz#d6c3e3798ceaaa301047b109dedf1b1ae37a0efa"
 
 for-own@^0.1.4:
-  version "0.1.4"
-  resolved "http://npm.macmillantech.com:8080/f/for-own/_attachments/for-own-0.1.4.tgz#0149b41a39088c7515f51ebe1c1386d45f935072"
+  version "0.1.5"
+  resolved "http://npm.macmillantech.com:8080/f/for-own/_attachments/for-own-0.1.5.tgz#5265c681a4f294dabbf17c9509b6763aa84510ce"
   dependencies:
-    for-in "^0.1.5"
+    for-in "^1.0.1"
 
 foreground-child@^1.3.3, foreground-child@^1.5.3:
   version "1.5.6"
@@ -1573,8 +1562,8 @@ fs.realpath@^1.0.0:
   resolved "http://npm.macmillantech.com:8080/f/fs.realpath/_attachments/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
 
 fsevents@^1.0.0:
-  version "1.0.17"
-  resolved "http://npm.macmillantech.com:8080/f/fsevents/_attachments/fsevents-1.0.17.tgz#8537f3f12272678765b4fd6528c0f1f66f8f4558"
+  version "1.1.1"
+  resolved "http://npm.macmillantech.com:8080/f/fsevents/_attachments/fsevents-1.1.1.tgz#f19fd28f43eeaf761680e519a203c4d0b3d31aff"
   dependencies:
     nan "^2.3.0"
     node-pre-gyp "^0.6.29"
@@ -1683,8 +1672,8 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.0.6:
     path-is-absolute "^1.0.0"
 
 globals@^9.0.0, globals@^9.14.0:
-  version "9.15.0"
-  resolved "http://npm.macmillantech.com:8080/g/globals/_attachments/globals-9.15.0.tgz#7a5d8fd865e69de910b090b15a87772f9423c5de"
+  version "9.16.0"
+  resolved "http://npm.macmillantech.com:8080/g/globals/_attachments/globals-9.16.0.tgz#63e903658171ec2d9f51b1d31de5e2b8dc01fb80"
 
 globby@^5.0.0:
   version "5.0.0"
@@ -1795,12 +1784,12 @@ http-assert@^1.1.0:
     http-errors "~1.4.0"
 
 http-errors@^1.2.8, http-errors@^1.3.1:
-  version "1.6.0"
-  resolved "http://npm.macmillantech.com:8080/h/http-errors/_attachments/http-errors-1.6.0.tgz#113314b3973edd0984a1166e530abf5d5785f75c"
+  version "1.6.1"
+  resolved "http://npm.macmillantech.com:8080/h/http-errors/_attachments/http-errors-1.6.1.tgz#5f8b8ed98aca545656bf572997387f904a722257"
   dependencies:
     depd "1.1.0"
     inherits "2.0.3"
-    setprototypeof "1.0.2"
+    setprototypeof "1.0.3"
     statuses ">= 1.3.1 < 2"
 
 http-errors@~1.4.0:
@@ -1839,8 +1828,8 @@ ignore-by-default@^1.0.0:
   resolved "http://npm.macmillantech.com:8080/i/ignore-by-default/_attachments/ignore-by-default-1.0.1.tgz#48ca6d72f6c6a3af00a9ad4ae6876be3889e2b09"
 
 ignore@^3.2.0:
-  version "3.2.2"
-  resolved "http://npm.macmillantech.com:8080/i/ignore/_attachments/ignore-3.2.2.tgz#1c51e1ef53bab6ddc15db4d9ac4ec139eceb3410"
+  version "3.2.4"
+  resolved "http://npm.macmillantech.com:8080/i/ignore/_attachments/ignore-3.2.4.tgz#4055e03596729a8fabe45a43c100ad5ed815c4e8"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -1976,8 +1965,8 @@ is-invalid-path@^0.1.0:
     is-glob "^2.0.0"
 
 is-my-json-valid@^2.10.0, is-my-json-valid@^2.12.4:
-  version "2.15.0"
-  resolved "http://npm.macmillantech.com:8080/i/is-my-json-valid/_attachments/is-my-json-valid-2.15.0.tgz#936edda3ca3c211fd98f3b2d3e08da43f7b2915b"
+  version "2.16.0"
+  resolved "http://npm.macmillantech.com:8080/i/is-my-json-valid/_attachments/is-my-json-valid-2.16.0.tgz#f079dd9bfdae65ee2038aae8acbc86ab109e3693"
   dependencies:
     generate-function "^2.0.0"
     generate-object-property "^1.1.0"
@@ -2065,10 +2054,6 @@ isarray@0.0.1:
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "http://npm.macmillantech.com:8080/i/isarray/_attachments/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
-
-isemail@1.x.x:
-  version "1.2.0"
-  resolved "http://npm.macmillantech.com:8080/i/isemail/_attachments/isemail-1.2.0.tgz#be03df8cc3e29de4d2c5df6501263f1fa4595e9a"
 
 isexe@^1.1.1:
   version "1.1.2"
@@ -2170,15 +2155,6 @@ jodid25519@^1.0.0:
   resolved "http://npm.macmillantech.com:8080/j/jodid25519/_attachments/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
   dependencies:
     jsbn "~0.1.0"
-
-joi@^6.0.8:
-  version "6.10.1"
-  resolved "http://npm.macmillantech.com:8080/j/joi/_attachments/joi-6.10.1.tgz#4d50c318079122000fe5f16af1ff8e1917b77e06"
-  dependencies:
-    hoek "2.x.x"
-    isemail "1.x.x"
-    moment "2.x.x"
-    topo "1.x.x"
 
 js-tokens@^3.0.0:
   version "3.0.1"
@@ -2413,8 +2389,8 @@ koa-unless@0.0.1:
   resolved "http://npm.macmillantech.com:8080/k/koa-unless/_attachments/koa-unless-0.0.1.tgz#cfcdd1cdfbaf066e05d843e6a412df8a7c69b218"
 
 koa@^2.0.0:
-  version "2.0.0"
-  resolved "http://npm.macmillantech.com:8080/k/koa/_attachments/koa-2.0.0.tgz#da865ae8ee4afae070425290455d2cdf4885f9dc"
+  version "2.0.1"
+  resolved "http://npm.macmillantech.com:8080/k/koa/_attachments/koa-2.0.1.tgz#c15a0da4d62554c058ae881e76992e3defe45bd8"
   dependencies:
     accepts "^1.2.2"
     content-disposition "~0.5.0"
@@ -2571,10 +2547,6 @@ lodash.restparam@^3.0.0:
   version "3.6.1"
   resolved "http://npm.macmillantech.com:8080/l/lodash.restparam/_attachments/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
 
-lodash@^3.6.0:
-  version "3.10.1"
-  resolved "http://npm.macmillantech.com:8080/l/lodash/_attachments/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
-
 lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.17.2, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.7.0:
   version "4.17.4"
   resolved "http://npm.macmillantech.com:8080/l/lodash/_attachments/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
@@ -2712,7 +2684,7 @@ mocha@^3.2.0:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
-moment@2.x.x, moment@^2.10.6:
+moment@^2.10.6:
   version "2.17.1"
   resolved "http://npm.macmillantech.com:8080/m/moment/_attachments/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
@@ -2757,10 +2729,6 @@ nested-error-stacks@^1.0.0:
   resolved "http://npm.macmillantech.com:8080/n/nested-error-stacks/_attachments/nested-error-stacks-1.0.2.tgz#19f619591519f096769a5ba9a86e6eeec823c3cf"
   dependencies:
     inherits "~2.0.1"
-
-nested-error@^1.0.0:
-  version "1.0.0"
-  resolved "http://npm.macmillantech.com:8080/n/nested-error/_attachments/nested-error-1.0.0.tgz#59bc64418d5dbef16bad08442ea1ac506b8f3411"
 
 node-pre-gyp@^0.6.29:
   version "0.6.33"
@@ -3110,10 +3078,6 @@ pkg-dir@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
-pkginfo@0.3.x:
-  version "0.3.1"
-  resolved "http://npm.macmillantech.com:8080/p/pkginfo/_attachments/pkginfo-0.3.1.tgz#5b29f6a81f70717142e09e765bbeab97b4f81e21"
-
 pluralize@^1.2.1:
   version "1.2.1"
   resolved "http://npm.macmillantech.com:8080/p/pluralize/_attachments/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
@@ -3181,8 +3145,8 @@ punycode@^1.4.1:
   resolved "http://npm.macmillantech.com:8080/p/punycode/_attachments/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
 qs@^6.1.0, qs@~6.3.0:
-  version "6.3.0"
-  resolved "http://npm.macmillantech.com:8080/q/qs/_attachments/qs-6.3.0.tgz#f403b264f23bc01228c74131b407f18d5ea5d442"
+  version "6.3.1"
+  resolved "http://npm.macmillantech.com:8080/q/qs/_attachments/qs-6.3.1.tgz#918c0b3bcd36679772baf135b1acb4c1651ed79d"
 
 qs@~4.0.0:
   version "4.0.0"
@@ -3194,9 +3158,9 @@ quibble@^0.4.0:
   dependencies:
     lodash "^4.17.2"
 
-ramda@^0.18.0:
-  version "0.18.0"
-  resolved "http://npm.macmillantech.com:8080/r/ramda/_attachments/ramda-0.18.0.tgz#c6e3c5d4b9ab1f7906727fdeeb039152a85d4db3"
+ramda@^0.23.0:
+  version "0.23.0"
+  resolved "http://npm.macmillantech.com:8080/r/ramda/_attachments/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
 
 random-bytes@~1.0.0:
   version "1.0.0"
@@ -3218,13 +3182,13 @@ raw-body@~2.1.2:
     unpipe "1.0.0"
 
 rc@^1.0.1, rc@~1.1.6:
-  version "1.1.6"
-  resolved "http://npm.macmillantech.com:8080/r/rc/_attachments/rc-1.1.6.tgz#43651b76b6ae53b5c802f1151fa3fc3b059969c9"
+  version "1.1.7"
+  resolved "http://npm.macmillantech.com:8080/r/rc/_attachments/rc-1.1.7.tgz#c5ea564bb07aff9fd3a5b32e906c1d3a65940fea"
   dependencies:
     deep-extend "~0.4.0"
     ini "~1.3.0"
     minimist "^1.2.0"
-    strip-json-comments "~1.0.4"
+    strip-json-comments "~2.0.1"
 
 read-all-stream@^3.0.0:
   version "3.1.0"
@@ -3272,8 +3236,8 @@ read-pkg@^1.0.0:
     path-type "^1.0.0"
 
 readable-stream@^2.0.0, "readable-stream@^2.0.0 || ^1.1.13", readable-stream@^2.0.2, readable-stream@^2.0.5, readable-stream@^2.2.2:
-  version "2.2.2"
-  resolved "http://npm.macmillantech.com:8080/r/readable-stream/_attachments/readable-stream-2.2.2.tgz#a9e6fec3c7dda85f8bb1b3ba7028604556fc825e"
+  version "2.2.3"
+  resolved "http://npm.macmillantech.com:8080/r/readable-stream/_attachments/readable-stream-2.2.3.tgz#9cf49463985df016c8ae8813097a9293a9b33729"
   dependencies:
     buffer-shims "^1.0.0"
     core-util-is "~1.0.0"
@@ -3336,8 +3300,8 @@ regenerate@^1.2.1:
   resolved "http://npm.macmillantech.com:8080/r/regenerate/_attachments/regenerate-1.3.2.tgz#d1941c67bad437e1be76433add5b385f95b19260"
 
 regenerator-runtime@^0.10.0:
-  version "0.10.1"
-  resolved "http://npm.macmillantech.com:8080/r/regenerator-runtime/_attachments/regenerator-runtime-0.10.1.tgz#257f41961ce44558b18f7814af48c17559f9faeb"
+  version "0.10.3"
+  resolved "http://npm.macmillantech.com:8080/r/regenerator-runtime/_attachments/regenerator-runtime-0.10.3.tgz#8c4367a904b51ea62a908ac310bf99ff90a82a3e"
 
 regenerator-transform@0.9.8:
   version "0.9.8"
@@ -3454,8 +3418,10 @@ resolve-path@^1.3.1:
     path-is-absolute "1.0.1"
 
 resolve@^1.1.6:
-  version "1.2.0"
-  resolved "http://npm.macmillantech.com:8080/r/resolve/_attachments/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
+  version "1.3.2"
+  resolved "http://npm.macmillantech.com:8080/r/resolve/_attachments/resolve-1.3.2.tgz#1f0442c9e0cbb8136e87b9305f932f46c7f28235"
+  dependencies:
+    path-parse "^1.0.5"
 
 restore-cursor@^1.0.1:
   version "1.0.1"
@@ -3470,7 +3436,13 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.3.3, rimraf@^2.4.3, rimraf@^2.4.4, rimraf@^2.5.4, rimraf@~2.5.1, rimraf@~2.5.4:
+rimraf@2, rimraf@^2.2.8, rimraf@^2.3.3, rimraf@^2.4.3, rimraf@^2.4.4, rimraf@^2.5.4:
+  version "2.6.1"
+  resolved "http://npm.macmillantech.com:8080/r/rimraf/_attachments/rimraf-2.6.1.tgz#c2338ec643df7a1b7fe5c54fa86f57428a55f33d"
+  dependencies:
+    glob "^7.0.5"
+
+rimraf@~2.5.1, rimraf@~2.5.4:
   version "2.5.4"
   resolved "http://npm.macmillantech.com:8080/r/rimraf/_attachments/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
   dependencies:
@@ -3515,6 +3487,10 @@ set-immediate-shim@^1.0.1:
 setprototypeof@1.0.2:
   version "1.0.2"
   resolved "http://npm.macmillantech.com:8080/s/setprototypeof/_attachments/setprototypeof-1.0.2.tgz#81a552141ec104b88e89ce383103ad5c66564d08"
+
+setprototypeof@1.0.3:
+  version "1.0.3"
+  resolved "http://npm.macmillantech.com:8080/s/setprototypeof/_attachments/setprototypeof-1.0.3.tgz#66567e37043eeb4f04d91bd658c0cbefb55b8e04"
 
 shelljs@^0.7.5:
   version "0.7.6"
@@ -3704,10 +3680,6 @@ strip-bom@^3.0.0:
   version "3.0.0"
   resolved "http://npm.macmillantech.com:8080/s/strip-bom/_attachments/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
 
-strip-json-comments@~1.0.4:
-  version "1.0.4"
-  resolved "http://npm.macmillantech.com:8080/s/strip-json-comments/_attachments/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
-
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "http://npm.macmillantech.com:8080/s/strip-json-comments/_attachments/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
@@ -3749,9 +3721,10 @@ supports-color@^2.0.0:
   resolved "http://npm.macmillantech.com:8080/s/supports-color/_attachments/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
 swagger-jsdoc@^1.7.0:
-  version "1.9.1"
-  resolved "http://npm.macmillantech.com:8080/s/swagger-jsdoc/_attachments/swagger-jsdoc-1.9.1.tgz#6bb58a0d911246ad1221ae596078bd2b30c56a2f"
+  version "1.9.2"
+  resolved "http://npm.macmillantech.com:8080/s/swagger-jsdoc/_attachments/swagger-jsdoc-1.9.2.tgz#b62116057dc1ff52304aa5c8bcb7738b17e8daa9"
   dependencies:
+    chokidar "^1.6.1"
     commander "^2.9.0"
     doctrine "^2.0.0"
     glob "^7.0.3"
@@ -3868,12 +3841,6 @@ timed-out@^2.0.0:
 to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "http://npm.macmillantech.com:8080/t/to-fast-properties/_attachments/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
-
-topo@1.x.x:
-  version "1.1.0"
-  resolved "http://npm.macmillantech.com:8080/t/topo/_attachments/topo-1.1.0.tgz#e9d751615d1bb87dc865db182fa1ca0a5ef536d5"
-  dependencies:
-    hoek "2.x.x"
 
 touch@1.0.0:
   version "1.0.0"
@@ -4033,8 +4000,8 @@ validate-npm-package-license@^3.0.1:
     spdx-expression-parse "~1.0.0"
 
 validator@^6.0.0:
-  version "6.2.1"
-  resolved "http://npm.macmillantech.com:8080/v/validator/_attachments/validator-6.2.1.tgz#bc575b78d15beb2e338a665ba9530c7f409ef667"
+  version "6.3.0"
+  resolved "http://npm.macmillantech.com:8080/v/validator/_attachments/validator-6.3.0.tgz#47ce23ed8d4eaddfa9d4b8ef0071b6cf1078d7c8"
 
 vary@^1.0.0:
   version "1.1.0"
@@ -4066,27 +4033,11 @@ window-size@0.1.0:
   version "0.1.0"
   resolved "http://npm.macmillantech.com:8080/w/window-size/_attachments/window-size-0.1.0.tgz#5438cd2ea93b202efa3a19fe8887aee7c94f9c9d"
 
-winston-logstash@^0.1.11:
-  version "0.1.11"
-  resolved "http://npm.macmillantech.com:8080/w/winston-logstash/_attachments/winston-logstash-0.1.11.tgz#96461c75b317c9bb80582824a1575f18eb1819fe"
-
 winston-logstash@^0.3.0:
   version "0.3.0"
   resolved "http://npm.macmillantech.com:8080/w/winston-logstash/_attachments/winston-logstash-0.3.0.tgz#f71fa1278be1f0eae83bcad3e22fe41d51c7f1a9"
 
-winston@^1.0.0:
-  version "1.1.2"
-  resolved "http://npm.macmillantech.com:8080/w/winston/_attachments/winston-1.1.2.tgz#68edd769ff79d4f9528cf0e5d80021aade67480c"
-  dependencies:
-    async "~1.0.0"
-    colors "1.0.x"
-    cycle "1.0.x"
-    eyes "0.1.x"
-    isstream "0.1.x"
-    pkginfo "0.3.x"
-    stack-trace "0.0.x"
-
-winston@^2.3.0:
+winston@^2.3.0, winston@^2.3.1:
   version "2.3.1"
   resolved "http://npm.macmillantech.com:8080/w/winston/_attachments/winston-2.3.1.tgz#0b48420d978c01804cf0230b648861598225a119"
   dependencies:

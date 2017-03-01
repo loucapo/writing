@@ -3,14 +3,22 @@ module.exports = function customLogger(winston, config, moment, winstonlogstash,
     var useTransports = process.env.LOGGING_TRANSPORTS;
 
     var transports = [];
-    if(useTransports.indexOf('logstash') >=0 )
-      transports.push(
-        new (winston.transports.Logstash)({
-          port: 13302,
-          node_name: os.hostname(),
-          host: "wk_logstash"
-        }));
-    if(useTransports.indexOf('console') >= 0)
+      if(useTransports && useTransports.indexOf('logstash') >=0 )
+        {
+          var logstash = new (winston.transports.Logstash)({
+            port: 13302,
+            node_name: os.hostname(),
+            host: "wk_logstash",
+            // max_connect_retries: 10,
+            timeout_connect_retries: 1500
+          });
+          logstash.on('error', function(err) {
+            console.error(err); // replace with your own functionality here
+          });
+          transports.push(logstash);
+        }
+
+    if(!useTransports || useTransports.indexOf('console') >= 0)
       transports.push(
         new (winston.transports.Console)({
           handleExceptions: true,
@@ -20,7 +28,7 @@ module.exports = function customLogger(winston, config, moment, winstonlogstash,
           timestamp: true,
           json: false,
           formatter: (x) => {
-            return `[${x.meta.level}] module: ${config.app.applicationName} msg: ${x.meta.message} | ${moment().format('h:mm:ss a')}`;
+            return `[${x.meta.level || x.level}] module: ${config.app.applicationName} msg: ${x.meta.message || x.message} | ${moment().format('h:mm:ss a')}`;
           }
         }));
 
