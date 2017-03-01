@@ -27,6 +27,8 @@ clone-repos:	clone-api clone-front-end clone-data clone-serve
 #build
 ##################
 
+docker-build-deps:	docker-build-front-end docker-build-serve docker-build-api docker-build-data
+
 docker-build-node:
 	docker build -t wk_node -f nodeDocker/Dockerfile ./nodeDocker
 
@@ -46,10 +48,6 @@ docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
-docker-build-nginx:	docker-build-api docker-build-front-end docker-build-data docker-build-serve
-	pwd
-	docker build -t nginx_container -f docker/Dockerfile .
-
 ##################
 #kill
 ##################
@@ -60,15 +58,11 @@ kill-all:
 
 kill-all-but-bases:
 	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
-	docker rmi $$(docker images | grep -v -e ^wk_node -e ^nginx_container -e ^nginx -e ^postgres  | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
+	docker rmi $$(docker images | grep -v -e ^wk_node -e ^postgres  | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
 
 kill-all-but-node:
 	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images | grep -v -e ^wk_node | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
-
-kill-nginx:
-	docker rm -vf nginx_container 2>/dev/null || echo "No more containers to remove."
-	docker rmi nginx_container
 
 kill-api:
 	docker rm -vf wk_api 2>/dev/null || echo "No more containers to remove."
@@ -108,10 +102,10 @@ kill-logging:	kill-elasticsearch kill-kibana kill-logstash
 #run
 ##################
 
-run:	docker-build-nginx
+run:	docker-build-deps
 	docker-compose -f docker/docker-compose.yml up
 
-run-dev:docker-build-nginx
+run-dev:	docker-build-deps
 	docker-compose -f docker/docker-compose-dev.yml up
 
 run-data:	docker-build-data
