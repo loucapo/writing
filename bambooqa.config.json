@@ -15,7 +15,7 @@
   "tags": "!@wip",
 
   "copyReport": false,
-  "pending": false,
+  "pending": true,
 
   "browsers": [{
     "seleniumServer": "http://selenium-grid:4444/wd/hub",
