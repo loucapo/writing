@@ -16,6 +16,7 @@
   "pending": false,
 
   "tags": "!@wip",
+  "buildtag": "",
 
   "browsers": [{
     "browserName": "chrome",
