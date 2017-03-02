@@ -13,6 +13,7 @@
   "elementTimeout": 5000,
 
   "tags": "!@wip",
+  "buildtag": "",
 
   "copyReport": false,
   "pending": false,
