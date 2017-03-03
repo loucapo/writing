@@ -17,6 +17,7 @@
 
   "tags": "!@wip",
   "buildtag": "",
+  "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
 
   "screenSize": {
     "x": 1600,
