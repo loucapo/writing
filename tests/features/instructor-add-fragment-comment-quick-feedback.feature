@@ -1,5 +1,5 @@
 @WRITE-52
-
+@Firefox
 Feature: Instructor Can Add Fragment Comment
   Scenario: The Instructor Adds Fragment Comment From Quick Feedback Library
     Given I visit the activity page
