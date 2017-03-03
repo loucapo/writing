@@ -31,8 +31,11 @@ DROP TABLE IF EXISTS "activity";
 
 CREATE TABLE "activity"
 (
-  id uuid NOT NULL,
-  document jsonb
+  id text NOT NULL,
+  courseId text NOT NULL,
+  title text,
+  createdById text NOT NULL,
+  createdDate date NOT NULL
 )
 WITH (
   OIDS=FALSE
