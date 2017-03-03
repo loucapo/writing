@@ -1,5 +1,5 @@
 
-module.exports = function (applicationStrategies) {
+module.exports = function (applicationStrategies, config, moment, superagent) {
   return {
     activityOverview: async function (ctx) {
 
@@ -21,8 +21,28 @@ module.exports = function (applicationStrategies) {
         }
       };
 
+      // make post to API
+      var cleanData = {
+        id:dummyData.launch_data.resource_link_id,
+        courseId: dummyData.launch_data.course_id,
+        title: dummyData.launch_data.course_name,
+        createdById: dummyData.user_data.id,
+        createdDate: moment().toISOString()
+      };
+
       var strategy = applicationStrategies.writerKey;
       const jwt = strategy.execute(dummyData);
+
+      superagent
+        .post(`${config.app.wk_api_url}/activity/createActivity`)
+        .send(cleanData)
+        .set("Cookie", `wt_jwt=${jwt}`)
+        .end(function(err, res){
+          if(err){
+            throw err;
+          }
+        });
+
 
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
       ctx.redirect(strategy.launchPage);

@@ -32,8 +32,7 @@
     "koa-response-time": "^2.0.0",
     "koa-router": "^7.0.1",
     "koa-send": "^3.2.0",
-    "pg-async": "^2.4.0",
-    "superagent": "^2.3.0",
+    "superagent": "^3.5.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {
@@ -54,6 +53,5 @@
     ]
   },
   "pre-commit": [
-    "validate"
   ]
 }
