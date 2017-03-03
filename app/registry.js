@@ -13,8 +13,7 @@ module.exports = function(_options) {
           .groupAllInDirectory('./app/src/controllers', 'controllers')
           .groupAllInDirectory('./app/src/modules/schemas', 'schemas', true)
           .complete(),
-      i => i.instantiate('readStoreRepository').asFunc()
-        .instantiate('userRepository').asFunc()
+      i => i.instantiate('userRepository').asFunc()
         .instantiate('logger').asFunc()
         .instantiate('courseRepository').asFunc().complete());
   } catch (ex) {

@@ -1,31 +1,22 @@
-// var demand = require('must');
-var chai = require('chai');
-var should = chai.should();
+// let demand = require('must');
+let chai = require('chai');
+let should = chai.should();
 const registry = require('./../../registry-test');
+const path = require('path');
+
 require('babel-polyfill');
 require('babel-register');
-var td = require('testdouble');
+let td = require('testdouble');
 
 describe('Container Test', function() {
-  var mut;
-  var repositoryStub;
-  var activitySql;
-  var draftSql;
-  var activity;
-  var drafts;
-  var ctx;
+  let mut;
+  let repositoryStub;
+  let activity;
+  let ctx;
 
   before(function () {
     // set up mock for repo
-    var repo = {
-      row(sql) {
-      },
-      rows(sql) {
-      },
-      query(sql) {
-      }
-    };
-    repositoryStub = td.object(repo);
+    repositoryStub = td.function('repository');
 
     // set up DIC and get instance of mut
     const container = registry({repositoryStub});
@@ -35,32 +26,25 @@ describe('Container Test', function() {
 
   beforeEach(() => {
     ctx = {params: {id: 1}};
-    activitySql = `select * from "activity" where "id" = '1'`;
-    draftSql = `select * from "draft" where "id" IN ('1','2','3')`;
+
     activity = {
-      document: {
         id: 123,
-        drafts: [1, 2, 3]
-      }
+        title: "hello"
     };
-    drafts = [
-      {document: {id: 1}},
-      {document: {id: 2}},
-      {document: {id: 3}}
-    ];
   });
 
   describe('#ACTIVITY CONTROLLER', () => {
     describe('ACTIVITY', function () {
       context('when calling activity with proper input', function () {
         it('should return proper body properties', async function () {
-          td.when(repositoryStub.row(activitySql)).thenReturn(activity);
-          td.when(repositoryStub.rows(draftSql)).thenReturn(drafts);
+          let activitySql = path.join(__dirname,`./../../src/repositories/sql/activity.sql`);
 
-          var result = await mut.activity(ctx);
+          td.when(repositoryStub(activitySql, 'get_activity_by_id', ctx.params)).thenReturn(activity);
+
+          let result = await mut.activity(ctx);
           result.body.status.should.equal(200);
+          result.body.data.should.equal(activity);
           result.body.success.should.be.true;
-          result.body.data.drafts.should.eql([{id: 1}, {id: 2}, {id: 3}])
         });
       });
     });

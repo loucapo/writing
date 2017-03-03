@@ -12,7 +12,7 @@ module.exports = function(_options) {
           .for('customLogger').renameTo('logger') // eslint-disable-line newline-per-chained-call
           .groupAllInDirectory('./app/src/controllers', 'controllers')
           .groupAllInDirectory('./app/src/modules/schemas', 'schemas', true)
-          .for('readStoreRepository').subWith(options.repositoryStub)
+          .for('repository').subWith(options.repositoryStub)
           .complete(),
       i => i.instantiate('logger').asFunc().complete());
   } catch (ex) {

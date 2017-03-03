@@ -16,13 +16,13 @@ module.exports = function(koaresponsetime,
     app.keys = Array.isArray(app.keys) ? app.keys : [app.keys]; // eslint-disable-line no-param-reassign
 
     swaggerSpec();
-    
+
     // this is basically the middleware chain. it starts here goes down then
     // hits the routes then comes back up and resolves
     app.use(koalogger());
     app.use(koaErrorHandler());
     app.use(koaconvert(koacors({origin:'*'})));
-    app.use(koaconvert(koajwt({secret:config.app.jwt_secret})));
+    app.use(koaconvert(koajwt({secret:config.app.jwt_secret, cookie:"wt_jwt"})));
 //    app.use(koacors({origin:config.app.swagger_ui_url}));
 //XXX -- it would appear that last CORS wins...  need to revisit this for swagger.
     app.use(koabodyparser());

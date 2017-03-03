@@ -8,8 +8,6 @@ if (env === 'development') {
   require('babel-register');
 }
 
-
-
 module.exports = (function() {
   const container = registry();
   const api = container.getInstanceOf('server');

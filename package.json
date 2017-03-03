@@ -38,6 +38,8 @@
     "koa-send": "^3.2.0",
     "os": "^0.1.1",
     "pg-async": "^2.4.0",
+    "pg-format": "^1.0.4",
+    "puresql": "^1.2.0",
     "swagger-jsdoc": "^1.7.0",
     "winston": "^2.3.0",
     "winston-logstash": "^0.3.0"

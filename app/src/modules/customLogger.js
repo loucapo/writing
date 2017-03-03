@@ -13,7 +13,7 @@ module.exports = function customLogger(winston, config, moment, winstonlogstash,
             timeout_connect_retries: 1500
           });
           logstash.on('error', function(err) {
-            console.error(err); // replace with your own functionality here
+            // replace with your own functionality here
           });
           transports.push(logstash);
         }
