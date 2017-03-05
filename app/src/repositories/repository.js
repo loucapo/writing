@@ -3,7 +3,7 @@ module.exports = function (pgasync, config, puresql, pgformat) {
     return {
       query: function (query) {
         if (debug) {
-          console.log('\n\nPuresql MSSQL adapter: ');
+          console.log('\n\nPuresql PGSQL adapter: ');
           console.log(query)
         }
         return new connection.query(query)
