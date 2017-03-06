@@ -1,5 +1,5 @@
 @WRITE-278
-
+@NSM
 Feature: Instructor Can Review Student Submissions
   Scenario: The Instructor navigates to Student Submissions
     Given I visit the activity page

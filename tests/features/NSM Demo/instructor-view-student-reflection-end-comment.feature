@@ -1,5 +1,5 @@
 @WRITE-305
-
+@NSM
 Feature: Instructor Can Open Quick Feedback Section
   Scenario: The Instructor Views Responses From The Student To The Reflection Questions
     Given I visit the activity page

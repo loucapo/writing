@@ -1,4 +1,5 @@
 @WRITE-354
+@NSM
 Feature: Instructor Can View Commenting Tool Bar
 
   Scenario: The Instructor Views Commenting Tool Bar

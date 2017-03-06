@@ -1,5 +1,5 @@
 @WRITE-438
-  @only
+@NSM
 Feature: Instructor Creates Drafting Revising Activity
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I visit the SLS create activity page
@@ -41,7 +41,6 @@ Feature: Instructor Creates Drafting Revising Activity
     And I should see a draft focus section
     And I should see a option to add draft instructions
     And I should see a option to add student reflection questions
-    @pending
     # And I should see a option to define a title
     # And I should see a option to assign to students
     # And I should see a option to add select grade type

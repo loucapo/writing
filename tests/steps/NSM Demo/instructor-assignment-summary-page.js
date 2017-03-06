@@ -1,4 +1,4 @@
-var page = require('../pages/instructor-assignment-summary-page.js');
+var page = require('../../pages/NSM Demo/instructor-assignment-summary-page.js');
 
 exports.define = function(steps) {
   steps.given("I visit the activity page", function() {

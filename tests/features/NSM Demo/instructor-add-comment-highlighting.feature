@@ -2,6 +2,7 @@
 @WRITE-50
 @WRITE-553
 @WRITE-560
+@NSM
 Feature: Instructor Can Add Comments to Highlighting
 
   Scenario: The Instructor Adds An Other Comment

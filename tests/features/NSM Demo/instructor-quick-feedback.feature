@@ -1,4 +1,5 @@
 @WRITE-286
+@NSM
 Feature: Instructor Can Open Quick Feedback Section
   Scenario: The Instructor Opens Quick Feedback Library
     Given I visit the activity page

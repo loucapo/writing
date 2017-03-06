@@ -1,4 +1,5 @@
 @WRITE-51
+@NSM
 Feature: Instructor Changes Sentiment Level on Comment
 
   Scenario: The Instructor Sees Sentiment Levels on Other Comment

@@ -1,5 +1,5 @@
-var page = require('../pages/instructor-feedback-tool-page.js');
-var rtePage = require('../pages/react-rte.js');
+var page = require('../../pages/NSM Demo/instructor-feedback-tool-page.js');
+var rtePage = require('../../pages/NSM Demo/react-rte.js');
 
 
 create_essay_selection = function(child_span_id) {

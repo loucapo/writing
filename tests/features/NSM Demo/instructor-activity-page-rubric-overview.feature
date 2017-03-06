@@ -1,4 +1,5 @@
 @WRITE-559
+@NSM
 Feature: Instructor Can View Rubric Overview from Activity Summary Page
 
   Scenario: The Instructor Adds An Other Comment

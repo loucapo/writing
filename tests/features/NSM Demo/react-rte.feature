@@ -3,6 +3,7 @@
 # The actual tests might still be useful to reapply somewhere somewhen else though.
 @pending=retired
 @react-rte
+@NSM
 Feature: React-RTE wysiwyg editor
 
   Scenario: Say Happy
