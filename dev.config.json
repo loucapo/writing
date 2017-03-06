@@ -12,7 +12,12 @@
   "testTimeout": 60000,
   "elementTimeout": 5000,
 
+  "copyReport": false,
+  "pending": true,
+
   "tags": "!@wip,!@NSM",
+  "buildtag": "",
+  "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
 
   "screenSize": {
     "x": 1600,

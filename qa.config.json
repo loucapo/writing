@@ -13,6 +13,10 @@
   "elementTimeout": 5000,
 
   "tags": "!@wip,!@NSM",
+  "buildtag": "",
+
+  "copyReport": false,
+  "pending": false,
 
   "browsers": [{
     "seleniumServer": "http://localhost:4444/wd/hub",

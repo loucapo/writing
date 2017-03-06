@@ -11,8 +11,12 @@
   "stepDelay": 0,
   "testTimeout": 60000,
   "elementTimeout": 5000,
-
+  
   "tags": "!@wip,!@NSM",
+  "buildtag": "",
+
+  "copyReport": false,
+  "pending": false,
 
   "browsers": [{
     "seleniumServer": "http://selenium-grid:4444/wd/hub",
