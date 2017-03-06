@@ -1,5 +1,5 @@
-var page = require('../pages/instructor-feedback-tool-page.js');
-var rtePage = require('../pages/react-rte.js');
+var page = require('../../pages/NSM Demo/instructor-feedback-tool-page.js');
+var rtePage = require('../../pages/NSM Demo/react-rte.js');
 
 
 create_essay_selection = function(child_span_id) {
@@ -39,10 +39,6 @@ exports.define = function(steps) {
     page.sidemenu.appropriate_language.isDisplayed().should.eventually.equal(false);
     page.sidemenu.needs_analysis.isDisplayed().should.eventually.equal(false);
     page.sidemenu.comma_error.isDisplayed().should.eventually.equal(false);
-  });
-
-  steps.then("I see the '$elem'", function(elem) {
-    page[elem].isDisplayed().should.eventually.equal(true);
   });
 
   steps.then("I see text '$text' in '$elem'", function(text, elem) {

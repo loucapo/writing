@@ -1,5 +1,6 @@
 @pending=marvin-async-fixes
 @WRITE-551
+@NSM
 Feature: Launch URL for SLS integration
   Scenario: Responds to any POST with a 302
     Given I send an empty POST body to '/launch' and recieve status '302'

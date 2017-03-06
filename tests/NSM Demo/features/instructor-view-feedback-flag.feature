@@ -1,5 +1,6 @@
 @WRITE-374
   @pending=retired
+@NSM
   #post-CDL fixes removed the pre-set example feedback flag
 Feature: Instructor Can View Feedback Flags
 

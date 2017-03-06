@@ -1,4 +1,5 @@
 @WRITE-52
+@NSM
 @Firefox
 Feature: Instructor Can Add Fragment Comment
   Scenario: The Instructor Adds Fragment Comment From Quick Feedback Library

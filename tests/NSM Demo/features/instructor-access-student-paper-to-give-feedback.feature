@@ -1,4 +1,5 @@
 @WRITE-281
+@NSM
 Feature: Instructor Can Open Student Paper And Give Feedback
 
   Scenario: The Instructor Opens Student Submission

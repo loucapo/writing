@@ -1,4 +1,4 @@
-var page = require('../pages/instructor-assignment-summary-page.js');
+var page = require('../../pages/NSM Demo/instructor-assignment-summary-page.js');
 
 exports.define = function(steps) {
   steps.given("I visit the activity page", function() {
@@ -32,20 +32,6 @@ exports.define = function(steps) {
   function gimme_just_one(arr) {
     expect(arr.length).to.equal(1);
   };
-
-  steps.then('I should see the Assignment Header elements', function() {
-    expect(page.title).to.exist;
-    expect(page.type).to.exist;
-    expect(page.course).to.exist;
-    expect(page.assign_date).to.exist;
-  });
-
-  steps.then('I should see the Assignment Details elements', function() {
-    expect(page.activity_purpose).to.exist;
-    expect(page.activity_requirements).to.exist;
-    expect(page.prompt).to.exist;
-    expect(page.prompt_edit).to.exist;
-  });
 
   steps.then('the drafts should have sequence numbers and the last one is labeled "Final Draft"', function() {
     return new Promise(function(resolve, reject) {

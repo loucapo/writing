@@ -1,4 +1,4 @@
-var page = require('../pages/instructor-student-submission-review-screen.js');
+var page = require('../../pages/NSM Demo/instructor-student-submission-review-screen.js');
 
 exports.define = function(steps) {
 

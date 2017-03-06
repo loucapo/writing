@@ -1,5 +1,6 @@
 @WRITE-51
-  @Firefox
+@NSM
+@Firefox
 Feature: Instructor Changes Sentiment Level on Comment
 
   Scenario: The Instructor Sees Sentiment Levels on Other Comment
