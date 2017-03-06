@@ -1,0 +1,19 @@
+@import 'variables.css';
+
+.titleContainer {
+  margin: 48px 0 20px;
+  width: 100%;}
+
+.title {
+  display: flex;
+  font-size: 28px;
+}
+
+.type {
+  font-size: 19px;
+  color: var(--darkGrey);
+}
+
+.editIcon {
+  fill: var(--blue);
+}

@@ -1,0 +1,14 @@
+
+@import 'variables.css';
+
+.headingText {
+  margin: 0 5px;
+}
+
+.editIcon, .deleteIcon {
+  fill: var(--blue);
+}
+
+.collapseIcon {
+  fill: var(--black);
+}

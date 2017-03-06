@@ -7,7 +7,11 @@ const auth = {
   asId: authValues.user_data.as_id,
   firstName: authValues.user_data.first_name,
   lastName: authValues.user_data.last_name,
-  fullName: `${authValues.user_data.first_name} ${authValues.user_data.last_name}`
+  fullName: `${authValues.user_data.first_name} ${authValues.user_data.last_name}`,
+  role: authValues.user_data.role,
+  activity: {
+    activityId: authValues.launch_data.resource_link_id
+  }
 };
 // Reducer
 export default (state = auth) => {

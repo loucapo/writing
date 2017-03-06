@@ -1,0 +1,6 @@
+@import 'variables.css';
+
+.rubric {
+  display: flex;
+  justify-content: space-between;
+}

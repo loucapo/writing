@@ -1,0 +1,31 @@
+@import 'variables.css';
+
+.button {
+  background-color: transparent;
+  border: 1px solid var(--blue);
+  cursor: pointer;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  padding: 8px 10px;
+  border-radius: 3px;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.blue {
+  composes: button;
+  background-color: var(--blue);
+  border: none;
+  color: var(--pureWhite);
+}
+
+.green {
+  composes: button;
+  background-color: var(--green);
+  border: none;
+  color: var(--pureWhite);
+}

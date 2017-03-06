@@ -1,4 +1,3 @@
-
 import {config} from './../utilities/configValues';
 import reducerMerge from './../utilities/reducerMerge';
 import { requestStates } from '../sagas/requestSaga';
@@ -13,7 +12,7 @@ export default (state = [], action) => {
       return state;
     }
     case ACTIVITY.SUCCESS: {
-      return reducerMerge(state, action.result.data.activity);
+      return reducerMerge(state, action.result.data);
     }
     case ACTIVITY.FAILURE: {
       return state;
@@ -25,7 +24,7 @@ export default (state = [], action) => {
 };
 
 // Action
-export function activityAction(id) {
+export function fetchActivityAction(id) {
   return {
     type: ACTIVITY.REQUEST,
     states: ACTIVITY,

@@ -1,68 +1,49 @@
 import React, {PropTypes} from 'react';
-import ActivitySummary from '../ActivitySummary/ActivitySummary';
-import ActivityMenu from '../ActivityMenu/ActivityMenu';
-import Rubric from '../Rubric/Rubric';
-import MLIcon from 'ml-react-cdl-icons';
+import Header from '../Header/Header';
+import MLAlert from '../MLAlert/MLAlert';
+import MLCard from '../MLCard/MLCard';
+import ActivityTitle from './ActivityTitle/ActivityTitle';
+import ActivityMenu from './ActivityMenu/ActivityMenu';
+import PromptContainer from 'Containers/PromptContainer';
+import RubricContainer from 'Containers/RubricContainer';
 
-import activityCss from './activity.css';
-import coreCss from 'Styles/index.css';
+import styles from './activity.css';
 
-const Activity = ({activity, drafts, rubric, selectCell}) => {
-  if (!activity || drafts.length <= 0) {
-    return null;
-  }
+const Activity = ({role, activity, drafts}) => {
   return (
-    <div className={ activityCss.activityPage }>
-      <header className={ activityCss.header }>
-        <div className={ activityCss.headerContainer }>
-          <div className={activityCss.leftArrowContainer}>
-            <MLIcon
-              className={activityCss.left_arrow}
-              title="arrow left"
-              fill="#ffffff"
-              type="arrow_left"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            />
-          </div>
-          <div className={activityCss.leftSide}>
-            <div data-id="course-name" className={ activityCss.courseName }>
-              ENG 101: Introduction to Writing
-            </div>
-            <div data-id="activity-type" className={ activityCss.activity }>
-              Argument Essay
-            </div>
-          </div>
-          <div className={ activityCss.headerRight }>
-            <div data-id="due-date" className={ activityCss.assignDate }>
-              Assigned:  Mon. Feb 23, 2017
-            </div>
-          </div>
+    <div className={styles.page}>
+      <Header title={activity.course} />
+
+      <div className={styles.container}>
+        <div data-id="created-activity-alert" className={styles.spacer}>
+          <MLAlert
+            message={'Activity created on ' + activity.createdDate +
+              '. This is in draft mode and will not be visible to students until you assign it.'}
+            alertType="success"
+            iconType="circle_check_outline"
+          />
+
+          <ActivityTitle role={role} title={activity.title} type={activity.type} />
+
+          <MLCard type="prompt" title="Assignment Prompt" role={role}>
+            <PromptContainer activityId={activity.id} />
+          </MLCard>
+
+          <MLCard type="rubric" title="Final Rubric" role={role} hideEdit={true}>
+            <RubricContainer activityId={activity.id} />
+          </MLCard>
         </div>
-      </header>
-      <div className={activityCss.activity_container}>
-        <ActivitySummary activity={activity} />
-        <Rubric
-          rubric={rubric}
-          showRubric={false}
-          selectCell={selectCell}
-          showHeaderOnly={true}
-        />
-        <div className={ coreCss.panel }>
-          <ActivityMenu drafts={drafts} />
-        </div>
+
+        <ActivityMenu drafts={drafts} role={role} />
       </div>
     </div>
   );
 };
 
 Activity.propTypes = {
+  role: PropTypes.string,
   activity: PropTypes.object,
-  rubric: PropTypes.object,
-  drafts: PropTypes.array,
-  selectCell: PropTypes.func
+  drafts: PropTypes.array
 };
-
 
 export default Activity;

@@ -1,38 +1,39 @@
 @import 'variables.css';
 
-.top_header {
-  height: 55px;
-  display: flex;
-  flex-flow: row nowrap;
-
-  background-color: var(--menuGrey);
+.header {
   align-items: center;
-}
-
-.logo {
-  margin-left: var(--page-margins);
-}
-
-.course_name {
-  margin-left: auto;
-  margin-right: var(--page-margins);
-}
-
-.page {
-  width: var(--page-width);
-  margin-left: var(--page-margin-left);
+  background-color: var(--darkBlue);
+  color: var(--lightBlue);
   display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.headerContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
+.headerRight {
+  display: flex;
   justify-content: center;
 }
 
-.content_left {
-  margin-left: 0;
-  font-size: large;
+.leftArrow {
+  fill: white;
+  margin: auto auto;
 }
 
-.content_right {
-  margin: 0 0 0 auto;
-  font-size: small;
+.leftArrowContainer {
+  width: 40px;
+  display: flex;
+}
+
+.leftSide {
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
 }

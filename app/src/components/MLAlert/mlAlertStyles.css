@@ -1,0 +1,54 @@
+@import 'variables.css';
+
+.alert_default {
+  align-items: center;
+  background-color: var(--alertBlue);
+  border: 1px solid var(--alertBlueBorder);
+  display: flex;
+  margin: 20px 0 0;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.alert_icon_default svg{
+  fill: var(--alertBlueBorder);
+}
+
+
+.alert_success {
+  composes: alert_default;
+  background-color: var(--alertGreen);
+  border-color: var(--alertGreenBorder);
+}
+
+.alert_icon_success svg{
+  fill: var(--alertGreenBorder);
+}
+
+
+.alert_error {
+  composes: alert_default;
+  background-color: var(--alertRed);
+  border-color: var(--alertRedBorder);
+}
+
+.alert_icon_error svg{
+  fill: var(--alertRedBorder);
+}
+
+
+.alert_warning {
+  composes: alert_default;
+  background-color: var(--alertYellow);
+  border-color: var(--alertYellowBorder);
+}
+
+.alert_icon_warning svg{
+  fill: var(--alertYellowBorder);
+}
+
+
+.alert_message {
+  margin-left: 10px;
+}

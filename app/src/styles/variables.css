@@ -1,13 +1,10 @@
 @import 'colors.css';
 
 :root {
-  /* Page layout */
-  --page-margins: 224px;    /* used for both left and right margins */
-  --content-margins: 40px;
+  --margin: 50px;
+  --padding: 23px;
 
-  /* Sizes */
-  --page-width: 800px;
-  --page-margin-left: 160px;
-  --panel-left-width: 600px; /* remainder would be right panel width */
+  --global-margin:  0 0 var(--margin);
+  --global-padding: 0 0 var(--padding) 0;
 }
 

@@ -1,0 +1,12 @@
+@import 'variables.css';
+
+.dropDownContainer {
+  text-decoration: none;
+}
+
+.dropdownCaret {
+  position: relative;
+  fill: var(--blue);
+  left: 5px;
+  top: 3px;
+}

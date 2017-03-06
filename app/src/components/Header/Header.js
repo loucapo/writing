@@ -1,27 +1,37 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
+import MLButton from '../MLButton/MLButton.js';
+import MLIcon from 'ml-react-cdl-icons';
 
-const header = require('./header.css');
+import styles from './header.css';
 
-const Header = (props) => {
-  let contentLeft = props.contentLeft ? props.contentLeft : '';
-  let dataIdLeft = props.dataIdLeft ? props.dataIdLeft : '';
-  let contentRight = props.contentRight ? props.contentRight : '';
-  let dataIdRight = props.dataIdRight ? props.dataIdRight : '';
-
+const Header = ({title}) => {
   return (
-    <header data-id="header" className={header.top_header} >
-      <h2 data-id={dataIdLeft} className={header.logo}>{contentLeft}</h2>
-      <span data-id={dataIdRight} className={header.course_name}>{contentRight}</span>
+    <header className={styles.header}>
+      <div className={styles.headerContainer}>
+        <div data-id="header-back-button" className={styles.leftArrowContainer}>
+          <MLIcon
+            className={styles.leftArrow}
+            title="arrow left"
+            fill="#ffffff"
+            type="arrow_left"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          />
+        </div>
+        <div data-id="course-title" className={styles.leftSide}>
+          {title}
+        </div>
+        <div className={styles.headerRight}>
+          <MLButton title="Student Preview" dataId="student-preview" color="blue" />
+        </div>
+      </div>
     </header>
   );
 };
 
 Header.propTypes = {
-  contentLeft: PropTypes.string,  // the left side of the header
-  dataIdLeft: PropTypes.string,   // the left side data id
-  contentRight: PropTypes.string, // the right side
-  dataIdRight: PropTypes.string,  // the right side data id
-  css: PropTypes.string
+  title: PropTypes.string
 };
 
 export default Header;

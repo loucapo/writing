@@ -105,10 +105,9 @@ const webpackConfig = {
         include: [
           path.resolve(__dirname, 'src/styles/fonts')
         ],
-        loader: 'file-loader',
+        loader: 'url-loader',
         query: {
-          mimetype: 'application/octet-stream',
-          name: 'assets/fonts/[name].[ext]'
+          mimetype: 'application/x-font-ttf'
         }
       },
       {
@@ -160,7 +159,8 @@ const webpackConfig = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias:{
-      Styles: path.resolve(__dirname, 'src/styles')
+      Styles: path.resolve(__dirname, 'src/styles'),
+      Containers: path.resolve(__dirname, 'src/containers')
     }
   }
 };
