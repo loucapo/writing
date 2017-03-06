@@ -11,12 +11,18 @@
   "stepDelay": 0,
   "testTimeout": 60000,
   "elementTimeout": 5000,
-  
-  "tags": "!@wip,!@NSM",
-  "buildtag": "",
 
   "copyReport": false,
-  "pending": false,
+  "pending": true,
+
+  "tags": "!@wip,!@NSM",
+  "buildtag": "",
+  "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
+
+  "screenSize": {
+    "x": 1600,
+    "y": 900
+  },
 
   "browsers": [{
     "seleniumServer": "http://selenium-grid:4444/wd/hub",
