@@ -12,6 +12,7 @@ Feature: Instructor Can Open Quick Feedback Section
     Then I see text 'Finally, I want you' in 'Student Reflection Section'
     Then I see text 'ever had to write!' in 'Student Reflection Section'
 
+    @Firefox
   Scenario: The Instructor Can View A Field to Enter End Comments
     Given I visit the activity page
     When I open the feedback tool

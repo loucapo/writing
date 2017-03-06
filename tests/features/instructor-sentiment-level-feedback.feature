@@ -1,4 +1,5 @@
 @WRITE-51
+  @Firefox
 Feature: Instructor Changes Sentiment Level on Comment
 
   Scenario: The Instructor Sees Sentiment Levels on Other Comment
@@ -38,7 +39,7 @@ Feature: Instructor Changes Sentiment Level on Comment
     Then the selected text highlight should persist
     And the highlighting style should be 'background-color: rgb(176, 218, 255);'
     And I see the 'Other Feedback Flag'
-    
+
   Scenario: The Instructor Uses Lower Sentiment
     Given I visit the activity page
     When I open the feedback tool

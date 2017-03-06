@@ -135,7 +135,7 @@ exports.define = function(steps) {
   });
 
   steps.then("the activity page should show $font font", function(display) {
-    page.activity_page_layout.getCssValue('font').then(function(t) {
+    page.activity_page_layout.getCssValue('font-family').then(function(t) {
       var myDisplay = display.replace('\'','').replace('\'','');
       expect(t).to.contain(myDisplay);
     });

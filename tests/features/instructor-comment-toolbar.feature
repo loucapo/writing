@@ -6,6 +6,7 @@ Feature: Instructor Can View Commenting Tool Bar
     When I open the feedback tool
     Then I see a menu of commenting options
 
+  @Firefox
   Scenario: Header and Toolbar Do Not Move
     Given I visit the activity page
     When I open the feedback tool
