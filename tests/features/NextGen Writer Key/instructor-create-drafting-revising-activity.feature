@@ -1,25 +1,21 @@
 @WRITE-438
-@NSM
+
 Feature: Instructor Creates Drafting Revising Activity
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I visit the SLS create activity page
-    When I create a drafting revising activity
     Then I should see a new assignment created
 
   Scenario: Green Confirmation Message Exists After Creating Assignment
     Given I visit the SLS create activity page
-    When I create a drafting revising activity
     Then I should see a new assignment created
-    And I should see a green confirmation message at the top
+    And the confirmation message is green
 
   Scenario: Green Confirmation Message Exists After Creating Assignment Persists
     Given I visit the SLS create activity page
-    When I create a drafting revising activity
     And I should see a new assignment created
-    And I should see a green confirmation message at the top
     And I reload the page
-    Then I should see a green confirmation message at the top
-
+    Then I see the 'confirmation_message'
+@pending
   Scenario: Green Confirmation Message Exists After Creating Assignment Until Closed
     Given I visit the SLS create activity page
     When I create a drafting revising activity
@@ -31,16 +27,14 @@ Feature: Instructor Creates Drafting Revising Activity
 
   Scenario: Activity Fields Created
     Given I visit the SLS create activity page
-    When I create a drafting revising activity
     And I should see a new assignment created
-    Then I should see a 'empty activity prompt'
-    And I should see a 'unselected rubric' with option to select
-    And I should see a option to add another draft
-    And I should see a empty draft that says "Final Draft" as the header
-    And I should see a review type displaying 'Instructor Review'
-    And I should see a draft focus section
-    And I should see a option to add draft instructions
-    And I should see a option to add student reflection questions
-    # And I should see a option to define a title
+    Then I should see the Assignment Header elements
+    And I should see the Assignment Details elements
+    And I should see the Rubric Details elements
+    And I scroll down the activity page
+    And I should see the Draft elements
+    And The 'activity_prompt_description' should be 'Click to add prompt'
+    And The 'rubric_selection' should be 'Select Rubric'
+    And The 'final_draft_header' should be 'Final Draft'
+    And The 'drafts_review_type' should be 'Instructor Review'
     # And I should see a option to assign to students
-    # And I should see a option to add select grade type

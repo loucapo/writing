@@ -41,10 +41,6 @@ exports.define = function(steps) {
     page.sidemenu.comma_error.isDisplayed().should.eventually.equal(false);
   });
 
-  steps.then("I see the '$elem'", function(elem) {
-    page[elem].isDisplayed().should.eventually.equal(true);
-  });
-
   steps.then("I see text '$text' in '$elem'", function(text, elem) {
     page[elem].getText()
       .then(function(t) {

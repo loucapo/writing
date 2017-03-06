@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://wk-staging.mldev.cloud",
+  "baseUrl": "http://wk-pink.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
   "reportSingle": false,
