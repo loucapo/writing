@@ -1,5 +1,6 @@
 @WRITE-183
 @pending=MVP
+@NSM
 Feature: Instructor Can View the Dashboard After LTI Launch
 
   # This test is broken until post MVI

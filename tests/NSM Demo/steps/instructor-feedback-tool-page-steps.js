@@ -1,5 +1,5 @@
-var page = require('../pages/instructor-feedback-tool-page.js');
-var rtePage = require('../pages/react-rte.js');
+var page = require('../../pages/NSM Demo/instructor-feedback-tool-page.js');
+var rtePage = require('../../pages/NSM Demo/react-rte.js');
 
 
 create_essay_selection = function(child_span_id) {
@@ -39,10 +39,6 @@ exports.define = function(steps) {
     page.sidemenu.appropriate_language.isDisplayed().should.eventually.equal(false);
     page.sidemenu.needs_analysis.isDisplayed().should.eventually.equal(false);
     page.sidemenu.comma_error.isDisplayed().should.eventually.equal(false);
-  });
-
-  steps.then("I see the '$elem'", function(elem) {
-    page[elem].isDisplayed().should.eventually.equal(true);
   });
 
   steps.then("I see text '$text' in '$elem'", function(text, elem) {
@@ -415,14 +411,14 @@ exports.define = function(steps) {
   });
 
   steps.then("the feedback tool page shows $font font", function(display) {
-    page.feedback_tool_page_layout.getCssValue('font').then(function(t) {
+    page.feedback_tool_page_layout.getCssValue('font-family').then(function(t) {
       var myDisplay = display.replace('\'','').replace('\'','');
       expect(t).to.contain(myDisplay);
     });
   });
 
   steps.then("the RTE shows $font font", function(display) {
-    page.draft_content_first_span.getCssValue('font').then(function(t) {
+    page.draft_content_first_span.getCssValue('font-family').then(function(t) {
       var myDisplay = display.replace('\'','').replace('\'','');
       expect(t).to.contain(myDisplay);
     });

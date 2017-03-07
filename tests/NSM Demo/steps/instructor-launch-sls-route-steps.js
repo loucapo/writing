@@ -1,4 +1,4 @@
-var page = require('../pages/instructor-launch-sls-route-page.js');
+var page = require('../../pages/NSM Demo/instructor-launch-sls-route-page.js');
 
 exports.define = function(steps) {
 

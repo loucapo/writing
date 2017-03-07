@@ -1,5 +1,6 @@
 @WRITE-95
 @WRITE-330
+@NSM
 Feature: Instructor Can View Assignment Summary Page
 
   # Assignment Header
