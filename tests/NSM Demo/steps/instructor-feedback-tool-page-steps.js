@@ -1,4 +1,4 @@
-var page = require('../../pages/NSM Demo/instructor-feedback-tool-page.js');
+var page = require('../../pages/NSM Demo/instructor-feedback-tool-credentials.js');
 var rtePage = require('../../pages/NSM Demo/react-rte.js');
 
 
@@ -111,7 +111,7 @@ exports.define = function(steps) {
         var essay = text;
         expect(essay).contains(page.example_essay);
         //future improvements to check if feedback tools exist
-        //expect(page.quick_feedback_library).to.exist;
+        //expect(credentials.quick_feedback_library).to.exist;
       });
   });
 
@@ -140,7 +140,7 @@ exports.define = function(steps) {
       });
     })
     .then(function() {
-      // semantic fail : value below value not modal below page
+      // semantic fail : value below value not modal below credentials
       expect(modal_y + modal_height).to.be.below(viewport_height);
     });
   });
@@ -153,7 +153,7 @@ exports.define = function(steps) {
     page.sidemenu[elem].click();
   });
   
-  steps.then("on the feedback page I click the '$element' element", function(elem) {
+  steps.then("on the feedback credentials I click the '$element' element", function(elem) {
     page[elem].click();
   });
 
@@ -410,7 +410,7 @@ exports.define = function(steps) {
     });;
   });
 
-  steps.then("the feedback tool page shows $font font", function(display) {
+  steps.then("the feedback tool credentials shows $font font", function(display) {
     page.feedback_tool_page_layout.getCssValue('font-family').then(function(t) {
       var myDisplay = display.replace('\'','').replace('\'','');
       expect(t).to.contain(myDisplay);

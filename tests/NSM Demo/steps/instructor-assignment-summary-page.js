@@ -1,11 +1,11 @@
-var page = require('../../pages/NSM Demo/instructor-assignment-summary-page.js');
+var page = require('../../pages/NSM Demo/instructor-assignment-summary-credentials-steps.js');
 
 exports.define = function(steps) {
-  steps.given("I visit the activity page", function() {
+  steps.given("I visit the activity credentials", function() {
     page.visit();
   });
 
-  steps.when("I visit the activity page", function() {
+  steps.when("I visit the activity credentials", function() {
     page.visit();
   });
 
@@ -108,19 +108,19 @@ exports.define = function(steps) {
     page.student_submissions.click();
   });
 
-  steps.then("I see the activity summary page", function() {
+  steps.then("I see the activity summary credentials", function() {
     driver.wait(until.urlContains(page.url), 5000, 'target url does not contain ' + page.url);
   });
 
   steps.when("I see my course data has reset", function () {
-    //steps to be added once page has something changeable
+    //steps to be added once credentials has something changeable
   });
 
-  steps.given("I visit the home page", function () {
+  steps.given("I visit the home credentials", function () {
     driver.get(marvin.config.baseUrl);
   });
 
-  steps.then("the activity page should show $font font", function(display) {
+  steps.then("the activity credentials should show $font font", function(display) {
     page.activity_page_layout.getCssValue('font-family').then(function(t) {
       var myDisplay = display.replace('\'','').replace('\'','');
       expect(t).to.contain(myDisplay);
