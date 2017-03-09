@@ -31,7 +31,7 @@ module.exports = new Page({
 
   // draft sequence
   draft_names: { get: function () { return this.elements("[data-id='draft-name']"); } },
-  add_draft: { get: function () { return this.elements("[data-id='add-draft']"); } },
+  add_draft_button: { get: function () { return this.elements("[data-id='add-draft']"); } },
   final_draft_header: { get: function () { return this.element("[data-id='draft-section']"); } },
   add_draft_instructions: { get: function () { return this.elements("[data-id='add-instructions']"); } },
   add_student_reflection_questions: { get: function () { return this.elements("[data-id='add-reflections']"); } },

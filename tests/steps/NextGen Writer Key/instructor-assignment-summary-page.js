@@ -56,7 +56,7 @@ exports.define = function(steps) {
 
   steps.then('I should see the Draft elements', function() {
     expect(page.draft_names).to.exist;
-    expect(page.add_draft).to.exist;
+    expect(page.add_draft_button).to.exist;
     expect(page.final_draft_header).to.exist;
     expect(page.add_draft_instructions).to.exist;
     expect(page.add_student_reflection_questions).to.exist;
