@@ -1,4 +1,4 @@
-var rtePage = require('../../pages/NSM Demo/react-rte.js');
+var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 //  don't actually require bluebird here or anywhere
 // to remove it though, this file needs to be rewritten

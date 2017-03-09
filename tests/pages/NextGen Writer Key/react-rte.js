@@ -2,7 +2,7 @@ var Page = require('marvin-js').Page;
 
 module.exports = new Page({
 
-  url: { value: '/editor' },
+  activity_prompt_editor: { get: function() { return this.element(".public-DraftEditor-content");}},
 
   draftEditor: { get: function() { return this.element(".public-DraftEditor-content");}},
 
