@@ -12,7 +12,7 @@ export default (state = [], action) => {
       return state;
     }
     case ACTIVITY.SUCCESS: {
-      return reducerMerge(state, action.result.data);
+      return reducerMerge(state, action.result.payload);
     }
     case ACTIVITY.FAILURE: {
       return state;
