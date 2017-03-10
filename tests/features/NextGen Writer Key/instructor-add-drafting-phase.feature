@@ -15,7 +15,7 @@ Feature: Add Another Draft To Activity
     Given I visit the activity page
     When I click the "add_draft_button"
     Then A new draft will be added above the existing draft
-    And the trash can on the Final Paper should become activated
+    And The 'delete_button' should be active
     And the draft tally within header should be increased by one
 
   Scenario: Adding Multiple Drafts
