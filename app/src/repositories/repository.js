@@ -1,4 +1,4 @@
-module.exports = function (pgasync, config, puresql, pgformat) {
+module.exports = function (pgasync, config, puresql, pgformat, humps) {
   function makeAdapter (connection, debug) {
     return {
       query: function (query) {
@@ -25,7 +25,7 @@ module.exports = function (pgasync, config, puresql, pgformat) {
 
     return queries[query](event, adapter)
       .then((result)=> {
-        return result.rows
+        return humps.camelizeKeys(result.rows)
       })
       .catch((error) => {
         console.log(error);

@@ -6,10 +6,10 @@ where id = :id
 -- name: create_new_activity_from_jwt
 INSERT INTO activity
     (id,
-    courseId,
+    course_id,
     title,
-    createdById,
-    createdDate)
+    created_by_id,
+    created_date)
 VALUES
     (:id,
     :courseId,

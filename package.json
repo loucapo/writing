@@ -23,6 +23,7 @@
     "dagon": "reharik/dagon",
     "deref": "^0.6.4",
     "enumify": "^1.0.4",
+    "humps": "^2.0.0",
     "invariant": "^2.2.2",
     "json-schema-deref-sync": "^0.3.2",
     "koa": "^2.0.0",

@@ -1825,6 +1825,10 @@ humanize-number@0.0.2:
   version "0.0.2"
   resolved "http://npm.macmillantech.com:8080/h/humanize-number/_attachments/humanize-number-0.0.2.tgz#11c0af6a471643633588588048f1799541489c18"
 
+humps@^2.0.0:
+  version "2.0.0"
+  resolved "http://npm.macmillantech.com:8080/h/humps/_attachments/humps-2.0.0.tgz#dd4a423e9784626fe7b9f19fde0baff659b40173"
+
 iconv-lite@0.4.13:
   version "0.4.13"
   resolved "http://npm.macmillantech.com:8080/i/iconv-lite/_attachments/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
