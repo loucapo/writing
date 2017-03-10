@@ -34,7 +34,7 @@ module.exports = function (applicationStrategies, config, moment, superagent) {
       const jwt = strategy.execute(dummyData);
 
       superagent
-        .post(`${config.app.wk_api_url}/activity/createActivity`)
+        .put(`${config.app.wk_api_url}/activity`)
         .send(cleanData)
         .set("Cookie", `wt_jwt=${jwt}`)
         .end(function(err, res){
