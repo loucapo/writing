@@ -1,15 +1,15 @@
 -- name: get_activity_by_id
 select *
 from activity
-where courseId = :courseId
+where course_id = :course_id
 
 -- name: create_new_activity_from_jwt
 INSERT INTO activity
     (id,
-    courseId,
+    course_id,
     title,
-    createdById,
-    createdDate)
+    created_by_id,
+    created_date)
 VALUES
     (:id,
     :courseId,
