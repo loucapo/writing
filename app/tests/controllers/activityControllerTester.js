@@ -43,7 +43,7 @@ describe('Container Test', function() {
 
           let result = await mut.activity(ctx);
           result.body.status.should.equal(200);
-          result.body.data.should.equal(activity);
+          result.body.payload.should.equal(activity);
           result.body.success.should.be.true;
         });
       });

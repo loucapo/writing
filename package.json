@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app/index.js",
     "start_dev": "nodemon --ignore app/src/swagger --harmony-async-await app/index.js",
-    "test": "mocha --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/*/*.js -w",
+    "test": "mocha --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/ -w",
     "testOnce": "NODE_ENV=local LOGGING_TRANSPORTS=console mocha --opts ./app/tests/mocha.opts --compilers js:babel-register ./app/tests/*/*.js",
     "coverage": "nyc npm run testOnce",
     "lint": "eslint .",
@@ -21,7 +21,9 @@
     "babel-polyfill": "^6.13.0",
     "config": "^1.21.0",
     "dagon": "reharik/dagon",
+    "deref": "^0.6.4",
     "enumify": "^1.0.4",
+    "invariant": "^2.2.2",
     "json-schema-deref-sync": "^0.3.2",
     "koa": "^2.0.0",
     "koa-bodyparser": "^3.2.0",
@@ -41,6 +43,8 @@
     "pg-format": "^1.0.4",
     "puresql": "^1.2.0",
     "swagger-jsdoc": "^1.7.0",
+    "swagger-model-validator": "reharik/swagger-model-validator",
+    "uuid-validate": "0.0.2",
     "winston": "^2.3.0",
     "winston-logstash": "^0.3.0"
   },

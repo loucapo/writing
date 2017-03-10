@@ -8,7 +8,9 @@ module.exports = function(koaresponsetime,
                           koacors,
                           koajwt,
                           config,
-                          swaggerSpec) {
+                          swaggerSpec,
+                          customValidators,
+                          swaggerValidationMiddleware) {
   return function(app) {
     if (!config.app.keys) {
       throw new Error('Please add session secret key in the config file!');
@@ -27,6 +29,9 @@ module.exports = function(koaresponsetime,
 //XXX -- it would appear that last CORS wins...  need to revisit this for swagger.
     app.use(koabodyparser());
     app.use(koacompress());
+    var JSONSwaggerDoc = JSON.parse(swaggerSpec());
+    app.use(swaggerValidationMiddleware(JSONSwaggerDoc, customValidators));
+
     app.use(koaresponsetime());
   };
 };

@@ -22,12 +22,16 @@ module.exports = function routes(koarouter, controllers) {
      *         description: Success
      *         schema:
      *             $ref: "#/definitions/standardSuccessResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
      */
     router.get('activity','/activity/:id', controllers.activityController.activity);
     /**
      * @swagger
-     * /activity/createActivity:
-     *   post:
+     * /activity:
+     *   put:
      *     x-name: createActivity
      *     description: Checks for existence of activity and creates it if not there
      *     operationId: createActivity
@@ -42,8 +46,12 @@ module.exports = function routes(koarouter, controllers) {
      *         description: Success
      *         schema:
      *             $ref: "#/definitions/standardSuccessResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.post('activity','/activity/createActivity', controllers.activityController.createActivity);
+    router.put('activity','/activity', controllers.activityController.createActivity);
 
     app.use(router.routes());
     app.use(router.allowedMethods());

@@ -1,0 +1,44 @@
+{
+  "definitions": {
+    "standardSuccessResponse": {
+      "title": "standardSuccessResponse",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "payload": {
+          "type": "object"
+        }
+      }
+    },
+    "standardFailureResponse": {
+      "title": "standardFailureResponse",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "error": {
+          "type": "boolean"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/errorMessage"
+          }
+        }
+      }
+    },
+    "errorMessage": {
+      "title": "errorMessage",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

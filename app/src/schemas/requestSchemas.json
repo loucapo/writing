@@ -1,0 +1,25 @@
+{
+  "definitions": {
+    "createActivity": {
+      "title": "createActivity",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "courseId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "createdById": {
+          "type": "string"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

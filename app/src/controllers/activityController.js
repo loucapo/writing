@@ -9,7 +9,7 @@ module.exports = function (repository, path, logger) {
       ctx.body = {
         status: ctx.status,
         success: true,
-        data: activity
+        payload: activity
       };
       return ctx;
     },
@@ -17,14 +17,14 @@ module.exports = function (repository, path, logger) {
     // check if it exists, if not create it;
     async createActivity(ctx) {
       const body = ctx.request.body;
-      logger.info(`Receiving payload from wk_serve: ${body}`);
+      logger.info(`Receiving payload from wk_serve: ${JSON.stringify(body)}`);
       let activitySql = path.join(__dirname,`./../repositories/sql/activity.sql`);
       let activity = await repository(activitySql,'get_activity_by_id', {id:body.id});
       if(!activity || !activity[0]){
-        logger.info(`Creating Activity from wk_serve payload: ${body}`);
+        logger.info(`Creating Activity from wk_serve payload: ${JSON.stringify(body)}`);
         await repository(activitySql,'create_new_activity_from_jwt', body);
       }
-      logger.debug(`Call to createActivity successful with following payload: ${body}`);
+      logger.debug(`Call to createActivity successful with following payload: ${JSON.stringify(body)}`);
       
       ctx.status = 200;
       ctx.body = {

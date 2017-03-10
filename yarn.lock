@@ -1119,7 +1119,7 @@ deep-equal@~1.0.0:
   version "1.0.1"
   resolved "http://npm.macmillantech.com:8080/d/deep-equal/_attachments/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
 
-deep-extend@~0.4.0:
+deep-extend@^0.4.0, deep-extend@~0.4.0:
   version "0.4.1"
   resolved "http://npm.macmillantech.com:8080/d/deep-extend/_attachments/deep-extend-0.4.1.tgz#efe4113d08085f4e6f9687759810f807469e2253"
 
@@ -1156,6 +1156,12 @@ delegates@^1.0.0:
 depd@1.1.0, depd@^1.1.0, depd@~1.1.0:
   version "1.1.0"
   resolved "http://npm.macmillantech.com:8080/d/depd/_attachments/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
+
+deref@^0.6.4:
+  version "0.6.4"
+  resolved "http://npm.macmillantech.com:8080/d/deref/_attachments/deref-0.6.4.tgz#bd5a96d45dbed3011bb81bdf68ddf54be8e1bd4e"
+  dependencies:
+    deep-extend "^0.4.0"
 
 destroy@^1.0.3:
   version "1.0.4"
@@ -1884,7 +1890,7 @@ interpret@^1.0.0:
   version "1.0.1"
   resolved "http://npm.macmillantech.com:8080/i/interpret/_attachments/interpret-1.0.1.tgz#d579fb7f693b858004947af39fa0db49f795602c"
 
-invariant@^2.1.0, invariant@^2.2.0:
+invariant@^2.1.0, invariant@^2.2.0, invariant@^2.2.2:
   version "2.2.2"
   resolved "http://npm.macmillantech.com:8080/i/invariant/_attachments/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -3746,6 +3752,10 @@ swagger-methods@^1.0.0:
   version "1.0.0"
   resolved "http://npm.macmillantech.com:8080/s/swagger-methods/_attachments/swagger-methods-1.0.0.tgz#b39c77957d305a6535c0a1e015081185b99d61fc"
 
+swagger-model-validator@reharik/swagger-model-validator:
+  version "2.1.9"
+  resolved "https://codeload.github.com/reharik/swagger-model-validator/tar.gz/61003b8de646cc98ebc591239e35711ac69fb7bc"
+
 swagger-parser@^3.4.0:
   version "3.4.1"
   resolved "http://npm.macmillantech.com:8080/s/swagger-parser/_attachments/swagger-parser-3.4.1.tgz#0290529dbae254d178b442a95df60d23d142301d"
@@ -3983,6 +3993,10 @@ util-deprecate@~1.0.1:
 util-extend@^1.0.1:
   version "1.0.3"
   resolved "http://npm.macmillantech.com:8080/u/util-extend/_attachments/util-extend-1.0.3.tgz#a7c216d267545169637b3b6edc6ca9119e2ff93f"
+
+uuid-validate@0.0.2:
+  version "0.0.2"
+  resolved "http://npm.macmillantech.com:8080/u/uuid-validate/_attachments/uuid-validate-0.0.2.tgz#ed883d26cf0d1819763abfa315e9626ddb67c8e8"
 
 uuid@^2.0.1:
   version "2.0.3"
