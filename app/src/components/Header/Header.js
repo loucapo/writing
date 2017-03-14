@@ -12,7 +12,6 @@ const Header = ({title}) => {
           <MLIcon
             className={styles.leftArrow}
             title="arrow left"
-            fill="#ffffff"
             type="arrow_left"
             width="24"
             height="24"

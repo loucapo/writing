@@ -20,13 +20,13 @@
 }
 
 .subheader {
-  color: var(--darkGrey);
-  font-size: 14px;
+  color: var(--gray-dark);
+  @apply --font-14;
   min-width: 32%;
 }
 
 .help {
-  fill: var(--darkBlue);
+  fill: var(--blue-dark);
   margin-left: 10px;
 }
 

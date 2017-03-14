@@ -7,6 +7,7 @@
   font-style: normal;
 }
 
+
 .app {
   display: flex;
   flex-direction: column;
@@ -18,13 +19,13 @@
 }
 
 body {
-	background-color: var(--veryLightGrey);
-	color: var(--blackish);
-	font-size: 14px;
-	margin: 0;
-	overflow: hidden;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  background-color: var(--gray-very-light);
+  color: var(--black);
+  @apply --font-15;
+  margin: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a, a:link, a:hover, a:active, a:visited  {
@@ -33,18 +34,18 @@ a, a:link, a:hover, a:active, a:visited  {
 }
 
 ::-webkit-input-placeholder {
-  color: var(--darkGrey);
+  color: var(--gray-dark);
   font-style: italic;
 }
 ::-moz-placeholder {
-  color: var(--darkGrey);
+  color: var(--gray-dark);
   font-style: italic;
 } /* firefox 19+ */
 :-ms-input-placeholder {
-  color: var(--darkGrey);
+  color: var(--gray-dark);
   font-style: italic;
 } /* ie */
 input:-moz-placeholder {
-  color: var(--darkGrey);
+  color: var(--gray-dark);
   font-style: italic;
 }

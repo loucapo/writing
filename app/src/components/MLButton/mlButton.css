@@ -5,7 +5,7 @@
   border: 1px solid var(--blue);
   cursor: pointer;
   color: var(--blue);
-  font-size: 14px;
+  @apply --font-14;
   font-weight: normal;
   letter-spacing: 0.02em;
   padding: 8px 10px;
@@ -20,12 +20,12 @@
   composes: button;
   background-color: var(--blue);
   border: none;
-  color: var(--pureWhite);
+  color: var(--white);
 }
 
 .green {
   composes: button;
   background-color: var(--green);
   border: none;
-  color: var(--pureWhite);
+  color: var(--white);
 }

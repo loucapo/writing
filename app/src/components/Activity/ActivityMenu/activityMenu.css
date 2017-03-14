@@ -1,15 +1,15 @@
 @import 'variables.css';
 
 .container {
-  background: var(--pureWhite);
+  background: var(--white);
   align-items: center;
-  border-bottom: 1px solid var(--lightGrey);
+  border-bottom: 1px solid var(--gray-light);
   display: flex;
   justify-content: center;
 }
 
 .container div {
-  font-size: 14px;
+  @apply --font-14;
   line-height: 45px;
   margin-right: 10px;
   padding: 0 10px;
@@ -18,11 +18,11 @@
 }
 
 .container a, .container a:link, .container a:active, .container a:visited {
-  color: var(--darkGrey);
+  color: var(--gray-dark);
 }
 
 .container a:hover {
-  color: var(--blackish);
+  color: var(--black);
 }
 
 .active {
@@ -30,7 +30,7 @@
 }
 
 .active a, .active a:link, .active a:hover, .active a:active, .active a:visited {
-  color: var(--blackish);
+  color: var(--black);
   position: relative;
   top: 2px;
 }

@@ -6,12 +6,12 @@
 
 .title {
   display: flex;
-  font-size: 28px;
+  @apply --font-28;
 }
 
 .type {
-  font-size: 19px;
-  color: var(--darkGrey);
+  @apply --font-18;
+  color: var(--gray-dark);
 }
 
 .editIcon {

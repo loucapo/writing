@@ -2,8 +2,8 @@
 
 .header {
   align-items: center;
-  background-color: var(--darkBlue);
-  color: var(--lightBlue);
+  background-color: var(--header-background-blue);
+  color: var(--blue-light);
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -23,7 +23,7 @@
 }
 
 .leftArrow {
-  fill: white;
+  fill: var(--white);
   margin: auto auto;
 }
 

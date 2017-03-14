@@ -1,3 +1,4 @@
+@import 'typography.css';
 @import 'colors.css';
 
 :root {
@@ -7,4 +8,3 @@
   --global-margin:  0 0 var(--margin);
   --global-padding: 0 0 var(--padding) 0;
 }
-

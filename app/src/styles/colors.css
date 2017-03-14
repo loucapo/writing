@@ -1,38 +1,74 @@
 :root {
-  --pureWhite: #FFFFFF;
-  --offWhite: #F8F8F8;
 
-  --lightGrey: #DDDDDD;
-  --mediumLightGrey: #C8C8C8;
-  --veryLightGrey: #F3F3F3;
-  --darkGrey: #686868;
-  --veryDarkGrey: #383838;
-  --comGrey: #cdcdcd;
-  --menuGrey: #272727;
+  /* CDL color palette */
+  --macmillan-red: #da1b2c;
+  --black: #080808;
+  --white: #ffffff;
+  --off-white: #f8f8f8;
+  --red: #da1b2c;
+  --red-very-light: #fce4e2;
+  --red-light: #ffafaf;
+  --red-medium: #ef5656;
+  --red-base: #da1b2c;
+  --red-dark: #a51426;
+  --orange: #dd5714;
+  --orange-very-light: #ffe5d3;
+  --orange-light: #ffc196;
+  --orange-medium: #ff8a57;
+  --orange-base: #dd5714;
+  --orange-dark: #a83d0e;
+  --yellow: #b79e25;
+  --yellow-very-light: #fffbd7;
+  --yellow-light: #faf2a9;
+  --yellow-medium: #e5d676;
+  --yellow-base: #b79e25;
+  --yellow-dark: #74600c;
+  --green: #3b822e;
+  --green-very-light: #daf4d4;
+  --green-light: #acdba2;
+  --green-medium: #68b75f;
+  --green-base: #3b822e;
+  --green-dark: #2c5e20;
+  --teal: #218466;
+  --teal-very-light: #dbfff3;
+  --teal-light: #aee5d3;
+  --teal-medium: #5fb79c;
+  --teal-base: #218466;
+  --teal-dark: #16664b;
+  --aqua: #00758e;
+  --aqua-very-light: #cff3f9;
+  --aqua-light: #a2d6dd;
+  --aqua-medium: #45a5b5;
+  --aqua-base: #00758e;
+  --aqua-dark: #205460;
+  --blue: #006eb8;
+  --blue-very-light: #e0f1ff;
+  --blue-light: #b0daff;
+  --blue-medium: #3192d3;
+  --blue-base: #006eb8;
+  --blue-dark: #004c72;
+  --purple: #865f7f;
+  --purple-very-light: #ffe6fd;
+  --purple-light: #e5c6e3;
+  --purple-medium: #b286af;
+  --purple-base: #865f7f;
+  --purple-dark: #543b50;
+  --magenta: #882345;
+  --magenta-very-light: #ffe6f3;
+  --magenta-light: #edb0ce;
+  --magenta-medium: #b26487;
+  --magenta-base: #882345;
+  --magenta-dark: #562135;
+  --gray: #989898;
+  --gray-very-light: #f3f3f3;
+  --gray-light: #dddddd;
+  --gray-medium: #c8c8c8;
+  --gray-base: #989898;
+  --gray-dark: #686868;
+  --gray-very-dark: #383838;
 
-  --blackish: #080808;
-  --black: #000000;
-
-  --green: #3B822E;
-  --lightGreen: #acdba2;
-  --veryLightGreen: #daf4d4;
-
-  --lightYellow: #faf2a9;
-  --veryLightYellow: #fffbd7;
-
-  --orange: #DD5714;
-  --lightOrange: #ffc196;
-  --veryLightOrange: #ffe5d3;
-
-  --red: #DA1B2C;
-  --lightRed: #ffafaf;
-  --veryLightRed: very light red;
-  --errorRed: #FF3B30;
-
-  --blue: #00758E;
-  --lightBlue: #A0ACB2;
-  --selectBlue: #b0daff;
-  --darkBlue: #142A35;
+  /* app specific colors */
+  --header-background-blue: #142a35;
 
   /* Font weight colors */
   --font-light: #b2b2b2;
