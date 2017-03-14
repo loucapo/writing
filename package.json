@@ -29,6 +29,7 @@
     "jwt-decode": "^2.1.0",
     "ml-react-cdl-icons": "^1.2.2",
     "ml-react-rte": "^0.1.1",
+    "moment": "^2.17.1",
     "precommit-hook-eslint": "^3.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

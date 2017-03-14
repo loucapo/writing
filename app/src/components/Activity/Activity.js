@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import moment from 'moment';
 import Header from '../Header/Header';
 import MLAlert from '../MLAlert/MLAlert';
 import MLCard from '../MLCard/MLCard';
@@ -17,7 +18,7 @@ const Activity = ({role, activity, drafts}) => {
       <div className={styles.container}>
         <div data-id="created-activity-alert" className={styles.spacer}>
           <MLAlert
-            message={'Activity created on ' + activity.createdDate +
+            message={'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
               '. This is in draft mode and will not be visible to students until you assign it.'}
             alertType="success"
             iconType="circle_check_outline"
