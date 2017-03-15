@@ -1,0 +1,50 @@
+@import 'variables.css';
+
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url('./fonts/SourceSansPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app, body {
+  font-family: 'SourceSansPro-Regular', Arial, sans-serif;
+}
+
+body {
+	background-color: var(--veryLightGrey);
+	color: var(--blackish);
+	font-size: 14px;
+	margin: 0;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+a, a:link, a:hover, a:active, a:visited  {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+}
+::-moz-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+} /* firefox 19+ */
+:-ms-input-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+} /* ie */
+input:-moz-placeholder {
+  color: var(--darkGrey);
+  font-style: italic;
+}

@@ -1,0 +1,8 @@
+@import 'variables.css';
+
+.header {
+  background-color: var(--darkBlue);
+  font-size: 32px;
+  color: var(--lightBlue);
+  padding: 40px 50px;
+}
