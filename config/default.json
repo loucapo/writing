@@ -2,7 +2,8 @@
   "app": {
     "port": 80,
     "keys": ["default"],
-    "spa_url": "http://localhost:8080/"
+    "spa_url": "http://localhost:8080/",
+    "prod_tools_spa_url": "http://localhost:8081/"
   },
   "postgres": {
     "config" :{

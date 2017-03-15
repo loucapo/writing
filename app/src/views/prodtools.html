@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Writer Key</title>
+</head>
+<body>
+<div id="root">
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <span id="message">You are being redirected to your Macmillan Learning Tool...</span>
+    </div>
+</div>
+<div data-val="{{token}}" id="token" ></div>
+<!-- TODO: This stuff really does not belong in here. we need to move it ASAP. -->
+<style>
+    html, body, #root, #root > div {
+        height: 100%;
+    }
+
+    #loader-wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    #loader {
+        border: 3px solid transparent;
+        border-radius: 50%;
+        border-top-color: #007aC9;
+        height: 100px;
+        position: relative;
+        width: 100px;
+
+        -webkit-animation: spin 2s infinite linear;
+           -moz-animation: spin 2s infinite linear;
+                animation: spin 2s infinite linear;
+    }
+
+    #loader:before {
+        border: 3px solid transparent;
+        border-radius: 50%;
+        border-top-color: #dA1b2c;
+        bottom: 5px;
+        content: "";
+        left: 5px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+
+        -webkit-animation: spin 3s infinite linear;
+           -moz-animation: spin 3s infinite linear;
+                animation: spin 3s infinite linear;
+    }
+
+    #loader:after {
+        border: 3px solid transparent;
+        border-radius: 50%;
+        border-top-color: #d47b22;
+        bottom: 15px;
+        content: "";
+        left: 15px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+
+        -webkit-animation: spin 1.5s infinite linear;
+           -moz-animation: spin 1.5s infinite linear;
+                animation: spin 1.5s infinite linear;
+    }
+
+    #message {
+        padding-top: 20px;
+    }
+
+    /* animation */
+    @-webkit-keyframes spin {
+        from{-webkit-transform:rotate(0deg);}
+        to{-webkit-transform:rotate(360deg);}
+    }
+
+    @-moz-keyframes spin {
+        from{-moz-transform:rotate(0deg);}
+        to{-moz-transform:rotate(360deg);}
+    }
+
+    @keyframes spin {
+        from{transform:rotate(0deg);}
+        to{transform:rotate(360deg);}
+    }
+
+</style>
+<script type="text/javascript" src="{{PROD_TOOLS_SPA_URL}}"></script>
+</body>
+</html>
