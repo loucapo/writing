@@ -11,6 +11,17 @@ services:
       - "8080:8080"
     service: wk_frontend
     container_name: wk_frontend
+  prodtools:
+    image: ${wk_prodtools_image}
+    command: npm start
+    env_file:
+      - .env
+    environment:
+      APPLICATION_NAME: wk_prodtools
+    ports:
+      - "8081:8081"
+    service: wk_prodtools
+    container_name: wk_prodtools
 api:
   image: ${wk_api}
     command: npm run start

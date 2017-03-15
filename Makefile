@@ -12,6 +12,9 @@ clone-api:
 clone-front-end:
 	git clone git@bitbucket.org:mnv_tech/wk_frontend.git ../wk_frontend
 
+clone-prod-tools:
+	git clone git@bitbucket.org:mnv_tech/wk_prodtools.git ../wk_prodtools
+
 clone-data:
 	git clone git@bitbucket.org:mnv_tech/wk_data.git ../wk_data
 
@@ -48,6 +51,10 @@ docker-build-front-end:	docker-build-node
 	cd ../wk_frontend && $(MAKE) docker-build
 	cd ../wk_compose
 
+docker-build-prod-tools:	docker-build-node
+	cd ../wk_prodtools && $(MAKE) docker-build
+	cd ../wk_compose
+
 ##################
 #kill
 ##################
@@ -79,6 +86,10 @@ kill-postgres:
 kill-front-end:
 	docker rm -vf wk_frontend 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_frontend
+
+kill-prod-tools:
+	docker rm -vf wk_prodtools 2>/dev/null || echo "No more containers to remove."
+	docker rmi wk_prodtools
 
 kill-orphans:
 	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
@@ -139,6 +150,9 @@ get-statuses:
 	@echo ================FRONTEND==================
 	@cd ../wk_frontend && git status
 	@cd ../wk_compose
+	@echo ================PRODTOOLS==================
+	@cd ../wk_prodtools && git status
+	@cd ../wk_compose
 	@echo ================API==================
 	@cd ../wk_api && git status
 	@cd ../wk_compose
@@ -155,6 +169,9 @@ pull-repos:
 	@echo ================FRONTEND==================
 	@cd ../wk_frontend && git pull origin master
 	@cd ../wk_compose
+	@echo ================PRODTOOLS==================
+	@cd ../wk_prodtools && git pull origin master
+	@cd ../wk_compose
 	@echo ================API==================
 	@cd ../wk_api && git pull origin master
 	@cd ../wk_compose
@@ -170,6 +187,9 @@ get-branches:
 	@git branch | grep \*
 	@echo ================FRONTEND==================
 	@cd ../wk_frontend && git branch | grep \*
+	@cd ../wk_compose
+	@echo ================PRODTOOLS==================
+	@cd ../wk_prodtools && git branch | grep \*
 	@cd ../wk_compose
 	@echo ================API==================
 	@cd ../wk_api && git branch | grep \*
