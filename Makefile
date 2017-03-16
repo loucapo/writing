@@ -114,9 +114,11 @@ kill-logging:	kill-elasticsearch kill-kibana kill-logstash
 ##################
 
 run:	docker-build-deps
+	env_builder/build.sh local ../wk_api/docker/.key ../wk_api/docker ../wk_api/docker/.value
 	docker-compose -f docker/docker-compose.yml up
 
 run-dev:	docker-build-deps
+	env_builder/build.sh local ../wk_api/docker/.key ../wk_api/docker ../wk_api/docker/.value
 	docker-compose -f docker/docker-compose-dev.yml up
 
 run-data:	docker-build-data
