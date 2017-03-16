@@ -33,8 +33,7 @@ fi
 if [ $TYPE == "local" ]; then
   ENV_FILE="$PATH/.env"
   if [ -f "$ENV_FILE" ]; then
-    echo ".env file already exists"
-    exit
+    eval "/bin/rm -f $ENV_FILE"
   fi
 
   if [ -z "$VALUE_FILE" ]; then
