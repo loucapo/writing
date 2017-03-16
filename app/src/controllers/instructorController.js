@@ -15,7 +15,7 @@ module.exports = function (applicationStrategies, config, moment, superagent) {
           role : 'instructor'
         },
         launch_data : {
-          resource_link_id : 'ABCD',
+          resource_link_id : 'd3e3c2d5-cf43-4f63-924f-3ec7a125a334',
           course_id : '4454554',
           course_name : 'Eng 1002'
         }
