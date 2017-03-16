@@ -9,12 +9,13 @@ exports.define = function(steps) {
     credentials.sls_login.click();
   });
 
-  steps.when("I launch into the writing production tool", function () {
+  steps.given("I launch into the writing production tool", function () {
     tools.visit();
   });
 
   steps.then("I land on the Writing Activity Content Tool", function () {
-    tools[elem].isDisplayed().should.eventually.equal(true);
+    tools.prodtools_header.isDisplayed().should.eventually.equal(true);
+    tools.prodtools_title.isDisplayed().should.eventually.equal(true);
   });
 
   steps.then("I receive a 401 error", function () {
