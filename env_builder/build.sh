@@ -20,7 +20,7 @@ die() { echo "$@" 1>&2 ; exit 1; }
 
 KEY=()
 if [ -f "$KEY_FILE" ]; then
-  while read -r line
+  for line in $(<$KEY_FILE)
   do
     if [ ! -z $line ]; then
       KEY+=("$line")
@@ -42,7 +42,7 @@ if [ $TYPE == "local" ]; then
 
   if [ -f "$VALUE_FILE" ]; then
     VALUE=()
-    while read -r line
+    for line in $(<$VALUE_FILE)
     do
       if [ ! -z $line ]; then
        VALUE+=("$line")
@@ -57,9 +57,10 @@ if [ $TYPE == "local" ]; then
   fi 
 
   echo "Everything looks good so far creating env file now..."
-  for COUNTER in "${!KEY[@]}"; do
-   echo "${KEY[$COUNTER]}=${VALUE[$COUNTER]}" >> $ENV_FILE
-  done 
+  tLen=${#KEY[@]}
+  for (( i=0; i<${tLen}; i++ )); do
+    echo "${KEY[$i]}=${VALUE[$i]}" >> $ENV_FILE
+  done
   echo "$ENV_FILE file is created"
   echo "---------------------"
   exit
