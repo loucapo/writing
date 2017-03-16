@@ -115,10 +115,16 @@ kill-logging:	kill-elasticsearch kill-kibana kill-logstash
 
 run:	docker-build-deps
 	env_builder/build.sh local ../wk_api/docker/.key ../wk_api/docker ../wk_api/docker/.value
+	env_builder/build.sh local ../wk_frontend/docker/.key ../wk_frontend/docker ../wk_frontend/docker/.value
+	env_builder/build.sh local ../wk_serve/docker/.key ../wk_serve/docker ../wk_serve/docker/.value
+	env_builder/build.sh local ../wk_prodtools/docker/.key ../wk_prodtools/docker ../wk_prodtools/docker/.value
 	docker-compose -f docker/docker-compose.yml up
 
 run-dev:	docker-build-deps
 	env_builder/build.sh local ../wk_api/docker/.key ../wk_api/docker ../wk_api/docker/.value
+	env_builder/build.sh local ../wk_frontend/docker/.key ../wk_frontend/docker ../wk_frontend/docker/.value
+	env_builder/build.sh local ../wk_serve/docker/.key ../wk_serve/docker ../wk_serve/docker/.value
+	env_builder/build.sh local ../wk_prodtools/docker/.key ../wk_prodtools/docker ../wk_prodtools/docker/.value
 	docker-compose -f docker/docker-compose-dev.yml up
 
 run-data:	docker-build-data
