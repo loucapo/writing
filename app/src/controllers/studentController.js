@@ -25,7 +25,7 @@ module.exports = function (applicationStrategies) {
       const jwt = strategy.execute(dummyData);
 
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
-      ctx.redirect(strategy.launchPage);
+      ctx.redirect('/activity');
     }
   };
 };

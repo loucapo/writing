@@ -43,9 +43,8 @@ module.exports = function (applicationStrategies, config, moment, superagent) {
           }
         });
 
-
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
-      ctx.redirect(strategy.launchPage);
+      ctx.redirect('/activity');
     }
   };
 };

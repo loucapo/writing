@@ -17,6 +17,6 @@ module.exports = function (jsonwebtoken, config) {
         }
       }, config.app.consumer_secret);
     },
-    launchPage: '/'
+    launchPage: '/activity'
   }
 };

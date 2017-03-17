@@ -27,7 +27,7 @@ module.exports = function (applicationStrategies, config) {
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
       ctx.body = await ctx.render("prodtools", {
         PROD_TOOLS_SPA_URL: config.app.prod_tools_spa_url,
-        token: ctx.cookies.get('wt_jwt')
+        token: jwt 
       });
     }
   };
