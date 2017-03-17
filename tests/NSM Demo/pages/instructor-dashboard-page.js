@@ -4,7 +4,7 @@ module.exports = new Page({
 
   url: { value: '/dashboard' },
 
-  dashboard_title: { get: function () { return this.element("[data-id='credentials-title']"); } },
+  dashboard_title: { get: function () { return this.element("[data-id='page-title']"); } },
 
   course_title: { get: function () { return this.element("[data-id='class-title']"); } },
 

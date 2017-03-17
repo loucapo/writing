@@ -1,11 +1,11 @@
 /**
  * Created by wayneng on 10/25/16.
  */
-var moodle_login_page = require('../../pages/NSM Demo/moodle-login-credentials.js');
-var credentials = require('../../pages/NSM Demo/sls-user-credentials.js');
-var moodle_lti_launch_page = require('../../pages/NSM Demo/moodle-LTI-launch-credentials.js');
-var dashboard_page = require('../../pages/NSM Demo/instructor-dashboard-credentials.js');
-var assignment_summary_page = require('../../pages/NSM Demo/instructor-assignment-summary-credentials-steps.js');
+var moodle_login_page = require('../../pages/NSM Demo/moodle-login-page.js');
+var credentials = require('../../pages/NSM Demo/sls-user-page.js');
+var moodle_lti_launch_page = require('../../pages/NSM Demo/moodle-LTI-launch-page.js');
+var dashboard_page = require('../../pages/NSM Demo/instructor-dashboard-page.js');
+var assignment_summary_page = require('../../pages/NSM Demo/instructor-assignment-summary-page-steps.js');
 
 exports.define = function(steps) {
 
@@ -46,7 +46,7 @@ exports.define = function(steps) {
     session.create(session.browser);
   });
 
-  steps.then("I get redirected to the activity summary credentials", function () {
+  steps.then("I get redirected to the activity summary page", function () {
     driver.wait(until.urlContains(assignment_summary_page.url), 5000, 'redirect did not hit target');
   });
 };

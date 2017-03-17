@@ -11,7 +11,7 @@ exports.define = function(steps) {
   /*
    *	Say Hello
    */
-  steps.given('I visit the wysiwyg editor credentials', function() {
+  steps.given('I visit the wysiwyg editor page', function() {
     rtePage.visit();
   });
 
