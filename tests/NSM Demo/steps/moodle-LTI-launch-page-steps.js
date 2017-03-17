@@ -2,10 +2,10 @@
  * Created by wayneng on 10/25/16.
  */
 var moodle_login_page = require('../../pages/NSM Demo/moodle-login-page.js');
-var credentials = require('../../pages/NSM Demo/sls-user-page.js');
+var credentials = require('../../pages/NextGen Writer Key/sls-user-credentials.js');
 var moodle_lti_launch_page = require('../../pages/NSM Demo/moodle-LTI-launch-page.js');
 var dashboard_page = require('../../pages/NSM Demo/instructor-dashboard-page.js');
-var assignment_summary_page = require('../../pages/NSM Demo/instructor-assignment-summary-page-steps.js');
+var assignment_summary_page = require('../../pages/NSM Demo/instructor-assignment-summary-page.js');
 
 exports.define = function(steps) {
 
