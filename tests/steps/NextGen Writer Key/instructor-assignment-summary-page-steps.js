@@ -1,7 +1,7 @@
 var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page.js');
 
 exports.define = function(steps) {
-  steps.given("I visit the SLS create activity credentials", function() {
+  steps.given("I visit the SLS create activity page", function() {
     page.visit();
   });
 
@@ -24,13 +24,13 @@ exports.define = function(steps) {
     });
   });
 
-  steps.when("I scroll down the activity credentials", function () {
+  steps.when("I scroll down the activity page", function () {
     driver.executeScript(function() {
       window.scrollBy(0,100);
     })
   });
 
-  steps.when("I reload the credentials", function () {
+  steps.when("I reload the page", function () {
     driver.navigate().refresh();
   });
 
