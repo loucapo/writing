@@ -71,6 +71,10 @@ exports.define = function(steps) {
       expect(t).to.contain(text);
     });
   });
+
+  steps.then("I click a '$element'", function(elem) {
+    page[elem].click();
+  });
 };
 
 

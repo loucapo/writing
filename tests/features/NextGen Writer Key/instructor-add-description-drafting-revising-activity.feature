@@ -44,7 +44,7 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click the bold button
     And I click the italics button
     And I click the "activity_prompt_cancel"
-    Then there should be no text in the WYSIWG editor
+    Then Text "happy" should not appear
 
   Scenario: WYSIWYG Display Saves
     Given I visit the activity page
@@ -84,7 +84,7 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I select "happy"
     And I click the bold button
     And I click the italics button
-    And I refresh the page
+    And I reload the page
     Then Text "happy" should not have italicized styling
     And Text "happy" should not have bold styling
 
