@@ -36,6 +36,8 @@ module.exports = new Page({
 
   button_undo: { get: function() { return this.element("button[title='Undo']")}},
 
-  button_redo: { get: function() { return this.element("button[title='Redo']")}}
+  button_redo: { get: function() { return this.element("button[title='Redo']")}},
+
+  rte_toolbar: { get: function() { return this.element(".rdw-editor-toolbar");}},
 
 });

@@ -273,4 +273,9 @@ exports.define = function(steps) {
     rtePage.button_redo.click();
   });
 
+  steps.then("The WYSIWYG editor should be closed", function() {
+    rtePage.draftEditor.getAttribute("contenteditable").then(function(text) {
+      text.should.equal("false");
+    });
+  });
 };

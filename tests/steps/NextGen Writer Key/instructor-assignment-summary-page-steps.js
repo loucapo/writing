@@ -34,6 +34,9 @@ exports.define = function(steps) {
     driver.navigate().refresh();
   });
 
+  steps.when("I click on the page", function () {
+    page.activity_prompt_header.click();
+  });
   steps.then('I should see the Assignment Header elements', function() {
     expect(page.title).to.exist;
     expect(page.activity_type).to.exist;
@@ -72,7 +75,7 @@ exports.define = function(steps) {
     });
   });
 
-  steps.then("I click a '$element'", function(elem) {
+  steps.when("I click a '$element'", function(elem) {
     page[elem].click();
   });
 };
