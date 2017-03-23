@@ -55,6 +55,23 @@ docker-build-prod-tools:	docker-build-node
 	cd ../wk_prodtools && $(MAKE) docker-build
 	cd ../wk_compose
 
+build-env-deps: build-env-api build-env-serve build-env-data build-env-front-end build-env-prod-tools
+
+build-env-api:
+  env_builder/build.sh local ../wk_api/docker/.env.example ../wk_api/docker
+
+build-env-front-end:
+	env_builder/build.sh local ../wk_frontend/docker/.env.example ../wk_frontend/docker
+	
+build-env-data:
+	env_builder/build.sh local ../wk_data/docker/.env.example ../wk_data/docker
+
+build-env-serve:
+	env_builder/build.sh local ../wk_serve/docker/.env.example ../wk_serve/docker
+	
+build-env-prod-tools:
+	env_builder/build.sh local ../wk_prodtools/docker/.env.example ../wk_prodtools/docker
+
 ##################
 #kill
 ##################
@@ -113,21 +130,13 @@ kill-logging:	kill-elasticsearch kill-kibana kill-logstash
 #run
 ##################
 
-run:	docker-build-deps
-	env_builder/build.sh local ../wk_api/docker/.env.example ../wk_api/docker
-	env_builder/build.sh local ../wk_frontend/docker/.env.example ../wk_frontend/docker
-	env_builder/build.sh local ../wk_serve/docker/.env.example ../wk_serve/docker
-	env_builder/build.sh local ../wk_prodtools/docker/.env.example ../wk_prodtools/docker
+run:	docker-build-deps build-env-deps
 	docker-compose -f docker/docker-compose.yml up
 
-run-dev:	docker-build-deps
-	env_builder/build.sh local ../wk_api/docker/.env.example ../wk_api/docker
-	env_builder/build.sh local ../wk_frontend/docker/.env.example ../wk_frontend/docker
-	env_builder/build.sh local ../wk_serve/docker/.env.example ../wk_serve/docker
-	env_builder/build.sh local ../wk_prodtools/docker/.env.example ../wk_prodtools/docker
+run-dev:	docker-build-deps build-env-deps
 	docker-compose -f docker/docker-compose-dev.yml up
 
-run-data:	docker-build-data
+run-data:	docker-build-data build-env-data
 	docker-compose -f docker/docker-compose-data.yml up
 
 run-logging:	ecr-login
