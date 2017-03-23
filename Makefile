@@ -58,7 +58,7 @@ docker-build-prod-tools:	docker-build-node
 build-env-deps: build-env-api build-env-serve build-env-data build-env-front-end build-env-prod-tools
 
 build-env-api:
-  env_builder/build.sh local ../wk_api/docker/.env.example ../wk_api/docker
+	env_builder/build.sh local ../wk_api/docker/.env.example ../wk_api/docker
 
 build-env-front-end:
 	env_builder/build.sh local ../wk_frontend/docker/.env.example ../wk_frontend/docker
