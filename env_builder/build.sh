@@ -3,58 +3,50 @@
 ###########################################
 #
 # This script is used to dynamically build an .env file
-# ./build.sh <type> <key file> <path to place .env file> <values file>
+# ./build.sh <type> <key file> <path to place .env file> 
 #  type = local | bamboo
 #  key file = path to key file
 #  path to the .env = only required for local
-#  values file = path to values file (only required for local)
 #
 ###########################################
 
 TYPE="$1"
 KEY_FILE="$2"
 PATH="$3"
-VALUE_FILE="$4"
 
 die() { echo "$@" 1>&2 ; exit 1; }
 
+########## Get the Keys
 KEY=()
 if [ -f "$KEY_FILE" ]; then
   for line in $(<$KEY_FILE)
   do
     if [ ! -z $line ]; then
-      KEY+=("$line")
+      IFS='=' read -r -a array <<< "$line"
+      KEY+=("${array[0]}")
     fi
   done < "$KEY_FILE"
 else 
   die "$KEY_FILE not found"
 fi
 
+########## DO THE MAGIC
+
+##########  For Local Containers
 if [ $TYPE == "local" ]; then
   ENV_FILE="$PATH/.env"
   if [ -f "$ENV_FILE" ]; then
     eval "/bin/rm -f $ENV_FILE"
   fi
 
-  if [ -z "$VALUE_FILE" ]; then
-    die "VALUE_FILE is unset or empty"
-  fi
-
-  if [ -f "$VALUE_FILE" ]; then
-    VALUE=()
-    for line in $(<$VALUE_FILE)
-    do
-      if [ ! -z $line ]; then
-       VALUE+=("$line")
-     fi
-    done < "$VALUE_FILE"
-  else
-      die "$VALUE_FILE not found"
-  fi
-
-  if [ ${#KEY[@]} != ${#VALUE[@]} ]; then 
-    die "You have a miss match of keys and values!  Please check your files"
-  fi 
+  VALUE=()
+  for line in $(<$KEY_FILE)
+  do
+    if [ ! -z $line ]; then
+      IFS='=' read -r -a array <<< "$line"
+      VALUE+=("${array[1]}")
+    fi
+  done < "$KEY_FILE"
 
   echo "Everything looks good so far creating env file now..."
   tLen=${#KEY[@]}
@@ -66,14 +58,17 @@ if [ $TYPE == "local" ]; then
   exit
 fi
 
+########## For Cloud Deployments
 if [ $TYPE == "bamboo" ]; then
+  echo "Appending .env file with application environment variables..."
   ENV_FILE=".env"
   for COUNTER in "${!KEY[@]}"; do
-    BAMBOO_VAR = "bamboo.${KEY[$COUNTER]}"
-    if [ ! -z ${"$BAMBOO_VAR"} ]; then 
-      echo "${KEY[$COUNTER]}=${"$BAMBOO_VAR"}" >> $ENV_FILE
+    BAMBOO_VAR_NAME="\$bamboo_${KEY[$COUNTER]}"
+    eval BAMBOO_VAR=${BAMBOO_VAR_NAME}
+    if [ -n "$BAMBOO_VAR" ]; then 
+      echo "${KEY[$COUNTER]}=$BAMBOO_VAR" >> $ENV_FILE
     else
-      die "$BAMBOO_VAR does not exist!  Please update Bamboo environment variables"
+      die "$BAMBOO_VAR_NAME does not exist!  Please update Bamboo environment variables"
     fi 
   done
 fi
