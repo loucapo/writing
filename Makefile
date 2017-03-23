@@ -30,7 +30,7 @@ clone-repos:	clone-api clone-front-end clone-data clone-serve
 #build
 ##################
 
-docker-build-deps:	docker-build-front-end docker-build-serve docker-build-api docker-build-data
+docker-build-deps:	docker-build-front-end docker-build-serve docker-build-api docker-build-data docker-build-prod-tools
 
 docker-build-node:
 	docker build -t wk_node -f nodeDocker/Dockerfile ./nodeDocker
