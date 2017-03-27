@@ -7,7 +7,7 @@ Feature: Add Another Draft To Activity
     When I click the 'add_draft_button'
     Then A new draft will be added above the existing draft
     And I see the 'Add draft description'
-    And I see the 'Add draft focus'
+    And I see the 'Add draft goals'
     And I see the 'Add Student Reflection Questions'
     And I see the 'instructor review type'
 
@@ -60,3 +60,26 @@ Feature: Add Another Draft To Activity
     When I click a "add_activity_prompt_link"
     Then I see the "activity_prompt_editor"
 
+  Scenario: Saving Description to the New Draft
+    Given I visit the activity page
+    When I click the 'add_draft_button'
+    When I click a "add_activity_prompt_link"
+    Then I type 'hello world' in the description
+    And I click a 'save button'
+    Then Text 'hello world' should appear
+
+  Scenario: Cancel Description to the New Draft
+    Given I visit the activity page
+    When I click the 'add_draft_button'
+    When I click a "add_activity_prompt_link"
+    Then I type 'hello world' in the description
+    And I click a 'cancel button'
+    Then Text 'hello world' should not appear
+
+  Scenario: Navigate Away Description to the New Draft
+    Given I visit the activity page
+    When I click the 'add_draft_button'
+    When I click a "add_activity_prompt_link"
+    Then I type 'hello world' in the description
+    And I refresh the page
+    Then Text 'hello world' should not appear
