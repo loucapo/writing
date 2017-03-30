@@ -15,7 +15,7 @@ module.exports = function (applicationStrategies, config) {
           role : 'admin'
         },
         launch_data : {
-          resource_link_id : 'ABCD',
+          resource_link_id : '13630184-5955-4dbe-9908-ab065f1bcad2',
           course_id : '4454554',
           course_name : 'Eng 1002'
         }

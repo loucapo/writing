@@ -5,7 +5,7 @@ module.exports = function routes(koarouter,
   return function module(app) {
     const router = koarouter();
     // launch specifically had better have a cookie with it.
-    router.get('launch','/activity', controllers.launchController.launch);
+    router.get('launch','/activity/:id', controllers.launchController.launch);
     // student specifically will take you to student to get a student jwt
     router.get('student','/student', controllers.studentController.activityOverview);
 

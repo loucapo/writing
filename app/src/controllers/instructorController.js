@@ -1,5 +1,5 @@
 
-module.exports = function (applicationStrategies, config, moment, superagent) {
+module.exports = function (applicationStrategies, config, moment, superagent, logger) {
   return {
     activityOverview: async function (ctx) {
 
@@ -23,7 +23,7 @@ module.exports = function (applicationStrategies, config, moment, superagent) {
 
       // make post to API
       var cleanData = {
-        id:dummyData.launch_data.resource_link_id,
+        id: dummyData.launch_data.resource_link_id,
         courseId: dummyData.launch_data.course_id,
         title: dummyData.launch_data.course_name,
         createdById: dummyData.user_data.id,
@@ -34,17 +34,19 @@ module.exports = function (applicationStrategies, config, moment, superagent) {
       const jwt = strategy.execute(dummyData);
 
       superagent
-        .put(`${config.app.wk_api_url}/activity`)
+        .put(`${config.app.wk_api_url}/activity/${dummyData.launch_data.resource_link_id}`)
         .send(cleanData)
         .set("Cookie", `wt_jwt=${jwt}`)
         .end(function(err, res){
           if(err){
-            throw err;
+            //XXX - this used to throw, but that would cause the service to crash.  Will circle back on that.
+            logger.error(`error: ${JSON.stringify(err)}`);
+            return ctx;
           }
         });
 
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
-      ctx.redirect('/activity');
+      ctx.redirect('/activity/'+dummyData.launch_data.resource_link_id);
     }
   };
 };
