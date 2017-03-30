@@ -56,30 +56,8 @@ exports.define = function(steps) {
       });
   });
 
-  steps.when('I delete "$text"', function(text) {
-    // can't seem to get command+a or control+a to select all
-    // let's use shift and many lefts
-    var lefts = '';
-    for (i = 0; i< text.length; i++) {
-      lefts += keys.LEFT;
-    }
-        rtePage.draftEditor.sendKeys(keys.DELETE);
-  });
-
   steps.when('I delete text', function() {
     rtePage.draftEditor.sendKeys(keys.DELETE);
-  });
-
-  steps.when('I delete all content', function() {
-    rtePage.draftEditor.getText()
-      .then(function(content) {
-        var lefts = '';
-        var content_length = content.length + 1;
-        for (i = 0; i < content_length; i++) {
-          lefts += keys.LEFT;
-          rtePage.draftEditor.sendKeys(keys.DELETE);
-        }
-      });
   });
 
   steps.when('I click the bold button', function(next) {
