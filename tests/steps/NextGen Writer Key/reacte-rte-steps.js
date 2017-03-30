@@ -66,6 +66,10 @@ exports.define = function(steps) {
         rtePage.draftEditor.sendKeys(keys.DELETE);
   });
 
+  steps.when('I delete text', function() {
+    rtePage.draftEditor.sendKeys(keys.DELETE);
+  });
+
   steps.when('I delete all content', function() {
     rtePage.draftEditor.getText()
       .then(function(content) {

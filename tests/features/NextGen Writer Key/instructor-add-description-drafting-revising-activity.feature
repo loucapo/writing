@@ -102,11 +102,12 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click a 'activity_prompt_edit'
     Then I should see "happy" in the content editor
 
+    #Not a test case but need to reset the assignment prompt after each run
   Scenario: Clear Activity Prompt
     Given I visit the SLS create activity page
     And I click a 'activity_prompt_edit'
     And I focus the content editor
-    And I select "sixtycharacterssixtycharacterssixtycharacterssixtycharacters"
-    And I delete "sixtycharacterssixtycharacterssixtycharacterssixtycharacters"
+    And I select all content
+    And I delete text
     And I click a 'activity_prompt_save'
     Then Text "happy" should not appear
