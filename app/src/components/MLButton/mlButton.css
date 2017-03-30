@@ -3,13 +3,14 @@
 .button {
   background-color: transparent;
   border: 1px solid var(--blue);
-  cursor: pointer;
+  border-radius: 3px;
   color: var(--blue);
+  cursor: pointer;
   @apply --font-14;
   font-weight: normal;
   letter-spacing: 0.02em;
+  margin-left: 10px;
   padding: 8px 10px;
-  border-radius: 3px;
 }
 
 .button:hover {

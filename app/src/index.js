@@ -4,8 +4,9 @@ import { browserHistory } from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import Root from './containers/Root';
 import configureStore from './store/configureStore';
-import 'Styles/normalizer.css';
-import 'Styles/index.css';
+import './styles/normalizer.css';
+import './styles/index.css';
+import './styles/react-draft-wysiwyg.css';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);

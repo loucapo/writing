@@ -20,3 +20,7 @@
   max-width: 992px;
   padding:0 50px;
 }
+
+.deleteIcon {
+  fill: var(--blue);
+}

@@ -1,0 +1,9 @@
+@import 'variables.css';
+
+.editIcon, .deleteIcon {
+  fill: var(--blue);
+}
+
+.toolbarClass {
+  width: 100%;
+}

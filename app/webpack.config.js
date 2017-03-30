@@ -68,12 +68,9 @@ const webpackConfig = {
       {
         test: /\.css$/,
         include: [
-          path.resolve(__dirname, 'src/styles'),
+          path.resolve(__dirname, 'src/styles/postCssStyles'),
           path.resolve(__dirname, 'src/components'),
           path.resolve(__dirname, 'src/containers')
-        ],
-        include: [
-          path.resolve(__dirname, 'src')
         ],
         loader: combineLoaders([
           {
@@ -89,6 +86,24 @@ const webpackConfig = {
           },
           {
             loader: 'postcss'
+          }
+        ])
+      },
+      {
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, 'src/styles'),
+        ],
+        loader: combineLoaders([
+          {
+            loader: 'style'
+          },
+          {
+            loader: 'css',
+            query: {
+              modules: false,
+              sourceMap: true,
+            }
           }
         ])
       },
@@ -148,7 +163,7 @@ const webpackConfig = {
     return [
       require('postcss-import')({
         addDependencyTo: webpack,
-        path: [ 'css', 'styles', 'views' ],
+        path: [ 'css', 'styles/postCssStyles', 'views' ],
         root: path.resolve(__dirname, 'src'),
         skipDuplicates: true
       }),
@@ -159,7 +174,7 @@ const webpackConfig = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias:{
-      Styles: path.resolve(__dirname, 'src/styles'),
+      Styles: path.resolve(__dirname, 'src/styles/postCssStyles'),
       Containers: path.resolve(__dirname, 'src/containers')
     }
   }

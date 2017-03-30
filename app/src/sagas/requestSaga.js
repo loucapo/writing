@@ -33,8 +33,12 @@ function* request(action) {
     const token = document.getElementById('token').getAttribute('data-val');
     let headers = new Headers();
     headers.append('Authorization', 'bearer ' + token);
+    headers.append('Accept', 'application/json, text/plain, */*');
+    headers.append('Content-Type', 'application/json');
     action.params.headers = headers;
-
+    action.params.body = action.params.body && typeof action.params.body !== 'string'
+      ? JSON.stringify(action.params.body)
+      : action.params.body;
     const response = yield call(fetchFn, action.url, action.params);
     const success = action.successFunction ? action.successFunction : standardSuccessResponse;
     yield put(success(action, response));

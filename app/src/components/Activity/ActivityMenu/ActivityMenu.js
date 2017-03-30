@@ -6,13 +6,13 @@ import styles from './activityMenu.css';
 class ActivityMenu extends Component {
   state = {
     display: 'drafts'
-  }
+  };
 
   toggleSelection = (selection) => {
     this.setState({
       display: selection
     });
-  }
+  };
 
   render = () => {
     let drafts = this.props.drafts;

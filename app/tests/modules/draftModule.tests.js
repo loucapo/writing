@@ -44,7 +44,7 @@ describe('DRAFT MODULE REDUCER', () => {
   });
 
   describe('When inital state is empty and valid action is passed in', () => {
-    it('should put new values in state', () => {
+    xit('should put new values in state', () => {
 
       let result = draftReducer(undefined, action);
       result[0].type.should.equal('Instructor Review');
@@ -53,7 +53,7 @@ describe('DRAFT MODULE REDUCER', () => {
   });
 
   describe('When inital state contains object with same id as the one in the action', () => {
-    it('should replace the old with the new', () => {
+    xit('should replace the old with the new', () => {
       let result = draftReducer([{id:draft1Id,type:"owens type"}], action);
       result[0].type.should.equal('Instructor Review');
     });

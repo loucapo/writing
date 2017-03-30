@@ -20,13 +20,15 @@ const DraftList = ({drafts, role}) => {
             // substitute 'Final draft' for 'Draft #' on last element in array
             let cardTitle = (idx === (drafts.length - 1)) ? 'Final Draft' : 'Draft ' + (idx + 1);
             return (
-              <MLCard type="draft" role={role} title={cardTitle} hideEdit={true} hideDelete={true}>
+              <MLCard type="draft" role={role} title={cardTitle}>
+                <menu />
                 <Draft draft={draft} key={idx} role={role} />
               </MLCard>
             );
           })
         :
-          <MLCard role={role} type="draft" title="Final Draft" hideEdit={true} hideDelete={true}>
+          <MLCard type="draft" role={role} title="Final Draft">
+            <menu />
             <Draft role={role} />
           </MLCard>
       }

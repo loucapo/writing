@@ -8,7 +8,7 @@ let redirectActivity = '/activity';
 const routes = (
   <Route path="/" component={AppContainer}>
     <IndexRedirect to={redirectActivity} />
-    <Route path="/activity" component={ActivityContainer} />
+    <Route path="/activity/*" component={ActivityContainer} />
   </Route>);
 module.exports = routes;
 

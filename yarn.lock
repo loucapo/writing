@@ -1899,12 +1899,26 @@ draft-js-utils@^0.1.5:
   version "0.1.7"
   resolved "http://npm.macmillantech.com:8080/d/draft-js-utils/_attachments/draft-js-utils-0.1.7.tgz#e2b6927ca620edf1855a4bfc1cf1d21080a70f16"
 
+draft-js@^0.10.0:
+  version "0.10.0"
+  resolved "http://npm.macmillantech.com:8080/d/draft-js/_attachments/draft-js-0.10.0.tgz#29d16191012b932fdab28a9b37ec1538f421abf6"
+  dependencies:
+    fbjs "^0.8.7"
+    immutable "~3.7.4"
+    object-assign "^4.1.0"
+
 draft-js@^0.7.0:
   version "0.7.0"
   resolved "http://npm.macmillantech.com:8080/d/draft-js/_attachments/draft-js-0.7.0.tgz#29506980d2cb96db2697054fae619e6f5b5d4101"
   dependencies:
     fbjs "^0.8.1"
     immutable "^3.7.4"
+
+draftjs-utils@^0.7.0:
+  version "0.7.0"
+  resolved "http://npm.macmillantech.com:8080/d/draftjs-utils/_attachments/draftjs-utils-0.7.0.tgz#71a9706d11e84888d7cf07b5665612e59973f1b7"
+  dependencies:
+    immutable "^3.x.x"
 
 ecc-jsbn@~0.1.1:
   version "0.1.1"
@@ -2331,7 +2345,7 @@ fb-watchman@^1.8.0:
   dependencies:
     bser "1.0.2"
 
-fbjs@^0.8.1, fbjs@^0.8.4:
+fbjs@^0.8.1, fbjs@^0.8.4, fbjs@^0.8.7:
   version "0.8.9"
   resolved "http://npm.macmillantech.com:8080/f/fbjs/_attachments/fbjs-0.8.9.tgz#180247fbd347dcc9004517b904f865400a0c8f14"
   dependencies:
@@ -2938,9 +2952,17 @@ ignore@^3.2.0:
   version "3.2.2"
   resolved "http://npm.macmillantech.com:8080/i/ignore/_attachments/ignore-3.2.2.tgz#1c51e1ef53bab6ddc15db4d9ac4ec139eceb3410"
 
-immutable@^3.7.4, immutable@^3.8.1:
+immutable@^3.7.4, immutable@^3.8.1, immutable@^3.x.x:
   version "3.8.1"
   resolved "http://npm.macmillantech.com:8080/i/immutable/_attachments/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
+
+immutable@^4.0.0-rc.1:
+  version "4.0.0-rc.2"
+  resolved "http://npm.macmillantech.com:8080/i/immutable/_attachments/immutable-4.0.0-rc.2.tgz#fdd0948aae728fda2306a02f72bb73e1773432d1"
+
+immutable@~3.7.4:
+  version "3.7.6"
+  resolved "http://npm.macmillantech.com:8080/i/immutable/_attachments/immutable-3.7.6.tgz#13b4d3cb12befa15482a26fe1b2ebae640071e4b"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -5274,6 +5296,14 @@ react-dom@^15.3.0, react-dom@^15.4.2:
     fbjs "^0.8.1"
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
+
+react-draft-wysiwyg@^1.7.8:
+  version "1.7.8"
+  resolved "http://npm.macmillantech.com:8080/r/react-draft-wysiwyg/_attachments/react-draft-wysiwyg-1.7.8.tgz#f4901ed483d404bbf97b994db58c0670e30cfd60"
+  dependencies:
+    classnames "^2.2.5"
+    draftjs-utils "^0.7.0"
+    immutable "^4.0.0-rc.1"
 
 react-hot-loader@^3.0.0-beta.2, react-hot-loader@^3.0.0-beta.3:
   version "3.0.0-beta.6"
