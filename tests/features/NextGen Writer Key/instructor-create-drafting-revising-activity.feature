@@ -25,6 +25,7 @@ Feature: Instructor Creates Drafting Revising Activity
     And I reload the page
     Then I do not see the green confirmation message
 
+  #activity prompt description requires fresh activity for it to be a valid test. On hold
   Scenario: Activity Fields Created
     Given I visit the SLS create activity page
     And I should see a new assignment created
@@ -33,7 +34,7 @@ Feature: Instructor Creates Drafting Revising Activity
     And I should see the Rubric Details elements
     And I scroll down the activity page
     And I should see the Draft elements
-    And The 'activity_prompt_description' should be 'Click to add prompt'
+    #And The 'activity_prompt_description' should be 'Click to add prompt'
     And The 'rubric_selection' should be 'Select Rubric'
     And The 'final_draft_header' should be 'Final Draft'
     And The 'drafts_review_type' should be 'Instructor Review'

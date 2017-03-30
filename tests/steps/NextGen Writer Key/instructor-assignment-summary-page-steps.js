@@ -52,7 +52,7 @@ exports.define = function(steps) {
 
   steps.then('I should see the Rubric Details elements', function() {
     expect(page.final_rubric).to.exist;
-    expect(page.final_rubric_delete).to.exist;
+    //expect(page.final_rubric_delete).to.exist;
     expect(page.rubric_selection).to.exist;
     expect(page.create_custom_rubric).to.exist;
   });

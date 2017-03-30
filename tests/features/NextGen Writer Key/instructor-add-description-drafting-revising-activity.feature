@@ -1,4 +1,5 @@
 @WRITE-749
+  @only
   # Things to think about: after saving will, cause other tests on subsequent runs to fail, so need to create a fresh one each time unless we create a cleanup script?
 Feature: Instructor Can Add Description in Activity Prompt
   @pending=WRITE-798
@@ -100,3 +101,12 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click a 'activity_prompt_save'
     And I click a 'activity_prompt_edit'
     Then I should see "happy" in the content editor
+
+  Scenario: Clear Activity Prompt
+    Given I visit the SLS create activity page
+    And I click a 'activity_prompt_edit'
+    And I focus the content editor
+    And I select "sixtycharacterssixtycharacterssixtycharacterssixtycharacters"
+    And I delete "sixtycharacterssixtycharacterssixtycharacterssixtycharacters"
+    And I click a 'activity_prompt_save'
+    Then Text "happy" should not appear
