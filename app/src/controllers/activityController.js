@@ -18,7 +18,6 @@ module.exports = function (domain, repository, path, logger) {
     // check if it exists, if not create it;
     async createOrReplaceActivity(ctx) {
       const body = ctx.request.body;
-      const metadata = ctx.request.body.metadata;
       body.createdById = ctx.state.user.user_data.id;
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(body)}`);
       let activitySql = path.join(__dirname,`./../repositories/sql/activity.sql`);
@@ -27,7 +26,7 @@ module.exports = function (domain, repository, path, logger) {
         logger.info(`Creating Activity from wk_serve payload: ${JSON.stringify(body)}`);
         activity = new domain.Activity();
         var event = activity.createNewActivity(body);
-        await repository(activitySql,metadata.cmd, event);
+        await repository(activitySql, 'createActivity', event);
       }
       logger.debug(`Call to createActivity successful with following payload: ${JSON.stringify(body)}`);
       
