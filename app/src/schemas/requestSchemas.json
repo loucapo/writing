@@ -20,6 +20,31 @@
           "format": "date-time"
         }
       }
+    },
+    "createDraftDescription": {
+      "title": "createDraftDescription",
+      "properties": {
+        "activityId": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "listPosition": {
+          "type": "string"
+        }
+      }
+    },
+    "updateDraftDescription": {
+      "title": "updateDraftDescription",
+      "properties": {
+        "instructions": {
+          "type": "string"
+        },
+        "listPosition": {
+          "type": "string"
+        }
+      }
     }
   }
 }

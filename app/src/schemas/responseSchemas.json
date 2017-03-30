@@ -11,6 +11,12 @@
         }
       }
     },
+    "shorterSuccessResponse": {
+      "title": "shorterSuccessResponse",
+      "properties": {
+        "type": "object"
+      }
+    },
     "standardFailureResponse": {
       "title": "standardFailureResponse",
       "properties": {
