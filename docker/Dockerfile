@@ -1,4 +1,4 @@
-FROM 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/node-yarn:latest 
+FROM 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/node-yarn:latest
 
 MAINTAINER wk@saplinglearning.com
 

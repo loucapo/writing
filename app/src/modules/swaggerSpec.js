@@ -18,7 +18,10 @@ module.exports = function (swaggerjsdoc, fs, schemas, deref) {
           'application/json'
         ]
       },
-      apis: ['./app/src/routes/routes.js']
+      apis: [
+        './app/src/routes/routes.js',
+        './app/src/routes/routers/activityRouter.js'
+      ]
     };
     var swaggerSpec = swaggerjsdoc(options);
     var schemaDefs = Object.assign({},

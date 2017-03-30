@@ -1,9 +1,9 @@
--- name: get_activity_by_id
+-- name: getActivityById
 select *
 from activity
 where id = :id
 
--- name: create_new_activity_from_jwt
+-- name: createActivity
 INSERT INTO activity
     (id,
     course_id,
@@ -16,4 +16,10 @@ VALUES
     :title,
     :createdById,
     :createdDate)
+
+-- name: updateActivityPrompt
+UPDATE activity
+SET prompt = :prompt,
+modified_by_id = :modifiedById
+WHERE id = :id
 

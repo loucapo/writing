@@ -11,11 +11,11 @@ module.exports = function(_options) {
           .requireDirectoryRecursively('./app/src')
           .for('customLogger').renameTo('logger') // eslint-disable-line newline-per-chained-call
           .groupAllInDirectory('./app/src/controllers', 'controllers')
+          .groupAllInDirectory('./app/src/routes/routers', 'routers')
+          .groupAllInDirectory('./app/src/domain', 'domain')
           .groupAllInDirectory('./app/src/schemas', 'schemas', true)
           .complete(),
-      i => i.instantiate('userRepository').asFunc()
-        .instantiate('logger').asFunc()
-        .instantiate('courseRepository').asFunc().complete());
+      i => i.instantiate('logger').asFunc().complete());
   } catch (ex) {
     console.log(ex); // eslint-disable-line no-console
     console.log(ex.stack); // eslint-disable-line no-console

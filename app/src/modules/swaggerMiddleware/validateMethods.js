@@ -54,7 +54,7 @@ module.exports = function() {
       return validationResult;
     }
 
-    //if there are parameters spedified, lets figure out where they are supposed to be coming from
+    //if there are parameters specified, lets figure out where they are supposed to be coming from
     // and fill the value variable with what's provided
     parameters.forEach(function (parameter) {
       var value;

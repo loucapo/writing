@@ -1,4 +1,4 @@
-module.exports = function routes(koarouter, controllers) {
+module.exports = function routes(koarouter, routers, controllers) {
   return function module(app) {
     const router = koarouter();
     router.get(
@@ -132,62 +132,7 @@ module.exports = function routes(koarouter, controllers) {
       controllers.draftDescriptionController.deleteDescription
     );
 
-    /**
-     * @swagger
-     * /activity/{id}:
-     *   get:
-     *     x-name: activity
-     *     description: Returns specified activity to the caller
-     *     operationId: activity
-     *     parameters:
-     *       - name: id
-     *         in: path
-     *         description: The id of the activity you wish to retrieve
-     *         required: true
-     *         type: string
-     *     responses:
-     *       200:
-     *         description: Success
-     *         schema:
-     *             $ref: "#/definitions/standardSuccessResponse"
-     *       422:
-     *         description: Failure
-     *         schema:
-     *             $ref: "#/definitions/standardFailureResponse"
-     */
-    router.get(
-      'activity',
-      '/activity/:id',
-      controllers.activityController.activity
-    );
-    /**
-     * @swagger
-     * /activity:
-     *   put:
-     *     x-name: createActivity
-     *     description: Checks for existence of activity and creates it if not there
-     *     operationId: createActivity
-     *     parameters:
-     *       - name: body
-     *         in: body
-     *         required: true
-     *         schema:
-     *           $ref: "#/definitions/createActivity"
-     *     responses:
-     *       200:
-     *         description: Success
-     *         schema:
-     *             $ref: "#/definitions/standardSuccessResponse"
-     *       422:
-     *         description: Failure
-     *         schema:
-     *             $ref: "#/definitions/standardFailureResponse"
-     */
-    router.put(
-      'activity',
-      '/activity',
-      controllers.activityController.createActivity
-    );
+    routers.activityRouter(router);
 
     app.use(router.routes());
     app.use(router.allowedMethods());

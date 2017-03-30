@@ -1,49 +1,85 @@
 {
   "definitions": {
-    "createActivity": {
-      "title": "createActivity",
-      "properties": {
-        "id": {
+    "createOrReplaceActivity": {
+      "title": "createOrReplaceActivity",
+      "properties": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
           "type": "string"
         },
-        "courseId": {
+        {
+          "name": "courseId",
+          "in": "body",
+          "required": false,
           "type": "string"
         },
-        "title": {
+        {
+          "name": "title",
+          "in": "body",
+          "required": false,
+          "type": "string"
+        }
+      ]
+    },
+    "updateActivity": {
+      "title": "updateActivity",
+      "properties": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
           "type": "string"
         },
-        "createdById": {
-          "type": "string"
-        },
-        "createdDate": {
+        {
+          "name": "prompt",
+          "in": "body",
           "type": "string",
-          "format": "date-time"
+          "required": true
         }
-      }
+      ]
     },
-    "createDraftDescription": {
-      "title": "createDraftDescription",
-      "properties": {
-        "activityId": {
+    "updateActivityPrompt": {
+      "title": "updateActivityPrompt",
+      "properties": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
           "type": "string"
         },
-        "instructions": {
-          "type": "string"
-        },
-        "listPosition": {
-          "type": "string"
+        {
+          "name": "prompt",
+          "in": "body",
+          "type": "string",
+          "required": true
         }
+      ]
+    }
+  },
+  "createDraftDescription": {
+    "title": "createDraftDescription",
+    "properties": {
+      "activityId": {
+        "type": "string"
+      },
+      "instructions": {
+        "type": "string"
+      },
+      "listPosition": {
+        "type": "string"
       }
-    },
-    "updateDraftDescription": {
-      "title": "updateDraftDescription",
-      "properties": {
-        "instructions": {
-          "type": "string"
-        },
-        "listPosition": {
-          "type": "string"
-        }
+    }
+  },
+  "updateDraftDescription": {
+    "title": "updateDraftDescription",
+    "properties": {
+      "instructions": {
+        "type": "string"
+      },
+      "listPosition": {
+        "type": "string"
       }
     }
   }

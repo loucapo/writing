@@ -22,7 +22,8 @@ module.exports = function(compiler, validateMethods) {
         }
         // check the request matches the swagger schema
         validationErrors = validateMethods.request(compiledPath, ctx.method, ctx.query, ctx.request.body);
-
+        // if validationErrors doesn't exist that means the process couldn't find the route.  should probably
+        // return a validationErrors with a specific code
         if (!validationErrors) {
           // operation not defined, return 405 (method not allowed)
           ctx.status = 405;
