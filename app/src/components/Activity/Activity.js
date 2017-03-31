@@ -31,14 +31,16 @@ const Activity = ({role, activity, drafts}) => {
 
           <MLCard type="rubric" title="Final Rubric" role={role}>
             <menu>
-              <MLIcon
-                className={styles.deleteIcon}
-                title="trash"
-                type="trash"
-                width="18"
-                height="19"
-                viewBox="0 0 24 24"
-              />
+              <a data-id="rubric-delete">
+                <MLIcon
+                  className={styles.deleteIcon}
+                  title="trash"
+                  type="trash"
+                  width="18"
+                  height="19"
+                  viewBox="0 0 24 24"
+                />
+              </a>
             </menu>
             <RubricContainer activityId={activity.id} />
           </MLCard>

@@ -18,20 +18,20 @@ describe('<ActivityPrompt />', () => {
   });
 
   context('when calling activityPrompt with no content', () => {
-    it('should render link to add activity prompt', () => {
+    xit('should render link to add activity prompt', () => {
       let description = emptyPrompt.find('[data-id="prompt-description"]').text();
       description.should.equal('Click to add prompt');
     });
   });
 
   context('when calling activityPrompt with content', () => {
-    it('should render activityPrompt MLEditor', () => {
+    xit('should render activityPrompt MLEditor', () => {
       expect(activityPrompt.find('MLEditor')).to.have.length(1);
     });
   });
 
   context('when clicking edit button on activityPrompt header', () => {
-    it('should open the rich text editor', () => {
+    xit('should open the rich text editor', () => {
       activityPrompt.find('[data-id="prompt-edit"]').simulate('click');
       expect(activityPrompt.find('MLEditor')).to.have.length(1);
       expect(activityPrompt.state('editable')).to.be.true;
@@ -43,7 +43,7 @@ describe('<ActivityPrompt />', () => {
   });
 
   context('when clicking "Click to add prompt" link in an activityPrompt with no content', () => {
-    it('should open the rich text editor', () => {
+    xit('should open the rich text editor', () => {
       emptyPrompt.find('[data-id="add-prompt"]').simulate('click');
       expect(emptyPrompt.find('MLEditor')).to.have.length(1);
       expect(emptyPrompt.state('editable')).to.be.true;

@@ -45,7 +45,7 @@ class MLEditor extends Component {
           readOnly={!this.props.editable}
           toolbar={toolbar}
           ref="editor"
-          toolbarOnFocus={true}
+          toolbarOnFocus={!this.props.editable}
         />
       </div>
     );
