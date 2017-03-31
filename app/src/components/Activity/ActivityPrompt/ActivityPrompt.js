@@ -72,7 +72,7 @@ class ActivityPrompt extends Component {
           }
         </menu>
         <div data-id="prompt-description">
-          {(convertFromRaw(this.props.prompt).hasText() || this.state.editable)
+          {(this.props.prompt && (convertFromRaw(this.props.prompt).hasText() || this.state.editable))
             ?
               <MLEditor handleSave={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
             :
