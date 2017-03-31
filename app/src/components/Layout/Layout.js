@@ -1,8 +1,9 @@
 import React, {PropTypes} from 'react';
-import indexCss from 'Styles/index.css';
+import '../../styles/index.css';
+import '../../styles/fixed-data-table.css';
 
 const Layout = ({children}) => (
-  <div className={indexCss.app}>
+  <div className={'app'}>
     {children}
   </div>);
 

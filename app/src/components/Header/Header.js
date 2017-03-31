@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import MLButton from '../MLButton/MLButton.js';
-import MLIcon from 'ml-react-cdl-icons';
 
 import styles from './header.css';
 

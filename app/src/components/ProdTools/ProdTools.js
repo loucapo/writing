@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import CriteriaContainer from 'Containers/CriteriaContainer';
 import Header from '../Header/Header';
 import MLMenu from '../MLMenu/MLMenu';
 
@@ -7,7 +8,7 @@ import styles from './prodTools.css';
 let tabs = [
   {
     title: 'Criteria',
-    content: <div>tab 1 content</div>
+    content: <CriteriaContainer />
   },
   {
     title: 'Rubrics',
@@ -32,15 +33,13 @@ const ProdTools = () => {
         Writing Tools Content Admin
       </div>
 
-      <MLMenu tabs={tabs}/>
+      <MLMenu tabs={tabs} />
     </div>
   );
 };
 
 ProdTools.propTypes = {
   role: PropTypes.string
-//   activity: PropTypes.object,
-//   drafts: PropTypes.array
 };
 
 export default ProdTools;
