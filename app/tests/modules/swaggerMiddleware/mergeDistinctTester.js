@@ -1,7 +1,5 @@
 const chai = require('chai');
 const should = chai.should();
-require('babel-polyfill');
-require('babel-register');
 
 describe('COMPILER TEST', function() {
   let mut;

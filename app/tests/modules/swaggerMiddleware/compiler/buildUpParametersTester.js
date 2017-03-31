@@ -1,8 +1,6 @@
 const chai = require('chai');
 const should = chai.should();
 const registry = require('./../../../../registry-test');
-require('babel-polyfill');
-require('babel-register');
 
 describe('COMPILER TEST', function() {
   let mut;
