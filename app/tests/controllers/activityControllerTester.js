@@ -4,8 +4,6 @@ let should = chai.should();
 const registry = require('./../../registry-test');
 const path = require('path');
 
-require('babel-polyfill');
-require('babel-register');
 let td = require('testdouble');
 
 describe('Container Test', function() {
