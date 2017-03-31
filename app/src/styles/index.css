@@ -29,20 +29,3 @@ a, a:link, a:hover, a:active, a:visited  {
   color: #00758E;
   cursor: pointer;
 }
-
-::-webkit-input-placeholder {
-  color: #686868;
-  font-style: italic;
-}
-::-moz-placeholder {
-  color: #686868;
-  font-style: italic;
-} /* firefox 19+ */
-:-ms-input-placeholder {
-  color: #686868;
-  font-style: italic;
-} /* ie */
-input:-moz-placeholder {
-  color: #686868;
-  font-style: italic;
-}

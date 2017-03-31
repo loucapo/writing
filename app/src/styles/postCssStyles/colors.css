@@ -1,5 +1,5 @@
 :root {
-  --pureWhite: #FFFFFF;
+  --white: #FFFFFF;
   --offWhite: #F8F8F8;
 
   --lightGrey: #DDDDDD;
@@ -33,6 +33,10 @@
   --lightBlue: #A0ACB2;
   --selectBlue: #b0daff;
   --darkBlue: #142A35;
+  --blue-light: #b0daff;
+
+  /* Header colors */
+  --header-background-blue: #142a35;
 
   /* Font weight colors */
   --font-light: #b2b2b2;

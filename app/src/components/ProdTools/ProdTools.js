@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import CriteriaContainer from 'Containers/CriteriaContainer';
-import Header from '../Header/Header';
+import QuickFeedback from '../QuickFeedback/QuickFeedback';
+import MLHeader from '../MLHeader/MLHeader';
 import MLMenu from '../MLMenu/MLMenu';
 
 import styles from './prodTools.css';
@@ -16,7 +17,7 @@ let tabs = [
   },
   {
     title: 'Quick Feedback',
-    content: <div>tab 3 content</div>
+    content: <QuickFeedback />
   },
   {
     title: 'Student Reflection Questions',
@@ -27,7 +28,7 @@ let tabs = [
 const ProdTools = () => {
   return (
     <div>
-      <Header title="Placeholder SLS Header" />
+      <MLHeader />
 
       <div data-id="prod-tools-title" className={styles.spacer}>
         Writing Tools Content Admin

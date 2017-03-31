@@ -20,12 +20,12 @@
   composes: button;
   background-color: var(--blue);
   border: none;
-  color: var(--pureWhite);
+  color: var(--white);
 }
 
 .green {
   composes: button;
   background-color: var(--green);
   border: none;
-  color: var(--pureWhite);
+  color: var(--white);
 }
