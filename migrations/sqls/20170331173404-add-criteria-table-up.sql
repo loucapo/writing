@@ -1,3 +1,5 @@
+CREATE EXTENSION pgcrypto;
+
 DROP TABLE IF EXISTS "criteria";
 
 CREATE TABLE "criteria"
