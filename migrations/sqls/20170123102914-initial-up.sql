@@ -95,3 +95,5 @@ WITH (
 );
 ALTER TABLE "course"
   OWNER TO writer_key;
+
+CREATE EXTENSION pgcrypto;
