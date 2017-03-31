@@ -29,6 +29,10 @@ exports.define = function(steps) {
     });
   });
 
+  steps.then("I see the rte '$elem'", function(elem) {
+    rtePage[elem].isDisplayed().should.eventually.equal(true);
+  });
+
   /*
    *	Embolden Text
    */
