@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {convertFromRaw} from 'draft-js';
 import MLIcon from 'ml-react-cdl-icons';
 import MLCard from '../../MLCard/MLCard';
 import MLButton from '../../MLButton/MLButton';
@@ -72,7 +71,7 @@ class ActivityPrompt extends Component {
           }
         </menu>
         <div data-id="prompt-description">
-          {(this.props.prompt && (convertFromRaw(this.props.prompt).hasText() || this.state.editable))
+          {(this.props.prompt || this.state.editable)
             ?
               <MLEditor handleSave={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
             :
