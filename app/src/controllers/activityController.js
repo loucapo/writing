@@ -1,10 +1,9 @@
-module.exports = function(domain, repository, path, logger) {
+module.exports = function(domain, repository, sqlLibrary, logger) {
   return {
     async getActivity(ctx) {
 
       logger.info('Selecting activity ' + ctx.params.id + ' from repository');
-      let activitySql = path.join(__dirname, `./../repositories/sql/activity.sql`);
-      let activity = await repository(activitySql, 'getActivityById', {id: ctx.params.id});
+      let activity = await repository(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id});
 
       ctx.status = 200;
       ctx.body = {
@@ -20,13 +19,12 @@ module.exports = function(domain, repository, path, logger) {
       const body = ctx.request.body;
       body.createdById = ctx.state.user.user_data.id;
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(body)}`);
-      let activitySql = path.join(__dirname, `./../repositories/sql/activity.sql`);
-      let activity = await repository(activitySql, 'getActivityById', {id: body.id});
+      let activity = await repository(sqlLibrary.activity, 'getActivityById', {id: body.id});
       if (!activity || !activity[0]) {
         logger.info(`Creating Activity from wk_serve payload: ${JSON.stringify(body)}`);
         activity = new domain.Activity();
         let event = activity.createNewActivity(body);
-        await repository(activitySql, 'createActivity', event);
+        await repository(sqlLibrary.activity, 'createActivity', event);
       }
       logger.debug(`Call to createActivity successful with following payload: ${JSON.stringify(body)}`);
 
@@ -41,17 +39,15 @@ module.exports = function(domain, repository, path, logger) {
     async updateActivityPrompt(ctx) {
       const body = ctx.request.body;
       body.modifiedById = ctx.state.user.user_data.id;
-      let activitySql = path.join(__dirname, './../repositories/sql/activity.sql');
-      let props = await repository(activitySql, 'getActivityById', {id: ctx.params.id});
+      let props = await repository(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id});
       if (!props) {
         ctx.errors = [`No activity found with id ${body.id}`];
         ctx.status = 500;
         return ctx;
       }
       let activity = new domain.Activity(props);
-      let event = activity.updateActivityPrompt(body);
+      activity.updateActivityPrompt(body);
 
-      await repository(activitySql, 'updateActivityPrompt', event);
       ctx.status = 200;
       ctx.body = {
         status: ctx.status,
@@ -63,8 +59,7 @@ module.exports = function(domain, repository, path, logger) {
     async updateActivity(ctx) {
       const body = ctx.request.body;
       body.modifiedById = ctx.state.user.user_data.id;
-      let activitySql = path.join(__dirname, './../repositories/sql/activity.sql');
-      let props = await repository(activitySql, 'getActivityById', {id: body.id});
+      let props = await repository(sqlLibrary.activity, 'getActivityById', {id: body.id});
       if (!props) {
         ctx.errors = [`No activity found with id ${body.id}`];
         ctx.status = 500;
@@ -73,7 +68,7 @@ module.exports = function(domain, repository, path, logger) {
       let activity = new domain.Activity(props);
       let event = activity.updateActivityPrompt(body);
 
-      await repository(activitySql, 'updateActivityPrompt', event);
+      await repository(sqlLibrary.activity, 'updateActivityPrompt', event);
       ctx.status = 200;
       ctx.body = {
         status: ctx.status,

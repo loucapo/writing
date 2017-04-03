@@ -871,7 +871,7 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^3.6.0:
+eslint@^3.4.0:
   version "3.19.0"
   resolved "http://npm.macmillantech.com:8080/e/eslint/_attachments/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
@@ -2688,7 +2688,7 @@ punycode@^1.4.1:
   version "1.4.1"
   resolved "http://npm.macmillantech.com:8080/p/punycode/_attachments/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-puresql@^1.2.0:
+puresql@^1.4.2:
   version "1.4.2"
   resolved "http://npm.macmillantech.com:8080/p/puresql/_attachments/puresql-1.4.2.tgz#69427ad1f74b245e4a174e7ec9a17d9dfb92001d"
   dependencies:

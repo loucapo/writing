@@ -41,7 +41,7 @@
     "os": "^0.1.1",
     "pg-async": "^2.4.0",
     "pg-format": "^1.0.4",
-    "puresql": "^1.2.0",
+    "puresql": "^1.4.2",
     "swagger-jsdoc": "^1.7.0",
     "swagger-model-validator": "reharik/swagger-model-validator",
     "uuid-validate": "0.0.2",
