@@ -20,7 +20,8 @@ module.exports = function(swaggerjsdoc, fs, schemas, deref) {
       },
       apis: [
         './app/src/routes/routes.js',
-        './app/src/routes/routers/activityRouter.js'
+        './app/src/routes/routers/activityRouter.js',
+        './app/src/routes/routers/draftRouter.js'
       ]
     };
     let _swaggerSpec = swaggerjsdoc(options);
