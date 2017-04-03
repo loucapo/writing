@@ -23,13 +23,13 @@ acorn-jsx@^3.0.0:
   dependencies:
     acorn "^3.0.4"
 
-acorn@4.0.4:
-  version "4.0.4"
-  resolved "http://npm.macmillantech.com:8080/a/acorn/_attachments/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
-
 acorn@^3.0.4:
   version "3.3.0"
   resolved "http://npm.macmillantech.com:8080/a/acorn/_attachments/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
+
+acorn@^5.0.1:
+  version "5.0.3"
+  resolved "http://npm.macmillantech.com:8080/a/acorn/_attachments/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 ajv-keywords@^1.0.0:
   version "1.5.1"
@@ -177,8 +177,8 @@ async@^1.4.0, async@^1.5.2:
   resolved "http://npm.macmillantech.com:8080/a/async/_attachments/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
 async@^2.1.4:
-  version "2.2.0"
-  resolved "http://npm.macmillantech.com:8080/a/async/_attachments/async-2.2.0.tgz#c324eba010a237e4fbd55a12dee86367d5c0ef32"
+  version "2.3.0"
+  resolved "http://npm.macmillantech.com:8080/a/async/_attachments/async-2.3.0.tgz#1013d1051047dd320fe24e494d5c66ecaf6147d9"
   dependencies:
     lodash "^4.14.0"
 
@@ -871,9 +871,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint@^3.4.0:
-  version "3.18.0"
-  resolved "http://npm.macmillantech.com:8080/e/eslint/_attachments/eslint-3.18.0.tgz#647e985c4ae71502d20ac62c109f66d5104c8a4b"
+eslint@^3.6.0:
+  version "3.19.0"
+  resolved "http://npm.macmillantech.com:8080/e/eslint/_attachments/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -912,10 +912,10 @@ eslint@^3.4.0:
     user-home "^2.0.0"
 
 espree@^3.4.0:
-  version "3.4.0"
-  resolved "http://npm.macmillantech.com:8080/e/espree/_attachments/espree-3.4.0.tgz#41656fa5628e042878025ef467e78f125cb86e1d"
+  version "3.4.1"
+  resolved "http://npm.macmillantech.com:8080/e/espree/_attachments/espree-3.4.1.tgz#28a83ab4aaed71ed8fe0f5efe61b76a05c13c4d2"
   dependencies:
-    acorn "4.0.4"
+    acorn "^5.0.1"
     acorn-jsx "^3.0.0"
 
 esprima@^3.1.1:
@@ -1167,9 +1167,9 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-generic-pool@2.4.2:
-  version "2.4.2"
-  resolved "http://npm.macmillantech.com:8080/g/generic-pool/_attachments/generic-pool-2.4.2.tgz#886bc5bf0beb7db96e81bcbba078818de5a62683"
+generic-pool@2.4.3:
+  version "2.4.3"
+  resolved "http://npm.macmillantech.com:8080/g/generic-pool/_attachments/generic-pool-2.4.3.tgz#780c36f69dfad05a5a045dd37be7adca11a4f6ff"
 
 get-caller-file@^1.0.1:
   version "1.0.2"
@@ -2173,7 +2173,7 @@ micromatch@^2.1.5, micromatch@^2.3.11:
   version "1.27.0"
   resolved "http://npm.macmillantech.com:8080/m/mime-db/_attachments/mime-db-1.27.0.tgz#820f572296bbd20ec25ed55e5b5de869e5436eb1"
 
-mime-types@^2.0.7, mime-types@^2.1.10, mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.13, mime-types@~2.1.7:
+mime-types@^2.0.7, mime-types@^2.1.10, mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.15, mime-types@~2.1.7:
   version "2.1.15"
   resolved "http://npm.macmillantech.com:8080/m/mime-types/_attachments/mime-types-2.1.15.tgz#a4ebf5064094569237b8cf70046776d09fc92aed"
   dependencies:
@@ -2572,10 +2572,10 @@ pg-format@^1.0.2, pg-format@^1.0.4:
   resolved "http://npm.macmillantech.com:8080/p/pg-format/_attachments/pg-format-1.0.4.tgz#27734236c2ad3f4e5064915a59334e20040a828e"
 
 pg-pool@1.*:
-  version "1.6.0"
-  resolved "http://npm.macmillantech.com:8080/p/pg-pool/_attachments/pg-pool-1.6.0.tgz#2e300199927b6d7db6be71e2e3435dddddf07b41"
+  version "1.7.0"
+  resolved "http://npm.macmillantech.com:8080/p/pg-pool/_attachments/pg-pool-1.7.0.tgz#f795f4a39439fa0ffbdd418052e40c51e8782369"
   dependencies:
-    generic-pool "2.4.2"
+    generic-pool "2.4.3"
     object-assign "4.1.0"
 
 pg-types@1.*:
@@ -3397,19 +3397,19 @@ type-detect@^1.0.0:
   resolved "http://npm.macmillantech.com:8080/t/type-detect/_attachments/type-detect-1.0.0.tgz#762217cc06db258ec48908a1298e8b95121e8ea2"
 
 type-is@^1.5.5, type-is@~1.6.6:
-  version "1.6.14"
-  resolved "http://npm.macmillantech.com:8080/t/type-is/_attachments/type-is-1.6.14.tgz#e219639c17ded1ca0789092dd54a03826b817cb2"
+  version "1.6.15"
+  resolved "http://npm.macmillantech.com:8080/t/type-is/_attachments/type-is-1.6.15.tgz#cab10fb4909e441c82842eafe1ad646c81804410"
   dependencies:
     media-typer "0.3.0"
-    mime-types "~2.1.13"
+    mime-types "~2.1.15"
 
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "http://npm.macmillantech.com:8080/t/typedarray/_attachments/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 uglify-js@^2.6:
-  version "2.8.20"
-  resolved "http://npm.macmillantech.com:8080/u/uglify-js/_attachments/uglify-js-2.8.20.tgz#be87100fbc18de3876ed606e9d24b4568311cecf"
+  version "2.8.21"
+  resolved "http://npm.macmillantech.com:8080/u/uglify-js/_attachments/uglify-js-2.8.21.tgz#1733f669ae6f82fc90c7b25ec0f5c783ee375314"
   dependencies:
     source-map "~0.5.1"
     yargs "~3.10.0"

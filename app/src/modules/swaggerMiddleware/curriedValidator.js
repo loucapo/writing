@@ -1,5 +1,5 @@
 module.exports = function(swaggermodelvalidator) {
-  return function (document, customValidators) {
+  return function curriedValidator(document, customValidators) {
 
     const validator = new swaggermodelvalidator(document);
     if (customValidators) {
@@ -8,10 +8,10 @@ module.exports = function(swaggermodelvalidator) {
       }
       customValidators.forEach(x=> validator.addFieldValidator(x.name, x.validator));
     }
-    return function (schema) {
-      return function (value) {
+    return function(schema) {
+      return function(value) {
         return validator.validate(value, schema, document.definitions);
-      }
-    }
-  }
+      };
+    };
+  };
 };

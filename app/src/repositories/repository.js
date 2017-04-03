@@ -1,35 +1,35 @@
-module.exports = function (pgasync, config, puresql, pgformat, humps) {
-  function makeAdapter (connection, debug) {
+module.exports = function(pgasync, config, puresql, pgformat, humps) {
+  function makeAdapter(connection, debug) {
     return {
-      query: function (query) {
+      query: query => {
         if (debug) {
           console.log('\n\nPuresql PGSQL adapter: ');
-          console.log(query)
+          console.log(query);
         }
-        return new connection.query(query)
+        return connection.query(query);
       },
-      escape: function (parameter) {
+      escape: parameter => {
         if (+parameter === parameter) {
-          return parameter
+          return parameter;
         } else {
-          return pgformat.literal(parameter)
+          return pgformat.literal(parameter);
         }
       }
-    }
+    };
   }
 
-  return function (queriesFile, query, event) {
+  return function repository(queriesFile, query, event) {
     const pg = new pgasync.default(config.postgres.config);
-    var adapter = makeAdapter(pg,true);
-    var queries = puresql.loadQueries(queriesFile);
+    const adapter = makeAdapter(pg, true);
+    const queries = puresql.loadQueries(queriesFile);
 
     return queries[query](event, adapter)
-      .then((result)=> {
-        return humps.camelizeKeys(result.rows)
+      .then(result => {
+        return humps.camelizeKeys(result.rows);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
         throw error;
       });
-  }
+  };
 };

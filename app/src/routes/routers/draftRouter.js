@@ -1,4 +1,4 @@
-module.exports = function draftRouter(koarouter, controllers) {
+module.exports = function(koarouter, controllers) {
   return function module(appRouter) {
 
     const draftRouter = koarouter();
@@ -94,6 +94,6 @@ module.exports = function draftRouter(koarouter, controllers) {
       controllers.draftDescriptionController.deleteDescription
     );
 
-    appRouter.use(draftRouter.routes(),draftRouter.allowedMethods()); 
+    appRouter.use(draftRouter.routes(), draftRouter. allowedMethods());
   };
 };

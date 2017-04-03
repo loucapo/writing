@@ -1,10 +1,9 @@
-
 module.exports = function(compiler, validateMethods) {
-  return function (document, customValidators) {
+  return function(document, customValidators) {
 
     // construct a validation object, pre-compiling all schema and regex required
     let compiled = compiler(document, customValidators);
-    return async(ctx, next) => {
+    return async function(ctx, next) {
       if (document.basePath && !ctx.path.startsWith(document.basePath)) {
         // not a path that we care about
         await next();
@@ -29,12 +28,12 @@ module.exports = function(compiler, validateMethods) {
           ctx.status = 405;
           return;
         }
-      } catch(err) {
+      } catch (err) {
         validationErrors.success = false;
         validationErrors.errors = err.message;
       }
       if (!validationErrors.success) {
-        validationErrors.code='SWAGGER_REQUEST_VALIDATION_FAILED';
+        validationErrors.code = 'SWAGGER_REQUEST_VALIDATION_FAILED';
         ctx.status = 422;
         ctx.body = validationErrors;
         return;
@@ -46,15 +45,15 @@ module.exports = function(compiler, validateMethods) {
       let responseResult = {};
       try {
         responseResult = validateMethods.response(compiledPath, ctx.method, ctx.status, ctx.body);
-      }catch(err){
+      } catch (err) {
         responseResult.success = false;
         responseResult.error = err.message;
       }
       if (!responseResult.success) {
         responseResult.code = 'SWAGGER_RESPONSE_VALIDATION_FAILED';
         ctx.status = 500;
-        ctx.body = responseResult
+        ctx.body = responseResult;
       }
     };
-  }
+  };
 };

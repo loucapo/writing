@@ -1,9 +1,9 @@
-module.exports = function () {
-  return function () {
-    return async(ctx, next) => {
+module.exports = function() {
+  return function() {
+    return async function(ctx, next) {
       try {
         await next();
-        if (ctx.response.status === 404 && !ctx.response.body) ctx.throw(404);
+        if (ctx.response.status === 404 && !ctx.response.body) { ctx.throw(404); }
       } catch (err) {
         ctx.status = err.statusCode || err.status || 500;
 

@@ -1,6 +1,6 @@
 module.exports = function() {
-  return function(schema) {
-    return function (value) {
+  return function stringValidator(schema) {
+    return function(value) {
       // if an optional field is not provided, we're all good other not so much
       if (value === undefined) {
         return !schema.required;
@@ -23,7 +23,7 @@ module.exports = function() {
           break;
         case 'array':
           if (!Array.isArray(value)) {
-            var format = schema.collectionFormat || 'csv';
+            const format = schema.collectionFormat || 'csv';
             switch (format) {
               case 'csv':
                 value = String(value).split(',');
@@ -46,7 +46,7 @@ module.exports = function() {
           switch (schema.items.type) {
             case 'number':
             case 'integer':
-              value = value.map(function (num) {
+              value = value.map(function(num) {
                 if (!isNaN(num)) {
                   // if the value is a number, make sure it's a number
                   return +num;
@@ -57,7 +57,7 @@ module.exports = function() {
               });
               break;
             case 'boolean':
-              value = value.map(function (bool) {
+              value = value.map(function(bool) {
                 if (bool === 'true') {
                   return true;
                 }
@@ -76,5 +76,5 @@ module.exports = function() {
       }
       return !!value;
     };
-  }
+  };
 };

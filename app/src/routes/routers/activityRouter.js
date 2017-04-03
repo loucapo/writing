@@ -1,7 +1,7 @@
 module.exports = function activityRouter(koarouter, controllers) {
   return function module(appRouter) {
 
-    const activityRouter = koarouter();
+    const router = koarouter();
 
     /**
      * @swagger
@@ -26,7 +26,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    activityRouter.get('activity', '/activity/:id', controllers.activityController.getActivity);
+    router.get('activity', '/activity/:id', controllers.activityController.getActivity);
 
     /**
      * @swagger
@@ -51,21 +51,21 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    activityRouter.put('/activity/:id', controllers.activityController.createOrReplaceActivity);
+    router.put('/activity/:id', controllers.activityController.createOrReplaceActivity);
 
     /**
      * @swagger
      * /activity/{id}/prompt:
      *   put:
      *     x-name: putActivityPrompt
-     *     description: Update the activity prompt 
+     *     description: Update the activity prompt
      *     operationId: putActivityActivityPrompt
      *     parameters:
-     *       - name: id 
+     *       - name: id
      *         in: path
      *         type: string
      *         required: true
-     *       - name: prompt 
+     *       - name: prompt
      *         in: body
      *         required: true
      *         schema:
@@ -80,7 +80,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    activityRouter.put('/activity/:id/prompt', controllers.activityController.updateActivityPrompt);
+    router.put('/activity/:id/prompt', controllers.activityController.updateActivityPrompt);
 
     /**
      * @swagger
@@ -105,7 +105,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    activityRouter.get(
+    router.get(
       'draftDescription',
       '/activity/:activityId/draftDescription',
       controllers.draftDescriptionController.getDescriptions
@@ -134,8 +134,8 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    activityRouter.post('/activity', controllers.activityController.updateActivity);
+    router.post('/activity', controllers.activityController.updateActivity);
 
-    appRouter.use(activityRouter.routes(),activityRouter.allowedMethods()); 
+    appRouter.use(router.routes(), router.allowedMethods());
   };
 };

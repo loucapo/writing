@@ -1,4 +1,3 @@
-
 module.exports = function(AggregateRootBase, invariant, uuid, UserType) {
   return class User extends AggregateRootBase {
     constructor() {
@@ -24,5 +23,5 @@ module.exports = function(AggregateRootBase, invariant, uuid, UserType) {
         data
       });
     }
-  }
+  };
 };

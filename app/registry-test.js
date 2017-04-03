@@ -14,7 +14,7 @@ module.exports = function(_options) {
           .groupAllInDirectory('./app/src/routes/routers', 'routers')
           .groupAllInDirectory('./app/src/domain', 'domain')
           .groupAllInDirectory('./app/src/schemas', 'schemas', true)
-          .for('repository').subWith(options.repositoryStub || function(){/*no--op*/})
+          .for('repository').subWith(options.repositoryStub || function() {/*no--op*/})
           .complete(),
       i => i.instantiate('logger').asFunc().complete());
   } catch (ex) {

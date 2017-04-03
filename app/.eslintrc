@@ -25,7 +25,7 @@
       // see https://github.com/eslint/eslint/issues/2532
       "experimentalObjectRestSpread": true
     },
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "sourceType": "module"  //'no-strict' is no longer needed (https://github.com/yannickcr/eslint-plugin-react/issues/447#issuecomment-184617282)
   },
 
@@ -57,7 +57,7 @@
 
     "max-len": [2, { "code":120 }],
 
-    "new-cap": 2,
+    "new-cap": 1,
     "new-parens": 2,
 
     "no-alert": 2,

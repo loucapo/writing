@@ -1,6 +1,6 @@
-module.exports = function (swaggerjsdoc, fs, schemas, deref) {
-  return function () {
-    var options = {
+module.exports = function(swaggerjsdoc, fs, schemas, deref) {
+  return function swaggerSpec() {
+    let options = {
       swaggerDefinition: {
         swagger: '2.0',
         info: {
@@ -23,17 +23,17 @@ module.exports = function (swaggerjsdoc, fs, schemas, deref) {
         './app/src/routes/routers/activityRouter.js'
       ]
     };
-    var swaggerSpec = swaggerjsdoc(options);
-    var schemaDefs = Object.assign({},
+    let _swaggerSpec = swaggerjsdoc(options);
+    let schemaDefs = Object.assign({},
       schemas.domainSchemas.definitions,
       schemas.responseSchemas.definitions,
       schemas.requestSchemas.definitions);
 
-    swaggerSpec.definitions = deref()({definitions:schemaDefs}, true).definitions;
+    _swaggerSpec.definitions = deref()({definitions: schemaDefs}, true).definitions;
     if (!fs.existsSync('./app/src/swagger/')) {
       fs.mkdirSync('./app/src/swagger/');
     }
-    var swaggerDocument = JSON.stringify(swaggerSpec, null, 4);
+    let swaggerDocument = JSON.stringify(_swaggerSpec, null, 4);
     fs.writeFileSync('./app/src/swagger/swagger_spec.json', swaggerDocument, {mode: 0o0777});
 
     return swaggerDocument;

@@ -1,6 +1,3 @@
-// validate.js
-"use strict";
-
 module.exports = function() {
   function isEmpty(value) {
     return {valid: !!value || Object.keys(value).length === 0};
@@ -20,24 +17,24 @@ module.exports = function() {
 
   function request(compiledPath, method, query, body, headers) {
     if (!compiledPath) {
-      return;
+      return undefined;
     }
-    
+
     // get operation object for path and method
-    var operation = compiledPath.path[method.toLowerCase()];
+    let operation = compiledPath.path[method.toLowerCase()];
     if (!operation) {
       // operation not defined, return 405 (method not allowed)
-      return;
+      return undefined;
     }
     // get expected parameters from operation
-    var parameters = operation.resolvedParameters;
-    var validationResult = {success: true, errors:[], where: []};
-    var bodyDefined = false;
+    let parameters = operation.resolvedParameters;
+    let validationResult = {success: true, errors: [], where: []};
+    let bodyDefined = false;
 
     //if there are no parameters specified let's validate that there are none provided
     if (parameters.length === 0) {
       // validate no body
-      var emptyBodyResult = validate(body, {validator: isEmpty});
+      let emptyBodyResult = validate(body, {validator: isEmpty});
       // set specific error
       if (!emptyBodyResult.valid) {
         validationResult.success = false;
@@ -55,18 +52,20 @@ module.exports = function() {
     }
 
     //if there are parameters specified, lets figure out where they are supposed to be coming from
-    // and fill the value variable with what's provided
-    parameters.forEach(function (parameter) {
-      var value;
+    // and fill the value letiable with what's provided
+    parameters.forEach(parameter => {
+      let value;
       switch (parameter.in) {
-        case 'query':
+        case 'query': {
           value = (query || {})[parameter.name];
           break;
-        case 'path':
-          var actual = compiledPath.name.match(/[^\/]+/g);
-          var valueIndex = compiledPath.expected.indexOf('{' + parameter.name + '}');
+        }
+        case 'path': {
+          let actual = compiledPath.name.match(/[^\/]+/g);
+          let valueIndex = compiledPath.expected.indexOf('{' + parameter.name + '}');
           value = actual ? actual[valueIndex] : undefined;
           break;
+        }
         case 'body':
           value = body;
           bodyDefined = true;
@@ -77,7 +76,7 @@ module.exports = function() {
         default:
       }
       //now send value to the validator
-      var paramResult = validate(value, parameter);
+      let paramResult = validate(value, parameter);
       if (!paramResult.valid) {
         validationResult.success = false;
         validationResult.errors = validationResult.errors.concat(paramResult.errors);
@@ -86,7 +85,7 @@ module.exports = function() {
     });
     // if no body schema is defined make sure provided body is empty
     if (!bodyDefined && body) {
-      var error = validate(body, {validator: isEmpty});
+      let error = validate(body, {validator: isEmpty});
       if (!error.valid) {
         validationResult.success = false;
         validationResult.where .push('body');
@@ -105,26 +104,26 @@ module.exports = function() {
     }
 
     // get operation object for path and method
-    var operation = compiledPath.path[method.toLowerCase()];
+    let operation = compiledPath.path[method.toLowerCase()];
 
-    var validationResult = {success: true, errors:[], where: []};
+    let validationResult = {success: true, errors: [], where: []};
     // grab the expected response spec based on the returned status
-    var response = operation.responses[status];
 
+    let _response = operation.responses[status];
     // if were not expecting anything ( and nothing was sent ) return success
-    if(!response.schema && !body){
+    if (!_response.schema && !body) {
       return validationResult;
     }
-    var result = {};
-    // if response provided then validate it. Otherwise provide error
-    if (response) {
-      result = validate(body, response);
+    let result = {};
+    // if _response provided then validate it. Otherwise provide error
+    if (_response) {
+      result = validate(body, _response);
     } else {
       result.valid = false;
       result.errors = [{message: `No response provided in schema for status: ${status}`}];
     }
 
-    if(!result.valid) {
+    if (!result.valid) {
       validationResult.success = false;
       validationResult.errors = result.errors;
       validationResult.where.push('body');
@@ -135,5 +134,5 @@ module.exports = function() {
   return {
     request,
     response
-  }
+  };
 };

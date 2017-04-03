@@ -1,24 +1,23 @@
 module.exports = function customLogger(winston, config, moment, winstonlogstash, os) {
-  return function () {
-    var useTransports = process.env.LOGGING_TRANSPORTS;
+  return function() {
+    const useTransports = process.env.LOGGING_TRANSPORTS;
 
-    var transports = [];
-      if(useTransports && useTransports.indexOf('logstash') >=0 )
-        {
-          var logstash = new (winston.transports.Logstash)({
-            port: 13302,
-            node_name: os.hostname(),
-            host: "wk_logstash",
-            // max_connect_retries: 10,
-            timeout_connect_retries: 1500
-          });
-          logstash.on('error', function(err) {
-            // replace with your own functionality here
-          });
-          transports.push(logstash);
-        }
+    let transports = [];
+    if (useTransports && useTransports.indexOf('logstash') >= 0) {
+      let logstash = new (winston.transports.Logstash)({
+        port: 13302,
+        node_name: os.hostname(), // eslint-disable-line camelcase
+        host: 'wk_logstash',
+        // max_connect_retries: 10,
+        timeout_connect_retries: 1500 // eslint-disable-line camelcase
+      });
+      logstash.on('error', function(/*err*/) {
+        // replace with your own functionality here
+      });
+      transports.push(logstash);
+    }
 
-    if(!useTransports || useTransports.indexOf('console') >= 0)
+    if (!useTransports || useTransports.indexOf('console') >= 0) {
       transports.push(
         new (winston.transports.Console)({
           handleExceptions: true,
@@ -27,17 +26,20 @@ module.exports = function customLogger(winston, config, moment, winstonlogstash,
           silent: false,
           timestamp: true,
           json: false,
-          formatter: (x) => {
-            return `[${x.meta.level || x.level}] module: ${config.app.applicationName} msg: ${x.meta.message || x.message} | ${moment().format('h:mm:ss a')}`;
+          formatter: x => {
+            return `[${x.meta.level || x.level}] 
+              module: ${config.app.applicationName} 
+              msg: ${x.meta.message || x.message} | ${moment().format('h:mm:ss a')}`;
           }
         }));
+    }
 
     winston.configure({
       transports,
       level: process.env.LOGGING_LEVEL || 'silly'
     });
 
-    var message = {
+    let message = {
       system: {
         environment: config.app.env,
         applicationName: config.app.applicationName,
@@ -47,61 +49,65 @@ module.exports = function customLogger(winston, config, moment, winstonlogstash,
       sprops: {},
       nprops: {},
       tags: [],
-      message: "",
-      type: "coreLogger",
-      "@timestamp": moment().toISOString()
+      message: '',
+      type: 'coreLogger',
+      '@timestamp': moment().toISOString()
     };
 
     function isNumeric(value) {
       return !isNaN(parseFloat(value)) && isFinite(value);
     }
 
-    function mapError(err, message) {
-      message.message = err.message;
-      message.stackTrace = err.stack;
+    function mapError(err, _message) {
+      _message.message = err.message;
+      _message.stackTrace = err.stack;
       err.keys.forEach(key => {
-        if (isNumeric(err[key]))
-          message.nprops[key] = err[key];
-        else if (typeof (err[key]) === 'string')
-          message.sprops[key] = err[key];
+        if (isNumeric(err[key])) {
+          _message.nprops[key] = err[key];
+        } else if (typeof (err[key]) === 'string') {
+          _message.sprops[key] = err[key];
+        }
       });
 
-      return message;
+      return _message;
     }
 
     function mapMessage(input, level) {
-      var newMessage = Object.assign({}, message);
-      if (input == null)
-        return;
+      let newMessage = Object.assign({}, message);
+      if (!input) {
+        return undefined;
+      }
       newMessage.level = level;
 
-      if (input instanceof Error)
+      if (input instanceof Error) {
         return mapError(input, newMessage);
+      }
 
-      if (input.error instanceof Error)
+      if (input.error instanceof Error) {
         return mapError(input.error, newMessage);
+      }
       newMessage.message = input;
       return newMessage;
     }
 
-    var trace = (message) => {
-      winston.silly(mapMessage(message, 'trace'));
+    const trace = _message => {
+      winston.silly(mapMessage(_message, 'trace'));
     };
 
-    var debug = (message) => {
-      winston.debug(mapMessage(message, 'debug'));
+    const debug = _message => {
+      winston.debug(mapMessage(_message, 'debug'));
     };
 
-    var info = (message) => {
-      winston.info(mapMessage(message, 'info'));
+    const info = _message => {
+      winston.info(mapMessage(_message, 'info'));
     };
 
-    var warn = (message) => {
-      winston.warn(mapMessage(message, 'warn'));
+    const warn = _message => {
+      winston.warn(mapMessage(_message, 'warn'));
     };
 
-    var error = (message) => {
-      winston.error(mapMessage(message, 'error'));
+    const error = _message => {
+      winston.error(mapMessage(_message, 'error'));
     };
 
     return {
@@ -110,6 +116,6 @@ module.exports = function customLogger(winston, config, moment, winstonlogstash,
       info,
       warn,
       error
-    }
+    };
   };
 };

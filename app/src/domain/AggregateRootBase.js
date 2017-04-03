@@ -1,16 +1,14 @@
 
-module.exports = function(invariant) {
+module.exports = function() {
   return class AggregateRootBase {
     constructor() {
-      this._id;
-      this._isNew;
       this.uncommittedEvents = [];
     }
 
     setIsNew() {
-      this._isNew = true
+      this._isNew = true;
     }
-    
+
     raiseEvent(event) {
       this.uncommittedEvents.push(event);
     }
@@ -32,12 +30,12 @@ module.exports = function(invariant) {
     }
 
     mapper(cmd) {
-    let event={};
+      let event = {};
       for (let prop in cmd) {
-          this[prop] = cmd[prop];
-          event[prop] = cmd[prop]
-        }
+        this[prop] = cmd[prop];
+        event[prop] = cmd[prop];
+      }
       return event;
     }
-  }
+  };
 };
