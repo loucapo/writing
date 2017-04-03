@@ -46,7 +46,9 @@ module.exports = function(domain, repository, sqlLibrary, logger) {
         return ctx;
       }
       let activity = new domain.Activity(props);
-      activity.updateActivityPrompt(body);
+      let event = activity.updateActivityPrompt(body);
+
+      await repository(sqlLibrary.activity, 'updateActivityPrompt', event);
 
       ctx.status = 200;
       ctx.body = {

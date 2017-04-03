@@ -7,5 +7,5 @@ module.exports = function(path) {
       activity,
       draftDescription
     };
-  };
+  }();
 };
