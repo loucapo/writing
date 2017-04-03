@@ -1,4 +1,5 @@
 var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page.js');
+var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 exports.define = function(steps) {
   steps.given("I visit the SLS create activity page", function() {
@@ -34,6 +35,9 @@ exports.define = function(steps) {
     driver.navigate().refresh();
   });
 
+  steps.when("I click on the page", function () {
+    page.activity_prompt_header.click();
+  });
   steps.then('I should see the Assignment Header elements', function() {
     expect(page.title).to.exist;
     expect(page.activity_type).to.exist;
@@ -70,6 +74,26 @@ exports.define = function(steps) {
     page[category].getText().then(function(t) {
       expect(t).to.contain(text);
     });
+  });
+
+  steps.when("I click a '$element'", function(elem) {
+    page[elem].click();
+  });
+
+  steps.then("I reset the assignment prompt for the next test", function() {
+    page.activity_prompt_edit.click();
+    rtePage.draftEditor.click();
+    rtePage.draftEditor.getText()
+      .then(function(content) {
+        var lefts = '';
+        var content_length = content.length + 1;
+        for (i = 0; i < content_length; i++) {
+          lefts += keys.LEFT;
+        }
+        rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
+        rtePage.draftEditor.sendKeys(keys.DELETE);
+      });
+    page.activity_prompt_save.click();
   });
 };
 
