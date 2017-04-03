@@ -2,7 +2,7 @@ var Page = require('marvin-js').Page;
 
 module.exports = new Page({
 
-  url: { value: '/editor' },
+  activity_prompt_editor: { get: function() { return this.element(".public-DraftEditor-content");}},
 
   draftEditor: { get: function() { return this.element(".public-DraftEditor-content");}},
 
@@ -36,6 +36,8 @@ module.exports = new Page({
 
   button_undo: { get: function() { return this.element("button[title='Undo']")}},
 
-  button_redo: { get: function() { return this.element("button[title='Redo']")}}
+  button_redo: { get: function() { return this.element("button[title='Redo']")}},
+
+  rte_toolbar: { get: function() { return this.element(".rdw-editor-toolbar");}},
 
 });

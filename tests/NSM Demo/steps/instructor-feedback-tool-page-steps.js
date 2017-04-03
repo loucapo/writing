@@ -192,9 +192,7 @@ exports.define = function(steps) {
     page[elem].isDisplayed().should.eventually.equal(true);
   });
 
-  steps.then("I click a '$element'", function(elem) {
-    page[elem].click();
-  });
+
 
   steps.then("I see content '$text' in '$elem'", function(text, elem) {
     page[elem].getText()

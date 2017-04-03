@@ -1,4 +1,4 @@
-var rtePage = require('../../pages/NSM Demo/react-rte.js');
+var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 //  don't actually require bluebird here or anywhere
 // to remove it though, this file needs to be rewritten
@@ -29,6 +29,10 @@ exports.define = function(steps) {
     });
   });
 
+  steps.then("I see the rte '$elem'", function(elem) {
+    rtePage[elem].isDisplayed().should.eventually.equal(true);
+  });
+
   /*
    *	Embolden Text
    */
@@ -54,6 +58,10 @@ exports.define = function(steps) {
         }
         rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
       });
+  });
+
+  steps.when('I delete text', function() {
+    rtePage.draftEditor.sendKeys(keys.DELETE);
   });
 
   steps.when('I click the bold button', function(next) {
@@ -273,4 +281,9 @@ exports.define = function(steps) {
     rtePage.button_redo.click();
   });
 
+  steps.then("The WYSIWYG editor should be closed", function() {
+    rtePage.draftEditor.getAttribute("contenteditable").then(function(text) {
+      text.should.equal("false");
+    });
+  });
 };
