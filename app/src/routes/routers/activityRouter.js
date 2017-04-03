@@ -111,31 +111,6 @@ module.exports = function activityRouter(koarouter, controllers) {
       controllers.draftDescriptionController.getDescriptions
     );
 
-    /**
-     * @swagger
-     * /activity:
-     *   post:
-     *     x-name: postActivity
-     *     description: Checks for existence of activity and updates with new values
-     *     operationId: postActivity
-     *     parameters:
-     *       - name: body
-     *         in: body
-     *         required: true
-     *         schema:
-     *           $ref: "#/definitions/updateActivity"
-     *     responses:
-     *       200:
-     *         description: Success
-     *         schema:
-     *             $ref: "#/definitions/standardSuccessResponse"
-     *       422:
-     *         description: Failure
-     *         schema:
-     *             $ref: "#/definitions/standardFailureResponse"
-     */
-    router.post('/activity', controllers.activityController.updateActivity);
-
     appRouter.use(router.routes(), router.allowedMethods());
   };
 };

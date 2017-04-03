@@ -56,28 +56,6 @@ module.exports = function(domain, repository, sqlLibrary, logger) {
         success: true
       };
       return ctx;
-    },
-
-    async updateActivity(ctx) {
-      const body = ctx.request.body;
-      body.modifiedById = ctx.state.user.user_data.id;
-      let props = await repository(sqlLibrary.activity, 'getActivityById', {id: body.id});
-      if (!props) {
-        ctx.errors = [`No activity found with id ${body.id}`];
-        ctx.status = 500;
-        return ctx;
-      }
-      let activity = new domain.Activity(props);
-      let event = activity.updateActivityPrompt(body);
-
-      await repository(sqlLibrary.activity, 'updateActivityPrompt', event);
-      ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true
-      };
-      return ctx;
     }
-
   };
 };

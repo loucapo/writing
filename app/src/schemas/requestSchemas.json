@@ -23,23 +23,6 @@
         }
       ]
     },
-    "updateActivity": {
-      "title": "updateActivity",
-      "properties": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "prompt",
-          "in": "body",
-          "type": "string",
-          "required": true
-        }
-      ]
-    },
     "updateActivityPrompt": {
       "title": "updateActivityPrompt",
       "properties": [
