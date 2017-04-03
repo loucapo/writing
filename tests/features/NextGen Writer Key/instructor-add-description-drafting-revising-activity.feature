@@ -10,7 +10,7 @@ Feature: Instructor Can Add Description in Activity Prompt
   Scenario: The Instructor Adds Activity Prompt (Alt route)
     Given I visit the SLS create activity page
     When I click a 'activity_prompt_edit'
-    And I focus the content editor
+    Then I see the rte 'activity_prompt_editor'
 
   @pending=RTE
   Scenario: WYSIWYG Display
