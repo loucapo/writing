@@ -83,30 +83,42 @@ kill-all:
 kill-all-but-bases:
 	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images | grep -v -e ^wk_node -e ^postgres  | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-all-but-node:
 	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images | grep -v -e ^wk_node | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-api:
 	docker rm -vf wk_api 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_api
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
+
+kill-serve:
+	docker rm -vf wk_serve 2>/dev/null || echo "No more containers to remove."
+	docker rmi wk_serve
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-data:
 	docker rm -vf wk_data 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_data
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-postgres:
 	docker rm -vf postgres 2>/dev/null || echo "No more containers to remove."
 	docker rmi postgres
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-front-end:
 	docker rm -vf wk_frontend 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_frontend
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-prod-tools:
 	docker rm -vf wk_prodtools 2>/dev/null || echo "No more containers to remove."
 	docker rmi wk_prodtools
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-orphans:
 	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
@@ -114,14 +126,17 @@ kill-orphans:
 kill-elasticsearch:
 	docker rm -vf wk_elasticsearch 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images | grep elasticsearch | awk '{print $3}') 2>/dev/null || echo "No more containers to remove."
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-kibana:
 	docker rm -vf wk_kibana 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images | grep kibana | awk '{print $3}') 2>/dev/null || echo "No more containers to remove."
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-logstash:
 	docker rm -vf wk_logstash 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images | grep logstash | awk '{print $3}') 2>/dev/null || echo "No more containers to remove."
+	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-logging:	kill-elasticsearch kill-kibana kill-logstash
 
