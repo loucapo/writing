@@ -5,7 +5,7 @@ module.exports = function(koaresponsetime,
                           koabodyparser,
                           koaconvert,
                           koagenericsession,
-                          koacors,
+                          koa2cors,
                           koajwt,
                           config,
                           swaggerSpec,
@@ -23,7 +23,7 @@ module.exports = function(koaresponsetime,
     // hits the routes then comes back up and resolves
     app.use(koalogger());
     app.use(koaErrorHandler());
-    app.use(koaconvert(koacors({origin: '*'})));
+    app.use(koa2cors({origin: '*'}));
     app.use(koaconvert(koajwt({secret: config.app.jwt_secret, cookie: 'wt_jwt'})));
 //    app.use(koacors({origin:config.app.swagger_ui_url}));
 //XXX -- it would appear that last CORS wins...  need to revisit this for swagger.
