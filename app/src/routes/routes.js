@@ -8,6 +8,8 @@ module.exports = function routes(koarouter,
     router.get('launch','/activity/:id', controllers.launchController.launch);
     // student specifically will take you to student to get a student jwt
     router.get('student','/student', controllers.studentController.activityOverview);
+    // kitchen sink route
+    router.get('kitchensink','/kitchensink', controllers.kitchenSinkController.ksOverview);
 
     router.get('prodtools','/prodtools', controllers.prodtoolsController.prodtoolsOverview);
     // default or specifically /instructor will take you to instructor
