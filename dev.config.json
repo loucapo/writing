@@ -17,13 +17,12 @@
 
   "tags": "!@wip,!@NSM",
   "buildtag": "",
-  "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
 
   "copyReport": false,
   "pending": "absolutely",
 
   "browsers": [{
-    "seleniumServer": "http://172.17.0.2:24444/wd/hub",
+    "seleniumServer": "http://172.18.0.2:24444/wd/hub",
     "browserName": "chrome",
     "chromeOptions": {
       "args": ["--no-sandbox"]
