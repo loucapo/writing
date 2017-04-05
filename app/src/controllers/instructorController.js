@@ -8,8 +8,8 @@ module.exports = function (applicationStrategies, config, moment, superagent, lo
       // See the tool provider citizenship guide for info on the structure.
       var dummyData = {
         user_data : {
-          id : '123',
-          as_id : '123',
+          id : 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334',
+          as_id : 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334',
           first_name : 'Judy',
           last_name : 'Smith',
           role : 'instructor'
