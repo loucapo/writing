@@ -5,7 +5,7 @@ import MLButton from '../../MLButton/MLButton';
 
 import styles from './draftList.css';
 
-const DraftList = ({drafts, role}) => {
+const DraftList = ({drafts, role, openDraftFocusModal}) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.addDraft}>
@@ -22,14 +22,22 @@ const DraftList = ({drafts, role}) => {
             return (
               <MLCard type="draft" role={role} title={cardTitle}>
                 <menu />
-                <Draft draft={draft} key={idx} role={role} />
+                <Draft
+                  draft={draft}
+                  key={idx}
+                  role={role}
+                  openDraftFocusModal={openDraftFocusModal}
+                />
               </MLCard>
             );
           })
         :
           <MLCard type="draft" role={role} title="Final Draft">
             <menu />
-            <Draft role={role} />
+            <Draft
+              role={role}
+              openDraftFocusModal={openDraftFocusModal}
+            />
           </MLCard>
       }
     </div>

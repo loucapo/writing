@@ -6,6 +6,7 @@ import feedbackToolContentItems from './feedbackToolContentModule';
 import publisherContent from './publisherContentModule';
 import resourceLinks from './resourceLinksModule';
 import auth from './authModule';
+import currentModal from './modalModule';
 
 export {activityAction} from './activityModule';
 export {loadRubric, rubricOnChange} from './rubricModule';
@@ -20,5 +21,6 @@ export default {
   rubric: rubricReducer,
   publisherContent,
   resourceLinks,
+  currentModal,
   auth
 };

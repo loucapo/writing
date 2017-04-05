@@ -31,7 +31,13 @@ class ActivityMenu extends Component {
         </nav>
 
         <div className={styles.spacer}>
-          {(display === 'drafts') ? <DraftList drafts={drafts} role={this.props.role} /> : null}
+          {(display === 'drafts')
+          ?
+          <DraftList
+            drafts={drafts}
+            role={this.props.role}
+            openDraftFocusModal={this.props.openDraftFocusModal}
+          /> : null}
         </div>
       </div>
     );

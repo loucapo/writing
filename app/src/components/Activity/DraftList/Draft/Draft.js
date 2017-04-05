@@ -1,11 +1,12 @@
 import React, {PropTypes} from 'react';
 import MLIcon from 'ml-react-cdl-icons';
 import MLDropdown from '../../../MLDropdown/MLDropdown';
+// import MLModal from '../../../MLModal/MLModal';
 import InstructorControlsContainer from '../../../InstructorControlsContainer/InstructorControlsContainer';
 
 import styles from './draft.css';
 
-const Draft = ({draft, role}) => {
+const Draft = ({draft, role, openDraftFocusModal}) => {
   return (
     <div>
       <section className={styles.draftType}>
@@ -58,7 +59,7 @@ const Draft = ({draft, role}) => {
               </span>
             </InstructorControlsContainer>
           </h4>
-          {draft && draft.focus || <a data-id="add-draft-focus" href="#">Click to Add Draft Focus</a>}
+          {draft && draft.focus || <a data-id="add-draft-focus" onClick={openDraftFocusModal}>Click to Add Draft Focus</a>}
         </div>
 
         <div className={styles.rightLinks}>

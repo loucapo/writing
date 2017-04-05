@@ -1,7 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, {Component, PropTypes} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Activity from '../components/Activity/Activity';
-import { fetchActivityAction } from './../modules/activityModule';
+import {fetchActivityAction} from './../modules/activityModule';
+import {openDraftFocusModal} from './../modules/draftModule';
 
 class ActivityContainer extends Component {
   componentWillMount() {
@@ -26,6 +28,7 @@ ActivityContainer.propTypes = {
   activity: PropTypes.object,
   activityId: PropTypes.string,
   fetchActivityAction: PropTypes.func,
+  openDraftFocusModal: PropTypes.func,
   drafts: PropTypes.array
 };
 
@@ -40,4 +43,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {fetchActivityAction})(ActivityContainer);
+export default connect(mapStateToProps, {fetchActivityAction, openDraftFocusModal})(ActivityContainer);
