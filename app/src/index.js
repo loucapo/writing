@@ -19,18 +19,6 @@ var generateDB = async function() {
         console.log(ex);
         console.log('==========END exception=========');
     }
-
-    try {
-        console.log('==========BEGIN Data Load=========');
-        for (let x of data().activities) {
-            await repository(`${__dirname}/sql/activity.sql`, 'create_new_activity_from_jwt', x);
-        }
-        console.log('==========END Data Load=========');
-    } catch (ex) {
-        console.log('==========exception=========');
-        console.log(ex);
-        console.log('==========END exception=========');
-    }
 };
 
 module.exports = {
