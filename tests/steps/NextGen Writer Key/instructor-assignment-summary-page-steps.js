@@ -70,6 +70,12 @@ exports.define = function(steps) {
   });
 
 
+  steps.then("'$list' should be 'number' goal", function(list,number) {
+    page[list].return('li').then(function(t) {
+      expect(t).to.equal(number);
+    });
+  });
+
   steps.then("The '$category' should be '$text'", function(category,text) {
     page[category].getText().then(function(t) {
       expect(t).to.contain(text);
