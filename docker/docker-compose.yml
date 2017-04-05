@@ -6,12 +6,6 @@ services:
       service: wk_frontend
     container_name: wk_frontend
 
-  prodtools:
-    extends:
-      file: ../../wk_prodtools/docker/docker-compose.yml
-      service: wk_prodtools
-    container_name: wk_prodtools
-
   api:
     extends:
       file: ../../wk_api/docker/docker-compose.yml
