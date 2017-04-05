@@ -20,7 +20,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/standardSuccessResponse"
+     *             $ref: "#/definitions/activitySuccessResponse"
      *       422:
      *         description: Failure
      *         schema:

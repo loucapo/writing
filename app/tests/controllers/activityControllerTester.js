@@ -41,7 +41,7 @@ describe('Activity Test', function() {
         it('should return proper body properties', async () => {
           ctx = {params: {id: 1}};
 
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', ctx.params)).thenReturn(activity);
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', ctx.params)).thenReturn([activity]);
 
           let result = await mut.getActivity(ctx);
           result.body.status.should.equal(200);

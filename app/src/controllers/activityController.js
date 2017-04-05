@@ -3,7 +3,11 @@ module.exports = function(domain, repository, sqlLibrary, logger) {
     async getActivity(ctx) {
 
       logger.info('Selecting activity ' + ctx.params.id + ' from repository');
-      let activity = await repository(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id});
+      let activities = await repository(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id});
+      let activity = activities[0];
+      if (!activity) {
+        throw new Error(`No activity found with id: ${ctx.params.id}`);
+      }
 
       ctx.status = 200;
       ctx.body = {

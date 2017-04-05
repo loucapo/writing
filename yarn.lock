@@ -626,7 +626,7 @@ dag-map@~1.0.0:
 
 dagon@reharik/dagon:
   version "1.2.0"
-  resolved "https://codeload.github.com/reharik/dagon/tar.gz/26c797653b30a64ec808d037238574cd6a32c2cf"
+  resolved "https://codeload.github.com/reharik/dagon/tar.gz/78c8f822945eeced18e76cbc24a52276d879873c"
   dependencies:
     JSON "^1.0.0"
     fn-args "^2.0.0"

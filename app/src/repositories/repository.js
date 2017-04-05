@@ -1,4 +1,4 @@
-module.exports = function(pgasync, config, puresql, humps, pgformat) {
+module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
 
   function makeAdapter(connection, debug) {
     return {
@@ -26,6 +26,15 @@ module.exports = function(pgasync, config, puresql, humps, pgformat) {
 
     return queries[query](event, adapter)
       .then(result => {
+        // horrible crap should be refactored into strategies
+        result.rows.forEach(r => {
+          Object.keys(r).forEach(k => {
+            if (k.toLowerCase().includes('date')) {
+              r[k] = moment(r[k]).toJSON();
+            }
+          });
+        });
+
         return humps.camelizeKeys(result.rows);
       })
       .catch(error => {

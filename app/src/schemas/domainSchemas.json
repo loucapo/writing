@@ -1,4 +1,157 @@
 {
   "definitions": {
+    "activity": {
+      "title": "activity",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "courseId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "object"
+        },
+        "rubric": {
+          "$ref": "#/definitions/rubric"
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "courseId",
+        "createdById"
+      ]
+    },
+    "rubric": {
+      "title": "rubric",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/criteria"
+          },
+          "uniqueItems": true
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "createdById",
+        "createdDate"
+      ]
+    },
+    "criteria": {
+      "title": "criteria",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "availableToRubric": {
+          "type": "bool"
+        },
+        "rubricLevel1": {
+          "type": "string"
+        },
+        "rubricLevel2": {
+          "type": "string"
+        },
+        "rubricLevel3": {
+          "type": "string"
+        },
+        "rubricLevel4": {
+          "type": "string"
+        },
+        "draftGoals1": {
+          "type": "string"
+        },
+        "draftGoals2": {
+          "type": "string"
+        },
+        "draftGoals3": {
+          "type": "string"
+        },
+        "draftGoals4": {
+          "type": "string"
+        },
+        "draftGoals5": {
+          "type": "string"
+        },
+        "draftGoals6": {
+          "type": "string"
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "createdById",
+        "createdDate"
+      ]
+    }
   }
 }

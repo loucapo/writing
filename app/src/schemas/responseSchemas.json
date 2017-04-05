@@ -45,6 +45,18 @@
           "type": "string"
         }
       }
+    },
+    "activitySuccessResponse": {
+      "title": "activitySuccessResponse",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "payload": {
+          "type": "object",
+          "$ref": "#/definitions/activity"
+        }
+      }
     }
   }
 }
