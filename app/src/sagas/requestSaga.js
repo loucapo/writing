@@ -1,4 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
+import cookie from 'react-cookie';
 
 const standardSuccessResponse = (action, result) => {
   return {type: action.states.SUCCESS, action, result};
@@ -30,7 +31,7 @@ function fetchFn(url, params) {
 
 function* request(action) {
   try {
-    const token = document.getElementById('token').getAttribute('data-val');
+    const token = cookie.load('wt_jwt'); //XXX should die here if not there.;
     let headers = new Headers();
     headers.append('Authorization', 'bearer ' + token);
     headers.append('Accept', 'application/json, text/plain, */*');

@@ -3,12 +3,12 @@ import {Route, IndexRedirect} from 'react-router';
 import ActivityContainer from './containers/ActivityContainer';
 import AppContainer from './containers/AppContainer';
 
-let redirectActivity = '/activity';
+let redirectActivity = '/resource';
 
 const routes = (
   <Route path="/" component={AppContainer}>
     <IndexRedirect to={redirectActivity} />
-    <Route path="/activity/*" component={ActivityContainer} />
+    <Route path="/resource/*" component={ActivityContainer} />
   </Route>);
 module.exports = routes;
 
