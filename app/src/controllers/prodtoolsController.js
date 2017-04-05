@@ -12,6 +12,7 @@ module.exports = function (applicationStrategies, config) {
           as_id : '901',
           first_name : 'Peggy',
           last_name : 'Lou',
+          email : 'peggy.lou@macmillan.com',
           role : 'admin'
         },
         launch_data : {
@@ -26,8 +27,7 @@ module.exports = function (applicationStrategies, config) {
 
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
       ctx.body = await ctx.render("prodtools", {
-        PROD_TOOLS_SPA_URL: config.app.prod_tools_spa_url,
-        token: jwt 
+        PROD_TOOLS_SPA_URL: config.app.prod_tools_spa_url
       });
     }
   };

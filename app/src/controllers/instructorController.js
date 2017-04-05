@@ -9,9 +9,9 @@ module.exports = function (applicationStrategies, config, moment, superagent, lo
       var dummyData = {
         user_data : {
           id : 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334',
-          as_id : 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334',
           first_name : 'Judy',
           last_name : 'Smith',
+          email : 'judy.smith@university.com',
           role : 'instructor'
         },
         launch_data : {
@@ -46,7 +46,7 @@ module.exports = function (applicationStrategies, config, moment, superagent, lo
         });
 
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
-      ctx.redirect('/activity/'+dummyData.launch_data.resource_link_id);
+      ctx.redirect('/resource/'+dummyData.launch_data.resource_link_id);
     }
   };
 };

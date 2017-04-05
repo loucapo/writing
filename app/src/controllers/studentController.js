@@ -12,10 +12,11 @@ module.exports = function (applicationStrategies) {
           as_id : '456',
           first_name : 'Bobby',
           last_name : 'Tibbits',
+          email : 'bobby.tibbits@university.com',
           role : 'student',
         },
         launch_data : {
-          resource_link_id : 'ABCD',
+          resource_link_id : 'd3e3c2d5-cf43-4f63-924f-3ec7a125a334',
           course_id : '4454554',
           course_name : 'Eng 1002'
         }
@@ -25,7 +26,7 @@ module.exports = function (applicationStrategies) {
       const jwt = strategy.execute(dummyData);
 
       ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
-      ctx.redirect('/activity');
+      ctx.redirect('/resource/'+dummyData.launch_data.resource_link_id);
     }
   };
 };

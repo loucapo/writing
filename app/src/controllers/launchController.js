@@ -7,8 +7,7 @@ module.exports = function (config) {
       }
 
       ctx.body = await ctx.render("index", {
-        SPA_URL: config.app.spa_url,
-        token: ctx.cookies.get('wt_jwt')
+        SPA_URL: config.app.spa_url
       });
     }
   };
