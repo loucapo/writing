@@ -4,7 +4,10 @@ services:
     image: wk_data
     volumes:
       - ./../app:/home/current/app
-    command: yarn run start
+    #command: "bash && yarn run start"
+    entrypoint: bash
     env_file:
       - ./.env
     container_name: wk_data
+    tty: true
+    stdin_open: true
