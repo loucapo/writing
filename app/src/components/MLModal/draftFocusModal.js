@@ -1,20 +1,12 @@
 import React from 'react';
-import ModalWrapper from './ModalWrapper.js';
+import ModalWrapper from './ModalWrapper';
 
-const DraftFocusModal = props => {
-  const closeModal = () => {
-    props.hideModal();
-  };
-
+const DraftFocusModal = (props) => {
   return (
     <ModalWrapper
-      {...props}
-      title="Test"
-      width={400}
-      showOk={false}
-    >
-      <p>Testing</p>
-      <button onClick={() => closeModal()}>Test</button>
+      title="Select the primary goals of this draft"
+      closeModal={props.closeModal}>
+      <p>(Draft Focus Modal content will go in here)</p>
     </ModalWrapper>
   );
 };

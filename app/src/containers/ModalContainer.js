@@ -1,12 +1,12 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import DraftFocusModal from '../components/MLModal/draftFocusModal.js';
+import DraftFocusModal from '../components/MLModal/draftFocusModal';
+import {closeModal} from '../modules/modalModule';
 
 class ModalContainer extends Component {
   render() {
     switch (this.props.currentModal) {
       case 'draftFocus':
-        console.log('SUCCESS')
         return <DraftFocusModal {...this.props}/>;
 
       default:
@@ -19,4 +19,4 @@ ModalContainer.propTypes = {
   currentModal: PropTypes.string
 };
 
-export default connect(state => state)(ModalContainer);
+export default connect(state => state, {closeModal})(ModalContainer);

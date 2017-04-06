@@ -1,66 +1,51 @@
 import React, {PropTypes} from 'react';
+import MLIcon from 'ml-react-cdl-icons';
+
+import styles from './modalWrapper.css';
 
 const ModalWrapper = (props) => {
   const handleBackgroundClick = (event) => {
-    if (event.target === event.currentTarget) props.hideModal();
+    if (event.target === event.currentTarget) props.closeModal();
   };
-
-  const onOk = () => {
-    props.onOk();
-    props.hideModal();
-  };
-
-  const okButton = props.showOk
-    ? (
-      <button
-        onClick={onOk}
-        disabled={props.okDisabled}
-      >
-        {props.okText}
-      </button>
-    ) : null;
 
   return (
-    <div onClick={handleBackgroundClick}>
-      <header>
-        <h1>{props.title}</h1>
+    <div
+      data-id="modal"
+      className={styles.modalContainer}
+      onClick={handleBackgroundClick}>
 
-        <button onClick={props.hideModal}>Close</button>
-      </header>
+      <div className={styles.modalWrapper}>
+        <h1>
+          {props.title}
 
-      {props.children}
+          <a onClick={props.closeModal}>
+            <MLIcon
+              className={styles.closeIcon}
+              title="close"
+              type="x"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            />
+          </a>
+        </h1>
 
-      {okButton}
+        <div className={styles.modalContent}>
+          {props.children}
+        </div>
+      </div>
     </div>
   );
 };
 
 ModalWrapper.propTypes = {
-  // props
   title: PropTypes.string,
-  showOk: PropTypes.bool,
-  okText: PropTypes.string,
-  okDisabled: PropTypes.bool,
-  width: PropTypes.number,
-  style: PropTypes.object,
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
     PropTypes.string
   ]).isRequired,
-
-  // methods
-  hideModal: PropTypes.func,
-  onOk: PropTypes.func
-};
-
-ModalWrapper.defaultProps = {
-  title: '',
-  showOk: true,
-  okText: 'OK',
-  okDisabled: false,
-  width: 400,
-  onOk: () => {}
+  closeModal: PropTypes.func
 };
 
 export default ModalWrapper;
