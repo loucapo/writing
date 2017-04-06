@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Activity from '../components/Activity/Activity';
 import {fetchActivityAction} from '../modules/activityModule';
-import {openDraftFocusModal} from '../modules/modalModule';
+import {openModal} from '../modules/modalModule';
 
 class ActivityContainer extends Component {
   componentWillMount() {
@@ -42,4 +42,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {fetchActivityAction, openDraftFocusModal})(ActivityContainer);
+export default connect(mapStateToProps, {fetchActivityAction, openModal})(ActivityContainer);

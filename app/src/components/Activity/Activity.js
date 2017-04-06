@@ -52,7 +52,7 @@ class Activity extends Component {
             </MLCard>
           </div>
 
-          <ActivityMenu drafts={drafts} role={role} openDraftFocusModal={this.props.openDraftFocusModal}/>
+          <ActivityMenu drafts={drafts} role={role} openModal={this.props.openModal}/>
 
           <ModalContainer />
         </div>
@@ -64,7 +64,8 @@ class Activity extends Component {
 Activity.propTypes = {
   role: PropTypes.string,
   activity: PropTypes.object,
-  drafts: PropTypes.array
+  drafts: PropTypes.array,
+  openDraftFocusModal: PropTypes.func
 };
 
 export default Activity;

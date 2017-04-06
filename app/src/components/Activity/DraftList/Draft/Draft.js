@@ -5,7 +5,7 @@ import InstructorControlsContainer from '../../../InstructorControlsContainer/In
 
 import styles from './draft.css';
 
-const Draft = ({draft, role, openDraftFocusModal}) => {
+const Draft = ({draft, role, openModal}) => {
   return (
     <div>
       <section className={styles.draftType}>
@@ -58,7 +58,7 @@ const Draft = ({draft, role, openDraftFocusModal}) => {
               </span>
             </InstructorControlsContainer>
           </h4>
-          {draft && draft.focus || <a data-id="add-draft-focus" onClick={openDraftFocusModal}>Click to Add Draft Focus</a>}
+          {draft && draft.focus || <a data-id="add-draft-focus" onClick={() => openModal('draftFocus')}>Click to Add Draft Focus</a>}
         </div>
 
         <div className={styles.rightLinks}>

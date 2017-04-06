@@ -36,7 +36,7 @@ class ActivityMenu extends Component {
           <DraftList
             drafts={drafts}
             role={this.props.role}
-            openDraftFocusModal={this.props.openDraftFocusModal}
+            openModal={this.props.openModal}
           /> : null}
         </div>
       </div>

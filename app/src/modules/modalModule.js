@@ -1,8 +1,8 @@
 // Reducer
 export default (state = null, action) => {
   switch (action.type) {
-    case 'DRAFT_FOCUS_MODAL': {
-      return 'draftFocus';
+    case 'OPEN_MODAL': {
+      return action.modalName;
     }
     case 'CLOSE_MODAL': {
       return null;
@@ -14,9 +14,10 @@ export default (state = null, action) => {
 };
 
 // Actions
-export const openDraftFocusModal = () => {
+export const openModal = (modalName) => {
   return {
-    type: 'DRAFT_FOCUS_MODAL'
+    type: 'OPEN_MODAL',
+    modalName
   };
 };
 
