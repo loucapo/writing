@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import MLIcon from 'ml-react-cdl-icons';
 import MLDropdown from '../../../MLDropdown/MLDropdown';
-// import MLModal from '../../../MLModal/MLModal';
 import InstructorControlsContainer from '../../../InstructorControlsContainer/InstructorControlsContainer';
 
 import styles from './draft.css';

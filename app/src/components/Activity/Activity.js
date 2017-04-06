@@ -8,6 +8,7 @@ import ActivityTitle from './ActivityTitle/ActivityTitle';
 import ActivityMenu from './ActivityMenu/ActivityMenu';
 import PromptContainer from 'Containers/PromptContainer';
 import RubricContainer from 'Containers/RubricContainer';
+import ModalContainer from 'Containers/ModalContainer';
 
 import styles from './activity.css';
 
@@ -52,6 +53,8 @@ class Activity extends Component {
           </div>
 
           <ActivityMenu drafts={drafts} role={role} openDraftFocusModal={this.props.openDraftFocusModal}/>
+
+          <ModalContainer />
         </div>
       </div>
     );

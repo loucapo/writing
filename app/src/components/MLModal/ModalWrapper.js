@@ -46,12 +46,12 @@ ModalWrapper.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
-    PropTypes.string,
+    PropTypes.string
   ]).isRequired,
 
   // methods
   hideModal: PropTypes.func,
-  onOk: PropTypes.func,
+  onOk: PropTypes.func
 };
 
 ModalWrapper.defaultProps = {
