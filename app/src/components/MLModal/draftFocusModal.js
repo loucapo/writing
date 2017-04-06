@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import ModalWrapper from './ModalWrapper';
 
 const DraftFocusModal = (props) => {
@@ -9,6 +9,10 @@ const DraftFocusModal = (props) => {
       <p>(Draft Focus Modal content will go in here)</p>
     </ModalWrapper>
   );
+};
+
+DraftFocusModal.propTypes = {
+  closeModal: PropTypes.func.isRequired
 };
 
 export default DraftFocusModal;

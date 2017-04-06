@@ -33,11 +33,12 @@ class ActivityMenu extends Component {
         <div className={styles.spacer}>
           {(display === 'drafts')
           ?
-          <DraftList
-            drafts={drafts}
-            role={this.props.role}
-            openModal={this.props.openModal}
-          /> : null}
+            <DraftList
+              drafts={drafts}
+              role={this.props.role}
+              openModal={this.props.openModal}
+            />
+          : null}
         </div>
       </div>
     );
@@ -46,7 +47,8 @@ class ActivityMenu extends Component {
 
 ActivityMenu.propTypes = {
   drafts: PropTypes.array,
-  role: PropTypes.string
+  role: PropTypes.string,
+  openModal: PropTypes.func
 };
 
 

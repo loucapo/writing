@@ -26,7 +26,7 @@ const DraftList = ({drafts, role, openModal}) => {
                   draft={draft}
                   key={idx}
                   role={role}
-                  openDraftFocusModal={openDraftFocusModal}
+                  openDraftFocusModal={openModal}
                 />
               </MLCard>
             );
@@ -46,7 +46,8 @@ const DraftList = ({drafts, role, openModal}) => {
 
 DraftList.propTypes = {
   drafts: PropTypes.array,
-  role: PropTypes.string
+  role: PropTypes.string,
+  openModal: PropTypes.func
 };
 
 export default DraftList;

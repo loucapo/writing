@@ -5,7 +5,9 @@ import styles from './modalWrapper.css';
 
 const ModalWrapper = (props) => {
   const handleBackgroundClick = (event) => {
-    if (event.target === event.currentTarget) props.closeModal();
+    if (event.target === event.currentTarget) {
+      props.closeModal();
+    }
   };
 
   return (
