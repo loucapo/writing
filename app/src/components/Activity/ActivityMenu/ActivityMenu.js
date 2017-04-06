@@ -47,8 +47,8 @@ class ActivityMenu extends Component {
 
 ActivityMenu.propTypes = {
   drafts: PropTypes.array,
-  role: PropTypes.string,
-  openModal: PropTypes.func
+  role: PropTypes.string.isRequired,
+  openModal: PropTypes.func.isRequired
 };
 
 

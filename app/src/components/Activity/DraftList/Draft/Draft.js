@@ -87,8 +87,8 @@ const Draft = ({draft, role, openModal}) => {
 
 Draft.propTypes = {
   draft: PropTypes.object,
-  role: PropTypes.string,
-  openModal: PropTypes.func
+  role: PropTypes.string.isRequired,
+  openModal: PropTypes.func.isRequired
 };
 
 export default Draft;

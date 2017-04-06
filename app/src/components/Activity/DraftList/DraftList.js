@@ -46,8 +46,8 @@ const DraftList = ({drafts, role, openModal}) => {
 
 DraftList.propTypes = {
   drafts: PropTypes.array,
-  role: PropTypes.string,
-  openModal: PropTypes.func
+  role: PropTypes.string.isRequired,
+  openModal: PropTypes.func.isRequired
 };
 
 export default DraftList;

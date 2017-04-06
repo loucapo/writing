@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import moment from 'moment';
 import Header from '../Header/Header';
 import MLAlert from '../MLAlert/MLAlert';
@@ -12,60 +12,58 @@ import ModalContainer from 'Containers/ModalContainer';
 
 import styles from './activity.css';
 
-class Activity extends Component {
-  render() {
-    let role = this.props.role;
-    let activity = this.props.activity;
-    let drafts = this.props.drafts;
+const Activity = ({role, activity, drafts, openModal}) => {
+  return (
+    <div className={styles.page}>
+      <Header title={activity.course} />
 
-    return (
-      <div className={styles.page}>
-        <Header title={activity.course} />
+      <div className={styles.container}>
+        <div data-id="created-activity-alert" className={styles.spacer}>
+          <MLAlert
+            message={'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
+              '. This is in draft mode and will not be visible to students until you assign it.'}
+            alertType="success"
+            iconType="circle_check_outline"
+          />
 
-        <div className={styles.container}>
-          <div data-id="created-activity-alert" className={styles.spacer}>
-            <MLAlert
-              message={'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
-                '. This is in draft mode and will not be visible to students until you assign it.'}
-              alertType="success"
-              iconType="circle_check_outline"
-            />
+          <ActivityTitle role={role} title={activity.title} type={activity.type} />
 
-            <ActivityTitle role={role} title={activity.title} type={activity.type} />
+          <PromptContainer activityId={activity.id} role={role} />
 
-            <PromptContainer activityId={activity.id} role={role} />
-
-            <MLCard type="rubric" title="Final Rubric" role={role}>
-              <menu>
-                <a data-id="rubric-delete">
-                  <MLIcon
-                    className={styles.deleteIcon}
-                    title="trash"
-                    type="trash"
-                    width="18"
-                    height="19"
-                    viewBox="0 0 24 24"
-                  />
-                </a>
-              </menu>
-              <RubricContainer activityId={activity.id} />
-            </MLCard>
-          </div>
-
-          <ActivityMenu drafts={drafts} role={role} openModal={this.props.openModal} />
-
-          <ModalContainer />
+          <MLCard type="rubric" title="Final Rubric" role={role}>
+            <menu>
+              <a data-id="rubric-delete">
+                <MLIcon
+                  className={styles.deleteIcon}
+                  title="trash"
+                  type="trash"
+                  width="18"
+                  height="19"
+                  viewBox="0 0 24 24"
+                />
+              </a>
+            </menu>
+            <RubricContainer activityId={activity.id} />
+          </MLCard>
         </div>
+
+        <ActivityMenu
+          drafts={drafts}
+          role={role}
+          openModal={openModal}
+        />
+
+        <ModalContainer />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Activity.propTypes = {
-  role: PropTypes.string,
+  role: PropTypes.string.isRequired,
   activity: PropTypes.object,
   drafts: PropTypes.array,
-  openModal: PropTypes.func
+  openModal: PropTypes.func.isRequired
 };
 
 export default Activity;
