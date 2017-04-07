@@ -23,7 +23,7 @@ class Heading extends Component {
         </span>
 
         <InstructorControlsContainer role={this.props.role}>
-          {this.props.sideMenu}
+          {this.props.options}
         </InstructorControlsContainer>
       </h1>
     );
@@ -34,7 +34,7 @@ Heading.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string,
   role: PropTypes.string,
-  sideMenu: PropTypes.object
+  options: PropTypes.object
 };
 
 export default Heading;

@@ -77,7 +77,6 @@ class Draft extends Component {
                 ? null
                 : <a data-id="add-draft-goal" onClick={this.openGoalsModal}>Click to Add Draft Goals</a>
             }
-            {/*<DraftGoalsList goals={this.props.draft.goals} />*/}
             <DraftGoalModal closeModal={this.closeGoalModal} isOpen={this.state.goalsModalIsOpen} />
           </div>
           {/*

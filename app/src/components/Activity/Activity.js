@@ -28,8 +28,11 @@ const Activity = ({role, activity, drafts}) => (
 
         <PromptContainer activityId={activity.id} role={role} />
 
-        <MLCard type="rubric" title="Final Rubric" role={role}>
-          <div>
+        <MLCard
+          type="rubric"
+          title="Final Rubric"
+          role={role}
+          options={
             <a data-id="rubric-delete">
               <MLIcon
                 className={styles.deleteIcon}
@@ -40,8 +43,8 @@ const Activity = ({role, activity, drafts}) => (
                 viewBox="0 0 24 24"
                 />
             </a>
-            <RubricContainer activityId={activity.id} />
-          </div>
+          }>
+          <RubricContainer activityId={activity.id} />
         </MLCard>
       </div>
 

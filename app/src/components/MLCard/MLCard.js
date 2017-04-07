@@ -3,14 +3,14 @@ import Heading from './Heading/Heading';
 
 import styles from './mlCard.css';
 
-const Card = ({type, title, role, children}) => {
+const Card = ({type, title, role, options, children}) => {
   return (
     <div className={styles.card}>
       <Heading
         type={type}
         title={title}
         role={role}
-        sideMenu={children[0]}
+        options={options}
       />
 
       <div className={styles.body}>
@@ -21,6 +21,7 @@ const Card = ({type, title, role, children}) => {
 };
 
 Card.propTypes = {
+  options: PropTypes.element,
   children: PropTypes.element,
   type: PropTypes.string,
   title: PropTypes.string,
