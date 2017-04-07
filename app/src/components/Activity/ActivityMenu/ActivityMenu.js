@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import DraftList from './../DraftList/DraftList';
+import DraftListContainer from './../../../containers/DraftListContainer';
 
 import styles from './activityMenu.css';
 
@@ -15,28 +15,23 @@ class ActivityMenu extends Component {
   };
 
   render = () => {
-    let drafts = this.props.drafts;
     let display = this.state.display;
 
     return (
       <div>
         <nav data-id="activity-menu" className={styles.container}>
           <div className={ (display === 'drafts') ? styles.active : '' }>
-            <a data-id="drafts" onClick={x => this.toggleSelection('drafts', x)}>Drafts ({drafts.length || 1})</a>
+            <a data-id="drafts" onClick={x => this.toggleSelection('drafts', x)}>Drafts ({this.props.draftCount})</a>
           </div>
 
-          <div className={ (display === 'submissions') ? styles.active : '' }>
+          <div className={ (display === 'submissions') ? styles.active : '' } >
             <a data-id="student-submissions" onClick={x => this.toggleSelection('submissions', x)}>Student Submissions</a>
           </div>
         </nav>
 
         <div className={styles.spacer}>
           {(display === 'drafts')
-          ?
-            <DraftList
-              drafts={drafts}
-              role={this.props.role}
-            />
+          ? <DraftListContainer activtyId={this.props.activityId} />
           : null}
         </div>
       </div>
@@ -45,8 +40,8 @@ class ActivityMenu extends Component {
 }
 
 ActivityMenu.propTypes = {
-  drafts: PropTypes.array,
-  role: PropTypes.string.isRequired
+  draftCount: PropTypes.number,
+  activityId: PropTypes.string
 };
 
 

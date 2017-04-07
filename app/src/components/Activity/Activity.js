@@ -11,7 +11,7 @@ import RubricContainer from 'Containers/RubricContainer';
 
 import styles from './activity.css';
 
-const Activity = ({role, activity, drafts}) => (
+const Activity = ({role, activity, draftCount}) => (
   <div className={styles.page}>
     <Header title={activity.course} />
 
@@ -45,10 +45,7 @@ const Activity = ({role, activity, drafts}) => (
         </MLCard>
       </div>
 
-      <ActivityMenu
-        drafts={drafts}
-        role={role}
-      />
+      <ActivityMenu draftCount={draftCount} activityId={activity.id} />
 
     </div>
   </div>
@@ -57,7 +54,7 @@ const Activity = ({role, activity, drafts}) => (
 Activity.propTypes = {
   role: PropTypes.string.isRequired,
   activity: PropTypes.object,
-  drafts: PropTypes.array
+  draftCount: PropTypes.number
 };
 
 export default Activity;

@@ -27,7 +27,7 @@ ActivityContainer.propTypes = {
   activityId: PropTypes.string,
   fetchActivityAction: PropTypes.func,
   openDraftFocusModal: PropTypes.func,
-  drafts: PropTypes.array
+  draftsCount: PropTypes.number
 };
 
 const mapStateToProps = (state) => {
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
     role,
     activityId,
     activity: state.activities.find(x => x.id === activityId),
-    drafts: state.drafts
+    drafts: state.drafts.reduce((count, d) => {if (d.activityId === activityId) { count++; } }, 0)
   };
 };
 
