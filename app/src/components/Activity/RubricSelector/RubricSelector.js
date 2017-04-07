@@ -7,7 +7,7 @@ const Rubric = () => {
   return (
     <div className={styles.rubric} >
       <span data-id="rubric-dropdown">
-        <MLDropdown title="Select Rubric" />
+        <MLDropdown title="Select Rubric" onChange={()=>{}} />
       </span>
       <a data-id="create-rubric" href="#">Create Custom Rubric</a>
     </div>
