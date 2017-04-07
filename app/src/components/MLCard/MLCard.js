@@ -7,7 +7,7 @@ const Card = ({type, title, role, options, children}) => {
   return (
     <div className={styles.card}>
       <Heading
-        type={type}
+        type={type || title}
         title={title}
         role={role}
         options={options}

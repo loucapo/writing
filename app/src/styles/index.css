@@ -27,6 +27,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.spacer {
+  /*align-items: center;*/
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 992px;
+  padding:0 50px;
+}
+
 a, a:link, a:hover, a:active, a:visited  {
   color: #00758E;
   cursor: pointer;
