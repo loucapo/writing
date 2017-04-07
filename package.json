@@ -26,6 +26,7 @@
     "classnames": "^2.2.5",
     "draft-js": "^0.10.0",
     "file-loader": "^0.9.0",
+    "fixed-data-table": "^0.6.3",
     "freakin-react-forms": "reharik/freakin-react-forms",
     "jwt-decode": "^2.1.0",
     "ml-react-cdl-icons": "^1.2.2",

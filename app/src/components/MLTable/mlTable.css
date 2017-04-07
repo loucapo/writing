@@ -1,0 +1,10 @@
+@import 'variables.css';
+
+.data_table {
+  overflow: hidden;
+  width: 100%;
+}
+
+.headerRow {
+  background-color: var(--gray-very-light);
+}
