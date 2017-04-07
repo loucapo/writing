@@ -26,7 +26,6 @@ ActivityContainer.propTypes = {
   activity: PropTypes.object,
   activityId: PropTypes.string,
   fetchActivityAction: PropTypes.func,
-  openDraftFocusModal: PropTypes.func,
   drafts: PropTypes.array
 };
 
