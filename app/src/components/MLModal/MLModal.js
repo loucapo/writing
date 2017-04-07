@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import MLIcon from 'ml-react-cdl-icons';
 
-import styles from './modalWrapper.css';
+import styles from './mlmodal.css';
 
-const ModalWrapper = (props) => {
+const MLModal = (props) => {
   const handleBackgroundClick = (event) => {
     if (event.target === event.currentTarget) {
       props.closeModal();
@@ -40,7 +40,7 @@ const ModalWrapper = (props) => {
   );
 };
 
-ModalWrapper.propTypes = {
+MLModal.propTypes = {
   title: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.array,
@@ -50,4 +50,4 @@ ModalWrapper.propTypes = {
   closeModal: PropTypes.func
 };
 
-export default ModalWrapper;
+export default MLModal;
