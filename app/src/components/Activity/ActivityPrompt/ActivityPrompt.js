@@ -35,7 +35,7 @@ class ActivityPrompt extends Component {
     });
   };
 
-  render = () => {
+  render() {
     return (
       <MLCard
         type="prompt"
@@ -82,7 +82,7 @@ class ActivityPrompt extends Component {
         </div>
       </MLCard>
     );
-  };
+  }
 }
 
 ActivityPrompt.propTypes = {
