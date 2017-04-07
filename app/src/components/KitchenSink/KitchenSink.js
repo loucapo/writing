@@ -1,5 +1,6 @@
 import React, {} from 'react';
 import moment from 'moment';
+import MLAccordion from '../MLAccordion/MLAccordion';
 import MLCard from '../MLCard/MLCard';
 import MLDropdown from '../MLDropdown/MLDropdown';
 import MLTable from '../MLTable/MLTable';
@@ -71,6 +72,28 @@ const KitchenSink = () => {
 
   return (
     <div className={styles.container}>
+
+      {/*accordion component demo*/}
+      <div className={styles.padder}>
+        <h3>Accordion Component</h3>
+        <p>
+          first child is the hidden content
+        </p>
+        <h4>Parameters:</h4>
+        <ol>
+          <li>type - data-id placed on header of accordion</li>
+          <li>title - text content of accordian heading</li>
+        </ol>
+      </div>
+      <div className="spacer">
+        <MLAccordion type="accordion-demo" title="Secret Infos">
+          <div>
+            Bacon isplum dollars arnet coalminer dorito plasmatron femur. Es stupor linen loin ostructo coma pabari
+            el domino caro pepar un nyet valicori. Tosto prima venza por eppa par nappa nop op bop deh sizzla.
+          </div>
+        </MLAccordion>
+      </div>
+
       {/*card component demo*/}
       <div className={styles.padder}>
         <h3>Card Component</h3>
