@@ -6,7 +6,7 @@ import styles from './mldropdown.css';
 class Dropdown extends Component {
   state = {
     showContents: false,
-    selected: this.props.placeholder
+    selected: this.props.placeholder || 'please select'
   };
 
   toggleContents = () => {
@@ -51,7 +51,7 @@ class Dropdown extends Component {
             </span>
           </div>
           <ul className={styles.dropdownContent}>
-            {this.props.options.map((option, idx) => {
+            {this.props.options && this.props.options.map((option, idx) => {
               return (
                 <li data-id={option.id} key={idx} onClick={() => this.selectOption(option)}>
                   <a href="#">{option.value}</a>
