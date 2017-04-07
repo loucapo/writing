@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
+import MLAccordion from '../MLAccordion/MLAccordion';
 import MLCard from '../MLCard/MLCard';
 import MLDropdown from '../MLDropdown/MLDropdown';
 import MLTable from '../MLTable/MLTable';
@@ -80,6 +81,27 @@ class KitchenSink extends Component {
   render() {
     return (
       <div className={styles.container}>
+        {/*accordion component demo*/}
+        <div className={styles.padder}>
+          <h3>Accordion Component</h3>
+          <p>
+            first child is the hidden content
+          </p>
+          <h4>Parameters:</h4>
+          <ol>
+            <li>type - data-id placed on header of accordion</li>
+            <li>title - text content of accordian heading</li>
+          </ol>
+        </div>
+        <div className="spacer">
+          <MLAccordion type="accordion-demo" title="Secret Infos">
+            <div>
+              Bacon isplum dollars arnet coalminer dorito plasmatron femur. Es stupor linen loin ostructo coma pabari
+              el domino caro pepar un nyet valicori. Tosto prima venza por eppa par nappa nop op bop deh sizzla.
+            </div>
+          </MLAccordion>
+        </div>
+
         {/*card component demo*/}
         <div className={styles.padder}>
           <h3>Card Component</h3>
@@ -109,7 +131,6 @@ class KitchenSink extends Component {
           </MLCard>
         </div>
 
-
         {/*dropdown component demo*/}
         <div className={styles.padder}>
           <h3>Dropdown Component</h3>
@@ -135,6 +156,26 @@ class KitchenSink extends Component {
           />
         </div>
 
+        {/*modal component demo*/}
+        <div className={styles.padder}>
+          <h3>Modal Component</h3>
+          <p>
+            Opens a customizable modal with an overlay
+          </p>
+
+          <h4>Parameters:</h4>
+          <ol>
+            <li>closeModal: function to close modal; would be identical to all other modals</li>
+            <li>isOpen: current boolean state of the modal</li>
+          </ol>
+
+          <DemoModal closeModal={this.toggleModal} isOpen={this.state.modalIsOpen} />
+
+          <div className="spacer">
+            <a onClick={this.toggleModal}>Open Demo Modal</a>
+          </div>
+        </div>
+
 
         {/*table component demo*/}
         <div className={styles.padder}>
@@ -151,23 +192,6 @@ class KitchenSink extends Component {
           <MLTable
             criteriaList={dummyCriteria}
           />
-        </div>
-
-        {/*modal component demo*/}
-        <div className={styles.padder}>
-          <h3>Modal Component</h3>
-          <p>
-            Opens a customizable modal with an overlay
-          </p>
-
-          <h4>Parameters:</h4>
-          <ol>
-            <li>closeModal: function to close modal; would be identical to all other modals</li>
-            <li>isOpen: current boolean state of the modal</li>
-          </ol>
-
-          <DemoModal closeModal={this.toggleModal} isOpen={this.state.modalIsOpen} />
-          <a onClick={this.toggleModal}>Open Demo Modal</a>
         </div>
 
       </div>
