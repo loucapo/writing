@@ -1,10 +1,10 @@
 {
-  "baseUrl": "http://wk-qa.mldev.cloud",
+  "baseUrl": "http://wk-pink.mldev.cloud",
   "featuresDir": "tests/features",
   "stepsDir": "tests/steps",
   "reportDir": "reports",
   "reportSingle": true,
-  "reporter": "marvin",
+  "reporters": [{"name": "marvin-reporter"}],
   "threads": 1,
 
   "verbose": true,
@@ -17,15 +17,12 @@
 
   "tags": "!@wip,!@NSM",
   "buildtag": "",
-  "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
 
-  "screenSize": {
-    "x": 1600,
-    "y": 900
-  },
+  "copyReport": false,
+  "pending": "absolutely",
 
   "browsers": [{
-    "seleniumServer": "http://selenium-grid:4444/wd/hub",
+    "seleniumServer": "http://172.18.0.2:24444/wd/hub",
     "browserName": "chrome",
     "chromeOptions": {
       "args": ["--no-sandbox"]
