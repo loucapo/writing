@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Activity from '../components/Activity/Activity';
 import {fetchActivityAction} from '../modules/activityModule';
-import {openModal} from '../modules/modalModule';
 
 class ActivityContainer extends Component {
   componentWillMount() {
@@ -42,4 +41,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {fetchActivityAction, openModal})(ActivityContainer);
+export default connect(mapStateToProps, {fetchActivityAction})(ActivityContainer);

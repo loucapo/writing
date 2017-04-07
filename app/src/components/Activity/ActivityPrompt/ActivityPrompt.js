@@ -38,8 +38,8 @@ class ActivityPrompt extends Component {
   render = () => {
     return (
       <MLCard type="prompt" title="Assignment Prompt" role={this.props.role}>
-        <menu>
-          {this.state.editable
+        <div>
+          { this.state.editable
             ?
               <div>
                 <MLButton id="cancel" title="Cancel" dataId="prompt-cancel" handleClick={this.handleCancel} />
@@ -68,14 +68,14 @@ class ActivityPrompt extends Component {
                   />
                 </a>
               </div>
-          }
-        </menu>
-        <div data-id="prompt-description">
-          {(this.props.prompt || this.state.editable)
-            ?
-              <MLEditor handleSave={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
-            :
-              <a data-id="add-prompt" onClick={this.toggleEditable}>Click to add prompt</a>}
+            }
+          <div data-id="prompt-description">
+            {(this.props.prompt || this.state.editable)
+              ?
+                <MLEditor handleSave={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
+              :
+                <a data-id="add-prompt" onClick={this.toggleEditable}>Click to add prompt</a>}
+          </div>
         </div>
       </MLCard>
     );

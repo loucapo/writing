@@ -5,7 +5,10 @@ import MLButton from '../../MLButton/MLButton';
 
 import styles from './draftList.css';
 
-const DraftList = ({drafts, role, openModal}) => {
+const DraftList = ({drafts, role}) => {
+  if (drafts.length <= 0) {
+    drafts.push({});
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.addDraft}>
@@ -13,41 +16,27 @@ const DraftList = ({drafts, role, openModal}) => {
         <div className={styles.required}>
           *Grade type field is required
         </div>
-      </div>
-      {
-        (drafts.length > 0) ?
-          drafts.map((draft, idx) => {
-            // substitute 'Final draft' for 'Draft #' on last element in array
-            let cardTitle = (idx === (drafts.length - 1)) ? 'Final Draft' : 'Draft ' + (idx + 1);
-            return (
-              <MLCard type="draft" role={role} title={cardTitle}>
-                <menu />
-                <Draft
-                  draft={draft}
-                  key={idx}
-                  role={role}
-                  openDraftFocusModal={openModal}
-                />
-              </MLCard>
-            );
-          })
-        :
-          <MLCard type="draft" role={role} title="Final Draft">
-            <menu />
+      </div> {
+      drafts.map((draft, idx) => {
+        // substitute 'Final draft' for 'Draft #' on last element in array
+        let cardTitle = (idx === (drafts.length - 1)) ? 'Final Draft' : 'Draft ' + (idx + 1);
+        return (
+          <MLCard type="draft" key={idx} role={role} title={cardTitle}>
             <Draft
+              draft={draft}
               role={role}
-              openModal={openModal}
             />
           </MLCard>
-      }
+        );
+      })
+    }
     </div>
   );
 };
 
 DraftList.propTypes = {
   drafts: PropTypes.array,
-  role: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired
+  role: PropTypes.string.isRequired
 };
 
 export default DraftList;
