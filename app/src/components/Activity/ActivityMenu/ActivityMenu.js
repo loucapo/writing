@@ -36,7 +36,6 @@ class ActivityMenu extends Component {
             <DraftList
               drafts={drafts}
               role={this.props.role}
-              openModal={this.props.openModal}
             />
           : null}
         </div>
@@ -47,8 +46,7 @@ class ActivityMenu extends Component {
 
 ActivityMenu.propTypes = {
   drafts: PropTypes.array,
-  role: PropTypes.string.isRequired,
-  openModal: PropTypes.func.isRequired
+  role: PropTypes.string.isRequired
 };
 
 

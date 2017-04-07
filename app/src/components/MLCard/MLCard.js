@@ -14,14 +14,14 @@ const Card = ({type, title, role, children}) => {
       />
 
       <div className={styles.body}>
-        {children[1]}
+        {children}
       </div>
     </div>
   );
 };
 
 Card.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.element,
   type: PropTypes.string,
   title: PropTypes.string,
   role: PropTypes.string
