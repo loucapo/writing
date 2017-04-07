@@ -10,12 +10,8 @@ class Draft extends Component {
     goalsModalIsOpen: false
   };
 
-  openGoalsModal = () => {
-    this.setState({ goalsModalIsOpen: true });
-  };
-
-  closeGoalModal = () => {
-    this.setState({ goalsModalIsOpen: false });
+  toggleGoalsModal = () => {
+    this.setState({ goalsModalIsOpen: !this.state.goalsModalIsOpen });
   };
 
   render() {
@@ -75,10 +71,9 @@ class Draft extends Component {
             {
               this.props.draft && this.props.draft.goals
                 ? null
-                : <a data-id="add-draft-goal" onClick={this.openGoalsModal}>Click to Add Draft Goals</a>
+                : <a data-id="add-draft-goal" onClick={this.toggleGoalsModal}>Click to Add Draft Goals</a>
             }
-            {/*<DraftGoalsList goals={this.props.draft.goals} />*/}
-            <DraftGoalModal closeModal={this.closeGoalModal} isOpen={this.state.goalsModalIsOpen} />
+            <DraftGoalModal closeModal={this.toggleGoalsModal} isOpen={this.state.goalsModalIsOpen} />
           </div>
           {/*
            <div className={styles.rightLinks}>
