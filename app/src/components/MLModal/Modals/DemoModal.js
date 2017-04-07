@@ -5,7 +5,7 @@ const DemoModal = ({closeModal, isOpen}) => {
   return isOpen
     ?
       (<MLModal
-        title="Select the primary goals of this draft"
+        title="Demo Modal"
         closeModal={closeModal}>
         <p>This Modal is for demo purpose only.</p>
         <p>Clicking on the 'x' icon or anywhere outside of modal will close it.</p>
