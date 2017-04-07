@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
-import ModalWrapper from './ModalWrapper';
+import MLModal from '../MLModal';
 
 const DraftFocusModal = (props) => {
   return (
-    <ModalWrapper
+    <MLModal
       title="Select the primary goals of this draft"
       closeModal={props.closeModal}>
       <p>(Draft Focus Modal content will go in here)</p>
-    </ModalWrapper>
+    </MLModal>
   );
 };
 

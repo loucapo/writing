@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import DraftFocusModal from '../components/MLModal/draftFocusModal';
+import DraftFocusModal from '../components/MLModal/Modals/draftFocusModal';
 import {closeModal} from '../modules/modalModule';
 
 class ModalContainer extends Component {
