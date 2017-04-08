@@ -3,6 +3,8 @@ const config = require('config');
 const puresql = require('puresql');
 const pgformat = require('pg-format');
 
+var debug = true;
+
 function makeAdapter (connection, debug) {
   return {
     query: function (query) {
@@ -28,7 +30,8 @@ module.exports =  function (queriesFile, query, event) {
   var queries = puresql.loadQueries(queriesFile);
 
   queries[query](event, adapter)
-    .then((rows)=> {
+        .then((rows)=> {
+            console.log("HOOO AHHH");
       return rows
     })
     .catch((error) => {
