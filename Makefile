@@ -30,7 +30,7 @@ clone-repos:	clone-api clone-front-end clone-data clone-serve
 #build
 ##################
 
-docker-build-deps:	docker-build-front-end docker-build-serve docker-build-api docker-build-data docker-build-prod-tools
+docker-build-deps:	docker-build-front-end docker-build-serve docker-build-api docker-build-data
 
 docker-build-node:
 	docker build -t wk_node -f nodeDocker/Dockerfile ./nodeDocker
@@ -170,68 +170,5 @@ ecr-login:
 
 exec:
 	docker exec -it $(con) bash
-
-
-##################
-#GIT Helpers
-##################
-
-get-statuses:
-	@echo ================COMPOSE==================
-	@git status
-	@echo ================FRONTEND==================
-	@cd ../wk_frontend && git status
-	@cd ../wk_compose
-	@echo ================PRODTOOLS==================
-	@cd ../wk_prodtools && git status
-	@cd ../wk_compose
-	@echo ================API==================
-	@cd ../wk_api && git status
-	@cd ../wk_compose
-	@echo ================DATA==================
-	@cd ../wk_data && git status
-	@cd ../wk_compose
-	@echo ================LAUNCH==================
-	@cd ../wk_serve && git status
-	@cd ../wk_compose
-
-pull-repos:
-	@echo ================COMPOSE==================
-	@git pull origin master
-	@echo ================FRONTEND==================
-	@cd ../wk_frontend && git pull origin master
-	@cd ../wk_compose
-	@echo ================PRODTOOLS==================
-	@cd ../wk_prodtools && git pull origin master
-	@cd ../wk_compose
-	@echo ================API==================
-	@cd ../wk_api && git pull origin master
-	@cd ../wk_compose
-	@echo ================DATA==================
-	@cd ../wk_data && git pull origin master
-	@cd ../wk_compose
-	@echo ================LAUNCH==================
-	@cd ../wk_serve && git pull origin master
-	@cd ../wk_compose
-
-get-branches:
-	@echo ================COMPOSE==================
-	@git branch | grep \*
-	@echo ================FRONTEND==================
-	@cd ../wk_frontend && git branch | grep \*
-	@cd ../wk_compose
-	@echo ================PRODTOOLS==================
-	@cd ../wk_prodtools && git branch | grep \*
-	@cd ../wk_compose
-	@echo ================API==================
-	@cd ../wk_api && git branch | grep \*
-	@cd ../wk_compose
-	@echo ================DATA==================
-	@cd ../wk_data && git branch | grep \*
-	@cd ../wk_compose
-	@echo ================LAUNCH==================
-	@cd ../wk_serve && git branch | grep \*
-	@cd ../wk_compose
-
 
 .PHONY: default docker-build run docker-exec clone-api clone-front-end clone-data clone-serve clone-yo clone-repos docker-build-node docker-build-api docker-build-serve docker-build-data docker-build-front-end docker-build-nginx kill-all kill-all-but-bases kill-all-but-node kill-nginx kill-api kill-data kill-postgres kill-front-end kill-orphans run run-dev run-data run-logging exec get-statuses pull-repos get-branches 
