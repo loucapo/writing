@@ -4,7 +4,7 @@ exports.define = function(steps) {
 
   steps.given("I hit google", function(done) {
     request('https://www.google.com')
-      .put('/help')
+      .get('/')
       .expect(parseInt(200), done);
   });
 
