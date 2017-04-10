@@ -1,5 +1,6 @@
 @WRITE-753
 Feature: Media Producer Launches Into Production Tools
+@pending
   Scenario: Media Editor Launches Into Writing Production Tool
     #Given I log in as "sls_admin_username"
     Given I launch into the writing production tool

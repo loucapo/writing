@@ -1,6 +1,6 @@
 @using=supertest
 Feature: just do stuff to google
-  @only
+
   Scenario: get homepage
     Given I hit google
 

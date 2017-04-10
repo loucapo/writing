@@ -8,15 +8,15 @@ exports.define = function(steps) {
       .expect(parseInt(200), done);
   });
 
-    steps.given("I send an empty POST body to '$url' and recieve status '$stat'", function(url, stat, done) {
-        request(marvin.config.baseUrl)
-            .post(url)
-            .expect(parseInt(stat), done);
-    });
+  steps.given("I send an empty POST body to '$url' and recieve status '$stat'", function(url, stat, done) {
+      request(marvin.config.baseUrl)
+          .post(url)
+          .expect(parseInt(stat), done);
+  });
 
-    steps.given("I send an empty POST body to '$url' and recieve status '$stat' promise-style", function(url, stat) {
-        return request(marvin.config.baseUrl)
-            .post(url)
-            .expect(parseInt(stat));
-    });
+  steps.given("I send an empty POST body to '$url' and recieve status '$stat' promise-style", function(url, stat) {
+      return request(marvin.config.baseUrl)
+          .post(url)
+          .expect(parseInt(stat));
+  });
 };
