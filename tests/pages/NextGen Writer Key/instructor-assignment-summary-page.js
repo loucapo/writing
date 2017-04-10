@@ -14,9 +14,12 @@ module.exports = new Page({
 
   // assignment details
   activity_prompt_header: { get: function () { return this.element("[data-id='prompt-section']"); } },
+  add_activity_prompt_link: { get: function () { return this.element("[data-id='add-prompt']"); } },
   activity_prompt_edit: { get: function () { return this.element("[data-id='prompt-edit']"); } },
   activity_prompt_delete: { get: function () { return this.element("[data-id='prompt-delete']"); } },
   activity_prompt_description: { get: function () { return this.element("[data-id='prompt-description']"); } },
+  activity_prompt_save: { get: function () { return this.element("[data-id='prompt-save']"); } },
+  activity_prompt_cancel: { get: function () { return this.element("[data-id='prompt-cancel']"); } },
 
   // rubric
   final_rubric: { get: function () { return this.element("[data-id='rubric-section']"); } },

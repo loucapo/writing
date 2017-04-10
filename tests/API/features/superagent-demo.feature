@@ -1,6 +1,6 @@
 @using=supertest
 Feature: just do stuff to google
-  #@only
+  @only
   Scenario: get homepage
     Given I hit google
 
@@ -8,7 +8,7 @@ Feature: just do stuff to google
   Scenario: get homepage
     Given I slap google
 
-  @only
+  #@only
   Scenario: get homepage again, with context!
     Given I beat google
     Given I print the cookie
