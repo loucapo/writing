@@ -84,15 +84,15 @@ module.exports = function activityRouter(koarouter, controllers) {
 
     /**
      * @swagger
-     * /activity/{activityId}/draftDescription:
+     * /activity/:activityId/draft:
      *   get:
-     *     x-name: draftDescription
-     *     description: Returns specified draft descriptions to the caller
-     *     operationId: draftDescription
+     *     x-name: getDraftsByActivityId
+     *     description: Gets all drafts that belong to specific activity
+     *     operationId: getDraftsByActivityId
      *     parameters:
      *       - name: activityId
      *         in: path
-     *         description: The id of the activity whose draft descriptions you wish to retrieve
+     *         description: The id of the activity whose drafts you wish to retrieve
      *         required: true
      *         type: string
      *     responses:
@@ -106,9 +106,9 @@ module.exports = function activityRouter(koarouter, controllers) {
      *             $ref: "#/definitions/standardFailureResponse"
      */
     router.get(
-      'draftDescription',
-      '/activity/:activityId/draftDescription',
-      controllers.draftDescriptionController.getDescriptions
+      'getDraftsByActivityId',
+      '/activity/:activityId/draft',
+      controllers.draftController.getDraftsByActivityId
     );
 
     appRouter.use(router.routes(), router.allowedMethods());

@@ -13,6 +13,9 @@ module.exports = function(_options) {
           .groupAllInDirectory('./app/src/controllers', 'controllers')
           .groupAllInDirectory('./app/src/routes/routers', 'routers')
           .groupAllInDirectory('./app/src/domain', 'domain')
+          .groupAllInDirectory('./app/src/domain/builders', 'domainBuilders')
+          .groupAllInDirectory('./app/src/domain/entities', 'entities')
+          .groupAllInDirectory('./app/src/domain/entities/builders', 'entityBuilders')
           .groupAllInDirectory('./app/src/schemas', 'schemas', true)
           .for('repository').subWith(options.repositoryStub || function() {/*no--op*/})
           .complete(),

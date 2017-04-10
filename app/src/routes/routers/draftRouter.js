@@ -5,17 +5,17 @@ module.exports = function(koarouter, controllers) {
 
     /**
      * @swagger
-     * /draftDescription:
+     * /draft:
      *   post:
-     *     x-name: createDraftDescription
-     *     description: Creates a new draft description
-     *     operationId: createDraftDescription
+     *     x-name: addDraftToActivity
+     *     description: adds a new draft to an activity
+     *     operationId: addDraftToActivity
      *     parameters:
      *       - name: body
      *         in: body
      *         required: true
      *         schema:
-     *           $ref: "#/definitions/createDraftDescription"
+     *           $ref: "#/definitions/addDraftToActivity"
      *     responses:
      *       200:
      *         description: Success
@@ -27,29 +27,29 @@ module.exports = function(koarouter, controllers) {
      *             $ref: "#/definitions/standardFailureResponse"
      */
     draftRouter.post(
-      'createDraftDescription',
-      '/draftDescription',
-      controllers.draftDescriptionController.createDescription
+      'addDraftToActivity',
+      '/draft',
+      controllers.draftController.addDraftToActivity
     );
 
     /**
      * @swagger
-     * /draftDescription/{id}:
+     * /draft/:id/instructions:
      *   put:
-     *     x-name: updateDraftDescription
-     *     description: Updates a draft description
-     *     operationId: updateDraftDescription
+     *     x-name: updateDraftInstructions
+     *     description: Updates a draft's instructions
+     *     operationId: updateDraftInstructions
      *     parameters:
      *       - name: id
      *         in: path
-     *         description: The id of the draft description to update
+     *         description: The id of the draft to update
      *         required: true
      *         type: string
      *       - name: body
      *         in: body
      *         required: true
      *         schema:
-     *           $ref: "#/definitions/updateDraftDescription"
+     *           $ref: "#/definitions/updateDraftInstructions"
      *     responses:
      *       200:
      *         description: Success
@@ -61,18 +61,18 @@ module.exports = function(koarouter, controllers) {
      *             $ref: "#/definitions/standardFailureResponse"
      */
     draftRouter.put(
-      'updateDescription',
-      '/draftDescription/:id',
-      controllers.draftDescriptionController.updateDescription
+      'updateDraftInstructions',
+      '/draft/:id/instructions',
+      controllers.draftController.updateDraftInstructions
     );
 
     /**
      * @swagger
-     * /draftDescription/{id}:
+     * /draft/{id}:
      *   delete:
-     *     x-name: deleteDraftDescription
-     *     description: Deletes a draft description
-     *     operationId: deleteDraftDescription
+     *     x-name: removeDraftFromActivity
+     *     description: removes a draft from an activity
+     *     operationId: removeDraftFromActivity
      *     parameters:
      *       - name: id
      *         in: path
@@ -89,9 +89,9 @@ module.exports = function(koarouter, controllers) {
      *             $ref: "#/definitions/standardFailureResponse"
      */
     draftRouter.delete(
-      'deleteDraftDescription',
-      '/draftDescription/:id',
-      controllers.draftDescriptionController.deleteDescription
+      'removeDraftFromActivity',
+      '/draft/:id',
+      controllers.draftController.removeDraftFromActivity
     );
 
     appRouter.use(draftRouter.routes(), draftRouter. allowedMethods());

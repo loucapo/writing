@@ -24,7 +24,6 @@ describe('Activity Test', function() {
     const container = registry({repositoryStub});
     sqlLibrary = container.getInstanceOf('sqlLibrary');
     mut = container.getInstanceOf('activityController');
-
   });
 
   beforeEach(() => {
@@ -82,17 +81,21 @@ describe('Activity Test', function() {
           await mut.updateActivityPrompt(ctx);
           td.verify(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: _body.id}));
         });
-      })
+      });
 
       context('when updating activity with bad id', () => {
         it('should return 500', async () => {
           ctx.params.id=666;
           td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: 666})).thenReturn(undefined);
-          let result = await mut.updateActivityPrompt(ctx);
-          result.status.should.equal(500);
-          result.errors[0].should.equal(`No activity found with id ${_body.id}`);
+          let result;
+          try {
+            result = await mut.updateActivityPrompt(ctx);
+          }catch(ex){
+            result = ex.message;
+          }
+          result.should.equal(`No activity found with id: ${ctx.params.id}`);
         })
-      })
+      });
 
       context('when updating activity', () => {
         it('should return 200', async () => {
@@ -102,7 +105,7 @@ describe('Activity Test', function() {
           let result = await mut.updateActivityPrompt(ctx);
           result.status.should.equal(200);
         })
-      })
+      });
 
       context('when updating activity', () => {
         it('should put new values on activity', async () => {

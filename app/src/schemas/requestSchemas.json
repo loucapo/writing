@@ -41,8 +41,8 @@
       ]
     }
   },
-  "createDraftDescription": {
-    "title": "createDraftDescription",
+  "addDraftToActivity": {
+    "title": "addDraftToActivity",
     "properties": {
       "activityId": {
         "type": "string"
@@ -50,18 +50,15 @@
       "instructions": {
         "type": "string"
       },
-      "listPosition": {
-        "type": "string"
+      "index": {
+        "type": "number"
       }
     }
   },
-  "updateDraftDescription": {
-    "title": "updateDraftDescription",
+  "updateDraftInstructions": {
+    "title": "updateDraftInstructions",
     "properties": {
       "instructions": {
-        "type": "string"
-      },
-      "listPosition": {
         "type": "string"
       }
     }

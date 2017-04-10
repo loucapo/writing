@@ -19,6 +19,13 @@
         "rubric": {
           "$ref": "#/definitions/rubric"
         },
+        "drafts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/draft"
+          },
+          "uniqueItems": true
+        },
         "createdById": {
           "type": "string",
           "format": "uuid"
@@ -129,6 +136,42 @@
         },
         "draftGoals6": {
           "type": "string"
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "createdById",
+        "createdDate"
+      ]
+    },
+    "draft": {
+      "title": "draft",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number"
         },
         "createdById": {
           "type": "string",

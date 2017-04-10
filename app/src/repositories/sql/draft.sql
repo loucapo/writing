@@ -1,21 +1,17 @@
--- name: get_draft_descriptions_by_activity_id
-select *
-from draft_description
-where activity_id = :activityId
-ORDER BY list_position ASC
-
--- name: create_new_draft_description
-INSERT INTO draft_description
+-- name: addDraftToActivity
+INSERT INTO draft
     (id,
     activity_id,
     instructions,
-    list_position,
+    index,
+    created_by_id,
     created_date)
 VALUES
     (:id,
     :activityId,
     :instructions,
-    :listPosition,
+    :index,
+    :createdById,
     now())
 
 -- name: delete_draft_description
@@ -29,3 +25,8 @@ SET
     instructions = :instructions,
     list_position = :listPosition
 WHERE id = :id;
+
+-- name: getDraftsByActivityId
+SELECT *
+FROM draft
+WHERE activity_id = :activityId
