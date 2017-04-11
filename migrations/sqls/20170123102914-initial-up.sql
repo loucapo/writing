@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS "activity";
 
 CREATE TABLE "activity"
 (
-  id  uuid USING "id"::UUID,
+  id uuid NOT NULL,
   courseId text NOT NULL,
   title text,
   prompt jsonb,
