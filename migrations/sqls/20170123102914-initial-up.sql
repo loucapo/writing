@@ -10,7 +10,7 @@ COMMENT ON SCHEMA public
 
 SET search_path TO writer_key,public;
 
-CREATE EXTENSION pgcrypto;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Table: "activity"
 
@@ -50,12 +50,9 @@ CREATE TABLE "criteria"
   rubric_level_2 varchar(255),
   rubric_level_3 varchar(255),
   rubric_level_4 varchar(255),
-  draft_goals_1 varchar(500),
-  draft_goals_2 varchar(500),
-  draft_goals_3 varchar(500),
-  draft_goals_4 varchar(500),
-  draft_goals_5 varchar(500),
-  draft_goals_6 varchar(500),
+  goal_option_1 varchar(500),
+  goal_option_2 varchar(500),
+  goal_option_3 varchar(500),
   created_by_id uuid,
   created_date date,
   modified_by_id uuid,
@@ -164,4 +161,19 @@ WITH (
   OIDS=FALSE
 );
 ALTER TABLE draft
+  OWNER TO writer_key;
+
+-- Table: "draft_criteria"
+
+DROP TABLE IF EXISTS "draft_criteria";
+
+CREATE TABLE "draft_criteria"
+(
+  draft_id uuid NOT NULL,
+  criteria_id uuid NOT NULL
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "draft_criteria"
   OWNER TO writer_key;

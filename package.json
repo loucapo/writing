@@ -7,7 +7,7 @@
     "start": "node app/src/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
     "migrate": "db-migrate",
-    "migrate-new": "./node_modules/db-migrate/bin/db-migrate --sql-file create",
+    "migrate-new": "db-migrate --sql-file create",
     "loadData": "node app/src/loadData",
     "killAllData": "node app/src/killAllData",
     "lint": "eslint .",

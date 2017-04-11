@@ -1,6 +1,5 @@
 {
   "development": {
-    "config" :{
       "driver": "pg",
       "user": "writer_key",
       "database": "writer_key",
@@ -9,6 +8,5 @@
       "port": "5432",
       "max": "10",
       "idleTimeoutMillis": "30000"
-    }
   }
 }
