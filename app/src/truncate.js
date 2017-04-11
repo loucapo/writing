@@ -3,7 +3,9 @@ var _ = require('lodash');
 
 var knex = require('knex')({
     client: 'pg',
-    connection: config.postgres.config
+    connection: config.postgres.config,
+    pool: { min:0, max:7}
+
 });
 
 async function getTables(conn) {
