@@ -23,8 +23,8 @@ CREATE TABLE "activity"
   title text,
   prompt jsonb,
   rubric_id uuid,
-  createdById text NOT NULL,
-  createdDate date NOT NULL,
+  created_by_id text NOT NULL,
+  created_date date NOT NULL,
   modified_by_id text,
   modified_date date
 )
