@@ -4,7 +4,7 @@
   "main": "app/index.js",
   "version": "0.0.7",
   "scripts": {
-    "start": "NODE_ENV=development app/index.js",
+    "start": "node app/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
     "lint": "eslint .",
     "validate": "npm ls",
@@ -19,6 +19,7 @@
     "db-migrate": "^0.10.0-beta.20",
     "db-migrate-pg": "^0.1.11",
     "faker": "^4.1.0",
+    "lodash": "^4.17.4",
     "moment": "^2.17.1",
     "p-retry": "^1.0.0",
     "pg-async": "2.4.0",

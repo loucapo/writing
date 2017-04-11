@@ -1,6 +1,6 @@
 var config = require('config');
 var sqlFixtures = require('sql-fixtures');
-
+var _ = require('lodash');
 var faker = require('faker');
 faker.seed(123);
 
@@ -541,103 +541,103 @@ var dataSpec = {
   ],
   rubric_criteria: [
     {
-      rubricId: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
-      criteriaId: '4a7e811e-076d-488b-a523-94169c971e6d',
+      rubric_id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
+      criteria_id: '4a7e811e-076d-488b-a523-94169c971e6d',
       index: 1
     },
     {
-      rubricId: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
-      criteriaId: 'bd500741-01d1-4ddc-b08b-dea70d55995f',
+      rubric_id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
+      criteria_id: 'bd500741-01d1-4ddc-b08b-dea70d55995f',
       index: 2
     },
     {
-      rubricId: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
-      criteriaId: '3122600f-1c09-4f2d-bf8e-b6e84bfb6b1f',
+      rubric_id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
+      criteria_id: '3122600f-1c09-4f2d-bf8e-b6e84bfb6b1f',
       index: 3
     },
     {
-      rubricId: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
-      criteriaId: '6e6743ea-04fc-449e-8af7-8c368bf5c11c',
+      rubric_id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
+      criteria_id: '6e6743ea-04fc-449e-8af7-8c368bf5c11c',
       index: 4
     },
     {
-      rubricId: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
-      criteriaId: '678ef716-4acf-42d2-bef2-583ceb891bfb',
+      rubric_id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
+      criteria_id: '678ef716-4acf-42d2-bef2-583ceb891bfb',
       index: 5
     },
     {
-      rubricId: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
-      criteriaId: 'f01ed383-78e9-4089-867a-70e8911bbace',
+      rubric_id: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
+      criteria_id: 'f01ed383-78e9-4089-867a-70e8911bbace',
       index: 1
     },
     {
-      rubricId: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
-      criteriaId: '91db94ee-a6f1-4be5-911c-9e7b8b992531',
+      rubric_id: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
+      criteria_id: '91db94ee-a6f1-4be5-911c-9e7b8b992531',
       index: 2
     },
     {
-      rubricId: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
-      criteriaId: '1740b6d4-e13d-4ea0-ad17-545bb4bb9546',
+      rubric_id: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
+      criteria_id: '1740b6d4-e13d-4ea0-ad17-545bb4bb9546',
       index: 3
     },
     {
-      rubricId: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
-      criteriaId: 'dd6f10e6-f07d-4c70-b5c6-2a3c5e3d35e9',
+      rubric_id: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
+      criteria_id: 'dd6f10e6-f07d-4c70-b5c6-2a3c5e3d35e9',
       index: 4
     },
     {
-      rubricId: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
-      criteriaId: '02a8ae4e-2ae3-4390-bcb5-cadb6324567a',
+      rubric_id: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
+      criteria_id: '02a8ae4e-2ae3-4390-bcb5-cadb6324567a',
       index: 5
     },
     {
-      rubricId: 'c105736c-c330-487c-be74-5a2c983095cc',
-      criteriaId: 'c54305f8-6605-4021-92e5-0a03b4ef22fe',
+      rubric_id: 'c105736c-c330-487c-be74-5a2c983095cc',
+      criteria_id: 'c54305f8-6605-4021-92e5-0a03b4ef22fe',
       index: 1
     },
     {
-      rubricId: 'c105736c-c330-487c-be74-5a2c983095cc',
-      criteriaId: '4659528b-487d-46b5-b4d6-bbc4fcd57c7f',
+      rubric_id: 'c105736c-c330-487c-be74-5a2c983095cc',
+      criteria_id: '4659528b-487d-46b5-b4d6-bbc4fcd57c7f',
       index: 2
     },
     {
-      rubricId: 'c105736c-c330-487c-be74-5a2c983095cc',
-      criteriaId: '98f8e2b6-0252-4d33-b9e3-d11ee333250a',
+      rubric_id: 'c105736c-c330-487c-be74-5a2c983095cc',
+      criteria_id: '98f8e2b6-0252-4d33-b9e3-d11ee333250a',
       index: 3
     },
     {
-      rubricId: 'c105736c-c330-487c-be74-5a2c983095cc',
-      criteriaId: '0d674a3e-e61c-41d9-99fb-738882f58f13',
+      rubric_id: 'c105736c-c330-487c-be74-5a2c983095cc',
+      criteria_id: '0d674a3e-e61c-41d9-99fb-738882f58f13',
       index: 4
     },
     {
-      rubricId: 'c105736c-c330-487c-be74-5a2c983095cc',
-      criteriaId: '30a2b72b-153b-449e-ae75-6d52417d5fd8',
+      rubric_id: 'c105736c-c330-487c-be74-5a2c983095cc',
+      criteria_id: '30a2b72b-153b-449e-ae75-6d52417d5fd8',
       index: 5
     },
     {
-      rubricId: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
-      criteriaId: 'cff30bcb-0425-4d06-98d3-c22f2bd10a79',
+      rubric_id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
+      criteria_id: 'cff30bcb-0425-4d06-98d3-c22f2bd10a79',
       index: 1
     },
     {
-      rubricId: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
-      criteriaId: '37f0de46-357a-442b-9859-fa07fc9e47a9',
+      rubric_id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
+      criteria_id: '37f0de46-357a-442b-9859-fa07fc9e47a9',
       index: 2
     },
     {
-      rubricId: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
-      criteriaId: 'dd5ee9ca-8c2c-4a81-941a-a3a0d8bb3be2',
+      rubric_id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
+      criteria_id: 'dd5ee9ca-8c2c-4a81-941a-a3a0d8bb3be2',
       index: 3
     },
     {
-      rubricId: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
-      criteriaId: '116e3415-4550-41ba-b976-883d34b844d7',
+      rubric_id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
+      criteria_id: '116e3415-4550-41ba-b976-883d34b844d7',
       index: 4
     },
     {
-      rubricId: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
-      criteriaId: 'fb620970-3a37-4a2b-ab58-d328d8862117',
+      rubric_id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
+      criteria_id: 'fb620970-3a37-4a2b-ab58-d328d8862117',
       index: 5
     }
   ],
@@ -674,7 +674,7 @@ var dataSpec = {
       id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
       question: 'ace moff fisto calamari thrawn. Padmé qui-gon kit',
       question_type: 'fixed',
-      crcreated_by_id: "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
+      created_by_id: "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
       created_date: "2017-04-10",
     }
   ]
