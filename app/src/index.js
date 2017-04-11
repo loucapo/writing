@@ -1,10 +1,8 @@
-var data = require('./data');
 var config = require('config');
 var DBMigrate = require( 'db-migrate' );
 var pingDB = require('./pingDB');
-var repository = require('./repository');
 
-var generateDB = async function() {
+module.exports = async function() {
     console.log('==========BEGIN ping db"=========');
     await pingDB();
     console.log('==========end ping db"=========');
@@ -19,8 +17,4 @@ var generateDB = async function() {
         console.log(ex);
         console.log('==========END exception=========');
     }
-};
-
-module.exports = {
-    generateDB
-};
+}();

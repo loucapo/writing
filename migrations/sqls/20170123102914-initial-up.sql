@@ -10,20 +10,7 @@ COMMENT ON SCHEMA public
 
 SET search_path TO writer_key,public;
 
--- Table: "writer_key"
-
-DROP TABLE IF EXISTS "writer_key";
-
-CREATE TABLE "writer_key"
-(
-  id uuid NOT NULL,
-  "Hello" text
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "writer_key"
-  OWNER TO writer_key;
+CREATE EXTENSION pgcrypto;
 
 -- Table: "activity"
 
@@ -31,67 +18,150 @@ DROP TABLE IF EXISTS "activity";
 
 CREATE TABLE "activity"
 (
-  id text NOT NULL,
-  courseId text NOT NULL,
+  id uuid NOT NULL,
+  course_id text NOT NULL,
   title text,
-  createdById text NOT NULL,
-  createdDate date NOT NULL
+  prompt jsonb,
+  rubric_id uuid,
+  created_by_id text NOT NULL,
+  created_date date NOT NULL,
+  modified_by_id text,
+  modified_date date
 )
 WITH (
   OIDS=FALSE
 );
 ALTER TABLE "activity"
   OWNER TO writer_key;
+ALTER TABLE "activity"
+    ADD PRIMARY KEY (id);
+
+-- Table: "criteria"
+
+DROP TABLE IF EXISTS "criteria";
+
+CREATE TABLE "criteria"
+(
+  id uuid NOT NULL,
+  title varchar(255),
+  description varchar(500),
+  available_to_rubric boolean,
+  rubric_level_1 varchar(255),
+  rubric_level_2 varchar(255),
+  rubric_level_3 varchar(255),
+  rubric_level_4 varchar(255),
+  draft_goals_1 varchar(500),
+  draft_goals_2 varchar(500),
+  draft_goals_3 varchar(500),
+  draft_goals_4 varchar(500),
+  draft_goals_5 varchar(500),
+  draft_goals_6 varchar(500),
+  created_by_id uuid,
+  created_date date,
+  modified_by_id uuid,
+  modified_date date
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "criteria"
+  OWNER TO writer_key;
+
+-- Table: "quick_feedback"
+
+DROP TABLE IF EXISTS "quick_feedback";
+
+  CREATE TABLE "quick_feedback"
+  (
+    id uuid NOT NULL,
+    title varchar(255),
+    description varchar(500),
+    created_by_id uuid,
+    created_date date,
+    modified_by_id uuid,
+    modified_date date
+  )
+  WITH (
+    OIDS=FALSE
+  );
+  ALTER TABLE "quick_feedback"
+    OWNER TO writer_key;
+
+-- Table: "rubric"
+
+DROP TABLE IF EXISTS "rubric";
+
+CREATE TABLE "rubric"
+(
+  id uuid NOT NULL,
+  title varchar(255),
+  description varchar(500),
+  created_by_id uuid,
+  created_date date,
+  modified_by_id uuid,
+  modified_date date
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "rubric"
+  OWNER TO writer_key;
+
+-- Table: "rubric_criteria"
+
+DROP TABLE IF EXISTS "rubric_criteria";
+
+CREATE TABLE "rubric_criteria"
+(
+  rubric_id uuid NOT NULL,
+  criteria_id uuid NOT NULL,
+  index int
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "rubric_criteria"
+  OWNER TO writer_key;
+
+-- Table: "student_reflection_questions"
+
+DROP TABLE IF EXISTS "student_reflection_questions";
+
+CREATE TABLE "student_reflection_questions"
+(
+  id uuid NOT NULL,
+  question varchar(500),
+  question_type varchar(25),
+  created_by_id uuid,
+  created_date date,
+  modified_by_id uuid,
+  modified_date date
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "student_reflection_questions"
+  OWNER TO writer_key;
 
 
 -- Table: "draft"
 
-DROP TABLE IF EXISTS "draft";
+DROP TABLE IF EXISTS draft;
 
-CREATE TABLE "draft"
+CREATE TABLE draft
 (
-  id uuid NOT NULL,
-  document jsonb
+  id uuid NOT NULL PRIMARY KEY,
+  activity_id uuid NOT NULL REFERENCES activity (id),
+  instructions text,
+  index int NOT NULL,
+  created_by_id uuid,
+    created_date date,
+    modified_by_id uuid,
+    modified_date date,
+  UNIQUE (id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "draft"
-  OWNER TO writer_key;
-
--- Table: "user"
-
-DROP TABLE IF EXISTS "user";
-
-CREATE TABLE "user"
-(
-  id uuid NOT NULL,
-  firstName varchar(255),
-  lastName varchar(255),
-  email varchar(255),
-  IAM uuid NOT NULL,
-  userType varchar(255)
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "user"
-  OWNER TO writer_key;
-
--- Table: "course"
-
-DROP TABLE IF EXISTS "course";
-
-CREATE TABLE "course"
-(
-  id uuid NOT NULL,
-  title varchar(255),
-  abbreviation varchar(255),
-  courseId varchar(255),
-  instructorId uuid NOT NULL
-)
-WITH (
-  OIDS=FALSE
-);
-ALTER TABLE "course"
+ALTER TABLE draft
   OWNER TO writer_key;
