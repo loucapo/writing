@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS "activity";
 CREATE TABLE "activity"
 (
   id uuid NOT NULL,
-  courseId text NOT NULL,
+  course_id text NOT NULL,
   title text,
   prompt jsonb,
   rubric_id uuid,
