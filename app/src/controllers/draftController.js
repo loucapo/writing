@@ -50,7 +50,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
     },
 
     async getDraftsByActivityId(ctx) {
-      let drafts = await repository(sqlLibrary.draft, 'getDraftsByActivityId', {id: ctx.params.activityId});
+      let drafts = await repository(sqlLibrary.draft, 'getDraftsByActivityId', {activityId: ctx.params.activityId});
 
       ctx.status = 200;
       ctx.body = {

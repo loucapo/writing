@@ -84,7 +84,7 @@ module.exports = function activityRouter(koarouter, controllers) {
 
     /**
      * @swagger
-     * /activity/:activityId/draft:
+     * /activity/{activityId}/draft:
      *   get:
      *     x-name: getDraftsByActivityId
      *     description: Gets all drafts that belong to specific activity
