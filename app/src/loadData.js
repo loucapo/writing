@@ -686,9 +686,16 @@ var dataSpec = {
 // can be done with these fixtures, but do we need to now, and is that even a final (or final enough for now) schema?
 var options = { showWarning: false};
 
-module.exports = function() {
-  console.log(`==========loadData=========`);
-  fixtureCreator.create(dataSpec, options);
-  console.log(`==========END loadData=========`);
-  process.exit()
+module.exports = async function() {
+  try {
+    console.log(`==========loadData=========`);
+    await fixtureCreator.create(dataSpec, options);
+    console.log(`==========END loadData=========`);
+    process.exit()
+  }catch(err) {
+    console.log(`==========err=========`);
+    console.log(err);
+    console.log(`==========END err=========`);
+    process.exit()
+  }
 }();
