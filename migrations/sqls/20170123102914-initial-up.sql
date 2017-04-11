@@ -154,8 +154,10 @@ CREATE TABLE draft
   activity_id uuid NOT NULL REFERENCES activity (id),
   instructions text,
   index int NOT NULL,
-  created_date TIMESTAMP NOT NULL default CURRENT_TIMESTAMP,
-  updated_date TIMESTAMP,
+  created_by_id uuid,
+    created_date date,
+    modified_by_id uuid,
+    modified_date date,
   UNIQUE (id)
 )
 WITH (
