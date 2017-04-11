@@ -11,11 +11,10 @@ var knex = require('knex')({
 });
 
 // TODO:
-// last 2 tables to convert, rubric_criteria & student_reflection_questions
 // break fixtures out to another file
-// trash migrations with data
-// figure out if we take any names of fixtures yet, or just loading the single default is good enough for now
-// talk w team 'bout default behavior and when to trash which data, when to migrate.up()
+// allow calling of fixtures other than the hardcoded dataSpec
+// allow accepting a faker seed
+// should probably print the seed that's actually used
 
 var fixtureCreator = new sqlFixtures(knex);
 
