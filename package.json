@@ -4,12 +4,14 @@
   "main": "app/index.js",
   "version": "0.0.7",
   "scripts": {
-    "start": "node app/index.js",
+    "start": "node app/src/index.js",
     "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
-    "lint": "eslint .",
-    "validate": "npm ls",
     "migrate": "db-migrate",
-    "migrate-new": "./node_modules/db-migrate/bin/db-migrate --sql-file create"
+    "migrate-new": "./node_modules/db-migrate/bin/db-migrate --sql-file create",
+    "loadData": "node app/src/loadData",
+    "killAllData": "node app/src/killAllData",
+    "lint": "eslint .",
+    "validate": "npm ls"
   },
   "publishConfig": {
     "registry": "http://npm.macmillantech.com:8080/"

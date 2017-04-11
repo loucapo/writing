@@ -19,7 +19,7 @@ async function getTables(conn) {
     //qqq gotta catch
 }
 
-module.exports = () => {
+module.exports = function() {
   return getTables(knex).then(function(tables) {
     return Promise.all(_.map(tables, function(t) {
       // can't just use .truncate() b/c FK constraints
@@ -29,5 +29,5 @@ module.exports = () => {
     }));
   }).then(function() {
     console.log("BLASTED!");
-  })
-};
+  }).then(() => process.exit())
+}();
