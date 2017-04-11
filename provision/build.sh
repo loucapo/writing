@@ -40,7 +40,7 @@ do
     mkdir -p artifacts/$DIR
     DOCKER_IMAGE_VAR=wk_"$DIR"_image
     echo "$DOCKER_IMAGE_VAR=$DOCKER_REPO:$TAG" > artifacts/$DIR/.env
-    cp $DIR/docker/docker-compose-qa.yml artifacts/$DIR/docker-compose-api.yml
+    cp $DIR/docker/docker-compose-qa.yml artifacts/$DIR/docker-compose.yml
     cp $DIR/docker/.env.example artifacts/$DIR/.env.example
     
     echo "$DIR build is complete!"
