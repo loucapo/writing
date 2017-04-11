@@ -23,6 +23,7 @@ const mapStateToProps = (state, props) => {
   const drafts = state.drafts.filter(x => x.activityId === props.activityId);
   return {
     role,
+    activityId: props.activityId,
     drafts
   };
 };

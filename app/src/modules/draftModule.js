@@ -21,7 +21,7 @@ export function fetchDraftsForActivity(activityId) {
   return {
     type: DRAFTS_FOR_ACTIVITY.REQUEST,
     states: DRAFTS_FOR_ACTIVITY,
-    url: `${config.apiUrl}drafts/${activityId}`,
+    url: `${config.apiUrl}activity/${activityId}/draft`,
     params: {
       method: 'GET'
     }

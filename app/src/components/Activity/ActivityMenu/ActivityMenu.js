@@ -31,7 +31,7 @@ class ActivityMenu extends Component {
 
         <div className={styles.spacer}>
           {(display === 'drafts')
-          ? <DraftListContainer activtyId={this.props.activityId} />
+          ? <DraftListContainer activityId={this.props.activityId} />
           : null}
         </div>
       </div>
