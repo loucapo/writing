@@ -35,11 +35,14 @@ class ActivityPrompt extends Component {
     });
   };
 
-  render = () => {
+  render() {
     return (
-      <MLCard type="prompt" title="Assignment Prompt" role={this.props.role}>
-        <menu>
-          {this.state.editable
+      <MLCard
+        type="prompt"
+        title="Assignment Prompt"
+        role={this.props.role}
+        options={
+          (this.state.editable)
             ?
               <div>
                 <MLButton id="cancel" title="Cancel" dataId="prompt-cancel" handleClick={this.handleCancel} />
@@ -68,8 +71,8 @@ class ActivityPrompt extends Component {
                   />
                 </a>
               </div>
-          }
-        </menu>
+        }
+      >
         <div data-id="prompt-description">
           {(this.props.prompt || this.state.editable)
             ?
@@ -79,7 +82,7 @@ class ActivityPrompt extends Component {
         </div>
       </MLCard>
     );
-  };
+  }
 }
 
 ActivityPrompt.propTypes = {

@@ -11,51 +11,53 @@ import RubricContainer from 'Containers/RubricContainer';
 
 import styles from './activity.css';
 
-const Activity = ({role, activity, drafts}) => {
-  return (
-    <div className={styles.page}>
-      <Header title={activity.course} />
+const Activity = ({role, activity, draftCount}) => (
+  <div className={styles.page}>
+    <Header title={activity.course} />
 
-      <div className={styles.container}>
-        <div data-id="created-activity-alert" className={styles.spacer}>
-          <MLAlert
-            message={'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
-              '. This is in draft mode and will not be visible to students until you assign it.'}
-            alertType="success"
-            iconType="circle_check_outline"
-          />
+    <div className={styles.container}>
+      <div data-id="created-activity-alert" className={styles.spacer}>
+        <MLAlert
+          message={'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
+          '. This is in draft mode and will not be visible to students until you assign it.'}
+          alertType="success"
+          iconType="circle_check_outline"
+        />
 
-          <ActivityTitle role={role} title={activity.title} type={activity.type} />
+        <ActivityTitle role={role} title={activity.title} type={activity.type} />
 
-          <PromptContainer activityId={activity.id} role={role} />
+        <PromptContainer activityId={activity.id} role={role} />
 
-          <MLCard type="rubric" title="Final Rubric" role={role}>
-            <menu>
-              <a data-id="rubric-delete">
-                <MLIcon
-                  className={styles.deleteIcon}
-                  title="trash"
-                  type="trash"
-                  width="18"
-                  height="19"
-                  viewBox="0 0 24 24"
+        <MLCard
+          type="rubric"
+          title="Final Rubric"
+          role={role}
+          options={
+            <a data-id="rubric-delete">
+              <MLIcon
+                className={styles.deleteIcon}
+                title="trash"
+                type="trash"
+                width="18"
+                height="19"
+                viewBox="0 0 24 24"
                 />
-              </a>
-            </menu>
-            <RubricContainer activityId={activity.id} />
-          </MLCard>
-        </div>
-
-        <ActivityMenu drafts={drafts} role={role} />
+            </a>
+          }>
+          <RubricContainer activityId={activity.id} />
+        </MLCard>
       </div>
+
+      <ActivityMenu draftCount={draftCount} activityId={activity.id} />
+
     </div>
-  );
-};
+  </div>
+);
 
 Activity.propTypes = {
-  role: PropTypes.string,
+  role: PropTypes.string.isRequired,
   activity: PropTypes.object,
-  drafts: PropTypes.array
+  draftCount: PropTypes.number
 };
 
 export default Activity;

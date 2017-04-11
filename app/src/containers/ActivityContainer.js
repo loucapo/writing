@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
 import Activity from '../components/Activity/Activity';
-import { fetchActivityAction } from './../modules/activityModule';
+import {fetchActivityAction} from '../modules/activityModule';
 
 class ActivityContainer extends Component {
   componentWillMount() {
@@ -26,7 +26,8 @@ ActivityContainer.propTypes = {
   activity: PropTypes.object,
   activityId: PropTypes.string,
   fetchActivityAction: PropTypes.func,
-  drafts: PropTypes.array
+  openDraftFocusModal: PropTypes.func,
+  draftsCount: PropTypes.number
 };
 
 const mapStateToProps = (state) => {
@@ -36,7 +37,7 @@ const mapStateToProps = (state) => {
     role,
     activityId,
     activity: state.activities.find(x => x.id === activityId),
-    drafts: state.drafts
+    drafts: state.drafts.reduce((count, d) => {if (d.activityId === activityId) { count++; } }, 0)
   };
 };
 
