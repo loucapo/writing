@@ -30,11 +30,11 @@ exports.define = function(steps) {
 
   steps.given("I PUT '$body' into '$url' and receive status '$stat'", function(body, url, stat, done) {
     req.cookies = this.ctx.cookies;
-    var json = body;
+    var put_request = JSON.parse(body);
     request(marvin.config.baseUrl)
       .put(url)
       .set('Cookie',[cookies])
-      .send(json)
+      .send(put_request)
       .expect(parseInt(stat), done);
   });
 
