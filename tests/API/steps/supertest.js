@@ -2,7 +2,7 @@ var request = require('supertest');
 
 exports.define = function(steps) {
 
-  steps.given("I get a cookie '$stat'", function(stat, done) {
+  steps.given("I get a cookie and receive status '$stat'", function(stat, done) {
     this.ctx.cookies = [];
     cookies = this.ctx.cookies;
     request('http://wk-qa-2.mldev.cloud')
@@ -22,11 +22,24 @@ exports.define = function(steps) {
       .expect(parseInt(stat), done);
   });
 
-  steps.given("I hit google", function(done) {
-    request('https://www.google.com')
-      .get('/')
-      .expect(parseInt(200), done);
+  steps.given("I GET '$url' in incognito and receive status '$stat'", function(url, stat, done) {
+    request(marvin.config.baseUrl)
+      .get(url)
+      .expect(parseInt(stat), done);
   });
+
+  steps.given("I PUT '$body' into '$url' and receive status '$stat'", function(body, url, stat, done) {
+    req.cookies = this.ctx.cookies;
+    var json = body;
+    request(marvin.config.baseUrl)
+      .put(url)
+      .set('Cookie',[cookies])
+      .send(json)
+      .expect(parseInt(stat), done);
+  });
+
+
+
 
   steps.given("I send an empty POST body to '$url' and recieve status '$stat'", function(url, stat, done) {
       request(marvin.config.baseUrl)
