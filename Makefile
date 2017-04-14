@@ -80,11 +80,6 @@ kill-all:
 	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images -a -q) || echo "No more containers to remove."
 
-kill-all-but-bases:
-	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
-	docker rmi $$(docker images | grep -v -e ^wk_node -e ^postgres  | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
-	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
-
 kill-all-but-node:
 	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
 	docker rmi $$(docker images | grep -v -e ^wk_node | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
@@ -138,6 +133,11 @@ kill-logstash:
 	docker rmi $$(docker images | grep logstash | awk '{print $3}') 2>/dev/null || echo "No more containers to remove."
 	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
+killAllData:
+	cd ../wk_data
+	npm run killAllData
+	cd ../wk_compose
+
 kill-logging:	kill-elasticsearch kill-kibana kill-logstash
 
 
@@ -151,8 +151,11 @@ run:	docker-build-deps build-env-deps
 run-dev:	docker-build-deps build-env-deps
 	docker-compose -f docker/docker-compose-dev.yml up
 
-run-data:	docker-build-data build-env-data
-	docker-compose -f docker/docker-compose-data.yml up
+load-data:
+	cd ../wk_data && $(MAKE) load-data
+
+kill-data:
+	cd ../wk_data && $(MAKE) kill-data
 
 run-logging:	ecr-login
 	docker-compose -f docker/docker-compose-logging.yml up -d
