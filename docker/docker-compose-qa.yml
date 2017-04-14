@@ -2,7 +2,7 @@ version: "2"
 services:
   wk_frontend:
     image: ${wk_frontend_image}
-    command: npm start #top -b #
+    command: npm run startQA #top -b #
     env_file:
       - .env
     environment:
