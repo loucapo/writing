@@ -22,6 +22,12 @@ docker-build:
 run:	docker-build
 	docker-compose -f docker/docker-compose.yml up
 
+load-data:
+	npm run loadData
+
+kill-data:
+	npm run killAllData
+
 test:	docker-build
 	docker-compose -f docker/docker-compose-test.yml run --service-ports --rm $(CONTAINERNAME)
 
