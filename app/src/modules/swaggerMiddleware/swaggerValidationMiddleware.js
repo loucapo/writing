@@ -17,6 +17,7 @@ module.exports = function(compiler, validateMethods) {
         if (!compiledPath) {
           // if there is no single matching path, return 404 (not found)
           ctx.status = 404;
+          ctx.body = `No route was found in swagger.spec for ${ctx.path} with verb ${ctx.method}`;
           return;
         }
         // check the request matches the swagger schema
