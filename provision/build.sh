@@ -25,7 +25,7 @@ do
   DIR="${REPOS[$REPO]}"
   if [ -f "$DIR/docker/Dockerfile" ]; then
     DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/$DIR"
-    BAMBOO_BRANCHNAME="$bamboo_planRepository_branchName"
+    BAMBOO_BRANCHNAME="unity"
     BAMBOO_BUILDNUMBER="$bamboo_buildNumber"
     TAG="$BAMBOO_BRANCHNAME"_v"$BAMBOO_BUILDNUMBER"
 
@@ -45,7 +45,7 @@ do
       echo "$DOCKER_REPO:$TAG exists in the ECR skipping build process"
       echo "------------------------"
     fi
-    
+
     echo "Creating Build artifacts for $DIR" 
     mkdir -p artifacts/$DIR
     DOCKER_IMAGE_VAR=wk_"$DIR"_image
