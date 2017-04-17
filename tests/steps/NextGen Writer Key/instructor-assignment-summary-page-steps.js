@@ -95,6 +95,36 @@ exports.define = function(steps) {
       });
     page.activity_prompt_save.click();
   });
+
+  steps.then("I see '$rubric' is the '$number' element", function(elem,number) {
+    page.rubric_selection_content.getText().then(function(t) {
+      var content = t.split('\n');
+      expect(content[number]).to.contain(elem);
+    });
+  });
+
+  steps.then("I see '$rubric' is selected", function(elem) {
+    page.rubric_title.getText().then(function(t) {
+      expect(t).to.contain(elem);
+    });
+  });
+
+
+  steps.then("There is no rubric to preview", function() {
+    return new Promise(function(resolve, reject) {
+      var unordered_list_items = page.rubric_preview_list.findElements({css: "[class^='Rubric__table']"});
+    }).then(function(unordered_list_items) {
+      return unordered_list_items.length.should.equal(0);
+    });
+    });
+
+
+  steps.then("The '$elem' does not exist", function(elem) {
+    //expect(page.rubric_preview).to.not.exist;
+    page.rubric_preview.then(function(flags) {
+      expect(flags.length).to.equal(0);
+    });
+  });
 };
 
 
