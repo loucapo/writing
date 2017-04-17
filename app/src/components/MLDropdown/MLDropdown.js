@@ -52,13 +52,14 @@ class Dropdown extends Component {
 
   render = () => {
     let openClass = (this.state.showContents) ? ' ' + styles.dropdownOpen : '';
+    let openDataId = (this.state.showContents) ? this.props.openDataId : '';
     let dropdownClass = `${styles.dropdown}${openClass}`;
     // TODO: refactor into more mini components
     return (
-      <div>
-        <div className={dropdownClass} onClick={this.handleClick}>
+      <div data-id="rubric-dropdown">
+        <div className={dropdownClass} data-id={openDataId} onClick={this.handleClick}>
 
-          <ul className={styles.dropdownContent}>
+          <ul className={styles.dropdownContent} data-id={this.props.contentDataId}>
             {this.state.options.map((option, idx) => {
               return (
                 <li data-id={option.id} key={idx} onClick={() => this.selectOption(option)}>
@@ -106,7 +107,9 @@ Dropdown.propTypes = {
   options: PropTypes.array,
   onChange: PropTypes.func.isRequired,
   selected: PropTypes.string,
-  hideEmptyOption: PropTypes.bool
+  hideEmptyOption: PropTypes.bool,
+  contentDataId: PropTypes.string,
+  openDataId: PropTypes.string
 };
 
 export default Dropdown;

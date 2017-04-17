@@ -4,7 +4,7 @@ import styles from './rubric.css';
 
 const Rubric = ({rubric}) => {
   return rubric ? (
-    <section className={styles.table}>
+    <section data-id="rubric-preview" className={styles.table}>
       <header className={styles.row}>
         <div className={styles.headerTitle}>{rubric.title}</div>
         <div className={styles.header}>1 - Falls Below Expectations</div>
