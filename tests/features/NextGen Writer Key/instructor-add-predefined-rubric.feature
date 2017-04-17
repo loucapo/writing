@@ -1,5 +1,4 @@
 @WRITE-30
-  @only
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
 
   Scenario: The Instructor Sees Select Rubric Dropdown
