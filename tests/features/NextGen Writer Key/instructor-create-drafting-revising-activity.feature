@@ -26,6 +26,7 @@ Feature: Instructor Creates Drafting Revising Activity
     Then I do not see the green confirmation message
 
   #activity prompt description requires fresh activity for it to be a valid test. On hold
+
   Scenario: Activity Fields Created
     Given I visit the SLS create activity page
     And I should see a new assignment created
