@@ -4,11 +4,13 @@ module.exports = function(repository, sqlLibrary, domain, entityBuilders) {
       const keys = { id: activityId };
       let props = await repository(sqlLibrary.activity, 'getActivityById', keys);
       //check for activity
-      if (!props) {
+      let activity = props ? props[0] : undefined;
+      if (!activity) {
         throw new Error(`No activity found with id: ${activityId}`);
       }
-      props.drafts = await entityBuilders.DraftBuilder.getDraftsByActivityId(activityId);
-      return new domain.Activity(props);
+      activity.drafts = await entityBuilders.DraftBuilder.getDraftsByActivityId(activityId);
+
+      return new domain.Activity(activity);
     }
   };
 };

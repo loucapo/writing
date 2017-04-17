@@ -23,3 +23,8 @@ SET prompt = :prompt,
 modified_by_id = :modifiedById
 WHERE id = :id
 
+-- name: updateActivityRubric
+UPDATE activity
+SET rubric_id = :rubricId,
+modified_by_id = :modifiedById
+WHERE id = :id

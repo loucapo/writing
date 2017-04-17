@@ -3,7 +3,7 @@ module.exports = function(repository, sqlLibrary, entities) {
     async getDraftsByActivityId(activityId) {
       const keys = { activityId };
       let props = await repository(sqlLibrary.draft, 'getDraftsByActivityId', keys);
-      return props ? props.map(x => new entities.draft(x)) : [];
+      return props ? props.map(x => new entities.Draft(x)) : [];
     }
   };
 };

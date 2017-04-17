@@ -28,6 +28,13 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
         activity = new domain.Activity();
         let event = activity.createNewActivity(body);
         await repository(sqlLibrary.activity, 'createActivity', event);
+        let draftEvent = activity.addDraftToActivity({
+          index: 0,
+          createdById: ctx.state.user.user_data.id
+        });
+
+        await repository(sqlLibrary.draft, 'addDraftToActivity', draftEvent);
+
       }
       logger.debug(`Call to createActivity successful with following payload: ${JSON.stringify(body)}`);
 
@@ -47,6 +54,28 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
 
       await repository(sqlLibrary.activity, 'updateActivityPrompt', event);
 
+      ctx.status = 200;
+      ctx.body = {
+        status: ctx.status,
+        success: true
+      };
+      return ctx;
+    },
+
+    async updateActivityRubric(ctx) {
+      const body = ctx.request.body;
+      body.modifiedById = ctx.state.user.user_data.id;
+      let props = await repository(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id});
+      if (!props) {
+        ctx.errors = [`No activity found with id ${ctx.params.id}`];
+        ctx.status = 500;
+        return ctx;
+      }
+
+      let activity = new domain.Activity(props);
+      let event = activity.updateActivityRubric(body);
+      event.rubricId = event.rubricId.length > 16 ? event.rubricId : null;
+      await repository(sqlLibrary.activity, 'updateActivityRubric', event);
       ctx.status = 200;
       ctx.body = {
         status: ctx.status,

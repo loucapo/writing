@@ -39,27 +39,58 @@
           "required": true
         }
       ]
-    }
-  },
-  "addDraftToActivity": {
-    "title": "addDraftToActivity",
-    "properties": {
-      "activityId": {
-        "type": "string"
-      },
-      "instructions": {
-        "type": "string"
-      },
-      "index": {
-        "type": "number"
+    },
+    "updateActivityRubric": {
+      "title": "updateActivityRubric",
+      "properties": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "rubridId",
+          "in": "body",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "addDraftToActivity": {
+      "title": "addDraftToActivity",
+      "properties": {
+        "activityId": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number"
+        }
       }
-    }
-  },
-  "updateDraftInstructions": {
-    "title": "updateDraftInstructions",
-    "properties": {
-      "instructions": {
-        "type": "string"
+    },
+    "updateDraftInstructions": {
+      "title": "updateDraftInstructions",
+      "properties": {
+        "instructions": {
+          "type": "string"
+        }
+      }
+    },
+    "setDraftGoals": {
+      "title": "setDraftGoals",
+      "properties": {
+        "draftId": {
+          "type": "string"
+        },
+        "goals": {
+          "type": "array",
+          "maxItems": 6,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+
       }
     }
   }

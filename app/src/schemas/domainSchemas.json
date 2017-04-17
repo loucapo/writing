@@ -119,22 +119,13 @@
         "rubricLevel4": {
           "type": "string"
         },
-        "draftGoals1": {
+        "goalOption1": {
           "type": "string"
         },
-        "draftGoals2": {
+        "goalOption2": {
           "type": "string"
         },
-        "draftGoals3": {
-          "type": "string"
-        },
-        "draftGoals4": {
-          "type": "string"
-        },
-        "draftGoals5": {
-          "type": "string"
-        },
-        "draftGoals6": {
+        "goalOption3": {
           "type": "string"
         },
         "createdById": {

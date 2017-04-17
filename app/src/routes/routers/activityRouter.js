@@ -111,6 +111,35 @@ module.exports = function activityRouter(koarouter, controllers) {
       controllers.draftController.getDraftsByActivityId
     );
 
+    /**
+     * @swagger
+     * /activity/{id}/rubric:
+     *   put:
+     *     x-name: putActivityRubric
+     *     description: Update the activity rubric
+     *     operationId: putActivityRubric
+     *     parameters:
+     *       - name: id
+     *         in: path
+     *         type: string
+     *         required: true
+     *       - name: prompt
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/updateActivityRubric"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/standardSuccessResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put('/activity/:id/rubric', controllers.activityController.updateActivityRubric);
+
     appRouter.use(router.routes(), router.allowedMethods());
   };
 };

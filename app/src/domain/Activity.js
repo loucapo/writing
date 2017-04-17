@@ -34,9 +34,22 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
       return event;
     }
 
+    updateActivityRubric(cmd) {
+      const event = this.mapper(cmd);
+      this.raiseEvent({
+        eventName: 'activityPromptRubric',
+        event
+      });
+      return event;
+    }
     addDraftToActivity(cmd) {
       // check business rules here
+
+      //TODO need to update the indexs here
+      //TODO need to update the indexs here
+
       cmd.draftId = uuid.v4();
+      cmd.activityId = this.id;
       let draft = new entities.Draft(cmd);
       this.drafts.push(draft);
 
@@ -82,6 +95,19 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
 
       let result = {event, drafts: this.drafts};
       return result;
+    }
+
+    setDraftGoals(cmd) {
+      let draft = this.drafts.find(x => x.id === cmd.draftId);
+      invariant(draft, `No draft with id: ${cmd.draftId} could be found`);
+      let event = {
+        activityId: this.id,
+        draftId: cmd.draftId
+      };
+      let result = draft.setDraftGoals(cmd);
+      event.goalsAdded = result.addGoals;
+      event.goalsRemoved = result.removeGoals;
+      return event;
     }
 
 

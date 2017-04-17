@@ -2,14 +2,12 @@
 INSERT INTO draft
     (id,
     activity_id,
-    instructions,
     index,
     created_by_id,
     created_date)
 VALUES
-    (:id,
+    (:draftId,
     :activityId,
-    :instructions,
     :index,
     :createdById,
     now())
@@ -30,3 +28,20 @@ WHERE id = :id;
 SELECT *
 FROM draft
 WHERE activity_id = :activityId
+
+-- name: addGoalToDraft
+INSERT INTO draft_criteria
+    (draft_id,
+    criteria_id)
+VALUES
+    (:draftId,
+    :goalId)
+
+-- name: removeGoalFromDraft
+DELETE FROM draft_criteria
+where draft_id = :draftId
+    AND criteria_id = :goalId
+
+-- name: getDraftCriteria
+SELECT * FROM draft_criteria
+

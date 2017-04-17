@@ -1,4 +1,4 @@
-module.exports = function routes(koarouter, routers, controllers) {
+module.exports = function routes(koarouter, routers_array, controllers) { // eslint-disable-line camelcase
   return function module(app) {
     const router = koarouter();
     /**
@@ -29,8 +29,7 @@ module.exports = function routes(koarouter, routers, controllers) {
       controllers.indexController.index
     );
 
-    routers.activityRouter(router);
-    routers.draftRouter(router);
+    routers_array.forEach(r => r(router)); // eslint-disable-line camelcase
 
     app.use(router.routes());
     app.use(router.allowedMethods());
