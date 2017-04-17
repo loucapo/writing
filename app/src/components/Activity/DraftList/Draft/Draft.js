@@ -20,11 +20,17 @@ class Draft extends Component {
         <section className={styles.draftType}>
           <div data-id="review-type-dropdown" className={styles.draftTypeLeft}>
             <div className={styles.subheader}>Review Type</div>
-            <MLDropdown title={this.props.draft && this.props.draft.type || 'Instructor Review'} onChange={()=>{}} />
+            <MLDropdown
+              title={this.props.draft && this.props.draft.type || 'Instructor Review'}
+              onChange={()=>{}}
+            />
           </div>
           <div data-id="grade-type-dropdown">
             <div className={styles.subheader}>Grade Type*</div>
-            <MLDropdown title={this.props.draft && this.props.draft.gradeType || 'Select Grade Type'} onChange={()=>{}} />
+            <MLDropdown
+              title={this.props.draft && this.props.draft.gradeType || 'Select Grade Type'}
+              onChange={()=>{}}
+            />
           </div>
         </section>
 

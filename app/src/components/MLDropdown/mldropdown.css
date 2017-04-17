@@ -79,8 +79,10 @@
 .dropdownOpen ul.dropdownContent {
   display: block;
   visibility: visible;
-  opacity: 1 !important;
-  top: -5px !important;
+  opacity: 1;
+  top: 5px;
+  max-height: 344px;
+  overflow-y: scroll;
 }
 
 .dropdownOpen .dropdownTitle {

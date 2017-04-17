@@ -1,0 +1,37 @@
+@import 'variables.css';
+
+.table {
+  border: 1px solid var(--gray-medium);
+  border-width: 1px 0 0 1px;
+  display: table;
+  margin-top: 10px;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.row {
+  display: table-row;
+}
+
+.cell {
+  border: 1px solid var(--gray-medium);
+  border-width: 0 1px 1px 0;
+  display: table-cell;
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.header {
+  composes: cell;
+  background-color: var(--gray-very-light);
+  color: var(--gray-dark);
+}
+
+header .header {
+  vertical-align: middle;
+}
+
+.headerTitle {
+  composes: header;
+  font-weight: bold;
+}

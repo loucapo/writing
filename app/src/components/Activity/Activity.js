@@ -2,19 +2,16 @@ import React, {PropTypes} from 'react';
 import moment from 'moment';
 import Header from '../Header/Header';
 import MLAlert from '../MLAlert/MLAlert';
-import MLCard from '../MLCard/MLCard';
-import MLIcon from 'ml-react-cdl-icons';
 import ActivityTitle from './ActivityTitle/ActivityTitle';
 import ActivityMenu from './ActivityMenu/ActivityMenu';
 import PromptContainer from 'Containers/PromptContainer';
-import RubricContainer from 'Containers/RubricContainer';
+import RubricSectionContainer from 'Containers/RubricSectionContainer';
 
 import styles from './activity.css';
 
 const Activity = ({role, activity, draftCount}) => (
   <div className={styles.page}>
     <Header title={activity.course} />
-
     <div className={styles.container}>
       <div data-id="created-activity-alert" className={styles.spacer}>
         <MLAlert
@@ -28,28 +25,11 @@ const Activity = ({role, activity, draftCount}) => (
 
         <PromptContainer activityId={activity.id} role={role} />
 
-        <MLCard
-          type="rubric"
-          title="Final Rubric"
-          role={role}
-          options={
-            <a data-id="rubric-delete">
-              <MLIcon
-                className={styles.deleteIcon}
-                title="trash"
-                type="trash"
-                width="18"
-                height="19"
-                viewBox="0 0 24 24"
-                />
-            </a>
-          }>
-          <RubricContainer activityId={activity.id} />
-        </MLCard>
+        <RubricSectionContainer activityId={activity.id} rubricId={activity.rubricId} role={role} />
+
       </div>
 
       <ActivityMenu draftCount={draftCount} activityId={activity.id} />
-
     </div>
   </div>
 );
@@ -57,7 +37,8 @@ const Activity = ({role, activity, draftCount}) => (
 Activity.propTypes = {
   role: PropTypes.string.isRequired,
   activity: PropTypes.object,
-  draftCount: PropTypes.number
+  draftCount: PropTypes.number,
+  updateActivityRubric: PropTypes.func
 };
 
 export default Activity;

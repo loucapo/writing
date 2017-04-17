@@ -4,6 +4,7 @@ import { requestStates } from '../sagas/requestSaga';
 
 const ACTIVITY = requestStates('activity');
 const ACTIVITY_PROMPT = requestStates('activity_prompt');
+const ACTIVITY_RUBRIC = requestStates('activity_rubric');
 
 // Reducer
 export default (state = [], action) => {
@@ -23,6 +24,11 @@ export default (state = [], action) => {
         }
         return x;
       });
+    }
+    case ACTIVITY_RUBRIC.SUCCESS: {
+      let body = JSON.parse(action.action.params.body);
+      let activity = state.find(x => x.id === body.id);
+      return [{...activity, rubricId: body.rubricId}, ...state];
     }
     case ACTIVITY.FAILURE: {
       return state;
@@ -45,7 +51,7 @@ export function fetchActivityAction(id) {
   };
 }
 
-// Send Action
+// Send Actions
 export function updateActivityPrompt(_body) {
   return {
     type: ACTIVITY_PROMPT.REQUEST,
@@ -57,3 +63,17 @@ export function updateActivityPrompt(_body) {
     }
   };
 }
+
+export function updateActivityRubric(_body) {
+  return {
+    type: ACTIVITY_RUBRIC.REQUEST,
+    states: ACTIVITY_RUBRIC,
+    url: `${config.apiUrl}activity/${_body.id}/rubric`,
+    params: {
+      method: 'PUT',
+      body: _body
+    }
+  };
+}
+
+

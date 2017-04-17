@@ -4,3 +4,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.labelText {
+  color: var(--gray-dark);
+}

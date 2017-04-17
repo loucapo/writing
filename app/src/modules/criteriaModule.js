@@ -2,12 +2,12 @@ import {config} from '../utilities/configValues';
 import reducerMerge from './../utilities/reducerMerge';
 import { requestStates } from '../sagas/requestSaga';
 
-const GET_RUBRICS = requestStates('get_rubrics');
+const GET_CRITERIA = requestStates('get_criteria');
 
 // Reducer
 export default (state = [], action) => {
   switch (action.type) {
-    case GET_RUBRICS.SUCCESS: {
+    case GET_CRITERIA.SUCCESS: {
       return reducerMerge(state, action.result.payload);
     }
     default: {
@@ -16,11 +16,11 @@ export default (state = [], action) => {
   }
 };
 
-export function getRubricList() {
+export function getCriteria() {
   return {
-    type: GET_RUBRICS.REQUEST,
-    states: GET_RUBRICS,
-    url: `${config.apiUrl}rubric`,
+    type: GET_CRITERIA.REQUEST,
+    states: GET_CRITERIA,
+    url: `${config.apiUrl}criteria`,
     params: {
       method: 'GET'
     }
