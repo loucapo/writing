@@ -12,8 +12,13 @@ class DraftGoalForm extends Component {
   setSelectedGoals = (field) => {
     if(!field.target.checked) {
       let selectedGoals = this.state.selectedGoals;
-      let index = selectedGoals.indexOf(JSON.parse(field.target.value));
-      selectedGoals.splice(index, 1);
+      let fieldId = JSON.parse(field.target.value).id;
+
+      selectedGoals.forEach((selectedGoal, index) => {
+        if (selectedGoal.id === fieldId) {
+          selectedGoals.splice(index, 1);
+        }
+      });
       this.setState({selectedGoals});
     } else if(this.state.selectedGoals.length >= 6) {
       field.target.checked = false;
@@ -24,6 +29,7 @@ class DraftGoalForm extends Component {
 
   handleSave = (event) => {
     event.preventDefault();
+    this.props.closeModal();
     this.props.setDraftGoals(
       this.props.activityId,
       this.props.draftId,
