@@ -26,7 +26,8 @@ do
   if [ -f "$DIR/docker/Dockerfile" ]; then
     DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/$DIR"
     BAMBOO_BRANCHNAME="unity"
-    BAMBOO_BUILDNUMBER="$bamboo_buildNumber"
+    BAMBOO_BUILDNUMBER=$(cd $DIR && git rev-parse HEAD)
+    BAMBOO_BUILDNUMBER=${BAMBOO_BUILDNUMBER:(-7)}
     TAG="$BAMBOO_BRANCHNAME"_v"$BAMBOO_BUILDNUMBER"
 
     echo "Let's Check if the image exists in the ECR"
