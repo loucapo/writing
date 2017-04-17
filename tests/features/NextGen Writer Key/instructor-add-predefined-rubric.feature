@@ -40,7 +40,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     When I click a 'rubric_selection'
     When I click a 'rubric_option_2'
     Then I see 'Analysis' is selected
-@only
+
   Scenario: The Instructor Unselects Rubric
     Given I visit the SLS create activity page
     When I click a 'rubric_selection'
