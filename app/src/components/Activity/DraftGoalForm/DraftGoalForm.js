@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import DraftGoalField from './DraftGoalField/DraftGoalField';
+import DraftGoalField from './DraftGoalField/draftGoalField';
 import MLButton from '../../MLButton/MLButton';
 
 import styles from './draftGoalForm.css';
