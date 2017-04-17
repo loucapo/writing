@@ -1,54 +1,27 @@
-import React, {Component, PropTypes} from 'react';
-import MLIcon from 'ml-react-cdl-icons';
+import React, {PropTypes} from 'react';
+import AccordionCard from './AccordionCard/AccordionCard';
 
-import styles from './mlaccordion.css';
+import styles from './mlAccordion.css';
 
-class MLAccordion extends Component {
-  state = {
-    showContents: false
-  };
-
-  toggleContents = () => {
-    this.setState({
-      showContents: !this.state.showContents
-    });
-  }
-
-  handleClick = () => {
-    this.toggleContents();
-  };
-
-  render = () => {
-
-    let openClass = (this.state.showContents) ? ' ' + styles.open : '';
-    let iconType = (this.state.showContents) ? 'minus' : 'plus';
-    let accordionClass = `${styles.container}${openClass}`;
-
-    return (
-      <div className={accordionClass}>
-        <div className={styles.title} onClick={this.handleClick} data-id={this.props.type}>
-          <MLIcon
-            className={styles.icon}
-            title="expand"
-            type={iconType}
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
+const Accordion = ({list}) => (
+  <ul className={styles.container}>
+    {
+      list.map((card) => (
+        <li className={styles.border}>
+          <AccordionCard
+            title={card.title}
+            content={card.content}
+            dataId={card.dataId}
+            key={card.dataId}
           />
-          {this.props.title}
-        </div>
-        <div className={styles.content}>
-          {this.props.children}
-        </div>
-      </div>
-    );
-  };
-}
+        </li>
+      ))
+    }
+  </ul>
+);
 
-MLAccordion.propTypes = {
-  type: PropTypes.string,
-  title: PropTypes.string,
-  children: PropTypes.object
+Accordion.propTypes = {
+  list: PropTypes.array
 };
 
-export default MLAccordion;
+export default Accordion;

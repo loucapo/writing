@@ -65,6 +65,19 @@ const dummyCriteria = [
   }
 ];
 
+const dummyAccordionList = [
+  {
+    title: 'test',
+    content: 'content test',
+    dataId: 'test'
+  },
+  {
+    title: 'second test',
+    content: 'second content test',
+    dataId: 'second test'
+  }
+];
+
 class KitchenSink extends Component {
   state = {
     modalIsOpen: false
@@ -81,6 +94,7 @@ class KitchenSink extends Component {
   render() {
     return (
       <div className={styles.container}>
+
         {/*accordion component demo*/}
         <div className={styles.padder}>
           <h3>Accordion Component</h3>
@@ -94,7 +108,7 @@ class KitchenSink extends Component {
           </ol>
         </div>
         <div className="spacer">
-          <MLAccordion type="accordion-demo" title="Secret Infos">
+          <MLAccordion list={dummyAccordionList}>
             <div>
               Bacon isplum dollars arnet coalminer dorito plasmatron femur. Es stupor linen loin ostructo coma pabari
               el domino caro pepar un nyet valicori. Tosto prima venza por eppa par nappa nop op bop deh sizzla.
