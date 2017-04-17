@@ -10,6 +10,7 @@
     "migrate-new": "db-migrate --sql-file create",
     "loadData": "node app/src/loadData",
     "killAllData": "node app/src/killAllData",
+    "fullRefresh": "node app/src/killAllData; node app/src/index.js; node app/src/loadData",
     "lint": "eslint .",
     "validate": "npm ls"
   },
