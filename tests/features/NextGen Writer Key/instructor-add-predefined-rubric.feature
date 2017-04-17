@@ -1,12 +1,10 @@
 @WRITE-30
-  @only
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
 
   Scenario: The Instructor Sees Select Rubric Dropdown
     Given I visit the SLS create activity page
     Then I see the 'rubric_selection'
-@pending
-    #bug on the last step
+  @pending=WRITE-871
   Scenario: The Instructor Opens the Rubric Selector
     Given I visit the SLS create activity page
     When I click a 'rubric_selection'
