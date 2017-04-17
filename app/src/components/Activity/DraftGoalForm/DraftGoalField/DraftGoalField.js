@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import MLIcon from 'ml-react-cdl-icons';
 
-import styles from './DraftGoalField.css';
+import styles from './draftGoalField.css';
 
 class DraftGoalField extends Component {
   state = {
