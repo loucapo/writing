@@ -1,7 +1,7 @@
 version: "2"
 services:
   selenium-grid:
-    image: elgalu/selenium
+    image: elgalu/selenium:3.0.1-p9
     env_file:
       - ./.env
     ports:
@@ -14,8 +14,8 @@ services:
     image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/test:latest
     env_file:
       - ./.env
-    command: /bin/sh -c "sleep 30; npm test"
+    command: /bin/sh -c "sleep 5; cat dev.config.json; node -v; cat package.json; yarn test"
     volumes_from:
       - selenium-grid
-    links: 
+    links:
       - selenium-grid
