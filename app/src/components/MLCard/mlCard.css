@@ -1,6 +1,5 @@
 @import 'variables.css';
 
-
 .card {
   background-color: var(--white);
   -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
@@ -12,18 +11,6 @@
   padding: var(--global-padding);
   width: 100%;
 }
-
-h1 {
-  align-items: center;
-  border-bottom: 1px solid var(--gray-light);
-  display: flex;
-  @apply --font-18;
-  justify-content: space-between;
-  margin: 0;
-  height: 70px;
-  padding: 0 var(--padding);
-}
-
 
 .body {
   padding: 18px var(--padding);

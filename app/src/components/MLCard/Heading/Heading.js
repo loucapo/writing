@@ -7,7 +7,7 @@ import styles from './heading.css';
 class Heading extends Component {
   render = () => {
     return (
-      <h1 data-id={`${this.props.type}-section`}>
+      <h1 className={styles.heading} data-id={`${this.props.type}-section`}>
         <span>
           <MLIcon
             className={styles.collapseIcon}

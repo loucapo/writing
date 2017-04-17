@@ -30,9 +30,23 @@
   margin-left: 10px;
 }
 
-.draftFocus {
+.draftGoalsHeading {
   display: flex;
   align-items: center;
+}
+
+.draftGoalsList {
+  border: 1px solid var(--gray-light);
+  border-bottom: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.draftGoalsList li {
+  display: flex;
+  border-bottom: 1px solid var(--gray-light);
+  padding: 10px;
 }
 
 .flex {
@@ -52,4 +66,9 @@
   align-items: center;
   display: flex;
   margin-top: 40px;
+}
+
+.comment {
+  fill: var(--blue);
+  margin-right: 5px;
 }

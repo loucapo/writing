@@ -2,7 +2,8 @@ import React, {PropTypes, Component} from 'react';
 import MLIcon from 'ml-react-cdl-icons';
 import MLDropdown from '../../../MLDropdown/MLDropdown';
 import InstructorControlsContainer from '../../../InstructorControlsContainer/InstructorControlsContainer';
-import DraftGoalModal from './../../../MLModal/Modals/DraftGoalModal';
+import DraftGoalModalContainer from './../../../../containers/DraftGoalModalContainer';
+
 import styles from './draft.css';
 
 class Draft extends Component {
@@ -37,9 +38,9 @@ class Draft extends Component {
         <section className={styles.draftDetails}>
           <div className={styles.draftDetailsLeft}>
             <h4 className={styles.flex}>
-              <div className={styles.draftFocus}>
-                Draft Focus
-                <span data-id="draft-focus-help">
+              <div className={styles.draftGoalsHeading}>
+                Draft Goals
+                <span data-id="draft-goal-help">
                   <MLIcon
                     className={styles.help}
                     title="help"
@@ -53,7 +54,7 @@ class Draft extends Component {
               {/* shouldn't all the draft stuff be in here? doesn't this encapsulate the role check?*/}
               <InstructorControlsContainer role={this.props.role}>
                 <span className={styles.controls}>
-                  <span data-id="draft-focus-edit">
+                  <span data-id="draft-goal-edit">
                     <MLIcon
                       title="edit"
                       type="edit"
@@ -62,7 +63,7 @@ class Draft extends Component {
                       viewBox="0 0 24 24"
                     />
                   </span>
-                  <span data-id="draft-focus-delete">
+                  <span data-id="draft-goal-delete">
                     <MLIcon
                       title="trash"
                       type="trash"
@@ -74,12 +75,34 @@ class Draft extends Component {
                 </span>
               </InstructorControlsContainer>
             </h4>
-            {
-              this.props.draft && this.props.draft.goals
-                ? null
-                : <a data-id="add-draft-goal" onClick={this.toggleGoalsModal}>Click to Add Draft Goals</a>
-            }
-            <DraftGoalModal closeModal={this.toggleGoalsModal} isOpen={this.state.goalsModalIsOpen} />
+            <ul className={styles.draftGoalsList}>
+              {
+                this.props.draft.goals && this.props.draft.goals.length > 0
+                  ?
+                    this.props.draft.goals.map((title, index) => (
+                      <li key={index}>
+                        <MLIcon
+                          className={styles.comment}
+                          title="comment"
+                          type="comment"
+                          width="23"
+                          height="24"
+                          viewBox="0 0 24 24"
+                        />
+                        {title}
+                      </li>
+                    ))
+                  :
+                    <li>
+                      <a data-id="add-draft-goal" onClick={this.toggleGoalsModal}>Click to Add Draft Goals</a>
+                    </li>
+              }
+            </ul>
+            <DraftGoalModalContainer
+              draftId={this.props.draft.id}
+              activityId={this.props.draft.activityId}
+              closeModal={this.toggleGoalsModal}
+              isOpen={this.state.goalsModalIsOpen} />
           </div>
           {/*
            <div className={styles.rightLinks}>

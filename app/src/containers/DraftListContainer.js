@@ -21,13 +21,16 @@ DraftListContainer.propTypes = {
 const mapStateToProps = (state, props) => {
   const role = state.auth.role;
   const drafts = state.drafts.filter(x => x.activityId === props.activityId);
+  const draftsWithGoals = drafts.map(x => {
+    if (!x.goals) {return x;}
+    const goals = x.goals.map(y => state.criteria.find(z => z.id === y).title);
+    return {...x, goals};
+  });
   return {
     role,
     activityId: props.activityId,
-    drafts
+    drafts: draftsWithGoals
   };
 };
 
 export default connect(mapStateToProps, {fetchDraftsForActivity})(DraftListContainer);
-
-

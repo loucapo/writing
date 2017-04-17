@@ -17,7 +17,7 @@ const MLModal = (props) => {
       onClick={handleBackgroundClick}>
 
       <div className={styles.modalWrapper}>
-        <h1>
+        <h1 className={styles.heading}>
           {props.title}
 
           <a onClick={props.closeModal}>
