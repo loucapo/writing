@@ -24,8 +24,7 @@
   "browsers": [
     {"browserName": "chrome",
      "chromeOptions": {
-       "args": ["--no-sandbox"]}},
-    { "browserName": "firefox"}],
+       "args": ["--no-sandbox"]}}],
 
   "screenSize": {
     "x": 1600,

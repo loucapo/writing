@@ -2,6 +2,7 @@
 @Cleanup
   # all tests are sharing the same default assignment and we don't have an out-of-test-band way to clean it up and reset it- remove reset step and refactor tests once we do
 Feature: Instructor Can Add Description in Activity Prompt
+  @pending=WRITE-872
   Scenario: The Instructor Adds Activity Prompt
     Given I visit the SLS create activity page
     When I click a 'add_activity_prompt_link'
@@ -61,7 +62,7 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click the "activity_prompt_save"
     Then Text "happy" should have italicized styling
     And Text "happy" should have bold styling
-
+  @Bug
   Scenario: WYSIWYG Display Cancel
     Given I visit the SLS create activity page
     And I click a 'activity_prompt_edit'
@@ -108,6 +109,7 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I reset the assignment prompt for the next test
 
     #Not a test case but need to reset the assignment prompt after each run - ensure to make sure if other tests break, at end will still clear
+  @Bug
   Scenario: Clear Activity Prompt
     Given I visit the SLS create activity page
     And I click a 'activity_prompt_edit'
