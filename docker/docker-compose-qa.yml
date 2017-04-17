@@ -2,7 +2,7 @@ version: "2"
 services:
   wk_data:
     image: ${wk_data_image}
-    command: npm start #top -b #
+    command: npm run fullRefresh #top -b #
     env_file:
       - ./.env
     container_name: wk_data
