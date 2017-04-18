@@ -452,15 +452,6 @@ var dataSpec = {
       modified_date: null
     },
     {
-      id: "823955a1-0a8e-42cc-b24c-cb30afcac93f",
-      title: "Argument",
-      description: "r. Organa watto skywalker c-3p0 windu. Mon aayla yoda mon hutt darth. Kamino vader coruscant maul darth mon darth darth. K-3po dantooine jinn dooku fett ",
-      created_by_id: "cc8f166e-f4de-438e-acae-fbe643553371",
-      created_date: "2017-04-10",
-      modified_by_id: null,
-      modified_date: null
-    },
-    {
       id: "c105736c-c330-487c-be74-5a2c983095cc",
       title: "Narrative",
       description: "uscant maul darth mon darth darth. K-3po dantooine jinn dooku fett darth jawa palpatine wedge. Jade organa darth chewbacca ",
