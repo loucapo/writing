@@ -24,29 +24,36 @@ for REPO in "${!REPOS[@]}"
 do
   DIR="${REPOS[$REPO]}"
   if [ -f "$DIR/docker/Dockerfile" ]; then
-    echo "Building wk/$DIR Docker image"
     DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/$DIR"
-    BAMBOO_BRANCHNAME="$bamboo_planRepository_branchName"
-    BAMBOO_BUILDNUMBER="$bamboo_buildNumber"
+    BAMBOO_BRANCHNAME="unity"
+    BAMBOO_BUILDNUMBER=$(cd $DIR && git rev-parse HEAD)
+    BAMBOO_BUILDNUMBER=${BAMBOO_BUILDNUMBER:(-7)}
     TAG="$BAMBOO_BRANCHNAME"_v"$BAMBOO_BUILDNUMBER"
-    docker rmi wk/$DIR
-    docker build -t wk/$DIR -f $DIR/docker/Dockerfile $DIR/
-    
-    echo "Publishing $DOCKER_REPO:$TAG to the ECR"
-    docker tag wk/$DIR:latest $DOCKER_REPO:$TAG
-    docker push $DOCKER_REPO:$TAG
-    
+
+    echo "Let's Check if the image exists in the ECR"
+    IMAGE_CHECK=$(aws ecr list-images --repository-name wk/$DIR --profile $AWS_PROFILE | grep -w "$TAG")
+    if [ -z "${IMAGE_CHECK}" ]; then
+      echo "Building wk/$DIR Docker image"
+      docker rmi wk/$DIR
+      docker build -t wk/$DIR -f $DIR/docker/Dockerfile $DIR/
+      
+      echo "Publishing $DOCKER_REPO:$TAG to the ECR"
+      docker tag wk/$DIR:latest $DOCKER_REPO:$TAG
+      docker push $DOCKER_REPO:$TAG
+      echo "$DIR build is complete!"
+      echo "------------------------"
+    else
+      echo "$DOCKER_REPO:$TAG exists in the ECR skipping build process"
+      echo "------------------------"
+    fi
+
     echo "Creating Build artifacts for $DIR" 
     mkdir -p artifacts/$DIR
     DOCKER_IMAGE_VAR=wk_"$DIR"_image
     echo "$DOCKER_IMAGE_VAR=$DOCKER_REPO:$TAG" > artifacts/$DIR/.env
     cp $DIR/docker/docker-compose-qa.yml artifacts/$DIR/docker-compose.yml
     cp $DIR/docker/.env.example artifacts/$DIR/.env.example
-    
-    echo "$DIR build is complete!"
-    echo "------------------------"
   fi
 done
 
 echo "All Docker Images have been built and deploy artifacts have been created, Happy deploying!"
-
