@@ -14,8 +14,10 @@ services:
     image: 999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/test:latest
     env_file:
       - ./.env
-    command: /bin/sh -c "sleep 5; cat dev.config.json; node -v; cat package.json; yarn test"
+    command: /bin/sh -c "sleep 12; yarn test -- --test_env bambooqa"
     volumes_from:
       - selenium-grid
     links:
       - selenium-grid
+    volumes:
+      - ./reports:/home/current/reports
