@@ -1,4 +1,5 @@
 @WRITE-29
+  @WRITE-94
 Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
   Scenario: Instructor sees option to add draft goals
     Given I visit the SLS create activity page
@@ -86,4 +87,44 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click a 'seventh_draft_goal'
     Then 'draft_goal_summary list' should have 'six' goal
 
-  _
+  Scenario: Instructor edits draft goal
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_goals_button'
+    And I click a 'first_draft_goal'
+    And I click a 'draft_goal_save'
+    And I click a 'draft_goal_edit'
+    Then 'draft_goal_summary_list' should have 'one' goal
+    And 'first_draft_goal' should be selected in 'draft_goal_list'
+
+  Scenario: Instructor edits to add draft goal
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_goals_button'
+    And I click a 'first_draft_goal'
+    And I click a 'draft_goal_save'
+    And I click a 'draft_goal_edit'
+    And I click a 'second_draft_goal'
+    And I click a 'draft_goal_save'
+    Then 'draft_goal_summary list' should have 'two' goal
+
+  Scenario: Instructor edits to cancel draft goal
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_goals_button'
+    And I click a 'first_draft_goal'
+    And I click a 'draft_goal_save'
+    And I click a 'draft_goal_edit'
+    And I click a 'second_draft_goal'
+    And I click a 'draft_goal_cancel'
+    Then 'draft_goal_summary list' should have 'one' goal
+    Then I do not see the 'draft_goal_popup'
+
+  Scenario: Instructor edits to remove draft goal
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_goals_button'
+    And I click a 'first_draft_goal'
+    And I click a 'fifth_draft_goal'
+    And I click a 'sixth_draft_goal'
+    And I click a 'draft_goal_save'
+    And I click a 'draft_goal_edit'
+    And I click a 'first_draft_goal'
+    And I click a 'draft_goal_save'
+    Then 'draft_goal_summary list' should have 'two' goal
