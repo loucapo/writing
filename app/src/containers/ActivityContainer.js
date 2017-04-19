@@ -36,11 +36,13 @@ ActivityContainer.propTypes = {
 const mapStateToProps = (state) => {
   const role = state.auth.role;
   const activityId = state.auth.activity.activityId;
+  let draftCount = state.drafts.filter(d => d.activityId === activityId).length;
+
   return {
     role,
     activityId,
     activity: state.activities.find(x => x.id === activityId),
-    drafts: state.drafts.reduce((count, d) => {if (d.activityId === activityId) { count++; } }, 0)
+    draftCount
   };
 };
 
