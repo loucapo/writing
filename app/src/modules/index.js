@@ -9,7 +9,7 @@ import resourceLinks from './resourceLinksModule';
 import auth from './authModule';
 
 export {activityAction} from './activityModule';
-export {fetchStudentSubmissionAction, submissionOnChange} from './studentSubmissionModule';
+export {getStudentSubmissionAction, submissionOnChange} from './studentSubmissionModule';
 export {submitFeedbackToolContentItem} from './feedbackToolContentModule';
 
 export default {

@@ -136,7 +136,7 @@ export default (state = [dummyData], action) => {
 };
 
 // Action
-export function fetchStudentSubmissionAction(id) {
+export function getStudentSubmissionAction(id) {
   let apiUrl = config.apiUrl + 'studentSubmission/' + id;
   return {
     [CALL_API]: {

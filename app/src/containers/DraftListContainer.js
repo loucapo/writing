@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchDraftsForActivity } from './../modules/draftModule';
+import { getDraftsForActivity } from './../modules/draftModule';
 import DraftList from '../components/Activity/DraftList/DraftList';
 
 class DraftListContainer extends Component {
   componentWillMount() {
-    this.props.fetchDraftsForActivity(this.props.activityId);
+    this.props.getDraftsForActivity(this.props.activityId);
   }
 
   render() {
@@ -15,7 +15,7 @@ class DraftListContainer extends Component {
 
 DraftListContainer.propTypes = {
   activityId: PropTypes.string,
-  fetchDraftsForActivity: PropTypes.func
+  getDraftsForActivity: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
@@ -33,4 +33,4 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, {fetchDraftsForActivity})(DraftListContainer);
+export default connect(mapStateToProps, {getDraftsForActivity})(DraftListContainer);

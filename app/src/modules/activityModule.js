@@ -40,7 +40,7 @@ export default (state = [], action) => {
 };
 
 // Fetch Action
-export function fetchActivityAction(id) {
+export function getActivity(id) {
   return {
     type: ACTIVITY.REQUEST,
     states: ACTIVITY,

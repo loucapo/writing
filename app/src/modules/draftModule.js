@@ -29,7 +29,7 @@ export default (state = [], action) => {
 
 
 // Fetch Action
-export function fetchDraftsForActivity(activityId) {
+export function getDraftsForActivity(activityId) {
   return {
     type: DRAFTS_FOR_ACTIVITY.REQUEST,
     states: DRAFTS_FOR_ACTIVITY,

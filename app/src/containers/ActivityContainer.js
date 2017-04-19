@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Activity from '../components/Activity/Activity';
-import {fetchActivityAction} from '../modules/activityModule';
+import {getActivity} from '../modules/activityModule';
 import { getCriteria } from '../modules/criteriaModule';
 
 class ActivityContainer extends Component {
@@ -11,7 +11,7 @@ class ActivityContainer extends Component {
 
   loadData() {
     if (this.props.activityId) {
-      this.props.fetchActivityAction(this.props.activityId);
+      this.props.getActivity(this.props.activityId);
       this.props.getCriteria();
     }
   }
@@ -27,7 +27,7 @@ class ActivityContainer extends Component {
 ActivityContainer.propTypes = {
   activity: PropTypes.object,
   activityId: PropTypes.string,
-  fetchActivityAction: PropTypes.func,
+  getActivity: PropTypes.func,
   getCriteria: PropTypes.func,
   openDraftFocusModal: PropTypes.func,
   draftsCount: PropTypes.number
@@ -46,4 +46,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {getCriteria, fetchActivityAction})(ActivityContainer);
+export default connect(mapStateToProps, {getCriteria, getActivity})(ActivityContainer);
