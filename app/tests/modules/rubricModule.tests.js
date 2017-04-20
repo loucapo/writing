@@ -1,5 +1,6 @@
 import mut from './../../src/modules/rubricModule';
-import {RUBRIC_SUCCESS, RUBRIC_ON_CHANGE} from './../../src/modules/rubricModule';
+import {GET_RUBRICS} from './../../src/modules/rubricModule';
+import uuid from 'uuid';
 
 import chai from 'chai';
 var expect = chai.expect;
@@ -9,6 +10,7 @@ describe('RUBRIC MODULE REDUCER', () => {
   const data = () => {
 
     let rubric1 = {
+      id: uuid.v4(),
       categoryNames: [
         {
           text: 'Argument Essay',
@@ -85,6 +87,7 @@ describe('RUBRIC MODULE REDUCER', () => {
       ]
     };
     let rubric2 = {
+      id: uuid.v4(),
       categoryNames: [
         {
           text: 'Burrito Essay',
@@ -170,61 +173,59 @@ describe('RUBRIC MODULE REDUCER', () => {
     let action1;
     let action2;
     let action3;
-
     beforeEach(() => {
+      ({rubric1, rubric2} = data());
+
       action1 = {
-        type: RUBRIC_SUCCESS,
-        payload: {
-          data: {}
+        type: GET_RUBRICS.SUCCESS,
+        result: {
+          payload: {}
         }
       };
 
       action2 = {
-        type: RUBRIC_SUCCESS,
-        payload: {
-          data: {
-            rubric: rubric1
-          }
+        type: GET_RUBRICS.SUCCESS,
+        result: {
+          payload:  rubric1
         }
       };
 
       action3 = {
-        type: RUBRIC_SUCCESS,
-        payload: {
-          data: {
-            rubric: rubric2
-          }
+        type: GET_RUBRICS.SUCCESS,
+        result: {
+          payload: rubric2
         }
       };
-      ({rubric1, rubric2} = data());
     });
 
     context('when initial state and action are empty', () => {
       it('should return an empty object', () => {
         let result = mut(undefined, action1);
-        Object.keys(result).length.should.equal(0);
+        Object.keys(result[0]).length.should.equal(0);
       });
     });
 
     context('when initial state is empty and action is NOT empty', () => {
       it('should return a rubric', () => {
         let result = mut(undefined, action2);
-        Object.keys(result).length.should.equal(2);
+        Object.keys(result).length.should.equal(1);
       });
     });
 
     context('when state has 1 rubric and receives a new rubric', () => {
       it('should return the new rubric', () => {
-        let result = mut(rubric1, action3);
-        result.should.eql(rubric2);
+        rubric1.id = rubric2.id;
+        let result = mut([rubric1], action3);
+        result[0].should.eql(rubric2);
       });
     });
 
     context('when state has 1 rubric and receives a new rubric', () => {
       it('should replace the old rubric with the new rubric', () => {
+        rubric1.id = rubric2.id;
         rubric1.someCategory = 'Name';
-        let result = mut(rubric1, action3);
-        result.should.eql(rubric2);
+        let result = mut([rubric1], action3);
+        result[0].should.eql(rubric2);
       });
     });
 

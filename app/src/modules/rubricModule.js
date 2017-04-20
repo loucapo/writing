@@ -2,7 +2,7 @@ import {config} from '../utilities/configValues';
 import reducerMerge from './../utilities/reducerMerge';
 import { requestStates } from '../sagas/requestSaga';
 
-const GET_RUBRICS = requestStates('get_rubrics');
+export let GET_RUBRICS = requestStates('get_rubrics');
 
 // Reducer
 export default (state = [], action) => {
@@ -26,3 +26,4 @@ export function getRubricList() {
     }
   };
 }
+
