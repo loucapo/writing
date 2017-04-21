@@ -1,4 +1,5 @@
 @using=supertest
+  @pending
 Feature: just do stuff to google
 
   Scenario: get homepage
