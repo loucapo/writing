@@ -1,5 +1,7 @@
 #!/bin/bash
 AWS_PROFILE=$1
+USERNAME=$2
+TARGET=$3
 
 die() { echo "$@" 1>&2 ; exit 1; }
 
