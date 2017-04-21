@@ -19,6 +19,7 @@ echo "Creating the Build artifacts directory"
 mkdir -p artifacts
 cp compose/env_builder/build.sh artifacts/env_builder.sh
 cp compose/provision/deploy.sh artifacts/deploy.sh
+cp compose/provision/deploy_container.sh artifacts/deploy_container.sh
 
 echo "Building docker images and deployment artifacts"
 for REPO in "${!REPOS[@]}"
