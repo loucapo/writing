@@ -53,7 +53,6 @@ exports.define = function(steps) {
 
   steps.then('I should see the Rubric Details elements', function() {
     expect(page.final_rubric).to.exist;
-    expect(page.final_rubric_delete).to.exist;
     expect(page.rubric_selection).to.exist;
     expect(page.create_custom_rubric).to.exist;
   });
@@ -94,6 +93,36 @@ exports.define = function(steps) {
         rtePage.draftEditor.sendKeys(keys.DELETE);
       });
     page.activity_prompt_save.click();
+  });
+
+  steps.then("I see '$rubric' is the '$number' element", function(elem,number) {
+    page.rubric_selection_content.getText().then(function(t) {
+      var content = t.split('\n');
+      expect(content[number]).to.contain(elem);
+    });
+  });
+
+  steps.then("I see '$rubric' is selected", function(elem) {
+    page.rubric_title.getText().then(function(t) {
+      expect(t).to.contain(elem);
+    });
+  });
+
+
+  steps.then("There is no rubric to preview", function() {
+    driver.findElements({css: "[class^='Rubric__table']"})
+      .then(gimme_none)
+    });
+
+  function gimme_none(arr) {
+    expect(arr.length).to.equal(0);
+  };
+
+  steps.then("The '$elem' does not exist", function(elem) {
+    //expect(page.rubric_preview).to.not.exist;
+    page.rubric_preview.then(function(flags) {
+      expect(flags.length).to.equal(0);
+    });
   });
 };
 

@@ -26,6 +26,13 @@ module.exports = new Page({
   final_rubric_delete: { get: function () { return this.element("[data-id='rubric-delete']"); } },
   rubric_selection: { get: function () { return this.element("[data-id='rubric-dropdown']"); } },
   create_custom_rubric: { get: function () { return this.element("[data-id='create-rubric']"); } },
+  no_rubric_option: { get: function () { return this.element("[data-id='rubric-dropdown'] div ul li"); } },
+  rubric_option_2: { get: function () { return this.element("[data-id='rubric-dropdown'] div ul li:nth-child(2)"); } },
+  rubric_preview: { get: function () { return this.element("[data-id='rubric-preview']" )} },
+  rubric_preview_list: { get: function () { return this.elements("[class^='Rubric__table']" )} },
+  rubric_selection_open: { get: function () { return this.element("[data-id='rubric-selection-open']"); } },
+  rubric_selection_content: { get: function () { return this.element("[data-id='rubric-selection-content']"); } },
+  rubric_title: { get: function () { return this.element("[data-id='rubric-dropdown'] div div"); } },
 
   // sub menu
   drafts: { get: function () { return this.element("[data-id='drafts']"); } },
