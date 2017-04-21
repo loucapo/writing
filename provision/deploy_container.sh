@@ -5,10 +5,6 @@ TARGET=$3
 
 die() { echo "$@" 1>&2 ; exit 1; }
 
-echo "Uploading Deploy script"
-scp deploy.sh $USERNAME@$TARGET:~/deploy.sh
-ssh $USERNAME@$TARGET chmod a+x deploy.sh
-
 echo "Uncompressing the artifacts file"
 if [ -f "artifacts.tgz" ]; then
   tar xfvz artifacts.tgz
@@ -17,6 +13,10 @@ else
 fi
 
 cd artifacts/
+echo "Uploading Deploy script"
+scp deploy.sh $USERNAME@$TARGET:~/deploy.sh
+ssh $USERNAME@$TARGET chmod a+x deploy.sh
+
 REPOS=($(ls -d */))
 
 if [ -f "env_builder.sh" ]; then
