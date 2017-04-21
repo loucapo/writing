@@ -1,5 +1,4 @@
 @using=supertest
-  @only
 Feature: Activity API Routes
 
   Scenario: Receive a 200 status when go to GET particular activity with valid cookie
@@ -37,13 +36,19 @@ Feature: Activity API Routes
   Scenario: Receive a 500 status when PUT /activity prompt with invalid json
     Given I get a cookie and receive status '200'
     Given I PUT '{"id": "d3e3c2d5-cf43-4f63-924f-3ec7a125a334","prompt": "hello world"}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/prompt' and receive status '500'
-@only
-  #should be giving a 500 not a 200
+
   Scenario: Receive a 500 status when PUT /activity prompt with missing params
     Given I get a cookie and receive status '200'
     Given I PUT '{"id":"d3e3c2d5--11-cf43-4f63-924f-3ec7a125a334","prompt":{"killme":"world"}}' into ':3000/activity/d3e3c2d5--11-cf43-4f63-924f-3ec7a125a334/prompt' and receive status '500'
-@only
-  #route missing?
+
   Scenario: Receive a 200 status when go to GET particular activity drafts with valid cookie
     Given I get a cookie and receive status '200'
     Given I GET ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/draft' and receive status '200'
+
+  Scenario: Receive a 401 status when go to GET particular activity drafts with invalid cookie
+    Given I get a cookie and receive status '200'
+    Given I GET ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/draft' in incognito and receive status '401'
+
+  Scenario: Receive a 500 status when go to GET non-existing activity drafts with valid cookie
+    Given I get a cookie and receive status '200'
+    Given I GET ':3000/activity/d3e3c2d5-cf43-4f63-924f-11521/draft' and receive status '500'
