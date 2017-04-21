@@ -25,6 +25,7 @@ echo "Building docker images and deployment artifacts"
 for REPO in "${!REPOS[@]}"
 do
   DIR="${REPOS[$REPO]}"
+  DIR=${DIR::-1}
   echo "Building $DIR"
   if [ -f "$DIR/docker/Dockerfile" ]; then
     DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/$DIR"
