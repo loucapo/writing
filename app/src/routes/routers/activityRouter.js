@@ -127,7 +127,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         in: path
      *         type: string
      *         required: true
-     *       - name: prompt
+     *       - name: rubricId
      *         in: body
      *         required: true
      *         schema:
