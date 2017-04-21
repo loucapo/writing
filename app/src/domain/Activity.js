@@ -17,7 +17,8 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     createNewActivity(cmd) {
       this.setIsNew();
       const event = this.mapper(cmd);
-      event.id = this.id = cmd.id || uuid.v4();
+      delete event.id;
+      event.activityId = this.id = cmd.id || uuid.v4();
       this.raiseEvent({
         eventName: 'activityCreated',
         event
