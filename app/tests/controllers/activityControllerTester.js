@@ -42,14 +42,12 @@ describe('Activity Test', function() {
     describe('ACTIVITY (GET)', () => {
       context('when calling activity with proper input', () => {
         it('should return proper body properties', async () => {
-          ctx = {params: {id: 1}};
+          ctx = {params: {activityId: 1}};
 
           td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', ctx.params)).thenReturn([activity]);
 
           let result = await mut.getActivity(ctx);
-          result.body.status.should.equal(200);
-          result.body.payload.should.equal(activity);
-          result.body.success.should.be.true;
+          result.body.should.equal(activity);
         });
       });
     });
@@ -57,7 +55,6 @@ describe('Activity Test', function() {
     describe('ACTIVITY (PUT)', () => {
       beforeEach(() => {
         updatedActivity = {
-          id: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc",
           prompt: "This is a new activity prompt."
         };
 
@@ -69,7 +66,7 @@ describe('Activity Test', function() {
               }
             }
           },
-          params: {id: updatedActivity.id},
+          params: {activityId: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc"},
           request: {
             body: updatedActivity
           }
@@ -81,31 +78,30 @@ describe('Activity Test', function() {
 
       context('when updating activity', () => {
         it('should call repository to get activity', async () => {
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id})).thenReturn([activity]);
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: ctx.params.activityId})).thenReturn([activity]);
           await mut.updateActivityPrompt(ctx);
         });
       });
 
       context('when updating activity with bad id', () => {
         it('should return 500', async () => {
-          ctx.params.id=666;
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: 666})).thenReturn(undefined);
+          ctx.params.activityId=666;
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: 666})).thenReturn(undefined);
           let result;
           try {
             result = await mut.updateActivityPrompt(ctx);
           }catch(ex){
             result = ex.message;
           }
-          result.should.equal(`No activity found with id: ${ctx.params.id}`);
+          result.should.equal(`No activity found with id: ${ctx.params.activityId}`);
         })
       });
 
       context('when updating activity', () => {
         it('should return 200', async () => {
-          let payload = _body;
-          payload.modifiedById = _userId;
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id})).thenReturn([activity]);
-          td.when(repositoryStub(sqlLibrary.activity, 'updateActivityPrompt', payload)).thenReturn(activity);
+          _body.modifiedById = _userId;
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: ctx.params.activityId})).thenReturn([activity]);
+          td.when(repositoryStub(sqlLibrary.activity, 'updateActivityPrompt', _body)).thenReturn(activity);
           let result = await mut.updateActivityPrompt(ctx);
           result.status.should.equal(200);
         })
@@ -113,7 +109,7 @@ describe('Activity Test', function() {
 
       context('when updating activity', () => {
         it('should put new values on activity', async () => {
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id})).thenReturn([activity]);
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: ctx.params.activityId})).thenReturn([activity]);
           let captor = td.matchers.captor();
           td.when(repositoryStub(sqlLibrary.activity, 'updateActivityPrompt', _body));
           let result = await mut.updateActivityPrompt(ctx);
@@ -126,7 +122,6 @@ describe('Activity Test', function() {
     describe('ACTIVITY (PUT) RUBRIC', () => {
       beforeEach(() => {
         updatedActivity = {
-          id: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc",
           rubricId: uuid.v4()
         };
 
@@ -138,7 +133,7 @@ describe('Activity Test', function() {
               }
             }
           },
-          params: {id: updatedActivity.id},
+          params: {activityId: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc"},
           request: {
             body: updatedActivity
           }
@@ -149,34 +144,33 @@ describe('Activity Test', function() {
 
       context('when updating activity', () => {
         it('should call repository to get activity', async () => {
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id})).thenReturn([activity]);
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: ctx.params.activityId})).thenReturn([activity]);
           await mut.updateActivityPrompt(ctx);
-          td.verify(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id}));
+          td.verify(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: ctx.params.activityId}));
         });
       });
 
       context('when updating activity with bad id', () => {
         it('should return 500', async () => {
 
-          ctx.params.id=666;
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: 666})).thenReturn(undefined);
+          ctx.params.activityId=666;
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: 666})).thenReturn(undefined);
           let result;
           try {
             result = await mut.updateActivityPrompt(ctx);
           }catch(ex){
             result = ex.message;
           }
-          result.should.equal(`No activity found with id: ${ctx.params.id}`);
+          result.should.equal(`No activity found with id: ${ctx.params.activityId}`);
 
         })
       });
 
       context('when updating activity', () => {
         it('should return 200', async () => {
-          let payload = _body;
-          payload.modifiedById = _userId;
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id})).thenReturn(activity);
-          td.when(repositoryStub(sqlLibrary.activity, 'updateActivityRubric', payload)).thenReturn(activity);
+          _body.modifiedById = _userId;
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: ctx.params.activityId})).thenReturn(activity);
+          td.when(repositoryStub(sqlLibrary.activity, 'updateActivityRubric', _body)).thenReturn(activity);
           let result = await mut.updateActivityRubric(ctx);
           result.status.should.equal(200);
         })
@@ -184,7 +178,7 @@ describe('Activity Test', function() {
 
       context('when updating activity', () => {
         it('should put new values on activity', async () => {
-          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {id: ctx.params.id})).thenReturn(activity);
+          td.when(repositoryStub(sqlLibrary.activity, 'getActivityById', {activityId: ctx.params.activityId})).thenReturn(activity);
           let captor = td.matchers.captor();
           let result = await mut.updateActivityRubric(ctx);
           td.verify(repositoryStub(sqlLibrary.activity, 'updateActivityRubric', captor.capture()));

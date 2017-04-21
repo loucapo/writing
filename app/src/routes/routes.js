@@ -12,7 +12,7 @@ module.exports = function routes(koarouter, routers_array, controllers) { // esl
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/shorterSuccessResponse"
+     *             $ref: "#/definitions/standardSuccessResponse"
      *       422:
      *         description: Failure
      *         schema:

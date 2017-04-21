@@ -66,10 +66,8 @@ describe('RUBRIC TEST', function() {
             rubricCrit4
           ]);
           let result = await mut.getRubrics(ctx);
-          result.body.status.should.equal(200);
-          result.body.success.should.be.true;
-          const rub1 = result.body.payload.find(x=>x.id === 'f775f8e2-069f-4c6d-b5cd-999e75b63bfc');
-          const rub2 = result.body.payload.find(x=>x.id === 'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc');
+          const rub1 = result.body.find(x=>x.id === 'f775f8e2-069f-4c6d-b5cd-999e75b63bfc');
+          const rub2 = result.body.find(x=>x.id === 'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc');
           rub1.criteria.find(x=>x === critId1).should.not.be.null;
           rub1.criteria.find(x=>x === critId2).should.not.be.null;
           rub2.criteria.find(x=>x === critId3).should.not.be.null;
@@ -86,9 +84,7 @@ describe('RUBRIC TEST', function() {
           td.when(repositoryStub(sqlLibrary.rubric, 'getRubricById', {id: ctx.params.id})).thenReturn(rubric1);
 
           let result = await mut.getRubricById(ctx);
-          result.body.status.should.equal(200);
-          result.body.payload.should.equal(rubric1);
-          result.body.success.should.be.true;
+          result.body.should.equal(rubric1);
         });
       });
     });

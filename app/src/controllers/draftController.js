@@ -1,71 +1,58 @@
 module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
   return {
     async addDraftToActivity(ctx) {
-      const body = ctx.request.body;
-      body.createdById = ctx.state.user.user_data.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(body.activityId);
-      let event = activity.addDraftToActivity(body);
+      const command = ctx.request.body;
+      command.activityId = ctx.params.activityId;
+      command.createdById = ctx.state.user.user_data.id;
+      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let event = activity.addDraftToActivity(command);
       await repository(sqlLibrary.draft, 'addDraftToActivity', event);
 
       ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true,
-        payload: {id: event.id}
-      };
+      ctx.body = event.id;
       return ctx;
     },
 
     async removeDraftFromActivity(ctx) {
-      const body = ctx.request.body;
-      body.modifiedById = ctx.state.user.user_data.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(body.activityId);
-      let event = activity.removeDraftFromActivity(body);
+      let activity = await domainBuilders.ActivityBuilder.getActivityARById(ctx.params.activityId);
+      let event = activity.removeDraftFromActivity({draftId: ctx.params.draftId});
 
       // this is going to be dependant on how we persist
       await repository(sqlLibrary.draft, 'removeDraftFromActivity', event);
 
       ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true
-      };
       return ctx;
     },
 
     async updateDraftInstructions(ctx) {
-      const body = ctx.request.body;
-      body.modifiedById = ctx.state.user.user_data.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(body.activityId);
-      let event = activity.updateDraftInstructions(body);
+      const command = ctx.request.body;
+      command.activityId = ctx.params.activityId;
+      command.draftId = ctx.params.draftId;
+      command.modifiedById = ctx.state.user.user_data.id;
+      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let event = activity.updateDraftInstructions(command);
 
       await repository(sqlLibrary.draft, 'updateDraftInstructions', event);
 
       ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true
-      };
       return ctx;
     },
 
     async setDraftGoals(ctx) {
-      const body = ctx.request.body;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(ctx.params.activityid);
-      let event = activity.setDraftGoals(body);
+      const command = ctx.request.body;
+      command.activityId = ctx.params.activityId;
+      command.draftId = ctx.params.draftId;
+      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let event = activity.setDraftGoals(command);
       for (let goalId of event.goalsAdded) {
-        await repository(sqlLibrary.draft, 'addGoalToDraft', { draftId: body.draftId, goalId });
+        await repository(sqlLibrary.draft, 'addGoalToDraft', { draftId: command.draftId, goalId });
       }
 
       for (let goalId of event.goalsRemoved) {
-        await repository(sqlLibrary.draft, 'removeGoalFromDraft', { draftId: body.draftId, goalId });
+        await repository(sqlLibrary.draft, 'removeGoalFromDraft', { draftId: command.draftId, goalId });
       }
 
       ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true
-      };
       return ctx;
     },
 
@@ -78,11 +65,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
         return x;
       });
       ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true,
-        payload: draftsWithGoals
-      };
+      ctx.body = draftsWithGoals;
       return ctx;
     }
   };

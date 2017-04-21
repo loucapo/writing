@@ -5,13 +5,13 @@ module.exports = function activityRouter(koarouter, controllers) {
 
     /**
      * @swagger
-     * /activity/{id}:
+     * /activity/{activityId}:
      *   get:
      *     x-name: activity
      *     description: Returns specified activity to the caller
      *     operationId: activity
      *     parameters:
-     *       - name: id
+     *       - name: activityId
      *         in: path
      *         description: The id of the activity you wish to retrieve
      *         required: true
@@ -26,16 +26,20 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.get('activity', '/activity/:id', controllers.activityController.getActivity);
+    router.get('activity', '/activity/:activityId', controllers.activityController.getActivity);
 
     /**
      * @swagger
-     * /activity/{id}:
+     * /activity/{activityId}:
      *   put:
      *     x-name: createActivity
      *     description: Checks for existence of activity and creates it if not there
      *     operationId: createActivity
      *     parameters:
+     *       - name: activityId
+     *         in: path
+     *         type: string
+     *         required: true
      *       - name: body
      *         in: body
      *         required: true
@@ -45,23 +49,23 @@ module.exports = function activityRouter(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/standardSuccessResponse"
+     *             $ref: "#/definitions/SuccessNoResponse"
      *       422:
      *         description: Failure
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.put('/activity/:id', controllers.activityController.createOrReplaceActivity);
+    router.put('/activity/:activityId', controllers.activityController.createOrReplaceActivity);
 
     /**
      * @swagger
-     * /activity/{id}/prompt:
+     * /activity/{activityId}/prompt:
      *   put:
      *     x-name: putActivityPrompt
      *     description: Update the activity prompt
      *     operationId: putActivityActivityPrompt
      *     parameters:
-     *       - name: id
+     *       - name: activityId
      *         in: path
      *         type: string
      *         required: true
@@ -74,13 +78,13 @@ module.exports = function activityRouter(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/standardSuccessResponse"
+     *             $ref: "#/definitions/SuccessNoResponse"
      *       422:
      *         description: Failure
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.put('/activity/:id/prompt', controllers.activityController.updateActivityPrompt);
+    router.put('/activity/:activityId/prompt', controllers.activityController.updateActivityPrompt);
 
     /**
      * @swagger
@@ -99,7 +103,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/shorterSuccessResponse"
+     *             $ref: "#/definitions/standardSuccessResponse"
      *       422:
      *         description: Failure
      *         schema:
@@ -113,13 +117,13 @@ module.exports = function activityRouter(koarouter, controllers) {
 
     /**
      * @swagger
-     * /activity/{id}/rubric:
+     * /activity/{activityId}/rubric:
      *   put:
      *     x-name: putActivityRubric
      *     description: Update the activity rubric
      *     operationId: putActivityRubric
      *     parameters:
-     *       - name: id
+     *       - name: activityId
      *         in: path
      *         type: string
      *         required: true
@@ -132,13 +136,13 @@ module.exports = function activityRouter(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/standardSuccessResponse"
+     *             $ref: "#/definitions/SuccessNoResponse"
      *       422:
      *         description: Failure
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.put('/activity/:id/rubric', controllers.activityController.updateActivityRubric);
+    router.put('/activity/:activityId/rubric', controllers.activityController.updateActivityRubric);
 
     appRouter.use(router.routes(), router.allowedMethods());
   };

@@ -11,11 +11,7 @@ module.exports = function(repository, sqlLibrary, logger) {
       });
 
       ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true,
-        payload: rubricsWithCrit
-      };
+      ctx.body = rubricsWithCrit;
       return ctx;
     },
     async getRubricById(ctx) {
@@ -23,11 +19,7 @@ module.exports = function(repository, sqlLibrary, logger) {
       let rubric = await repository(sqlLibrary.rubric, 'getRubricById', {id: ctx.params.id});
 
       ctx.status = 200;
-      ctx.body = {
-        status: ctx.status,
-        success: true,
-        payload: rubric
-      };
+      ctx.body = rubric;
       return ctx;
     }
   };

@@ -49,9 +49,7 @@ describe('CRITERIA TEST', function() {
           td.when(repositoryStub(sqlLibrary.criteria, 'getCriteria', {})).thenReturn(_criteria);
 
           let result = await mut.getCriteria(ctx);
-          result.body.status.should.equal(200);
-          result.body.payload.should.equal(_criteria);
-          result.body.success.should.be.true;
+          result.body.should.equal(_criteria);
         });
       });
     });

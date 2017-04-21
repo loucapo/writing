@@ -3,28 +3,19 @@
     "standardSuccessResponse": {
       "title": "standardSuccessResponse",
       "properties": {
-        "success": {
-          "type": "boolean"
-        },
-        "payload": {
           "type": "object"
-        }
       }
     },
-    "shorterSuccessResponse": {
-      "title": "shorterSuccessResponse",
-      "properties": {
-        "type": "object"
-      }
-    },
+
+    "SuccessNoResponse": {
+      "title": "SuccessNoResponse"
+    }
+  ,
     "standardFailureResponse": {
       "title": "standardFailureResponse",
       "properties": {
-        "success": {
-          "type": "boolean"
-        },
         "error": {
-          "type": "boolean"
+          "type": "string"
         },
         "errors": {
           "type": "array",
@@ -49,13 +40,8 @@
     "activitySuccessResponse": {
       "title": "activitySuccessResponse",
       "properties": {
-        "success": {
-          "type": "boolean"
-        },
-        "payload": {
           "type": "object",
           "$ref": "#/definitions/activity"
-        }
       }
     }
   }

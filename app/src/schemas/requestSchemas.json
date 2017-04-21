@@ -4,12 +4,6 @@
       "title": "createOrReplaceActivity",
       "properties": [
         {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        },
-        {
           "name": "courseId",
           "in": "body",
           "required": false,
@@ -27,12 +21,6 @@
       "title": "updateActivityPrompt",
       "properties": [
         {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        },
-        {
           "name": "prompt",
           "in": "body",
           "type": "string",
@@ -44,12 +32,6 @@
       "title": "updateActivityRubric",
       "properties": [
         {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        },
-        {
           "name": "rubridId",
           "in": "body",
           "type": "string",
@@ -60,9 +42,6 @@
     "addDraftToActivity": {
       "title": "addDraftToActivity",
       "properties": {
-        "activityId": {
-          "type": "string"
-        },
         "index": {
           "type": "number"
         }
@@ -79,9 +58,6 @@
     "setDraftGoals": {
       "title": "setDraftGoals",
       "properties": {
-        "draftId": {
-          "type": "string"
-        },
         "goals": {
           "type": "array",
           "maxItems": 6,

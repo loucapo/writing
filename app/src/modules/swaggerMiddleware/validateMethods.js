@@ -111,12 +111,13 @@ module.exports = function() {
 
     let _response = operation.responses[status];
     // if were not expecting anything ( and nothing was sent ) return success
-    if (!_response.schema && !body) {
+    if ((!_response.schema || !_response.schema.properties) && !body) {
       return validationResult;
     }
     let result = {};
     // if _response provided then validate it. Otherwise provide error
     if (_response) {
+
       result = validate(body, _response);
     } else {
       result.valid = false;

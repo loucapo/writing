@@ -1,7 +1,7 @@
 -- name: getActivityById
 select *
 from activity
-where id = :id
+where id = :activityId
 
 -- name: createActivity
 INSERT INTO activity
@@ -11,7 +11,7 @@ INSERT INTO activity
     created_by_id,
     created_date)
 VALUES
-    (:id,
+    (:activityId,
     :courseId,
     :title,
     :createdById,
@@ -21,10 +21,10 @@ VALUES
 UPDATE activity
 SET prompt = :prompt,
 modified_by_id = :modifiedById
-WHERE id = :id
+WHERE id = :activityId
 
 -- name: updateActivityRubric
 UPDATE activity
 SET rubric_id = :rubricId,
 modified_by_id = :modifiedById
-WHERE id = :id
+WHERE id = :activityId

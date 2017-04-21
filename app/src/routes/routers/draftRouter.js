@@ -5,12 +5,17 @@ module.exports = function(koarouter, controllers) {
 
     /**
      * @swagger
-     * /draft:
+     * /activity/{activityId}/draft:
      *   post:
      *     x-name: addDraftToActivity
      *     description: adds a new draft to an activity
      *     operationId: addDraftToActivity
      *     parameters:
+     *       - name: activityId
+     *         in: path
+     *         description: The activity that owns the draft
+     *         required: true
+     *         type: string
      *       - name: body
      *         in: body
      *         required: true
@@ -20,7 +25,7 @@ module.exports = function(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/shorterSuccessResponse"
+     *             $ref: "#/definitions/standardSuccessResponse"
      *       422:
      *         description: Failure
      *         schema:
@@ -28,19 +33,24 @@ module.exports = function(koarouter, controllers) {
      */
     draftRouter.post(
       'addDraftToActivity',
-      '/draft',
+      '/activity/:activityId/draft',
       controllers.draftController.addDraftToActivity
     );
 
     /**
      * @swagger
-     * /draft/{id}/instructions:
+     * /activity/{activityId}/draft/{draftId}/instructions:
      *   put:
      *     x-name: updateDraftInstructions
      *     description: Updates a draft's instructions
      *     operationId: updateDraftInstructions
      *     parameters:
-     *       - name: id
+     *       - name: activityId
+     *         in: path
+     *         description: The id of the activity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: draftId
      *         in: path
      *         description: The id of the draft to update
      *         required: true
@@ -54,7 +64,7 @@ module.exports = function(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/shorterSuccessResponse"
+     *             $ref: "#/definitions/SuccessNoResponse"
      *       422:
      *         description: Failure
      *         schema:
@@ -62,19 +72,24 @@ module.exports = function(koarouter, controllers) {
      */
     draftRouter.put(
       'updateDraftInstructions',
-      '/draft/:id/instructions',
+      '/activity/:activityId/draft/:draftId/instructions',
       controllers.draftController.updateDraftInstructions
     );
 
     /**
      * @swagger
-     * /draft/{id}:
+     * /activity/{activityId}/draft/{draftId}:
      *   delete:
      *     x-name: removeDraftFromActivity
      *     description: removes a draft from an activity
      *     operationId: removeDraftFromActivity
      *     parameters:
-     *       - name: id
+     *       - name: activityId
+     *         in: path
+     *         description: The id of the activity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: draftId
      *         in: path
      *         required: true
      *         type: string
@@ -82,7 +97,7 @@ module.exports = function(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/shorterSuccessResponse"
+     *             $ref: "#/definitions/SuccessNoResponse"
      *       422:
      *         description: Failure
      *         schema:
@@ -90,19 +105,24 @@ module.exports = function(koarouter, controllers) {
      */
     draftRouter.delete(
       'removeDraftFromActivity',
-      '/draft/:id',
+      '/activity/:activityId/draft/:draftId',
       controllers.draftController.removeDraftFromActivity
     );
 
     /**
      * @swagger
-     * /draft/{id}/instructions:
+     * /activity/{activityId}/draft/{draftId}/instructions:
      *   put:
      *     x-name: updateDraftInstructions
      *     description: Updates a draft's instructions
      *     operationId: updateDraftInstructions
      *     parameters:
-     *       - name: id
+     *       - name: activityId
+     *         in: path
+     *         description: The id of the activity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: draftId
      *         in: path
      *         description: The id of the draft to update
      *         required: true
@@ -116,7 +136,7 @@ module.exports = function(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/shorterSuccessResponse"
+     *             $ref: "#/definitions/SuccessNoResponse"
      *       422:
      *         description: Failure
      *         schema:
@@ -124,19 +144,24 @@ module.exports = function(koarouter, controllers) {
      */
     draftRouter.put(
       'updateDraftInstructions',
-      '/draft/:id/instructions',
+      '/activity/:activityId/draft/:draftId/instructions',
       controllers.draftController.updateDraftInstructions
     );
 
     /**
      * @swagger
-     * /draft/{activityid}/goals:
+     * /activity/{activityId}/draft/{draftId}/goals:
      *   put:
      *     x-name: setDraftGoals
      *     description: setDraftGoals
      *     operationId: setDraftGoals
      *     parameters:
-     *       - name: activityid
+     *       - name: activityId
+     *         in: path
+     *         description: The id of the activity whose draft should update
+     *         required: true
+     *         type: string
+     *       - name: draftId
      *         in: path
      *         description: The id of the activity whose draft should update
      *         required: true
@@ -150,7 +175,7 @@ module.exports = function(koarouter, controllers) {
      *       200:
      *         description: Success
      *         schema:
-     *             $ref: "#/definitions/shorterSuccessResponse"
+     *             $ref: "#/definitions/SuccessNoResponse"
      *       422:
      *         description: Failure
      *         schema:
@@ -158,7 +183,7 @@ module.exports = function(koarouter, controllers) {
      */
     draftRouter.put(
       'setDraftGoals',
-      '/draft/:activityid/goals',
+      '/activity/:activityId/draft/:draftId/goals',
       controllers.draftController.setDraftGoals
     );
 
