@@ -17,7 +17,7 @@ echo "Uploading Deploy script"
 scp deploy.sh $USERNAME@$TARGET:~/deploy.sh
 ssh $USERNAME@$TARGET chmod a+x deploy.sh
 
-REPOS=($(ls -d */))
+REPOS=($(ls -d1 */))
 
 if [ -f "env_builder.sh" ]; then
   chmod a+x env_builder.sh

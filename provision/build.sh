@@ -10,7 +10,7 @@
 
 AWS_PROFILE=$1
 BUILD_PLANNAME=$2
-REPOS=($(ls -d */))
+REPOS=($(ls -d1 */))
 
 echo "Logging into the ECR"
 $(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
