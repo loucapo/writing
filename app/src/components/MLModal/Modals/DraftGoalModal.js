@@ -15,7 +15,7 @@ const DraftGoalModal = ({
     (<MLModal
       title="Select the primary goals of this draft"
       closeModal={closeModal}>
-      <p>
+      <p data-id="goal-form-description">
         Select the primary goals you would like students to focus on while they compose this draft.
         You will be able to link your feedback with these goals when you review students' drafts.
       </p>
@@ -25,10 +25,10 @@ const DraftGoalModal = ({
       <DraftGoalForm
         goals={goals}
         closeModal={closeModal}
+        selectedGoals={selectedGoals}
         setDraftGoals={setDraftGoals}
         activityId={activityId}
         draftId={draftId}
-        selectedGoals={selectedGoals}
       />
     </MLModal>)
     : null;

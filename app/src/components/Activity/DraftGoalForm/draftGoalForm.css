@@ -1,7 +1,7 @@
 @import 'variables.css';
 
 .inputs {
-  height: 430px;
+  height: 400px;
   overflow: scroll;
   border: 1px solid var(--gray);
 }

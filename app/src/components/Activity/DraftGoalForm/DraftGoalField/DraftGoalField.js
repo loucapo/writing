@@ -14,16 +14,34 @@ class DraftGoalField extends Component {
     });
   };
 
+  handleClick = (event) => {
+    // Prevents field expand/collapse when clicking checkbox.
+    event.stopPropagation();
+  };
+
+  handleChange = (event) => {
+    this.props.onChange({
+      checked: event.target.checked,
+      id: event.target.value
+    });
+  };
+
   render() {
-    let option = this.props.option;
+    let goal = this.props.goal;
     let openClass = (this.state.showContents) ? ' ' + styles.open : '';
     let iconType = (this.state.showContents) ? 'chevron_down' : 'chevron_right';
     let disabledClass = (this.props.disabled) ? ' ' + styles.disabled : '';
+    let headingClass = `${styles.heading}${disabledClass}`;
+    let containerClass = `${styles.container}${openClass}`;
 
     return (
-      <div className={`${styles.container}${openClass}`}>
-        <div className={`${styles.heading}${disabledClass}`}>
-          <div onClick={this.toggleContents}>
+      <div className={containerClass}>
+        <div
+          className={headingClass}
+          onClick={this.toggleContents}
+          data-id="goal-field-title"
+        >
+          <div>
             <MLIcon
               className={styles.icon}
               title="expand"
@@ -32,23 +50,25 @@ class DraftGoalField extends Component {
               height="12"
               viewBox="0 0 24 24"
             />
-            {option.title}
+            {goal.title}
           </div>
           <input
             className={styles.checkbox}
-            onChange={this.props.onChange.bind(this)}
+            onChange={this.handleChange}
+            onClick={this.handleClick}
             type="checkbox"
             name="draftGoalOption"
-            value={JSON.stringify(option)}
+            value={goal.id}
+            checked={this.props.selected}
           />
         </div>
-        <div className={styles.content}>
-          <p>{option.description}</p>
+        <div data-id="goal-field-content" className={styles.content}>
+          <p>{goal.description}</p>
           <strong>Feedback Options:</strong>
           <ul>
-            <li>{`Great job! ${option.goalOption1 || ''}`}</li>
-            <li>{`Needs work. ${option.goalOption2 || ''}`}</li>
-            <li>{`Needs extensive revision. ${option.goalOption3 || ''}`}</li>
+            <li>{`Great job! ${goal.goalOption1 || ''}`}</li>
+            <li>{`Needs work. ${goal.goalOption2 || ''}`}</li>
+            <li>{`Needs extensive revision. ${goal.goalOption3 || ''}`}</li>
           </ul>
         </div>
       </div>
@@ -57,9 +77,10 @@ class DraftGoalField extends Component {
 }
 
 DraftGoalField.propTypes = {
-  option: PropTypes.object,
+  goal: PropTypes.object,
   onChange: PropTypes.func,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  selected: PropTypes.bool
 };
 
 export default DraftGoalField;

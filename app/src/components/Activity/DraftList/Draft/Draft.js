@@ -55,13 +55,15 @@ class Draft extends Component {
               <InstructorControlsContainer role={this.props.role}>
                 <span className={styles.controls}>
                   <span data-id="draft-goal-edit">
-                    <MLIcon
-                      title="edit"
-                      type="edit"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 24 24"
-                    />
+                    <a onClick={this.toggleGoalsModal}>
+                      <MLIcon
+                        title="edit"
+                        type="edit"
+                        width="18"
+                        height="19"
+                        viewBox="0 0 24 24"
+                      />
+                    </a>
                   </span>
                   <span data-id="draft-goal-delete">
                     <MLIcon
@@ -75,7 +77,7 @@ class Draft extends Component {
                 </span>
               </InstructorControlsContainer>
             </h4>
-            <ul className={styles.draftGoalsList}>
+            <ul data-id="drafts-goal-list" className={styles.draftGoalsList}>
               {
                 this.props.draft.goals && this.props.draft.goals.length > 0
                   ?
@@ -94,7 +96,9 @@ class Draft extends Component {
                     ))
                   :
                     <li>
-                      <a data-id="add-draft-goal" onClick={this.toggleGoalsModal}>Click to Add Draft Goals</a>
+                      <a data-id="add-draft-goal" onClick={this.toggleGoalsModal}>
+                        Click to Add Draft Goals
+                      </a>
                     </li>
               }
             </ul>
@@ -102,30 +106,29 @@ class Draft extends Component {
               draftId={this.props.draft.id}
               activityId={this.props.draft.activityId}
               closeModal={this.toggleGoalsModal}
-              isOpen={this.state.goalsModalIsOpen} />
+              isOpen={this.state.goalsModalIsOpen}
+            />
           </div>
-          {/*
-           <div className={styles.rightLinks}>
-           <div>
-           {draft && draft.instructions || <a data-id="add-instructions" href="#">+ Add Draft Instructions</a>}
-           </div>
 
-           <div className={styles.reflections}>
-           {draft && draft.reflectionQuestions
-           || <a data-id="add-reflections" href="#">+ Add Student Reflection Questions</a>}
-           <span data-id="reflections-help">
-           <MLIcon
-           className={styles.help}
-           title="help"
-           type="help"
-           width="18"
-           height="19"
-           viewBox="0 0 24 24"
-           />
-           </span>
-           </div>
-           </div>
-           */}
+          <div className={styles.rightLinks}>
+            <div>
+              {this.props.draft && this.props.draft.instructions || <a data-id="add-instructions" href="#">+ Add Draft Instructions</a>}
+            </div>
+
+            <div className={styles.reflections}>
+              {this.props.draft && this.props.draft.reflectionQuestions || <a data-id="add-reflections" href="#">+ Add Student Reflection Questions</a>}
+              <span data-id="reflections-help">
+                <MLIcon
+                  className={styles.help}
+                  title="help"
+                  type="help"
+                  width="18"
+                  height="19"
+                  viewBox="0 0 24 24"
+                />
+              </span>
+            </div>
+          </div>
         </section>
       </div>
     );

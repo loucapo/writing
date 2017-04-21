@@ -10,21 +10,21 @@ class DraftGoalForm extends Component {
   };
 
   setSelectedGoals = (field) => {
-    if(!field.target.checked) {
-      let selectedGoals = this.state.selectedGoals;
-      let fieldId = JSON.parse(field.target.value).id;
-
-      selectedGoals.forEach((selectedGoal, index) => {
-        if (selectedGoal.id === fieldId) {
-          selectedGoals.splice(index, 1);
-        }
-      });
-      this.setState({selectedGoals});
-    } else if(this.state.selectedGoals.length >= 6) {
-      field.target.checked = false;
-    } else {
-      this.setState({selectedGoals: [...this.state.selectedGoals, JSON.parse(field.target.value)]});
+    if(field.checked && this.state.selectedGoals.length >= 6) {
+      return;
     }
+
+    let selectedGoals;
+    if(field.checked) {
+      const goal = this.props.goals.find(goalObj => goalObj.id === field.id);
+      const newGoal = {id: goal.id, title: goal.title};
+      selectedGoals = this.state.selectedGoals.concat([newGoal]);
+    } else {
+      selectedGoals = this.state.selectedGoals.filter(selectedGoal =>
+        selectedGoal.id !== field.id
+      );
+    }
+    this.setState({selectedGoals});
   };
 
   handleSave = (event) => {
@@ -37,43 +37,40 @@ class DraftGoalForm extends Component {
     );
   };
 
-  disabledStatus = (goal) => {
-    if (this.state.selectedGoals.length === 6) {
-      let result = true;
-      this.state.selectedGoals.forEach(selectedGoal => {
-        if (selectedGoal.id === goal.id) {
-          result = false;
-        }
-      });
-      return result;
+  disabledStatus = (goalId) => {
+    if(this.state.selectedGoals.length === 6) {
+      return !this.selectedStatus(goalId);
     }
   };
 
-  render() {
-    let selectedGoals = this.state.selectedGoals;
+  selectedStatus = (goalId) => (
+    !!this.state.selectedGoals.find(selectedGoal => goalId === selectedGoal.id)
+  );
 
+  renderTitles = () => (
+    this.state.selectedGoals.map(selectedGoal => selectedGoal.title).join(', ')
+  );
+
+  render() {
     return (
-      <form>
-        <div className={styles.inputs}>
+      <div>
+        <div data-id="goal-input-fields" className={styles.inputs}>
           {
             this.props.goals.map((goal, index) => (
               <DraftGoalField
                 key={index}
-                disabled={this.disabledStatus(goal)}
-                option={goal}
+                disabled={this.disabledStatus(goal.id)}
+                goal={goal}
                 onChange={this.setSelectedGoals}
+                selected={this.selectedStatus(goal.id)}
               />
             ))
           }
         </div>
 
-        <p className={styles.selectedGoals}>
-          {(selectedGoals.length > 0) ? <strong>Selected Draft Goals:</strong> : null}
-          {
-            selectedGoals.map((goal, index, array) => (
-              ` ${goal.title}${((array.length - 1) === index) ? '' : ','}`
-            ))
-          }
+        <p data-id="selected-goals" className={styles.selectedGoals}>
+          {(this.state.selectedGoals.length > 0) ? <strong>Selected Draft Goals: </strong> : null}
+          {this.renderTitles()}
         </p>
 
         <div className={styles.buttons}>
@@ -89,7 +86,7 @@ class DraftGoalForm extends Component {
             handleClick={this.handleSave}
           />
         </div>
-      </form>
+      </div>
     );
   }
 }
