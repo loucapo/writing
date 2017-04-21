@@ -17,7 +17,7 @@ else
 fi
 
 cd artifacts/
-REPOS=($(ls -1))
+REPOS=($(ls -d */))
 
 if [ -f "env_builder.sh" ]; then
   chmod a+x env_builder.sh
