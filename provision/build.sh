@@ -3,12 +3,13 @@
 ###########################################
 #
 # This script is used to dynamically build all Docker Images for a project
-#  compose/provision/build.sh <aws profile name> 
+#  compose/provision/build.sh <aws profile name> <build plan name> 
 #  This script must be run at the root of a project plan directory
 #
 ###########################################
 
 AWS_PROFILE=$1
+BUILD_PLANNAME=$2
 REPOS=($(ls -1))
 
 echo "Logging into the ECR"
@@ -25,7 +26,7 @@ do
   DIR="${REPOS[$REPO]}"
   if [ -f "$DIR/docker/Dockerfile" ]; then
     DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/$DIR"
-    BAMBOO_BRANCHNAME="unity"
+    BAMBOO_BRANCHNAME=$BUILD_PLANNAME
     BAMBOO_BUILDNUMBER=$(cd $DIR && git rev-parse HEAD)
     BAMBOO_BUILDNUMBER=${BAMBOO_BUILDNUMBER:(-7)}
     TAG="$BAMBOO_BRANCHNAME"_v"$BAMBOO_BUILDNUMBER"
