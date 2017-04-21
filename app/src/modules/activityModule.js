@@ -19,7 +19,7 @@ export default (state = [], action) => {
     case ACTIVITY_PROMPT.SUCCESS: {
       let body = JSON.parse(action.action.params.body);
       return state.map(x => {
-        if(x.id === body.id) {
+        if(x.id === action.action.activityId) {
           return {...x, prompt: JSON.parse(body.prompt)};
         }
         return x;
