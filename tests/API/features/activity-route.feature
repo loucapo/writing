@@ -31,13 +31,9 @@ Feature: Activity API Routes
 
   Scenario: Receive a 200 status when PUT /activity prompt
     Given I get a cookie and receive status '200'
-    Given I PUT '{"id": "d3e3c2d5-cf43-4f63-924f-3ec7a125a334","prompt":{"hello":"world"}}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/prompt' and receive status '200'
+    Given I PUT '{"prompt":{"hello":"world"}}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/prompt' and receive status '200'
 
-  Scenario: Receive a 500 status when PUT /activity prompt with invalid json
-    Given I get a cookie and receive status '200'
-    Given I PUT '{"id": "d3e3c2d5-cf43-4f63-924f-3ec7a125a334","prompt": "hello world"}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/prompt' and receive status '500'
-
-  Scenario: Receive a 500 status when PUT /activity prompt with missing params
+  Scenario: Receive a 500 status when PUT /activity prompt with extra params
     Given I get a cookie and receive status '200'
     Given I PUT '{"id": "d3e3c2d5--11-cf43-4f63-924f-3ec7a125a334","prompt":{"killme":"world"}}' into ':3000/activity/d3e3c2d5--11-cf43-4f63-924f-3ec7a125a334/prompt' and receive status '500'
 
