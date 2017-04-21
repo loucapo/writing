@@ -14,7 +14,7 @@ export default (state = [], action) => {
       return state;
     }
     case ACTIVITY.SUCCESS: {
-      return reducerMerge(state, action.result.payload);
+      return reducerMerge(state, action.result);
     }
     case ACTIVITY_PROMPT.SUCCESS: {
       let body = JSON.parse(action.action.params.body);
@@ -27,7 +27,7 @@ export default (state = [], action) => {
     }
     case ACTIVITY_RUBRIC.SUCCESS: {
       let body = JSON.parse(action.action.params.body);
-      let activity = state.find(x => x.id === body.id);
+      let activity = state.find(x => x.id === action.action.activityId);
       return [{...activity, rubricId: body.rubricId}, ...state];
     }
     case ACTIVITY.FAILURE: {
@@ -52,11 +52,11 @@ export function getActivity(id) {
 }
 
 // Send Actions
-export function updateActivityPrompt(_body) {
+export function updateActivityPrompt(_body, activityId) {
   return {
     type: ACTIVITY_PROMPT.REQUEST,
     states: ACTIVITY_PROMPT,
-    url: `${config.apiUrl}activity/${_body.id}/prompt`,
+    url: `${config.apiUrl}activity/${activityId}/prompt`,
     params: {
       method: 'PUT',
       body: _body
@@ -64,11 +64,12 @@ export function updateActivityPrompt(_body) {
   };
 }
 
-export function updateActivityRubric(_body) {
+export function updateActivityRubric(_body, activityId) {
   return {
     type: ACTIVITY_RUBRIC.REQUEST,
     states: ACTIVITY_RUBRIC,
-    url: `${config.apiUrl}activity/${_body.id}/rubric`,
+    activityId,
+    url: `${config.apiUrl}activity/${activityId}/rubric`,
     params: {
       method: 'PUT',
       body: _body

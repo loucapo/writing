@@ -26,10 +26,9 @@ class ActivityPrompt extends Component {
 
   handleSave = (prompt) => {
     let body = {
-      id: this.props.activityId,
       prompt: JSON.stringify(prompt)
     };
-    this.props.updateActivityPrompt(body);
+    this.props.updateActivityPrompt(body, this.props.activityId);
     this.setState({
       editable: false
     });

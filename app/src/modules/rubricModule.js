@@ -8,7 +8,7 @@ export let GET_RUBRICS = requestStates('get_rubrics');
 export default (state = [], action) => {
   switch (action.type) {
     case GET_RUBRICS.SUCCESS: {
-      return reducerMerge(state, action.result.payload);
+      return reducerMerge(state, action.result);
     }
     default: {
       return state;

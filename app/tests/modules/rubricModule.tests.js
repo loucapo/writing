@@ -179,22 +179,17 @@ describe('RUBRIC MODULE REDUCER', () => {
       action1 = {
         type: GET_RUBRICS.SUCCESS,
         result: {
-          payload: {}
         }
       };
 
       action2 = {
         type: GET_RUBRICS.SUCCESS,
-        result: {
-          payload:  rubric1
-        }
+        result: rubric1
       };
 
       action3 = {
         type: GET_RUBRICS.SUCCESS,
-        result: {
-          payload: rubric2
-        }
+        result: rubric2
       };
     });
 

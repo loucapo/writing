@@ -25,7 +25,7 @@ function fetchFn(url, params) {
       }
       return response;
     })
-    .then(res => res.json());
+    .then(res => res.headers.get('content-type').includes('json') ? res.json() : undefined);
 }
 
 

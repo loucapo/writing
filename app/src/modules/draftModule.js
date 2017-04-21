@@ -3,19 +3,19 @@ export const SUCCESS_ACTIVITY = 'wk_frontend/activity/SUCCESS_ACTIVITY';
 import reducerMerge from './../utilities/reducerMerge';
 import { requestStates } from '../sagas/requestSaga';
 
-const DRAFTS_FOR_ACTIVITY = requestStates('draftsForActivity');
-const PERSIST_DRAFT_GOALS = requestStates('persist_draft_goals');
+const DRAFTS_FOR_ACTIVITY = requestStates('drafts_for_activity');
+const SET_DRAFT_GOALS = requestStates('set_draft_goals');
 
 // Reducer
 export default (state = [], action) => {
   switch (action.type) {
     case DRAFTS_FOR_ACTIVITY.SUCCESS: {
-      return reducerMerge(state, action.result.payload);
+      return reducerMerge(state, action.result);
     }
-    case PERSIST_DRAFT_GOALS.SUCCESS: {
+    case SET_DRAFT_GOALS.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
       const goals = body.goals;
-      const draftId = body.draftId;
+      const draftId = action.action.draftId;
       return state.map( x => {
         return x.id === draftId
         ? {...x, goals}
@@ -42,14 +42,14 @@ export function getDraftsForActivity(activityId) {
 
 export function setDraftGoals(activityId, draftId, goals) {
   return {
-    type: PERSIST_DRAFT_GOALS.REQUEST,
-    states: PERSIST_DRAFT_GOALS,
-    url: `${config.apiUrl}draft/${activityId}/goals`,
+    type: SET_DRAFT_GOALS.REQUEST,
+    states: SET_DRAFT_GOALS,
+    url: `${config.apiUrl}activity/${activityId}/draft/${draftId}/goals`,
+    draftId,
     params: {
       method: 'PUT',
       body: {
-        goals,
-        draftId
+        goals
       }
     }
   };

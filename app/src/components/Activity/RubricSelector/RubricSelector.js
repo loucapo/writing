@@ -14,10 +14,9 @@ const RubricSelector = ({
   role}) => {
   let selectOnChange = (selected) => {
     let body = {
-      id: activityId,
       rubricId: selected.id
     };
-    updateActivityRubric(body);
+    updateActivityRubric(body, activityId);
   };
 
   return (
