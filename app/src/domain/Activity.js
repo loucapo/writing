@@ -101,13 +101,9 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     setDraftGoals(cmd) {
       let draft = this.drafts.find(x => x.id === cmd.draftId);
       invariant(draft, `No draft with id: ${cmd.draftId} could be found`);
-      let event = {
-        activityId: this.id,
-        draftId: cmd.draftId
-      };
-      let result = draft.setDraftGoals(cmd);
-      event.goalsAdded = result.addGoals;
-      event.goalsRemoved = result.removeGoals;
+      const event = this.mapper(cmd);
+
+      draft.setDraftGoals(cmd);
       return event;
     }
 

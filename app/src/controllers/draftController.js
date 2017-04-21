@@ -44,12 +44,11 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       command.draftId = ctx.params.draftId;
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
       let event = activity.setDraftGoals(command);
-      for (let goalId of event.goalsAdded) {
-        await repository(sqlLibrary.draft, 'addGoalToDraft', { draftId: command.draftId, goalId });
-      }
+      //TODO make sure and wrap this in a transaction!!
+      await repository(sqlLibrary.draft, 'removeAllGoals', { draftId: command.draftId });
 
-      for (let goalId of event.goalsRemoved) {
-        await repository(sqlLibrary.draft, 'removeGoalFromDraft', { draftId: command.draftId, goalId });
+      for (let goalId of event.goals) {
+        await repository(sqlLibrary.draft, 'addGoalToDraft', { draftId: command.draftId, goalId });
       }
 
       ctx.status = 200;

@@ -45,3 +45,6 @@ where draft_id = :draftId
 -- name: getDraftCriteria
 SELECT * FROM draft_criteria
 
+-- name: removeAllGoals
+DELETE FROM draft_criteria
+WHERE draft_id = :draftId
