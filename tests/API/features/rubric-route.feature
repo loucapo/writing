@@ -1,5 +1,4 @@
 @using=supertest
-@only
 Feature: Rubric API Routes
 
   Scenario: Receive a 200 status when go to GET rubric with valid cookie
