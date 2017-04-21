@@ -29,6 +29,7 @@ echo "Deploying docker images"
 for REPO in "${!REPOS[@]}"
 do
   DIR="${REPOS[$REPO]}"
+  DIR=${DIR::-1}
   COMPOSE_FILE=$(ls $DIR | grep docker-compose)
   echo "Building .env file for wk_$DIR"
   if [ -f "$DIR/.env.example" ]; then
