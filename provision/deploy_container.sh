@@ -33,7 +33,8 @@ do
   COMPOSE_FILE=$(ls $DIR | grep docker-compose)
   echo "Building .env file for wk_$DIR"
   if [ -f "$DIR/.env.example" ]; then
-    cp $DIR"/.env ./.env"
+    ENV_ORIGIN=$DIR"/.env"
+    cp $ENV_ORIGIN ./.env
     ./env_builder.sh bamboo $DIR/.env.example
   else
     die "$DIR/.env.example file not found"
