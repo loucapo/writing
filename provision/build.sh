@@ -3,13 +3,14 @@
 ###########################################
 #
 # This script is used to dynamically build all Docker Images for a project
-#  compose/provision/build.sh <aws profile name> 
+#  compose/provision/build.sh <aws profile name> <build plan name> 
 #  This script must be run at the root of a project plan directory
 #
 ###########################################
 
 AWS_PROFILE=$1
-REPOS=($(ls -1))
+BUILD_PLANNAME=$2
+REPOS=($(ls -d1 */))
 
 echo "Logging into the ECR"
 $(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
@@ -18,14 +19,17 @@ echo "Creating the Build artifacts directory"
 mkdir -p artifacts
 cp compose/env_builder/build.sh artifacts/env_builder.sh
 cp compose/provision/deploy.sh artifacts/deploy.sh
+cp compose/provision/deploy_container.sh artifacts/deploy_container.sh
 
 echo "Building docker images and deployment artifacts"
 for REPO in "${!REPOS[@]}"
 do
   DIR="${REPOS[$REPO]}"
+  DIR=${DIR::-1}
+  echo "Building $DIR"
   if [ -f "$DIR/docker/Dockerfile" ]; then
     DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/$DIR"
-    BAMBOO_BRANCHNAME="unity"
+    BAMBOO_BRANCHNAME=$BUILD_PLANNAME
     BAMBOO_BUILDNUMBER=$(cd $DIR && git rev-parse HEAD)
     BAMBOO_BUILDNUMBER=${BAMBOO_BUILDNUMBER:(-7)}
     TAG="$BAMBOO_BRANCHNAME"_v"$BAMBOO_BUILDNUMBER"
