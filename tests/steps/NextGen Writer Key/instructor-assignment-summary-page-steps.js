@@ -120,6 +120,11 @@ exports.define = function(steps) {
       .then(gimme_none)
     });
 
+  steps.then("The draft goals modal does not appear", function() {
+    driver.findElements({css: "[data-id='modal']"})
+      .then(gimme_none)
+  });
+
   function gimme_none(arr) {
     expect(arr.length).to.equal(0);
   };
@@ -130,6 +135,71 @@ exports.define = function(steps) {
       expect(flags.length).to.equal(0);
     });
   });
+
+  steps.then("The draft goal summary list should have '$goals' goal", function(goals) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      var content = t.split(',');
+      goals_number = parseInt(goals);
+      expect(content.length).to.equal(goals_number);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should have '$goal' goal", function(goals) {
+    driver.findElements({css: "[data-id='drafts-goal-list'] li"})
+      .then(function(t) {
+      goals_number = parseInt(goals);
+      expect(t.length).to.equal(goals_number);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should contain '$goal'", function(goals) {
+    page.draft_goal_list_activity_summary_selected.getText().then(function(t) {
+      expect(t).to.contain(goals);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should not contain '$goal'", function(goals) {
+    page.draft_goal_list_activity_summary_selected.getText().then(function(t) {
+      expect(t).to.not.contain(goals);
+    });
+  });
+
+  steps.then("'$first_draft_goal' should be selected in draft goal summary list", function(goal) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      expect(t).to.contain(goal);
+    });
+  });
+
+  steps.then("'$first_draft_goal' should not be selected in draft goal summary list", function(goal) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      expect(t).to.not.contain(goal);
+    });
+  });
+
+  steps.then("I should not see the '$elem'", function(elem) {
+    page[elem].isDisplayed().should.eventually.equal(false);
+  });
+
+  steps.then("Draft Goals Cleanup", function() {
+    page.edit_draft_goals_button.click();
+    // checked_array = driver.findElements({css: "[name=draftGoalOption]:checked"}).size();
+    // console.log(checked_array)
+    // i = checked_array.length;
+    // console.log(i);
+     k = 0;
+    try {
+    while (k < 6) {
+      if (driver.findElement({css: "[name=draftGoalOption]:checked"})) {
+        driver.findElement({css: "[name=draftGoalOption]:checked"}).click();
+        k++;
+      }
+    }
+    }
+    catch(err) {
+        console.log('No more checked boxes')
+      };
+      page.draft_goal_save_button.click();
+    });
 };
 
 
