@@ -9,7 +9,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       await repository(sqlLibrary.draft, 'addDraftToActivity', event);
 
       ctx.status = 200;
-      ctx.body = event.id;
+      ctx.body = { id: event.draftId };
       return ctx;
     },
 

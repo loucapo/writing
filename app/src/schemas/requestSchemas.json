@@ -17,6 +17,16 @@
         }
       ]
     },
+    "createOrReplaceStudentActivity": {
+      "title": "createOrReplaceStudentActivity",
+      "properties": [
+        {
+          "name": "activityId",
+          "in": "body",
+          "type": "string"
+        }
+      ]
+    },
     "updateActivityPrompt": {
       "title": "updateActivityPrompt",
       "properties": [
@@ -67,6 +77,18 @@
           "uniqueItems": true
         }
 
+      }
+    }
+  },
+  "setStudentReflectionQuestions": {
+    "title": "setStudentReflectionQuestions",
+    "properties": {
+      "studentReflectionQuestions": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "uniqueItems": true
       }
     }
   }

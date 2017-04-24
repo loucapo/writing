@@ -11,7 +11,6 @@ module.exports = function() {
         errors: [{message: `can not validate: ${JSON.stringify(value)}, when there is no parameter provided`}]
       };
     }
-
     return parameter.validator(value);
   }
 
