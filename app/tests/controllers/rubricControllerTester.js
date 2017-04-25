@@ -3,6 +3,7 @@ let chai = require('chai');
 let should = chai.should();
 const registry = require('./../../registry-test');
 const uuid = require('uuid');
+const repository = require('./../../src/repositories/repository');
 
 let td = require('testdouble');
 
@@ -24,7 +25,7 @@ describe('RUBRIC TEST', function() {
   let critId4 = uuid.v4();
   before(function () {
     // set up mock for repo
-    repositoryStub = td.function('repository');
+    repositoryStub = td.object(repository);
 
     // set up DIC and get instance of mut
     const container = registry({repositoryStub});
@@ -58,8 +59,8 @@ describe('RUBRIC TEST', function() {
           ctx = {};
 
           let rubrics = [rubric1, rubric2];
-          td.when(repositoryStub(sqlLibrary.rubric, 'getRubrics', {})).thenReturn(rubrics);
-          td.when(repositoryStub(sqlLibrary.rubric, 'getRubricCriteria', {})).thenReturn([
+          td.when(repositoryStub.query(sqlLibrary.rubric, 'getRubrics', {})).thenReturn(rubrics);
+          td.when(repositoryStub.query(sqlLibrary.rubric, 'getRubricCriteria', {})).thenReturn([
             rubricCrit1,
             rubricCrit2,
             rubricCrit3,
@@ -81,7 +82,7 @@ describe('RUBRIC TEST', function() {
         it('should return proper body properties', async () => {
           ctx = {params: {id:rubric1.id}};
 
-          td.when(repositoryStub(sqlLibrary.rubric, 'getRubricById', {id: ctx.params.id})).thenReturn(rubric1);
+          td.when(repositoryStub.query(sqlLibrary.rubric, 'getRubricById', {id: ctx.params.id})).thenReturn(rubric1);
 
           let result = await mut.getRubricById(ctx);
           result.body.should.equal(rubric1);

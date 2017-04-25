@@ -1,13 +1,14 @@
 module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
 
+  // PureSql function for making query with generated sql
   function makeAdapter(connection, debug) {
     return {
-      query: query => {
+      query: _query => {
         if (debug) {
           console.log('\n\nPuresql MSSQL adapter: ');
-          console.log(query);
+          console.log(_query);
         }
-        return new connection.query(query);
+        return connection.query(_query);
       },
       escape: parameter => {
         if (+parameter === parameter) {
@@ -19,12 +20,11 @@ module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
     };
   }
 
-  return function(queriesFile, query, event) {
-    const pg = new pgasync.default(config.postgres.config);
-    let adapter = makeAdapter(pg);
+  // client agnostic query. i.e. uses either trx client or new from pool
+  function executeQuery(adapter, queriesFile, _query, event) {
     let queries = puresql.loadQueries(queriesFile);
 
-    return queries[query](event, adapter)
+    return queries[_query](event, adapter)
       .then(result => {
         // horrible crap should be refactored into strategies
         result.rows.forEach(r => {
@@ -41,5 +41,33 @@ module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
         console.log(error);
         throw error;
       });
+  }
+
+  // regular query that pulls a new client from the pool each time
+  function query(queriesFile, query, event) { //eslint-disable-line no-shadow
+    const adapter = makeAdapter(new pgasync.default(config.postgres.config));
+    return executeQuery(adapter, queriesFile, query, event);
+  }
+
+  // special function for executing queries in a transaction
+  function transactionRepo(client) {
+    return {
+      query(queriesFile, query, event) {  //eslint-disable-line no-shadow
+        const adapter = makeAdapter(client);
+        return executeQuery(adapter, queriesFile, query, event);
+      }
+    };
+  }
+
+  function transaction(callback) {
+    let pg = new pgasync.default(config.postgres.config);
+    return pg.transaction(async client => {
+      return callback(transactionRepo(client));
+    });
+  }
+
+  return {
+    query,
+    transaction
   };
 };

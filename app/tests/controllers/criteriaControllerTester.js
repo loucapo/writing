@@ -3,6 +3,7 @@ let chai = require('chai');
 let should = chai.should();
 const registry = require('./../../registry-test');
 const uuid = require('uuid');
+const repository = require('./../../src/repositories/repository');
 
 let td = require('testdouble');
 
@@ -17,7 +18,7 @@ describe('CRITERIA TEST', function() {
 
   before(function () {
     // set up mock for repo
-    repositoryStub = td.function('repository');
+    repositoryStub = td.object(repository);
 
     // set up DIC and get instance of mut
     const container = registry({repositoryStub});
@@ -46,7 +47,7 @@ describe('CRITERIA TEST', function() {
         it('should return proper body properties', async () => {
           ctx = {};
           let _criteria = [criteria1, criteria2];
-          td.when(repositoryStub(sqlLibrary.criteria, 'getCriteria', {})).thenReturn(_criteria);
+          td.when(repositoryStub.query(sqlLibrary.criteria, 'getCriteria', {})).thenReturn(_criteria);
 
           let result = await mut.getCriteria(ctx);
           result.body.should.equal(_criteria);

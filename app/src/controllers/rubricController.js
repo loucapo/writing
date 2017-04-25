@@ -2,8 +2,8 @@ module.exports = function(repository, sqlLibrary, logger) {
   return {
     async getRubrics(ctx) {
       logger.info('fetching all rubrics from repository');
-      let rubrics = await repository(sqlLibrary.rubric, 'getRubrics', {});
-      let rubCrit = await repository(sqlLibrary.rubric, 'getRubricCriteria', {});
+      let rubrics = await repository.query(sqlLibrary.rubric, 'getRubrics', {});
+      let rubCrit = await repository.query(sqlLibrary.rubric, 'getRubricCriteria', {});
 
       const rubricsWithCrit = rubrics.map(x => {
         x.criteria = rubCrit.filter(y=>y.rubricId === x.id).map(z => z.criteriaId);
@@ -16,7 +16,7 @@ module.exports = function(repository, sqlLibrary, logger) {
     },
     async getRubricById(ctx) {
       logger.info('fetch rubric and all criteria by id from repository');
-      let rubric = await repository(sqlLibrary.rubric, 'getRubricById', {id: ctx.params.id});
+      let rubric = await repository.query(sqlLibrary.rubric, 'getRubricById', {id: ctx.params.id});
 
       ctx.status = 200;
       ctx.body = rubric;
