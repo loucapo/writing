@@ -1,7 +1,7 @@
 module.exports = function(swaggermodelvalidator) {
   return function curriedValidator(document, customValidators) {
 
-    const validator = new swaggermodelvalidator(document);
+    const validator = new swaggermodelvalidator(document); // eslint-disable-line new-cap
     if (customValidators) {
       if (!Array.isArray(customValidators)) {
         customValidators = [customValidators];
