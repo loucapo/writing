@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getDraftsForActivity } from './../modules/draftModule';
+import { getDraftsForActivity,
+  addDraftToActivity,
+  removeDraftFromActivity,
+  updateDraftInstructions} from './../modules/draftModule';
 import DraftList from '../components/Activity/DraftList/DraftList';
 
 class DraftListContainer extends Component {
@@ -25,7 +28,8 @@ const mapStateToProps = (state, props) => {
     if (!x.goals) {return x;}
     const goals = x.goals.map(y => state.criteria.find(z => z.id === y).title);
     return {...x, goals};
-  });
+  }).sort((a, b) => a.index - b.index );
+
   return {
     role,
     activityId: props.activityId,
@@ -33,4 +37,8 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, {getDraftsForActivity})(DraftListContainer);
+export default connect(mapStateToProps, {
+  getDraftsForActivity,
+  addDraftToActivity,
+  removeDraftFromActivity,
+  updateDraftInstructions})(DraftListContainer);

@@ -14,14 +14,14 @@ const mapStateToProps = (state, props) => {
     }
   ));
 
-  const draft = props.draftId ? state.drafts.find(x => x.id === props.draftId) : {goals: []};
+  const draft = props.draftId ? state.drafts.find(x => x.id === props.draftId) : {};
 
-  const selectedGoals = draft.goals.map(goalId => (
+  const selectedGoals = draft.goals ? draft.goals.map(goalId => (
     {
       title: goals.find(goal => goalId === goal.id).title,
       id: goalId
     }
-  ));
+  )) : [];
 
   return {
     goals,

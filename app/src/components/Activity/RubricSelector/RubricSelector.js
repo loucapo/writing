@@ -16,7 +16,7 @@ const RubricSelector = ({
     let body = {
       rubricId: selected.id
     };
-    updateActivityRubric(body, activityId);
+    updateActivityRubric(activityId, body);
   };
 
   return (

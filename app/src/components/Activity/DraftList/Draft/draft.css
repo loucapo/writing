@@ -1,5 +1,9 @@
 @import 'variables.css';
 
+.icon {
+  fill: var(--aqua);
+}
+
 .draftType, .draftDetails {
   display: flex;
   padding: 15px 20px;
@@ -19,6 +23,14 @@
   margin: 0;
 }
 
+.draftDetailsRight {
+  width: 100%;
+}
+
+.draftDetailsRight a {
+  text-decoration: none;
+}
+
 .subheader {
   color: var(--gray-dark);
   @apply --font-14;
@@ -26,7 +38,7 @@
 }
 
 .help {
-  fill: var(--blue-dark);
+  fill: var(--black);
   margin-left: 10px;
 }
 
@@ -39,7 +51,7 @@
   border: 1px solid var(--gray-light);
   border-bottom: 0;
   list-style-type: none;
-  margin: 0;
+  margin: 10px 0 0;
   padding: 0;
 }
 
@@ -51,15 +63,16 @@
 
 .flex {
   display: flex;
+}
+
+.flexSpace {
+  composes: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .controls svg{
-  fill: var(--blue);
-}
-
-.rightLinks a {
-  text-decoration: none;
+  fill: var(--aqua);
 }
 
 .reflections {
@@ -69,6 +82,10 @@
 }
 
 .comment {
-  fill: var(--blue);
+  composes: icon;
   margin-right: 5px;
+}
+
+.draftNote {
+  margin-top: 40px;
 }

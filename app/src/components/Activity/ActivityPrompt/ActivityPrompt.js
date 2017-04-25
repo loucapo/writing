@@ -28,7 +28,7 @@ class ActivityPrompt extends Component {
     let body = {
       prompt: JSON.stringify(prompt)
     };
-    this.props.updateActivityPrompt(body, this.props.activityId);
+    this.props.updateActivityPrompt(this.props.activityId, body);
     this.setState({
       editable: false
     });

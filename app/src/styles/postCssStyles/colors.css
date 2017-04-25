@@ -76,13 +76,13 @@
   --font-medium: #6d6d6d;
   --font-strong: #474747;
 
-  /* MLAlert colors */
-  --alertBlue: #CFF3F9;
-  --alertBlueBorder: #45A5B5;
-  --alertYellow: #fffbd7;
-  --alertYellowBorder: #B79E25;
-  --alertRed: #FFE7E5;
-  --alertRedBorder: #EF5656;
-  --alertGreen: #DAF4D4;
-  --alertGreenBorder: #68B75F;
+  /* MLMessage colors */
+  --messageBlue: #CFF3F9;
+  --messageBlueBorder: #45A5B5;
+  --messageYellow: #fffbd7;
+  --messageYellowBorder: #B79E25;
+  --messageRed: #FFE7E5;
+  --messageRedBorder: #EF5656;
+  --messageGreen: #DAF4D4;
+  --messageGreenBorder: #68B75F;
 }

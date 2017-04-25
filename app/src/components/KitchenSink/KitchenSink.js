@@ -4,6 +4,7 @@ import MLAccordion from '../MLAccordion/MLAccordion';
 import MLCard from '../MLCard/MLCard';
 import MLDropdown from '../MLDropdown/MLDropdown';
 import MLTable from '../MLTable/MLTable';
+import MLMessage from '../MLMessage/MLMessage';
 import DemoModal from '../MLModal/Modals/DemoModal';
 
 import styles from './kitchenSink.css';
@@ -159,7 +160,7 @@ class KitchenSink extends Component {
         </div>
         <div className="spacer">
           <MLDropdown
-            placeholder="Select Something"
+            defaultOption={{id: '0000', value: 'No Rubric'}}
             options={[
               {id: '1234', value: 'Option1'},
               {id: '5678', value: 'Option2'},
@@ -167,7 +168,46 @@ class KitchenSink extends Component {
               {id: '1111', value: 'Option4'}
             ]}
             onChange={this.selectOnChange}
+            selected="0000"
+            contentDataId="rubric-selection-content"
+            openDataId="rubric-selection-open"
           />
+        </div>
+
+        {/*message component demo*/}
+        <div className={styles.padder}>
+          <h3>Message Component</h3>
+          <p>
+            Displays one of four possible messages in a page
+          </p>
+
+          <h4>Parameters:</h4>
+          <ol>
+            <li>message: a string to display in the message box</li>
+            <li>messageType: string of four possible types, default, success, warning, error</li>
+            <li>iconType: a string name of the icon wanted for display</li>
+          </ol>
+
+          <MLMessage
+            message={'default message would go here.'}
+            iconType="comment_text"
+          />
+          <MLMessage
+            message={'success message would go here.'}
+            messageType="success"
+            iconType="comment_thumbs_up"
+          />
+          <MLMessage
+            message={'warning message would go here.'}
+            messageType="warning"
+            iconType="info_outline"
+          />
+          <MLMessage
+            message={'error message would go here.'}
+            messageType="error"
+            iconType="alert_outline"
+          />
+
         </div>
 
         {/*modal component demo*/}

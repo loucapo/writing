@@ -25,6 +25,7 @@ function fetchFn(url, params) {
       }
       return response;
     })
+    // eslint-disable-next-line no-confusing-arrow
     .then(res => res.headers.get('content-type').includes('json') ? res.json() : undefined);
 }
 
@@ -43,6 +44,9 @@ function* request(action) {
     const response = yield call(fetchFn, action.url, action.params);
     const success = action.successFunction ? action.successFunction : standardSuccessResponse;
     yield put(success(action, response));
+    if (action.subsequentAction) {
+      yield put(action.subsequentAction);
+    }
   } catch (err) {
     const failure = action.failureFunction ? action.failureFunction : standardFailureResponse;
     yield put(failure(action, err));

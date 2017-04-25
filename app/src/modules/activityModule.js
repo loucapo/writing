@@ -40,11 +40,11 @@ export default (state = [], action) => {
 };
 
 // Fetch Action
-export function getActivity(id) {
+export function getActivity(activityId) {
   return {
     type: ACTIVITY.REQUEST,
     states: ACTIVITY,
-    url: `${config.apiUrl}activity/${id}`,
+    url: `${config.apiUrl}activity/${activityId}`,
     params: {
       method: 'GET'
     }
@@ -52,10 +52,11 @@ export function getActivity(id) {
 }
 
 // Send Actions
-export function updateActivityPrompt(_body, activityId) {
+export function updateActivityPrompt(activityId, _body) {
   return {
     type: ACTIVITY_PROMPT.REQUEST,
     states: ACTIVITY_PROMPT,
+    activityId,
     url: `${config.apiUrl}activity/${activityId}/prompt`,
     params: {
       method: 'PUT',
@@ -64,7 +65,7 @@ export function updateActivityPrompt(_body, activityId) {
   };
 }
 
-export function updateActivityRubric(_body, activityId) {
+export function updateActivityRubric(activityId, _body) {
   return {
     type: ACTIVITY_RUBRIC.REQUEST,
     states: ACTIVITY_RUBRIC,

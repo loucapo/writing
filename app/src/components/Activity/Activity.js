@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import moment from 'moment';
 import Header from '../Header/Header';
-import MLAlert from '../MLAlert/MLAlert';
+import MLMessage from '../MLMessage/MLMessage';
 import ActivityTitle from './ActivityTitle/ActivityTitle';
 import ActivityMenu from './ActivityMenu/ActivityMenu';
 import PromptContainer from 'Containers/PromptContainer';
@@ -14,11 +14,11 @@ const Activity = ({role, activity, draftCount}) => (
     <Header title={activity.course} />
     <div className={styles.container}>
       <div data-id="created-activity-alert" className={styles.spacer}>
-        <MLAlert
+        <MLMessage
           message={'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
           '. This is in draft mode and will not be visible to students until you assign it.'}
-          alertType="success"
-          iconType="circle_check_outline"
+          messageType="success"
+          iconType="check"
         />
 
         <ActivityTitle role={role} title={activity.title} type={activity.type} />

@@ -1,7 +1,7 @@
 @import 'variables.css';
 
 .editIcon, .deleteIcon {
-  fill: var(--blue);
+  fill: var(--aqua);
 }
 
 .toolbarClass {

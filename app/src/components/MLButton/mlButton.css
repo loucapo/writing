@@ -2,10 +2,11 @@
 
 .button {
   background-color: transparent;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--aqua);
   border-radius: 3px;
-  color: var(--blue);
+  color: var(--aqua);
   cursor: pointer;
+  display: flex;
   @apply --font-14;
   font-weight: normal;
   letter-spacing: 0.02em;
@@ -17,9 +18,14 @@
   opacity: 0.8;
 }
 
+.red_hollow {
+  border-color: var(--red);
+  color: var(--red);
+}
+
 .blue {
   composes: button;
-  background-color: var(--blue);
+  background-color: var(--aqua);
   border: none;
   color: var(--white);
 }
@@ -29,4 +35,8 @@
   background-color: var(--green);
   border: none;
   color: var(--white);
+}
+
+.icon {
+  fill: var(--aqua);
 }
