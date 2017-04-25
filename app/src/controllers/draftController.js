@@ -6,7 +6,15 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       command.createdById = ctx.state.user.user_data.id;
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
       let event = activity.addDraftToActivity(command);
-      await repository.query(sqlLibrary.draft, 'addDraftToActivity', event);
+      let draftIndexes = activity.getDraftIndexes();
+      repository.transaction(async repo => {
+        await repo.query(sqlLibrary.draft, 'addDraftToActivity', event);
+
+        for (let draft of draftIndexes) {
+          draft.modifiedById = ctx.state.user.user_data.id;
+          await repo.query(sqlLibrary.draft, 'updateDraftIndex', draft);
+        }
+      });
 
       ctx.status = 200;
       ctx.body = { id: event.draftId };
@@ -16,9 +24,16 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
     async removeDraftFromActivity(ctx) {
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(ctx.params.activityId);
       let event = activity.removeDraftFromActivity({draftId: ctx.params.draftId});
+      let draftIndexes = activity.getDraftIndexes();
 
-      // this is going to be dependant on how we persist
-      await repository.query(sqlLibrary.draft, 'removeDraftFromActivity', event);
+      repository.transaction(async repo => {
+        await repo.query(sqlLibrary.draft, 'removeDraftFromActivity', {draftId: event.draftId});
+
+        for (let draft of draftIndexes) {
+          draft.modifiedById = ctx.state.user.user_data.id;
+          await repo.query(sqlLibrary.draft, 'updateDraftIndex', draft);
+        }
+      });
 
       ctx.status = 200;
       return ctx;
@@ -26,10 +41,9 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
 
     async updateDraftInstructions(ctx) {
       const command = ctx.request.body;
-      command.activityId = ctx.params.activityId;
       command.draftId = ctx.params.draftId;
       command.modifiedById = ctx.state.user.user_data.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let activity = await domainBuilders.ActivityBuilder.getActivityARById(ctx.params.activityId);
       let event = activity.updateDraftInstructions(command);
 
       await repository.query(sqlLibrary.draft, 'updateDraftInstructions', event);
@@ -43,13 +57,13 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       command.activityId = ctx.params.activityId;
       command.draftId = ctx.params.draftId;
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
-      let event = activity.setDraftGoals(command);
-
+      activity.setDraftGoals(command);
+      const goals = activity.getDraftGoalsByDraftId({draftId: command.draftId});
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'removeAllGoals', { draftId: command.draftId });
 
-        for (let goalId of event.goals) {
-          await repo.query(sqlLibrary.draft, 'addGoalToDraft', { draftId: command.draftId, goalId });
+        for (let goal of goals) {
+          await repo.query(sqlLibrary.draft, 'addGoalToDraft', goal);
         }
       });
 

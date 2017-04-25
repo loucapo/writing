@@ -91,6 +91,7 @@ module.exports = function(koarouter, controllers) {
      *         type: string
      *       - name: draftId
      *         in: path
+     *         description: The id of the draft to update
      *         required: true
      *         type: string
      *     responses:

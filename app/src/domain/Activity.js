@@ -17,6 +17,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     createNewActivity(cmd) {
       this.setIsNew();
       const event = this.mapper(cmd);
+      //TODO this should probably be fixed in wk_serve
       delete event.id;
       event.activityId = this.id = cmd.id || uuid.v4();
       this.raiseEvent({
@@ -45,12 +46,10 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     }
     addDraftToActivity(cmd) {
       // check business rules here
-
-      //TODO need to update the indexs here
-      //TODO need to update the indexs here
-
       cmd.draftId = uuid.v4();
       cmd.activityId = this.id;
+      this.drafts = this.bumpDraftIndexes(this.drafts);
+
       let draft = new entities.Draft(cmd);
       this.drafts.push(draft);
 
@@ -79,23 +78,29 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     }
 
     removeDraftFromActivity(cmd) {
+      invariant(this.drafts.length > 1, 'An Activity must have at least one Draft');
       const event = this.mapper(cmd);
+
       // check business rules here
       this.drafts = this.drafts.reduce((acc, d) => {
         if (d.id !== cmd.draftId) {
           acc.push(d);
         }
-      });
+        return acc;
+      }, []);
+
       this.drafts = this.orderedDrafts(this.drafts);
       this.drafts = this.updatedDrafts(this.drafts);
-
       this.raiseEvent({
         eventName: 'removeDraftFromActivity',
         event
       });
 
-      let result = {event, drafts: this.drafts};
-      return result;
+      return event;
+    }
+
+    getDraftIndexes() {
+      return this.drafts.map(x => ({draftId: x.id, index: x.index}));
     }
 
     setDraftGoals(cmd) {
@@ -105,6 +110,10 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
 
       draft.setDraftGoals(cmd);
       return event;
+    }
+
+    getDraftGoalsByDraftId(cmd) {
+      return this.drafts.find(x => x.id === cmd.draftId).goals.map(x => ({draftId: cmd.draftId, goalId: x}));
     }
 
 
@@ -121,7 +130,17 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     }
 
     updatedDrafts(drafts) {
-      return drafts.map((x, i) => x.updateIndex(i));
+      return drafts.map((x, i) => {
+        x.updateIndex(i);
+        return x;
+      });
+    }
+
+    bumpDraftIndexes(drafts) {
+      return drafts.map(x => {
+        x.index++;
+        return x;
+      });
     }
   };
 };

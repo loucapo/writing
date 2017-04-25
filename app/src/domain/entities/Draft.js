@@ -17,5 +17,9 @@ module.exports = function(EntityBase, invariant) {
       invariant(cmd.goals.length <= 6, `A draft can have no more than 6 goals`);
       this.goals = cmd.goals;
     }
+
+    updateIndex(newIndex) {
+      this.index = newIndex;
+    }
   };
 };

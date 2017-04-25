@@ -12,22 +12,18 @@ VALUES
     :createdById,
     now())
 
--- name: delete_draft_description
-delete
-from draft_description
-where id = :id
-
--- name: update_draft_description
-UPDATE draft_description
+-- name: updateDraftInstructions
+UPDATE draft
 SET
     instructions = :instructions,
-    list_position = :listPosition
-WHERE id = :id;
+    modified_by_id = :modifiedById
+WHERE id = :draftId;
 
 -- name: getDraftsByActivityId
 SELECT *
 FROM draft
 WHERE activity_id = :activityId
+ORDER BY index
 
 -- name: addGoalToDraft
 INSERT INTO draft_criteria
@@ -45,6 +41,16 @@ where draft_id = :draftId
 -- name: getDraftCriteria
 SELECT * FROM draft_criteria
 
+-- name: removeDraftFromActivity
+DELETE from draft WHERE id = :draftId
+
 -- name: removeAllGoals
 DELETE FROM draft_criteria
 WHERE draft_id = :draftId
+
+-- name: updateDraftIndex
+UPDATE draft
+SET
+    index = :index,
+    modified_by_id = :modifiedById
+WHERE id = :draftId;

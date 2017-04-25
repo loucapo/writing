@@ -44,16 +44,16 @@ module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
   }
 
   // regular query that pulls a new client from the pool each time
-  function query(queriesFile, query, event) { //eslint-disable-line no-shadow
-    const adapter = makeAdapter(new pgasync.default(config.postgres.config));
+  function query(queriesFile, query, event, debug) { //eslint-disable-line no-shadow
+    const adapter = makeAdapter(new pgasync.default(config.postgres.config), debug);
     return executeQuery(adapter, queriesFile, query, event);
   }
 
   // special function for executing queries in a transaction
   function transactionRepo(client) {
     return {
-      query(queriesFile, query, event) {  //eslint-disable-line no-shadow
-        const adapter = makeAdapter(client);
+      query(queriesFile, query, event, debug) {  //eslint-disable-line no-shadow
+        const adapter = makeAdapter(client, debug);
         return executeQuery(adapter, queriesFile, query, event);
       }
     };

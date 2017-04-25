@@ -34,8 +34,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
           createdById: ctx.state.user.user_data.id
         });
 
-        await repository.query(sqlLibrary.draft, 'addDraftToActivity', draftEvent);
-
+        await repository.query(sqlLibrary.draft, 'addDraftToActivity', draftEvent.event);
       }
       logger.debug(`Call to createActivity successful with following payload: ${JSON.stringify(command)}`);
 

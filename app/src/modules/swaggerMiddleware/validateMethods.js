@@ -11,6 +11,7 @@ module.exports = function() {
         errors: [{message: `can not validate: ${JSON.stringify(value)}, when there is no parameter provided`}]
       };
     }
+    //TODO need better error messaging on this.
     return parameter.validator(value);
   }
 
