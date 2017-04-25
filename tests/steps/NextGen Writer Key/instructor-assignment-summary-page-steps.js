@@ -139,8 +139,9 @@ exports.define = function(steps) {
   steps.then("The draft goal summary list should have '$goals' goal", function(goals) {
     page.draft_goal_summary_list.getText().then(function(t) {
       var content = t.split(',');
-      goals_number = parseInt(goals);
-      expect(content.length).to.equal(goals_number);
+        // could use error handling if goals = 0. Empty space is counting as 1 right now.
+        goals_number = parseInt(goals);
+        expect(content.length).to.equal(goals_number);
     });
   });
 
@@ -180,24 +181,17 @@ exports.define = function(steps) {
     page[elem].isDisplayed().should.eventually.equal(false);
   });
 
-  steps.then("Draft Goals Cleanup", function() {
+  steps.then("Draft Goals Cleanup '$number'", function(number) {
     page.edit_draft_goals_button.click();
-    // checked_array = driver.findElements({css: "[name=draftGoalOption]:checked"}).size();
-    // console.log(checked_array)
-    // i = checked_array.length;
-    // console.log(i);
-     k = 0;
-    try {
-    while (k < 6) {
+    //can be improved so that it'll just uncheck all that are checked but couldn't figure it out on first pass
+    k = 0;
+    i = parseInt(number);
+    while (k < i) {
       if (driver.findElement({css: "[name=draftGoalOption]:checked"})) {
         driver.findElement({css: "[name=draftGoalOption]:checked"}).click();
         k++;
       }
     }
-    }
-    catch(err) {
-        console.log('No more checked boxes')
-      };
       page.draft_goal_save_button.click();
     });
 };

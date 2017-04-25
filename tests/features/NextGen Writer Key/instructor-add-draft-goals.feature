@@ -1,6 +1,5 @@
 @WRITE-29
   @WRITE-94
-@only
 Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
 
   Scenario: Instructor sees option to add draft goals
@@ -12,8 +11,6 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     When I click a 'add_draft_goals_button'
     Then I see the 'draft_goal_popup'
     And I see the 'draft_goal_header'
-    #And I see the 'draft_goal_header_language'
-    #And I see the 'draft_goal_selection_language'
     And I see the 'draft_goal_list'
     And I see the 'draft_goal_save_button'
     And I see the 'draft_goal_cancel_button'
@@ -31,7 +28,6 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click a 'first_draft_goal_checkbox'
     And I click a 'first_draft_goal_checkbox'
     And 'Thesis' should not be selected in draft goal summary list
-    #Then The draft goal summary list should have '0' goal
 
   Scenario: Instructor expands draft goal
     Given I visit the SLS create activity page
@@ -52,15 +48,12 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click a 'first_draft_goal_checkbox'
     And I click a 'draft_goal_save_button'
     Then Draft Goals on the Activity Summary should have '1' goal
-    Then Draft Goals Cleanup
+    Then Draft Goals Cleanup '1'
 
   Scenario: Instructor cancels draft goal
     Given I visit the SLS create activity page
     When I click a 'edit_draft_goals_button'
     And I click a 'first_draft_goal_checkbox'
-    And I click a 'draft_goal_cancel_button'
-    #Then Draft Goals on the Activity Summary should have '0' goal
-    Then Draft Goals Cleanup
 
   Scenario: Instructor selects more than six draft goal
     Given I visit the SLS create activity page
@@ -73,7 +66,6 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click a 'sixth_draft_goal_checkbox'
     And I click a 'seventh_draft_goal_checkbox'
     Then The draft goal summary list should have '6' goal
-    Then Draft Goals Cleanup
 
   Scenario: Instructor unselects sixth draft goal
     Given I visit the SLS create activity page
@@ -88,7 +80,6 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then The draft goal summary list should have '5' goal
     And I click a 'seventh_draft_goal_checkbox'
     Then The draft goal summary list should have '6' goal
-    Then Draft Goals Cleanup
 
   Scenario: Instructor edits draft goal
     Given I visit the SLS create activity page
@@ -98,7 +89,8 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click a 'edit_draft_goals_button'
     Then The draft goal summary list should have '1' goal
     And 'Thesis' should be selected in draft goal summary list
-    Then Draft Goals Cleanup
+    And I click a 'draft_goal_save_button'
+    Then Draft Goals Cleanup '1'
 
   Scenario: Instructor edits to add draft goal
     Given I visit the SLS create activity page
@@ -111,7 +103,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then 'Evidence' should be selected in draft goal summary list
     And I click a 'draft_goal_save_button'
     Then Draft Goals on the Activity Summary should have '2' goal
-    Then Draft Goals Cleanup
+    Then Draft Goals Cleanup '2'
 
   Scenario: Instructor edits to cancel draft goal
     Given I visit the SLS create activity page
@@ -123,7 +115,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click a 'draft_goal_cancel_button'
     Then Draft Goals on the Activity Summary should have '1' goal
     Then The draft goals modal does not appear
-    Then Draft Goals Cleanup
+    Then Draft Goals Cleanup '1'
 
   Scenario: Instructor edits to remove draft goal
     Given I visit the SLS create activity page
@@ -138,9 +130,4 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click a 'draft_goal_save_button'
     Then Draft Goals on the Activity Summary should have '2' goal
     Then Draft Goals on the Activity Summary should not contain 'Thesis'
-    Then Draft Goals Cleanup
-
-    @only
-  Scenario: Instructor edits to remove draft goal
-    Given I visit the SLS create activity page
-    Then Draft Goals Cleanup
+    Then Draft Goals Cleanup '2'
