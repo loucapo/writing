@@ -1,4 +1,5 @@
 var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page.js');
+var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 exports.define = function(steps) {
   steps.given("I visit the SLS create activity page", function() {
@@ -34,6 +35,9 @@ exports.define = function(steps) {
     driver.navigate().refresh();
   });
 
+  steps.when("I click on the page", function () {
+    page.activity_prompt_header.click();
+  });
   steps.then('I should see the Assignment Header elements', function() {
     expect(page.title).to.exist;
     expect(page.activity_type).to.exist;
@@ -49,7 +53,6 @@ exports.define = function(steps) {
 
   steps.then('I should see the Rubric Details elements', function() {
     expect(page.final_rubric).to.exist;
-    expect(page.final_rubric_delete).to.exist;
     expect(page.rubric_selection).to.exist;
     expect(page.create_custom_rubric).to.exist;
   });
@@ -69,6 +72,56 @@ exports.define = function(steps) {
   steps.then("The '$category' should be '$text'", function(category,text) {
     page[category].getText().then(function(t) {
       expect(t).to.contain(text);
+    });
+  });
+
+  steps.when("I click a '$element'", function(elem) {
+    page[elem].click();
+  });
+
+  steps.then("I reset the assignment prompt for the next test", function() {
+    page.activity_prompt_edit.click();
+    rtePage.draftEditor.click();
+    rtePage.draftEditor.getText()
+      .then(function(content) {
+        var lefts = '';
+        var content_length = content.length + 1;
+        for (i = 0; i < content_length; i++) {
+          lefts += keys.LEFT;
+        }
+        rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
+        rtePage.draftEditor.sendKeys(keys.DELETE);
+      });
+    page.activity_prompt_save.click();
+  });
+
+  steps.then("I see '$rubric' is the '$number' element", function(elem,number) {
+    page.rubric_selection_content.getText().then(function(t) {
+      var content = t.split('\n');
+      expect(content[number]).to.contain(elem);
+    });
+  });
+
+  steps.then("I see '$rubric' is selected", function(elem) {
+    page.rubric_title.getText().then(function(t) {
+      expect(t).to.contain(elem);
+    });
+  });
+
+
+  steps.then("There is no rubric to preview", function() {
+    driver.findElements({css: "[class^='Rubric__table']"})
+      .then(gimme_none)
+    });
+
+  function gimme_none(arr) {
+    expect(arr.length).to.equal(0);
+  };
+
+  steps.then("The '$elem' does not exist", function(elem) {
+    //expect(page.rubric_preview).to.not.exist;
+    page.rubric_preview.then(function(flags) {
+      expect(flags.length).to.equal(0);
     });
   });
 };

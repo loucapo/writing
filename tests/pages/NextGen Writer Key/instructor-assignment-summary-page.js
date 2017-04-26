@@ -14,15 +14,25 @@ module.exports = new Page({
 
   // assignment details
   activity_prompt_header: { get: function () { return this.element("[data-id='prompt-section']"); } },
+  add_activity_prompt_link: { get: function () { return this.element("[data-id='add-prompt']"); } },
   activity_prompt_edit: { get: function () { return this.element("[data-id='prompt-edit']"); } },
   activity_prompt_delete: { get: function () { return this.element("[data-id='prompt-delete']"); } },
   activity_prompt_description: { get: function () { return this.element("[data-id='prompt-description']"); } },
+  activity_prompt_save: { get: function () { return this.element("[data-id='prompt-save']"); } },
+  activity_prompt_cancel: { get: function () { return this.element("[data-id='prompt-cancel']"); } },
 
   // rubric
   final_rubric: { get: function () { return this.element("[data-id='rubric-section']"); } },
   final_rubric_delete: { get: function () { return this.element("[data-id='rubric-delete']"); } },
   rubric_selection: { get: function () { return this.element("[data-id='rubric-dropdown']"); } },
   create_custom_rubric: { get: function () { return this.element("[data-id='create-rubric']"); } },
+  no_rubric_option: { get: function () { return this.element("[data-id='rubric-dropdown'] div ul li"); } },
+  rubric_option_2: { get: function () { return this.element("[data-id='rubric-dropdown'] div ul li:nth-child(2)"); } },
+  rubric_preview: { get: function () { return this.element("[data-id='rubric-preview']" )} },
+  rubric_preview_list: { get: function () { return this.elements("[class^='Rubric__table']" )} },
+  rubric_selection_open: { get: function () { return this.element("[data-id='rubric-selection-open']"); } },
+  rubric_selection_content: { get: function () { return this.element("[data-id='rubric-selection-content']"); } },
+  rubric_title: { get: function () { return this.element("[data-id='rubric-dropdown'] div div"); } },
 
   // sub menu
   drafts: { get: function () { return this.element("[data-id='drafts']"); } },
