@@ -8,7 +8,7 @@ module.exports = async function() {
     console.log('==========end ping db"=========');
 
     try {
-        var dbmigrate = DBMigrate.getInstance(true, {config: {[process.env.NODE_ENV]: config.postgres.config}});
+        var dbmigrate = DBMigrate.getInstance(true, {config: {[process.env.MIGRATE_ENV]: config.postgres.config}});
         console.log('==========BEGIN Schema Load"=========');
         await dbmigrate.up();
         console.log('==========END Schema Load=========');
