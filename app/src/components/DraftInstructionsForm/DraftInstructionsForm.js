@@ -8,7 +8,8 @@ import styles from './draftInstructionsForm.css';
 class DraftInstructionsForm extends Component {
   state = {
     showForm: false,
-    value: this.props.value || undefined
+    value: this.props.value || undefined,
+    newValue: undefined
   };
 
   toggleForm = () => {
@@ -17,14 +18,25 @@ class DraftInstructionsForm extends Component {
     });
   };
 
+  cancelInstructions = () => {
+    this.setState({
+      value: this.state.value,
+      newValue: this.state.value
+    });
+    this.toggleForm();
+  };
+
   saveInstructions = () => {
+    this.setState({
+      value: this.state.newValue
+    });
     this.props.updateInstructions({instructions: this.state.value});
     this.toggleForm();
   };
 
   handleChange = (event) => {
     this.setState({
-      value: event.target.value
+      newValue: event.target.value
     });
   };
 
@@ -54,7 +66,7 @@ class DraftInstructionsForm extends Component {
                 <span>Draft Instructions</span>
                 <InstructorControlsContainer role={this.props.role}>
                   <div>
-                    <a data-id="prompt-edit" onClick={this.toggleForm}>
+                    <a data-id="draft-instructions-edit" onClick={this.toggleForm}>
                       <MLIcon
                         className={styles.icon}
                         title="edit"
@@ -64,7 +76,7 @@ class DraftInstructionsForm extends Component {
                         viewBox="0 0 24 24"
                       />
                     </a>
-                    <a data-id="prompt-delete">
+                    <a data-id="draft-instructions-delete">
                       <MLIcon
                         className={styles.icon}
                         title="trash"
@@ -88,12 +100,16 @@ class DraftInstructionsForm extends Component {
           <div className={styles.flexSpace}>
             <span>Draft Instructions</span>
             <span className={styles.flex}>
-              <MLButton dataId="cancel-draft-instructions" title="Cancel" handleClick={this.toggleForm} />
+              <MLButton dataId="cancel-draft-instructions" title="Cancel" handleClick={this.cancelInstructions} />
               <MLButton dataId="save-draft-instructions" color="blue" title="Save" handleClick={this.saveInstructions} />
             </span>
           </div>
           <div className={styles.addDraftInstField}>
-            <textarea onChange={this.handleChange} value={this.state.value} />
+            <textarea
+              data-id="textarea-draft-instructions"
+              onChange={this.handleChange}
+              value={this.state.newValue || this.state.value}
+            />
           </div>
         </div>
       </div>

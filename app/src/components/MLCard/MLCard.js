@@ -6,7 +6,7 @@ import styles from './mlCard.css';
 
 const Card = ({type, title, role, options, children}) => {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} data-id={'MLCard-' + title.split(' ').join('-')}>
       <Heading
         type={type || title}
         title={title}
