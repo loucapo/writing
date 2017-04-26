@@ -154,7 +154,7 @@ run-dev:	docker-build-deps build-env-deps
 load-data:
 	cd ../wk_data && $(MAKE) load-data
 
-kill-data:
+remove-data:
 	cd ../wk_data && $(MAKE) kill-data
 
 run-logging:	ecr-login
