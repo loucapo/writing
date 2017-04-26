@@ -1,7 +1,7 @@
 {
   "definitions": {
-    "createOrReplaceActivity": {
-      "title": "createOrReplaceActivity",
+    "createActivityIfNotCreated": {
+      "title": "createActivityIfNotCreated",
       "properties": [
         {
           "name": "courseId",
@@ -17,8 +17,8 @@
         }
       ]
     },
-    "createOrReplaceStudentActivity": {
-      "title": "createOrReplaceStudentActivity",
+    "createStudentActivityIfNotCreated": {
+      "title": "createStudentActivityIfNotCreated",
       "properties": [
         {
           "name": "activityId",

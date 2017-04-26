@@ -17,9 +17,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     createNewActivity(cmd) {
       this.setIsNew();
       const event = this.mapper(cmd);
-      //TODO this should probably be fixed in wk_serve
-      delete event.id;
-      event.activityId = this.id = cmd.id || uuid.v4();
+      event.activityId = this.id = cmd.activityId || uuid.v4();
       this.raiseEvent({
         eventName: 'activityCreated',
         event

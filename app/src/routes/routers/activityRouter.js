@@ -44,7 +44,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         in: body
      *         required: true
      *         schema:
-     *           $ref: "#/definitions/createOrReplaceActivity"
+     *           $ref: "#/definitions/createActivityIfNotCreated"
      *     responses:
      *       200:
      *         description: Success
@@ -55,7 +55,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.put('/activity/:activityId', controllers.activityController.createOrReplaceActivity);
+    router.put('/activity/:activityId', controllers.activityController.createActivityIfNotCreated);
 
     /**
      * @swagger

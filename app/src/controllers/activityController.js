@@ -18,7 +18,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
     },
 
     // check if it exists, if not create it;
-    async createOrReplaceActivity(ctx) {
+    async createActivityIfNotCreated(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.createdById = ctx.state.user.user_data.id;
