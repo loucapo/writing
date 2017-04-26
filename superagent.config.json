@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://wk-pink.mldev.cloud",
+  "baseUrl": "http://wk-qa-2.mldev.cloud",
   "featuresDir": "tests/api/features",
   "stepsDir": "tests/api/steps",
 
@@ -24,8 +24,7 @@
   "browsers": [
     {"browserName": "chrome",
      "chromeOptions": {
-       "args": ["--no-sandbox"]}},
-    { "browserName": "firefox"}],
+       "args": ["--no-sandbox"]}}],
 
   "screenSize": {
     "x": 1600,
