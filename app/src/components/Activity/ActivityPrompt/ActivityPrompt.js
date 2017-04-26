@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import MLCard from '../../MLCard/MLCard';
 import MLButton from '../../MLButton/MLButton';

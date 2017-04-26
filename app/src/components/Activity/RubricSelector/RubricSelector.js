@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import MLDropdown from '../../MLDropdown/MLDropdown';
 import MLCard from './../../MLCard/MLCard';
 import Rubric from './../../Rubric/Rubric';

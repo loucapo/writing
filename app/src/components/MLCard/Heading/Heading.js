@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import InstructorControlsContainer from '../../InstructorControlsContainer/InstructorControlsContainer';
 import MLIcon from 'ml-react-cdl-icons';
 

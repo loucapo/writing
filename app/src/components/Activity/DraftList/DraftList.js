@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Draft from './Draft/Draft';
 import MLButton from '../../MLButton/MLButton';
 

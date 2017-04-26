@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { getRubricList } from './../modules/rubricModule';
 import { connect } from 'react-redux';
 import RubricSelector from '../components/Activity/RubricSelector/RubricSelector';

@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 
 import styles from './mlmodal.css';

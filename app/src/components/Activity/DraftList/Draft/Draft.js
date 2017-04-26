@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import MLDropdown from '../../../MLDropdown/MLDropdown';
 import MLDialog from '../../../MLDialog/MLDialog';
