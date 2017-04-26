@@ -69,6 +69,12 @@ exports.define = function(steps) {
   });
 
 
+  steps.then("'$list' should be '$number' goal", function(list,number) {
+    page[list].return('li').then(function(t) {
+      expect(t).to.equal(number);
+    });
+  });
+
   steps.then("The '$category' should be '$text'", function(category,text) {
     page[category].getText().then(function(t) {
       expect(t).to.contain(text);
@@ -114,6 +120,11 @@ exports.define = function(steps) {
       .then(gimme_none)
     });
 
+  steps.then("The draft goals modal does not appear", function() {
+    driver.findElements({css: "[data-id='modal']"})
+      .then(gimme_none)
+  });
+
   function gimme_none(arr) {
     expect(arr.length).to.equal(0);
   };
@@ -124,6 +135,65 @@ exports.define = function(steps) {
       expect(flags.length).to.equal(0);
     });
   });
+
+  steps.then("The draft goal summary list should have '$goals' goal", function(goals) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      var content = t.split(',');
+        // could use error handling if goals = 0. Empty space is counting as 1 right now.
+        goals_number = parseInt(goals);
+        expect(content.length).to.equal(goals_number);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should have '$goal' goal", function(goals) {
+    driver.findElements({css: "[data-id='drafts-goal-list'] li"})
+      .then(function(t) {
+      goals_number = parseInt(goals);
+      expect(t.length).to.equal(goals_number);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should contain '$goal'", function(goals) {
+    page.draft_goal_list_activity_summary_selected.getText().then(function(t) {
+      expect(t).to.contain(goals);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should not contain '$goal'", function(goals) {
+    page.draft_goal_list_activity_summary_selected.getText().then(function(t) {
+      expect(t).to.not.contain(goals);
+    });
+  });
+
+  steps.then("'$first_draft_goal' should be selected in draft goal summary list", function(goal) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      expect(t).to.contain(goal);
+    });
+  });
+
+  steps.then("'$first_draft_goal' should not be selected in draft goal summary list", function(goal) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      expect(t).to.not.contain(goal);
+    });
+  });
+
+  steps.then("I should not see the '$elem'", function(elem) {
+    page[elem].isDisplayed().should.eventually.equal(false);
+  });
+
+  steps.then("Draft Goals Cleanup '$number'", function(number) {
+    page.edit_draft_goals_button.click();
+    //can be improved so that it'll just uncheck all that are checked but couldn't figure it out on first pass
+    k = 0;
+    i = parseInt(number);
+    while (k < i) {
+      if (driver.findElement({css: "[name=draftGoalOption]:checked"})) {
+        driver.findElement({css: "[name=draftGoalOption]:checked"}).click();
+        k++;
+      }
+    }
+      page.draft_goal_save_button.click();
+    });
 };
 
 
