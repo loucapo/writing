@@ -69,7 +69,7 @@ exports.define = function(steps) {
   });
 
 
-  steps.then("'$list' should be 'number' goal", function(list,number) {
+  steps.then("'$list' should be '$number' goal", function(list,number) {
     page[list].return('li').then(function(t) {
       expect(t).to.equal(number);
     });
