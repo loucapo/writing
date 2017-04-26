@@ -23,7 +23,7 @@ module.exports = function (applicationStrategies, config, moment, superagent, lo
 
       // make post to API
       var cleanData = {
-        id: dummyData.launch_data.resource_link_id,
+        activityId: dummyData.launch_data.resource_link_id,
         courseId: dummyData.launch_data.course_id,
         title: dummyData.launch_data.course_name,
         createdById: dummyData.user_data.id,
