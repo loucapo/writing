@@ -9,7 +9,6 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       let draftIndexes = activity.getDraftIndexes();
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'addDraftToActivity', event);
-
         for (let draft of draftIndexes) {
           draft.modifiedById = ctx.state.user.user_data.id;
           await repo.query(sqlLibrary.draft, 'updateDraftIndex', draft);

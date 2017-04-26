@@ -46,14 +46,15 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     }
     addDraftToActivity(cmd) {
       // check business rules here
-      cmd.draftId = uuid.v4();
+      const event = this.mapper(cmd);
+
+      cmd.id = uuid.v4();
       cmd.activityId = this.id;
       this.drafts = this.bumpDraftIndexes(this.drafts);
 
       let draft = new entities.Draft(cmd);
       this.drafts.push(draft);
-
-      const event = this.mapper(cmd);
+      event.draftId = cmd.id;
       this.raiseEvent({
         eventName: 'draftAddedToActivity',
         event
