@@ -1,19 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateActivityPrompt } from './../modules/activityModule';
 import Prompt from '../components/Activity/ActivityPrompt/ActivityPrompt';
-
-class PromptContainer extends Component {
-
-  render() {
-    return (<Prompt {...this.props} />);
-  }
-}
-
-PromptContainer.propTypes = {
-  activityId: PropTypes.string
-};
 
 const mapStateToProps = (state, props) => {
   const role = state.auth.role;
@@ -24,6 +11,6 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, {updateActivityPrompt})(PromptContainer);
+export default connect(mapStateToProps, {updateActivityPrompt})(Prompt);
 
 

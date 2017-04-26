@@ -24,9 +24,9 @@ const Activity = ({role, activity, draftCount}) => (
 
         <ActivityTitle role={role} title={activity.title} type={activity.type} />
 
-        <PromptContainer activityId={activity.id} role={role} />
+        <PromptContainer activityId={activity.id} />
 
-        <RubricSectionContainer activityId={activity.id} rubricId={activity.rubricId} role={role} />
+        <RubricSectionContainer activityId={activity.id} rubricId={activity.rubricId} />
 
       </div>
 
