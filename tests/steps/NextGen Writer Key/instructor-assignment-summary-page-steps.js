@@ -230,19 +230,19 @@ exports.define = function(steps) {
     //tries to delete all, chokes after 3-4 right now with stale element issue
     driver.findElements({css: elem}).then(function(count) {
      number = count.length;
-      k = 0;
-      while (k < number) {
+      k = number;
+      while (k > 1) {
         driver.findElement({css: elem}).click();
         driver.findElement({css: "[data-id='prompt-cancel']"}).click();
-        k++;
-      }
+          k--;
+          driver.navigate().refresh();
+        };
     });
   });
 
   steps.then("Page Element Checker Verifies Text: '$text' at '$elem'", function(text,elem) {
     driver.findElement({css: elem}).getText()
       .then(function(t) {
-          console.log(t);
           expect(t).to.contain(text);
       });
   });
