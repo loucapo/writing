@@ -169,9 +169,8 @@ class Draft extends Component {
             </div>
 
             <div className={styles.draftDetailsRight}>
-
               <DraftInstructionsForm
-                value={this.props.draft.instructions}
+                value={this.props.draft.instructions || ''}
                 updateInstructions={this.updateInstructions}
                 role={this.props.role}
               />

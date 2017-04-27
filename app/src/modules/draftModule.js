@@ -37,6 +37,15 @@ export default (state = [], action) => {
     case REMOVE_DRAFT_TO_ACTIVITY.SUCCESS: {
       return state.filter(x => x.id !== action.action.draftId);
     }
+    case UPDATE_DRAFT_INSTRUCTIONS.SUCCESS: {
+      const body = JSON.parse(action.action.params.body);
+      const draftId = action.action.draftId;
+      return state.map(x => {
+        return x.id === draftId
+          ? {...x, instructions: body.instructions}
+          : x;
+      });
+    }
   }
   return state;
 };
@@ -80,14 +89,15 @@ export function removeDraftFromActivity(activityId, draftId) {
   };
 }
 
-export function updateDraftInstructions(activityId, draftId, instuctions) {
+export function updateDraftInstructions(activityId, draftId, instructions) {
   return {
     type: UPDATE_DRAFT_INSTRUCTIONS.REQUEST,
     states: UPDATE_DRAFT_INSTRUCTIONS,
     url: `${config.apiUrl}activity/${activityId}/draft/${draftId}/instructions`,
+    draftId,
     params: {
       method: 'put',
-      body: instuctions
+      body: instructions
     }
   };
 }

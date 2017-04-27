@@ -51,7 +51,7 @@ const DraftList = ({
             draft={draft}
             totalDrafts={drafts.length}
             role={role}
-            key={idx}
+            key={draft.id}
             removeDraft={removeDraft}
             updateInstructions={updateInstructions}>
             {finalInstruct}

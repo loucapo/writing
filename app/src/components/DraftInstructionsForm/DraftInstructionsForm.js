@@ -8,8 +8,7 @@ import styles from './draftInstructionsForm.css';
 class DraftInstructionsForm extends Component {
   state = {
     showForm: false,
-    value: this.props.value || undefined,
-    newValue: undefined
+    value: this.props.value
   };
 
   toggleForm = () => {
@@ -20,23 +19,19 @@ class DraftInstructionsForm extends Component {
 
   cancelInstructions = () => {
     this.setState({
-      value: this.state.value,
-      newValue: this.state.value
+      value: this.props.value
     });
     this.toggleForm();
   };
 
   saveInstructions = () => {
-    this.setState({
-      value: this.state.newValue
-    });
     this.props.updateInstructions({instructions: this.state.value});
     this.toggleForm();
   };
 
   handleChange = (event) => {
     this.setState({
-      newValue: event.target.value
+      value: event.target.value
     });
   };
 
@@ -108,7 +103,7 @@ class DraftInstructionsForm extends Component {
             <textarea
               data-id="textarea-draft-instructions"
               onChange={this.handleChange}
-              value={this.state.newValue || this.state.value}
+              value={this.state.value}
             />
           </div>
         </div>
