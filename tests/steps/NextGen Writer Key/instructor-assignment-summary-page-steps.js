@@ -247,6 +247,19 @@ exports.define = function(steps) {
       });
   });
 
+  steps.when("I clear the draft instructions", function(text) {
+    page.textarea_draft_instructions.getText()
+      .then(function(content) {
+        var lefts = '';
+        var content_length = content.length + 1;
+        for (i = 0; i < content_length; i++) {
+          lefts += keys.LEFT;
+        }
+        page.textarea_draft_instructions.sendKeys(keys.SHIFT + lefts);
+        page.textarea_draft_instructions.sendKeys(keys.DELETE);
+      });
+  });
+
   steps.when("I type '$text' in the draft instructions", function(text) {
     page.textarea_draft_instructions.sendKeys(text);
   });

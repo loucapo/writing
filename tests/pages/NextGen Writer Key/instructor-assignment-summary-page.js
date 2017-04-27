@@ -49,6 +49,7 @@ module.exports = new Page({
   cancel_draft_instructions: { get: function () { return this.element("[data-id='cancel-draft-instructions']"); } },
   add_student_reflection_questions: { get: function () { return this.element("[data-id='add-reflections']"); } },
   draft_delete_button: { get: function () { return this.element("[data-id='draft-delete']"); } },
+  draft_instructions_edit: { get: function () { return this.element("[data-id='draft-instructions-edit']"); } },
 
   // draft details
   drafts_review_type: { get: function() { return this.element("[data-id='review-type-dropdown']"); } },
