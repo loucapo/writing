@@ -7,11 +7,13 @@ where id = :studentActivityId
 INSERT INTO student_activity
     (id,
     activity_id,
+    student_id,
     created_by_id,
     created_date)
 VALUES
     (:studentActivityId,
     :activityId,
+    :studentId,
     :createdById,
     :createdDate)
 

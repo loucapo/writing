@@ -31,6 +31,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
         await repository.query(sqlLibrary.activity, 'createActivity', event);
         let draftEvent = activity.addDraftToActivity({
           index: 0,
+          activityId: command.activityId,
           createdById: ctx.state.user.user_data.id
         });
 

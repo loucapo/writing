@@ -5,8 +5,9 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.createdById = ctx.state.user.user_data.id;
+      command.studentId = ctx.state.user.user_data.id;
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(command)}`);
-      let studentActivity = await repository(
+      let studentActivity = await repository.query(
         sqlLibrary.studentActivity,
         'getStudentActivityById',
         {studentActivityId: command.activityId});
@@ -14,7 +15,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
         logger.info(`Creating studentActivity from wk_serve payload: ${JSON.stringify(command)}`);
         studentActivity = new domain.StudentActivity();
         let event = studentActivity.createNewStudentActivity(command);
-        await repository(sqlLibrary.studentActivity, 'createStudentActivity', event);
+        await repository.query(sqlLibrary.studentActivity, 'createStudentActivity', event);
       }
       logger.debug(`Call to createStudentActivity successful with following payload: ${JSON.stringify(command)}`);
 
