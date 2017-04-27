@@ -3,83 +3,101 @@
 Feature: Add Another Draft To Activity
 
   Scenario: Adding Another Draft
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    Then A new draft will be added above the existing draft
-    And I see the 'Add draft description'
-    And I see the 'Add draft goals'
-    And I see the 'Add Student Reflection Questions'
-    And I see the 'instructor review type'
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    Then A new draft will be added above the '1' existing draft
+    And Page Element Checker Verifies: '2' '[data-id='add-instructions']'
+    And Page Element Checker Verifies: '2' '[data-id='add-draft-goal']'
+    And Page Element Checker Verifies: '2' '[data-id='review-type-dropdown']'
+    And Page Element Checker Verifies: '2' '[data-id='add-reflections']'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Adding First Draft
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    Then A new draft will be added above the existing draft
-    And The 'delete_button' should be active
-    And the draft tally within header should be increased by one
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    Then A new draft will be added above the '1' existing draft
+    And Page Element Checker Verifies: '2' '[data-id='draft-delete']'
+    And The draft tally within header should display correct number of drafts
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Adding Multiple Drafts
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    Then I see the "Draft 1"
-    When I click the 'add_draft_button'
-    Then I see the "Draft 2"
-    And the last draft should be "Final Paper"
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-1']'
+    When I click a 'add_draft_button'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-2']'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Draft Sequencing
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    When I click the 'add_draft_button'
-    Then I see the "Draft 2"
-    And I see the "student sequencing message"
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-1']'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
+    And Page Element Checker Verifies Text: 'Students can view and start this draft once they've received feedback for Draft 1' at '[data-id='MLCard-Final-Paper'] div > section > [class^='Draft__draftDetails'] > [class^='Draft__draftDetailsRight'] > [class^='Draft__draftNote']'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Removing Drafts
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    When I click the 'add_draft_button'
-    And I see the "Draft 2"
-    And I delete "Draft 1"
-    And I see the "confirmation_message"
-    And I click the "Yes_button"
-    Then "Draft 1" should be removed
-    And the draft tally within header should decrease by one
-    And I see the "Draft 1"
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    When I click a 'add_draft_button'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-2']'
+    And I click a 'draft_delete_button'
+    And I see the 'draft_delete_alert'
+    And I click a 'draft_alert_delete_button'
+    And Page Element Checker Verifies: '0' '[data-id='MLCard-Draft-2']'
+    And The draft tally within header should display correct number of drafts
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-1']'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Removing Final Paper
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    And I delete "Draft 1"
-    And I see the "confirmation_message"
-    And I click the "Yes_button"
-    Then the second to last draft should be renamed "Final Paper"
-    And I cannot delete "Final Draft"
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    And I click a 'draft_delete_button'
+    And I see the 'draft_delete_alert'
+    And I click a 'draft_alert_delete_button'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
+    And Page Element Checker Verifies: '0' '[data-id='MLCard-Draft-1']'
+    And Page Element Checker Verifies: '0' '[data-id='draft-delete']'
 
   Scenario: Adding Description to the New Draft
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    When I click a "add_activity_prompt_link"
-    Then I see the "activity_prompt_editor"
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    When I click a 'add_draft_instructions'
+    Then I see the 'textarea_draft_instructions'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Saving Description to the New Draft
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    When I click a "add_activity_prompt_link"
-    Then I type 'hello world' in the description
-    And I click a 'save button'
-    Then Text 'hello world' should appear
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    When I click a 'add_draft_instructions'
+    When I type 'hello world' in the draft instructions
+    And I click a 'save_draft_instructions'
+    Then Text 'hello world' should appear in the draft instructions
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Cancel Description to the New Draft
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    When I click a "add_activity_prompt_link"
-    Then I type 'hello world' in the description
-    And I click a 'cancel button'
-    Then Text 'hello world' should not appear
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    When I click a 'add_draft_instructions'
+    When I type 'hello world' in the draft instructions
+    And I click a 'cancel_draft_instructions'
+    Then I see the 'add_draft_instructions'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Navigate Away Description to the New Draft
-    Given I visit the activity page
-    When I click the 'add_draft_button'
-    When I click a "add_activity_prompt_link"
-    Then I type 'hello world' in the description
-    And I refresh the page
-    Then Text 'hello world' should not appear
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    When I click a 'add_draft_instructions'
+    When I type 'hello world' in the draft instructions
+    And I reload the page
+    Then I see the 'add_draft_instructions'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
+@only
+  Scenario: Draft Renaming
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-1']'
+    And Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
+    And Page Element Checker Verifies Text: 'Students can view and start this draft once they've received feedback for Draft 1' at '[data-id='MLCard-Final-Paper'] div > section > [class^='Draft__draftDetails'] > [class^='Draft__draftDetailsRight'] > [class^='Draft__draftNote']'
+    And Draft Delete Cleanup '[data-id='draft-delete']'
