@@ -41,11 +41,18 @@ where draft_id = :draftId
 -- name: getDraftCriteria
 SELECT * FROM draft_criteria
 
+-- name: getDraftStudentReflectionQuestions
+SELECT * FROM draft_student_reflection_question
+
 -- name: removeDraftFromActivity
 DELETE from draft WHERE id = :draftId
 
 -- name: removeAllGoals
 DELETE FROM draft_criteria
+WHERE draft_id = :draftId
+
+-- name: removeAllStudentReflectionQuestions
+DELETE FROM draft_student_reflection_question
 WHERE draft_id = :draftId
 
 -- name: updateDraftIndex
@@ -54,3 +61,13 @@ SET
     index = :index,
     modified_by_id = :modifiedById
 WHERE id = :draftId;
+
+-- name: addStudentReflectionQuestionsToDraft
+INSERT INTO draft_student_reflection_question
+    (draft_id,
+    student_reflection_question_id,
+    index)
+VALUES
+    (:draftId,
+    :studentReflectionQuestionId,
+    :index)

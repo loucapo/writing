@@ -70,20 +70,48 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       return ctx;
     },
 
-    async getDraftsByActivityId(ctx) {
-      let drafts = await repository.query(
-        sqlLibrary.draft,
-        'getDraftsByActivityId',
-        {activityId: ctx.params.activityId}
-      );
-      let draftGoal = await repository.query(sqlLibrary.draft, 'getDraftCriteria', {});
+    async setStudentReflectionQuestions(ctx) {
+      const command = ctx.request.body;
+      command.activityId = ctx.params.activityId;
+      command.draftId = ctx.params.draftId;
+      command.modifiedById = ctx.state.user.user_data.id;
+      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let event = activity.setStudentReflectionQuestions(command);
+      repository.transaction(async repo => {
+        await repo.query(sqlLibrary.draft, 'removeAllStudentReflectionQuestions', {draftId: command.draftId});
 
-      const draftsWithGoals = drafts.map(x => {
-        x.goals = draftGoal.filter(y=>y.draftId === x.id).map(z => z.criteriaId);
-        return x;
+        for (let srq of event.studentReflectionQuestions) {
+          await repo.query(
+            sqlLibrary.draft,
+            'addStudentReflectionQuestionsToDraft',
+            {draftId: command.draftId, studentReflectionQuestionId: srq, index: 0});
+        }
       });
       ctx.status = 200;
-      ctx.body = draftsWithGoals;
+      return ctx;
+    },
+
+    async getDraftsByActivityId(ctx) {
+      let drafts = await repository.query(sqlLibrary.draft,
+        'getDraftsByActivityId',
+        {activityId: ctx.params.activityId});
+      let draftGoal = await repository.query(sqlLibrary.draft, 'getDraftCriteria', {});
+      let draftStudentReflectionQuestions = await repository.query(
+        sqlLibrary.draft,
+        'getDraftStudentReflectionQuestions',
+        {});
+
+      const denormalizedDraft = drafts.map(x => {
+        x.goals = draftGoal.filter(y=>y.draftId === x.id).map(z => z.criteriaId);
+        x.studentReflectionQuestions = draftStudentReflectionQuestions
+          .filter(y=>y.draftId === x.id).map(z => {
+            return z.studentReflectionQuestionId;
+          });
+        return x;
+      });
+
+      ctx.status = 200;
+      ctx.body = denormalizedDraft;
       return ctx;
     }
   };

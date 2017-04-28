@@ -76,19 +76,18 @@
           },
           "uniqueItems": true
         }
-
       }
-    }
-  },
-  "setStudentReflectionQuestions": {
-    "title": "setStudentReflectionQuestions",
-    "properties": {
-      "studentReflectionQuestions": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "uniqueItems": true
+    },
+    "setStudentReflectionQuestions": {
+      "title": "setStudentReflectionQuestions",
+      "properties": {
+        "studentReflectionQuestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
       }
     }
   }

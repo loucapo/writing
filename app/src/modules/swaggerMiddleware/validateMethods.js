@@ -30,7 +30,6 @@ module.exports = function() {
     let parameters = operation.resolvedParameters;
     let validationResult = {success: true, errors: [], where: []};
     let bodyDefined = false;
-
     //if there are no parameters specified let's validate that there are none provided
     if (parameters.length === 0) {
       // validate no body
@@ -83,6 +82,7 @@ module.exports = function() {
         validationResult.where.push(parameter.in);
       }
     });
+
     // if no body schema is defined make sure provided body is empty
     if (!bodyDefined && body) {
       let error = validate(body, {validator: isEmpty});

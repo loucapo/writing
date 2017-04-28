@@ -188,6 +188,45 @@ module.exports = function(koarouter, controllers) {
       controllers.draftController.setDraftGoals
     );
 
+    /**
+     * @swagger
+     * /activity/{activityId}/draft/{draftId}/studentreflectionquestions:
+     *   put:
+     *     x-name: setstudentreflectionquestions
+     *     description: Updates a draft's reflection questions
+     *     operationId: setStudentReflectionQuestions
+     *     parameters:
+     *       - name: activityId
+     *         in: path
+     *         description: The id of the activity to update
+     *         required: true
+     *         type: string
+     *       - name: draftId
+     *         in: path
+     *         description: The id of the draft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/setStudentReflectionQuestions"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    draftRouter.put(
+      'setStudentreflectionquestions',
+      '/activity/:activityId/draft/:draftId/studentreflectionquestions',
+      controllers.draftController.setStudentReflectionQuestions
+    );
+
     appRouter.use(draftRouter.routes(), draftRouter. allowedMethods());
   };
 };

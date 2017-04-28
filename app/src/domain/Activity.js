@@ -111,6 +111,13 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
       return event;
     }
 
+    setStudentReflectionQuestions(cmd) {
+      const event = this.mapper(cmd);
+      let draft = this.drafts.find(x => x.id === cmd.draftId);
+      invariant(draft, `No draft with id: ${cmd.draftId} could be found`);
+      draft.setStudentReflectionQuestions(cmd);
+      return event;
+    }
     getDraftGoalsByDraftId(cmd) {
       return this.drafts.find(x => x.id === cmd.draftId).goals.map(x => ({draftId: cmd.draftId, goalId: x}));
     }

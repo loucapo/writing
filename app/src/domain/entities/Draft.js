@@ -18,6 +18,10 @@ module.exports = function(EntityBase, invariant) {
       this.goals = cmd.goals;
     }
 
+    setStudentReflectionQuestions(cmd) {
+      this.studentReflectionQuestions = cmd.studentReflectionQuestions;
+    }
+
     updateIndex(newIndex) {
       this.index = newIndex;
     }
