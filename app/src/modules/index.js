@@ -7,6 +7,7 @@ import feedbackToolContentItems from './feedbackToolContentModule';
 import publisherContent from './publisherContentModule';
 import resourceLinks from './resourceLinksModule';
 import auth from './authModule';
+import studentReflectionQuestions from './studentReflectionQuestionsModule';
 
 export {activityAction} from './activityModule';
 export {getStudentSubmissionAction, submissionOnChange} from './studentSubmissionModule';
@@ -21,5 +22,6 @@ export default {
   rubric: rubricReducer,
   publisherContent,
   resourceLinks,
-  auth
+  auth,
+  studentReflectionQuestions
 };

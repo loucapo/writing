@@ -6,6 +6,7 @@ import MLDropdown from '../MLDropdown/MLDropdown';
 import MLTable from '../MLTable/MLTable';
 import MLMessage from '../MLMessage/MLMessage';
 import DemoModal from '../MLModal/Modals/DemoModal';
+import CheckboxForm from '../MLCheckboxForm/MLCheckboxForm';
 
 import styles from './kitchenSink.css';
 
@@ -248,12 +249,56 @@ class KitchenSink extends Component {
           />
         </div>
 
+        {/*checkbox component demo*/}
+        <div className={styles.padder}>
+          <h3>Checkbox List Form</h3>
+          <p>
+            Renders a list with selectable checkboxes that can be submitted along with 'save' and 'cancel' buttons
+          </p>
+
+          <h4>Parameters:</h4>
+          <ol>
+            <li>fields: array of objects for field content (required)</li>
+            <li>selectedFields: array of objects of fields already selected (required)</li>
+            <li>saveForm: function that processes form once submitted (required)</li>
+            <li>closeModal: closes modal if form is rendered inside a modal</li>
+            <li>activityId</li>
+            <li>draftId</li>
+            <li>selectionLimit: optional max number of fields that can be selected</li>
+            <li>isFormListable: boolean to list selected fields at bottom of form</li>
+            <li>isFormTogglable: boolean to display/disable expand and collapse of fields</li>
+          </ol>
+        </div>
+        <div className="spacer">
+          <h5>Checkbox Form with Selection Limit of 2</h5>
+          <CheckboxForm
+            fields={[
+              {id: '1', question: 'first'},
+              {id: '2', question: 'second'},
+              {id: '3', question: 'third'},
+              {id: '4', question: 'four'}
+            ]}
+            selectedFields={[]}
+            saveForm={() => console.log('submitted!')}
+            selectionLimit={2}
+          />
+
+          <h5>Checkbox Form with Toggle Enabled</h5>
+          <CheckboxForm
+            fields={[
+              {id: '1', title: 'first'},
+              {id: '2', title: 'second'},
+              {id: '3', title: 'third'},
+              {id: '4', title: 'four'}
+            ]}
+            selectedFields={[]}
+            saveForm={() => console.log('submitted!')}
+            isFormTogglable={true}
+          />
+        </div>
       </div>
     );
   }
 }
-
-// KitchenSink.propTypes = {
-// };
 
 export default KitchenSink;

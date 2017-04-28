@@ -6,14 +6,13 @@ import MLButton from '../../MLButton/MLButton';
 import styles from './draftList.css';
 
 const DraftList = ({
-                     activityId,
-                     drafts,
-                     role,
-                     addDraftToActivity,
-                     removeDraftFromActivity,
-                     updateDraftInstructions
+  activityId,
+  drafts,
+  role,
+  addDraftToActivity,
+  removeDraftFromActivity,
+  updateDraftInstructions
 }) => {
-
   const addNewDraft = () => {
     addDraftToActivity(activityId, {index: 0});
   };

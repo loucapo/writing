@@ -8,6 +8,7 @@ const DRAFTS_FOR_ACTIVITY = requestStates('drafts_For_Activity');
 const ADD_DRAFT_TO_ACTIVITY = requestStates('add_draft_to_activity');
 const REMOVE_DRAFT_TO_ACTIVITY = requestStates('remove_draft_to_activity');
 const UPDATE_DRAFT_INSTRUCTIONS = requestStates('update_draft_instructions');
+const PERSIST_STUDENT_REFLECTION_QUESTIONS = requestStates('persist_student_reflection_questions');
 
 // Reducer
 export default (state = [], action) => {
@@ -36,6 +37,16 @@ export default (state = [], action) => {
     }
     case REMOVE_DRAFT_TO_ACTIVITY.SUCCESS: {
       return state.filter(x => x.id !== action.action.draftId);
+    }
+    case PERSIST_STUDENT_REFLECTION_QUESTIONS.SUCCESS: {
+      const body = JSON.parse(action.action.params.body);
+      const studentReflectionQuestions = body.studentReflectionQuestions;
+      const draftId = action.action.draftId;
+      return state.map( x => {
+        return x.id === draftId
+          ? {...x, studentReflectionQuestions}
+          : x;
+      });
     }
     case UPDATE_DRAFT_INSTRUCTIONS.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
@@ -115,3 +126,18 @@ export function setDraftGoals(activityId, draftId, goals) {
     }
   };
 }
+export function setStudentReflectionQuestions(activityId, draftId, studentReflectionQuestions) {
+  return {
+    type: PERSIST_STUDENT_REFLECTION_QUESTIONS.REQUEST,
+    states: PERSIST_STUDENT_REFLECTION_QUESTIONS,
+    url: `${config.apiUrl}activity/${activityId}/draft/${draftId}/studentreflectionquestions`,
+    draftId,
+    params: {
+      method: 'PUT',
+      body: {
+        studentReflectionQuestions
+      }
+    }
+  };
+}
+

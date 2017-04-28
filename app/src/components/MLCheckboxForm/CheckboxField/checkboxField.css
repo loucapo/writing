@@ -12,12 +12,19 @@
   background: var(--off-white);
   border-bottom: solid 1px var(--gray-light);
   padding: 13px 23px;
-  font-weight: bold;
-  @apply --font-18;
 }
 
 .heading:hover {
   cursor: pointer;
+}
+
+.heading h4 {
+  margin-top: 0;
+}
+
+.toggableHeading {
+  font-weight: bold;
+  @apply --font-18;
 }
 
 .content {

@@ -3,25 +3,16 @@ import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import MLDropdown from '../../../MLDropdown/MLDropdown';
 import MLDialog from '../../../MLDialog/MLDialog';
-import DraftInstructionsForm from '../../../DraftInstructionsForm/DraftInstructionsForm';
 import MLCard from '../../../MLCard/MLCard';
-import InstructorControlsContainer from '../../../InstructorControlsContainer/InstructorControlsContainer';
-import DraftGoalModalContainer from './../../../../containers/DraftGoalModalContainer';
+import DraftGoals from './DraftGoals/DraftGoals';
+import StudentReflectionQuestions from './StudentReflectionQuestions/StudentReflectionQuestions';
+import DraftInstructionsForm from './DraftInstructionsForm/DraftInstructionsForm';
 
 import styles from './draft.css';
 
 class Draft extends Component {
   state = {
-    goalsModalIsOpen: false,
     showDeleteConfirm: false
-  };
-
-  toggleGoalsModal = () => {
-    this.setState({goalsModalIsOpen: !this.state.goalsModalIsOpen});
-  };
-
-  removeDraft = () => {
-    this.props.removeDraft(this.props.draft.id);
   };
 
   updateInstructions = (instructions) => {
@@ -41,7 +32,7 @@ class Draft extends Component {
       showDeleteConfirm: false
     }, function remove() {
       if (confirm) {
-        that.removeDraft();
+        that.props.removeDraft(that.props.draft.id);
       }
     });
   };
@@ -64,14 +55,17 @@ class Draft extends Component {
               height="19"
               viewBox="0 0 24 24"
             />
-          </a> : null}>
-        <section>
+          </a> : null}
+      >
+
+        <div>
           <MLDialog
             title={'Delete ' + this.props.cardTitle}
             message={cardMessage}
             show={this.state.showDeleteConfirm}
             close={this.closeDialog}
           />
+
           <section className={styles.draftType}>
             <div data-id="review-type-dropdown" className={styles.draftTypeLeft}>
               <div className={styles.subheader}>Review Type</div>
@@ -93,80 +87,9 @@ class Draft extends Component {
             </div>
           </section>
 
+
           <section className={styles.draftDetails}>
-            <div className={styles.draftDetailsLeft}>
-              <h4 className={styles.flexSpace}>
-                <div className={styles.draftGoalsHeading}>
-                  Draft Goals
-                  <span data-id="draft-goal-help">
-                    <MLIcon
-                      className={styles.help}
-                      title="help"
-                      type="help"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 24 24"
-                    />
-                  </span>
-                </div>
-                {/* shouldn't all the draft stuff be in here? doesn't this encapsulate the role check?*/}
-                <InstructorControlsContainer role={this.props.role}>
-                  <span className={styles.controls}>
-                    <span data-id="draft-goal-edit">
-                      <a onClick={this.toggleGoalsModal}>
-                        <MLIcon
-                          title="edit"
-                          type="edit"
-                          width="18"
-                          height="19"
-                          viewBox="0 0 24 24"
-                        />
-                      </a>
-                    </span>
-                    <span data-id="draft-goal-delete">
-                      <MLIcon
-                        title="trash"
-                        type="trash"
-                        width="18"
-                        height="19"
-                        viewBox="0 0 24 24"
-                      />
-                    </span>
-                  </span>
-                </InstructorControlsContainer>
-              </h4>
-              <ul data-id="drafts-goal-list" className={styles.draftGoalsList}>
-                {
-                  this.props.draft.goals && this.props.draft.goals.length > 0
-                    ?
-                    this.props.draft.goals.map((title, index) => (
-                      <li key={index}>
-                        <MLIcon
-                          className={styles.comment}
-                          title="comment"
-                          type="comment"
-                          width="23"
-                          height="24"
-                          viewBox="0 0 24 24"
-                        />
-                        {title}
-                      </li>
-                    ))
-                    :
-                    <li>
-                      <a data-id="add-draft-goal" onClick={this.toggleGoalsModal}>
-                        Click to Add Draft Goals
-                      </a>
-                    </li>
-                }
-              </ul>
-              <DraftGoalModalContainer
-                draftId={this.props.draft.id}
-                activityId={this.props.draft.activityId}
-                closeModal={this.toggleGoalsModal}
-                isOpen={this.state.goalsModalIsOpen}
-              />
-            </div>
+            <DraftGoals draft={this.props.draft} role={this.props.role} />
 
             <div className={styles.draftDetailsRight}>
               <DraftInstructionsForm
@@ -175,36 +98,14 @@ class Draft extends Component {
                 role={this.props.role}
               />
 
-              <div className={styles.reflections}>
-                {this.props.draft && this.props.draft.reflectionQuestions
-                || <a data-id="add-reflections" href="#" className={styles.flex}>
-                  <MLIcon
-                    className={styles.icon}
-                    title="plus"
-                    type="plus"
-                    width="18"
-                    height="19"
-                    viewBox="0 0 24 24"
-                  />&nbsp;
-                  Add Student Reflection Questions
-                </a>}
-                <span data-id="reflections-help">
-                  <MLIcon
-                    className={styles.help}
-                    title="help"
-                    type="help"
-                    width="18"
-                    height="19"
-                    viewBox="0 0 24 24"
-                  />
-                </span>
-              </div>
+              <StudentReflectionQuestions draft={this.props.draft} role={this.props.role} />
+
               <div className={styles.draftNote}>
                 {this.props.children}
               </div>
             </div>
           </section>
-        </section>
+        </div>
       </MLCard>
     );
   }

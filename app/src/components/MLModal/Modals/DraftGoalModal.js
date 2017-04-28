@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MLModal from '../MLModal';
-import DraftGoalForm from '../../Activity/DraftGoalForm/DraftGoalForm';
+import CheckboxForm from '../../MLCheckboxForm/MLCheckboxForm';
 
 const DraftGoalModal = ({
   closeModal,
@@ -23,13 +23,16 @@ const DraftGoalModal = ({
       <p>
         Select up to 6 <strong>Draft Goals</strong> for each draft
       </p>
-      <DraftGoalForm
-        goals={goals}
+      <CheckboxForm
+        fields={goals}
         closeModal={closeModal}
-        selectedGoals={selectedGoals}
-        setDraftGoals={setDraftGoals}
+        selectedFields={selectedGoals}
+        saveForm={setDraftGoals}
         activityId={activityId}
         draftId={draftId}
+        selectionLimit={6}
+        isFormListable={true}
+        isFormTogglable={true}
       />
     </MLModal>)
     : null;
@@ -39,7 +42,7 @@ DraftGoalModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   goals: PropTypes.array.isRequired,
-  selectedGoals: PropTypes.array,
+  selectedGoals: PropTypes.array.isRequired,
   setDraftGoals: PropTypes.func.isRequired,
   draftId: PropTypes.string,
   activityId: PropTypes.string

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setDraftGoals } from './../modules/draftModule';
+import { setDraftGoals } from '../modules/draftModule';
 import DraftGoalModal from '../components/MLModal/Modals/DraftGoalModal';
 
 const mapStateToProps = (state, props) => {

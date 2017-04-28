@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import MLIcon from 'ml-react-cdl-icons';
-import MLButton from '../MLButton/MLButton';
-import InstructorControlsContainer from '../InstructorControlsContainer/InstructorControlsContainer';
+import MLButton from '../../../../MLButton/MLButton';
+import InstructorControlsContainer from '../../../../InstructorControlsContainer/InstructorControlsContainer';
 
 import styles from './draftInstructionsForm.css';
 

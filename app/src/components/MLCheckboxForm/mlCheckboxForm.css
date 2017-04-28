@@ -1,9 +1,9 @@
 @import 'variables.css';
 
 .inputs {
-  height: 400px;
   overflow: scroll;
   border: 1px solid var(--gray);
+  max-height: 400px;
 }
 
 .buttons {
