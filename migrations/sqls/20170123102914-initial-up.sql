@@ -120,11 +120,11 @@ WITH (
 ALTER TABLE "rubric_criteria"
   OWNER TO writer_key;
 
--- Table: "student_reflection_questions"
+-- Table: "student_reflection_question"
 
-DROP TABLE IF EXISTS "student_reflection_questions" CASCADE;
+DROP TABLE IF EXISTS "student_reflection_question" CASCADE;
 
-CREATE TABLE "student_reflection_questions"
+CREATE TABLE "student_reflection_question"
 (
   id uuid NOT NULL,
   question varchar(500),
@@ -137,7 +137,7 @@ CREATE TABLE "student_reflection_questions"
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE "student_reflection_questions"
+ALTER TABLE "student_reflection_question"
   OWNER TO writer_key;
 
 

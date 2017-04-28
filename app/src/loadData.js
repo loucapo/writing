@@ -572,7 +572,7 @@ var dataSpec = {
       index: 5
     }
   ],
-  student_reflection_questions: [
+  student_reflection_question: [
     {
       id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
       question: 'utt ben yavin fett naboo calamari. Obi-wan mon coruscant c',
