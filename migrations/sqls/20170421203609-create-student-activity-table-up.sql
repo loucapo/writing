@@ -1,6 +1,6 @@
 -- Table: "student_activity"
 
-DROP TABLE IF EXISTS "student_activity";
+DROP TABLE IF EXISTS "student_activity" CASCADE;
 
 CREATE TABLE "student_activity"
 (

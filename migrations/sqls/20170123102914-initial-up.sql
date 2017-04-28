@@ -14,7 +14,7 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Table: "activity"
 
-DROP TABLE IF EXISTS "activity";
+DROP TABLE IF EXISTS "activity" CASCADE;
 
 CREATE TABLE "activity"
 (
@@ -38,7 +38,7 @@ ALTER TABLE "activity"
 
 -- Table: "criteria"
 
-DROP TABLE IF EXISTS "criteria";
+DROP TABLE IF EXISTS "criteria" CASCADE;
 
 CREATE TABLE "criteria"
 (
@@ -66,7 +66,7 @@ ALTER TABLE "criteria"
 
 -- Table: "quick_feedback"
 
-DROP TABLE IF EXISTS "quick_feedback";
+DROP TABLE IF EXISTS "quick_feedback" CASCADE;
 
   CREATE TABLE "quick_feedback"
   (
@@ -86,7 +86,7 @@ DROP TABLE IF EXISTS "quick_feedback";
 
 -- Table: "rubric"
 
-DROP TABLE IF EXISTS "rubric";
+DROP TABLE IF EXISTS "rubric" CASCADE;
 
 CREATE TABLE "rubric"
 (
@@ -106,7 +106,7 @@ ALTER TABLE "rubric"
 
 -- Table: "rubric_criteria"
 
-DROP TABLE IF EXISTS "rubric_criteria";
+DROP TABLE IF EXISTS "rubric_criteria" CASCADE;
 
 CREATE TABLE "rubric_criteria"
 (
@@ -122,7 +122,7 @@ ALTER TABLE "rubric_criteria"
 
 -- Table: "student_reflection_questions"
 
-DROP TABLE IF EXISTS "student_reflection_questions";
+DROP TABLE IF EXISTS "student_reflection_questions" CASCADE;
 
 CREATE TABLE "student_reflection_questions"
 (
@@ -143,7 +143,7 @@ ALTER TABLE "student_reflection_questions"
 
 -- Table: "draft"
 
-DROP TABLE IF EXISTS draft;
+DROP TABLE IF EXISTS draft CASCADE;
 
 CREATE TABLE draft
 (
@@ -165,7 +165,7 @@ ALTER TABLE draft
 
 -- Table: "draft_criteria"
 
-DROP TABLE IF EXISTS "draft_criteria";
+DROP TABLE IF EXISTS "draft_criteria" CASCADE;
 
 CREATE TABLE "draft_criteria"
 (
