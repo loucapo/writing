@@ -58,14 +58,14 @@ exports.define = function(steps) {
   });
 
   steps.then('I should see the Draft elements', function() {
-    expect(page.draft_names).to.exist;
+    //expect(page.draft_names).to.exist;
     expect(page.add_draft_button).to.exist;
     expect(page.draft_card).to.exist;
     expect(page.add_draft_instructions).to.exist;
     expect(page.add_student_reflection_questions).to.exist;
     expect(page.drafts_review_type).to.exist;
     expect(page.drafts_grade_type).to.exist;
-    expect(page.draft_learning_focus).to.exist;
+    //expect(page.draft_learning_focus).to.exist;
   });
 
 

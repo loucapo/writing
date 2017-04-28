@@ -62,6 +62,8 @@ module.exports = new Page({
   draft_alert_cancel_button: { get: function() { return this.element("[data-id='prompt-save']"); } },
   final_draft_delete_button: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] > [data-id='draft-section'] > div"); } },
   final_draft_alert_delete_button: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] div > section > div > div > div > [class^='MLDialog__content'] > [class^='MLDialog__buttons'] > [class^='MLButton__button']"); } },
+  final_paper_title: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] [data-id='draft-section'] span [class^='Heading'] span"); } },
+
 
   // draft goals
   add_draft_goals_button: { get: function () { return this.element("[data-id='add-draft-goal']"); } },
