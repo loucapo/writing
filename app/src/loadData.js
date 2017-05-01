@@ -20,7 +20,7 @@ var fixtureCreator = new sqlFixtures(knex);
 
 var simpleActivity = function() {
     return {
-        id: faker.random.uuid(),
+        activity_id: faker.random.uuid(),
         course_id: 1234,
         title: faker.fake('Assignment {{random.words}}'),
         created_by_id: faker.random.uuid(),
@@ -33,7 +33,7 @@ var simpleActivity = function() {
 
 var simpleQuickFeedback = function() {
     return {
-        id: faker.random.uuid(),
+        quick_feedback_id: faker.random.uuid(),
         title: faker.random.words(),
         description: "description...",
         created_by_id: faker.random.uuid(),
@@ -64,7 +64,7 @@ var dataSpec = {
 
   criteria: [
     {
-      id: "4a7e811e-076d-488b-a523-94169c971e6d",
+      criteria_id: "4a7e811e-076d-488b-a523-94169c971e6d",
       title: "Thesis",
       description: "desco",
       available_to_rubric: true,
@@ -82,7 +82,7 @@ var dataSpec = {
     },
 
     {
-      id: "bd500741-01d1-4ddc-b08b-dea70d55995f",
+      criteria_id: "bd500741-01d1-4ddc-b08b-dea70d55995f",
       title: "Evidence",
       description: "desco",
       available_to_rubric: true,
@@ -100,7 +100,7 @@ var dataSpec = {
     },
 
     {
-      id: "f01ed383-78e9-4089-867a-70e8911bbace",
+      criteria_id: "f01ed383-78e9-4089-867a-70e8911bbace",
       title: "Thesis",
       description: "desco",
       available_to_rubric: true,
@@ -118,7 +118,7 @@ var dataSpec = {
     },
 
     {
-      id: "dd6f10e6-f07d-4c70-b5c6-2a3c5e3d35e9",
+      criteria_id: "dd6f10e6-f07d-4c70-b5c6-2a3c5e3d35e9",
       title: "Logical appeals",
       description: "desco",
       available_to_rubric: true,
@@ -136,7 +136,7 @@ var dataSpec = {
     },
 
     {
-      id: "02a8ae4e-2ae3-4390-bcb5-cadb6324567a",
+      criteria_id: "02a8ae4e-2ae3-4390-bcb5-cadb6324567a",
       title: "Counterargument",
       description: "desco",
       available_to_rubric: true,
@@ -154,7 +154,7 @@ var dataSpec = {
     },
 
     {
-      id: "3122600f-1c09-4f2d-bf8e-b6e84bfb6b1f",
+      criteria_id: "3122600f-1c09-4f2d-bf8e-b6e84bfb6b1f",
       title: "Interpretation/Analysis",
       description: "desco",
       available_to_rubric: true,
@@ -172,7 +172,7 @@ var dataSpec = {
     },
 
     {
-      id: "6e6743ea-04fc-449e-8af7-8c368bf5c11c",
+      criteria_id: "6e6743ea-04fc-449e-8af7-8c368bf5c11c",
       title: "Organization",
       description: "desco",
       available_to_rubric: true,
@@ -191,7 +191,7 @@ var dataSpec = {
 
 
     {
-      id: "678ef716-4acf-42d2-bef2-583ceb891bfb",
+      criteria_id: "678ef716-4acf-42d2-bef2-583ceb891bfb",
       title: "Knowledge of Conventions",
       description: "desco",
       available_to_rubric: true,
@@ -210,7 +210,7 @@ var dataSpec = {
 
 
     {
-      id: "91db94ee-a6f1-4be5-911c-9e7b8b992531",
+      criteria_id: "91db94ee-a6f1-4be5-911c-9e7b8b992531",
       title: "Claims",
       description: "desco",
       available_to_rubric: true,
@@ -229,7 +229,7 @@ var dataSpec = {
 
 
     {
-      id: "1740b6d4-e13d-4ea0-ad17-545bb4bb9546",
+      criteria_id: "1740b6d4-e13d-4ea0-ad17-545bb4bb9546",
       title: "Evidence",
       description: "desco",
       available_to_rubric: true,
@@ -248,7 +248,7 @@ var dataSpec = {
 
 
     {
-      id: "c54305f8-6605-4021-92e5-0a03b4ef22fe",
+      criteria_id: "c54305f8-6605-4021-92e5-0a03b4ef22fe",
       title: "Ideas/Content",
       description: "desco",
       available_to_rubric: true,
@@ -267,7 +267,7 @@ var dataSpec = {
 
 
     {
-      id: "4659528b-487d-46b5-b4d6-bbc4fcd57c7f",
+      criteria_id: "4659528b-487d-46b5-b4d6-bbc4fcd57c7f",
       title: "Genre",
       description: "desco",
       available_to_rubric: true,
@@ -286,7 +286,7 @@ var dataSpec = {
 
 
     {
-      id: "98f8e2b6-0252-4d33-b9e3-d11ee333250a",
+      criteria_id: "98f8e2b6-0252-4d33-b9e3-d11ee333250a",
       title: "Style/Voice",
       description: "desco",
       available_to_rubric: true,
@@ -305,7 +305,7 @@ var dataSpec = {
 
 
     {
-      id: "0d674a3e-e61c-41d9-99fb-738882f58f13",
+      criteria_id: "0d674a3e-e61c-41d9-99fb-738882f58f13",
       title: "Word choice",
       description: "desco",
       available_to_rubric: true,
@@ -324,7 +324,7 @@ var dataSpec = {
 
 
     {
-      id: "30a2b72b-153b-449e-ae75-6d52417d5fd8",
+      criteria_id: "30a2b72b-153b-449e-ae75-6d52417d5fd8",
       title: "Conclusion",
       description: "desco",
       available_to_rubric: true,
@@ -343,7 +343,7 @@ var dataSpec = {
 
 
     {
-      id: "cff30bcb-0425-4d06-98d3-c22f2bd10a79",
+      criteria_id: "cff30bcb-0425-4d06-98d3-c22f2bd10a79",
       title: "Issue",
       description: "desco",
       available_to_rubric: true,
@@ -361,7 +361,7 @@ var dataSpec = {
     },
 
     {
-      id: "37f0de46-357a-442b-9859-fa07fc9e47a9",
+      criteria_id: "37f0de46-357a-442b-9859-fa07fc9e47a9",
       title: "Genre",
       description: "desco",
       available_to_rubric: true,
@@ -379,7 +379,7 @@ var dataSpec = {
     },
 
     {
-      id: "dd5ee9ca-8c2c-4a81-941a-a3a0d8bb3be2",
+      criteria_id: "dd5ee9ca-8c2c-4a81-941a-a3a0d8bb3be2",
       title: "Support",
       description: "desco",
       available_to_rubric: true,
@@ -397,7 +397,7 @@ var dataSpec = {
     },
 
     {
-      id: "116e3415-4550-41ba-b976-883d34b844d7",
+      criteria_id: "116e3415-4550-41ba-b976-883d34b844d7",
       title: "Comparisons/Counterarguments",
       description: "desco",
       available_to_rubric: true,
@@ -415,7 +415,7 @@ var dataSpec = {
     },
 
     {
-      id: "fb620970-3a37-4a2b-ab58-d328d8862117",
+      criteria_id: "fb620970-3a37-4a2b-ab58-d328d8862117",
       title: "Recommendations",
       description: "desco",
       available_to_rubric: true,
@@ -434,7 +434,7 @@ var dataSpec = {
   ],
   rubric: [
     {
-      id: "a3aa7312-68b4-43b9-85b6-fa1f52339a54",
+      rubric_id: "a3aa7312-68b4-43b9-85b6-fa1f52339a54",
       title: "Analysis",
       description: "moff darth sebulba bothan. Han mustafar calamari qui-gonn. Alderaan solo mon qui-gonn hutt c-3po baba moff. Boba fett moff thrawn darth tatooine dantooine. Windu darth yoda skywalker mara jango windu. Aayla sith wicket darth calamari darth. Skywalker hut",
       created_by_id: "78b02e4a-551c-4ac9-958f-77f658bb8e89",
@@ -443,7 +443,7 @@ var dataSpec = {
       modified_date: null
     },
     {
-      id: "c8e363e5-7130-4cdb-8ff1-fed2d511efd2",
+      rubric_id: "c8e363e5-7130-4cdb-8ff1-fed2d511efd2",
       title: "Argument",
       description: "ri jinn. Naboo luke dooku mustafar alderaan darth darth organa fett. Fett ben moff solo skywalker binks wicket sith coruscant. Ackbar skywalker coruscant leia hutt mandalore yoda jinn wedge. Jango kamino wookiee leia wedge sidious calrissian skywalker. Organa watto skywalker c-3p0 windu. Mo",
       created_by_id: "83b8b460-73d5-457f-ae97-3ff7d047910b",
@@ -452,7 +452,7 @@ var dataSpec = {
       modified_date: null
     },
     {
-      id: "c105736c-c330-487c-be74-5a2c983095cc",
+      rubric_id: "c105736c-c330-487c-be74-5a2c983095cc",
       title: "Narrative",
       description: "uscant maul darth mon darth darth. K-3po dantooine jinn dooku fett darth jawa palpatine wedge. Jade organa darth chewbacca ",
       created_by_id: "61ef3973-a29c-48ec-9a38-c4f6e78b1ce4",
@@ -461,7 +461,7 @@ var dataSpec = {
       modified_date: null
     },
     {
-      id: "c119e4de-b6e6-4849-9b16-7a8a1e63c7b2",
+      rubric_id: "c119e4de-b6e6-4849-9b16-7a8a1e63c7b2",
       title: "Proposal",
       description: "ant. Mace moff fett darth skywalker. Palpatine mon binks hutt darth. Yavin skywalker solo ackbar dooku. Hutt fett jabba yoda. Darth calrissian tusken raider binks kamino moff. Padmé obi-wan ben boba hutt mandalore w",
       created_by_id: "c4534070-359e-4fa4-872d-12e886b3a626",
@@ -574,35 +574,35 @@ var dataSpec = {
   ],
   student_reflection_question: [
     {
-      id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
+      student_reflection_question_id: 'a3aa7312-68b4-43b9-85b6-fa1f52339a54',
       question: 'utt ben yavin fett naboo calamari. Obi-wan mon coruscant c',
       question_type: 'free',
       created_by_id: "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
       created_date: "2017-04-10",
     },
     {
-      id: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
+      student_reflection_question_id: 'c8e363e5-7130-4cdb-8ff1-fed2d511efd2',
       question: 'ben boba hutt mandal',
       question_type: 'free',
       created_by_id: "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
       created_date: "2017-04-10",
     },
     {
-      id: '823955a1-0a8e-42cc-b24c-cb30afcac93f',
+      student_reflection_question_id: '823955a1-0a8e-42cc-b24c-cb30afcac93f',
       question: 'a. Mon jango mace q',
       question_type: 'free',
       created_by_id: "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
       created_date: "2017-04-10",
     },
     {
-      id: 'c105736c-c330-487c-be74-5a2c983095cc',
+      student_reflection_question_id: 'c105736c-c330-487c-be74-5a2c983095cc',
       question: 'on kit yoda jinn.',
       question_type: 'fixed',
       created_by_id: "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
       created_date: "2017-04-10",
     },
     {
-      id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
+      student_reflection_question_id: 'c119e4de-b6e6-4849-9b16-7a8a1e63c7b2',
       question: 'ace moff fisto calamari thrawn. Padmé qui-gon kit',
       question_type: 'fixed',
       created_by_id: "565d993b-d1a4-4eb9-8e8b-68b0c7151356",

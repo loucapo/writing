@@ -1,5 +1,5 @@
 
-ALTER TABLE student_reflection_question ADD PRIMARY KEY (id);
+ALTER TABLE student_reflection_question ADD PRIMARY KEY (student_reflection_question_id);
 
 -- Table: "draft_student_reflection_question"
 
@@ -7,8 +7,8 @@ DROP TABLE IF EXISTS "draft_student_reflection_question";
 
 CREATE TABLE "draft_student_reflection_question"
 (
-  draft_id uuid REFERENCES draft (id) ON DELETE CASCADE,
-  student_reflection_question_id uuid REFERENCES student_reflection_question (id) ON DELETE CASCADE,
+  draft_id uuid REFERENCES draft (draft_id) ON DELETE CASCADE,
+  student_reflection_question_id uuid REFERENCES student_reflection_question (student_reflection_question_id) ON DELETE CASCADE,
   index int
 )
 WITH (

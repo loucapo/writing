@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS "student_draft" CASCADE;
 
 CREATE TABLE "student_draft"
 (
-  id uuid NOT NULL,
+  student_draft_id uuid NOT NULL,
   student_activity_id text NOT NULL,
   draft_id text NOT NULL,
   created_by_id text NOT NULL,
@@ -18,4 +18,4 @@ WITH (
 ALTER TABLE "student_draft"
   OWNER TO writer_key;
 ALTER TABLE "student_draft"
-    ADD PRIMARY KEY (id);
+    ADD PRIMARY KEY (student_draft_id);

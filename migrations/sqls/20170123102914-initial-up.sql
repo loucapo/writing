@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS "activity" CASCADE;
 
 CREATE TABLE "activity"
 (
-  id uuid NOT NULL,
+  activity_id uuid NOT NULL,
   course_id text NOT NULL,
   title text,
   prompt jsonb,
@@ -34,7 +34,7 @@ WITH (
 ALTER TABLE "activity"
   OWNER TO writer_key;
 ALTER TABLE "activity"
-    ADD PRIMARY KEY (id);
+    ADD PRIMARY KEY (activity_id);
 
 -- Table: "criteria"
 
@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS "criteria" CASCADE;
 
 CREATE TABLE "criteria"
 (
-  id uuid NOT NULL,
+  criteria_id uuid NOT NULL,
   title varchar(255),
   description varchar(500),
   available_to_rubric boolean,
@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS "quick_feedback" CASCADE;
 
   CREATE TABLE "quick_feedback"
   (
-    id uuid NOT NULL,
+    quick_feedback_id uuid NOT NULL,
     title varchar(255),
     description varchar(500),
     created_by_id uuid,
@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS "rubric" CASCADE;
 
 CREATE TABLE "rubric"
 (
-  id uuid NOT NULL,
+  rubric_id uuid NOT NULL,
   title varchar(255),
   description varchar(500),
   created_by_id uuid,
@@ -126,7 +126,7 @@ DROP TABLE IF EXISTS "student_reflection_question" CASCADE;
 
 CREATE TABLE "student_reflection_question"
 (
-  id uuid NOT NULL,
+  student_reflection_question_id uuid NOT NULL,
   question varchar(500),
   question_type varchar(25),
   created_by_id uuid,
@@ -147,15 +147,15 @@ DROP TABLE IF EXISTS draft CASCADE;
 
 CREATE TABLE draft
 (
-  id uuid NOT NULL PRIMARY KEY,
-  activity_id uuid NOT NULL REFERENCES activity (id),
+  draft_id uuid NOT NULL PRIMARY KEY,
+  activity_id uuid NOT NULL REFERENCES activity (activity_id),
   instructions text,
   index int NOT NULL,
   created_by_id uuid,
-    created_date date,
-    modified_by_id uuid,
-    modified_date date,
-  UNIQUE (id)
+  created_date date,
+  modified_by_id uuid,
+  modified_date date,
+  UNIQUE (draft_id)
 )
 WITH (
   OIDS=FALSE
