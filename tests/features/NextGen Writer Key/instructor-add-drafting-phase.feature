@@ -11,6 +11,15 @@ Feature: Add Another Draft To Activity
     And Page Element Checker Verifies: '2' '[data-id='add-reflections']'
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
+  Scenario: Saving Description to the New Draft
+    Given I visit the SLS create activity page
+    When I click a 'add_draft_button'
+    When I click a 'add_draft_instructions'
+    When I type 'hello world' in the draft instructions
+    And I click a 'save_draft_instructions'
+    Then Text 'hello world' should appear in the draft instructions
+    And Draft Delete Cleanup '[data-id='draft-delete']'
+
   Scenario: Adding First Draft
     Given I visit the SLS create activity page
     When I click a 'add_draft_button'
@@ -33,7 +42,7 @@ Feature: Add Another Draft To Activity
     When I click a 'add_draft_button'
     And Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-1']'
     And Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
-    And Page Element Checker Verifies Text: 'Students can view and start this draft once they've received feedback for Draft 1' at '[data-id='MLCard-Final-Paper'] div > section > [class^='Draft__draftDetails'] > [class^='Draft__draftDetailsRight'] > [class^='Draft__draftNote']'
+    And Page Element Checker Verifies Text: 'Students can view and start this draft once they've received feedback for Draft 1' at '[data-id='MLCard-Final-Paper'] > div > div > [class^='Draft__draftDetails'] > [class^='Draft__draftDetailsRight'] > [class^='Draft__draftNote']'
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
   Scenario: Removing Drafts
@@ -86,16 +95,7 @@ Feature: Add Another Draft To Activity
     And I click a 'save_draft_instructions'
     And I click a 'final_draft_delete_button'
     And I click a 'final_draft_alert_delete_button'
-    And Page Element Checker Verifies Text: 'hello world' at '[data-id='MLCard-Final-Paper'] div > section > [class^='Draft__draftDetails'] > [class^='Draft__draftDetailsRight'] > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2)'
-
-  Scenario: Saving Description to the New Draft
-    Given I visit the SLS create activity page
-    When I click a 'add_draft_button'
-    When I click a 'add_draft_instructions'
-    When I type 'hello world' in the draft instructions
-    And I click a 'save_draft_instructions'
-    Then Text 'hello world' should appear in the draft instructions
-    And Draft Delete Cleanup '[data-id='draft-delete']'
+    And Page Element Checker Verifies Text: 'hello world' at '[data-id='MLCard-Final-Paper'] div > div > [class^='Draft__draftDetails'] > [class^='Draft__draftDetailsRight'] > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2)'
 
   Scenario: Page Reset
     Given I visit the SLS create activity page

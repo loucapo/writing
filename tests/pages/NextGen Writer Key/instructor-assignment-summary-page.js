@@ -61,7 +61,7 @@ module.exports = new Page({
   draft_alert_delete_button: { get: function() { return this.element("[data-id='prompt-cancel']"); } },
   draft_alert_cancel_button: { get: function() { return this.element("[data-id='prompt-save']"); } },
   final_draft_delete_button: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] > [data-id='draft-section'] > div"); } },
-  final_draft_alert_delete_button: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] div > section > div > div > div > [class^='MLDialog__content'] > [class^='MLDialog__buttons'] > [class^='MLButton__button']"); } },
+  final_draft_alert_delete_button: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] div > div > div > div > div > [class^='MLDialog__content'] > [class^='MLDialog__buttons'] > [class^='MLButton__button']"); } },
   final_paper_title: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] [data-id='draft-section'] span [class^='Heading'] span"); } },
 
 
