@@ -8,4 +8,4 @@ SELECT * FROM rubric_criteria
 -- name: getRubricById
 select *
 from rubric
-where id = :id
+where rubric_id = :id

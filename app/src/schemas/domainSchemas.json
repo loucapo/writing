@@ -3,7 +3,7 @@
     "activity": {
       "title": "activity",
       "properties": {
-        "id": {
+        "activityId": {
           "type": "string",
           "format": "uuid"
         },
@@ -42,7 +42,7 @@
         }
       },
       "required": [
-        "id",
+        "activityId",
         "courseId",
         "createdById"
       ]
@@ -50,7 +50,7 @@
     "rubric": {
       "title": "rubric",
       "properties": {
-        "id": {
+        "rubricId": {
           "type": "string",
           "format": "uuid"
         },
@@ -86,7 +86,7 @@
         }
       },
       "required": [
-        "id",
+        "rubricId",
         "createdById",
         "createdDate"
       ]
@@ -94,7 +94,7 @@
     "criteria": {
       "title": "criteria",
       "properties": {
-        "id": {
+        "criteriaId": {
           "type": "string",
           "format": "uuid"
         },
@@ -146,7 +146,7 @@
         }
       },
       "required": [
-        "id",
+        "criteriaId",
         "createdById",
         "createdDate"
       ]
@@ -154,7 +154,7 @@
     "draft": {
       "title": "draft",
       "properties": {
-        "id": {
+        "draftId": {
           "type": "string",
           "format": "uuid"
         },
@@ -182,7 +182,7 @@
         }
       },
       "required": [
-        "id",
+        "draftId",
         "createdById",
         "createdDate"
       ]

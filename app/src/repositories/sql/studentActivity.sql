@@ -1,11 +1,11 @@
 -- name: getStudentActivityById
 select *
 from student_activity
-where id = :studentActivityId
+where student_activity_id = :studentActivityId
 
 -- name: createStudentActivity
 INSERT INTO student_activity
-    (id,
+    (student_activity_id,
     activity_id,
     student_id,
     created_by_id,

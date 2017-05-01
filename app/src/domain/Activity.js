@@ -17,7 +17,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     createNewActivity(cmd) {
       this.setIsNew();
       const event = this.mapper(cmd);
-      event.activityId = this.id = cmd.activityId || uuid.v4();
+      event.activityId = this.activityId = cmd.activityId || uuid.v4();
       this.raiseEvent({
         eventName: 'activityCreated',
         event
@@ -44,15 +44,14 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     }
     addDraftToActivity(cmd) {
       // check business rules here
-      const event = this.mapper(cmd);
 
-      cmd.id = uuid.v4();
-      cmd.activityId = this.id;
+      cmd.draftId = uuid.v4();
+      cmd.activityId = this.activityId;
       this.drafts = this.bumpDraftIndexes(this.drafts);
 
       let draft = new entities.Draft(cmd);
       this.drafts.push(draft);
-      event.draftId = cmd.id;
+      const event = this.mapper(cmd);
       this.raiseEvent({
         eventName: 'draftAddedToActivity',
         event
@@ -64,7 +63,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
       const event = this.mapper(cmd);
       // check business rules here
       this.drafts = this.drafts.map(x => {
-        if (x.id === cmd.draftId) {
+        if (x.draftId === cmd.draftId) {
           x.updateInstruction(cmd.instructions);
         }
       });
@@ -82,7 +81,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
 
       // check business rules here
       this.drafts = this.drafts.reduce((acc, d) => {
-        if (d.id !== cmd.draftId) {
+        if (d.draftId !== cmd.draftId) {
           acc.push(d);
         }
         return acc;
@@ -99,11 +98,11 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     }
 
     getDraftIndexes() {
-      return this.drafts.map(x => ({draftId: x.id, index: x.index}));
+      return this.drafts.map(x => ({draftId: x.draftId, index: x.index}));
     }
 
     setDraftGoals(cmd) {
-      let draft = this.drafts.find(x => x.id === cmd.draftId);
+      let draft = this.drafts.find(x => x.draftId === cmd.draftId);
       invariant(draft, `No draft with id: ${cmd.draftId} could be found`);
       const event = this.mapper(cmd);
 
@@ -113,13 +112,13 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
 
     setStudentReflectionQuestions(cmd) {
       const event = this.mapper(cmd);
-      let draft = this.drafts.find(x => x.id === cmd.draftId);
+      let draft = this.drafts.find(x => x.draftId === cmd.draftId);
       invariant(draft, `No draft with id: ${cmd.draftId} could be found`);
       draft.setStudentReflectionQuestions(cmd);
       return event;
     }
     getDraftGoalsByDraftId(cmd) {
-      return this.drafts.find(x => x.id === cmd.draftId).goals.map(x => ({draftId: cmd.draftId, goalId: x}));
+      return this.drafts.find(x => x.draftId === cmd.draftId).goals.map(x => ({draftId: cmd.draftId, goalId: x}));
     }
 
 

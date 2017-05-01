@@ -16,7 +16,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
     createNewStudentActivity(cmd) {
       const event = this.mapper(cmd);
       event.activityId = cmd.activityId || uuid.v4();
-      event.studentActivityId = this.id = cmd.studentActivityId || uuid.v4();
+      event.studentActivityId = this.studentActivityId = cmd.studentActivityId || uuid.v4();
       this.raiseEvent({
         eventName: 'studentActivityCreated',
         event

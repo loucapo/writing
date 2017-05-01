@@ -23,7 +23,6 @@ module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
   // client agnostic query. i.e. uses either trx client or new from pool
   function executeQuery(adapter, queriesFile, _query, event) {
     let queries = puresql.loadQueries(queriesFile);
-
     return queries[_query](event, adapter)
       .then(result => {
         // horrible crap should be refactored into strategies

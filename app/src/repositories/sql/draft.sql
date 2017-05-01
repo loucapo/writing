@@ -1,6 +1,6 @@
 -- name: addDraftToActivity
 INSERT INTO draft
-    (id,
+    (draft_id,
     activity_id,
     index,
     created_by_id,
@@ -17,7 +17,7 @@ UPDATE draft
 SET
     instructions = :instructions,
     modified_by_id = :modifiedById
-WHERE id = :draftId;
+WHERE draft_id = :draftId;
 
 -- name: getDraftsByActivityId
 SELECT *
@@ -45,7 +45,7 @@ SELECT * FROM draft_criteria
 SELECT * FROM draft_student_reflection_question
 
 -- name: removeDraftFromActivity
-DELETE from draft WHERE id = :draftId
+DELETE from draft WHERE draft_id = :draftId
 
 -- name: removeAllGoals
 DELETE FROM draft_criteria
@@ -60,7 +60,7 @@ UPDATE draft
 SET
     index = :index,
     modified_by_id = :modifiedById
-WHERE id = :draftId;
+WHERE draft_id = :draftId;
 
 -- name: addStudentReflectionQuestionsToDraft
 INSERT INTO draft_student_reflection_question

@@ -16,7 +16,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       });
 
       ctx.status = 200;
-      ctx.body = { id: event.draftId };
+      ctx.body = { draftId: event.draftId };
       return ctx;
     },
 
@@ -102,9 +102,9 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
         {});
 
       const denormalizedDraft = drafts.map(x => {
-        x.goals = draftGoal.filter(y=>y.draftId === x.id).map(z => z.criteriaId);
+        x.goals = draftGoal.filter(y=>y.draftId === x.draftId).map(z => z.criteriaId);
         x.studentReflectionQuestions = draftStudentReflectionQuestions
-          .filter(y=>y.draftId === x.id).map(z => {
+          .filter(y=>y.draftId === x.draftId).map(z => {
             return z.studentReflectionQuestionId;
           });
         return x;

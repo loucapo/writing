@@ -23,13 +23,13 @@ module.exports = function(koarouter, controllers) {
 
     /**
      * @swagger
-     * /rubric/{id}:
+     * /rubric/{rubricId}:
      *   get:
      *     x-name: rubric
      *     description: Returns rubric by id
      *     operationId: rubric
      *     parameters:
-     *       - name: id
+     *       - name: rubricId
      *         in: path
      *         description: The id of the rubric you wish to retrieve
      *         required: true
@@ -44,7 +44,7 @@ module.exports = function(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    rubricRouter.get('rubric', '/rubric/:id', controllers.rubricController.getRubricById);
+    rubricRouter.get('rubric', '/rubric/:rubricId', controllers.rubricController.getRubricById);
 
     appRouter.use(rubricRouter.routes(), rubricRouter.allowedMethods());
   };

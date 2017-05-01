@@ -37,12 +37,12 @@ describe('RUBRIC TEST', function() {
   beforeEach(() => {
     td.reset();
     rubric1 = {
-      id: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc",
+      rubricId: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc",
       title: "hello",
       description: "This is a rubric description.",
     };
     rubric2 = {
-      id: "fff5f8e2-069f-4c6d-b5cd-999e75b63bfc",
+      rubricId: "fff5f8e2-069f-4c6d-b5cd-999e75b63bfc",
       title: "hello2",
       description: "This is a rubric description2.",
     };
@@ -67,8 +67,8 @@ describe('RUBRIC TEST', function() {
             rubricCrit4
           ]);
           let result = await mut.getRubrics(ctx);
-          const rub1 = result.body.find(x=>x.id === 'f775f8e2-069f-4c6d-b5cd-999e75b63bfc');
-          const rub2 = result.body.find(x=>x.id === 'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc');
+          const rub1 = result.body.find(x=>x.rubricId === 'f775f8e2-069f-4c6d-b5cd-999e75b63bfc');
+          const rub2 = result.body.find(x=>x.rubricId === 'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc');
           rub1.criteria.find(x=>x === critId1).should.not.be.null;
           rub1.criteria.find(x=>x === critId2).should.not.be.null;
           rub2.criteria.find(x=>x === critId3).should.not.be.null;
@@ -80,9 +80,9 @@ describe('RUBRIC TEST', function() {
     describe('RUBRIC (GET)', () => {
       context('when calling rubric with proper input', () => {
         it('should return proper body properties', async () => {
-          ctx = {params: {id:rubric1.id}};
+          ctx = {params: {rubricId:rubric1.id}};
 
-          td.when(repositoryStub.query(sqlLibrary.rubric, 'getRubricById', {id: ctx.params.id})).thenReturn(rubric1);
+          td.when(repositoryStub.query(sqlLibrary.rubric, 'getRubricById', {rubricId: ctx.params.rubricId})).thenReturn(rubric1);
 
           let result = await mut.getRubricById(ctx);
           result.body.should.equal(rubric1);
