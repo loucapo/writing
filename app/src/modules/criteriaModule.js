@@ -8,7 +8,7 @@ const GET_CRITERIA = requestStates('get_criteria');
 export default (state = [], action) => {
   switch (action.type) {
     case GET_CRITERIA.SUCCESS: {
-      return reducerMerge(state, action.result);
+      return reducerMerge(state, action.result, 'criteriaId');
     }
     default: {
       return state;

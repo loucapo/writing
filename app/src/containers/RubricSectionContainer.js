@@ -30,10 +30,10 @@ const mapStateToProps = (state, props) => {
   let newRubric;
 
   if (props.rubricId) {
-    let rubric = state.rubric.find(x => x.id === props.rubricId);
+    let rubric = state.rubric.find(x => x.rubricId === props.rubricId);
     if(rubric && rubric.criteria) {
       newRubric = {...rubric};
-      newRubric.criteria = rubric.criteria.map(x => state.criteria.find(y => y.id === x));
+      newRubric.criteria = rubric.criteria.map(x => state.criteria.find(y => y.criteriaId === x));
     }
   }
 
@@ -42,7 +42,7 @@ const mapStateToProps = (state, props) => {
     rubric: newRubric,
     rubricOptions: state.rubric.map(x => {
       return {
-        id: x.id,
+        id: x.rubricId,
         value: x.title
       };
     })

@@ -16,7 +16,6 @@ class ActivityContainer extends Component {
       this.props.getCriteria();
     }
   }
-
   render() {
     if(!this.props.activity) {
       return null;
@@ -42,7 +41,7 @@ const mapStateToProps = (state) => {
   return {
     role,
     activityId,
-    activity: state.activities.find(x => x.id === activityId),
+    activity: state.activities.find(x => x.activityId === activityId),
     draftCount
   };
 };

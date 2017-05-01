@@ -14,14 +14,14 @@ const PERSIST_STUDENT_REFLECTION_QUESTIONS = requestStates('persist_student_refl
 export default (state = [], action) => {
   switch (action.type) {
     case DRAFTS_FOR_ACTIVITY.SUCCESS: {
-      return reducerMerge(state, action.result);
+      return reducerMerge(state, action.result, 'draftId');
     }
     case SET_DRAFT_GOALS.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
       const goals = body.goals;
       const draftId = action.action.draftId;
       return state.map(x => {
-        return x.id === draftId
+        return x.draftId === draftId
           ? {...x, goals}
           : x;
       });
@@ -29,21 +29,21 @@ export default (state = [], action) => {
     case ADD_DRAFT_TO_ACTIVITY.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
       const newDraft = {
-        id: action.result.id,
+        draftId: action.result.draftId,
         activityId: action.action.activityId,
         index: body.index
       };
       return [...state, newDraft];
     }
     case REMOVE_DRAFT_TO_ACTIVITY.SUCCESS: {
-      return state.filter(x => x.id !== action.action.draftId);
+      return state.filter(x => x.draftId !== action.action.draftId);
     }
     case PERSIST_STUDENT_REFLECTION_QUESTIONS.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
       const studentReflectionQuestions = body.studentReflectionQuestions;
       const draftId = action.action.draftId;
       return state.map( x => {
-        return x.id === draftId
+        return x.draftId === draftId
           ? {...x, studentReflectionQuestions}
           : x;
       });
@@ -52,7 +52,7 @@ export default (state = [], action) => {
       const body = JSON.parse(action.action.params.body);
       const draftId = action.action.draftId;
       return state.map(x => {
-        return x.id === draftId
+        return x.draftId === draftId
           ? {...x, instructions: body.instructions}
           : x;
       });

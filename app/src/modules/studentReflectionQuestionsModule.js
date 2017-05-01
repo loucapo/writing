@@ -8,7 +8,7 @@ const GET_STUDENT_REFLECTION_QUESTIONS = requestStates('get_student_reflection_q
 export default (state = [], action) => {
   switch (action.type) {
     case GET_STUDENT_REFLECTION_QUESTIONS.SUCCESS: {
-      return reducerMerge(state, action.result);
+      return reducerMerge(state, action.result, 'studentReflectionQuestionId');
     }
 
     default: {

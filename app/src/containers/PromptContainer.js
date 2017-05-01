@@ -4,7 +4,7 @@ import Prompt from '../components/Activity/ActivityPrompt/ActivityPrompt';
 
 const mapStateToProps = (state, props) => {
   const role = state.auth.role;
-  const activity = state.activities.filter(x => x.id === props.activityId)[0];
+  const activity = state.activities.filter(x => x.activityId === props.activityId)[0];
   return {
     role,
     prompt: activity ? activity.prompt : null

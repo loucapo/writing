@@ -3,9 +3,10 @@ import { setDraftGoals } from '../modules/draftModule';
 import DraftGoalModal from '../components/MLModal/Modals/DraftGoalModal';
 
 const mapStateToProps = (state, props) => {
+
   const goals = state.criteria.map(goal => (
     {
-      id: goal.id,
+      id: goal.criteriaId,
       title: goal.title,
       description: goal.description,
       goalOption1: goal.goalOption1,
@@ -14,19 +15,17 @@ const mapStateToProps = (state, props) => {
     }
   ));
 
-  const draft = props.draftId ? state.drafts.find(x => x.id === props.draftId) : {};
-
+  const draft = props.draftId ? state.drafts.find(x => x.draftId === props.draftId) : {};
   const selectedGoals = draft.goals ? draft.goals.map(goalId => (
     {
-      title: goals.find(goal => goalId === goal.id).title,
+      title: state.criteria.find(goal => goalId === goal.criteriaId).title,
       id: goalId
     }
   )) : [];
 
   return {
     goals,
-    selectedGoals
-  };
+    selectedGoals};
 };
 
 export default connect(mapStateToProps, {setDraftGoals})(DraftGoalModal);

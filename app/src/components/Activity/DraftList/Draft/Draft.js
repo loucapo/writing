@@ -16,7 +16,7 @@ class Draft extends Component {
   };
 
   updateInstructions = (instructions) => {
-    this.props.updateInstructions(this.props.draft.id, instructions);
+    this.props.updateInstructions(this.props.draft.draftId, instructions);
   };
 
   showDialog = () => {
@@ -32,7 +32,7 @@ class Draft extends Component {
       showDeleteConfirm: false
     }, function remove() {
       if (confirm) {
-        that.props.removeDraft(that.props.draft.id);
+        that.props.removeDraft(that.props.draft.draftId);
       }
     });
   };

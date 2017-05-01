@@ -16,17 +16,17 @@ describe('REDUCER MERGE', () => {
     activity1Id = uuid.v4();
     activity2Id = uuid.v4();
     activity1 = {
-      id: activity1Id,
+      activityId: activity1Id,
       title:'Instructor Review'
     };
 
     activity2 = {
-      id:activity1Id,
+      activityId:activity1Id,
       title:'Peer Review'
     };
 
     activity3 = {
-      id:activity2Id,
+      activityId:activity2Id,
       title:'Peer Review'
     };
   });
@@ -49,7 +49,7 @@ describe('REDUCER MERGE', () => {
   describe('When currentItems is empty and newItems is an array', () => {
     it('should return that array of newItems', () => {
 
-      let result = mut(undefined, [activity1, activity3]);
+      let result = mut(undefined, [activity1, activity3], 'activityId');
       result[0].title.should.equal('Instructor Review');
     });
   });
@@ -57,7 +57,7 @@ describe('REDUCER MERGE', () => {
   describe('When currentItems is NOT empty and newItems is an array of items with different ids', () => {
     it('should add new item to current items', () => {
 
-      let result = mut([activity1], [activity3]);
+      let result = mut([activity1], [activity3], 'activityId');
       result.length.should.equal(2);
     });
   });

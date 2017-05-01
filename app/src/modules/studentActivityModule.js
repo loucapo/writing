@@ -8,7 +8,7 @@ const GET_STUDENT_ACTIVITY = requestStates('get_student_activity');
 export default (state = [], action) => {
   switch (action.type) {
     case GET_STUDENT_ACTIVITY.SUCCESS: {
-      return reducerMerge(state, action.result.payload);
+      return reducerMerge(state, action.result);
     }
     default: {
       return state;
@@ -16,11 +16,11 @@ export default (state = [], action) => {
   }
 };
 
-export function getStudentActivity(id) {
+export function getStudentActivity(studentActivityId) {
   return {
     type: GET_STUDENT_ACTIVITY.REQUEST,
     states: GET_STUDENT_ACTIVITY,
-    url: `${config.apiUrl}studentActivity/${id}`,
+    url: `${config.apiUrl}studentActivity/${studentActivityId}`,
     params: {
       method: 'GET'
     }

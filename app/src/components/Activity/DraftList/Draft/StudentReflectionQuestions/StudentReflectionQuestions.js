@@ -87,7 +87,7 @@ class StudentReflectionQuestions extends Component {
         }
 
         <StudentReflectionQuestionsModalContainer
-          draftId={this.props.draft.id}
+          draftId={this.props.draft.draftId}
           activityId={this.props.draft.activityId}
           closeModal={this.toggleModal}
           isOpen={this.state.modalIsOpen}
