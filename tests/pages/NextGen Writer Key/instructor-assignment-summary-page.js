@@ -79,6 +79,7 @@ module.exports = new Page({
   add_draft_goals_button: { get: function () { return this.element("[data-id='add-draft-goal']"); } },
   edit_draft_goals_button: { get: function () { return this.element("[data-id='draft-goal-edit']"); } },
   //close_confirmation: { get: function () { return this.element("[data-id='close-confirmation']"); } },
+  draft_goal_close_modal: { get: function () { return this.element("[data-id='close-modal']"); } },
   draft_goal_popup: { get: function () { return this.element("[data-id='modal']"); } },
   draft_goal_header: { get: function () { return this.element("[data-id='goal-form-description']"); } },
   draft_goal_selection: { get: function () { return this.element("[data-id='draft_goal_selection']"); } },
@@ -90,6 +91,7 @@ module.exports = new Page({
   draft_goal_save_button: { get: function () { return this.element("[data-id='save-button']"); } },
   draft_goal_cancel_button: { get: function () { return this.element("[data-id='cancel-button']"); } },
 
+  first_draft_goal_description: { get: function () { return this.element("[data-id='input-fields'] div [data-id='field-content']"); } },
   draft_goal_goal: { value: function(i) {
     return this.element(`[data-id='input-fields'] div:nth-child(${i}) div`);
   }},
@@ -101,16 +103,6 @@ module.exports = new Page({
   draft_goal_description: { value: function(i) {
     return this.element(`[data-id='input-fields'] div:nth-child(${i}) [data-id='field-content']`);
   }},
-
-  first_draft_goal: { get: function () { return this.element("[data-id='input-fields'] div  div"); } },
-  first_draft_goal_description: { get: function () { return this.element("[data-id='input-fields'] div [data-id='field-content']"); } },
-  first_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div  div [name=draftGoalOption]"); } },
-  second_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(2)  div [name=draftGoalOption]"); } },
-  third_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(3)  div [name=draftGoalOption]"); } },
-  fourth_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(4)  div [name=draftGoalOption]"); } },
-  fifth_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(5)  div [name=draftGoalOption]"); } },
-  sixth_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(6)  div [name=draftGoalOption]"); } },
-  seventh_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(7)  div [name=draftGoalOption]"); } },
 
   draft_goal_list_activity_summary: { get: function () { return this.element("[data-id='drafts-goal-list']"); } },
   draft_goal_list_activity_summary_selected: { get: function () { return this.element("[data-id='drafts-goal-list'] li"); } },
