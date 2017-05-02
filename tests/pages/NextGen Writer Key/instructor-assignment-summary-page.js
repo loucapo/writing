@@ -40,18 +40,30 @@ module.exports = new Page({
 
 
   // draft sequence
-  draft_names: { get: function () { return this.elements("[data-id='draft-name']"); } },
-  add_draft: { get: function () { return this.elements("[data-id='add-draft']"); } },
-  final_draft_header: { get: function () { return this.element("[data-id='draft-section']"); } },
-  add_draft_instructions: { get: function () { return this.elements("[data-id='add-instructions']"); } },
-  add_student_reflection_questions: { get: function () { return this.elements("[data-id='add-reflections']"); } },
+  draft_names: { get: function () { return this.element("[data-id='draft-name']"); } },
+  add_draft_button: { get: function () { return this.element("[data-id='add-draft']"); } },
+  draft_card: { get: function () { return this.element("[data-id='draft-section']"); } },
+  add_draft_instructions: { get: function () { return this.element("[data-id='add-instructions']"); } },
+  textarea_draft_instructions: { get: function () { return this.element("[data-id='textarea-draft-instructions']"); } },
+  save_draft_instructions: { get: function () { return this.element("[data-id='save-draft-instructions']"); } },
+  cancel_draft_instructions: { get: function () { return this.element("[data-id='cancel-draft-instructions']"); } },
+  add_student_reflection_questions: { get: function () { return this.element("[data-id='add-reflections']"); } },
+  draft_delete_button: { get: function () { return this.element("[data-id='draft-delete']"); } },
+  draft_instructions_edit: { get: function () { return this.element("[data-id='draft-instructions-edit']"); } },
 
   // draft details
   drafts_review_type: { get: function() { return this.element("[data-id='review-type-dropdown']"); } },
   drafts_grade_type: { get: function() { return this.element("[data-id='grade-type-dropdown']"); } },
-
+  draft_start_note: { get: function() { return this.elements("[data-id='add-draft-focus']"); } },
   // draft learning objectives
-  draft_learning_focus: { get: function() { return this.elements("[data-id='add-draft-focus']"); } },
+  draft_learning_focus: { get: function() { return this.element("[data-id='MLCard-Draft-2'] div section section:nth-child(2) div:nth-child(2) div:nth-child(3)"); } },
+  draft_delete_alert: { get: function() { return this.element("[class^='MLDialog__alert']"); } },
+  draft_alert_delete_button: { get: function() { return this.element("[data-id='prompt-cancel']"); } },
+  draft_alert_cancel_button: { get: function() { return this.element("[data-id='prompt-save']"); } },
+  final_draft_delete_button: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] > [data-id='draft-section'] > div"); } },
+  final_draft_alert_delete_button: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] div > div > div > div > div > [class^='MLDialog__content'] > [class^='MLDialog__buttons'] > [class^='MLButton__button']"); } },
+  final_paper_title: { get: function() { return this.element("[data-id='MLCard-Final-Paper'] [data-id='draft-section'] span [class^='Heading'] span"); } },
+
 
   // draft goals
   add_draft_goals_button: { get: function () { return this.element("[data-id='add-draft-goal']"); } },
