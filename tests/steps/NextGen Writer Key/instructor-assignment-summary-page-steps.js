@@ -1,4 +1,4 @@
-var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page.js');
+var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page');
 var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 exports.define = function(steps) {
@@ -9,6 +9,29 @@ exports.define = function(steps) {
   steps.then("I see the '$elem'", function(elem) {
     page[elem].isDisplayed().should.eventually.equal(true);
   });
+
+  //////////
+  //////////
+
+  // steps.then("I debug '$foo'", function(foo) {
+  //   page.reflection_questions_question_box(foo).getText()
+  //     .then((t) => {console.log(t); });
+  // });
+
+  // steps.then("I see question $num has text '$text'", function(num, text) {
+  //   page.reflection_questions_question_box(num).getText()
+  //     .then((actual) => {
+  //       expect(actual).to.have.string(text);
+  //     });
+  // });
+
+  steps.then("I sleep for $d seconds", function(d) {
+    driver.sleep(d * 1000);
+  });
+
+  //////////
+  //////////
+
 
   steps.then("I should see a new assignment created", function() {
     page.confirmation_message.isDisplayed().should.eventually.equal(true);
@@ -79,6 +102,10 @@ exports.define = function(steps) {
     page[category].getText().then(function(t) {
       expect(t).to.contain(text);
     });
+  });
+
+  steps.when(/I click \'(.+)\' (\d+)/, function(element, index) {
+    page[element](index).click();
   });
 
   steps.when("I click a '$element'", function(elem) {
@@ -181,19 +208,13 @@ exports.define = function(steps) {
     page[elem].isDisplayed().should.eventually.equal(false);
   });
 
-  steps.then("Draft Goals Cleanup '$number'", function(number) {
+  steps.then("Draft Goals cleanup", function() {
     page.edit_draft_goals_button.click();
-    //can be improved so that it'll just uncheck all that are checked but couldn't figure it out on first pass
-    k = 0;
-    i = parseInt(number);
-    while (k < i) {
-      if (driver.findElement({css: "[name=draftGoalOption]:checked"})) {
-        driver.findElement({css: "[name=draftGoalOption]:checked"}).click();
-        k++;
-      }
-    }
-      page.draft_goal_save_button.click();
-    });
+    driver.findElements({css: "[data-id='input-fields'] :checked"})
+      .then((els) => {
+        Promise.all(els.map(el => el.click()));
+      }).then(() => {
+        page.draft_goal_save_button.click();
+      });
+  });
 };
-
-

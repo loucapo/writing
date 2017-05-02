@@ -1,5 +1,7 @@
 var Page = require('marvin-js').Page;
 
+console.log("yepp im required");
+
 module.exports = new Page({
 
   // assignment header
@@ -44,7 +46,27 @@ module.exports = new Page({
   add_draft: { get: function () { return this.elements("[data-id='add-draft']"); } },
   final_draft_header: { get: function () { return this.element("[data-id='draft-section']"); } },
   add_draft_instructions: { get: function () { return this.elements("[data-id='add-instructions']"); } },
-  add_student_reflection_questions: { get: function () { return this.elements("[data-id='add-reflections']"); } },
+
+
+  add_student_reflection_questions: { get: function () { return this.element("[data-id='add-reflections']"); } },
+
+  // selection modal
+  reflection_questions_modal:  { get: function() { return this.element("[data-id='modal]"); }},
+  // missing the 'a' around the X svg
+  // reflection_questions_x_icon: { get: function() { return this.element("[data-id='modal]"); }},
+  // the h1 'Select reflection...'
+  // reflection_questions_header: { get: function() { return this.element("[data-id='modal]"); }},
+  // the p with prompt text 'Customize the following'
+  // reflection_questions_prompt: { get: function() { return this.element("[data-id='modal]"); }},
+  reflection_questions_cancel: { get: function() { return this.element("[data-id='modal'] [data-id='cancel-button']"); }},
+  reflection_questions_save:   { get: function() { return this.element("[data-id='modal'] [data-id='save-button]"); }},
+  reflection_questions_questions_box: { get: function() { return this.element("[data-id='modal] [data-id='input-fields']"); }},
+  reflection_questions_question_box:  { value: function(num) {
+    return this.element(`[data-id='modal'] [data-id='input-fields'] > div:nth-child(${num})`);
+  }},
+  // each question should have a data-id around the title (the h4, the 'Question 1')
+  // and the actual text of the question
+
 
   // draft details
   drafts_review_type: { get: function() { return this.element("[data-id='review-type-dropdown']"); } },
@@ -63,19 +85,33 @@ module.exports = new Page({
   draft_goal_header_language: { value:'What are the primary goals of this draft?'},
   draft_goal_selection_language: { value:"Select the primary goals you would like students to focus on while they compose this draft. You will be able to link your feedback with these goals when you review students' drafts. "},
   first_draft_goal_expand: { get: function () { return this.element("[data-id='first_draft_goal_expand']"); } },
-  draft_goal_list: { get: function () { return this.element("[data-id='goal-input-fields']"); } },
-  draft_goal_summary_list: { get: function () { return this.element("[data-id='selected-goals']"); } },
+  draft_goal_list: { get: function () { return this.element("[data-id='input-fields']"); } },
+  draft_goal_summary_list: { get: function () { return this.element("[data-id='selected-fields']"); } },
   draft_goal_save_button: { get: function () { return this.element("[data-id='save-button']"); } },
   draft_goal_cancel_button: { get: function () { return this.element("[data-id='cancel-button']"); } },
-  first_draft_goal_checkbox: { get: function () { return this.element("[data-id='goal-input-fields'] div  div [name=draftGoalOption]"); } },
-  first_draft_goal: { get: function () { return this.element("[data-id='goal-input-fields'] div  div"); } },
-  first_draft_goal_description: { get: function () { return this.element("[data-id='goal-input-fields'] div [data-id='goal-field-content']"); } },
-  second_draft_goal_checkbox: { get: function () { return this.element("[data-id='goal-input-fields'] div:nth-child(2)  div [name=draftGoalOption]"); } },
-  third_draft_goal_checkbox: { get: function () { return this.element("[data-id='goal-input-fields'] div:nth-child(3)  div [name=draftGoalOption]"); } },
-  fourth_draft_goal_checkbox: { get: function () { return this.element("[data-id='goal-input-fields'] div:nth-child(4)  div [name=draftGoalOption]"); } },
-  fifth_draft_goal_checkbox: { get: function () { return this.element("[data-id='goal-input-fields'] div:nth-child(5)  div [name=draftGoalOption]"); } },
-  sixth_draft_goal_checkbox: { get: function () { return this.element("[data-id='goal-input-fields'] div:nth-child(6)  div [name=draftGoalOption]"); } },
-  seventh_draft_goal_checkbox: { get: function () { return this.element("[data-id='goal-input-fields'] div:nth-child(7)  div [name=draftGoalOption]"); } },
+
+  draft_goal_goal: { value: function(i) {
+    return this.element(`[data-id='input-fields'] div:nth-child(${i}) div`);
+  }},
+
+  draft_goal_checkbox: { value: function(i) {
+    return this.element(`[data-id='input-fields'] div:nth-child(${i}) div [name=draftGoalOption]`);
+  }},
+
+  draft_goal_description: { value: function(i) {
+    return this.element(`[data-id='input-fields'] div:nth-child(${i}) [data-id='field-content']`);
+  }},
+
+  first_draft_goal: { get: function () { return this.element("[data-id='input-fields'] div  div"); } },
+  first_draft_goal_description: { get: function () { return this.element("[data-id='input-fields'] div [data-id='field-content']"); } },
+  first_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div  div [name=draftGoalOption]"); } },
+  second_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(2)  div [name=draftGoalOption]"); } },
+  third_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(3)  div [name=draftGoalOption]"); } },
+  fourth_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(4)  div [name=draftGoalOption]"); } },
+  fifth_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(5)  div [name=draftGoalOption]"); } },
+  sixth_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(6)  div [name=draftGoalOption]"); } },
+  seventh_draft_goal_checkbox: { get: function () { return this.element("[data-id='input-fields'] div:nth-child(7)  div [name=draftGoalOption]"); } },
+
   draft_goal_list_activity_summary: { get: function () { return this.element("[data-id='drafts-goal-list']"); } },
   draft_goal_list_activity_summary_selected: { get: function () { return this.element("[data-id='drafts-goal-list'] li"); } },
 });
