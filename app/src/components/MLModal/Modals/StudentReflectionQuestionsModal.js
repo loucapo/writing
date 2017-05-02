@@ -15,7 +15,7 @@ const ReflectionQuestionsModal = ({
     (<MLModal
       title="Select reflection questions for this draft"
       closeModal={closeModal}>
-      <p>
+      <p data-id="reflection-form-description">
         Customize the following reflection prompts to fit the needs of your assignment.
         Students will submit reflection responses based on your selections after they've completed their draft.
         You can add free response and polling questions.

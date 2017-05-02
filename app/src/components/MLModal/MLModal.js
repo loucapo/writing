@@ -18,10 +18,10 @@ const MLModal = (props) => {
       onClick={handleBackgroundClick}>
 
       <div className={styles.modalWrapper}>
-        <h1 className={styles.heading}>
+        <h1 data-id="modal-heading" className={styles.heading}>
           {props.title}
 
-          <a onClick={props.closeModal}>
+          <a data-id="close-modal" onClick={props.closeModal}>
             <MLIcon
               className={styles.closeIcon}
               title="close"

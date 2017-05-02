@@ -35,7 +35,7 @@ class DraftGoals extends Component {
 
           <InstructorControlsContainer role={this.props.role}>
             <div>
-              <span data-id="reflections-edit">
+              <span data-id="draft-goal-edit">
                 <a onClick={this.toggleModal}>
                   <MLIcon
                     className={styles.icon}
@@ -47,7 +47,7 @@ class DraftGoals extends Component {
                   />
                 </a>
               </span>
-              <span data-id="reflections-delete">
+              <span data-id="draft-goal-delete">
                 <MLIcon
                   className={styles.icon}
                   title="trash"

@@ -57,12 +57,15 @@ class CheckboxField extends Component {
               </div>
             :
               <div>
-                <h4>Question {this.props.fieldOrder}</h4>
+                <h4 data-id="question-title">
+                  Question {this.props.fieldOrder}
+                </h4>
                 {field.title || field.question}
               </div>
           }
 
           <input
+            data-id="checkbox"
             className={styles.checkbox}
             onChange={this.handleChange}
             onClick={this.handleClick}
