@@ -1,7 +1,5 @@
 var Page = require('marvin-js').Page;
 
-console.log("yepp im required");
-
 module.exports = new Page({
 
   // assignment header
