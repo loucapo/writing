@@ -58,16 +58,22 @@ exports.define = function(steps) {
   });
 
   steps.then('I should see the Draft elements', function() {
-    expect(page.draft_names).to.exist;
-    expect(page.add_draft).to.exist;
-    expect(page.final_draft_header).to.exist;
+    //expect(page.draft_names).to.exist;
+    expect(page.add_draft_button).to.exist;
+    expect(page.draft_card).to.exist;
     expect(page.add_draft_instructions).to.exist;
     expect(page.add_student_reflection_questions).to.exist;
     expect(page.drafts_review_type).to.exist;
     expect(page.drafts_grade_type).to.exist;
-    expect(page.draft_learning_focus).to.exist;
+    //expect(page.draft_learning_focus).to.exist;
   });
 
+
+  steps.then("'$list' should be '$number' goal", function(list,number) {
+    page[list].return('li').then(function(t) {
+      expect(t).to.equal(number);
+    });
+  });
 
   steps.then("The '$category' should be '$text'", function(category,text) {
     page[category].getText().then(function(t) {
@@ -114,6 +120,11 @@ exports.define = function(steps) {
       .then(gimme_none)
     });
 
+  steps.then("The draft goals modal does not appear", function() {
+    driver.findElements({css: "[data-id='modal']"})
+      .then(gimme_none)
+  });
+
   function gimme_none(arr) {
     expect(arr.length).to.equal(0);
   };
@@ -123,6 +134,150 @@ exports.define = function(steps) {
     page.rubric_preview.then(function(flags) {
       expect(flags.length).to.equal(0);
     });
+  });
+
+  steps.then("The draft goal summary list should have '$goals' goal", function(goals) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      var content = t.split(',');
+        // could use error handling if goals = 0. Empty space is counting as 1 right now.
+        goals_number = parseInt(goals);
+        expect(content.length).to.equal(goals_number);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should have '$goal' goal", function(goals) {
+    driver.findElements({css: "[data-id='drafts-goal-list'] li"})
+      .then(function(t) {
+      goals_number = parseInt(goals);
+      expect(t.length).to.equal(goals_number);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should contain '$goal'", function(goals) {
+    page.draft_goal_list_activity_summary_selected.getText().then(function(t) {
+      expect(t).to.contain(goals);
+    });
+  });
+
+  steps.then("Draft Goals on the Activity Summary should not contain '$goal'", function(goals) {
+    page.draft_goal_list_activity_summary_selected.getText().then(function(t) {
+      expect(t).to.not.contain(goals);
+    });
+  });
+
+  steps.then("'$first_draft_goal' should be selected in draft goal summary list", function(goal) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      expect(t).to.contain(goal);
+    });
+  });
+
+  steps.then("'$first_draft_goal' should not be selected in draft goal summary list", function(goal) {
+    page.draft_goal_summary_list.getText().then(function(t) {
+      expect(t).to.not.contain(goal);
+    });
+  });
+
+  steps.then("I should not see the '$elem'", function(elem) {
+    page[elem].isDisplayed().should.eventually.equal(false);
+  });
+
+  steps.then("Draft Goals Cleanup '$number'", function(number) {
+    page.edit_draft_goals_button.click();
+    //can be improved so that it'll just uncheck all that are checked but couldn't figure it out on first pass
+    k = 0;
+    i = parseInt(number);
+    while (k < i) {
+      if (driver.findElement({css: "[name=draftGoalOption]:checked"})) {
+        driver.findElement({css: "[name=draftGoalOption]:checked"}).click();
+        k++;
+      }
+    }
+      page.draft_goal_save_button.click();
+    });
+
+
+  steps.then("A new draft will be added above the '$number' existing draft", function(number) {
+    draft_count = parseInt(number);
+    driver.findElements({css: "[data-id^='MLCard-Draft']"}).then(function(drafts) {
+      driver.findElements({css: "[data-id^='MLCard-Final-Paper']"}).then(function(paper) {
+        expect(drafts.length+paper.length).to.equal(draft_count+1);
+      })
+    });
+  });
+
+  steps.then("The draft tally within header should display correct number of drafts", function() {
+    driver.findElements({css: "[data-id^='MLCard-Draft']"}).then(function(drafts) {
+      driver.findElements({css: "[data-id^='MLCard-Final-Paper']"}).then(function(paper) {
+        driver.findElement({css: "[data-id='drafts']"}).getText().then(function(draft_count) {
+          draft_array = draft_count.split(/\(([^)]+)\)/);
+          draft_count_number = parseInt(draft_array[1]);
+          expect(draft_count_number).to.equal(drafts.length+paper.length);
+        });
+      });
+    });
+  });
+
+
+  steps.then("Page Element Checker Verifies: '$number' '$elem'", function(number,elem) {
+    counter = parseInt(number);
+    driver.findElements({css: elem})
+      .then(function(count) {
+        count.length.should.equal(counter);
+      });
+  });
+
+  steps.then("Draft Delete Cleanup '$elem'", function(elem) {
+    //tries to delete all, chokes after 3-4 right now with stale element issue
+    driver.findElements({css: elem}).then(function(count) {
+     number = count.length;
+      k = number;
+      while (k > 1) {
+        driver.findElement({css: elem}).click();
+        driver.findElement({css: "[data-id='prompt-cancel']"}).click();
+          k--;
+          driver.navigate().refresh();
+        };
+    });
+  });
+
+  steps.then("Page Element Checker Verifies Text: '$text' at '$elem'", function(text,elem) {
+    driver.findElement({css: elem}).getText()
+      .then(function(t) {
+          expect(t).to.contain(text);
+      });
+  });
+
+  steps.when("I clear the draft instructions", function(text) {
+    page.textarea_draft_instructions.getText()
+      .then(function(content) {
+        var lefts = '';
+        var content_length = content.length + 1;
+        for (i = 0; i < content_length; i++) {
+          lefts += keys.LEFT;
+        }
+        page.textarea_draft_instructions.sendKeys(keys.SHIFT + lefts);
+        page.textarea_draft_instructions.sendKeys(keys.DELETE);
+      });
+  });
+
+  steps.when("I type '$text' in the draft instructions", function(text) {
+    page.textarea_draft_instructions.sendKeys(text);
+  });
+
+  steps.then("Text '$text' should appear in the draft instructions", function(text) {
+    page.textarea_draft_instructions.getText().then(function(text) {
+      text.should.equal(text);
+    });
+  });
+
+  steps.then("the last draft should be '$title'", function(title) {
+    var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
+    expect([x.length]-1).to.contain(title);
+  });
+
+  steps.then("the second to last draft should be renamed '$title'", function(title) {
+    var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
+    expect([x.length]-1).to.contain(title);
   });
 };
 
