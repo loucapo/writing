@@ -10,7 +10,7 @@ import RubricSectionContainer from 'Containers/RubricSectionContainer';
 
 import styles from './activity.css';
 
-const Activity = ({role, activity, draftCount}) => (
+const Activity = ({activity, draftCount}) => (
   <div className={styles.page}>
     <Header title={activity.course} />
     <div className={styles.container}>
@@ -22,7 +22,7 @@ const Activity = ({role, activity, draftCount}) => (
           iconType="check"
         />
 
-        <ActivityTitle role={role} title={activity.title} type={activity.type} />
+        <ActivityTitle title={activity.title} type={activity.type} />
 
         <PromptContainer activityId={activity.activityId} />
 
@@ -36,7 +36,6 @@ const Activity = ({role, activity, draftCount}) => (
 );
 
 Activity.propTypes = {
-  role: PropTypes.string.isRequired,
   activity: PropTypes.object,
   draftCount: PropTypes.number,
   updateActivityRubric: PropTypes.func

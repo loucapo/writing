@@ -26,7 +26,6 @@ RubricSectionContainer.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const role = state.auth.role;
   let newRubric;
 
   if (props.rubricId) {
@@ -38,7 +37,6 @@ const mapStateToProps = (state, props) => {
   }
 
   return {
-    role,
     rubric: newRubric,
     rubricOptions: state.rubric.map(x => {
       return {

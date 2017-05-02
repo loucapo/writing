@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
-import InstructorControlsContainer from '../../../../InstructorControlsContainer/InstructorControlsContainer';
 import DraftGoalModalContainer from '../../../../../containers/DraftGoalModalContainer';
 
 import styles from './draftGoals.css';
@@ -33,32 +32,30 @@ class DraftGoals extends Component {
             </span>
           </div>
 
-          <InstructorControlsContainer role={this.props.role}>
-            <div>
-              <span data-id="draft-goal-edit">
-                <a onClick={this.toggleModal}>
-                  <MLIcon
-                    className={styles.icon}
-                    title="edit"
-                    type="edit"
-                    width="18"
-                    height="19"
-                    viewBox="0 0 24 24"
-                  />
-                </a>
-              </span>
-              <span data-id="draft-goal-delete">
+          <div>
+            <span data-id="draft-goal-edit">
+              <a onClick={this.toggleModal}>
                 <MLIcon
                   className={styles.icon}
-                  title="trash"
-                  type="trash"
+                  title="edit"
+                  type="edit"
                   width="18"
                   height="19"
                   viewBox="0 0 24 24"
                 />
-              </span>
-            </div>
-          </InstructorControlsContainer>
+              </a>
+            </span>
+            <span data-id="draft-goal-delete">
+              <MLIcon
+                className={styles.icon}
+                title="trash"
+                type="trash"
+                width="18"
+                height="19"
+                viewBox="0 0 24 24"
+              />
+            </span>
+          </div>
         </div>
 
         <ul data-id="drafts-goal-list" className={styles.goalsList}>
@@ -99,8 +96,7 @@ class DraftGoals extends Component {
 }
 
 DraftGoals.propTypes = {
-  draft: PropTypes.object,
-  role: PropTypes.string
+  draft: PropTypes.object
 };
 
 export default DraftGoals;

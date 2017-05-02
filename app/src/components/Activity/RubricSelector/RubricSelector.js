@@ -11,8 +11,8 @@ const RubricSelector = ({
   rubric,
   rubricOptions,
   rubricId,
-  updateActivityRubric,
-  role}) => {
+  updateActivityRubric
+}) => {
   let selectOnChange = (selected) => {
     let body = {
       rubricId: selected.id
@@ -21,7 +21,7 @@ const RubricSelector = ({
   };
 
   return (
-    <MLCard type="rubric" title="Final Rubric" role={role}>
+    <MLCard type="rubric" title="Final Rubric">
       <div>
         <div className={styles.rubric}>
           <div data-id="rubric-title">
@@ -49,8 +49,7 @@ RubricSelector.propTypes = {
   rubric: PropTypes.object,
   rubricOptions: PropTypes.array,
   rubricId: PropTypes.string,
-  updateActivityRubric: PropTypes.func,
-  role: PropTypes.string
+  updateActivityRubric: PropTypes.func
 };
 
 export default RubricSelector;

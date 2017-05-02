@@ -1,34 +1,29 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {getDraftsForActivity,
-  addDraftToActivity,
-  removeDraftFromActivity,
-  updateDraftInstructions} from './../modules/draftModule';
-import {setStudentReflectionQuestions, getStudentReflectionQuestions} from './../modules/studentReflectionQuestionsModule';
-import DraftList from '../components/Activity/DraftList/DraftList';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { getDraftsForActivity } from './../modules/draftModule';
+import StudentDraftList from '../components/Activity/DraftList/StudentDraftList';
+import {getStudentReflectionQuestions} from './../modules/studentReflectionQuestionsModule';
 
-class DraftListContainer extends Component {
+class StudentDraftListContainer extends Component {
   componentWillMount() {
     this.props.getDraftsForActivity(this.props.activityId);
     this.props.getStudentReflectionQuestions();
   }
 
   render() {
-    return (<DraftList {...this.props} />);
+    return (<StudentDraftList {...this.props} />);
   }
 }
 
-DraftListContainer.propTypes = {
+StudentDraftListContainer.propTypes = {
   activityId: PropTypes.string,
-  setStudentReflectionQuestions: PropTypes.func,
-  getStudentReflectionQuestions: PropTypes.func,
-  getDraftsForActivity: PropTypes.func
+  getDraftsForActivity: PropTypes.func,
+  getStudentReflectionQuestions: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
   const drafts = state.drafts.filter(x => x.activityId === props.activityId);
-  const denormalizedDraft = drafts.map(x => {
+  const draftsWithGoals = drafts.map(x => {
     let goals = [];
     let studentReflectionQuestions = [];
     if (x.goals) {
@@ -46,14 +41,11 @@ const mapStateToProps = (state, props) => {
 
   return {
     activityId: props.activityId,
-    drafts: denormalizedDraft
+    drafts: draftsWithGoals
   };
 };
 
 export default connect(mapStateToProps, {
   getDraftsForActivity,
-  addDraftToActivity,
-  removeDraftFromActivity,
-  updateDraftInstructions,
-  getStudentReflectionQuestions,
-  setStudentReflectionQuestions})(DraftListContainer);
+  getStudentReflectionQuestions
+})(StudentDraftListContainer);

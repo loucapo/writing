@@ -8,7 +8,6 @@ import styles from './draftList.css';
 const DraftList = ({
   activityId,
   drafts,
-  role,
   addDraftToActivity,
   removeDraftFromActivity,
   updateDraftInstructions
@@ -49,7 +48,6 @@ const DraftList = ({
             cardTitle={cardTitle}
             draft={draft}
             totalDrafts={drafts.length}
-            role={role}
             key={draft.draftId}
             removeDraft={removeDraft}
             updateInstructions={updateInstructions}>
@@ -65,7 +63,6 @@ const DraftList = ({
 DraftList.propTypes = {
   activityId: PropTypes.string,
   drafts: PropTypes.array,
-  role: PropTypes.string.isRequired,
   addDraftToActivity: PropTypes.func,
   removeDraftFromActivity: PropTypes.func,
   updateDraftInstructions: PropTypes.func

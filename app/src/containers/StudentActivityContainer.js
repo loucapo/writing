@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import StudentActivity from '../components/Activity/StudentActivity';
 import {getActivity} from '../modules/activityModule';
 import { getCriteria } from '../modules/criteriaModule';
+import {getRubricList} from './../modules/rubricModule';
 
 class StudentActivityContainer extends Component {
   componentWillMount() {
@@ -13,6 +14,7 @@ class StudentActivityContainer extends Component {
     if (this.props.activityId) {
       this.props.getActivity(this.props.activityId);
       this.props.getCriteria();
+      this.props.getRubricList();
     }
   }
 
@@ -28,17 +30,16 @@ StudentActivityContainer.propTypes = {
   activity: PropTypes.object,
   activityId: PropTypes.string,
   getActivity: PropTypes.func,
-  getCriteria: PropTypes.func
+  getCriteria: PropTypes.func,
+  getRubricList: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
-  const role = state.auth.role;
   const activityId = state.auth.activity.activityId;
   return {
-    role,
     activityId,
     activity: state.activities.find(x => x.activityId === activityId)
   };
 };
 
-export default connect(mapStateToProps, {getCriteria, getActivity})(StudentActivityContainer);
+export default connect(mapStateToProps, {getCriteria, getActivity, getRubricList})(StudentActivityContainer);

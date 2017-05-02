@@ -22,3 +22,7 @@
 .collapseIcon {
   fill: var(--black);
 }
+
+.collapseIconDisabled {
+  fill: var(--white);
+}

@@ -39,11 +39,10 @@ class Draft extends Component {
 
   render() {
     let cardMessage = `Are you sure you want to delete ${this.props.cardTitle}? Once deleted it cannot be restored.`;
-
     return (
       <MLCard
+        key={this.props.draft.draftId}
         type="draft"
-        role={this.props.role}
         title={this.props.cardTitle}
         options={this.props.totalDrafts > 1 ?
           <a data-id="draft-delete" onClick={this.showDialog}>
@@ -77,28 +76,19 @@ class Draft extends Component {
                 openDataId="review-type-selection-open"
               />
             </div>
-            <div data-id="grade-type-dropdown">
-              <div className={styles.subheader}>Grade Type*</div>
-              <MLDropdown
-                title={this.props.draft && this.props.draft.gradeType || 'Select Grade Type'}
-                onChange={() => {
-                }}
-              />
-            </div>
           </section>
 
 
           <section className={styles.draftDetails}>
-            <DraftGoals draft={this.props.draft} role={this.props.role} />
+            <DraftGoals draft={this.props.draft} />
 
             <div className={styles.draftDetailsRight}>
               <DraftInstructionsForm
                 value={this.props.draft.instructions || ''}
                 updateInstructions={this.updateInstructions}
-                role={this.props.role}
               />
 
-              <StudentReflectionQuestions draft={this.props.draft} role={this.props.role} />
+              <StudentReflectionQuestions draft={this.props.draft} />
 
               <div className={styles.draftNote}>
                 {this.props.children}
@@ -114,7 +104,6 @@ class Draft extends Component {
 Draft.propTypes = {
   draft: PropTypes.object,
   totalDrafts: PropTypes.number,
-  role: PropTypes.string.isRequired,
   children: PropTypes.string,
   cardTitle: PropTypes.string,
   removeDraft: PropTypes.func,

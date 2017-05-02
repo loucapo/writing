@@ -29,9 +29,18 @@
 .subheader {
   color: var(--gray-dark);
   @apply --font-14;
+  font-weight: bold;
   min-width: 32%;
 }
 
 .draftNote {
   margin-top: 40px;
+}
+
+.studentReviewType {
+  font-weight: normal;
+}
+
+.studentNote {
+  font-style: italic;
 }

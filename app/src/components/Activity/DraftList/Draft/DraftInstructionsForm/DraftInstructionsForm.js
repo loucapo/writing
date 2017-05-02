@@ -1,7 +1,7 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import MLButton from '../../../../MLButton/MLButton';
-import InstructorControlsContainer from '../../../../InstructorControlsContainer/InstructorControlsContainer';
 
 import styles from './draftInstructionsForm.css';
 
@@ -59,30 +59,28 @@ class DraftInstructionsForm extends Component {
             <div>
               <div className={styles.addDraftHeading}>
                 <span>Draft Instructions</span>
-                <InstructorControlsContainer role={this.props.role}>
-                  <div>
-                    <a data-id="draft-instructions-edit" onClick={this.toggleForm}>
-                      <MLIcon
-                        className={styles.icon}
-                        title="edit"
-                        type="edit"
-                        width="18"
-                        height="19"
-                        viewBox="0 0 24 24"
-                      />
-                    </a>
-                    <a data-id="draft-instructions-delete">
-                      <MLIcon
-                        className={styles.icon}
-                        title="trash"
-                        type="trash"
-                        width="18"
-                        height="19"
-                        viewBox="0 0 24 24"
-                      />
-                    </a>
-                  </div>
-                </InstructorControlsContainer>
+                <div>
+                  <a data-id="draft-instructions-edit" onClick={this.toggleForm}>
+                    <MLIcon
+                      className={styles.icon}
+                      title="edit"
+                      type="edit"
+                      width="18"
+                      height="19"
+                      viewBox="0 0 24 24"
+                    />
+                  </a>
+                  <a data-id="draft-instructions-delete">
+                    <MLIcon
+                      className={styles.icon}
+                      title="trash"
+                      type="trash"
+                      width="18"
+                      height="19"
+                      viewBox="0 0 24 24"
+                    />
+                  </a>
+                </div>
               </div>
               <div>
                 {this.state.value}
@@ -115,8 +113,7 @@ class DraftInstructionsForm extends Component {
 DraftInstructionsForm.propTypes = {
   show: PropTypes.bool,
   updateInstructions: PropTypes.func,
-  value: PropTypes.string,
-  role: PropTypes.string
+  value: PropTypes.string
 };
 
 export default DraftInstructionsForm;

@@ -40,11 +40,10 @@ class ActivityPrompt extends Component {
       <MLCard
         type="prompt"
         title="Assignment Prompt"
-        role={this.props.role}
         options={
           (this.state.editable)
             ?
-              <div>
+              <div className="flex">
                 <MLButton id="cancel" title="Cancel" dataId="prompt-cancel" handleClick={this.handleCancel} />
                 <MLButton title="Save" color="blue" dataId="prompt-save" />
               </div>
@@ -86,7 +85,6 @@ class ActivityPrompt extends Component {
 }
 
 ActivityPrompt.propTypes = {
-  role: PropTypes.string,
   prompt: PropTypes.object,
   updateActivityPrompt: PropTypes.func,
   activityId: PropTypes.string

@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import { updateActivityPrompt } from './../modules/activityModule';
-import Prompt from '../components/Activity/ActivityPrompt/ActivityPrompt';
+import StudentPrompt from '../components/Activity/ActivityPrompt/StudentActivityPrompt';
 
 const mapStateToProps = (state, props) => {
   const activity = state.activities.filter(x => x.activityId === props.activityId)[0];
@@ -9,6 +8,6 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps, {updateActivityPrompt})(Prompt);
+export default connect(mapStateToProps)(StudentPrompt);
 
 

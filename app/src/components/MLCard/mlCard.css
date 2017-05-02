@@ -15,3 +15,7 @@
 .body {
   padding: 18px var(--padding);
 }
+
+.disabled {
+  color: var(--gray-dark);
+}

@@ -4,14 +4,16 @@ import Heading from './Heading/Heading';
 
 import styles from './mlCard.css';
 
-const Card = ({type, title, role, options, children}) => {
+const Card = ({type, title, options, children, disabled}) => {
+  let disabledClass = (disabled) ? ` ${styles.disabled}` : '';
+  let cardClass = `${styles.card}${disabledClass}`;
   return (
-    <div className={styles.card} data-id={'MLCard-' + title.split(' ').join('-')}>
+    <div className={cardClass} data-id={'MLCard-' + title.split(' ').join('-')}>
       <Heading
         type={type || title}
         title={title}
-        role={role}
         options={options}
+        disabled={disabled}
       />
 
       <div className={styles.body}>
@@ -26,8 +28,7 @@ Card.propTypes = {
   children: PropTypes.element,
   type: PropTypes.string,
   title: PropTypes.string,
-  role: PropTypes.string
+  disabled: PropTypes.bool
 };
-
 
 export default Card;

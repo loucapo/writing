@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import InstructorControlsContainer from '../../InstructorControlsContainer/InstructorControlsContainer';
 import MLIcon from 'ml-react-cdl-icons';
 
 import styles from './heading.css';
 
 class Heading extends Component {
   render = () => {
+    let disabledClass = (this.props.disabled) ? ` ${styles.collapseIconDisabled}` : '';
+    let iconClass = `${styles.collapseIcon}${disabledClass}`;
+
     return (
       <h1 className={styles.heading} data-id={`${this.props.type}-section`}>
         <span>
           <MLIcon
-            className={styles.collapseIcon}
+            className={iconClass}
             title="minus"
             type="minus"
             width="12"
@@ -23,9 +25,7 @@ class Heading extends Component {
           </span>
         </span>
 
-        <InstructorControlsContainer role={this.props.role}>
-          {this.props.options}
-        </InstructorControlsContainer>
+        {this.props.options}
       </h1>
     );
   };
@@ -34,8 +34,8 @@ class Heading extends Component {
 Heading.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string,
-  role: PropTypes.string,
-  options: PropTypes.object
+  options: PropTypes.object,
+  disabled: PropTypes.bool
 };
 
 export default Heading;

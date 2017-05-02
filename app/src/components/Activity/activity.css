@@ -24,3 +24,7 @@
 .deleteIcon {
   fill: var(--aqua);
 }
+
+.studentDraftSpacer {
+  width: 100%;
+}
