@@ -7,6 +7,7 @@ CREATE TABLE "student_draft"
   student_draft_id uuid NOT NULL,
   student_activity_id text NOT NULL,
   draft_id text NOT NULL,
+  paper jsonb,
   created_by_id text NOT NULL,
   created_date date NOT NULL,
   modified_by_id text,
