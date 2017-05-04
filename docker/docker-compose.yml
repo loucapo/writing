@@ -1,7 +1,9 @@
 version: "2"
 services:
   wk_frontend:
-    image: wk_frontend
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
     volumes:
       - ./../app:/home/current/app:rw
     command: yarn run start
@@ -11,10 +13,11 @@ services:
       APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
-    container_name: wk_frontend
 
   frontend_test:
-    image: wk_frontend
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
     volumes:
       - ./../app:/home/current/app:rw
     command: yarn run test
@@ -24,4 +27,3 @@ services:
       APPLICATION_NAME: wk_frontend
     ports:
       - "8080:8080"
-    container_name: wk_frontend_test
