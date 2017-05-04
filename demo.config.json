@@ -13,7 +13,7 @@
   "pending": true,
 
   "verbose": true,
-  "stepDelay": 200,
+  "stepDelay": 20,
   "testTimeout": 60000,
   "elementTimeout": 1000,
 

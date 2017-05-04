@@ -1,4 +1,4 @@
-var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page.js');
+var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page');
 var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 exports.define = function(steps) {
@@ -8,6 +8,10 @@ exports.define = function(steps) {
 
   steps.then("I see the '$elem'", function(elem) {
     page[elem].isDisplayed().should.eventually.equal(true);
+  });
+
+  steps.then("I sleep for $d seconds", function(d) {
+    driver.sleep(d * 1000);
   });
 
   steps.then("I should see a new assignment created", function() {
@@ -81,6 +85,10 @@ exports.define = function(steps) {
     });
   });
 
+  steps.when(/I click \'(.+)\' (\d+)/, function(element, index) {
+    page[element](index).click();
+  });
+
   steps.when("I click a '$element'", function(elem) {
     page[elem].click();
   });
@@ -117,17 +125,17 @@ exports.define = function(steps) {
 
   steps.then("There is no rubric to preview", function() {
     driver.findElements({css: "[class^='Rubric__table']"})
-      .then(gimme_none)
-    });
+      .then(gimme_none);
+  });
 
   steps.then("The draft goals modal does not appear", function() {
     driver.findElements({css: "[data-id='modal']"})
-      .then(gimme_none)
+      .then(gimme_none);
   });
 
   function gimme_none(arr) {
     expect(arr.length).to.equal(0);
-  };
+  }
 
   steps.then("The '$elem' does not exist", function(elem) {
     //expect(page.rubric_preview).to.not.exist;
@@ -139,18 +147,18 @@ exports.define = function(steps) {
   steps.then("The draft goal summary list should have '$goals' goal", function(goals) {
     page.draft_goal_summary_list.getText().then(function(t) {
       var content = t.split(',');
-        // could use error handling if goals = 0. Empty space is counting as 1 right now.
-        goals_number = parseInt(goals);
-        expect(content.length).to.equal(goals_number);
+      // could use error handling if goals = 0. Empty space is counting as 1 right now.
+      goals_number = parseInt(goals);
+      expect(content.length).to.equal(goals_number);
     });
   });
 
   steps.then("Draft Goals on the Activity Summary should have '$goal' goal", function(goals) {
     driver.findElements({css: "[data-id='drafts-goal-list'] li"})
       .then(function(t) {
-      goals_number = parseInt(goals);
-      expect(t.length).to.equal(goals_number);
-    });
+        goals_number = parseInt(goals);
+        expect(t.length).to.equal(goals_number);
+      });
   });
 
   steps.then("Draft Goals on the Activity Summary should contain '$goal'", function(goals) {
@@ -181,20 +189,15 @@ exports.define = function(steps) {
     page[elem].isDisplayed().should.eventually.equal(false);
   });
 
-  steps.then("Draft Goals Cleanup '$number'", function(number) {
+  steps.then("Draft Goals cleanup", function() {
     page.edit_draft_goals_button.click();
-    //can be improved so that it'll just uncheck all that are checked but couldn't figure it out on first pass
-    k = 0;
-    i = parseInt(number);
-    while (k < i) {
-      if (driver.findElement({css: "[name=draftGoalOption]:checked"})) {
-        driver.findElement({css: "[name=draftGoalOption]:checked"}).click();
-        k++;
-      }
-    }
-      page.draft_goal_save_button.click();
-    });
-
+    driver.findElements({css: "[data-id='input-fields'] :checked"})
+      .then((els) => {
+        Promise.all(els.map(el => el.click()));
+      }).then(() => {
+        page.draft_goal_save_button.click();
+      });
+  });
 
   steps.then("A new draft will be added above the '$number' existing draft", function(number) {
     draft_count = parseInt(number);
@@ -229,21 +232,21 @@ exports.define = function(steps) {
   steps.then("Draft Delete Cleanup '$elem'", function(elem) {
     //tries to delete all, chokes after 3-4 right now with stale element issue
     driver.findElements({css: elem}).then(function(count) {
-     number = count.length;
+      number = count.length;
       k = number;
       while (k > 1) {
         driver.findElement({css: elem}).click();
         driver.findElement({css: "[data-id='prompt-cancel']"}).click();
-          k--;
-          driver.navigate().refresh();
-        };
+        k--;
+        driver.navigate().refresh();
+      };
     });
   });
 
   steps.then("Page Element Checker Verifies Text: '$text' at '$elem'", function(text,elem) {
     driver.findElement({css: elem}).getText()
       .then(function(t) {
-          expect(t).to.contain(text);
+        expect(t).to.contain(text);
       });
   });
 
@@ -280,5 +283,3 @@ exports.define = function(steps) {
     expect([x.length]-1).to.contain(title);
   });
 };
-
-
