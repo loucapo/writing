@@ -37,6 +37,7 @@ Feature: Student Views Activity
     Then Page Element Checker Verifies Text: 'hello world' at '[data-id='prompt-description']'
     Then Page Element Checker Verifies Text: 'You will be able to view and start this draft once you've received feedback on Draft 1' at '[data-id='MLCard-Final-Paper'] > div > section > [class^='Draft__draftDetails']'
 
+@cleanup
   Scenario: Page Teardown for Student View
     Given I visit the SLS create activity page
     And I click a 'activity_prompt_edit'
