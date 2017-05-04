@@ -1,7 +1,9 @@
 version: "2"
 services:
   wk_serve:
-    image: wk_serve
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
     volumes:
       - ./../app:/home/current/app:rw
     command: yarn run start 
@@ -13,4 +15,3 @@ services:
       APPLICATION_NAME: wk_serve
     ports:
       - "10080:80"
-    container_name: wk_serve
