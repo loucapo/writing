@@ -1,11 +1,10 @@
 @WRITE-96
+  @only
 Feature: Student Views Activity
 
-  Scenario: Page Setup for Student View
+  Scenario: Student Launches into Activity with No Rubric Selected
     Given I visit the SLS create activity page
     And Draft Delete Cleanup '[data-id='draft-delete']'
-
-  Scenario: Student Launches into Activity with No Rubric Selected
     Given I launch the activity as a 'student'
     Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
     Then Page Element Checker Verifies: '0' '[data-id='MLCard-Final-Rubric']'
@@ -21,7 +20,7 @@ Feature: Student Views Activity
     Then Page Element Checker Verifies: '0' '[data-id='add-instructions']'
     Then Page Element Checker Verifies: '0' '[data-id='add-reflections']'
 
-  Scenario: Page Setup for Student View With Fleshed Out Activity
+  Scenario: Student Launches into Full Activity with More Than One Draft
     Given I visit the SLS create activity page
     When I click a 'add_draft_button'
     And I click a 'activity_prompt_edit'
@@ -29,8 +28,6 @@ Feature: Student Views Activity
     And I click a 'activity_prompt_save'
     When I click a 'rubric_selection'
     When I click a 'rubric_option_2'
-
-  Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as a 'student'
     Then Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-1']'
     Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
