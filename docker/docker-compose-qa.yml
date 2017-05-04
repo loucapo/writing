@@ -11,4 +11,3 @@ services:
       APPLICATION_NAME: wk_api
     ports:
       - "3000:3000"
-    container_name: wk_api
