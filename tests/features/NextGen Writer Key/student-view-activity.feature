@@ -1,5 +1,4 @@
 @WRITE-96
-  @only
 Feature: Student Views Activity
 
   Scenario: Student Launches into Activity with No Rubric Selected
