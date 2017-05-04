@@ -2,6 +2,7 @@ module.exports = function(path) {
   return function() {
     let activity = path.join(__dirname, `./sql/activity.sql`);
     let studentActivity = path.join(__dirname, `./sql/studentActivity.sql`);
+    let studentDraft = path.join(__dirname, `./sql/studentDraft.sql`);
     let rubric = path.join(__dirname, `./sql/rubric.sql`);
     let criteria = path.join(__dirname, `./sql/criteria.sql`);
     let draft = path.join(__dirname, `./sql/draft.sql`);
@@ -12,8 +13,9 @@ module.exports = function(path) {
       criteria,
       rubric,
       draft,
-      studentReflectionQuestions,
-      studentActivity
+      studentActivity,
+      studentDraft,
+      studentReflectionQuestions
     };
   }();
 };

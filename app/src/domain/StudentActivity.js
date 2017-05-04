@@ -23,5 +23,18 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
       });
       return event;
     }
+
+    createNewStudentDraft(cmd) {
+      const event = this.mapper(cmd);
+      event.studentDraftId = uuid.v4();
+      event.draftId = cmd.draftId;
+      event.studentActivityId = cmd.studentActivityId;
+      this.raiseEvent({
+        eventName: 'studentDraftCreated',
+        event
+      });
+      return event;
+    }
   };
 };
+

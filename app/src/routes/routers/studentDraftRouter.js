@@ -4,13 +4,17 @@ module.exports = function activityRouter(koarouter, controllers) {
 
     /**
      * @swagger
-     * /activity/{activityId}/studentactivity:
+     * /studentactivity/{studentActivityId}/draft/{draftId}:
      *   put:
-     *     x-name: createActivity
-     *     description: Checks for existence of studentActivity and creates it if not there
-     *     operationId: createStudentActivity
+     *     x-name: createStudentDraft
+     *     description: Checks for existence of studentDraft and creates it if not there
+     *     operationId: createStudentDraft
      *     parameters:
-     *       - name: activityId
+     *       - name: studentActivityId
+     *         in: path
+     *         type: string
+     *         required: true
+     *       - name: draftId
      *         in: path
      *         type: string
      *         required: true
@@ -24,17 +28,21 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.put('/activity/:activityId/studentactivity',
-      controllers.studentActivityController.createStudentActivityIfNotCreated);
+    router.put('/studentactivity/:studentActivityId/draft/:draftId',
+      controllers.studentDraftController.createStudentDraftInNotThere);
     /**
      * @swagger
-     * /activity/{activityId}/studentactivity:
+     * /studentactivity/{studentActivityId}/draft/{draftId}:
      *   get:
-     *     x-name: createActivity
-     *     description: Checks for existence of studentActivity and creates it if not there
-     *     operationId: createStudentActivity
+     *     x-name: getStudentDraftByStudentActivityId
+     *     description: getStudentDraftByStudentActivityId
+     *     operationId: getStudentDraftByStudentActivityId
      *     parameters:
-     *       - name: activityId
+     *       - name: studentActivityId
+     *         in: path
+     *         type: string
+     *         required: true
+     *       - name: draftId
      *         in: path
      *         type: string
      *         required: true
@@ -48,8 +56,8 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    router.get('/activity/:activityId/studentactivity',
-      controllers.studentActivityController.getStudentActivity);
+    router.get('/studentactivity/:studentActivityId/draft/:draftId',
+      controllers.studentDraftController.getStudentDraftByStudentActivityId);
 
 
     appRouter.use(router.routes(), router.allowedMethods());

@@ -1,7 +1,7 @@
--- name: getStudentActivityById
+-- name: getStudentActivity
 select *
 from student_activity
-where student_activity_id = :studentActivityId
+where activity_id = :activityId AND student_id = :studentId
 
 -- name: createStudentActivity
 INSERT INTO student_activity

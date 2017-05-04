@@ -9,8 +9,8 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(command)}`);
       let studentActivity = await repository.query(
         sqlLibrary.studentActivity,
-        'getStudentActivityById',
-        {studentActivityId: command.activityId});
+        'getStudentActivity',
+        {activityId: command.activityId, studentId: command.studentId});
       if (!studentActivity || !studentActivity[0]) {
         logger.info(`Creating studentActivity from wk_serve payload: ${JSON.stringify(command)}`);
         studentActivity = new domain.StudentActivity();
@@ -20,6 +20,17 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       logger.debug(`Call to createStudentActivity successful with following payload: ${JSON.stringify(command)}`);
 
       ctx.status = 200;
+      return ctx;
+    },
+
+    async getStudentActivity(ctx) {
+      const userId = ctx.state.user.user_data.id;
+      const studentActivity = await repository.query(
+        sqlLibrary.studentActivity,
+        'getStudentActivity',
+        {activityId: ctx.params.activityId, studentId: userId});
+      ctx.status = 200;
+      ctx.body = studentActivity;
       return ctx;
     }
   };
