@@ -30,30 +30,8 @@ clone-repos:	clone-api clone-front-end clone-data clone-serve
 #build
 ##################
 
-docker-build-deps:	docker-build-front-end docker-build-serve docker-build-api docker-build-data
-
 docker-build-node:
 	docker build -t wk_node -f nodeDocker/Dockerfile ./nodeDocker
-
-docker-build-api:	docker-build-node ecr-login
-	cd ../wk_api && $(MAKE) docker-build
-	cd ../wk_compose
-
-docker-build-serve:	docker-build-node
-	cd ../wk_serve && $(MAKE) docker-build
-	cd ../wk_compose
-
-docker-build-data:	docker-build-node
-	cd ../wk_data && $(MAKE) docker-build
-	cd ../wk_compose
-
-docker-build-front-end:	docker-build-node
-	cd ../wk_frontend && $(MAKE) docker-build
-	cd ../wk_compose
-
-docker-build-prod-tools:	docker-build-node
-	cd ../wk_prodtools && $(MAKE) docker-build
-	cd ../wk_compose
 
 build-env-deps: build-env-api build-env-serve build-env-data build-env-front-end build-env-prod-tools
 
@@ -75,15 +53,6 @@ build-env-prod-tools:
 ##################
 #kill
 ##################
-
-kill-all:
-	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
-	docker rmi $$(docker images -a -q) || echo "No more containers to remove."
-
-kill-all-but-node:
-	docker rm -vf $$(docker ps -a -q) 2>/dev/null || echo "No more containers to remove."
-	docker rmi $$(docker images | grep -v -e ^wk_node | awk '{print $3}' | sed -n '1!p') 2>/dev/null || echo "No more containers to remove."
-	docker rmi -f $$(docker images | grep "<none>" | awk "{print \$$3}")
 
 kill-api:
 	docker rm -vf wk_api 2>/dev/null || echo "No more containers to remove."
@@ -141,15 +110,24 @@ killAllData:
 kill-logging:	kill-elasticsearch kill-kibana kill-logstash
 
 
+down:
+	docker-compose -f docker/docker-compose-dev.yml -p writerkey down
+
+down-local:
+	docker-compose -f docker/docker-compose-dev.yml -p writerkey down --rmi local --remove-orphans
+
 ##################
 #run
 ##################
 
-run:	docker-build-deps build-env-deps
-	docker-compose -f docker/docker-compose.yml up
+run:	ecr-login docker-build-deps build-env-deps
+	docker-compose -f docker/docker-compose.yml -p writerkey up
 
-run-dev:	docker-build-deps build-env-deps
-	docker-compose -f docker/docker-compose-dev.yml up
+run-dev: ecr-login build-env-deps
+	docker-compose -f docker/docker-compose-dev.yml -p writerkey up
+
+run-logging:	ecr-login
+	docker-compose -f docker/docker-compose-logging.yml -p writerkey up -d
 
 load-data:
 	cd ../wk_data && $(MAKE) load-data
@@ -157,8 +135,6 @@ load-data:
 remove-data:
 	cd ../wk_data && $(MAKE) kill-data
 
-run-logging:	ecr-login
-	docker-compose -f docker/docker-compose-logging.yml up -d
 
 ##################
 #AWS helpers

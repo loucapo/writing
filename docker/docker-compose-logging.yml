@@ -4,7 +4,6 @@ services:
     image: elasticsearch:2.3
     ports:
         - "9200:9200"
-    container_name: wk_elasticsearch
 
   wk_kibana:
     image: kibana:4.5.3
@@ -14,7 +13,6 @@ services:
       NODE_ENV: "production"
     env_file:
       - .env
-    container_name: wk_kibana
     mem_limit: 5G
 
   wk_logstash:
@@ -27,4 +25,3 @@ services:
       - .env
     volumes:
       - "./logstash-logs:/var/log/logstash"
-    container_name: wk_logstash
