@@ -2,11 +2,11 @@
 
 .header {
   align-items: center;
-  background-color: var(--header-background-blue);
+  background-color: var(--white);
   color: var(--blue-light);
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 80px;
 }
 
 .headerContainer {
@@ -20,20 +20,4 @@
 .headerRight {
   display: flex;
   justify-content: center;
-}
-
-.leftArrow {
-  fill: var(--white);
-  margin: auto auto;
-}
-
-.leftArrowContainer {
-  width: 40px;
-  display: flex;
-}
-
-.leftSide {
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
 }

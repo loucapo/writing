@@ -16,11 +16,11 @@ export default (state = [], action) => {
   }
 };
 
-export function getStudentActivity(studentActivityId) {
+export function getStudentActivityByActivityId(activityId) {
   return {
     type: GET_STUDENT_ACTIVITY.REQUEST,
     states: GET_STUDENT_ACTIVITY,
-    url: `${config.apiUrl}studentActivity/${studentActivityId}`,
+    url: `${config.apiUrl}activity/${activityId}/studentactivity`,
     params: {
       method: 'GET'
     }

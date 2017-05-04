@@ -38,17 +38,17 @@ class MLEditor extends Component {
 
   render = () => {
     return (
-      <div>
-        <Editor
-          onBlur={this.handleBlur}
-          editorState={this.state.editorState}
-          onEditorStateChange={this.onEditorStateChange}
-          readOnly={!this.props.editable}
-          toolbar={toolbar}
-          ref="editor"
-          toolbarOnFocus={!this.props.editable}
-        />
-      </div>
+      <Editor
+        onBlur={this.handleBlur}
+        editorState={this.state.editorState}
+        onEditorStateChange={this.onEditorStateChange}
+        readOnly={!this.props.editable}
+        toolbar={toolbar}
+        ref="editor"
+        toolbarOnFocus={!this.props.editable}
+        editorClassName="editor"
+        wrapperClassName="editorWrapper"
+      />
     );
   };
 }

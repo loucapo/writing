@@ -31,14 +31,19 @@ StudentActivityContainer.propTypes = {
   activityId: PropTypes.string,
   getActivity: PropTypes.func,
   getCriteria: PropTypes.func,
-  getRubricList: PropTypes.func
+  getRubricList: PropTypes.func,
+  drafts: PropTypes.array
+
 };
 
 const mapStateToProps = (state) => {
   const activityId = state.auth.activity.activityId;
+  let drafts = state.drafts.filter(draft => draft.activityId === activityId);
+
   return {
     activityId,
-    activity: state.activities.find(x => x.activityId === activityId)
+    activity: state.activities.find(x => x.activityId === activityId),
+    drafts
   };
 };
 

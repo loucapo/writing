@@ -1,14 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MLCard from '../../../MLCard/MLCard';
+import MLButton from '../../../MLButton/MLButton';
 import StudentDraftComponents from './StudentDraftComponents';
+
 import styles from './draft.css';
 
-const StudentDraft = ({draft, cardTitle, draftNote, disabled}) => (
+const StudentDraft = ({studentActivityId, draft, cardTitle, draftNote, disabled}) => (
   <MLCard
     type="draft"
     title={cardTitle}
     disabled={disabled}
+    options={
+      <MLButton
+        id="startDraft"
+        title={`Start ${cardTitle}`}
+        dataId="start-draft"
+        color="blue"
+        disabled={disabled}
+        link={`studentActivity/${studentActivityId}/studentdraft/${draft.draftId}`}
+      />
+    }
   >
     <section>
       <section className={styles.draftType}>
@@ -30,6 +42,7 @@ StudentDraft.propTypes = {
   draft: PropTypes.object,
   cardTitle: PropTypes.string,
   draftNote: PropTypes.string,
+  studentActivityId: PropTypes.string,
   disabled: PropTypes.bool
 };
 

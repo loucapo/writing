@@ -12,6 +12,7 @@
   letter-spacing: 0.02em;
   margin-left: 10px;
   padding: 8px 10px;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -23,18 +24,28 @@
   color: var(--red);
 }
 
-.blue {
-  composes: button;
-  background-color: var(--aqua);
+.blue, a.blue,
+.green, a.green,
+.disabled, a.disabled {
   border: none;
-  color: var(--white);
+  color: var(--white) !important;
 }
 
-.green {
-  composes: button;
+.blue, a.blue {
+  background-color: var(--aqua);
+}
+
+.green, a.green {
   background-color: var(--green);
-  border: none;
-  color: var(--white);
+}
+
+.disabled, a.disabled {
+  background-color: var(--gray);
+}
+
+.disabled:hover, a.disabled:hover {
+  cursor: default;
+  opacity: 1;
 }
 
 .icon {
