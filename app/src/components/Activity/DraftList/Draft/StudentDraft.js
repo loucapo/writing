@@ -16,7 +16,6 @@ const StudentDraft = ({studentActivityId, draft, cardTitle, draftNote, disabled}
         id="startDraft"
         title={`Start ${cardTitle}`}
         dataId="start-draft"
-        color="blue"
         disabled={disabled}
         link={`studentActivity/${studentActivityId}/studentdraft/${draft.draftId}`}
       />

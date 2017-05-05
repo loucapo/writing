@@ -27,7 +27,13 @@ const DraftList = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.addDraft}>
-        <MLButton dataId="add-draft" title="Add Another Draft" handleClick={addNewDraft} icon="plus" />
+        <MLButton
+          dataId="add-draft"
+          title="Add Another Draft"
+          handleClick={addNewDraft}
+          icon="plus"
+          bordered={true}
+        />
         <div className={styles.required}>
           *Grade type field is required
         </div>

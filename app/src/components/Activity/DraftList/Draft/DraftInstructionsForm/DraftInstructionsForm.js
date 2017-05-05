@@ -93,8 +93,17 @@ class DraftInstructionsForm extends Component {
           <div className={styles.flexSpace}>
             <span>Draft Instructions</span>
             <span className={styles.flex}>
-              <MLButton dataId="cancel-draft-instructions" title="Cancel" handleClick={this.cancelInstructions} />
-              <MLButton dataId="save-draft-instructions" color="blue" title="Save" handleClick={this.saveInstructions} />
+              <MLButton
+                dataId="cancel-draft-instructions"
+                title="Cancel"
+                handleClick={this.cancelInstructions}
+                bordered={true}
+              />
+              <MLButton
+                dataId="save-draft-instructions"
+                title="Save"
+                handleClick={this.saveInstructions}
+              />
             </span>
           </div>
           <div className={styles.addDraftInstField}>

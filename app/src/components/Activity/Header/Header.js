@@ -18,11 +18,7 @@ const Header = () => {
         />
       </div>
       <div className={styles.rightContainer}>
-        <MLButton
-          title="Student Preview"
-          dataId="student-preview"
-          color="blue"
-        />
+        <MLButton title="Student Preview" dataId="student-preview" />
       </div>
     </header>
   );

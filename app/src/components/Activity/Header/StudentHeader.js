@@ -21,7 +21,6 @@ const Header = ({drafts, activityId}) => {
                 key={draft.draftId}
                 title={`Start ${cardTitle}`}
                 dataId={`start-${cardTitle}`}
-                color={(index === 0) ? 'blue' : ''}
                 disabled={index !== 0}
                 link={`studentActivity/${activityId}/studentdraft/${draft.draftId}`}
               />

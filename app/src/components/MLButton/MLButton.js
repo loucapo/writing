@@ -9,34 +9,29 @@ const Button = ({
   dataId,
   color,
   handleClick,
-  id,
   icon,
   link,
-  disabled}) => {
-  let buttonColor = disabled ? styles.disabled : (styles[color] || '');
-  let buttonClass = `${styles.button} ${buttonColor}`;
-
-  const renderIcon = () => {
-    if (icon) {
-      return (<MLIcon
-        className={styles.icon}
-        title={icon}
-        type={icon}
-        width="18"
-        height="19"
-        viewBox="0 0 24 24"
-      />);
-    }
-    return null;
-  };
+  disabled,
+  bordered}) => {
+  let border = bordered ? '_border' : '';
+  let buttonColor = color || 'aqua';
+  let buttonClass = disabled ? `disabled${border}` : `${buttonColor}${border}`;
 
   const renderButton = () => (
     <button
-      id={id}
       data-id={dataId}
-      className={buttonClass}
+      className={`${styles.button} ${styles[buttonClass]}`}
       onClick={disabled ? '' : handleClick} >
-      {renderIcon()}
+      {icon ?
+        <MLIcon
+          className={styles.icon}
+          title={icon}
+          type={icon}
+          width="18"
+          height="19"
+          viewBox="0 0 24 24"
+        />
+        : null}
       {title}
     </button>
   );
@@ -45,12 +40,11 @@ const Button = ({
     <Link
       to={disabled ? '' : link}
       data-id={dataId}
-      className={buttonClass} >
+      className={`${styles.button} ${styles[buttonClass]}`} >
       {title}
     </Link>);
 
   return link ? renderLink() : renderButton();
-
 };
 
 Button.propTypes = {
@@ -58,10 +52,10 @@ Button.propTypes = {
   dataId: PropTypes.string.isRequired,
   color: PropTypes.string,
   handleClick: PropTypes.func,
-  id: PropTypes.string,
   icon: PropTypes.string,
   link: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  bordered: PropTypes.bool
 };
 
 export default Button;

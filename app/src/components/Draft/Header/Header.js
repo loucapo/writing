@@ -11,11 +11,13 @@ const Header = () => {
           <MLButton
             title="Save"
             dataId="save-draft"
+            disabled={true}
+            bordered={true}
           />
           <MLButton
             title="Done, Start Reflection"
             dataId="start-reflection"
-            color="blue"
+            disabled={true}
           />
         </div>
       </div>

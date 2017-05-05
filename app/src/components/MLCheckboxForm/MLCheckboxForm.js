@@ -88,11 +88,11 @@ class CheckboxForm extends Component {
             dataId="cancel-button"
             title="Cancel"
             handleClick={this.props.closeModal}
+            bordered={true}
           />
           <MLButton
             dataId="save-button"
             title="Save"
-            color="blue"
             handleClick={this.handleSave}
           />
         </div>

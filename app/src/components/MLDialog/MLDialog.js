@@ -35,8 +35,18 @@ const MLDialog = ({message, title, show, close}) => {
               {message}
             </div>
             <div className={styles.buttons}>
-              <MLButton title="Delete" color="red_hollow" handleClick={closeDialog.bind(this, true)} dataId="prompt-cancel" />
-              <MLButton title="Cancel" color="blue" dataId="prompt-save" handleClick={closeDialog.bind(this, false)} />
+              <MLButton
+                title="Delete"
+                color="red"
+                bordered={true}
+                handleClick={closeDialog.bind(this, true)}
+                dataId="prompt-cancel"
+              />
+              <MLButton
+                title="Cancel"
+                dataId="prompt-save"
+                handleClick={closeDialog.bind(this, false)}
+              />
             </div>
           </div>
         </div>

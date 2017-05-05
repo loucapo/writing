@@ -44,8 +44,13 @@ class ActivityPrompt extends Component {
           (this.state.editable)
             ?
               <div className="flex">
-                <MLButton id="cancel" title="Cancel" dataId="prompt-cancel" handleClick={this.handleCancel} />
-                <MLButton title="Save" color="blue" dataId="prompt-save" />
+                <MLButton
+                  title="Cancel"
+                  dataId="prompt-cancel"
+                  handleClick={this.handleCancel}
+                  bordered={true}
+                />
+                <MLButton title="Save" dataId="prompt-save" />
               </div>
             :
               <div>
