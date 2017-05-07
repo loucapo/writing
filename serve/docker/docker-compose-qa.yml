@@ -1,0 +1,14 @@
+version: "2"
+services:
+  wk_serve:
+    image: ${wk_serve_image}
+    command: yarn run start
+    env_file:
+      - ./.env
+    environment:
+      DEBUG: "true"
+      NODE_ENV: development
+      APPLICATION_NAME: wk_serve
+    ports:
+      - "80:80"
+    container_name: wk_serve

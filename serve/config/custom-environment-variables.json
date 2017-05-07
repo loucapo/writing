@@ -1,0 +1,23 @@
+{
+  "app": {
+    "port": "80",
+    "env": "NODE_ENV",
+    "keys": "APPLICATION_KEYS",
+    "spa_url": "SPA_URL",
+    "prod_tools_spa_url": "PROD_TOOLS_SPA_URL",
+    "wk_api_url": "WK_API_URL",
+    "consumer_key": "CONSUMER_KEY",
+    "consumer_secret": "CONSUMER_SECRET"
+  },
+  "postgres": {
+    "config" :{
+      "user": "POSTGRES_USER",
+      "database": "POSTGRES_DATABASE",
+      "host"     : "POSTGRES_HOST",
+      "password": "POSTGRES_PASSWORD",
+      "port": "POSTGRES_PORT",
+      "max": "10",
+      "idleTimeoutMillis": "30000"
+    }
+  }
+}
