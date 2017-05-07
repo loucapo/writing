@@ -1,0 +1,34 @@
+{
+  "baseUrl": "http://wk-qa.mldev.cloud",
+  "featuresDir": "tests/features",
+  "stepsDir": "tests/steps",
+  "reportDir": "reports",
+  "reportSingle": true,
+  "reporter": "marvin",
+  "threads": 1,
+
+  "verbose": true,
+  "stepDelay": 0,
+  "testTimeout": 60000,
+  "elementTimeout": 5000,
+
+  "copyReport": false,
+  "pending": true,
+
+  "tags": "!@wip,!@NSM",
+  "buildtag": "",
+  "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
+
+  "screenSize": {
+    "x": 1600,
+    "y": 900
+  },
+
+  "browsers": [{
+    "seleniumServer": "http://localhost:4444/wd/hub",
+    "browserName": "chrome",
+    "chromeOptions": {
+      "args": ["--no-sandbox"]
+    }
+  }]
+}
