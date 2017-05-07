@@ -1,0 +1,11 @@
+version: "2"
+services:
+  wk_data:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./../app:/home/current/app
+    command: yarn run start
+    env_file:
+      - ./.env

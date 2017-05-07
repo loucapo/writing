@@ -1,0 +1,44 @@
+{
+  "name": "wk_data",
+  "description": "fake data for wk",
+  "main": "app/index.js",
+  "version": "0.0.7",
+  "scripts": {
+    "start": "node app/src/index.js",
+    "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
+    "migrate": "db-migrate",
+    "migrate-new": "db-migrate --sql-file create",
+    "loadData": "node app/src/loadData",
+    "killAllData": "node app/src/killAllData",
+    "fullRefresh": "node app/src/killAllData; node app/src/index.js; node app/src/loadData",
+    "lint": "eslint .",
+    "validate": "npm ls"
+  },
+  "publishConfig": {
+    "registry": "http://npm.macmillantech.com:8080/"
+  },
+  "dependencies": {
+    "config": "^1.21.0",
+    "db-migrate": "^0.10.0-beta.20",
+    "db-migrate-pg": "^0.1.11",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
+    "p-retry": "^1.0.0",
+    "pg-async": "2.4.0",
+    "pg-bluebird": "^1.0.8",
+    "pg-promise": "^5.6.2",
+    "promise-retry": "^1.1.1",
+    "puresql": "^1.2.0",
+    "sql-fixtures": "^1.0.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "json-schema-deref-sync": "^0.3.2"
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
+}
