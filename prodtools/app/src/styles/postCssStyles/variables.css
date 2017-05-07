@@ -1,0 +1,10 @@
+@import 'colors.css';
+
+:root {
+  --margin: 50px;
+  --padding: 23px;
+
+  --global-margin:  0 0 var(--margin);
+  --global-padding: 0 0 var(--padding) 0;
+}
+

@@ -1,0 +1,12 @@
+version: "2"
+services:
+  wk_prodtools:
+    image: ${wk_prodtools_image}
+    command: yarn run start #top -b #
+    env_file:
+      - .env
+    environment:
+      APPLICATION_NAME: wk_prodtools
+    ports:
+      - "8081:8081"
+    container_name: wk_prodtools
