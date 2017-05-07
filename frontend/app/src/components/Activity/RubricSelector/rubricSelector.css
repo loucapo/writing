@@ -1,0 +1,10 @@
+@import 'variables.css';
+
+.rubric {
+  display: flex;
+  justify-content: space-between;
+}
+
+.labelText {
+  color: var(--gray-dark);
+}

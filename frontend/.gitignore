@@ -1,0 +1,34 @@
+# We load environment variables for the build/deploy from here. don't check into repo
+.env
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directory
+# Deployed apps should consider commenting this line out:
+# see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
+node_modules
+
+# Code coverage
+coverage
+.nyc_output
+
+#Compiled sources
+public
+build
+build-info.json
+
+.idea
+*.orig
+*.iml
+out
+.DS_Store
+
+#npm-generated file
+npm-debug.log
+dist
+*.log
+.eslintcache
+
+.tmp
+licenses.csv

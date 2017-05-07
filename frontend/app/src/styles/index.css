@@ -1,0 +1,76 @@
+
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url('./fonts/SourceSansPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app, body {
+  font-family: 'SourceSansPro-Regular', Arial, sans-serif;
+}
+
+body {
+  background-color: #F3F3F3;
+  color: #080808;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.spacer {
+  /*align-items: center;*/
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 992px;
+  padding:0 50px;
+}
+
+a, a:link, a:hover, a:active, a:visited  {
+  color: #00758E;
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  color: #686868;
+  font-style: italic;
+}
+::-moz-placeholder {
+  color: #686868;
+  font-style: italic;
+} /* firefox 19+ */
+:-ms-input-placeholder {
+  color: #686868;
+  font-style: italic;
+} /* ie */
+input:-moz-placeholder {
+  color: #686868;
+  font-style: italic;
+}
+
+.flex {
+  display: flex;
+}
+
+/* Editor */
+.editor {
+  background: #FFF;
+  padding: 6px 5px 0;
+  height: 100%;
+  max-width: 100%;
+}
+
+.editorWrapper {
+  height: 100%;
+  max-width: 100%;
+}

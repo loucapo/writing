@@ -1,0 +1,13 @@
+@import 'variables.css';
+
+.inputs {
+  overflow: scroll;
+  border: 1px solid var(--gray);
+  max-height: 400px;
+}
+
+.buttons {
+  padding: 20px 0 30px;
+  display: flex;
+  justify-content: flex-end;
+}

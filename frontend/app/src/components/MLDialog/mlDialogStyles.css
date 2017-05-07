@@ -1,0 +1,61 @@
+@import 'variables.css';
+
+.alert_container {
+  align-items: center;
+  color: var(--gray-dark);
+  display: none;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.alert_container_show {
+  display: flex;
+}
+
+.alert_overlay {
+  flex: 1;
+  background-color: rgba(8, 8, 8, 0.25);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert {
+  background-color: var(--white);
+  width: 45%;
+}
+
+.heading {
+  align-items: center;
+  border: solid var(--gray-light);
+  border-width: 0 0 1px;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 23px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 18px 23px;
+}
+
+.message {
+  font-size: 14px;
+  padding: 0 0 15px;
+}
+
+.buttons {
+  align-self: flex-end;
+  display: flex;
+}
+
+.closeIcon {
+  fill: var(--aqua);
+}

@@ -1,0 +1,28 @@
+@import 'variables.css';
+
+.heading {
+  align-items: center;
+  border-bottom: 1px solid var(--gray-light);
+  display: flex;
+  @apply --font-18;
+  justify-content: space-between;
+  margin: 0;
+  height: 70px;
+  padding: 0 var(--padding);
+}
+
+.headingText {
+  margin: 0 5px;
+}
+
+.editIcon, .deleteIcon {
+  fill: var(--aqua);
+}
+
+.collapseIcon {
+  fill: var(--black);
+}
+
+.collapseIconDisabled {
+  fill: var(--white);
+}

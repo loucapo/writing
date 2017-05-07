@@ -1,0 +1,45 @@
+@import 'variables.css';
+
+.container {
+  background: var(--white);
+  align-items: center;
+  border-bottom: 1px solid var(--gray-light);
+  display: flex;
+  justify-content: center;
+}
+
+.container div {
+  @apply --font-14;
+  line-height: 45px;
+  margin-right: 10px;
+  padding: 0 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.container a, .container a:link, .container a:active, .container a:visited {
+  color: var(--gray-dark);
+}
+
+.container a:hover {
+  color: var(--black);
+}
+
+.active {
+  border-bottom: 3px solid var(--red);
+}
+
+.active a, .active a:link, .active a:hover, .active a:active, .active a:visited {
+  color: var(--black);
+  position: relative;
+  top: 2px;
+}
+
+.spacer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 992px;
+  padding:0 50px;
+}

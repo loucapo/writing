@@ -1,0 +1,10 @@
+@import 'variables.css';
+
+.container {
+  list-style-type: none;
+  padding: 0;
+}
+
+.border {
+  border-bottom: 1px solid var(--gray-light);
+}

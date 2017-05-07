@@ -1,0 +1,41 @@
+@import 'variables.css';
+
+.modalContainer{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  z-index: 1000;
+}
+
+.modalWrapper {
+  background: var(--white);
+  width: 750px;
+}
+
+.heading {
+  align-items: center;
+  border-bottom: 1px solid var(--gray-light);
+  display: flex;
+  @apply --font-18;
+  justify-content: space-between;
+  margin: 0;
+  height: 70px;
+  padding: 0 var(--padding);
+  font-weight: bold;
+}
+
+.modalContent {
+  padding: 20px;
+  max-height: 620px;
+  overflow: scroll;
+}
+
+.closeIcon {
+  fill: var(--gray);
+}

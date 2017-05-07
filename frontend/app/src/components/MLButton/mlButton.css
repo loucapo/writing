@@ -1,0 +1,78 @@
+@import 'variables.css';
+
+/* Default Button */
+.button, a.button {
+  cursor: pointer;
+  display: flex;
+  @apply --font-14;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  margin-left: 10px;
+  padding: 8px 10px;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+}
+
+.button:hover, a.button:hover {
+  opacity: 0.8;
+}
+
+
+/* Solid Buttons */
+.aqua, a.aqua,
+.green, a.green,
+.disabled, a.disabled {
+  color: var(--white) !important;
+}
+
+.aqua, a.aqua {
+  background-color: var(--aqua);
+}
+
+.green, a.green {
+  background-color: var(--green);
+}
+
+.disabled, a.disabled {
+  background-color: var(--gray-light);
+}
+
+
+/* Bordered Buttons */
+.disabled_border, a.disabled_border,
+.red_border, a.red_border,
+.aqua_border, a.aqua_border {
+  background-color: transparent;
+  border: 1px solid var(--aqua);
+}
+
+.aqua_border, a.aqua_border {
+  color: var(--aqua);
+}
+
+.red_border, a.red_border {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.disabled_border, a.disabled_border {
+  border-color: var(--gray-light);
+  color: var(--gray-light);
+}
+
+.disabled:hover, a.disabled:hover,
+.disabled_border, a.disabled_border {
+  cursor: default;
+  opacity: 1;
+}
+
+.disabled:hover, a.disabled:hover {
+  color: var(--white);
+}
+
+
+/* Icon */
+.icon {
+  fill: var(--aqua);
+}
