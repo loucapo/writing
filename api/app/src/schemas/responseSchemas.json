@@ -1,0 +1,48 @@
+{
+  "definitions": {
+    "standardSuccessResponse": {
+      "title": "standardSuccessResponse",
+      "properties": {
+          "type": "object"
+      }
+    },
+
+    "SuccessNoResponse": {
+      "title": "SuccessNoResponse"
+    }
+  ,
+    "standardFailureResponse": {
+      "title": "standardFailureResponse",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/errorMessage"
+          }
+        }
+      }
+    },
+    "errorMessage": {
+      "title": "errorMessage",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "activitySuccessResponse": {
+      "title": "activitySuccessResponse",
+      "properties": {
+          "type": "object",
+          "$ref": "#/definitions/activity"
+      }
+    }
+  }
+}

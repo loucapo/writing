@@ -1,0 +1,13 @@
+version: "2"
+services:
+  wk_api:
+    image: ${wk_api_image}
+    command: npm start
+    env_file:
+      - .env
+    environment:
+      DEBUG: "true"
+      NODE_ENV: development
+      APPLICATION_NAME: wk_api
+    ports:
+      - "3000:3000"

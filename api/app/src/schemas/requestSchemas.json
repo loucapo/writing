@@ -1,0 +1,94 @@
+{
+  "definitions": {
+    "createActivityIfNotCreated": {
+      "title": "createActivityIfNotCreated",
+      "properties": [
+        {
+          "name": "courseId",
+          "in": "body",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "in": "body",
+          "required": false,
+          "type": "string"
+        }
+      ]
+    },
+    "createStudentActivityIfNotCreated": {
+      "title": "createStudentActivityIfNotCreated",
+      "properties": [
+        {
+          "name": "activityId",
+          "in": "body",
+          "type": "string"
+        }
+      ]
+    },
+    "updateActivityPrompt": {
+      "title": "updateActivityPrompt",
+      "properties": [
+        {
+          "name": "prompt",
+          "in": "body",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "updateActivityRubric": {
+      "title": "updateActivityRubric",
+      "properties": [
+        {
+          "name": "rubridId",
+          "in": "body",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "addDraftToActivity": {
+      "title": "addDraftToActivity",
+      "properties": {
+        "index": {
+          "type": "number"
+        }
+      }
+    },
+    "updateDraftInstructions": {
+      "title": "updateDraftInstructions",
+      "properties": {
+        "instructions": {
+          "type": "string"
+        }
+      }
+    },
+    "setDraftGoals": {
+      "title": "setDraftGoals",
+      "properties": {
+        "goals": {
+          "type": "array",
+          "maxItems": 6,
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "setStudentReflectionQuestions": {
+      "title": "setStudentReflectionQuestions",
+      "properties": {
+        "studentReflectionQuestions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

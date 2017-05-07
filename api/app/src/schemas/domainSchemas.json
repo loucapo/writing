@@ -1,0 +1,191 @@
+{
+  "definitions": {
+    "activity": {
+      "title": "activity",
+      "properties": {
+        "activityId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "courseId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "object"
+        },
+        "rubric": {
+          "$ref": "#/definitions/rubric"
+        },
+        "drafts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/draft"
+          },
+          "uniqueItems": true
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "activityId",
+        "courseId",
+        "createdById"
+      ]
+    },
+    "rubric": {
+      "title": "rubric",
+      "properties": {
+        "rubricId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/criteria"
+          },
+          "uniqueItems": true
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "rubricId",
+        "createdById",
+        "createdDate"
+      ]
+    },
+    "criteria": {
+      "title": "criteria",
+      "properties": {
+        "criteriaId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "availableToRubric": {
+          "type": "bool"
+        },
+        "rubricLevel1": {
+          "type": "string"
+        },
+        "rubricLevel2": {
+          "type": "string"
+        },
+        "rubricLevel3": {
+          "type": "string"
+        },
+        "rubricLevel4": {
+          "type": "string"
+        },
+        "goalOption1": {
+          "type": "string"
+        },
+        "goalOption2": {
+          "type": "string"
+        },
+        "goalOption3": {
+          "type": "string"
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "criteriaId",
+        "createdById",
+        "createdDate"
+      ]
+    },
+    "draft": {
+      "title": "draft",
+      "properties": {
+        "draftId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "index": {
+          "type": "number"
+        },
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "draftId",
+        "createdById",
+        "createdDate"
+      ]
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app/index.js",
+  "scripts": {
+    "start": "node app/index.js",
+    "start_dev": "nodemon --ignore app/src/swagger app/index.js",
+    "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/ -w",
+    "testOnce": "NODE_ENV=local LOGGING_TRANSPORTS=console mocha --opts ./app/tests/mocha.opts ./app/tests/*/*.js",
+    "coverage": "nyc npm run testOnce",
+    "lint": "eslint .",
+    "validate": "npm ls",
+    "licenses": "license-checker --production --csv | tee licenses.csv"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.6"
+  },
+  "dependencies": {
+    "config": "^1.21.0",
+    "dagon": "reharik/dagon",
+    "deref": "^0.6.4",
+    "enumify": "^1.0.4",
+    "humps": "^2.0.0",
+    "invariant": "^2.2.2",
+    "json-schema-deref-sync": "^0.3.2",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-compress": "^2.0.0",
+    "koa-convert": "^1.2.0",
+    "koa-errorhandler": "^0.1.1",
+    "koa-generic-session": "^1.11.3",
+    "koa-jwt": "^1.3.1",
+    "koa-logger": "^2.0.0",
+    "koa-papers": "reharik/koa-papers",
+    "koa-response-time": "^2.0.0",
+    "koa-router": "^7.0.1",
+    "koa-send": "^3.2.0",
+    "koa2-cors": "^2.0.3",
+    "os": "^0.1.1",
+    "pg-async": "^2.4.0",
+    "pg-format": "^1.0.4",
+    "puresql": "^1.4.2",
+    "swagger-jsdoc": "^1.7.0",
+    "swagger-model-validator": "reharik/swagger-model-validator",
+    "uuid-validate": "0.0.2",
+    "winston": "^2.3.0",
+    "winston-logstash": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.6.0",
+    "istanbul": "^1.0.0-alpha.2",
+    "license-checker": "^5.1.2",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.10.2",
+    "nyc": "^10.1.2",
+    "precommit-hook-eslint": "^3.0.0",
+    "supertest": "^2.0.0",
+    "testdouble": "^1.10.2"
+  },
+  "pre-commit": [
+    "lint",
+    "testOnce"
+  ]
+}

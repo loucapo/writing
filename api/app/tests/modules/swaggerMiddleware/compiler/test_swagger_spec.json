@@ -1,0 +1,163 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Writer Key Api"
+  },
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/activity/getActivity/{id}": {
+      "get": {
+        "x-name": "activity",
+        "description": "Returns specified activity to the caller",
+        "operationId": "activity",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the activity you wish to retrieve",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/standardSuccessResponse"
+            }
+          },
+          "422": {
+            "description": "Failure",
+            "schema": {
+              "$ref": "#/definitions/standardFailureResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "x-name": "createActivity",
+        "description": "Checks for existence of activity and creates it if not there",
+        "operationId": "createActivity",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createActivity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/standardSuccessResponse"
+            }
+          },
+          "422": {
+            "description": "Failure",
+            "schema": {
+              "$ref": "#/definitions/standardFailureResponse"
+            }
+          }
+        }
+      }
+    },
+    "/activity/createActivity": {
+      "post": {
+        "x-name": "createActivity",
+        "description": "Checks for existence of activity and creates it if not there",
+        "operationId": "createActivity",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createActivity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/standardSuccessResponse"
+            }
+          },
+          "422": {
+            "description": "Failure",
+            "schema": {
+              "$ref": "#/definitions/standardFailureResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "standardSuccessResponse": {
+      "title": "standardResponse",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "payload": {
+          "type": "object"
+        }
+      }
+    },
+    "standardFailureResponse": {
+      "title": "standardResponse",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "error": {
+          "type": "boolean"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "title": "errorMessage",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "errorMessage": {
+      "title": "errorMessage",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}

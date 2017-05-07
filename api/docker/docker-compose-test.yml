@@ -1,0 +1,15 @@
+version: "2"
+services:
+  wk_api:
+    image: wk_api
+    volumes:
+      - ./../app:/home/current/app
+    command: npm test #top -b #top -b #
+   # external_links:
+    #  - cdn:frontend
+    environment:
+      DEBUG: "true"
+      NODE_ENV: test
+      APPLICATION_NAME: wk_api
+    ports:
+      - "3000:3000"
