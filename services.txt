@@ -1,0 +1,4 @@
+cd api && yarn start_dev
+cd serve && yarn start
+cd frontend && yarn start
+cd prodtools && yarn start

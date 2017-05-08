@@ -1,12 +1,20 @@
 {
   "development": {
-      "driver": "pg",
-      "user": "writer_key",
-      "database": "writer_key",
-      "host"     : "127.0.0.1",
-      "password": "writer_key",
-      "port": "5432",
-      "max": "10",
-      "idleTimeoutMillis": "30000"
+    "driver": "pg",
+    "user": {
+      "ENV": "POSTGRES_USER"
+    },
+    "database": {
+      "ENV": "POSTGRES_DATABASE"
+    },
+    "host": {
+      "ENV": "POSTGRES_HOST"
+    },
+    "password": {
+      "ENV": "POSTGRES_PASSWORD"
+    },
+    "port": "5432",
+    "max": "10",
+    "idleTimeoutMillis": "30000"
   }
 }
