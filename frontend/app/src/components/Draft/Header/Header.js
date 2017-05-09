@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MLButton from '../../MLButton/MLButton.js';
 
 import styles from './header.css';
 
-const Header = () => {
+const Header = ({draftIsEmpty}) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -17,12 +18,16 @@ const Header = () => {
           <MLButton
             title="Done, Start Reflection"
             dataId="start-reflection"
-            disabled={true}
+            disabled={draftIsEmpty}
           />
         </div>
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  draftIsEmpty: PropTypes.bool
 };
 
 export default Header;
