@@ -20,3 +20,4 @@ export SWAGGER_UI_URL=http://localhost:4666
 export WK_API_URL=http://localhost:3000
 export WK_SERVE_PORT=10080
 export WK_SERVE_URL=http://localhost:10080
+export TESTING_API_PORT=4667
