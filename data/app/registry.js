@@ -9,7 +9,6 @@ module.exports = function(_options) {
     result = container(
       x=> x.pathToRoot(__dirname+'/../')
         .requireDirectoryRecursively('./app/src')
-        .for('lodash').renameTo('_') // eslint-disable-line newline-per-chained-call
         .complete());
   } catch (ex) {
     console.log(ex);

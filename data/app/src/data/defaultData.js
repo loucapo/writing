@@ -1,4 +1,4 @@
-module.exports = function(_, faker) {
+module.exports = function(faker) {
   return function () {
   // TODO:
   // break fixtures out to another file
@@ -50,7 +50,7 @@ module.exports = function(_, faker) {
         // }
       ],
 
-      quick_feedback: _.times(5, simpleQuickFeedback),
+      quick_feedback: Array.from(Array(5)).map(simpleQuickFeedback),
 
       criteria: [
         {
@@ -602,5 +602,4 @@ module.exports = function(_, faker) {
     };
 
   }
-
-}
+};
