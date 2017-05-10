@@ -34,11 +34,6 @@ const webpackConfig = {
       timings: true,
       version: true,
       warnings: true
-    },
-
-    watchOptions: {
-      aggregateTimeout: 3000,
-      poll: 5000
     }
   },
 
