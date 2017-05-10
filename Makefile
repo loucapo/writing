@@ -22,3 +22,7 @@ dev:
 .PHONY: test
 test:
 	cd test && yarn test
+
+.PHONY: lint
+lint:
+	parallel "cd {} && yarn lint" ::: api data frontend prodtools serve

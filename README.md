@@ -40,6 +40,12 @@ $ make
 $ open http://localhost:10080/
 ```
 
+## Linting
+
+```
+$ make lint # runs yarn lint in all projects
+```
+
 ## Testing
 
 ```
