@@ -5,13 +5,11 @@ deps: \
 	api/yarn.lock \
 	data/yarn.lock \
 	frontend/yarn.lock \
-	prodtools/yarn.lock \
 	serve/yarn.lock \
 	test/yarn.lock
 	cd api && yarn && \
 	cd ../data && yarn && \
 	cd ../frontend && yarn && \
-	cd ../prodtools && yarn && \
 	cd ../serve && yarn && \
 	cd ../test && yarn
 

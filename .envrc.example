@@ -14,7 +14,6 @@ export POSTGRES_HOST=127.0.0.1
 export POSTGRES_PASSWORD=writer_key
 export POSTGRES_PORT=5432
 export POSTGRES_USER=writer_key
-export PROD_TOOLS_SPA_URL=http://localhost:8081/app.bundle.js
 export SPA_URL=http://localhost:8080/app.bundle.js
 export SWAGGER_UI_URL=http://localhost:4666
 export WK_API_URL=http://localhost:3000
