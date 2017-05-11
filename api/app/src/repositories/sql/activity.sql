@@ -15,7 +15,7 @@ VALUES
     :courseId,
     :title,
     :createdById,
-    :createdDate)
+    current_date)
 
 -- name: updateActivityPrompt
 UPDATE activity
