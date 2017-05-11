@@ -37,8 +37,11 @@ $ cd data && yarn migrate up && yarn loadData
 ```
 $ source .envrc.example
 $ make
-$ open http://localhost:10080/
+$ open http://localhost:10080/instructor (for instructor experience)
+$ open http://localhost:10080/student (for student experience)
 ```
+NOTE: You may additionally add a UUID for an activity after the instructor or student
+routes if you would like to target a specific resource.
 
 ## Linting
 
