@@ -59,6 +59,35 @@ module.exports = function activityRouter(koarouter, controllers) {
 
     /**
      * @swagger
+     * /resource/{activityId}:
+     *   put:
+     *     x-name: createActivityResourceVersion
+     *     description: Checks for existence of activity and creates it if not there
+     *     operationId: createActivityResourceVersion
+     *     parameters:
+     *       - name: activityId
+     *         in: path
+     *         type: string
+     *         required: true
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/createActivityIfNotCreated"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put('/resource/:activityId', controllers.activityController.createActivityIfNotCreated);
+
+    /**
+     * @swagger
      * /activity/{activityId}/prompt:
      *   put:
      *     x-name: putActivityPrompt

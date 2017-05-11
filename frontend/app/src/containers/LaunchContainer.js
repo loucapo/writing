@@ -1,23 +1,52 @@
-import React, {PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActivityContainer from './../containers/ActivityContainer';
 import StudentActivityContainer from './../containers/StudentActivityContainer';
+import {loadAuth} from '../modules/authModule';
+import jwtDecode from 'jwt-decode';
+import cookie from 'react-cookie';
 
-const LaunchContainer = ({role}) => {
-  switch (role) {
-    case 'instructor': {
-      return (<ActivityContainer />);
-    }
-    case 'student': {
-      return (<StudentActivityContainer />);
-    }
-    default:
-      return null;
+class LaunchContainer extends Component {
+
+  componentWillMount() {
+    const token = cookie.load('id_token'); //XXX should die here if not there.;
+    const authValues = jwtDecode(token);
+    const course = authValues.course_data.find(x => x.course_id === this.props.params.courseId);
+    //XXX we need to error here if course isn't set.
+
+    const auth = {
+      id: authValues.id,
+      firstName: authValues.first_name,
+      lastName: authValues.last_name,
+      role: course.role,
+      activity: {
+        activityId: this.props.params.activityId
+      }
+    };
+
+    this.props.loadAuth(auth);
   }
-};
+
+  render() {
+
+    switch (this.props.role) {
+      case 'instructor': {
+        return (<ActivityContainer />);
+      }
+      case 'student': {
+        return (<StudentActivityContainer />);
+      }
+      default:
+        return null;
+    }
+  }
+}
 
 LaunchContainer.propTypes = {
-  role: PropTypes.string
+  role: PropTypes.string,
+  params: PropTypes.object,
+  loadAuth: PropTypes.func
 };
 
-export default connect(state => ({role: state.auth.role}))(LaunchContainer);
+export default connect(state => ({role: state.auth.role}), {loadAuth})(LaunchContainer);

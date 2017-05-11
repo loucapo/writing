@@ -1,50 +1,35 @@
 
-module.exports = function (applicationStrategies, config, moment, superagent, logger) {
+module.exports = function (config, moment, superagent, logger, jsonwebtoken) {
   return {
     activityOverview: async function (ctx) {
 
-      // Ordinarily, we'd unpack this from platform launch JWT launch service sends.
-      // In the meantime, we'll simply make our own data.
-      // See the tool provider citizenship guide for info on the structure.
-      var dummyData = {
-        user_data : {
-          id : 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334',
-          first_name : 'Bobby',
-          last_name : 'Tibbits',
-          email : 'bobby.tibbits@university.com',
-          role : 'student',
-        },
-        launch_data : {
-          resource_link_id : 'd3e3c2d5-cf43-4f63-924f-3ec7a125a334',
-          course_id : '4454554',
-          course_name : 'Eng 1002'
-        }
-      };
+      //we use the activityId if sent, everything is otherwise hardcoded
+      let activityId = ctx.params.resourceId || 'd3e3c2d5-cf43-4f63-924f-3ec7a125a334'; 
+      let courseId = 'ee0a7acd-2054-4129-b3fd-28563421cb0b';
+      let lmsId = 'bbbe3f75-41f7-4b98-9d8e-89896a61d753';
 
-      // make post to API
-      var cleanData = {
-        activityId: dummyData.launch_data.resource_link_id,
-        createdById: dummyData.user_data.id,
-        createdDate: moment().toISOString()
-      };
-
-      var strategy = applicationStrategies.writerKey;
-      const jwt = strategy.execute(dummyData);
-
-      superagent
-        .put(`${config.app.wk_api_url}/activity/${dummyData.launch_data.resource_link_id}/studentactivity`)
-        .send(cleanData)
-        .set("Cookie", `wt_jwt=${jwt}`)
-        .end(function(err, res){
-          if(err){
-            //XXX - this used to throw, but that would cause the service to crash.  Will circle back on that.
-            logger.error(`error: ${JSON.stringify(err)}`);
-            return ctx;
+      //crank a dummy JWT (for faking login, basically)
+      let dummyData = {
+        id : '5ef7fa10-f4a4-4add-9191-882de6b9065b',
+        first_name : 'Thomas',
+        name : 'Collins',
+        email : 'tom.collins@university.com',
+        admin : 'false', 
+        auth_redirect : 'http://zombo.com',
+        course_data : [
+          {
+            course_id : courseId, 
+            lms_id : lmsId,
+            expiry : 'false',
+            role : 'student'
           }
-        });
+        ]
+      };
+      const jwt = jsonwebtoken.sign(dummyData, config.app.consumer_secret);
 
-      ctx.cookies.set("wt_jwt", jwt, {httpOnly : false});
-      ctx.redirect('/resource/'+dummyData.launch_data.resource_link_id);
+      //set the cookie and redirect.
+      ctx.cookies.set("id_token", jwt, {httpOnly : false});
+      ctx.redirect('/lms/'+lmsId+'/course/'+courseId+'/resource/'+activityId);
     }
   };
 };

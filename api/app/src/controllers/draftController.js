@@ -3,14 +3,14 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
     async addDraftToActivity(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.createdById = ctx.state.user.user_data.id;
+      command.createdById = ctx.state.user.id;
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
       let event = activity.addDraftToActivity(command);
       let draftIndexes = activity.getDraftIndexes();
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'addDraftToActivity', event);
         for (let draft of draftIndexes) {
-          draft.modifiedById = ctx.state.user.user_data.id;
+          draft.modifiedById = ctx.state.user.id;
           await repo.query(sqlLibrary.draft, 'updateDraftIndex', draft);
         }
       });
@@ -29,7 +29,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
         await repo.query(sqlLibrary.draft, 'removeDraftFromActivity', {draftId: event.draftId});
 
         for (let draft of draftIndexes) {
-          draft.modifiedById = ctx.state.user.user_data.id;
+          draft.modifiedById = ctx.state.user.id;
           await repo.query(sqlLibrary.draft, 'updateDraftIndex', draft);
         }
       });
@@ -41,7 +41,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
     async updateDraftInstructions(ctx) {
       const command = ctx.request.body;
       command.draftId = ctx.params.draftId;
-      command.modifiedById = ctx.state.user.user_data.id;
+      command.modifiedById = ctx.state.user.id;
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(ctx.params.activityId);
       let event = activity.updateDraftInstructions(command);
 
@@ -74,7 +74,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.draftId = ctx.params.draftId;
-      command.modifiedById = ctx.state.user.user_data.id;
+      command.modifiedById = ctx.state.user.id;
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
       let event = activity.setStudentReflectionQuestions(command);
       repository.transaction(async repo => {

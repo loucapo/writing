@@ -18,10 +18,12 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
     },
 
     // check if it exists, if not create it;
+    //XXX the repository calls here need to be wrapped in a transaction.
     async createActivityIfNotCreated(ctx) {
       const command = ctx.request.body;
+      command.title = 'Not yet implemented AKA ENG-101'; //XXX we need to get this from somewhere
       command.activityId = ctx.params.activityId;
-      command.createdById = ctx.state.user.user_data.id;
+      command.createdById = ctx.state.user.id;
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(command)}`);
       let activity = await repository.query(sqlLibrary.activity, 'getActivityById', {activityId: command.activityId});
       if (!activity || !activity[0]) {
@@ -32,8 +34,9 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
         let draftEvent = activity.addDraftToActivity({
           index: 0,
           activityId: command.activityId,
-          createdById: ctx.state.user.user_data.id
+          createdById: ctx.state.user.id
         });
+        //XXX this should only happen if the previous repository call to create activity succeeds.  #transaction
         await repository.query(sqlLibrary.draft, 'addDraftToActivity', draftEvent);
       }
       logger.debug(`Call to createActivity successful with following payload: ${JSON.stringify(command)}`);
@@ -45,7 +48,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
     async updateActivityPrompt(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.modifiedById = ctx.state.user.user_data.id;
+      command.modifiedById = ctx.state.user.id;
       let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
       let event = activity.updateActivityPrompt(command);
 
@@ -58,7 +61,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
     async updateActivityRubric(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.modifiedById = ctx.state.user.user_data.id;
+      command.modifiedById = ctx.state.user.id;
       let props = await repository.query(sqlLibrary.activity, 'getActivityById', {activityId: command.activityId});
       if (!props) {
         ctx.errors = [`No activity found with id ${command.activityId}`];

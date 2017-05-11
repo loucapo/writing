@@ -4,8 +4,8 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
     async createStudentActivityIfNotCreated(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.createdById = ctx.state.user.user_data.id;
-      command.studentId = ctx.state.user.user_data.id;
+      command.createdById = ctx.state.user.id;
+      command.studentId = ctx.state.user.id;
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(command)}`);
       let studentActivity = await repository.query(
         sqlLibrary.studentActivity,

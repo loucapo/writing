@@ -24,7 +24,7 @@ module.exports = function(koaresponsetime,
     app.use(koalogger());
     app.use(koaErrorHandler());
     app.use(koa2cors({origin: '*'}));
-    app.use(koaconvert(koajwt({secret: config.app.jwt_secret, cookie: 'wt_jwt'})));
+    app.use(koaconvert(koajwt({secret: config.app.jwt_secret, cookie: 'id_token'})));
 //    app.use(koacors({origin:config.app.swagger_ui_url}));
 //XXX -- it would appear that last CORS wins...  need to revisit this for swagger.
     app.use(koabodyparser());

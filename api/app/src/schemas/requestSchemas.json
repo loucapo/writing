@@ -8,12 +8,6 @@
           "in": "body",
           "required": false,
           "type": "string"
-        },
-        {
-          "name": "title",
-          "in": "body",
-          "required": false,
-          "type": "string"
         }
       ]
     },

@@ -32,7 +32,7 @@ function fetchFn(url, params) {
 
 function* request(action) {
   try {
-    const token = cookie.load('wt_jwt'); //XXX should die here if not there.;
+    const token = cookie.load('id_token'); //XXX should die here if not there.;
     let headers = new Headers();
     headers.append('Authorization', 'bearer ' + token);
     headers.append('Accept', 'application/json, text/plain, */*');
