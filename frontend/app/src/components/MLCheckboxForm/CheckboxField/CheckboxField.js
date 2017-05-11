@@ -57,9 +57,17 @@ class CheckboxField extends Component {
               </div>
             :
               <div>
-                <h4 data-id="question-title">
-                  Question {this.props.fieldOrder}
-                </h4>
+                <div className={styles.title}>
+                  <strong data-id="question-title">
+                    Question {this.props.fieldOrder}
+                  </strong>
+                  <span className={styles.questionType}>
+                    Type &nbsp;
+                  </span>
+                  <span data-id="question-type">
+                    {field.questionType}
+                  </span>
+                </div>
                 {field.title || field.question}
               </div>
           }

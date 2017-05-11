@@ -18,13 +18,21 @@
   cursor: pointer;
 }
 
-.heading h4 {
-  margin-top: 0;
+.title {
+  margin-bottom: 15px;
+}
+
+.title strong {
+  margin-right: 15px;
 }
 
 .toggableHeading {
   font-weight: bold;
   @apply --font-18;
+}
+
+.questionType {
+  color: var(--red);
 }
 
 .content {
