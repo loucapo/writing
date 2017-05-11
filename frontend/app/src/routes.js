@@ -3,6 +3,7 @@ import {Route, IndexRedirect} from 'react-router';
 import KitchenSink from './components/KitchenSink/KitchenSink';
 import AppContainer from './containers/AppContainer';
 import LaunchContainer from './containers/LaunchContainer';
+import StudentDraftContainer from './containers/StudentDraftContainer';
 
 let redirectActivity = '/resource';
 
