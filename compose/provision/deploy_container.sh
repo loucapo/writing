@@ -31,6 +31,12 @@ do
   DIR="${REPOS[$REPO]}"
   DIR=${DIR::-1}
   COMPOSE_FILE=$(ls $DIR | grep docker-compose)
+  if [ -f $DIR"/"$COMPOSE_FILE ]; then
+    echo "Found compose file $COMPOSE_FILE";
+  else
+    echo "Compose file not found for $DIR";
+    exit 0;
+  fi
   echo "Building .env file for wk_$DIR"
   if [ -f "$DIR/.env.example" ]; then
     ENV_ORIGIN=$DIR"/.env"
