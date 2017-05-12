@@ -61,9 +61,7 @@ describe('Activity Test', function() {
         ctx = {
           state: {
             user: {
-              user_data: {
-                id: 123
-              }
+              id: 123
             }
           },
           params: {activityId: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc"},
@@ -72,7 +70,7 @@ describe('Activity Test', function() {
           }
         };
         _body = ctx.request.body;
-        _userId = ctx.state.user.user_data.id;
+        _userId = ctx.state.user.id;
       });
 
 
@@ -128,9 +126,7 @@ describe('Activity Test', function() {
         ctx = {
           state: {
             user: {
-              user_data: {
-                id: 123
-              }
+              id: 123
             }
           },
           params: {activityId: "f775f8e2-069f-4c6d-b5cd-999e75b63bfc"},
@@ -139,7 +135,7 @@ describe('Activity Test', function() {
           }
         };
         _body = ctx.request.body;
-        _userId = ctx.state.user.user_data.id;
+        _userId = ctx.state.user.id;
       });
 
       context('when updating activity', () => {

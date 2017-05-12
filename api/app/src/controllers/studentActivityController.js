@@ -24,7 +24,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
     },
 
     async getStudentActivity(ctx) {
-      const userId = ctx.state.user.user_data.id;
+      const userId = ctx.state.user.id;
       const studentActivity = await repository.query(
         sqlLibrary.studentActivity,
         'getStudentActivity',
