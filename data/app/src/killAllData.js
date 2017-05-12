@@ -1,5 +1,5 @@
 module.exports = function(config, knex) {
-  return function () {
+  return function() {
 
     const _knex = knex({
       client: 'pg',
@@ -18,15 +18,15 @@ module.exports = function(config, knex) {
       //qqq gotta catch
     }
 
-    return getTables(_knex).then(function (tables) {
+    return getTables(_knex).then(tables => {
       return Promise.all(tables.map(t => {
         // can't just use .truncate() b/c FK constraints
         // also note very PG specific
-        console.log("BLASTING ", t, "!");
-        return _knex.raw("TRUNCATE " + t + " RESTART IDENTITY CASCADE");
+        console.log(`BLASTING ${t}!`);
+        return _knex.raw(`TRUNCATE ${t} ' RESTART IDENTITY CASCADE'`);
       }));
-    }).then(function () {
-      console.log("BLASTED!");
+    }).then(() => {
+      console.log('BLASTED!');
     });
-  }
+  };
 };

@@ -1,27 +1,28 @@
 module.exports = function(config, pg, promiseretry) {
-  return function () {
-    var ping = function () {
+  return function() {
+    const ping = () => {
       const configs = config.postgres.config;
 
-      var client = new pg.Client(configs);
-      return new Promise(function (res, rej) {
+      const client = new pg.Client(configs);
+      return new Promise((res, rej) => {
         // connect to our database
-        return client.connect(function (err) {
-          if (err) {
-            return rej(err);
+        return client.connect(connectErr => {
+          if (connectErr) {
+            return rej(connectErr);
           }
           // execute a query on our database
-          client.query('SELECT version()', function (err, result) {
-            if (err) {
-              return rej(err);
+          client.query('SELECT version()', (queryErr, result) => {
+            if (queryErr) {
+              return rej(queryErr);
             }
-            var output = result.rows[0];
+            const output = result.rows[0];
             console.log(output);
             // disconnect the client
-            client.end(function (err) {
-              if (err) {
-                return rej(err);
+            client.end(disconnectErr => {
+              if (disconnectErr) {
+                return rej(disconnectErr);
               }
+              return null;
             });
             return res(output);
           });
@@ -29,9 +30,9 @@ module.exports = function(config, pg, promiseretry) {
       });
     };
 
-    return promiseretry(function (retry, number) {
+    return promiseretry((retry, number) => {
       console.log('attempt number', number);
       return ping().catch(retry);
     }, {retries: 4});
-  }
+  };
 };

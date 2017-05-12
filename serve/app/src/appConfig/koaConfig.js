@@ -11,7 +11,7 @@ module.exports = function(koagenericsession,
     if (!config.app.keys) {
       throw new Error('Please add session secret key in the config file!');
     }
-    
+
     app.keys = config.app.keys; // eslint-disable-line no-param-reassign
 
     app.keys = Array.isArray(app.keys) ? app.keys : [app.keys];
@@ -22,9 +22,9 @@ module.exports = function(koagenericsession,
     app.use(koabodyparser());
     app.use(koaconvert(koagenericsession()));
 
-    app.use(async function (ctx, next){
-      ctx.render = coviews("./app/src/views", {
-        map: {html: "swig"}
+    app.use(async function(ctx, next) {
+      ctx.render = coviews('./app/src/views', {
+        map: {html: 'swig'}
       });
       await next();
     });

@@ -19,7 +19,7 @@ module.exports = function server(koa,
     app.use(koacompress());
 
     const router = koarouter();
-    router.post('dbrefresh','/dbrefresh',dbrefreshController.dbRefresh);
+    router.post('dbrefresh', '/dbrefresh', dbrefreshController.dbRefresh);
     app.use(router.routes());
     app.use(router.allowedMethods());
     app.listen(config.testingAPI.port);

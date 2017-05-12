@@ -1,19 +1,19 @@
-module.exports = function (config, jsonwebtoken, superagent) {
+module.exports = function(config) {
   return {
-    launch: async function (ctx) {
+    async launch(ctx) {
       //bounce to login page if cookie not set
       //XXX probably want to move this to middleware
-      if(!ctx.cookies.get('id_token')) {
+      if (!ctx.cookies.get('id_token')) {
         ctx.redirect('/login');//XXX need to pull this out into a config
       }
       //give them the SPA
-      ctx.body = await ctx.render("index", {
+      ctx.body = await ctx.render('index', {
         SPA_URL: config.app.spa_url
       });
     },
 
-    fourOhFour: async function (ctx) {
-      ctx.body = await ctx.render("fourOhFour");
+    async fourOhFour(ctx) {
+      ctx.body = await ctx.render('fourOhFour');
     }
   };
 };

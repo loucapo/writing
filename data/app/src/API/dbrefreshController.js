@@ -6,5 +6,5 @@ module.exports = function(killAllData, loadData) {
       ctx.status = 200;
       return ctx;
     }
-  }
+  };
 };

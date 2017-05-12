@@ -1,13 +1,12 @@
-var dagon = require('dagon');
-var path = require('path');
+const dagon = require('dagon');
 
 module.exports = function(_options) {
-  var options   = _options || {};
-  var container = dagon(options).container;
-  var result;
+  const options = _options || {};
+  const container = dagon(options).container;
+  let result;
   try {
     result = container(
-      x=> x.pathToRoot(__dirname+'/../')
+      x=> x.pathToRoot(__dirname + '/../')
         .requireDirectoryRecursively('./app/src')
         .complete());
   } catch (ex) {

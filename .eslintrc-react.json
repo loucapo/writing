@@ -22,7 +22,7 @@
   },
 
   "parserOptions": {
-    ecmaFeatures: {
+    "ecmaFeatures": {
       "jsx": true,
       // experimentalObjectRestSpread is necessary to allow us to use the spread operator.
       // see https://github.com/eslint/eslint/issues/2532
@@ -45,8 +45,8 @@
     "react/display-name": 0,
     // XXX debating this
     // open for debate on this one
-//    "arrow-parens": [2, "as-needed"],
-    "camelcase": 2,
+    //    "arrow-parens": [2, "as-needed"],
+    "camelcase": 1,
     "comma-dangle": [2, "never"],
     "comma-spacing": 2,
     "consistent-return": 0,
