@@ -21,6 +21,12 @@ dev:
 test:
 	cd test && yarn test
 
+prettyLint:
+	cd api && yarn lint && \
+    cd ../data && yarn lint && \
+    cd ../frontend && yarn lint && \
+    cd ../serve && yarn lint
+
 .PHONY: lint
 lint:
 	parallel "cd {} && yarn lint" ::: api data frontend prodtools serve

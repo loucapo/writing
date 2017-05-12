@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app/index.js",
     "start_dev": "nodemon --ignore app/src/swagger app/index.js",
-    "lint": "eslint app",
+    "lint": "eslint -c ./../.eslintrc.json .",
     "licenses": "license-checker --production --csv | tee licenses.csv"
   },
   "license": "MIT",
