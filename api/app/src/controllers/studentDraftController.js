@@ -5,7 +5,7 @@ module.exports = function(domain, repository, sqlLibrary, moment, domainBuilders
       let command = {
         studentActivityId: ctx.params.studentActivityId,
         draftId: ctx.params.draftId,
-        createdById: ctx.state.user.user_data.id,
+        createdById: ctx.state.user.id,
         createdDate: moment().toISOString()
       };
       let studentDraft = await repository.query(
@@ -36,4 +36,3 @@ module.exports = function(domain, repository, sqlLibrary, moment, domainBuilders
     }
   };
 };
-
