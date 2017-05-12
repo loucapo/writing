@@ -35,7 +35,7 @@ $ cd data && yarn migrate up && yarn loadData
 ## Development
 
 ```
-$ make env 
+$ source env.sh 
 $ make
 $ open http://localhost:10080/instructor (for instructor experience)
 $ open http://localhost:10080/student (for student experience)
