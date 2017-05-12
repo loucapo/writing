@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Writer Key</title>
-</head>
-<body>
-<div id="root">
-    <div id="loader-wrapper">
-        <div id="loader"></div>
+  <meta charset="UTF-8">
+  <title>Writer Key</title>
+  <style>
+    @font-face {
+      font-family: 'SourceSansPro-Regular';
+      src: url('./fonts/SourceSansPro-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-        <span id="message">You are being redirected to your Macmillan Learning Tool...</span>
-    </div>
-</div>
-<!-- TODO: This stuff really does not belong in here. we need to move it ASAP. -->
-<style>
     html, body, #root, #root > div {
-        height: 100%;
+      height: 100%;
+      font-family: 'SourceSansPro-Regular', Arial, sans-serif;
     }
 
     #loader-wrapper {
@@ -91,7 +89,16 @@
         to{transform:rotate(360deg);}
     }
 
-</style>
+  </style>
+</head>
+<body>
+<div id="root">
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <span id="message">You are being redirected to your Macmillan Learning Tool...</span>
+    </div>
+</div>
 <script type="text/javascript" src="{{SPA_URL}}"></script>
 </body>
 </html>
