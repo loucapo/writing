@@ -2,22 +2,22 @@ version: "2"
 services:
   front_end:
     extends:
-      file: ../../wk_frontend/docker/docker-compose.yml
+      file: ../../frontend/docker/docker-compose.yml
       service: wk_frontend
 
   api:
     extends:
-      file: ../../wk_api/docker/docker-compose-dev.yml
+      file: ../../api/docker/docker-compose-dev.yml
       service: wk_api
 
   data:
     extends:
-      file: ../../wk_data/docker/docker-compose.yml
+      file: ../../data/docker/docker-compose.yml
       service: wk_data
 
   serve:
     extends:
-      file: ../../wk_serve/docker/docker-compose-dev.yml
+      file: ../../serve/docker/docker-compose-dev.yml
       service: wk_serve
 
   swagger_ui:

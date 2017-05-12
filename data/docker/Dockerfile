@@ -7,6 +7,8 @@ ADD ./config ./config
 
 ADD ./migrations ./migrations
 
+ADD ./database.json /$HOME/database.json 
+
 RUN yarn install
 
 ADD ./app /$HOME/app

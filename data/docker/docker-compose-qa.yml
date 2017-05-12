@@ -2,7 +2,7 @@ version: "2"
 services:
   wk_data:
     image: ${wk_data_image}
-    command: npm run fullRefresh #top -b #
+    command: yarn run blastAndRebuild 
     env_file:
       - ./.env
     container_name: wk_data

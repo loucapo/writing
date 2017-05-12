@@ -1,5 +1,9 @@
 .DEFAULT_GOAL := dev
 
+.PHONY: env
+env:
+	./env.sh
+
 .PHONY: deps
 deps: \
 	api/yarn.lock \
