@@ -6,13 +6,11 @@
   "scripts": {
     "start": "node app/index.js",
     "start_api": "node app/serverIndex.js",
-    "test": "mocha --opts ./app/tests/mocha.opts ./app/tests/*.js",
     "migrate": "db-migrate",
     "migrate-new": "db-migrate --sql-file create",
     "loadData": "node app/loadDataIndex",
     "killAllData": "node app/killDataIndex",
-    "lint": "eslint .",
-    "validate": "npm ls"
+    "lint": "eslint ."
   },
   "publishConfig": {
     "registry": "http://npm.macmillantech.com:8080/"
@@ -50,8 +48,6 @@
     "json-schema-deref-sync": "^0.3.2"
   },
   "pre-commit": [
-    "lint",
-    "validate",
-    "test"
+    "lint"
   ]
 }

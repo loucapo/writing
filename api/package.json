@@ -10,7 +10,6 @@
     "testOnce": "NODE_ENV=local LOGGING_TRANSPORTS=console mocha --opts ./app/tests/mocha.opts ./app/tests/*/*.js",
     "coverage": "nyc npm run testOnce",
     "lint": "eslint app",
-    "validate": "npm ls",
     "licenses": "license-checker --production --csv | tee licenses.csv"
   },
   "license": "MIT",
