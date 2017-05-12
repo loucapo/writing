@@ -13,6 +13,7 @@ module.exports = function(config) {
     },
 
     async fourOhFour(ctx) {
+      ctx.status = 404;
       ctx.body = await ctx.render('fourOhFour');
     }
   };
