@@ -1,5 +1,5 @@
-var credentials = require('../../pages/NextGen Writer Key/sls-user-credentials.js');
-var tools = require('../../pages/NextGen Writer Key/admin-production-tools-page.js');
+let credentials = require('../../pages/NextGen Writer Key/sls-user-credentials.js');
+let tools = require('../../pages/NextGen Writer Key/admin-production-tools-page.js');
 
 exports.define = function(steps) {
   steps.given('I login as "$user"', function(user) {
@@ -9,16 +9,12 @@ exports.define = function(steps) {
     credentials.sls_login.click();
   });
 
-  steps.given("I launch into the writing production tool", function () {
+  steps.given('I launch into the writing production tool', function() {
     tools.visit();
   });
 
-  steps.then("I land on the Writing Activity Content Tool", function () {
+  steps.then('I land on the Writing Activity Content Tool', function() {
     tools.prodtools_header.isDisplayed().should.eventually.equal(true);
     tools.prodtools_title.isDisplayed().should.eventually.equal(true);
-  });
-
-  steps.then("I receive a 401 error", function () {
-    driver.wait(until.urlContains("/401"), 5000, 'target url does not contain ' + dashboard_page.url);
   });
 };

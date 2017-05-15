@@ -1,43 +1,43 @@
-var Page = require('marvin-js').Page;
+let Page = require('marvin-js').Page;
 
 module.exports = new Page({
 
-  activity_prompt_editor: { get: function() { return this.element(".public-DraftEditor-content");}},
+  activity_prompt_editor: { get() { return this.element('.public-DraftEditor-content');}},
 
-  draftEditor: { get: function() { return this.element(".public-DraftEditor-content");}},
+  draftEditor: { get() { return this.element('.public-DraftEditor-content');}},
 
-  linkInput: { get: function() { return this.element("input[class^='InputPopover__input___']");}},
+  linkInput: { get() { return this.element("input[class^='InputPopover__input___']");}},
 
-  button_bold: { get: function() { return this.element("button[title='Bold']");}},
+  button_bold: { get() { return this.element("button[title='Bold']");}},
 
-  button_italic: { get: function() { return this.element("button[title='Italic']");}},
+  button_italic: { get() { return this.element("button[title='Italic']");}},
 
-  button_monospace: { get: function() { return this.element("button[title='Monospace']");}},
+  button_monospace: { get() { return this.element("button[title='Monospace']");}},
 
-  button_strikethrough: { get: function() { return this.element("button[title='Strikethrough']")}},
+  button_strikethrough: { get() { return this.element("button[title='Strikethrough']");}},
 
-  button_unordered_list: { get: function() { return this.element("button[title='UL']")}},
+  button_unordered_list: { get() { return this.element("button[title='UL']");}},
 
-  button_ordered_list: { get: function() { return this.element("button[title='OL']")}},
+  button_ordered_list: { get() { return this.element("button[title='OL']");}},
 
-  button_blockquote: { get: function() { return this.element("button[title='Blockquote']")}},
+  button_blockquote: { get() { return this.element("button[title='Blockquote']");}},
 
-  button_link: { get: function() { return this.element("button[title='Link']")}},
+  button_link: { get() { return this.element("button[title='Link']");}},
 
-  button_remove_link: { get: function() { return this.element("button[title='Remove Link']")}},
+  button_remove_link: { get() { return this.element("button[title='Remove Link']");}},
 
-  dropdown_heading_large: { get: function() { return this.element("option[value='header-one']")}},
+  dropdown_heading_large: { get() { return this.element("option[value='header-one']");}},
 
-  dropdown_heading_medium: { get: function() { return this.element("option[value='header-two']")}},
+  dropdown_heading_medium: { get() { return this.element("option[value='header-two']");}},
 
-  dropdown_heading_small: { get: function() { return this.element("option[value='header-three']")}},
+  dropdown_heading_small: { get() { return this.element("option[value='header-three']");}},
 
-  dropdown_code_block: { get: function() { return this.element("option[value='code-block']")}},
+  dropdown_code_block: { get() { return this.element("option[value='code-block']");}},
 
-  button_undo: { get: function() { return this.element("button[title='Undo']")}},
+  button_undo: { get() { return this.element("button[title='Undo']");}},
 
-  button_redo: { get: function() { return this.element("button[title='Redo']")}},
+  button_redo: { get() { return this.element("button[title='Redo']");}},
 
-  rte_toolbar: { get: function() { return this.element(".rdw-editor-toolbar");}},
+  rte_toolbar: { get() { return this.element('.rdw-editor-toolbar');}}
 
 });

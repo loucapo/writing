@@ -1,8 +1,8 @@
-var page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page');
-var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
+let page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page');
+let rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 exports.define = function(steps) {
-  steps.given("I visit the SLS create activity page", function() {
+  steps.given('I visit the SLS create activity page', function() {
     page.visit();
   });
 
@@ -10,36 +10,36 @@ exports.define = function(steps) {
     page[elem].isDisplayed().should.eventually.equal(true);
   });
 
-  steps.then("I sleep for $d seconds", function(d) {
+  steps.then('I sleep for $d seconds', function(d) {
     driver.sleep(d * 1000);
   });
 
-  steps.then("I should see a new assignment created", function() {
+  steps.then('I should see a new assignment created', function() {
     page.confirmation_message.isDisplayed().should.eventually.equal(true);
   });
 
-  steps.then("the confirmation message is green", function() {
+  steps.then('the confirmation message is green', function() {
     page.confirmation_message.getCssValue('background-color').then(function rgb2hex(rgb) {
       rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
       function hex(x) {
-        return ("0" + parseInt(x).toString(16)).slice(-2);
+        return ('0' + parseInt(x).toString(16)).slice(-2);
       }
-      var color = "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+      let color = '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
       expect(color).to.equal('#daf4d4');
     });
   });
 
-  steps.when("I scroll down the activity page", function () {
+  steps.when('I scroll down the activity page', function() {
     driver.executeScript(function() {
-      window.scrollBy(0,100);
-    })
+      window.scrollBy(0, 100);
+    });
   });
 
-  steps.when("I reload the page", function () {
+  steps.when('I reload the page', function() {
     driver.navigate().refresh();
   });
 
-  steps.when("I click on the page", function () {
+  steps.when('I click on the page', function() {
     page.activity_prompt_header.click();
   });
   steps.then('I should see the Assignment Header elements', function() {
@@ -73,13 +73,13 @@ exports.define = function(steps) {
   });
 
 
-  steps.then("'$list' should be '$number' goal", function(list,number) {
+  steps.then("'$list' should be '$number' goal", function(list, number) {
     page[list].return('li').then(function(t) {
       expect(t).to.equal(number);
     });
   });
 
-  steps.then("The '$category' should be '$text'", function(category,text) {
+  steps.then("The '$category' should be '$text'", function(category, text) {
     page[category].getText().then(function(t) {
       expect(t).to.contain(text);
     });
@@ -93,14 +93,14 @@ exports.define = function(steps) {
     page[elem].click();
   });
 
-  steps.then("I reset the assignment prompt for the next test", function() {
+  steps.then('I reset the assignment prompt for the next test', function() {
     page.activity_prompt_edit.click();
     rtePage.draftEditor.click();
     rtePage.draftEditor.getText()
       .then(function(content) {
-        var lefts = '';
-        var content_length = content.length + 1;
-        for (i = 0; i < content_length; i++) {
+        let lefts = '';
+        let contentLength = content.length + 1;
+        for (let i = 0; i < contentLength; i++) {
           lefts += keys.LEFT;
         }
         rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
@@ -109,9 +109,9 @@ exports.define = function(steps) {
     page.activity_prompt_save.click();
   });
 
-  steps.then("I see '$rubric' is the '$number' element", function(elem,number) {
+  steps.then("I see '$rubric' is the '$number' element", function(elem, number) {
     page.rubric_selection_content.getText().then(function(t) {
-      var content = t.split('\n');
+      let content = t.split('\n');
       expect(content[number]).to.contain(elem);
     });
   });
@@ -123,22 +123,25 @@ exports.define = function(steps) {
   });
 
 
-  steps.then("There is no rubric to preview", function() {
+  steps.then('There is no rubric to preview', function() {
     driver.findElements({css: "[class^='Rubric__table']"})
-      .then(gimme_none);
+      .then(gimmeNone);
   });
 
-  steps.then("The draft goals modal does not appear", function() {
+  steps.then('The draft goals modal does not appear', function() {
     driver.findElements({css: "[data-id='modal']"})
-      .then(gimme_none);
+      .then(gimmeNone);
   });
 
-  function gimme_none(arr) {
+  // TODO: common functions like gimmeNone need to be deduped and shared
+  // TODO: actually, need to grep for `steps.*`, sort the output, and dedupe
+  //  there's a ton of shared steps
+  function gimmeNone(arr) {
     expect(arr.length).to.equal(0);
   }
 
-  steps.then("The '$elem' does not exist", function(elem) {
-    //expect(page.rubric_preview).to.not.exist;
+  // XXX: this doesn't actually use the elem it's passed, should it?
+  steps.then("The '$elem' does not exist", function() {
     page.rubric_preview.then(function(flags) {
       expect(flags.length).to.equal(0);
     });
@@ -146,18 +149,18 @@ exports.define = function(steps) {
 
   steps.then("The draft goal summary list should have '$goals' goal", function(goals) {
     page.draft_goal_summary_list.getText().then(function(t) {
-      var content = t.split(',');
+      let content = t.split(',');
       // could use error handling if goals = 0. Empty space is counting as 1 right now.
-      goals_number = parseInt(goals);
-      expect(content.length).to.equal(goals_number);
+      let goalsNumber = parseInt(goals);
+      expect(content.length).to.equal(goalsNumber);
     });
   });
 
   steps.then("Draft Goals on the Activity Summary should have '$goal' goal", function(goals) {
     driver.findElements({css: "[data-id='drafts-goal-list'] li"})
       .then(function(t) {
-        goals_number = parseInt(goals);
-        expect(t.length).to.equal(goals_number);
+        let goalsNumber = parseInt(goals);
+        expect(t.length).to.equal(goalsNumber);
       });
   });
 
@@ -189,10 +192,10 @@ exports.define = function(steps) {
     page[elem].isDisplayed().should.eventually.equal(false);
   });
 
-  steps.then("Draft Goals cleanup", function() {
+  steps.then('Draft Goals cleanup', function() {
     page.edit_draft_goals_button.click();
     driver.findElements({css: "[data-id='input-fields'] :checked"})
-      .then((els) => {
+      .then(els => {
         Promise.all(els.map(el => el.click()));
       }).then(() => {
         page.draft_goal_save_button.click();
@@ -200,29 +203,24 @@ exports.define = function(steps) {
   });
 
   steps.then("A new draft will be added above the '$number' existing draft", function(number) {
-    draft_count = parseInt(number);
-    driver.findElements({css: "[data-id^='MLCard-Draft']"}).then(function(drafts) {
-      driver.findElements({css: "[data-id^='MLCard-Final-Paper']"}).then(function(paper) {
-        expect(drafts.length+paper.length).to.equal(draft_count+1);
-      })
-    });
+    let draftCount = parseInt(number);
+    let drafts = driver.findElements({css: "[data-id^='MLCard-Draft']"});
+    let paper = driver.findElements({css: "[data-id^='MLCard-Final-Paper']"});
+    expect(drafts.length + paper.length).to.equal(draftCount + 1);
   });
 
-  steps.then("The draft tally within header should display correct number of drafts", function() {
-    driver.findElements({css: "[data-id^='MLCard-Draft']"}).then(function(drafts) {
-      driver.findElements({css: "[data-id^='MLCard-Final-Paper']"}).then(function(paper) {
-        driver.findElement({css: "[data-id='drafts']"}).getText().then(function(draft_count) {
-          draft_array = draft_count.split(/\(([^)]+)\)/);
-          draft_count_number = parseInt(draft_array[1]);
-          expect(draft_count_number).to.equal(drafts.length+paper.length);
-        });
-      });
-    });
+  steps.then('The draft tally within header should display correct number of drafts', function() {
+    let drafts = driver.findElements({css: "[data-id^='MLCard-Draft']"});
+    let paper = driver.findElements({css: "[data-id^='MLCard-Final-Paper']"});
+    let draftCount = driver.findElement({css: "[data-id='drafts']"}).getText();
+    let draftArray = draftCount.split(/\(([^)]+)\)/);
+    let draftCountNumber = parseInt(draftArray[1]);
+    expect(draftCountNumber).to.equal(drafts.length + paper.length);
   });
 
 
-  steps.then("Page Element Checker Verifies: '$number' '$elem'", function(number,elem) {
-    counter = parseInt(number);
+  steps.then("Page Element Checker Verifies: '$number' '$elem'", function(number, elem) {
+    let counter = parseInt(number);
     driver.findElements({css: elem})
       .then(function(count) {
         count.length.should.equal(counter);
@@ -232,30 +230,30 @@ exports.define = function(steps) {
   steps.then("Draft Delete Cleanup '$elem'", function(elem) {
     //tries to delete all, chokes after 3-4 right now with stale element issue
     driver.findElements({css: elem}).then(function(count) {
-      number = count.length;
-      k = number;
+      let number = count.length;
+      let k = number;
       while (k > 1) {
         driver.findElement({css: elem}).click();
         driver.findElement({css: "[data-id='prompt-cancel']"}).click();
         k--;
         driver.navigate().refresh();
-      };
+      }
     });
   });
 
-  steps.then("Page Element Checker Verifies Text: '$text' at '$elem'", function(text,elem) {
+  steps.then("Page Element Checker Verifies Text: '$text' at '$elem'", function(text, elem) {
     driver.findElement({css: elem}).getText()
       .then(function(t) {
         expect(t).to.contain(text);
       });
   });
 
-  steps.when("I clear the draft instructions", function(text) {
+  steps.when('I clear the draft instructions', function() {
     page.textarea_draft_instructions.getText()
       .then(function(content) {
-        var lefts = '';
-        var content_length = content.length + 1;
-        for (i = 0; i < content_length; i++) {
+        let lefts = '';
+        let contentLength = content.length + 1;
+        for (let i = 0; i < contentLength; i++) {
           lefts += keys.LEFT;
         }
         page.textarea_draft_instructions.sendKeys(keys.SHIFT + lefts);
@@ -268,18 +266,19 @@ exports.define = function(steps) {
   });
 
   steps.then("Text '$text' should appear in the draft instructions", function(text) {
-    page.textarea_draft_instructions.getText().then(function(text) {
-      text.should.equal(text);
-    });
+    page.textarea_draft_instructions.getText()
+      .then(function(text2) {
+        text.should.equal(text2);
+      });
   });
 
   steps.then("the last draft should be '$title'", function(title) {
-    var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
-    expect([x.length]-1).to.contain(title);
+    let x = { get() { return this.elements("[data-id='draft-name']"); } };
+    expect([x.length] - 1).to.contain(title);
   });
 
   steps.then("the second to last draft should be renamed '$title'", function(title) {
-    var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
-    expect([x.length]-1).to.contain(title);
+    let x = { get() { return this.elements("[data-id='draft-name']"); } };
+    expect([x.length] - 1).to.contain(title);
   });
 };

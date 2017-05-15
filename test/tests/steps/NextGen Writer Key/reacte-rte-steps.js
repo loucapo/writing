@@ -1,10 +1,4 @@
-var rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
-
-//  don't actually require bluebird here or anywhere
-// to remove it though, this file needs to be rewritten
-// but then the tests here are waiting to be migrated elsewhere
-// whenever the editor actually comes back...
-var Promise = require('bluebird');
+let rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
 
 exports.define = function(steps) {
 
@@ -24,9 +18,10 @@ exports.define = function(steps) {
   });
 
   steps.then('I should see "$text" in the content editor', function(text) {
-    rtePage.draftEditor.getText().then(function(text) {
-      text.should.equal(text);
-    });
+    rtePage.draftEditor.getText()
+      .then(function(text2) {
+        text.should.equal(text2);
+      });
   });
 
   steps.then("I see the rte '$elem'", function(elem) {
@@ -36,11 +31,12 @@ exports.define = function(steps) {
   /*
    *	Embolden Text
    */
+  // XXX this doesn't actually use the text it's given- is it supposed to?
   steps.when('I select "$text"', function(text) {
     // can't seem to get command+a or control+a to select all
     // let's use shift and many lefts
-    var lefts = '';
-    for (i = 0; i< text.length; i++) {
+    let lefts = '';
+    for (let i = 0; i < text.length; i++) {
       lefts += keys.LEFT;
     }
     rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
@@ -51,10 +47,10 @@ exports.define = function(steps) {
     // let's use shift and many lefts
     rtePage.draftEditor.getText()
       .then(function(content) {
-        var lefts = '';
-        var content_length = content.length + 1;
-        for (i = 0; i < content_length; i++) {
-	  lefts += keys.LEFT;
+        let lefts = '';
+        let contentLength = content.length + 1;
+        for (let i = 0; i < contentLength; i++) {
+          lefts += keys.LEFT;
         }
         rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
       });
@@ -64,14 +60,13 @@ exports.define = function(steps) {
     rtePage.draftEditor.sendKeys(keys.DELETE);
   });
 
-  steps.when('I click the bold button', function(next) {
+  steps.when('I click the bold button', function() {
     rtePage.button_bold.click();
   });
 
-  steps.then('Text "$text" should have bold styling', function(text) {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='bold']"});
-    });
+  // XXX this doesn't actually use the text it's given- is it supposed to?
+  steps.then('Text "$text" should have bold styling', function() {
+    rtePage.draftEditor.findElement({css: "span[style*='bold']"});
   });
 
   /*
@@ -82,9 +77,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have italicized styling', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='italic']"});
-    });
+    rtePage.draftEditor.findElement({css: "span[style*='italic']"});
   });
 
   /*
@@ -95,9 +88,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have monospace styling', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='monospace;']"});
-    });
+    rtePage.draftEditor.findElement({css: "span[style*='monospace;']"});
   });
 
   /*
@@ -108,9 +99,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have strikethrough styling', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "span[style*='line-through;']"});
-    });
+    rtePage.draftEditor.findElement({css: "span[style*='line-through;']"});
   });
 
   /*
@@ -118,7 +107,7 @@ exports.define = function(steps) {
    */
   steps.given('Enter "$number" lines of text', function(number) {
     rtePage.draftEditor.click();
-    for (i=0; i<number; i++) {
+    for (let i = 0; i < number; i++) {
       rtePage.draftEditor.sendKeys('line ' + i + keys.ENTER);
     }
   });
@@ -128,11 +117,8 @@ exports.define = function(steps) {
   });
 
   steps.then('there should be "$number" unordered list items', function(number) {
-    return new Promise(function(resolve, reject) {
-      var unordered_list_items = rtePage.draftEditor.findElements({css: "ul > li"});
-    }).then(function() {
-      return unordered_list_items.length.should.equal(number);
-    });
+    let unorderedListItems = rtePage.draftEditor.findElements({css: 'ul > li'});
+    unorderedListItems.length.should.equal(number);
   });
 
   /*
@@ -142,12 +128,9 @@ exports.define = function(steps) {
     rtePage.button_ordered_list.click();
   });
 
-  steps.then('there should be "$number" ordered list items', function($number) {
-    return new Promise(function(resolve, reject) {
-      var ordered_list_items = rtePage.draftEditor.findElements({css: "ol > li"});
-    }).then(function() {
-      return ordered_list_items.length.should.equal($number);
-    });
+  steps.then('there should be "$number" ordered list items', function(number) {
+    let orderedListItems = rtePage.draftEditor.findElements({css: 'ol > li'});
+    orderedListItems.length.should.equal(number);
   });
 
   /*
@@ -158,9 +141,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "happy" should have a blockquote', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "blockquote"});
-    });
+    rtePage.draftEditor.findElement({css: 'blockquote'});
   });
 
   /*
@@ -175,9 +156,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have a link', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "a"});
-    });
+    rtePage.draftEditor.findElement({css: 'a'});
   });
 
   /*
@@ -189,23 +168,17 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should not have a link', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElements({css: "a"})
-        .then(function(links) {
-	  if (links.length !== 0) {
-	    throw new Error('Anchor tag should not have been found.');
-	  }
-        });
-    });
+    let links = rtePage.draftEditor.findElements({css: 'a'});
+    if (links.length !== 0) {
+      throw new Error('Anchor tag should not have been found.');
+    }
   });
 
   /*
    *	Normal Header
    */
   steps.then('Text "$text" should have a normal header', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: ".public-DraftEditor-content > div > div"});
-    });
+    rtePage.draftEditor.findElement({css: '.public-DraftEditor-content > div > div'});
   });
 
   /*
@@ -216,9 +189,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have a h1 header', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "h1"});
-    });
+    rtePage.draftEditor.findElement({css: 'h1'});
   });
 
   /*
@@ -229,9 +200,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have a h2 header', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "h2"});
-    });
+    rtePage.draftEditor.findElement({css: 'h2'});
   });
 
   /*
@@ -242,9 +211,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have a h3 header', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "h3"});
-    });
+    rtePage.draftEditor.findElement({css: 'h3'});
   });
 
   /*
@@ -255,9 +222,7 @@ exports.define = function(steps) {
   });
 
   steps.then('Text "$text" should have a code block', function() {
-    return new Promise(function(resolve, reject) {
-      return rtePage.draftEditor.findElement({css: "pre[class^='RichTextEditor__block___']"});
-    });
+    rtePage.draftEditor.findElement({css: "pre[class^='RichTextEditor__block___']"});
   });
 
   /*
@@ -281,9 +246,9 @@ exports.define = function(steps) {
     rtePage.button_redo.click();
   });
 
-  steps.then("The WYSIWYG editor should be closed", function() {
-    rtePage.draftEditor.getAttribute("contenteditable").then(function(text) {
-      text.should.equal("false");
+  steps.then('The WYSIWYG editor should be closed', function() {
+    rtePage.draftEditor.getAttribute('contenteditable').then(function(text) {
+      text.should.equal('false');
     });
   });
 };

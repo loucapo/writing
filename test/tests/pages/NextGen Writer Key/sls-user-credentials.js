@@ -1,4 +1,4 @@
-var Page = require('marvin-js').Page;
+let Page = require('marvin-js').Page;
 
 module.exports = new Page({
 
@@ -7,13 +7,13 @@ module.exports = new Page({
   student_cookie_route: { value: '/student' },
   admin_cookie_route: { value: '/admin' },
 
-  sls_username: { get: function () { return this.element("[id='username']"); } },
-  sls_password: { get: function () { return this.element("[id='password']"); } },
-  sls_login: { get: function () { return this.element("[id='loginbtn']"); } },
+  sls_username: { get() { return this.element("[id='username']"); } },
+  sls_password: { get() { return this.element("[id='password']"); } },
+  sls_login: { get() { return this.element("[id='loginbtn']"); } },
 
   sls_admin_username: { value: 'ttwnadmin' },
   sls_teacher_username: { value: 'ttwnteacher' },
   sls_student_username: { value: 'ttwnstudent' },
-  sls_dev_password: { value: 'Passw0rd!' },
+  sls_dev_password: { value: 'Passw0rd!' }
 
 });
