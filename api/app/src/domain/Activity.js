@@ -1,4 +1,3 @@
-
 module.exports = function(AggregateRootBase, entities, invariant, uuid) {
   return class Activity extends AggregateRootBase {
     constructor(activity) {
@@ -29,6 +28,15 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
       const event = this.mapper(cmd);
       this.raiseEvent({
         eventName: 'activityPromptUpdated',
+        event
+      });
+      return event;
+    }
+
+    updateActivityTitle(cmd) {
+      const event = this.mapper(cmd);
+      this.raiseEvent({
+        eventName: 'activityTitleUpdated',
         event
       });
       return event;

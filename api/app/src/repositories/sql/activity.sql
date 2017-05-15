@@ -17,6 +17,13 @@ VALUES
     :createdById,
     current_date)
 
+-- name: updateActivityTitle
+UPDATE activity
+SET title = :title,
+modified_by_id = :modifiedById,
+modified_date = current_date
+WHERE activity_id = :activityId
+
 -- name: updateActivityPrompt
 UPDATE activity
 SET prompt = :prompt,

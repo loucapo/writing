@@ -32,11 +32,22 @@
         }
       ]
     },
+    "updateActivityTitle": {
+      "title": "updateActivityTitle",
+      "properties": {
+        "title": {
+          "in": "body",
+          "type": "string",
+          "maxLength": 140,
+          "required": true
+        }
+      }
+    },
     "updateActivityRubric": {
       "title": "updateActivityRubric",
       "properties": [
         {
-          "name": "rubridId",
+          "name": "rubricId",
           "in": "body",
           "type": "string",
           "required": true

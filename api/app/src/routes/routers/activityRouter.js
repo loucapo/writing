@@ -117,6 +117,35 @@ module.exports = function activityRouter(koarouter, controllers) {
 
     /**
      * @swagger
+     * /activity/{activityId}/title:
+     *   put:
+     *     x-name: putActivityTitle
+     *     description: Update the activity title
+     *     operationId: putActivityActivityTitle
+     *     parameters:
+     *       - name: activityId
+     *         in: path
+     *         type: string
+     *         required: true
+     *       - name: title
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/updateActivityTitle"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put('/activity/:activityId/title', controllers.activityController.updateActivityTitle);
+
+    /**
+     * @swagger
      * /activity/{activityId}/draft:
      *   get:
      *     x-name: getDraftsByActivityId

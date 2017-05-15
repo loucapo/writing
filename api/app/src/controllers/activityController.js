@@ -58,6 +58,19 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       return ctx;
     },
 
+    async updateActivityTitle(ctx) {
+      const command = ctx.request.body;
+      command.activityId = ctx.params.activityId;
+      command.modifiedById = ctx.state.user.id;
+      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let event = activity.updateActivityTitle(command);
+
+      await repository.query(sqlLibrary.activity, 'updateActivityTitle', event);
+
+      ctx.status = 200;
+      return ctx;
+    },
+
     async updateActivityRubric(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;

@@ -4,6 +4,7 @@ import { requestStates } from '../sagas/requestSaga';
 
 const ACTIVITY = requestStates('activity');
 const ACTIVITY_PROMPT = requestStates('activity_prompt');
+const ACTIVITY_TITLE = requestStates('activity_title');
 const ACTIVITY_RUBRIC = requestStates('activity_rubric');
 
 // Reducer
@@ -21,6 +22,15 @@ export default (state = [], action) => {
       return state.map(x => {
         if(x.activityId === action.action.activityId) {
           return {...x, prompt: JSON.parse(body.prompt)};
+        }
+        return x;
+      });
+    }
+    case ACTIVITY_TITLE.SUCCESS: {
+      let body = JSON.parse(action.action.params.body);
+      return state.map(x => {
+        if(x.activityId === action.action.activityId) {
+          return {...x, title: body.title};
         }
         return x;
       });
@@ -58,6 +68,19 @@ export function updateActivityPrompt(activityId, _body) {
     states: ACTIVITY_PROMPT,
     activityId,
     url: `${config.apiUrl}activity/${activityId}/prompt`,
+    params: {
+      method: 'PUT',
+      body: _body
+    }
+  };
+}
+
+export function updateActivityTitle(activityId, _body) {
+  return {
+    type: ACTIVITY_TITLE.REQUEST,
+    states: ACTIVITY_TITLE,
+    activityId,
+    url: `${config.apiUrl}activity/${activityId}/title`,
     params: {
       method: 'PUT',
       body: _body

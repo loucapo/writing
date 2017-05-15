@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import Header from './Header/Header';
 import MLMessage from '../MLMessage/MLMessage';
-import ActivityTitle from './ActivityTitle/ActivityTitle';
+import ActivityTitleContainer from 'Containers/ActivityTitleContainer';
 import ActivityMenu from './ActivityMenu/ActivityMenu';
 import PromptContainer from 'Containers/PromptContainer';
 import RubricSectionContainer from 'Containers/RubricSectionContainer';
@@ -22,7 +22,7 @@ const Activity = ({activity, draftCount}) => (
           iconType="check"
         />
 
-        <ActivityTitle title={activity.title} type={activity.type} />
+        <ActivityTitleContainer activityId={activity.activityId} />
 
         <PromptContainer activityId={activity.activityId} />
 
