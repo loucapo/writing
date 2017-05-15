@@ -29,4 +29,4 @@ prettyLint:
 
 .PHONY: lint
 lint:
-	parallel "cd {} && yarn lint" ::: api data frontend prodtools serve
+	parallel "cd {} && yarn lint" ::: api data frontend serve
