@@ -2,11 +2,13 @@
   "name": "Writing-Tool-Integration-Tests",
   "version": "0.0.1",
   "dependencies": {
-    "marvin-js": "0.4.1",
-    "supertest": "^3.0.0"
+    "eslint": "^3.19.0",
+    "eslint-plugin-chai-friendly": "^0.3.6",
+    "marvin-js": "0.5.0"
   },
   "scripts": {
     "test": "node node_modules/marvin-js/bin/marvin.js",
-    "reportspurge": "node node_modules/marvin-js/bin/reportspurge.js"
+    "reportspurge": "node node_modules/marvin-js/bin/reportspurge.js",
+    "dbapi": "cd ../data && yarn start_api"
   }
 }

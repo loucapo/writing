@@ -1,13 +1,14 @@
 @WRITE-29
 @WRITE-94
+
 Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
 
   Scenario: Instructor sees option to add draft goals
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     Then I see the 'add_draft_goals_button'
 
   Scenario: Instructor sees draft popup to add goals
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_goals_button'
     Then I see the 'draft_goal_popup'
     And I see the 'draft_goal_header'
@@ -16,34 +17,34 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I see the 'draft_goal_cancel_button'
 
   Scenario: Instructor adds draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     Then The draft goal summary list should have '1' goal
     And 'Thesis' should be selected in draft goal summary list
 
   Scenario: Instructor removes draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click 'draft_goal_checkbox' 1    
     And 'Thesis' should not be selected in draft goal summary list
 
   Scenario: Instructor expands draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_goals_button'
     And I click 'draft_goal_goal' 1
     Then I see the 'first_draft_goal_description'
 
   Scenario: Instructor collapses draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_goals_button'
     And I click 'draft_goal_goal' 1
     And I click 'draft_goal_goal' 1
     Then I should not see the 'first_draft_goal_description'
 
   Scenario: Instructor saves draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_goals_button'
     And I click 'draft_goal_checkbox' 1    
     And I click a 'draft_goal_save_button'
@@ -51,14 +52,14 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then Draft Goals cleanup
 
   Scenario: Instructor cancels draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'edit_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click a 'draft_goal_cancel_button'
     Then The draft goals modal does not appear
 
   Scenario: Instructor selects more than six draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'edit_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click 'draft_goal_checkbox' 2
@@ -70,7 +71,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then The draft goal summary list should have '6' goal
 
   Scenario: Instructor unselects sixth draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'edit_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click 'draft_goal_checkbox' 2
@@ -86,7 +87,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
   # these sleeps are hacky, but essentially necessary for this phase of product
   @hacky 
   Scenario: Instructor edits draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'edit_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click a 'draft_goal_save_button'
@@ -100,7 +101,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
   # these sleeps are hacky, but essentially necessary for this phase of product
   @hacky   
   Scenario: Instructor edits to add draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'edit_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click a 'draft_goal_save_button'
@@ -115,7 +116,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then Draft Goals cleanup
 
   Scenario: Instructor edits to cancel draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'edit_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click a 'draft_goal_save_button'
@@ -129,7 +130,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
   # these sleeps are hacky, but essentially necessary for this phase of product
   @hacky
   Scenario: Instructor edits to remove draft goal
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'edit_draft_goals_button'
     And I click 'draft_goal_checkbox' 1
     And I click 'draft_goal_checkbox' 5

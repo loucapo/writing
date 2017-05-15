@@ -23,7 +23,7 @@ module.exports = function(config, knex) {
         // can't just use .truncate() b/c FK constraints
         // also note very PG specific
         console.log(`BLASTING ${t}!`);
-        return _knex.raw(`TRUNCATE ${t} ' RESTART IDENTITY CASCADE'`);
+        return _knex.raw(`TRUNCATE ${t} RESTART IDENTITY CASCADE`);
       }));
     }).then(() => {
       console.log('BLASTED!');

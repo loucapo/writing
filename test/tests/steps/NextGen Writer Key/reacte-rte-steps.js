@@ -13,7 +13,7 @@ exports.define = function(steps) {
     rtePage.draftEditor.click();
   });
 
-  steps.when(['I type in "$text"'], function(text) {
+  steps.when(`I type in '$text'`, function(text) {
     rtePage.draftEditor.sendKeys(text);
   });
 

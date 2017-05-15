@@ -10,6 +10,13 @@ exports.define = function(steps) {
     page[elem].isDisplayed().should.eventually.equal(true);
   });
 
+  steps.then("I see question $num has text '$text'", function(num, text) {
+    page.reflection_questions_question_box(num).getText()
+      .then(actual => {
+        expect(actual).to.have.string(text);
+      });
+  });
+
   steps.then('I sleep for $d seconds', function(d) {
     driver.sleep(d * 1000);
   });
@@ -202,7 +209,19 @@ exports.define = function(steps) {
       });
   });
 
+  steps.then('Reflection Questions cleanup', function() {
+    page.edit_student_reflection_questions.click();
+    driver.findElements({css: "[data-id='input-fields'] :checked"})
+      .then(els => {
+        Promise.all(els.map(el => el.click()));
+      }).then(() => {
+        page.reflection_questions_save.click();
+      });
+  });
+
+  // TODO: this step does not do what it says.  whether it's just unclear, or out of date... it's wrong.
   steps.then("A new draft will be added above the '$number' existing draft", function(number) {
+    throw new Error('Explode mystic dove');
     let draftCount = parseInt(number);
     let drafts = driver.findElements({css: "[data-id^='MLCard-Draft']"});
     let paper = driver.findElements({css: "[data-id^='MLCard-Final-Paper']"});
@@ -218,6 +237,17 @@ exports.define = function(steps) {
     expect(draftCountNumber).to.equal(drafts.length + paper.length);
   });
 
+  // steps.then("The draft tally within header should display correct number of drafts", function() {
+  //   driver.findElements({css: "[data-id^='MLCard-Draft']"}).then(function(drafts) {
+  //     driver.findElements({css: "[data-id^='MLCard-Final-Paper']"}).then(function(paper) {
+  //       driver.findElement({css: "[data-id='drafts']"}).getText().then(function(draft_count) {
+  //         draft_array = draft_count.split(/\(([^)]+)\)/);
+  //   draft_count_number = parseInt(draft_array[1]);
+  //                expect(draft_count_number).to.equal(drafts.length+paper.length);
+  //                                                                     });
+  //                                                                       });
+  //                                                               });
+  //           });
 
   steps.then("Page Element Checker Verifies: '$number' '$elem'", function(number, elem) {
     let counter = parseInt(number);
@@ -261,8 +291,15 @@ exports.define = function(steps) {
       });
   });
 
-  steps.when("I type '$text' in the draft instructions", function(text) {
-    page.textarea_draft_instructions.sendKeys(text);
+  steps.when("I type '$text' in draft instructions $d", function(text, which) {
+    page.textarea_ddraft_instructions(which).sendKeys(text);
+  });
+
+  steps.then("Text '$text' should appear in draft instructions $d", function(text, which) {
+    page.textarea_ddraft_instructions(which).getText()
+      .then(function(text2) {
+        text.should.equal(text2);
+      });
   });
 
   steps.then("Text '$text' should appear in the draft instructions", function(text) {
@@ -281,4 +318,9 @@ exports.define = function(steps) {
     let x = { get() { return this.elements("[data-id='draft-name']"); } };
     expect([x.length] - 1).to.contain(title);
   });
+
+  //   steps.then("the second to last draft should be renamed '$title'", function(title) {
+  //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
+  //     expect([x.length]-1).to.contain(title);
+  //   });
 };

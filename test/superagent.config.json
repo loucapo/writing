@@ -1,7 +1,7 @@
 {
-  "baseUrl": "http://wk-qa-2.mldev.cloud",
-  "featuresDir": "tests/api/features",
-  "stepsDir": "tests/api/steps",
+  "baseUrl": "http://localhost",
+  "featuresDir": "tests/features/api",
+  "stepsDir": "tests/steps/api",
 
   "reporters": [{"name": "marvin-reporter",
                  "options": {"juice": "isloose"}},

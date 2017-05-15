@@ -1,12 +1,13 @@
 @WRITE-30
+
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
 
   Scenario: The Instructor Sees Select Rubric Dropdown
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     Then I see the 'rubric_selection'
   @pending=WRITE-871
   Scenario: The Instructor Opens the Rubric Selector
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'rubric_selection'
     And I see 'No Rubric' is the '0' element
     And I see the 'rubric_selection'
@@ -14,7 +15,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     Then The 'rubric_selection_content' does not exist
 
   Scenario: The Instructor Selects Rubric
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'rubric_selection'
     When I click a 'rubric_option_2'
     Then I see the 'rubric_preview'
@@ -22,7 +23,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     Then I see 'Analysis' is selected
 
   Scenario: The Instructor Changes Rubric
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'rubric_selection'
     When I click a 'no_rubric_option'
     When I click a 'rubric_selection'
@@ -31,7 +32,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     Then I see 'Analysis' is selected
 
   Scenario: The Instructor Selects Same Rubric
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'rubric_selection'
     When I click a 'rubric_option_2'
     Then I see 'Analysis' is selected
@@ -40,7 +41,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     Then I see 'Analysis' is selected
 
   Scenario: The Instructor Unselects Rubric
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'rubric_selection'
     When I click a 'rubric_option_2'
     When I click a 'rubric_selection'

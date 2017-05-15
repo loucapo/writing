@@ -2,7 +2,7 @@
 Feature: Student Views Activity
 
   Scenario: Student Launches into Activity with No Rubric Selected
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     And Draft Delete Cleanup '[data-id='draft-delete']'
     Given I launch the activity as a 'student'
     Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
@@ -20,10 +20,10 @@ Feature: Student Views Activity
     Then Page Element Checker Verifies: '0' '[data-id='add-reflections']'
 
   Scenario: Student Launches into Full Activity with More Than One Draft
-    Given I visit the SLS create activity page
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'
     And I click a 'activity_prompt_edit'
-    And I type in "hello world"
+    And I type in 'hello world'
     And I click a 'activity_prompt_save'
     When I click a 'rubric_selection'
     When I click a 'rubric_option_2'
@@ -38,7 +38,7 @@ Feature: Student Views Activity
 
 @cleanup
   Scenario: Page Teardown for Student View
-    Given I visit the SLS create activity page
+  Given I launch the activity as a 'instructor'
     And I click a 'activity_prompt_edit'
     And I focus the content editor
     And I select all content

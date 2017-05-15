@@ -1,5 +1,5 @@
-/* eslint-disable max-len */
-let Page = require('marvin-js').Page;
+/* eslint-disable camelcase */
+const Page = require('marvin-js').Page;
 
 module.exports = new Page({
 
@@ -42,11 +42,53 @@ module.exports = new Page({
   // draft sequence
   draft_names: { get() { return this.element("[data-id='draft-name']"); } },
   add_draft_button: { get() { return this.element("[data-id='add-draft']"); } },
+
+  // selection modal
+  reflection_questions_modal: { get() { return this.element("[data-id='modal]"); }},
+  reflection_questions_cancel: { get() { return this.element("[data-id='cancel-button']"); }},
+  reflection_questions_save: { get() { return this.element("[data-id='save-button']"); }},
+  reflection_questions_questions_box: { get() { return this.element("[data-id='modal] [data-id='input-fields']"); }},
+  reflection_questions_question_box: { value(num) {
+    return this.element(`[data-id='modal'] [data-id='input-fields'] > div:nth-child(${num})`);
+  }},
+
+  reflection_question_checkbox: { value(i) {
+    return this.element(`[data-id='input-fields'] div:nth-child(${i}) div [name=draftGoalOption]`);
+  }},
+
+  ddraft_card: { value(i) {
+    return this.element(`(//*[@data-id='draft-section'])[${i}]`, 'xpath');
+  }},
+
+  add_ddraft_instructions: { value(i) {
+    return this.element(`(//*[@data-id='add-instructions'])[${i}]`, 'xpath');
+  }},
+
+  textarea_ddraft_instructions: { value(i) {
+    return this.element(`(//*[@data-id='textarea-draft-instructions'])[${i}]`, 'xpath');
+  }},
+
+  save_ddraft_instructions: { value(i) {
+    return this.element(`(//*[@data-id='save-draft-instructions'])[${i}]`, 'xpath');
+  }},
+
+  ddraft_delete: { value(i) {
+    return this.element(`(//*[@data-id='draft-delete'])[${i}]`, 'xpath');
+  }},
+
+  cancel_ddraft_instructions: { value(i) {
+    return this.element(`(//*[@data-id='cancel-draft-instructions'])[${i}]`, 'xpath');
+  }},
+
   draft_card: { get() { return this.element("[data-id='draft-section']"); } },
   add_draft_instructions: { get() { return this.element("[data-id='add-instructions']"); } },
   textarea_draft_instructions: { get() { return this.element("[data-id='textarea-draft-instructions']"); } },
   save_draft_instructions: { get() { return this.element("[data-id='save-draft-instructions']"); } },
   cancel_draft_instructions: { get() { return this.element("[data-id='cancel-draft-instructions']"); } },
+
+  edit_student_reflection_questions: { get() { return this.element("[data-id='reflections-edit']"); } },
+  close_modal: { get() { return this.element("[data-id='close-modal']"); } },
+
   add_student_reflection_questions: { get() { return this.element("[data-id='add-reflections']"); } },
   draft_delete_button: { get() { return this.element("[data-id='draft-delete']"); } },
   draft_instructions_edit: { get() { return this.element("[data-id='draft-instructions-edit']"); } },
@@ -65,7 +107,8 @@ module.exports = new Page({
   final_draft_delete_button: { get() { return this.element(
     "[data-id='MLCard-Final-Paper'] > [data-id='draft-section'] > div"); } },
   final_draft_alert_delete_button: { get() { return this.element(
-    "[data-id='MLCard-Final-Paper'] div > div > div > div > div > [class^='MLDialog__content'] > [class^='MLDialog__buttons'] > [class^='MLButton__button']"); } },
+    // TODO: but seriously fix this or file a bug
+    "[data-id='MLCard-Final-Paper'] div > div > div > div > div > [class^='MLDialog__content'] > [class^='MLDialog__buttons'] > [class^='MLButton__button']"); } }, // eslint-disable-line
   final_paper_title: { get() { return this.element(
     "[data-id='MLCard-Final-Paper'] [data-id='draft-section'] span [class^='Heading'] span"); } },
 
@@ -78,8 +121,8 @@ module.exports = new Page({
   draft_goal_header: { get() { return this.element("[data-id='goal-form-description']"); } },
   draft_goal_selection: { get() { return this.element("[data-id='draft_goal_selection']"); } },
   draft_goal_header_language: { value: 'What are the primary goals of this draft?'},
-  draft_goal_selection_language: { value:
-                                   "Select the primary goals you would like students to focus on while they compose this draft. You will be able to link your feedback with these goals when you review students' drafts. "},
+  draft_goal_selection_language: {
+    value: "Select the primary goals you would like students to focus on while they compose this draft. You will be able to link your feedback with these goals when you review students' drafts. "}, // eslint-disable-line
   first_draft_goal_expand: { get() { return this.element("[data-id='first_draft_goal_expand']"); } },
   draft_goal_list: { get() { return this.element("[data-id='input-fields']"); } },
   draft_goal_summary_list: { get() { return this.element("[data-id='selected-fields']"); } },

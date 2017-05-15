@@ -15,7 +15,7 @@
   "verbose": true,
   "stepDelay": 20,
   "testTimeout": 60000,
-  "elementTimeout": 1000,
+  "elementTimeout": 1500,
 
   "tags": "!@wip,!@NSM",
   "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
