@@ -7,7 +7,8 @@ module.exports = {
     jwt_secret: process.env.JWT_SECRET,
     wk_serve_url: process.env.WK_SERVE_URL,
     swagger_ui_url: process.env.SWAGGER_UI_URL,
-    applicationName: process.env.APPLICATION_KEYS,
+    application_name: process.env.APPLICATION_KEYS,
+    service_name: process.env.API_SERVICE_NAME,
     logging_transports: process.env.LOGGING_TRANSPORTS,
     logging_level: process.env.LOGGING_LEVEL
   },

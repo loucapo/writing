@@ -27,9 +27,7 @@ module.exports = function customLogger(winston, config, moment, winstonlogstash,
           timestamp: true,
           json: false,
           formatter: x => {
-            return `[${x.meta.level || x.level}] 
-              module: ${config.app.applicationName} 
-              msg: ${x.meta.message || x.message} | ${moment().format('h:mm:ss a')}`;
+            return `[${x.meta.level || x.level}] [${config.app.application_name} ~ ${config.app.service_name}] ${moment().format('h:mm:ss a')} | ${x.meta.message || x.message} `; // eslint-disable-line max-len
           }
         }));
     }
