@@ -21,7 +21,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
     //XXX the repository calls here need to be wrapped in a transaction.
     async createActivityIfNotCreated(ctx) {
       const command = ctx.request.body;
-      command.title = 'Not yet implemented AKA ENG-101'; //XXX we need to get this from somewhere
+      command.title = 'Untitled Writing Activity'; //XXX we need to get this from somewhere
       command.activityId = ctx.params.activityId;
       command.createdById = ctx.state.user.id;
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(command)}`);
