@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 
 import styles from './studentReflectionQuestions.css';
 
-const StudentReflectionQuestionsDisplay = ({draft}) => (
+const StudentReflectionQuestionsDisplay = ({ questions }) => (
   <div className={styles.container}>
     <section>
       <div className={styles.heading}>
         <div className={styles.title}>
-          Student Reflection Questions
+          Reflection Questions
         </div>
       </div>
 
       <ul data-id="reflections-list">
-        {draft.studentReflectionQuestions.map((question, index) => (
+        {questions.map((question, index) => (
           <li key={index}>
             {`${question.questionType}: ${question.question}`}
           </li>
@@ -25,7 +25,7 @@ const StudentReflectionQuestionsDisplay = ({draft}) => (
 );
 
 StudentReflectionQuestionsDisplay.propTypes = {
-  draft: PropTypes.object
+  questions: PropTypes.array
 };
 
 export default StudentReflectionQuestionsDisplay;

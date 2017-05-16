@@ -22,7 +22,7 @@ const Header = ({drafts, activityId}) => {
                 title={`Start ${cardTitle}`}
                 dataId={`start-${cardTitle}`}
                 disabled={index !== 0}
-                link={`studentActivity/${activityId}/studentdraft/${draft.draftId}`}
+                link={`/studentActivity/${activityId}/studentdraft/${draft.draftId}`}
               />
             );
           })

@@ -2,9 +2,21 @@
 
 .container {
   list-style-type: none;
+  margin: 0;
   padding: 0;
 }
 
 .border {
   border-bottom: 1px solid var(--gray-light);
+}
+
+.title {
+  cursor: pointer;
+  padding: 12px 10px;
+  @apply --font-18;
+}
+
+.icon {
+  fill: var(--black);
+  margin-right: 5px;
 }

@@ -1,0 +1,27 @@
+@import 'variables.css';
+
+.padder {
+  padding: 20px 12px;
+}
+
+.actSummary {
+  composes: padder;
+  background-color: var(--gray-very-light);
+}
+
+.actHeader {
+  border: solid var(--gray-light);
+  border-width: 1px 0;
+  composes: padder;
+  margin: 0;
+}
+
+.listSpacer {
+  min-height: 30px;
+}
+
+.activityLink {
+  font-size: 1.2em;
+  text-decoration: none;
+  font-weight: bold;
+}

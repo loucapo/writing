@@ -5,20 +5,25 @@ import DraftGoalsDisplay from './DraftGoals/DraftGoalsDisplay';
 import StudentReflectionQuestionsDisplay from './StudentReflectionQuestions/StudentReflectionQuestionsDisplay';
 import DraftInstructionsDisplay from './DraftInstructionsForm/DraftInstructionsDisplay';
 
-const StudentDraftComponents = ({draft}) => (
-  <section className={styles.draftDetails}>
-    { draft.goals.length > 0 ? <DraftGoalsDisplay draft={draft} /> : null }
+const StudentDraftComponents = ({draft}) => {
+  if (!draft) {
+    return null;
+  }
+  return (
+    <section className={styles.draftDetails}>
+      { draft.goals && (draft.goals.length > 0) ? <DraftGoalsDisplay goals={draft.goals} /> : null }
 
-    <div className={styles.draftDetailsRight}>
-      { draft.instructions ? <DraftInstructionsDisplay instructions={draft.instructions} /> : null }
+      <div className={styles.draftDetailsRight}>
+        { draft.instructions ? <DraftInstructionsDisplay instructions={draft.instructions} /> : null }
 
-      { draft.studentReflectionQuestions.length > 0
-        ? <StudentReflectionQuestionsDisplay draft={draft} />
-        : null
-      }
-    </div>
-  </section>
-);
+        { draft.studentReflectionQuestions.length > 0
+          ? <StudentReflectionQuestionsDisplay questions={draft.studentReflectionQuestions} />
+          : null
+        }
+      </div>
+    </section>
+  );
+};
 
 
 StudentDraftComponents.propTypes = {
