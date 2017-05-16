@@ -5,6 +5,8 @@ module.exports = new Page({
 
   // assignment header
   url: { value: '/activity' },
+  default_activity_url: { value: '/lms/bbbe3f75-41f7-4b98-9d8e-89896a61d753/course/' +
+  'ee0a7acd-2054-4129-b3fd-28563421cb0b/resource/d3e3c2d5-cf43-4f63-924f-3ec7a125a334' },
   confirmation_message: { get() { return this.element("[data-id='created-activity-alert'] div"); } },
   //close_confirmation: { get: function () { return this.element("[data-id='close-confirmation']"); } },
   title: { get() { return this.element("[data-id='activity-title']"); } },
