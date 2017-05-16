@@ -318,7 +318,9 @@ exports.define = function(steps) {
     let x = { get() { return this.elements("[data-id='draft-name']"); } };
     expect([x.length] - 1).to.contain(title);
   });
-
+  steps.when(`I type in '$text' in the activity title`, function(text) {
+    page.edit_title_textarea.sendKeys(text);
+  });
   //   steps.then("the second to last draft should be renamed '$title'", function(title) {
   //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
   //     expect([x.length]-1).to.contain(title);

@@ -8,6 +8,11 @@ module.exports = new Page({
   confirmation_message: { get() { return this.element("[data-id='created-activity-alert'] div"); } },
   //close_confirmation: { get: function () { return this.element("[data-id='close-confirmation']"); } },
   title: { get() { return this.element("[data-id='activity-title']"); } },
+  edit_title_button: { get() { return this.element("[class^='ActivityTitle__editIcon']"); } },
+  edit_title_save_button: { get() { return this.element("[data-id='title-save']"); } },
+  edit_title_cancel_button: { get() { return this.element("[data-id='title-cancel']"); } },
+  edit_title_textarea: { get() { return this.element("[data-id='activity-title-editField']"); } },
+  char_counter: { get() { return this.element("[data-id='char-limit-count']"); } },
   activity_type: { get() { return this.element("[data-id='activity-type']"); } },
   student_preview: { get() { return this.element("[data-id='student-preview']"); } },
 
