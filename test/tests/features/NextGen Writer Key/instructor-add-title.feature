@@ -1,5 +1,4 @@
 @WRITE-855
-@only
 Feature: Add Title To Activity
 
   Scenario: Default Title
