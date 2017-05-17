@@ -499,6 +499,10 @@ extend@^3.0.0:
   version "3.0.0"
   resolved "http://npm.macmillantech.com:8080/e/extend/_attachments/extend-3.0.0.tgz#5a474353b9f3353ddd8176dfd37b91c83a46f1d4"
 
+faker@^4.1.0:
+  version "4.1.0"
+  resolved "http://npm.macmillantech.com:8080/f/faker/_attachments/faker-4.1.0.tgz#1e45bbbecc6774b3c195fad2835109c6d748cc3f"
+
 fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "http://npm.macmillantech.com:8080/f/fast-levenshtein/_attachments/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
