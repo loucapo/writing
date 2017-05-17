@@ -23,6 +23,7 @@ $ make deps
 ## Database Initialization
 
 ```
+$ source env.sh
 $ brew services start postgresql
 $ psql postgres -c "CREATE ROLE writer_key WITH SUPERUSER LOGIN PASSWORD 'writer_key'"
 $ psql postgres -c "CREATE DATABASE writer_key OWNER writer_key"
@@ -35,7 +36,7 @@ $ cd data && yarn migrate up && yarn loadData
 ## Development
 
 ```
-$ source env.sh 
+$ source env.sh
 $ make
 $ open http://localhost:10080/instructor (for instructor experience)
 $ open http://localhost:10080/student (for student experience)

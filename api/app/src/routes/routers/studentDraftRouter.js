@@ -29,7 +29,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *             $ref: "#/definitions/standardFailureResponse"
      */
     router.put('/studentactivity/:studentActivityId/draft/:draftId',
-      controllers.studentDraftController.createStudentDraftInNotThere);
+      controllers.studentDraftController.createStudentDraftIfNotThere);
     /**
      * @swagger
      * /studentactivity/{studentActivityId}/draft/{draftId}:

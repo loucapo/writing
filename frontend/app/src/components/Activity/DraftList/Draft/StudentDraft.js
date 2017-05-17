@@ -17,7 +17,7 @@ const StudentDraft = ({studentActivityId, draft, cardTitle, draftNote, disabled}
         title={`Start ${cardTitle}`}
         dataId="start-draft"
         disabled={disabled}
-        link={`studentActivity/${studentActivityId}/studentdraft/${draft.draftId}`}
+        link={`/studentActivity/${studentActivityId}/studentdraft/${draft.draftId}`}
       />
     }
   >

@@ -4,7 +4,7 @@ import MLIcon from 'ml-react-cdl-icons';
 
 import styles from './draftGoals.css';
 
-const StudentDraftGoals = ({draft}) => (
+const StudentDraftGoals = ({goals}) => (
 
   <div className={styles.container}>
     <div className={styles.heading}>
@@ -15,7 +15,7 @@ const StudentDraftGoals = ({draft}) => (
 
     <ul data-id="drafts-goal-list" className={styles.goalsList}>
       {
-        draft.goals.map((title, index) => (
+        goals.map((title, index) => (
           <li key={index}>
             <MLIcon
               className={styles.commentIcon}
@@ -35,7 +35,7 @@ const StudentDraftGoals = ({draft}) => (
 );
 
 StudentDraftGoals.propTypes = {
-  draft: PropTypes.object
+  goals: PropTypes.array
 };
 
 export default StudentDraftGoals;

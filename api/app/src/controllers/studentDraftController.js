@@ -1,7 +1,7 @@
 module.exports = function(domain, repository, sqlLibrary, moment, domainBuilders, logger) {
   return {
     // check if it exists, if not create it;
-    async createStudentDraftInNotThere(ctx) {
+    async createStudentDraftIfNotThere(ctx) {
       let command = {
         studentActivityId: ctx.params.studentActivityId,
         draftId: ctx.params.draftId,

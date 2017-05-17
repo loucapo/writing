@@ -17,7 +17,7 @@ export default (state = [], action) => {
   }
 };
 
-export function createStudentDraftInNotThere(studentActivityId, draftId) {
+export function createStudentDraftIfNotThere(studentActivityId, draftId) {
   return {
     type: CREATE_STUDENT_DRAFT.REQUEST,
     states: CREATE_STUDENT_DRAFT,
