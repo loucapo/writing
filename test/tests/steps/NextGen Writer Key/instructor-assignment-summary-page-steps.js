@@ -319,7 +319,7 @@ exports.define = function(steps) {
     let x = { get() { return this.elements("[data-id='draft-name']"); } };
     expect([x.length] - 1).to.contain(title);
   });
-  steps.when(`I type in '$text' in the activity title`, function(text) {
+  steps.when(`I type '$text' in the activity title`, function(text) {
     page.edit_title_textarea.sendKeys(text);
   });
   steps.then('I see the default activity page', function() {
@@ -336,6 +336,21 @@ exports.define = function(steps) {
     var uuid = faker.random.uuid();
     var createUrl = marvin.config.baseUrl + user + '/' + uuid;
     driver.get(createUrl);
+  });
+
+  steps.when('I select "$text" in the activity title', function(text) {
+    // can't seem to get command+a or control+a to select all
+    // let's use shift and many lefts
+    let lefts = '';
+    for (let i = 0; i < text.length; i++) {
+      lefts += keys.LEFT;
+    }
+    page.edit_title_textarea.sendKeys(keys.SHIFT + lefts);
+  });
+
+
+  steps.when('I delete text in the activity title', function() {
+    page.edit_title_textarea.sendKeys(keys.DELETE);
   });
   //   steps.then("the second to last draft should be renamed '$title'", function(title) {
   //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
