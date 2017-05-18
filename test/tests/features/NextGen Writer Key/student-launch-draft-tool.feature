@@ -1,7 +1,6 @@
 @WRITE-819
-
+@WRITE-942
 Feature: Student Launches Draft
-
   Scenario: Page Setup for Student Draft With Fleshed Out Activity
     Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'
@@ -25,7 +24,6 @@ Feature: Student Launches Draft
     Then Page Element Checker Verifies: '1' '[data-id='start-reflection']'
     Then I see the rte 'draftEditor'
 
-  @only
   Scenario: Student Types in the draft
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
@@ -39,7 +37,7 @@ Feature: Student Launches Draft
     When I type in 'happy'
     And I select all content
     And I delete text
-    Then Color Checker "rgba(221, 221, 221, 1)" for "start_reflection_button"
+    Then Color Checker "#00758e" for "start_reflection_button"
 
   Scenario: Page Reset
     Given I launch the activity as a 'instructor'
