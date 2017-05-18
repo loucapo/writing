@@ -37,7 +37,7 @@ Feature: Student Launches Draft
     When I type in 'happy'
     And I select all content
     And I delete text
-    Then Color Checker "#00758e" for "start_reflection_button"
+    Then Color Checker "#dddddd" for "start_reflection_button"
 
   Scenario: Page Reset
     Given I launch the activity as a 'instructor'
