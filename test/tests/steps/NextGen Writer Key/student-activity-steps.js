@@ -12,4 +12,10 @@ exports.define = function(steps) {
   steps.then("Student sees '$elem'", function(elem) {
     studentPage[elem].isDisplayed().should.eventually.equal(true);
   });
+
+  steps.then('Color Checker "$color" for "$elem"', function(color, elem) {
+    studentPage[elem].getCssValue('background-color').then(function(backColor) {
+      expect(backColor).to.equal(color);
+    });
+  });
 };

@@ -1,4 +1,5 @@
 @WRITE-819
+
 Feature: Student Launches Draft
 
   Scenario: Page Setup for Student Draft With Fleshed Out Activity
@@ -27,8 +28,9 @@ Feature: Student Launches Draft
   Scenario: Student Types in the draft
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
+    Then Color Checker "rgba(221, 221, 221, 1)" for "start_reflection_button"
     When I type in 'happy'
-    Then Page Element Checker Verifies: '0' '[class^='MLButton__disabled']'
+    Then Color Checker "rgba(0, 117, 142, 1)" for "start_reflection_button"
 
   Scenario: Student Types in the draft and Deletes
     Given I launch the activity as a 'student'
@@ -36,7 +38,7 @@ Feature: Student Launches Draft
     When I type in 'happy'
     And I select all content
     And I delete text
-    Then Page Element Checker Verifies: '0' '[class^='MLButton__disabled']'
+    Then Color Checker "rgba(221, 221, 221, 1)" for "start_reflection_button"
 
   Scenario: Page Reset
     Given I launch the activity as a 'instructor'
