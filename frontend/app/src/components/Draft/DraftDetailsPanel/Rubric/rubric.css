@@ -50,7 +50,3 @@
 .icon {
   fill: var(--aqua);
 }
-
-.disabledIcon {
-  fill: var(--gray-light);
-}
