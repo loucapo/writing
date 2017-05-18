@@ -12,9 +12,16 @@ class StudentDraft extends Component {
     draftIsEmpty: true
   };
 
-  handleSave = content => {
-    let text = content.blocks[0].text;
+  updateDraftState = text => {
     this.setState({ draftIsEmpty: text.length === 0 });
+  };
+
+  handleSave = content => {
+    this.updateDraftState(content.blocks[0].text);
+  };
+
+  handleEditorStateChange = content => {
+    this.updateDraftState(content.blocks[0].text);
   };
 
   render() {
@@ -28,6 +35,7 @@ class StudentDraft extends Component {
               content={this.props.studentDraft}
               editable={true}
               toolbarHidden
+              notifyOnEditorUpdate={this.handleEditorStateChange}
             />
           </div>
         </div>
