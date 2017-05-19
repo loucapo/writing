@@ -18,9 +18,10 @@ echo "Creating the Build artifacts directory"
 rm -rf artifacts
 mkdir -p artifacts
 cp ./docker/docker-compose-deploy.yml artifacts/docker-compose.yml
-cp ./.envrc.example artifacts/.envrc.example
 cp ./docker/provision/deploy_containers.sh artifacts/deploy_containers.sh
 cp ./docker/provision/deploy.sh artifacts/deploy.sh
+
+touch artifacts/.envrc.example
 
 DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/"
 BAMBOO_BRANCHNAME=$BUILD_PLANNAME
@@ -28,33 +29,25 @@ BAMBOO_BUILDNUMBER=$(git rev-parse HEAD)
 BAMBOO_BUILDNUMBER=${BAMBOO_BUILDNUMBER:(-7)}
 export TAG="$BAMBOO_BRANCHNAME"_v"$BAMBOO_BUILDNUMBER"
 
-for IMG in $(make dockerListServices)
+SERVICES=("data" "api" "serve" "frontend")
+for IMG in ${SERVICES[@]}
 do
 
 IMAGE_NAME=$DOCKER_REPO$IMG:$TAG
 IMAGE_NAME_KEY="wk_"$IMG"_image"
 export $IMAGE_NAME_KEY=$IMAGE_NAME
 echo "$IMAGE_NAME_KEY=$IMAGE_NAME" >> artifacts/.envrc.example
+
 done
+
+cp artifacts/.envrc.example docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"
 
-make dockerBuild
+docker-compose -f docker/docker-compose-deploy.yml build
 
-for IMG in $(make dockerListServices)
-do
+docker-compose -f docker/docker-compose-deploy.yml push
 
-IMAGE_CHECK=$(aws ecr list-images --repository-name wk/$IMG --profile $AWS_PROFILE | grep -w "$TAG")
-if [ -z "${IMAGE_CHECK}" ]; then
-  echo "Publishing $DOCKER_REPO$IMG:$TAG to the ECR"
-  docker push $DOCKER_REPO$IMG:$TAG
-  echo "$IMG build is complete!"
-  echo "------------------------"
-else
-  echo "$DOCKER_REPO$IMG:$TAG exists in the ECR skipping build process"
-  echo "------------------------"
-fi
-
-done
+rm docker/.envrc.example
 
 echo "All Docker Images have been built and deploy artifacts have been created, Happy deploying!"

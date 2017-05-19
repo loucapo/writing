@@ -43,7 +43,7 @@ services:
       build:
         context: ./../serve/
         dockerfile: docker/Dockerfile
-      image: ${wk_service_image}
+      image: ${wk_serve_image}
       command: yarn run start
       env_file:
         - ./.envrc.example
@@ -62,9 +62,3 @@ services:
       PORT: 4666
     ports:
       - "4666:4666"
-  postgres:
-    image: postgres
-    env_file:
-      - ./.envrc.example
-    ports:
-      - 5433:5432

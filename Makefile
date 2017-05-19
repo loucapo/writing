@@ -35,12 +35,6 @@ dockerUp: ecr-login
 dockerLoggingUp: ecr-login
 	docker-compose -f docker/docker-compose-logging.yml -p writing up -d
 
-dockerListServices:
-	@docker-compose -f docker/docker-compose-build.yml -p writing config --services
-
-dockerBuild:
-	docker-compose -f docker/docker-compose-deploy.yml build
-
 
 .PHONY: test
 test:
