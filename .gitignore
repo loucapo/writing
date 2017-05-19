@@ -1,4 +1,29 @@
-.envrc
+node_modules
+
+# Code coverage
+coverage
+.nyc_output
+
+#Compiled sources
+public
+build
+build-info.json
+swagger_spec.json
+
 .idea
+npm-debug.log
+output
+licenses.csv
+yarn-error.log
+
 *.orig
+.env
+.envrc
+
+#npm-generated file
+npm-debug.log
+dist
+*.log
+.eslintcache
+.tmp
 artifacts
