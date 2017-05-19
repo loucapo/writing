@@ -6,7 +6,7 @@ import StudentDraftComponents from './StudentDraftComponents';
 
 import styles from './draft.css';
 
-const StudentDraft = ({studentActivityId, draft, cardTitle, draftNote, disabled}) => (
+const StudentDraft = ({activityId, draft, cardTitle, draftNote, disabled}) => (
   <MLCard
     type="draft"
     title={cardTitle}
@@ -17,7 +17,7 @@ const StudentDraft = ({studentActivityId, draft, cardTitle, draftNote, disabled}
         title={`Start ${cardTitle}`}
         dataId="start-draft"
         disabled={disabled}
-        link={`/studentActivity/${studentActivityId}/studentdraft/${draft.draftId}`}
+        link={`/activity/${activityId}/draft/${draft.draftId}`}
       />
     }
   >
@@ -38,7 +38,7 @@ const StudentDraft = ({studentActivityId, draft, cardTitle, draftNote, disabled}
 );
 
 StudentDraft.propTypes = {
-  studentActivityId: PropTypes.string,
+  activityId: PropTypes.string,
   draft: PropTypes.object,
   cardTitle: PropTypes.string,
   draftNote: PropTypes.string,

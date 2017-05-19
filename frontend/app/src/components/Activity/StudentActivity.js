@@ -8,11 +8,11 @@ import StudentDraftListContainer from './../../containers/StudentDraftListContai
 
 import styles from './activity.css';
 
-const StudentActivity = ({activity, drafts}) => (
+const StudentActivity = ({activityId, activity, drafts}) => (
   <div className={styles.page}>
     <Header
       title={activity.course}
-      activityId={activity.activityId}
+      activityId={activityId}
       drafts={drafts}
     />
     <div className={styles.container}>
@@ -40,7 +40,7 @@ const StudentActivity = ({activity, drafts}) => (
 );
 
 StudentActivity.propTypes = {
-  studentActivityId: PropTypes.string,
+  activityId: PropTypes.string,
   drafts: PropTypes.array,
   activity: PropTypes.object
 };

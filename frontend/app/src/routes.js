@@ -12,7 +12,7 @@ const routes = (
     <IndexRedirect to={redirectActivity} />
     <Route path="/kitchensink" component={KitchenSink} />
     <Route path="/lms/:lmsId/course/:courseId/resource/:activityId" component={LaunchContainer} />
-    <Route path="/studentActivity/:studentActivityId/studentdraft/:draftId" component={StudentDraftContainer} />
+    <Route path="/activity/:activityId/draft/:draftId" component={StudentDraftContainer} />
   </Route>);
 module.exports = routes;
 
