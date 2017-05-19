@@ -16,7 +16,7 @@ cd artifacts/
 echo "Uploading artifacts"
 scp docker-compose.yml $USERNAME@$TARGET:~/docker-compose.yml
 scp .envrc.example $USERNAME@$TARGET:~/.envrc.example
-scp deploy $USERNAME@$TARGET:~/deploy.sh
+scp deploy.sh $USERNAME@$TARGET:~/deploy.sh
 ssh $USERNAME@$TARGET chmod a+x docker-compose.yml
 ssh $USERNAME@$TARGET chmod a+x deploy.sh
 
