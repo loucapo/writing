@@ -17,8 +17,7 @@ echo "Logging into the ECR"
 echo "Creating the Build artifacts directory"
 rm -rf artifacts
 mkdir -p artifacts
-cp ./docker/docker-compose.yml artifacts/docker-compose.yml
-cp ./docker/docker-compose-deploy.yml artifacts/docker-compose-deploy.yml
+cp ./docker/docker-compose-deploy.yml artifacts/docker-compose.yml
 cp ./docker/provision/deploy_containers.sh artifacts/deploy_containers.sh
 cp ./docker/provision/deploy.sh artifacts/deploy.sh
 
