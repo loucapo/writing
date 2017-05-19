@@ -4,7 +4,7 @@ import StudentDraft from './Draft/StudentDraft';
 
 import styles from './draftList.css';
 
-const StudentDraftList = ({studentActivityId, drafts}) => (
+const StudentDraftList = ({activityId, drafts}) => (
   <div className={styles.wrapper}>
     {
       drafts.map((draft, idx) => {
@@ -20,7 +20,7 @@ const StudentDraftList = ({studentActivityId, drafts}) => (
         }
         return (
           <StudentDraft
-            studentActivityId={studentActivityId}
+            activityId={activityId}
             cardTitle={cardTitle}
             draft={draft}
             key={draft.draftId}
@@ -36,7 +36,7 @@ const StudentDraftList = ({studentActivityId, drafts}) => (
 
 StudentDraftList.propTypes = {
   drafts: PropTypes.array,
-  studentActivityId: PropTypes.string
+  activityId: PropTypes.string
 };
 
 export default StudentDraftList;

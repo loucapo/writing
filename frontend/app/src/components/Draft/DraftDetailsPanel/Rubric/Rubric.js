@@ -6,7 +6,7 @@ import styles from './rubric.css';
 
 class Rubric extends Component {
   state = {
-    column: 1
+    column: this.props.rubric.criteria.length - 1
   };
 
   headings = [
@@ -18,8 +18,11 @@ class Rubric extends Component {
   ];
 
   goToColumn = (column) => {
-    if(column < 1) {return;}
-    else if(column > this.props.rubric.criteria.length - 1) {return;}
+    if(column < 1) {
+      column = this.props.rubric.criteria.length - 1;
+    } else if(column > this.props.rubric.criteria.length - 1) {
+      column = 1;
+    }
     this.setState({
       column
     });
@@ -33,47 +36,29 @@ class Rubric extends Component {
           <div className={styles.headerTitle}>
             {this.headings[0]}
           </div>
-          <div className={styles.header}>
+          <div data-id={`rubric-column-${this.state.column}`} className={styles.header}>
             <span>{this.headings[this.state.column]}</span>
             <span className={styles.headerLinks}>
-              {this.state.column > 1 ?
-                <a onClick={this.goToColumn.bind(this, this.state.column - 1)}>
-                  <MLIcon
-                    title="Previous column"
-                    type="chevron_left"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    className={styles.icon} />
-                </a> :
+              <a data-id="rubric-arrow-left" onClick={this.goToColumn.bind(this, this.state.column - 1)}>
                 <MLIcon
                   title="Previous column"
                   type="chevron_left"
                   width="18"
                   height="18"
                   viewBox="0 0 24 24"
-                  className={styles.disabledIcon} />
-              }
+                  className={styles.icon} />
+              </a>
             </span>
             <span className={styles.headerLinks}>
-              {this.state.column < this.props.rubric.criteria.length - 1 ?
-                <a onClick={this.goToColumn.bind(this, this.state.column + 1)}>
-                  <MLIcon
-                    title="Next column"
-                    type="chevron_right"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    className={styles.icon} />
-                </a> :
+              <a data-id="rubric-arrow-right" onClick={this.goToColumn.bind(this, this.state.column + 1)}>
                 <MLIcon
                   title="Next column"
                   type="chevron_right"
                   width="18"
                   height="18"
                   viewBox="0 0 24 24"
-                  className={styles.disabledIcon} />
-              }
+                  className={styles.icon} />
+              </a>
             </span>
           </div>
         </div>
