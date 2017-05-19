@@ -44,9 +44,9 @@ cp artifacts/.envrc.example docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"
 
-docker-compose -f docker/docker-compose-deploy.yml build
+docker-compose -f docker/docker-compose-build.yml build
 
-docker-compose -f docker/docker-compose-deploy.yml push
+docker-compose -f docker/docker-compose-build.yml push
 
 rm docker/.envrc.example
 
