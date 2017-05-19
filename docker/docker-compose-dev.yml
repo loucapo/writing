@@ -1,76 +1,46 @@
 version: "2"
 services:
   frontend:
-      build:
-        context: ./../frontend/
-        dockerfile: docker/Dockerfile
-      volumes:
-        - ./../frontend/app:/home/current/app:rw
-      command: yarn run start
-      env_file:
-        - ./../.envrc.example
-      environment:
-        APPLICATION_NAME: wk_frontend
-      ports:
-        - "8080:8080"
+    extends:
+      file: ./docker-compose.yml
+      service: frontend
+    command: yarn start
+    volumes:
+      - ./../frontend/app:/home/current/app:rw
+
   api:
-      build:
-        context: ./../api/
-        dockerfile: docker/Dockerfile
-      volumes:
-        - ./../api/app:/home/current/app:rw
-      command: yarn run start_dev
-      env_file:
-        - ./../.envrc.example
-      environment:
-        DEBUG: "true"
-        NODE_ENV: development
-        APPLICATION_NAME: wk_api
-        POSTGRES_HOST: postgres
-      ports:
-        - "3000:3000"
+    extends:
+      file: ./docker-compose.yml
+      service: api
+    command: yarn start_dev
+    volumes:
+      - ./../api/app:/home/current/app:rw
+    environment:
+      DEBUG: "true"
 
   data:
-      build:
-        context: ./../data/
-        dockerfile: docker/Dockerfile
-      volumes:
-        - ./../data/app:/home/current/app
-      command: yarn run start
-      env_file:
-        - ./../.envrc.example
-      environment:
-        POSTGRES_HOST: postgres
-      ports:
-        - "4667:4667"
+    extends:
+      file: ./docker-compose.yml
+      service: data
+    volumes:
+      - ./../data/app:/home/current/app
 
   serve:
-      build:
-        context: ./../serve/
-        dockerfile: docker/Dockerfile
-      volumes:
-        - ./../serve/app:/home/current/app:rw
-      command: yarn run start_dev
-      env_file:
-        - ./../.envrc.example
-      environment:
-        DEBUG: "true"
-        NODE_ENV: development
-        APPLICATION_NAME: wk_serve
-        WK_API_URL: http://api:3000
-      ports:
-        - "10080:10080"
+    extends:
+      file: ./docker-compose.yml
+      service: serve
+    command: yarn start_dev
+    volumes:
+      - ./../serve/app:/home/current/app:rw
+    environment:
+      DEBUG: "true"
 
   swaggerUi:
-    image: schickling/swagger-ui
-    environment:
-      API_URL: "http://localhost:3000/swagger"
-      PORT: 4666
-    ports:
-      - "4666:4666"
+    extends:
+      file: ./docker-compose.yml
+      service: swaggerUi
+
   postgres:
-    image: postgres
-    env_file:
-      - ./../.envrc.example
-    ports:
-      - 5433:5432
+    extends:
+      file: ./docker-compose.yml
+      service: postgres

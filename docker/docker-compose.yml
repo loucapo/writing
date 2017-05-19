@@ -6,7 +6,6 @@ services:
         dockerfile: docker/Dockerfile
       volumes:
         - ./../frontend/app:/home/current/app:rw
-      command: yarn run start
       env_file:
         - ./../.envrc.example
       environment:
@@ -19,12 +18,9 @@ services:
         dockerfile: docker/Dockerfile
       volumes:
         - ./../api/app:/home/current/app:rw
-      command: yarn run start
       env_file:
         - ./../.envrc.example
       environment:
-        DEBUG: "true"
-        NODE_ENV: development
         APPLICATION_NAME: wk_api
         POSTGRES_HOST: postgres
       ports:
@@ -36,9 +32,10 @@ services:
         dockerfile: docker/Dockerfile
       volumes:
         - ./../data/app:/home/current/app
-      command: yarn run start
       env_file:
         - ./../.envrc.example
+      environment:
+        POSTGRES_HOST: postgres
       ports:
         - "4667:4667"
 
@@ -48,12 +45,9 @@ services:
         dockerfile: docker/Dockerfile
       volumes:
         - ./../serve/app:/home/current/app:rw
-      command: yarn run start
       env_file:
         - ./../.envrc.example
       environment:
-        DEBUG: "true"
-        NODE_ENV: development
         APPLICATION_NAME: wk_serve
         WK_API_URL: http://api:3000
       ports:
@@ -66,6 +60,7 @@ services:
       PORT: 4666
     ports:
       - "4666:4666"
+
   postgres:
     image: postgres
     env_file:
