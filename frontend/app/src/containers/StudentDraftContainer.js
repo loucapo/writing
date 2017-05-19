@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import StudentDraft from '../components/Draft/StudentDraft';
-import {
-  getStudentDraft,
-  createStudentDraftIfNotThere
-} from '../modules/studentDraftModule';
+import {getStudentDraft, createStudentDraftIfNotThere} from '../modules/studentDraftModule';
 
 class StudentDraftContainer extends Component {
   componentWillMount() {
