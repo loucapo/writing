@@ -1,28 +1,28 @@
 version: "2"
 services:
   frontend:
+    image: ${wk_frontend_image}
     extends:
       file: ./docker-compose.yml
       service: frontend
-    image: ${wk_frontend_image}
 
   api:
+    image: ${wk_api_image}
     extends:
       file: ./docker-compose.yml
       service: api
-    image: ${wk_api_image}
 
   data:
+    image: ${wk_data_image}
     extends:
       file: ./docker-compose.yml
       service: data
-    image: ${wk_data_image}
 
   serve:
+    image: ${wk_serve_image}
     extends:
       file: ./docker-compose.yml
       service: serve
-    image: ${wk_serve_image}
 
   swaggerUi:
     extends:
