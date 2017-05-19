@@ -22,7 +22,7 @@ services:
     extends:
       file: ./docker-compose.yml
       service: serve
-    image: ${wk_service_image}
+    image: ${wk_serve_image}
 
   swaggerUi:
     extends:
