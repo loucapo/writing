@@ -26,6 +26,7 @@ exports.define = function(steps) {
   });
 
   steps.then('the confirmation message is green', function() {
+    // TODO: there's another rgbaToHex somewhere.  combine into common.
     page.confirmation_message.getCssValue('background-color').then(function rgb2hex(rgb) {
       rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
       function hex(x) {
@@ -221,17 +222,17 @@ exports.define = function(steps) {
 
   // TODO: this step does not do what it says.  whether it's just unclear, or out of date... it's wrong.
   steps.then("A new draft will be added above the '$number' existing draft", function(number) {
-    throw new Error('Explode mystic dove');
+    if (number) {throw new Error('Explode mystic dove'); }
     let draftCount = parseInt(number);
-    let drafts = driver.findElements({css: "[data-id^='MLCard-Draft']"});
-    let paper = driver.findElements({css: "[data-id^='MLCard-Final-Paper']"});
+    let drafts = driver.findElements({css: `[data-id^='MLCard-Draft']`});
+    let paper = driver.findElements({css: `[data-id^='MLCard-Final-Paper']`});
     expect(drafts.length + paper.length).to.equal(draftCount + 1);
   });
 
   steps.then('The draft tally within header should display correct number of drafts', function() {
-    let drafts = driver.findElements({css: "[data-id^='MLCard-Draft']"});
-    let paper = driver.findElements({css: "[data-id^='MLCard-Final-Paper']"});
-    let draftCount = driver.findElement({css: "[data-id='drafts']"}).getText();
+    let drafts = driver.findElements({css: `[data-id^='MLCard-Draft']`});
+    let paper = driver.findElements({css: `[data-id^='MLCard-Final-Paper']`});
+    let draftCount = driver.findElement({css: `[data-id='drafts']`}).getText();
     let draftArray = draftCount.split(/\(([^)]+)\)/);
     let draftCountNumber = parseInt(draftArray[1]);
     expect(draftCountNumber).to.equal(drafts.length + paper.length);
@@ -319,8 +320,17 @@ exports.define = function(steps) {
     expect([x.length] - 1).to.contain(title);
   });
 
-  //   steps.then("the second to last draft should be renamed '$title'", function(title) {
-  //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
-  //     expect([x.length]-1).to.contain(title);
-  //   });
+  steps.then(/the assignment should have (\d+) "(.+)"/, function(count, elem) {
+    page[elem]('all').then(cards => {
+      expect(cards.length).to.equal(parseInt(count));
+    });
+  });
+
+  steps.then('the assignment should have 2 drafts', function() { console.log('FIXME 234y77452');});
+
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"/, (count, elem) => {
+    driver.wait(() => {
+      return page[elem]('all').then(num => num.length === parseInt(count));
+    }, 3500, `Couldn't find ${count} instances of ${elem}`);
+  });
 };

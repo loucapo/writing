@@ -1,6 +1,32 @@
 /* eslint-disable camelcase */
 const Page = require('marvin-js').Page;
 
+// TODO: this should be moved into marvin itself once we hammer out usages and names and such
+function basePageObj(opts) {
+  return {value(v) {
+    opts.type = (opts.type || 'css');
+    switch (typeof v) {
+      case undefined:
+        return this.element(opts.locator, opts.type);
+      case 'string':
+        // this is surprisingly vital even for things that guaranteed only appear once
+        // .elements returns [], so can be empty.  .element throws if none are found
+        // so you MUST use .elements to check for 0 on the page.
+        if (v === 'all') { return this.elements(opts.locator, opts.type); }
+
+        // used for when you need to reuse, transform, or combine the locator
+        // but obv don't want to hardcode it in the steps
+        if (v === 'opts') { return opts; }
+
+        else {throw new Error(`Don't know how to '${v}' for {${opts.type}}: ${opts.locator}}`); }
+      case 'number':
+        return this.element(`(${opts.locator})[${v}]`, opts.type);
+      default:
+        throw new Error('WUTINTARNATION!');
+    }
+  }};
+}
+
 module.exports = new Page({
 
   // assignment header
@@ -56,9 +82,11 @@ module.exports = new Page({
     return this.element(`[data-id='input-fields'] div:nth-child(${i}) div [name=draftGoalOption]`);
   }},
 
-  ddraft_card: { value(i) {
-    return this.element(`(//*[@data-id='draft-section'])[${i}]`, 'xpath');
-  }},
+  ddraft_card: basePageObj({
+    desc: `Container for a draft on the assignment summary page`,
+    locator: `//*[@data-id='draft-section']`,
+    type: 'xpath'
+  }),
 
   add_ddraft_instructions: { value(i) {
     return this.element(`(//*[@data-id='add-instructions'])[${i}]`, 'xpath');
