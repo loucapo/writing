@@ -41,7 +41,7 @@ class StudentDraft extends Component {
         </div>
         <div className={styles.infoColumn}>
           <DraftDetailsPanelContainer
-            activityId={this.props.studentActivityId}
+            activityId={this.props.activityId}
             studentDraft={this.props.studentDraft}
           />
         </div>
@@ -52,7 +52,7 @@ class StudentDraft extends Component {
 
 StudentDraft.propTypes = {
   studentDraft: PropTypes.object,
-  studentActivityId: PropTypes.string
+  activityId: PropTypes.string
 };
 
 export default StudentDraft;

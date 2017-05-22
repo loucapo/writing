@@ -1,0 +1,46 @@
+version: "2"
+services:
+  frontend:
+    extends:
+      file: ./docker-compose.yml
+      service: frontend
+    command: yarn start
+    volumes:
+      - ./../frontend/app:/home/current/app:rw
+
+  api:
+    extends:
+      file: ./docker-compose.yml
+      service: api
+    command: yarn start_dev
+    volumes:
+      - ./../api/app:/home/current/app:rw
+    environment:
+      DEBUG: "true"
+
+  data:
+    extends:
+      file: ./docker-compose.yml
+      service: data
+    volumes:
+      - ./../data/app:/home/current/app
+
+  serve:
+    extends:
+      file: ./docker-compose.yml
+      service: serve
+    command: yarn start_dev
+    volumes:
+      - ./../serve/app:/home/current/app:rw
+    environment:
+      DEBUG: "true"
+
+  swaggerUi:
+    extends:
+      file: ./docker-compose.yml
+      service: swaggerUi
+
+  postgres:
+    extends:
+      file: ./docker-compose.yml
+      service: postgres

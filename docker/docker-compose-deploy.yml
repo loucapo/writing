@@ -1,0 +1,39 @@
+version: "2"
+services:
+  frontend:
+    environment:
+      APPLICATION_NAME: wk_frontend
+    ports:
+      - "8080:8080"
+    image: ${wk_frontend_image}
+
+  api:
+    environment:
+      APPLICATION_NAME: wk_api
+      POSTGRES_HOST: postgres
+    ports:
+      - "3000:3000"
+    image: ${wk_api_image}
+
+  data:
+    environment:
+      POSTGRES_HOST: postgres
+    ports:
+      - "4667:4667"
+    image: ${wk_data_image}
+
+  serve:
+    environment:
+      APPLICATION_NAME: wk_serve
+      WK_API_URL: http://api:3000
+    ports:
+      - "10080:10080"
+    image: ${wk_serve_image}
+
+  swaggerUi:
+    image: schickling/swagger-ui
+    environment:
+      API_URL: "http://localhost:3000/swagger"
+      PORT: 4666
+    ports:
+      - "4666:4666"

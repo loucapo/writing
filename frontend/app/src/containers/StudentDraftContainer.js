@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import StudentDraft from '../components/Draft/StudentDraft';
-import {
-  getStudentDraft,
-  createStudentDraftIfNotThere
-} from '../modules/studentDraftModule';
+import {getStudentDraft, createStudentDraftIfNotThere} from '../modules/studentDraftModule';
 
 class StudentDraftContainer extends Component {
   componentWillMount() {
@@ -15,11 +12,12 @@ class StudentDraftContainer extends Component {
   loadData() {
     if (!this.props.studentDraft) {
       this.props.createStudentDraftIfNotThere(
-        this.props.params.studentActivityId,
+        this.props.studentActivityId,
         this.props.params.draftId
       );
+      // put in subsequentAction for action creator;
       this.props.getStudentDraft(
-        this.props.params.studentActivityId,
+        this.props.studentActivityId,
         this.props.params.draftId
       );
     }
@@ -34,17 +32,18 @@ StudentDraftContainer.propTypes = {
   getStudentDraft: PropTypes.func,
   studentDraft: PropTypes.object,
   params: PropTypes.object,
+  studentActivityId: PropTypes.string,
   activityId: PropTypes.string,
   createStudentDraftIfNotThere: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
-  const studentDraft = state.studentDraft.find(
-    x => x.draftId === props.params.draftId
-  );
+  const studentDraft = state.studentDraft.find(x => x.draftId === props.params.draftId);
+  const studentActivity = state.studentActivities.find(x => x.activityId === props.params.activityId);
   return {
     studentDraft,
-    studentActivityId: props.params.studentActivityId
+    activityId: props.params.activityId,
+    studentActivityId: studentActivity.studentActivityId
   };
 };
 

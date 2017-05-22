@@ -9,3 +9,5 @@ ADD ./yarn.lock ./yarn.lock
 RUN yarn install
 
 ADD ./app /$HOME/app
+
+CMD yarn start

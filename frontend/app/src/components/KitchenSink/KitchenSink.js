@@ -5,6 +5,7 @@ import MLCard from '../MLCard/MLCard';
 import MLDropdown from '../MLDropdown/MLDropdown';
 import MLTable from '../MLTable/MLTable';
 import MLMessage from '../MLMessage/MLMessage';
+import MLSpinner from '../MLSpinner/MLSpinner';
 import DemoModal from '../MLModal/Modals/DemoModal';
 import CheckboxForm from '../MLCheckboxForm/MLCheckboxForm';
 
@@ -231,6 +232,20 @@ class KitchenSink extends Component {
           </div>
         </div>
 
+        {/*spinner component demo*/}
+        <div className={styles.padder}>
+          <h3>Spinner Component(s)</h3>
+          <h4>Parameters:</h4>
+          <ol>
+            <li>color: string representing css class; defaults to `red`; other CDL accepted color is `gray`</li>
+          </ol>
+          <h4>Default Spinner:</h4>
+          <MLSpinner />
+          <h4>Gray Spinner:</h4>
+          <MLSpinner
+            color="gray"
+          />
+        </div>
 
         {/*table component demo*/}
         <div className={styles.padder}>
