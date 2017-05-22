@@ -12,7 +12,6 @@ services:
   api:
     environment:
       APPLICATION_NAME: wk_api
-      POSTGRES_HOST: postgres
     ports:
       - "${API_PORT}:${API_PORT}"
     image: ${wk_api_image}
@@ -31,7 +30,6 @@ services:
   serve:
     environment:
       APPLICATION_NAME: wk_serve
-      WK_API_URL: http://api:3000
     ports:
       - "${SERVE_PORT}:${SERVE_PORT}"
     image: ${wk_serve_image}
