@@ -14,7 +14,7 @@ fi
 
 cd artifacts/
 echo "running env_builder"
-./env_builder bamboo .env
+./env_builder.sh bamboo .env
 
 cat .env
 
