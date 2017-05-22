@@ -102,17 +102,11 @@ exports.define = function(steps) {
   });
 
   steps.then('I reset the assignment prompt for the next test', function() {
+    // https://bugs.chromium.org/p/chromedriver/issues/detail?id=30
     page.activity_prompt_edit.click();
-    rtePage.draftEditor.click();
     rtePage.draftEditor.getText()
-      .then(function(content) {
-        let lefts = '';
-        let contentLength = content.length + 1;
-        for (let i = 0; i < contentLength; i++) {
-          lefts += keys.LEFT;
-        }
-        rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
-        rtePage.draftEditor.sendKeys(keys.DELETE);
+      .then(text => {
+        rtePage.draftEditor.sendKeys(keys.DELETE.repeat(text.length));
       });
     page.activity_prompt_save.click();
   });
@@ -222,7 +216,7 @@ exports.define = function(steps) {
 
   // TODO: this step does not do what it says.  whether it's just unclear, or out of date... it's wrong.
   steps.then("A new draft will be added above the '$number' existing draft", function(number) {
-    throw new Error('Explode mystic dove');
+    if (number) {throw new Error('Explode mystic dove');}
     let draftCount = parseInt(number);
     let drafts = driver.findElements({css: "[data-id^='MLCard-Draft']"});
     let paper = driver.findElements({css: "[data-id^='MLCard-Final-Paper']"});
@@ -279,16 +273,17 @@ exports.define = function(steps) {
       });
   });
 
+  steps.then(`I clear the text field '$elem'`, function(elem) {
+    page[elem].getText()
+      .then(text => {
+        page[elem].sendKeys(keys.BACK_SPACE.repeat(text.length));
+      });
+  });
+
   steps.when('I clear the draft instructions', function() {
     page.textarea_draft_instructions.getText()
-      .then(function(content) {
-        let lefts = '';
-        let contentLength = content.length + 1;
-        for (let i = 0; i < contentLength; i++) {
-          lefts += keys.LEFT;
-        }
-        page.textarea_draft_instructions.sendKeys(keys.SHIFT + lefts);
-        page.textarea_draft_instructions.sendKeys(keys.DELETE);
+      .then(text => {
+        page.textarea_draft_instructions.sendKeys(keys.BACK_SPACE.repeat(text.length));
       });
   });
 
