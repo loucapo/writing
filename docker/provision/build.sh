@@ -21,6 +21,7 @@ cp ./docker/docker-compose-deploy.yml artifacts/docker-compose.yml
 cp ./docker/provision/deploy_containers.sh artifacts/deploy_containers.sh
 cp ./docker/provision/deploy.sh artifacts/deploy.sh
 cp ./docker/provision/env_builder.sh artifacts/env_builder.sh
+cp ./.envrc.example artifacts/.envrc.example
 
 touch artifacts/.env
 

@@ -38,6 +38,7 @@ if [ $TYPE == "bamboo" ]; then
   ENV_FILE=".env"
   for COUNTER in "${!KEY[@]}"; do
     BAMBOO_VAR_NAME="\$bamboo_${KEY[$COUNTER]}"
+    echo $BAMBOO_VAR_NAME
     eval BAMBOO_VAR=${BAMBOO_VAR_NAME}
     if [ -n "$BAMBOO_VAR" ]; then
       echo "${KEY[$COUNTER]}=$BAMBOO_VAR" >> $ENV_FILE
