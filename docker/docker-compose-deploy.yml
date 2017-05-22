@@ -6,6 +6,8 @@ services:
     ports:
       - "8080:8080"
     image: ${wk_frontend_image}
+    networks:
+      - writing_network
 
   api:
     environment:
@@ -14,6 +16,8 @@ services:
     ports:
       - "3000:3000"
     image: ${wk_api_image}
+    networks:
+      - writing_network
 
   data:
     environment:
@@ -21,6 +25,8 @@ services:
     ports:
       - "4667:4667"
     image: ${wk_data_image}
+    networks:
+      - writing_network
 
   serve:
     environment:
@@ -29,6 +35,8 @@ services:
     ports:
       - "10080:10080"
     image: ${wk_serve_image}
+    networks:
+      - writing_network
 
   swaggerUi:
     image: schickling/swagger-ui
@@ -37,3 +45,15 @@ services:
       PORT: 4666
     ports:
       - "4666:4666"
+    networks:
+      - writing_network
+
+# Force docker to use 172.20 reserved IPs to not conflict with our VPCs
+networks:
+  writing_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.101.0/24
+          ip_range: 172.20.101.0/24
+          gateway: 172.20.101.1
