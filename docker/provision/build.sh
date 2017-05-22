@@ -20,8 +20,9 @@ mkdir -p artifacts
 cp ./docker/docker-compose-deploy.yml artifacts/docker-compose.yml
 cp ./docker/provision/deploy_containers.sh artifacts/deploy_containers.sh
 cp ./docker/provision/deploy.sh artifacts/deploy.sh
+cp ./docker/provision/env_builder.sh artifacts/env_builder.sh
 
-touch artifacts/.envrc.example
+touch artifacts/.env
 
 DOCKER_REPO="999447569257.dkr.ecr.us-east-1.amazonaws.com/wk/"
 BAMBOO_BRANCHNAME=$BUILD_PLANNAME
@@ -36,11 +37,11 @@ do
 IMAGE_NAME=$DOCKER_REPO$IMG:$TAG
 IMAGE_NAME_KEY="wk_"$IMG"_image"
 export $IMAGE_NAME_KEY=$IMAGE_NAME
-echo "$IMAGE_NAME_KEY=$IMAGE_NAME" >> artifacts/.envrc.example
+echo "$IMAGE_NAME_KEY=$IMAGE_NAME" >> artifacts/.env
 
 done
 
-cp artifacts/.envrc.example docker/.envrc.example
+cp artifacts/.env docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"
 

@@ -8,6 +8,8 @@ services:
     image: ${wk_frontend_image}
     networks:
       - writing_network
+    env_file:
+      - ./.env
 
   api:
     environment:
@@ -18,6 +20,8 @@ services:
     image: ${wk_api_image}
     networks:
       - writing_network
+    env_file:
+      - ./.env
 
   data:
     environment:
@@ -27,6 +31,8 @@ services:
     image: ${wk_data_image}
     networks:
       - writing_network
+    env_file:
+      - ./.env
 
   serve:
     environment:
@@ -37,6 +43,8 @@ services:
     image: ${wk_serve_image}
     networks:
       - writing_network
+    env_file:
+      - ./.env
 
   swaggerUi:
     image: schickling/swagger-ui

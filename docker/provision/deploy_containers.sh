@@ -13,10 +13,14 @@ else
 fi
 
 cd artifacts/
+echo "running env_builder"
+./env_builder bamboo .env
+
+cat .env
+
 echo "Uploading artifacts"
 scp docker-compose.yml $USERNAME@$TARGET:~/docker-compose.yml
-scp .envrc.example $USERNAME@$TARGET:~/.envrc.example
-scp .envrc.example $USERNAME@$TARGET:~/.env
+scp .env $USERNAME@$TARGET:~/.env
 scp deploy.sh $USERNAME@$TARGET:~/deploy.sh
 ssh $USERNAME@$TARGET chmod a+x docker-compose.yml
 ssh $USERNAME@$TARGET chmod a+x deploy.sh
