@@ -41,6 +41,9 @@ echo "$IMAGE_NAME_KEY=$IMAGE_NAME" >> artifacts/.env
 
 done
 
+echo "image names in env file"
+cat artifacts/.env
+
 cp artifacts/.env docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"

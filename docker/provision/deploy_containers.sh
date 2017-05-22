@@ -17,7 +17,7 @@ echo "running env_builder"
 chmod a+x env_builder.sh
 ./env_builder.sh bamboo .env
 
-cat .env
+cat ./.env
 
 echo "Uploading artifacts"
 scp docker-compose.yml $USERNAME@$TARGET:~/docker-compose.yml
