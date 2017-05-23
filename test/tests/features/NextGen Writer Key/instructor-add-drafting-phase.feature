@@ -1,4 +1,3 @@
-@db=reset
 @WRITE-27
 # Need to refactor page object with indexes for draft elements
 Feature: Add Another Draft To Activity
@@ -14,17 +13,14 @@ Feature: Add Another Draft To Activity
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
   @hacky
-  @only
   Scenario: Saving Description to the New Draft
-    Given I launch the activity as an 'instructor'
-    Then the assignment should have 1 "ddraft_card"
+    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'
-    Then I wait until there are 2 "ddraft_card"
+    Then I sleep for 2 seconds
     When I click 'add_ddraft_instructions' 2 
     Then I sleep for 2 seconds
     When I type 'hello world' in draft instructions 2
     And I click 'save_ddraft_instructions' 2
-    # Then I sleep for 2000 seconds
     Then Text 'hello world' should appear in draft instructions 2
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
@@ -53,7 +49,6 @@ Feature: Add Another Draft To Activity
     And Page Element Checker Verifies Text: 'Students can view and start this draft once they've received feedback for Draft 1' at '[data-id='MLCard-Final-Paper'] > div > div > [class^='Draft__draftDetails'] > [class^='Draft__draftDetailsRight'] > [class^='Draft__draftNote']'
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
-  #@only
   Scenario: Removing Drafts
     Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'
@@ -79,8 +74,7 @@ Feature: Add Another Draft To Activity
     And Page Element Checker Verifies: '0' '[data-id='MLCard-Draft-1']'
     And Page Element Checker Verifies: '0' '[data-id='draft-delete']'
 
-  @hacky
-  #@only
+   @hacky
   Scenario: Cancel Description to the New Draft
    Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'
@@ -92,7 +86,6 @@ Feature: Add Another Draft To Activity
     Then I see the 'add_draft_instructions'
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
-  #@only
   Scenario: Navigate Away Description to the New Draft
     Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'
@@ -103,7 +96,6 @@ Feature: Add Another Draft To Activity
     Then I see the 'add_draft_instructions'
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
-  #@only
   Scenario: Draft Renaming
     Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'

@@ -1,7 +1,7 @@
 const studentPage = require('../../pages/NextGen Writer Key/student-assignment-draft-page.js');
 
 exports.define = function(steps) {
-  steps.given("I launch the activity as a[n] '$user'", function(user) {
+  steps.given("I launch the activity as a '$user'", function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
   });
 
