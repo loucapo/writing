@@ -99,7 +99,7 @@ exports.define = function(steps) {
   });
 
   steps.when(/I click "(.+)" #(\d+)/, function(element, index) {
-    page[element](parseInt(index)).click();
+    page[element](parseInt(index)).then(el => el.click());
   });
 
   steps.when('I click the "$element"', function(elem) {
@@ -304,9 +304,8 @@ exports.define = function(steps) {
   });
 
   steps.then(/the text of "(.*)" #(\d+) should be "(.*)"/, (elem, arg, text) => {
-    page[elem](parseInt(arg)).getText().then(actualText => {
-      text.should.equal(actualText);
-    });
+    page[elem](parseInt(arg)).then(el => el.getText())
+      .then(actualText => { text.should.equal(actualText); });
   });
 
   steps.then("Text '$text' should appear in the draft instructions", function(text) {
@@ -350,7 +349,7 @@ exports.define = function(steps) {
     });
   });
 
-    steps.then(/I wait until there (?:are|is) (\d+) "(.+)"/, (count, elem) => {
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"/, (count, elem) => {
     driver.wait(() => {
       return page[elem]('all').then(num => num.length === parseInt(count));
     }, 3500, `Couldn't find ${count} instances of ${elem}`);

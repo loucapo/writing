@@ -9,19 +9,18 @@ function basePageObj(opts) {
       case undefined:
         return this.element(opts.locator, opts.type);
       case 'string':
-      // this is surprisingly vital even for things that guaranteed only appear once
+        // this is surprisingly vital even for things that guaranteed only appear once
         // .elements returns [], so can be empty.  .element throws if none are found
         // so you MUST use .elements to check for 0 on the page.
-      if (v === 'all') { return this.elements(opts.locator, opts.type); }
+        if (v === 'all') { return this.elements(opts.locator, opts.type); }
 
         // used for when you need to reuse, transform, or combine the locator
         // but obv don't want to hardcode it in the steps
         if (v === 'opts') { return opts; }
 
         else {throw new Error(`Don't know how to '${v}' for {${opts.type}}: ${opts.locator}}`); }
-    case 'number':
-        // TODO: actually, does this _only_ support xpath?  and what do if true?
-        return this.element(`(${opts.locator})[${v}]`, opts.type);
+      case 'number':
+        return this.elements(opts.locator, opts.type).then(els => els[v - 1]);
       default:
         throw new Error('WUTINTARNATION!');
     }
@@ -99,14 +98,12 @@ module.exports = new Page({
 
   ddraft_card: basePageObj({
     desc: `Top container for a draft on the summary page`,
-    locator: `//*[@data-id='draft-section']`,
-    type: 'xpath'
+    locator: `[data-id='draft-section']`
   }),
 
   ddraft_instructions: basePageObj({
     desc: `Text of the Draft Instructions displayed (non-editable)`,
-    locator: `//*[@data-id='draft-instructions']`,
-    type: `xpath`
+    locator: `[data-id='draft-instructions']`
   }),
 
   save_ddraft_instructions: basePageObj({
