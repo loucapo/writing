@@ -4,7 +4,7 @@
   "dependencies": {
     "eslint": "^3.19.0",
     "eslint-plugin-chai-friendly": "^0.3.6",
-    "marvin-js": "0.5.0"
+    "marvin-js": "0.5.1"
   },
   "scripts": {
     "test": "node node_modules/marvin-js/bin/marvin.js",

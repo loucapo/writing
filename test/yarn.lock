@@ -904,9 +904,9 @@ lowercase-keys@^1.0.0:
   version "1.0.0"
   resolved "http://npm.macmillantech.com:8080/l/lowercase-keys/_attachments/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
 
-marvin-js@0.5.0:
-  version "0.5.0"
-  resolved "http://npm.macmillantech.com:8080/m/marvin-js/_attachments/marvin-js-0.5.0.tgz#083bd75f5be5494310fedbf305376e8f9b76d547"
+marvin-js@0.5.1:
+  version "0.5.1"
+  resolved "http://npm.macmillantech.com:8080/m/marvin-js/_attachments/marvin-js-0.5.1.tgz#a7a22bbc7f0df9bcedf75d0eb632e8c4b50e70ae"
   dependencies:
     chai "3.5.0"
     chai-as-promised "6.0.0"

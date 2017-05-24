@@ -17,6 +17,11 @@ exports.define = function(steps) {
       });
   });
 
+  steps.then('I should see a fresh assignment', function() {
+    // FIXME: do it
+    console.log('TODO ojp9-0');
+  });
+
   steps.then('I sleep for $d seconds', function(d) {
     driver.sleep(d * 1000);
   });
@@ -92,11 +97,11 @@ exports.define = function(steps) {
     });
   });
 
-  steps.when(/I click \'(.+)\' (\d+)/, function(element, index) {
-    page[element](index).click();
+  steps.when(/I click "(.+)" #(\d+)/, function(element, index) {
+    page[element](parseInt(index)).click();
   });
 
-  steps.when("I click a '$element'", function(elem) {
+  steps.when('I click the "$element"', function(elem) {
     page[elem].click();
   });
 
@@ -319,8 +324,31 @@ exports.define = function(steps) {
     expect([x.length] - 1).to.contain(title);
   });
 
-  //   steps.then("the second to last draft should be renamed '$title'", function(title) {
-  //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
-  //     expect([x.length]-1).to.contain(title);
-  //   });
+  steps.then(/the assignment should have (\d+) "(.+)"/, function(count, elem) {
+    page[elem]('all').then(cards => {
+      expect(cards.length).to.equal(parseInt(count));
+    });
+  });
+
+  steps.then('the assignment should have 2 drafts', function() { console.log('FIXME 234y77452');});
+
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"/, (count, elem) => {
+    driver.wait(() => {
+      return page[elem]('all').then(num => num.length === parseInt(count));
+    }, 3500, `Couldn't find ${count} instances of ${elem}`);
+  });
+
+ // TODO doc this
+  steps.then(/I type "(.*)" in "(.*)"(\s*\(\w*\))?/, (input, elem, arg) => {
+    console.log(`elem: ${elem}`);
+    console.log(`input: ${input}`);
+    console.log(arg);
+    // FIXME: calling with empty args must work
+    //let el = (arg == undefined) ? page[elem]() : page[elem](arg);
+    let el = (arg === undefined) ? page[elem](1) : page[elem](arg);
+    console.log(el);
+    console.log(Object.keys(el));
+    el.sendKeys(input);
+  });
+
 };

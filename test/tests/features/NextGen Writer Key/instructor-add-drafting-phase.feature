@@ -1,5 +1,4 @@
 @WRITE-27
-# Need to refactor page object with indexes for draft elements
 Feature: Add Another Draft To Activity
   Scenario: Adding Another Draft
     Given I launch the activity as a 'instructor'
@@ -13,16 +12,25 @@ Feature: Add Another Draft To Activity
     And Draft Delete Cleanup '[data-id='draft-delete']'
 
   @hacky
+  @only
+  @db=reset
   Scenario: Saving Description to the New Draft
-    Given I launch the activity as a 'instructor'
-    When I click a 'add_draft_button'
-    Then I sleep for 2 seconds
-    When I click 'add_ddraft_instructions' 2 
-    Then I sleep for 2 seconds
-    When I type 'hello world' in draft instructions 2
-    And I click 'save_ddraft_instructions' 2
-    Then Text 'hello world' should appear in draft instructions 2
-    And Draft Delete Cleanup '[data-id='draft-delete']'
+    Given I launch the activity as an "instructor"
+    Then I should see a fresh assignment
+    #Then I sleep for 400 seconds
+    Then I wait until there is 1 "ddraft_card"
+    #Then the assignment should have 1 "ddraft_card"
+    When I click the "add_draft_button"
+    Then I wait until there are 2 "ddraft_card"
+    And I click "add_ddraft_instructions" #2 
+    # Then I sleep for 2000 seconds
+    And I type "hello world" in "textarea_ddraft_instructions" (2)
+    # 1 or 2?
+    And I click "save_ddraft_instructions" #2 
+    Then I wait until there are 2 "ddraft_instructions"
+    Then I see "hello world" in "ddraft_instructions" #2
+    # And Draft Delete Cleanup '[data-id='draft-delete']'
+    # Then I sleep for 2000 seconds
 
   Scenario: Adding First Draft
     Given I launch the activity as a 'instructor'
