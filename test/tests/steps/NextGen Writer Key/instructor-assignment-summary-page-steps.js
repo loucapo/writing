@@ -20,7 +20,7 @@ exports.define = function(steps) {
 
   steps.then('I should see a fresh assignment', function() {
     // FIXME: do it
-    console.log('TODO ojp9-0');
+    console.log('TODO qqrx');
   });
 
   steps.then('I sleep for $d seconds', function(d) {
@@ -303,6 +303,12 @@ exports.define = function(steps) {
       });
   });
 
+  steps.then(/the text of "(.*)" #(\d+) should be "(.*)"/, (elem, arg, text) => {
+    page[elem](parseInt(arg)).getText().then(actualText => {
+      text.should.equal(actualText);
+    });
+  });
+
   steps.then("Text '$text' should appear in the draft instructions", function(text) {
     page.textarea_draft_instructions.getText()
       .then(function(text2) {
@@ -344,9 +350,7 @@ exports.define = function(steps) {
     });
   });
 
-  steps.then('the assignment should have 2 drafts', function() { console.log('FIXME 234y77452');});
-
-  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"/, (count, elem) => {
+    steps.then(/I wait until there (?:are|is) (\d+) "(.+)"/, (count, elem) => {
     driver.wait(() => {
       return page[elem]('all').then(num => num.length === parseInt(count));
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
@@ -354,14 +358,9 @@ exports.define = function(steps) {
 
  // TODO doc this
   steps.then(/I type "(.*)" in "(.*)"(\s*\(\w*\))?/, (input, elem, arg) => {
-    console.log(`elem: ${elem}`);
-    console.log(`input: ${input}`);
-    console.log(arg);
     // FIXME: calling with empty args must work
     //let el = (arg == undefined) ? page[elem]() : page[elem](arg);
     let el = (arg === undefined) ? page[elem](1) : page[elem](arg);
-    console.log(el);
-    console.log(Object.keys(el));
     el.sendKeys(input);
   });
 

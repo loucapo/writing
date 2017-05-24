@@ -4,21 +4,15 @@ const Page = require('marvin-js').Page;
 // TODO: this should be moved into marvin itself once we hammer out usages and names and such
 function basePageObj(opts) {
   return {value(v) {
-    console.log("OVER HERE");
-    console.log(v);
-    console.log(typeof v);
     opts.type = (opts.type || 'css');
     switch (typeof v) {
       case undefined:
         return this.element(opts.locator, opts.type);
       case 'string':
-      console.log("STRINGGGGGGG");
       // this is surprisingly vital even for things that guaranteed only appear once
         // .elements returns [], so can be empty.  .element throws if none are found
         // so you MUST use .elements to check for 0 on the page.
-      if (v === 'all') { console.log("yes this is dog");
-                         console.log(opts.locator);
-                         return this.elements(opts.locator, opts.type); }
+      if (v === 'all') { return this.elements(opts.locator, opts.type); }
 
         // used for when you need to reuse, transform, or combine the locator
         // but obv don't want to hardcode it in the steps
@@ -26,7 +20,6 @@ function basePageObj(opts) {
 
         else {throw new Error(`Don't know how to '${v}' for {${opts.type}}: ${opts.locator}}`); }
     case 'number':
-      console.log("NU<MBERRRRRRRRRRR");
         // TODO: actually, does this _only_ support xpath?  and what do if true?
         return this.element(`(${opts.locator})[${v}]`, opts.type);
       default:
@@ -110,10 +103,21 @@ module.exports = new Page({
     type: 'xpath'
   }),
 
-  ddraft_instructions: basePageObj([
+  ddraft_instructions: basePageObj({
     desc: `Text of the Draft Instructions displayed (non-editable)`,
-    locator:
-  ])
+    locator: `//*[@data-id='draft-instructions']`,
+    type: `xpath`
+  }),
+
+  save_ddraft_instructions: basePageObj({
+    desc: `Button to save Draft Instructions for the current draft.  Only visible when instructions are editable.`,
+    locator: `//*[@data-id='save-draft-instructions']`,
+    type: `xpath`
+  }),
+
+  // save_ddraft_instructions: { value(i) {
+  //   return this.element(`(//*[@data-id='save-draft-instructions'])[${i}]`, 'xpath');
+  // }},
 
   // add_ddraft_instructions: { value(i) {
   //   return this.element(`(//*[@data-id='add-instructions'])[${i}]`, 'xpath');
@@ -121,10 +125,6 @@ module.exports = new Page({
 
   textarea_ddraft_instructions: { value(i) {
     return this.element(`(//*[@data-id='textarea-draft-instructions'])[${i}]`, 'xpath');
-  }},
-
-  save_ddraft_instructions: { value(i) {
-    return this.element(`(//*[@data-id='save-draft-instructions'])[${i}]`, 'xpath');
   }},
 
   ddraft_delete: { value(i) {
