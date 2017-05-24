@@ -1,8 +1,9 @@
 let page = require('../../pages/NextGen Writer Key/instructor-assignment-summary-page');
 let rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
+var faker = require('faker');
 
 exports.define = function(steps) {
-  steps.given('I visit the SLS create activity page', function() {
+  steps.given('I open the Writer Key Next Gen Application', function() {
     page.visit();
   });
 
@@ -106,17 +107,11 @@ exports.define = function(steps) {
   });
 
   steps.then('I reset the assignment prompt for the next test', function() {
+    // https://bugs.chromium.org/p/chromedriver/issues/detail?id=30
     page.activity_prompt_edit.click();
-    rtePage.draftEditor.click();
     rtePage.draftEditor.getText()
-      .then(function(content) {
-        let lefts = '';
-        let contentLength = content.length + 1;
-        for (let i = 0; i < contentLength; i++) {
-          lefts += keys.LEFT;
-        }
-        rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
-        rtePage.draftEditor.sendKeys(keys.DELETE);
+      .then(text => {
+        rtePage.draftEditor.sendKeys(keys.DELETE.repeat(text.length));
       });
     page.activity_prompt_save.click();
   });
@@ -226,7 +221,7 @@ exports.define = function(steps) {
 
   // TODO: this step does not do what it says.  whether it's just unclear, or out of date... it's wrong.
   steps.then("A new draft will be added above the '$number' existing draft", function(number) {
-    throw new Error('Explode mystic dove');
+    if (number) {throw new Error('Explode mystic dove');}
     let draftCount = parseInt(number);
     let drafts = driver.findElements({css: "[data-id^='MLCard-Draft']"});
     let paper = driver.findElements({css: "[data-id^='MLCard-Final-Paper']"});
@@ -283,16 +278,17 @@ exports.define = function(steps) {
       });
   });
 
+  steps.then(`I clear the text field '$elem'`, function(elem) {
+    page[elem].getText()
+      .then(text => {
+        page[elem].sendKeys(keys.BACK_SPACE.repeat(text.length));
+      });
+  });
+
   steps.when('I clear the draft instructions', function() {
     page.textarea_draft_instructions.getText()
-      .then(function(content) {
-        let lefts = '';
-        let contentLength = content.length + 1;
-        for (let i = 0; i < contentLength; i++) {
-          lefts += keys.LEFT;
-        }
-        page.textarea_draft_instructions.sendKeys(keys.SHIFT + lefts);
-        page.textarea_draft_instructions.sendKeys(keys.DELETE);
+      .then(text => {
+        page.textarea_draft_instructions.sendKeys(keys.BACK_SPACE.repeat(text.length));
       });
   });
 
@@ -323,6 +319,24 @@ exports.define = function(steps) {
     let x = { get() { return this.elements("[data-id='draft-name']"); } };
     expect([x.length] - 1).to.contain(title);
   });
+  steps.when(`I type '$text' in the activity title`, function(text) {
+    page.edit_title_textarea.sendKeys(text);
+  });
+  steps.then('I see the default activity page', function() {
+    driver.wait(until.urlContains(page.default_activity_url), 5000, 'redirect did not hit target');
+  });
+
+  steps.then('I am not on the default activity page', function() {
+    driver.getCurrentUrl().then(function(url) {
+      expect(url).to.not.contain(page.default_activity_url);
+    });
+  });
+
+  steps.given("I create a new activity as '$user'", function(user) {
+    var uuid = faker.random.uuid();
+    var createUrl = marvin.config.baseUrl + user + '/' + uuid;
+    driver.get(createUrl);
+  });
 
   steps.then(/the assignment should have (\d+) "(.+)"/, function(count, elem) {
     page[elem]('all').then(cards => {
@@ -350,5 +364,24 @@ exports.define = function(steps) {
     console.log(Object.keys(el));
     el.sendKeys(input);
   });
+
+  steps.when('I select "$text" in the activity title', function(text) {
+    // can't seem to get command+a or control+a to select all
+    // let's use shift and many lefts
+    let lefts = '';
+    for (let i = 0; i < text.length; i++) {
+      lefts += keys.LEFT;
+    }
+    page.edit_title_textarea.sendKeys(keys.SHIFT + lefts);
+  });
+
+
+  steps.when('I delete text in the activity title', function() {
+    page.edit_title_textarea.sendKeys(keys.DELETE);
+  });
+  //   steps.then("the second to last draft should be renamed '$title'", function(title) {
+  //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
+  //     expect([x.length]-1).to.contain(title);
+  //   });
 
 };

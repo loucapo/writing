@@ -22,6 +22,10 @@ class MLEditor extends Component {
     this.setState({
       editorState
     });
+    if (this.props.notifyOnEditorUpdate) {
+      let content = convertToRaw(editorState.getCurrentContent());
+      this.props.notifyOnEditorUpdate(content);
+    }
   };
 
   handleBlur = (e) => {
@@ -56,7 +60,8 @@ class MLEditor extends Component {
 MLEditor.propTypes = {
   handleSave: PropTypes.func,
   editable: PropTypes.bool,
-  content: PropTypes.object
+  content: PropTypes.object,
+  notifyOnEditorUpdate: PropTypes.func
 };
 
 export default MLEditor;

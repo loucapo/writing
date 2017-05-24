@@ -12,7 +12,7 @@ const AccordionCard = ({ content }) => {
 };
 
 AccordionCard.propTypes = {
-  content: PropTypes.string
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
 
 export default AccordionCard;

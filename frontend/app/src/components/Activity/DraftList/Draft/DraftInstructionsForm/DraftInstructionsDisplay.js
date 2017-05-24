@@ -9,13 +9,11 @@ const DraftInstructionsDisplay = ({ instructions }) => {
   }
   return (
     <div>
+      <div data-id="draft-instructions" className={styles.addDraftHeading}>
+        <span>Draft Instructions</span>
+      </div>
       <div>
-        <div className={styles.addDraftHeading}>
-          <span>Draft Instructions</span>
-        </div>
-        <div>
-          {instructions}
-        </div>
+        {instructions}
       </div>
     </div>
   );

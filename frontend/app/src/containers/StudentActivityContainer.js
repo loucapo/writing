@@ -4,6 +4,7 @@ import StudentActivity from '../components/Activity/StudentActivity';
 import {getActivity} from '../modules/activityModule';
 import { getCriteria } from '../modules/criteriaModule';
 import {getRubricList} from './../modules/rubricModule';
+import {createStudentActivityIfNotCreated} from './../modules/studentActivityModule';
 
 class StudentActivityContainer extends Component {
   componentWillMount() {
@@ -12,6 +13,7 @@ class StudentActivityContainer extends Component {
 
   loadData() {
     if (this.props.activityId) {
+      this.props.createStudentActivityIfNotCreated(this.props.activityId);
       this.props.getActivity(this.props.activityId);
       this.props.getCriteria();
       this.props.getRubricList();
@@ -32,6 +34,7 @@ StudentActivityContainer.propTypes = {
   getActivity: PropTypes.func,
   getCriteria: PropTypes.func,
   getRubricList: PropTypes.func,
+  createStudentActivityIfNotCreated: PropTypes.func,
   drafts: PropTypes.array
 
 };
@@ -40,6 +43,7 @@ const mapStateToProps = (state) => {
   const activityId = state.auth.activity.activityId;
   let drafts = state.drafts.filter(draft => draft.activityId === activityId);
 
+  //activityId coming from auth so it's there but activity may not be
   return {
     activityId,
     activity: state.activities.find(x => x.activityId === activityId),
@@ -47,4 +51,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {getCriteria, getActivity, getRubricList})(StudentActivityContainer);
+export default connect(mapStateToProps, {
+  getCriteria,
+  getActivity,
+  getRubricList,
+  createStudentActivityIfNotCreated
+})(StudentActivityContainer);

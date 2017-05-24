@@ -1918,9 +1918,9 @@ draft-js@^0.7.0:
     fbjs "^0.8.1"
     immutable "^3.7.4"
 
-draftjs-utils@^0.7.4:
-  version "0.7.4"
-  resolved "http://npm.macmillantech.com:8080/d/draftjs-utils/_attachments/draftjs-utils-0.7.4.tgz#4ed38f5aadf2c230cd8c0a7ab55afcc4f8b9e7a0"
+draftjs-utils@^0.7.5:
+  version "0.7.5"
+  resolved "http://npm.macmillantech.com:8080/d/draftjs-utils/_attachments/draftjs-utils-0.7.5.tgz#982b671bf9b8296c89b05683e63257817d30de55"
   dependencies:
     immutable "^3.x.x"
 
@@ -5353,12 +5353,12 @@ react-dom@15.4.2, react-dom@^15.3.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-draft-wysiwyg@^1.9.5:
-  version "1.9.5"
-  resolved "http://npm.macmillantech.com:8080/r/react-draft-wysiwyg/_attachments/react-draft-wysiwyg-1.9.5.tgz#952ed564a0554bf5b6f76f5fccc332f0c5a274e5"
+react-draft-wysiwyg@1.9.7:
+  version "1.9.7"
+  resolved "http://npm.macmillantech.com:8080/r/react-draft-wysiwyg/_attachments/react-draft-wysiwyg-1.9.7.tgz#f5e71790ce0349a997f35d2c24566223bc2af2be"
   dependencies:
     classnames "^2.2.5"
-    draftjs-utils "^0.7.4"
+    draftjs-utils "^0.7.5"
     immutable "^4.0.0-rc.1"
     prop-types "^15.5.8"
 

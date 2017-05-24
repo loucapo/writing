@@ -15,5 +15,5 @@ VALUES
     :activityId,
     :studentId,
     :createdById,
-    :createdDate)
+    current_date)
 

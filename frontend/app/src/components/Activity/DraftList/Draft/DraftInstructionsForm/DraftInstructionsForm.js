@@ -82,7 +82,7 @@ class DraftInstructionsForm extends Component {
                   </a>
                 </div>
               </div>
-              <div>
+              <div data-id="draft-instructions">
                 {this.state.value}
               </div>
             </div>

@@ -44,7 +44,9 @@ const DraftDetailsPanel = ({
     },
     {
       title: 'Activity Prompt',
-      content: <MLEditor content={activity.prompt} editable={false} />,
+      content: <div data-id="activity-prompt-content-detail-panel">
+        <MLEditor content={activity.prompt} editable={false} />
+      </div>,
       dataId: 'activity-prompt-detail-panel'
     },
     {

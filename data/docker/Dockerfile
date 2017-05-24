@@ -12,3 +12,5 @@ ADD ./database.json /$HOME/database.json
 RUN yarn install
 
 ADD ./app /$HOME/app
+
+CMD yarn start
