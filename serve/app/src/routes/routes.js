@@ -2,21 +2,22 @@ module.exports = function routes(koarouter,
                                  controllers) {
   return function module(app) {
     const router = koarouter();
-    // launch specifically had better have a cookie with it.
-    router.get('launch', '/lms/:lmsId/course/:courseId/resource/:resourceId', controllers.launchController.launch);
 
-    // student specifically will take you to student to get a student JWT
+    // /student specifically will give you a hardcoded resource with a student JWT
+    // /student/:resourceId will give you a particular activity with a student JWT
     router.get('student', '/student', controllers.studentController.activityOverview);
     router.get('studentResource', '/student/:resourceId', controllers.studentController.activityOverview);
 
-    // default or specifically /instructor will take you to instructor to get instructor JWT
+    // /instructor specifically will give you a hardcoded resource with an instructor JWT
+    // /instructor/:resourceId will give you a particular activity with an instructor  JWT
     router.get('instructor', '/instructor', controllers.instructorController.activityOverview);
     router.get('instructorResource', '/instructor/:resourceId', controllers.instructorController.activityOverview);
 
-    // kitchen sink route
+    // kitchen sink route for demoing components
     router.get('kitchensink', '/kitchensink', controllers.kitchenSinkController.ksOverview);
 
-    router.get('wildcard', '*', controllers.launchController.fourOhFour);
+    // all other requests, we serve the app.
+    router.get('wildcard', '*', controllers.launchController.launch);
 
     app.use(router.routes());
     app.use(router.allowedMethods());
