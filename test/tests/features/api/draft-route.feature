@@ -1,6 +1,6 @@
 @using=supertest
 @api
-@only
+
 Feature: Draft API Routes
   Scenario: Receive a 200 status when POST /activity/:activityid/draft with valid cookie and valid json without id
     Given I get an instructor cookie and receive status '200'
