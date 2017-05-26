@@ -2,7 +2,8 @@
 @only
 @db=reset
 Feature: Add Another Draft To Activity
-  @wip
+  @only
+  @db=reset
   Scenario: Adding a second draft
     Given I launch the activity as an "instructor"
     Then I should see a fresh assignment
@@ -18,6 +19,7 @@ Feature: Add Another Draft To Activity
     And I wait until there are 2 "add-instructions" visible
 
   @only
+  @db=reset
   Scenario: Saving Description to the New Draft
     Given I launch the activity as an "instructor"
     Then I should see a fresh assignment

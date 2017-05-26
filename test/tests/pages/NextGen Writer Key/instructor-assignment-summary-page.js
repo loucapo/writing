@@ -112,6 +112,9 @@ module.exports = new Page({
     type: `xpath`
   }),
 
+  ddraft_card_title: basePageObj({
+    desc: `The title `
+  }),
   // save_ddraft_instructions: { value(i) {
   //   return this.element(`(//*[@data-id='save-draft-instructions'])[${i}]`, 'xpath');
   // }},
