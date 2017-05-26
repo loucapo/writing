@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import StudentDraft from '../components/Draft/StudentDraft';
-import {getStudentDraft, createStudentDraftIfNotThere} from '../modules/studentDraftModule';
+import {getStudentDraft, createStudentDraftIfNotThere, updateDraftPaper} from '../modules/studentDraftModule';
 
 class StudentDraftContainer extends Component {
   componentWillMount() {
@@ -24,7 +24,7 @@ class StudentDraftContainer extends Component {
   }
 
   render() {
-    return <StudentDraft {...this.props} />;
+    return this.props.studentDraft ? (<StudentDraft {...this.props} />) : null;
   }
 }
 
@@ -49,5 +49,7 @@ const mapStateToProps = (state, props) => {
 
 export default connect(mapStateToProps, {
   getStudentDraft,
-  createStudentDraftIfNotThere
+  createStudentDraftIfNotThere,
+  updateDraftPaper
 })(StudentDraftContainer);
+

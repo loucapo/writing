@@ -22,17 +22,17 @@ module.exports = function(faker) {
       };
     };
 
-    let simpleQuickFeedback = function() {
-      return {
-        quick_feedback_id: faker.random.uuid(),
-        title: faker.random.words(),
-        description: `description...`,
-        created_by_id: faker.random.uuid(),
-        created_date: `2017-01-01`,
-        modified_by_id: faker.random.uuid(),
-        modified_date: null
-      };
-    };
+    // let simpleQuickFeedback = function() {
+    //   return {
+    //     quick_feedback_id: faker.random.uuid(),
+    //     title: faker.random.words(),
+    //     description: `description...`,
+    //     created_by_id: faker.random.uuid(),
+    //     created_date: `2017-01-01`,
+    //     modified_by_id: faker.random.uuid(),
+    //     modified_date: null
+    //   };
+    // };
 
     return {
       activity: [
@@ -40,18 +40,6 @@ module.exports = function(faker) {
         simpleActivity(),
         simpleActivity()
       ],
-
-      draft: [
-        // { id: ``,
-        //   activity_id: ``,
-        //   instructions: ``,
-        //   index: ``,
-        //   created_date: ``,
-        //   updated_at: ``
-        // }
-      ],
-
-      quick_feedback: Array.from(Array(5)).map(simpleQuickFeedback),
 
       criteria: [
         {

@@ -4,7 +4,7 @@ import MLButton from '../../MLButton/MLButton.js';
 
 import styles from './header.css';
 
-const Header = ({draftIsEmpty}) => {
+const Header = ({draftIsEmpty, studentDraft, studentActivityId}) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -12,10 +12,12 @@ const Header = ({draftIsEmpty}) => {
           <MLButton
             title="Save"
             dataId="save-draft"
-            disabled={true}
+            disabled={draftIsEmpty}
             bordered={true}
           />
           <MLButton
+            link={`studentReflectionQuestions/
+            ${studentActivityId}/studentdraft/${studentDraft.studentDraftId}`}
             title="Done, Start Reflection"
             dataId="start-reflection"
             disabled={draftIsEmpty}
@@ -27,7 +29,10 @@ const Header = ({draftIsEmpty}) => {
 };
 
 Header.propTypes = {
-  draftIsEmpty: PropTypes.bool
+  draftIsEmpty: PropTypes.bool,
+  studentDraft: PropTypes.object,
+  studentActivityId: PropTypes.string
+
 };
 
 export default Header;

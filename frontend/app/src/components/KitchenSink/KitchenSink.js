@@ -4,6 +4,8 @@ import MLAccordion from '../MLAccordion/MLAccordion';
 import MLCard from '../MLCard/MLCard';
 import MLDropdown from '../MLDropdown/MLDropdown';
 import MLTable from '../MLTable/MLTable';
+import MLButton from '../MLButton/MLButton';
+import MLDialog from '../MLDialog/MLDialog';
 import MLMessage from '../MLMessage/MLMessage';
 import MLSpinner from '../MLSpinner/MLSpinner';
 import DemoModal from '../MLModal/Modals/DemoModal';
@@ -83,7 +85,8 @@ const dummyAccordionList = [
 
 class KitchenSink extends Component {
   state = {
-    modalIsOpen: false
+    modalIsOpen: false,
+    showDialog: false
   };
 
   toggleModal = () => {
@@ -92,6 +95,28 @@ class KitchenSink extends Component {
 
   selectOnChange = (selected) => {
     console.log(selected);
+  };
+
+  showDialog = () => {
+    this.setState({
+      showDialog: true
+    });
+  };
+
+  closeDialog = confirm => {
+    confirm = confirm || false;
+    this.setState(
+      {
+        showDialog: false
+      },
+      function doSomething() {
+        if (confirm) {
+          /* eslint-disable no-alert */
+          window.alert('Confirm logic would be run here.');
+          /* eslint-enable no-alert */
+        }
+      }
+    );
   };
 
   render() {
@@ -146,6 +171,41 @@ class KitchenSink extends Component {
               short loin. Pork belly ball tip boudin kielbasa picanha.
             </div>
           </MLCard>
+        </div>
+
+        {/*dialog component demo*/}
+        <div className={styles.padder}>
+          <h3>Dialog Component</h3>
+          <p>
+            Renders a confirmation <a href="#" onClick={this.showDialog}>dialog</a> which is totally customizable
+          </p>
+          <h4>Parameters:</h4>
+          <ol>
+            <li>title: the title at the top of the confirmation window</li>
+            <li>message: string message to appear in the dialog</li>
+            <li>show: boolean used to taggle the dialog on and off</li>
+            <li>children: the children components should be one or more MLButton components on the dialog</li>
+          </ol>
+        </div>
+        <div className="spacer">
+          <MLDialog
+            title={'This is the MLDialog title'}
+            message={'This is the MLDialog message'}
+            show={this.state.showDialog}
+          >
+            <MLButton
+              title="Cancel"
+              bordered={true}
+              color="red"
+              dataId="dialog-cancel"
+              handleClick={this.closeDialog.bind(this, false)}
+            />
+            <MLButton
+              title="Submit"
+              handleClick={this.closeDialog.bind(this, true)}
+              dataId="dialog-submit"
+            />
+          </MLDialog>
         </div>
 
         {/*dropdown component demo*/}

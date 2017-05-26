@@ -13,6 +13,13 @@ deps: \
 	cd ../serve && yarn && \
 	cd ../test && yarn
 
+cleanDeps:
+	cd api && rm -rf node_modules && yarn && \
+	cd ../data && rm -rf node_modules && yarn && \
+	cd ../frontend && rm -rf node_modules &&yarn && \
+	cd ../serve && rm -rf node_modules && yarn && \
+	cd ../test && rm -rf node_modules && yarn
+
 .PHONY: dev
 dev:
 	./dev.sh
@@ -55,3 +62,12 @@ ecr-login:
 
 exec:
 	docker exec -it $(con) bash
+
+load-data:
+	cd data && make load-data
+
+kill-data:
+	cd data && make kill-data
+
+blastAndRebuild:
+	cd data && make blastAndRebuild

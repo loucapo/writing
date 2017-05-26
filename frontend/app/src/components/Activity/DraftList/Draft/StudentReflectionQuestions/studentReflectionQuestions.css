@@ -20,6 +20,10 @@
   font-weight: bold;
 }
 
+.icons {
+  display: flex;
+}
+
 .icon {
   fill: var(--aqua);
 }
