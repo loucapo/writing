@@ -394,7 +394,7 @@ exports.define = function(steps) {
   steps.when('I delete text in the activity title', function() {
     page.edit_title_textarea.sendKeys(keys.DELETE);
   });
-  //   steps.then("the second to last draft should be renamed '$title'", function(title) {
+
   //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
   //     expect([x.length]-1).to.contain(title);
   //   });
