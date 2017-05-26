@@ -1,4 +1,4 @@
-module.exports = function(repository, sqlLibrary, domain, entityBuilders) {
+module.exports = function(repository, Activity, sqlLibrary, draftBuilder) {
   return {
     async getActivityARById(activityId) {
       const keys = { activityId };
@@ -8,9 +8,9 @@ module.exports = function(repository, sqlLibrary, domain, entityBuilders) {
       if (!activity) {
         throw new Error(`No activity found with id: ${activityId}`);
       }
-      activity.drafts = await entityBuilders.DraftBuilder.getDraftsByActivityId(activityId);
+      activity.drafts = await draftBuilder.getDraftsByActivityId(activityId);
 
-      return new domain.Activity(activity);
+      return new Activity(activity);
     }
   };
 };

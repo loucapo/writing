@@ -26,6 +26,18 @@ module.exports = function(config, moment, superagent, logger, jsonwebtoken) {
       };
       const jwt = jsonwebtoken.sign(dummyData, config.app.consumer_secret);
 
+      // make call to API to create resource
+      superagent
+        .put(`${config.app.wk_api_url}/activity/${activityId}/studentactivity`)
+        .set('Cookie', `id_token=${jwt}`)
+        .end(err => {
+          if (err) {
+            //XXX - this used to throw, but that would cause the service to crash.  Will circle back on that.
+            logger.error(`error: ${JSON.stringify(err)}`);
+            return ctx;
+          }
+        });
+
       //set the cookie and redirect.
       ctx.cookies.set('id_token', jwt, {httpOnly: false});
       ctx.redirect('/lms/' + lmsId + '/course/' + courseId + '/resource/' + activityId);

@@ -35,7 +35,7 @@ class StudentReflectionQuestions extends Component {
                     />
                   </span>
                 </div>
-                <div>
+                <div className={styles.icons}>
                   <span data-id="reflections-edit">
                     <a onClick={this.toggleModal}>
                       <MLIcon

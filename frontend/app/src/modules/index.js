@@ -7,9 +7,11 @@ import feedbackToolContentItems from './feedbackToolContentModule';
 import publisherContent from './publisherContentModule';
 import resourceLinks from './resourceLinksModule';
 import auth from './authModule';
+import defaults from './defaultsModule';
 import studentActivities from './studentActivityModule';
 import studentDraft from './studentDraftModule';
 import studentReflectionQuestions from './studentReflectionQuestionsModule';
+import studentReflectionAnswers from './studentReflectionAnswersModule';
 
 export {activityAction} from './activityModule';
 export {getStudentSubmissionAction, submissionOnChange} from './studentSubmissionModule';
@@ -25,7 +27,9 @@ export default {
   publisherContent,
   resourceLinks,
   auth,
+  defaults,
   studentDraft,
   studentActivities,
-  studentReflectionQuestions
+  studentReflectionQuestions,
+  studentReflectionAnswers
 };

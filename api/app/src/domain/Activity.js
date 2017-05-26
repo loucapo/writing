@@ -1,4 +1,4 @@
-module.exports = function(AggregateRootBase, entities, invariant, uuid) {
+module.exports = function(AggregateRootBase, Draft, invariant, uuid) {
   return class Activity extends AggregateRootBase {
     constructor(activity) {
       super();
@@ -57,7 +57,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
       cmd.activityId = this.activityId;
       this.drafts = this.bumpDraftIndexes(this.drafts);
 
-      let draft = new entities.Draft(cmd);
+      let draft = new Draft(cmd);
       this.drafts.push(draft);
       const event = this.mapper(cmd);
       this.raiseEvent({
@@ -125,6 +125,7 @@ module.exports = function(AggregateRootBase, entities, invariant, uuid) {
       draft.setStudentReflectionQuestions(cmd);
       return event;
     }
+
     getDraftGoalsByDraftId(cmd) {
       return this.drafts.find(x => x.draftId === cmd.draftId).goals.map(x => ({draftId: cmd.draftId, goalId: x}));
     }

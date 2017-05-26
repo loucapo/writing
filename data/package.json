@@ -10,7 +10,7 @@
     "migrate-new": "db-migrate --sql-file create",
     "loadData": "node app/loadDataIndex",
     "killAllData": "node app/killDataIndex",
-    "blastAndRebuild": "node app/killDataIndex && db-migrate up && node app/loadDataIndex",
+    "blastAndRebuild": "node app/killDataIndex && node app/migrateIndex && node app/loadDataIndex",
     "lint": "eslint -c ./../.eslintrc.json .",
     "validate": "npm ls"
   },

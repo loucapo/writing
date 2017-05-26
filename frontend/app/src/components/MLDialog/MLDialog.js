@@ -1,10 +1,9 @@
 import React, {PropTypes} from 'react';
 import MLIcon from 'ml-react-cdl-icons';
-import MLButton from '../MLButton/MLButton';
 
 import styles from './mlDialogStyles.css';
 
-const MLDialog = ({message, title, show, close}) => {
+const MLDialog = ({message, children, title, show, close}) => {
   show = show || false;
   let className = styles.alert_container + ((show) ? ' ' + styles.alert_container_show : '');
 
@@ -35,18 +34,7 @@ const MLDialog = ({message, title, show, close}) => {
               {message}
             </div>
             <div className={styles.buttons}>
-              <MLButton
-                title="Delete"
-                color="red"
-                bordered={true}
-                handleClick={closeDialog.bind(this, true)}
-                dataId="prompt-cancel"
-              />
-              <MLButton
-                title="Cancel"
-                dataId="prompt-save"
-                handleClick={closeDialog.bind(this, false)}
-              />
+              {children}
             </div>
           </div>
         </div>
@@ -57,6 +45,7 @@ const MLDialog = ({message, title, show, close}) => {
 
 MLDialog.propTypes = {
   message: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   title: PropTypes.string,
   show: PropTypes.bool,
   close: PropTypes.func

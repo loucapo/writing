@@ -24,6 +24,7 @@ services:
       service: data
     volumes:
       - ./../data/app:/home/current/app
+      - ./../data/migrations:/home/current/migrations
 
   serve:
     extends:

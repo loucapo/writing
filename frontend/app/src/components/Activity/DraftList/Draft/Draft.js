@@ -4,6 +4,7 @@ import MLIcon from 'ml-react-cdl-icons';
 import MLDropdown from '../../../MLDropdown/MLDropdown';
 import MLDialog from '../../../MLDialog/MLDialog';
 import MLCard from '../../../MLCard/MLCard';
+import MLButton from '../../../MLButton/MLButton';
 import DraftGoals from './DraftGoals/DraftGoals';
 import StudentReflectionQuestions
   from './StudentReflectionQuestions/StudentReflectionQuestions';
@@ -71,7 +72,21 @@ class Draft extends Component {
             message={cardMessage}
             show={this.state.showDeleteConfirm}
             close={this.closeDialog}
-          />
+          >
+            <MLButton
+              title="Delete"
+              color="red"
+              bordered={true}
+              handleClick={this.closeDialog.bind(this, true)}
+              dataId="dialog-delete"
+            />
+            <MLButton
+              title="Cancel"
+              dataId="dialog-cancel"
+              handleClick={this.closeDialog.bind(this, false)}
+            />
+
+          </MLDialog>
 
           <section className={styles.draftType}>
             <div
