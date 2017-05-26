@@ -21,16 +21,16 @@ Feature: Add Another Draft To Activity
     When I click the "add_draft_button"
     Then I wait until there are 2 "ddraft_card"
     And  I wait until there are 0 "ddraft_instructions"
-    And I click "add_ddraft_instructions" #2 
-    And I type "hello world" in "textarea_ddraft_instructions" (2)
-    And I click "save_ddraft_instructions" #2 
+    And I click "add_ddraft_instructions" [2] 
+    And I type "hello world" in "textarea_ddraft_instructions" [2]
+    And I click "save_ddraft_instructions" [2] 
     Then I wait until there is 1 "ddraft_instructions"
-    And I click "add_ddraft_instructions" #1
-    And I type "more hello world" in "textarea_ddraft_instructions" (1)
-    And I click "save_ddraft_instructions" #1
+    And I click "add_ddraft_instructions" [1]
+    And I type "more hello world" in "textarea_ddraft_instructions" [1]
+    And I click "save_ddraft_instructions" [1]
     Then I wait until there are 2 "ddraft_instructions"
-    Then the text of "ddraft_instructions" #2 should be "hello world"
-    And  the text of "ddraft_instructions" #1 should be "more hello world"
+    Then the text of "ddraft_instructions" [2] should be "hello world"
+    And  the text of "ddraft_instructions" [1] should be "more hello world"
 
   Scenario: Adding First Draft
     Given I launch the activity as a 'instructor'

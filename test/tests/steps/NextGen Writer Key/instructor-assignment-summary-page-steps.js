@@ -98,10 +98,6 @@ exports.define = function(steps) {
     });
   });
 
-  steps.when(/I click "(.+)" #(\d+)/, function(element, index) {
-    page[element](parseInt(index)).then(el => el.click());
-  });
-
   steps.when('I click the "$element"', function(elem) {
     page[elem].click();
   });
@@ -303,11 +299,6 @@ exports.define = function(steps) {
       });
   });
 
-  steps.then(/the text of "(.*)" #(\d+) should be "(.*)"/, (elem, arg, text) => {
-    page[elem](parseInt(arg)).then(el => el.getText())
-      .then(actualText => { text.should.equal(actualText); });
-  });
-
   steps.then("Text '$text' should appear in the draft instructions", function(text) {
     page.textarea_draft_instructions.getText()
       .then(function(text2) {
@@ -355,12 +346,38 @@ exports.define = function(steps) {
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
   });
 
- // TODO doc this
-  steps.then(/I type "(.*)" in "(.*)"(\s*\(\w*\))?/, (input, elem, arg) => {
-    // FIXME: calling with empty args must work
-    //let el = (arg == undefined) ? page[elem]() : page[elem](arg);
-    let el = (arg === undefined) ? page[elem](1) : page[elem](arg);
-    el.sendKeys(input);
+  //
+  // PLEASE NOTE as always, an element will match if it exists in the dom _at all_, not only if it's currently visible.
+  // I type "buncha text" in "some-page-object"       // => returns the 1st match it finds, or throws
+  // I type "buncha text" in "some-page-object" [13]  // => returns the 13th match it finds, or throws.  must be > 0
+  // I type "buncha text" in "some-page-object" [all] // => no, stop, why would you do this?  don't do this.
+  steps.then(/I type "(.*)" in "(.*)"(?:\s*\[(\w*)\])?/, (input, elem, arg) => {
+    // TODO: i bet these two lines get repeated a whoooole bunch and should be pulled out.
+    if (arg === undefined) { arg = 1; }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[elem](arg).then(el => el.sendKeys(input));
+  });
+
+  // TODO: doc this
+  steps.when(/I click "(.+)"(?:\s*\[(\w*)\])?/, function(element, arg) {
+    if (arg === undefined) { arg = 1; }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[element](arg).then(el => el.click());
+  });
+
+  // NOTE that this is an IS match, not a contains.
+  // the text of "some-page-object" is "some other string"      // => returns the 1st match it finds, or throws
+  // the text of "some-page-object" [13] is "some other string" // => returns the 13th match it finds, or throws.  must be > 0
+  // TODO: is it worth it to switch to xregexp to actually get named capture groups?
+  steps.then(/the text of "(.*)"(?:\s*\[(.*)\])? should be "(.*)"/, (elem, arg, text) => {
+    // without named groups you do this dance
+    if (text === undefined) {
+      text = arg;
+      arg = 1;
+    }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[elem](arg).then(el => el.getText())
+      .then(actualText => { text.should.equal(actualText); });
   });
 
   steps.when('I select "$text" in the activity title', function(text) {
