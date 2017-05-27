@@ -18,15 +18,6 @@ exports.define = function(steps) {
       });
   });
 
-  steps.then('I should see a fresh assignment', function() {
-    // FIXME: do it
-    console.log('TODO qqrx');
-  });
-
-  steps.then('I sleep for $d seconds', function(d) {
-    driver.sleep(d * 1000);
-  });
-
   steps.then('I should see a new assignment created', function() {
     page.confirmation_message.isDisplayed().should.eventually.equal(true);
   });
@@ -340,9 +331,25 @@ exports.define = function(steps) {
     });
   });
 
-  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"/, (count, elem) => {
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, elem) => {
     driver.wait(() => {
-      return page[elem]('all').then(num => num.length === parseInt(count));
+      return page[elem]('all').then(els => {
+        // console.log(`CHECKING ${elem}:`);
+        // console.log(page[elem]('opts').locator);
+        // console.log(els.length);
+        // console.log(count);
+        return (els.length === parseInt(count));
+      });
+    }, 3500, `Couldn't find ${count} instances of ${elem}`);
+  });
+
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, elem) => {
+    driver.wait(() => {
+      return page[elem]('all').then(els => {
+        // TODO: filter (map) on whether they're actually visible
+        // until you do, this is just the same as the step above.
+        return (els.length === parseInt(count));
+      });
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
   });
 
@@ -390,10 +397,19 @@ exports.define = function(steps) {
     page.edit_title_textarea.sendKeys(keys.SHIFT + lefts);
   });
 
+  // steps.when('I delete text in the activity title', function() {
+  //   page.edit_title_textarea.sendKeys(keys.DELETE);
+  // });
 
-  steps.when('I delete text in the activity title', function() {
-    page.edit_title_textarea.sendKeys(keys.DELETE);
+  steps.then('I should see a fresh assignment', function() {
+    // FIXME: do it
+    console.log('TODO qqrx');
   });
+
+  steps.then('I sleep for $d seconds', function(d) {
+    driver.sleep(d * 1000);
+  });
+
 
   //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
   //     expect([x.length]-1).to.contain(title);

@@ -2,6 +2,7 @@
 @only
 @db=reset
 Feature: Add Another Draft To Activity
+
   @only
   @db=reset
   Scenario: Adding a second draft
@@ -13,10 +14,9 @@ Feature: Add Another Draft To Activity
     Then I wait until there are 2 "ddraft_card" visible
     And the text of "ddraft_card_title" [2] should be "Final Paper"
     And the text of "ddraft_card_title" [1] should be "Draft 1"
-    And I wait until there are 2 "add-instructions" visible
-    And I wait until there are 2 "add-draft-goal" visible
-    And I wait until there are 2 "review-type-dropdown" visible
-    And I wait until there are 2 "add-instructions" visible
+    And I wait until there are 2 "draft_add_instructions" visible
+    And I wait until there are 2 "draft_add_goal" visible
+    And I wait until there are 2 "draft_review_dropdown" visible
 
   @only
   @db=reset
@@ -38,22 +38,24 @@ Feature: Add Another Draft To Activity
     Then the text of "ddraft_instructions" [2] should be "hello world"
     And  the text of "ddraft_instructions" [1] should be "more hello world"
 
-  @wip
+  @only
+  @db=reset
   Scenario: Adding First Draft
     Given I launch the activity as an "instructor"
     Then I should see a fresh assignment
     When I click the "add_draft_button"
     Then I wait until there are 2 "ddraft_card" visible
-    Then I wait until there are 2 "ddraft_delete" visible
-    And the text of "ddraft_count" should be "Drafts (2)"
+    #Then I sleep for 99 seconds
+    Then I wait until there are 2 "draft_delete" visible
+    And the text of "draft_count" should be "DRAFTS (2)"
     When I click the "add_draft_button"
     Then I wait until there are 3 "ddraft_card" visible
-    Then I wait until there are 3 "ddraft_delete" visible
-    And the text of "ddraft_count" should be "Drafts (3)"
+    Then I wait until there are 3 "draft_delete" visible
+    And the text of "draft_count" should be "DRAFTS (3)"
     When I click the "add_draft_button"
     Then I wait until there are 4 "ddraft_card" visible
-    Then I wait until there are 4 "ddraft_delete" visible
-    And the text of "ddraft_count" should be "Drafts (4)"
+    Then I wait until there are 4 "draft_delete" visible
+    And the text of "draft_count" should be "DRAFTS (4)"
 
   # Scenario: Adding First Draft
   #   Given I launch the activity as a 'instructor'

@@ -6,7 +6,7 @@ function basePageObj(opts) {
   return {value(v) {
     opts.type = (opts.type || 'css');
     switch (typeof v) {
-      case undefined:
+      case 'undefined':
         return this.element(opts.locator, opts.type);
       case 'string':
         // this is surprisingly vital even for things that guaranteed only appear once
@@ -22,6 +22,8 @@ function basePageObj(opts) {
       case 'number':
         return this.elements(opts.locator, opts.type).then(els => els[v - 1]);
       default:
+        console.log(typeof v);
+        console.log(v);
         throw new Error('WUTINTARNATION!');
     }
   }};
@@ -113,8 +115,38 @@ module.exports = new Page({
   }),
 
   ddraft_card_title: basePageObj({
-    desc: `The title `
+    desc: `The title (header area) of each draft on the assignment summary page`,
+    // TODO: get dev to give this title a data-id.  with the svg and whatever in there,
+    //  draft-section text itself is like `>Final Draft\n>`
+    locator: `//*[@data-id="draft-section"]/span/span`,
+    type: `xpath`
   }),
+
+  draft_add_instructions: basePageObj({
+    desc: `Link to make visible and editable the draft instructions control`,
+    locator: `[data-id='add-instructions']`
+  }),
+
+  draft_add_goal: basePageObj({
+    desc: `Link to display the modal to edit a draft's reflections`,
+    locator: `[data-id='add-reflections']`
+  }),
+
+  draft_review_dropdown: basePageObj({
+    desc: `Select to set the type of review for a draft`,
+    locator: `[data-id='review-type-dropdown']`
+  }),
+
+  draft_delete: basePageObj({
+    desc: `Link to spawn a modal alert confirming deletion of a draft`,
+    locator: `[data-id='draft-delete']`
+  }),
+
+  draft_count: basePageObj({
+    desc: `A link to show the drafts pane on the assignment summary page that should also display the current number of drafts associated with an assignemnt`, // eslint-disable-line
+    locator: `[data-id='drafts']`
+  }),
+
   // save_ddraft_instructions: { value(i) {
   //   return this.element(`(//*[@data-id='save-draft-instructions'])[${i}]`, 'xpath');
   // }},
@@ -125,10 +157,6 @@ module.exports = new Page({
 
   textarea_ddraft_instructions: { value(i) {
     return this.element(`(//*[@data-id='textarea-draft-instructions'])[${i}]`, 'xpath');
-  }},
-
-  ddraft_delete: { value(i) {
-    return this.element(`(//*[@data-id='draft-delete'])[${i}]`, 'xpath');
   }},
 
   cancel_ddraft_instructions: { value(i) {
