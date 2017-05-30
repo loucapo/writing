@@ -13,7 +13,7 @@ BUILD_PLANNAME=$2
 set -e
 
 echo "Logging into the ECR"
-#$(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
+$(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
 
 echo "Creating the Build artifacts directory"
 rm -rf artifacts
@@ -46,16 +46,18 @@ done
 echo "image names in env file"
 cat artifacts/.env
 
-#cp artifacts/.env docker/.envrc.example
+cp artifacts/.env docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"
 
 docker-compose -f docker/docker-compose-build.yml build |
- xargs docker inspect -f '{{ .State.ExitCode }}' | grep -vxq echo'[^0]'
+ xargs docker inspect -f '{{ .State.ExitCode }}' | grep -vxq '[^0]'
 
 docker-compose -f docker/docker-compose-build.yml push |
  xargs docker inspect -f '{{ .State.ExitCode }}' | grep -vxq echo'[^0]'
 
 rm docker/.envrc.example
+
+docker-compose -f docker/docker-compose-build.yml down --rmi local --remove-orphans
 
 echo "All Docker Images have been built and deploy artifacts have been created, Happy deploying!"
