@@ -49,9 +49,19 @@ cp artifacts/.env docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"
 
-docker-compose -f docker/docker-compose-build.yml build
+docker-compose -f docker/docker-compose-build.yml build |
+ xargs docker inspect -f '{{ .State.ExitCode }}' | while read code; do
+                                                            if [ "$code" == "1" ]; then
+                                                               exit -1
+                                                            fi
+                                                        done
 
-docker-compose -f docker/docker-compose-build.yml push
+docker-compose -f docker/docker-compose-build.yml push |
+ xargs docker inspect -f '{{ .State.ExitCode }}' | while read code; do
+                                                          if [ "$code" == "1" ]; then
+                                                             exit -1
+                                                          fi
+                                                      done
 
 rm docker/.envrc.example
 
