@@ -77,7 +77,6 @@ module.exports = new Page({
 
   // draft sequence
   draft_names: { get() { return this.element("[data-id='draft-name']"); } },
-  add_draft_button: { get() { return this.element("[data-id='add-draft']"); } },
 
   // selection modal
   reflection_questions_modal: { get() { return this.element("[data-id='modal]"); }},
@@ -91,6 +90,11 @@ module.exports = new Page({
   reflection_question_checkbox: { value(i) {
     return this.element(`[data-id='input-fields'] div:nth-child(${i}) div [name=draftGoalOption]`);
   }},
+
+  add_draft_button: basePageObj({
+    desc: `Button to add another draft to the current assignment`,
+    locator: `[data-id='add-draft']`
+  }),
 
   add_ddraft_instructions: basePageObj({
     desc: `Button that makes the draft instructions editable for the xth draft on the summary page`,
@@ -147,6 +151,23 @@ module.exports = new Page({
     locator: `[data-id='drafts']`
   }),
 
+  // TODO: get dev to give this text block a data-id
+  draft_note: basePageObj({
+    desc: `Text block per draft describing necessary preconditions to start work on this particular draft`,
+    locator: "//*[starts-with(@class,'Draft__draftNote__')]",
+    type: 'xpath'
+  }),
+
+  draft_alert_delete_button: basePageObj({
+    desc: `The confirmation button in the alert dialog that is presented on attempting to delete a draft`,
+    locator: `[data-id='dialog-delete']`
+  }),
+
+  draft_alert_cancel_button: basePageObj({
+    desc: `The cancellation button in the alert dialog that is presented on attempting to delete a draft`,
+    locator: `[data-id='dialog-cancel']`
+  }),
+
   // save_ddraft_instructions: { value(i) {
   //   return this.element(`(//*[@data-id='save-draft-instructions'])[${i}]`, 'xpath');
   // }},
@@ -163,6 +184,11 @@ module.exports = new Page({
     return this.element(`(//*[@data-id='cancel-draft-instructions'])[${i}]`, 'xpath');
   }},
 
+  draft_delete_button: basePageObj({
+    desc: `A button to display a modal prompting for confirmation to delete this draft from the assignment`,
+    locator: `[data-id='draft-delete']`
+  }),
+
   draft_card: { get() { return this.element("[data-id='draft-section']"); } },
   add_draft_instructions: { get() { return this.element("[data-id='add-instructions']"); } },
   textarea_draft_instructions: { get() { return this.element("[data-id='textarea-draft-instructions']"); } },
@@ -173,7 +199,6 @@ module.exports = new Page({
   close_modal: { get() { return this.element("[data-id='close-modal']"); } },
 
   add_student_reflection_questions: { get() { return this.element("[data-id='add-reflections']"); } },
-  draft_delete_button: { get() { return this.element("[data-id='draft-delete']"); } },
   draft_instructions_edit: { get() { return this.element("[data-id='draft-instructions-edit']"); } },
 
   // draft details
@@ -185,7 +210,7 @@ module.exports = new Page({
   draft_learning_focus: { get() { return this.element(
     "[data-id='MLCard-Draft-2'] div section section:nth-child(2) div:nth-child(2) div:nth-child(3)"); } },
   draft_delete_alert: { get() { return this.element("[class^='MLDialog__alert']"); } },
-  draft_alert_delete_button: { get() { return this.element("[data-id='prompt-cancel']"); } },
+
   draft_alert_cancel_button: { get() { return this.element("[data-id='prompt-save']"); } },
   final_draft_delete_button: { get() { return this.element(
     "[data-id='MLCard-Final-Paper'] > [data-id='draft-section'] > div"); } },

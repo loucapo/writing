@@ -89,10 +89,6 @@ exports.define = function(steps) {
     });
   });
 
-  steps.when('I click the "$element"', function(elem) {
-    page[elem].click();
-  });
-
   steps.then('I reset the assignment prompt for the next test', function() {
     // https://bugs.chromium.org/p/chromedriver/issues/detail?id=30
     page.activity_prompt_edit.click();
@@ -320,38 +316,46 @@ exports.define = function(steps) {
   });
 
   steps.given("I create a new activity as '$user'", function(user) {
-    var uuid = faker.random.uuid();
-    var createUrl = marvin.config.baseUrl + user + '/' + uuid;
+    let uuid = faker.random.uuid();
+    let createUrl = marvin.config.baseUrl + user + '/' + uuid;
     driver.get(createUrl);
   });
 
-  steps.then(/the assignment should have (\d+) "(.+)"/, function(count, elem) {
-    page[elem]('all').then(cards => {
-      expect(cards.length).to.equal(parseInt(count));
-    });
-  });
+  // steps.when('I delete text in the activity title', function() {
+  //   page.edit_title_textarea.sendKeys(keys.DELETE);
+  // });
+
+  // this should be unused
+  // steps.then(/the assignment should have (\d+) "(.+)"/, function(count, elem) {
+  //   page[elem]('all').then(cards => {
+  //     expect(cards.length).to.equal(parseInt(count));
+  //   });
+  // });
+
+  ///////////////////////////// NEW STEPS ///////////////////////
+  ///////////////////////////// NEW STEPS ///////////////////////
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, elem) => {
     driver.wait(() => {
-      return page[elem]('all').then(els => {
-        // console.log(`CHECKING ${elem}:`);
-        // console.log(page[elem]('opts').locator);
-        // console.log(els.length);
-        // console.log(count);
-        return (els.length === parseInt(count));
-      });
+      return page[elem]('all').then(els => els.length === parseInt(count) );
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
   });
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, elem) => {
     driver.wait(() => {
       return page[elem]('all').then(els => {
-        // TODO: filter (map) on whether they're actually visible
-        // until you do, this is just the same as the step above.
-        return (els.length === parseInt(count));
+        return filterAsync(els, isViz).then(results => {
+          return (results.length === parseInt(count));
+        });
       });
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
   });
+
+  const filterAsync = (array, filter) =>
+      Promise.all(array.map(entry => filter(entry)))
+      .then(bits => array.filter(entry => bits.shift()));
+
+  const isViz = el => el.isDisplayed().then(bool => bool);
 
   //
   // PLEASE NOTE as always, an element will match if it exists in the dom _at all_, not only if it's currently visible.
@@ -374,7 +378,9 @@ exports.define = function(steps) {
 
   // NOTE that this is an IS match, not a contains.
   // the text of "some-page-object" is "some other string"      // => returns the 1st match it finds, or throws
-  // the text of "some-page-object" [13] is "some other string" // => returns the 13th match it finds, or throws.  must be > 0
+  // the text of "some-page-object" [13] is "some other string" // => returns the 13th match it finds, or throws.
+  // int arguments are 1-indexed, must be > 0
+  // the text of "some-page-object" is ""                       // => empty string also works fine
   // TODO: is it worth it to switch to xregexp to actually get named capture groups?
   steps.then(/the text of "(.*)"(?:\s*\[(.*)\])? should be "(.*)"/, (elem, arg, text) => {
     // without named groups you do this dance
@@ -397,22 +403,17 @@ exports.define = function(steps) {
     page.edit_title_textarea.sendKeys(keys.SHIFT + lefts);
   });
 
-  // steps.when('I delete text in the activity title', function() {
-  //   page.edit_title_textarea.sendKeys(keys.DELETE);
-  // });
-
   steps.then('I should see a fresh assignment', function() {
     // FIXME: do it
-    console.log('TODO qqrx');
+    console.log('TODO check a fresh assignment');
   });
 
   steps.then('I sleep for $d seconds', function(d) {
     driver.sleep(d * 1000);
   });
 
-
-  //     var x = { get: function () { return this.elements("[data-id='draft-name']"); } };
-  //     expect([x.length]-1).to.contain(title);
-  //   });
+  // steps.when('I click the "$element"', function(elem) {
+  //   page[elem](1).then(el => el).click();
+  // });
 
 };
