@@ -12,7 +12,7 @@ AWS_PROFILE=$1
 BUILD_PLANNAME=$2
 
 echo "Logging into the ECR"
-$(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
+#$(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
 
 echo "Creating the Build artifacts directory"
 rm -rf artifacts
@@ -45,7 +45,7 @@ done
 echo "image names in env file"
 cat artifacts/.env
 
-cp artifacts/.env docker/.envrc.example
+#cp artifacts/.env docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"
 
