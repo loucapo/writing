@@ -46,7 +46,7 @@ done
 echo "image names in env file"
 cat artifacts/.env
 
-cp artifacts/.env docker/.envrc.example
+#cp artifacts/.env docker/.envrc.example
 
 echo "Building docker images and deployment artifacts"
 
