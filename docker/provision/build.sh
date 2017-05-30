@@ -51,10 +51,10 @@ cat artifacts/.env
 echo "Building docker images and deployment artifacts"
 
 #docker-compose -f docker/docker-compose-build.yml build |
- #xargs docker inspect -f '{{ .State.ExitCode }}' | grep -vxq echo'[^0]'
+ xargs docker inspect -f '{{ .State.ExitCode }}' | grep -vxq echo'[^0]'
 
 docker-compose -f docker/docker-compose-build.yml push |
- #xargs docker inspect -f '{{ .State.ExitCode }}' | grep -vxq echo'[^0]'
+ xargs docker inspect -f '{{ .State.ExitCode }}' | grep -vxq echo'[^0]'
 
 rm docker/.envrc.example
 
