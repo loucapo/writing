@@ -7,6 +7,7 @@ Feature: Rubric API Routes
     Given I GET ':3000/rubric' and receive status '200'
 
   Scenario: Receive a 401 status when go to GET rubric with no cookie
+
     Given I get an instructor cookie and receive status '200'
     Given I GET ':3000/rubric' in incognito and receive status '401'
 

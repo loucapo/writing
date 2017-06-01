@@ -10,9 +10,10 @@
 
 AWS_PROFILE=$1
 BUILD_PLANNAME=$2
+set -e
 
 echo "Logging into the ECR"
-#$(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
+$(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
 
 echo "Creating the Build artifacts directory"
 rm -rf artifacts
@@ -54,5 +55,7 @@ docker-compose -f docker/docker-compose-build.yml build
 docker-compose -f docker/docker-compose-build.yml push
 
 rm docker/.envrc.example
+
+#docker-compose -f docker/docker-compose-build.yml down --rmi local --remove-orphans
 
 echo "All Docker Images have been built and deploy artifacts have been created, Happy deploying!"
