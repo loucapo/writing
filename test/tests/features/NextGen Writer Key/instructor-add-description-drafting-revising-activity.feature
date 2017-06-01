@@ -1,6 +1,4 @@
 @WRITE-749
-@Cleanup
-  # all tests are sharing the same default assignment and we don't have an out-of-test-band way to clean it up and reset it- remove reset step and refactor tests once we do
 Feature: Instructor Can Add Description in Activity Prompt
   @pending=WRITE-872
   Scenario: The Instructor Adds Activity Prompt
@@ -63,7 +61,9 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click the "activity_prompt_save"
     Then Text "happy" should have italicized styling
     And Text "happy" should have bold styling
+
   @Bug
+  @db=reset
   Scenario: WYSIWYG Display Cancel
     Given I launch the activity as a 'instructor'
     And I click a 'activity_prompt_edit'
@@ -75,8 +75,9 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I type in 'hello world'
     And I click a 'activity_prompt_cancel'
     Then Text "hello world" should not appear
-    And I reset the assignment prompt for the next test
+
   @Bug
+  @db=reset
   Scenario: WYSIWYG Display Move Away From Page
     Given I launch the activity as a 'instructor'
     And I click a 'activity_prompt_edit'
@@ -88,8 +89,8 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click a 'activity_prompt_cancel'
     And I reload the page
     Then Text "hello world" should not appear
-    And I reset the assignment prompt for the next test
 
+  @db=reset
   Scenario: WYSIWYG Display Alternate Save
     Given I launch the activity as a 'instructor'
     And I click a 'activity_prompt_edit'
@@ -97,8 +98,8 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click on the page
     Then I should see "happy" in the content editor
     And The WYSIWYG editor should be closed
-    And I reset the assignment prompt for the next test
-
+    
+  @db=reset
   Scenario: Editing the Activity Prompt
     Given I launch the activity as a 'instructor'
     And I click a 'activity_prompt_edit'
@@ -107,15 +108,3 @@ Feature: Instructor Can Add Description in Activity Prompt
     And I click a 'activity_prompt_edit'
     Then I should see "happy" in the content editor
     And I click a 'activity_prompt_save'
-    And I reset the assignment prompt for the next test
-
-    #Not a test case but need to reset the assignment prompt after each run - ensure to make sure if other tests break, at end will still clear
-
-  Scenario: Clear Activity Prompt
-    Given I launch the activity as a 'instructor'
-    And I click a 'activity_prompt_edit'
-    And I focus the content editor
-    And I select all content
-    And I delete text
-    And I click a 'activity_prompt_save'
-    #And I see the 'add_activity_prompt_link'

@@ -4,12 +4,12 @@ module.exports = new Page({
   url: { value: '/student' },
   start_draft_1_button: {
     get() {
-      return this.element("[data-id='start-Draft 1']");
+      return this.element("[data-id='start-draft']");
     }
   },
   start_final_paper_button: {
     get() {
-      return this.element("[data-id='start-Final Paper']");
+      return this.element("[data-id='start-draft']");
     }
   },
   start_reflection_button: {
