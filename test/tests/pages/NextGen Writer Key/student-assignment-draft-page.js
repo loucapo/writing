@@ -4,7 +4,7 @@ module.exports = new Page({
   url: { value: '/student' },
   start_draft_1_button: {
     get() {
-      return this.element("[data-id='start-Draft 1']");
+      return this.element("[data-id='start-draft']:first-of-type");
     }
   },
   start_final_paper_button: {
@@ -80,6 +80,26 @@ module.exports = new Page({
   activity_summary_rubric_right_arrow: {
     get() {
       return this.element("[data-id='rubric-arrow-right']");
+    }
+  },
+  reflection_questions: {
+    get() {
+      return this.element("[class^='ReflectionQuestions__reflection']");
+    }
+  },
+  reflection_textfields: {
+    get() {
+      return this.elements("[class^='ReflectionQuestions__reflection'] textarea");
+    }
+  },
+  reflection_polls: {
+    get() {
+      return this.elements("[class^='ReflectionQuestions__reflection'] form");
+    }
+  },
+  reflection_button_submit_disabled: {
+    get() {
+      return this.element("[data-id='submit-draft'][class^='MLButton__disabled']");
     }
   }
 });

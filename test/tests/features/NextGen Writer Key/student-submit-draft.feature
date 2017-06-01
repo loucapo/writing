@@ -1,24 +1,23 @@
 @WRITE-823
-@pending=monorepo
 Feature: Student Views Reflection Questions
   Scenario: Student Moves To Reflection Screen
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
     When I type in 'happy'
-    And I click a 'start_reflection_button'
+    And I click 'start_reflection_button' on student assignment draft page
     Then Student sees 'reflection_questions'
-    And Student sees 'reflection_prompts'
-    And Student sees 'reflection_textfield'
+    And Student sees 'reflection_textfields'
     And Student sees 'reflection_polls'
-    But Student sees 'disabled_submit_button'
+    But Student sees 'reflection_button_submit_disabled'
 
+@only
   Scenario: Student Able to Submit
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
     When I type in 'happy'
-    And I click a 'start_reflection_button'
-    When I type in 'yay'
-    And Student sees 'active_submit_button'
+    And I click 'start_reflection_button' on student assignment draft page
+    And I fill out the reflection questions
+    Then Student sees 'active_submit_button'
 
   Scenario: Student Submits Draft
     Given I launch the activity as a 'student'
