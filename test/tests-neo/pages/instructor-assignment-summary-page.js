@@ -36,6 +36,11 @@ module.exports = new Page({
     locator: `[data-id='add-draft']`
   }),
 
+  add_draft_goals_button: basePageObj({
+    desc: `Button to display the modal to select the primary goals for this draft`,
+    locator: `[data-id='add-draft-goal]`
+  }),
+
   add_draft_instructions: basePageObj({
     desc: `Button that makes the draft instructions editable for the xth draft on the summary page`,
     locator: `//*[@data-id='add-instructions']`,
