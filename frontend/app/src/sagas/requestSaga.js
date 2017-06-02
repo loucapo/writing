@@ -29,7 +29,6 @@ function fetchFn(url, params) {
     .then(res => res.headers.get('content-type').includes('json') ? res.json() : undefined);
 }
 
-
 function* request(action) {
   try {
     const token = cookie.load('id_token'); //XXX should die here if not there.;

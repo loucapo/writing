@@ -49,7 +49,6 @@ module.exports = new Page({
 
   // draft sequence
   draft_names: { get() { return this.element("[data-id='draft-name']"); } },
-  add_draft_button: { get() { return this.element("[data-id='add-draft']"); } },
 
   // selection modal
   reflection_questions_modal: { get() { return this.element("[data-id='modal]"); }},
@@ -64,29 +63,15 @@ module.exports = new Page({
     return this.element(`[data-id='input-fields'] div:nth-child(${i}) div [name=draftGoalOption]`);
   }},
 
-  ddraft_card: { value(i) {
-    return this.element(`(//*[@data-id='draft-section'])[${i}]`, 'xpath');
-  }},
-
-  add_ddraft_instructions: { value(i) {
-    return this.element(`(//*[@data-id='add-instructions'])[${i}]`, 'xpath');
-  }},
-
   textarea_ddraft_instructions: { value(i) {
     return this.element(`(//*[@data-id='textarea-draft-instructions'])[${i}]`, 'xpath');
-  }},
-
-  save_ddraft_instructions: { value(i) {
-    return this.element(`(//*[@data-id='save-draft-instructions'])[${i}]`, 'xpath');
-  }},
-
-  ddraft_delete: { value(i) {
-    return this.element(`(//*[@data-id='draft-delete'])[${i}]`, 'xpath');
   }},
 
   cancel_ddraft_instructions: { value(i) {
     return this.element(`(//*[@data-id='cancel-draft-instructions'])[${i}]`, 'xpath');
   }},
+
+  add_draft_button: { get() {return this.element(`[data-id='add-draft']`); } },
 
   draft_card: { get() { return this.element("[data-id='draft-section']"); } },
   add_draft_instructions: { get() { return this.element("[data-id='add-instructions']"); } },
@@ -98,7 +83,6 @@ module.exports = new Page({
   close_modal: { get() { return this.element("[data-id='close-modal']"); } },
 
   add_student_reflection_questions: { get() { return this.element("[data-id='add-reflections']"); } },
-  draft_delete_button: { get() { return this.element("[data-id='draft-delete']"); } },
   draft_instructions_edit: { get() { return this.element("[data-id='draft-instructions-edit']"); } },
 
   // draft details
@@ -110,7 +94,7 @@ module.exports = new Page({
   draft_learning_focus: { get() { return this.element(
     "[data-id='MLCard-Draft-2'] div section section:nth-child(2) div:nth-child(2) div:nth-child(3)"); } },
   draft_delete_alert: { get() { return this.element("[class^='MLDialog__alert']"); } },
-  draft_alert_delete_button: { get() { return this.element("[data-id='prompt-cancel']"); } },
+
   draft_alert_cancel_button: { get() { return this.element("[data-id='prompt-save']"); } },
   final_draft_delete_button: { get() { return this.element(
     "[data-id='MLCard-Final-Paper'] > [data-id='draft-section'] > div"); } },

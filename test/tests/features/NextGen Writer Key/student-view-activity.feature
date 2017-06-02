@@ -1,6 +1,9 @@
 @WRITE-96
 Feature: Student Views Activity
 
+  @db=reset
+  @pending=rewrite
+  # what does this verify and how to rewrite it?  
   Scenario: Student Launches into Activity with No Rubric Selected
     Given I launch the activity as a 'instructor'
     And Draft Delete Cleanup '[data-id='draft-delete']'
@@ -9,6 +12,7 @@ Feature: Student Views Activity
     Then Page Element Checker Verifies: '0' '[data-id='MLCard-Final-Rubric']'
     #Then Page Element Checker Verifies: '0' '[data-id='student-preview']'
 
+  @db=reset
   Scenario: Student Does Not See Instructer Options
     Given I launch the activity as a 'student'
     Then Page Element Checker Verifies: '0' '[data-id='created-activity-alert'] div'
@@ -19,6 +23,7 @@ Feature: Student Views Activity
     Then Page Element Checker Verifies: '0' '[data-id='add-instructions']'
     Then Page Element Checker Verifies: '0' '[data-id='add-reflections']'
 
+  @db=reset
   Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as a 'instructor'
     When I click a 'add_draft_button'
@@ -35,15 +40,3 @@ Feature: Student Views Activity
     Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Rubric']'
     Then Page Element Checker Verifies Text: 'hello world' at '[data-id='prompt-description']'
     Then Page Element Checker Verifies Text: 'You will be able to view and start this draft once you've received feedback on Draft 1' at '[data-id='MLCard-Final-Paper'] > div > section > [class^='Draft__draftDetails']'
-
-@cleanup
-  Scenario: Page Teardown for Student View
-  Given I launch the activity as a 'instructor'
-    And I click a 'activity_prompt_edit'
-    And I focus the content editor
-    And I select all content
-    And I delete text
-    And I click a 'activity_prompt_save'
-    When I click a 'rubric_selection'
-    When I click a 'no_rubric_option'
-    And Draft Delete Cleanup '[data-id='draft-delete']'

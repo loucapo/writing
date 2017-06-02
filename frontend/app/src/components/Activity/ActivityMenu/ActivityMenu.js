@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import DraftListContainer from './../../../containers/DraftListContainer';
+import {
+  DraftListContainer
+} from './../../../containers/index';
 
 import styles from './activityMenu.css';
 

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ActivityContainer from './../containers/ActivityContainer';
-import StudentActivityContainer from './../containers/StudentActivityContainer';
+import { ActivityContainer, ActivityDisplayContainer } from './../containers/index';
 import { loadAuth } from '../modules/authModule';
 import { loadDefaults } from '../modules/defaultsModule';
 import jwtDecode from 'jwt-decode';
@@ -42,7 +41,7 @@ class LaunchContainer extends Component {
         return <ActivityContainer />;
       }
       case 'student': {
-        return <StudentActivityContainer />;
+        return <ActivityDisplayContainer />;
       }
       default:
         return null;
@@ -57,6 +56,4 @@ LaunchContainer.propTypes = {
   loadDefaults: PropTypes.func
 };
 
-export default connect(state => ({ role: state.auth.role }), { loadAuth, loadDefaults })(
-  LaunchContainer
-);
+export default connect(state => ({ role: state.auth.role }), { loadAuth, loadDefaults })(LaunchContainer);

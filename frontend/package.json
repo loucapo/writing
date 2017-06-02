@@ -94,7 +94,6 @@
     "webpack-validator": "^2.2.7"
   },
   "pre-commit": [
-    "lint",
-    "testOnce"
+    "lint"
   ]
 }

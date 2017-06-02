@@ -61,3 +61,23 @@ Feature: Activity API Routes
   Scenario: Receive a 405 status when PUT /activity/:activityid/rubric with valid cookie and valid json without id
     Given I get an instructor cookie and receive status '200'
     Given I PUT '{"rubricId": "a3aa7312-68b4-43b9-85b6-fa1f52339a54"}' into ':3000/rubric' and receive status '405'
+
+  Scenario: Receive a 200 status when PUT /activity/:activityid/title with valid cookie and json
+    Given I get an instructor cookie and receive status '200'
+    Given I PUT '{"title": "Hello World"}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/title' and receive status '200'
+
+  Scenario: Receive a 500 status when PUT /activity/:activityid/title with valid cookie and json but title greater than 140 characters
+    Given I get an instructor cookie and receive status '200'
+    Given I PUT '{"title": "This should be somewhere close to 140 characters of various sorts. I don't know why any instructor would want an assignment title this long. This is really absurd"}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/title' and receive status '500'
+
+  Scenario: Receive a 500 status when PUT /activity/:activityid/title with valid cookie and missing params in json
+    Given I get an instructor cookie and receive status '200'
+    Given I PUT '{"id": "222"}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/title' and receive status '500'
+
+  Scenario: Receive a 404 status when PUT /activity/:activityid/title with valid cookie and valid json without id
+    Given I get an instructor cookie and receive status '200'
+    Given I PUT '{"title": "222"}' into ':3000/title' and receive status '404'
+
+  Scenario: Receive a 500 status when PUT /activity/:activityid/title with valid cookie and valid json without id
+    Given I get an instructor cookie and receive status '200'
+    Given I PUT '{"title": "222"}' into ':3000/activity/d3e3c2d5-cf43-4f63-924f-3ec7a125a334/' and receive status '500'
