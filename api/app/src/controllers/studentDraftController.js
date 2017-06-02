@@ -35,6 +35,16 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
       return ctx;
     },
 
+    async getAllStudentDraftsByStudentActivityId(ctx) {
+      const studentDrafts = await repository.query(
+        sqlLibrary.studentDraft,
+        'getStudentDraftsByStudentActivityId',
+        {studentActivityId: ctx.params.studentActivityId});
+      ctx.status = 200;
+      ctx.body = studentDrafts;
+      return ctx;
+    },
+
     async updateStudentDraftPaper(ctx) {
       let command = ctx.request.body;
       const studentActivityId = ctx.params.studentActivityId;

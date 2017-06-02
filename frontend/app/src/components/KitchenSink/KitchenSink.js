@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-import MLAccordion from '../MLAccordion/MLAccordion';
-import MLCard from '../MLCard/MLCard';
-import MLDropdown from '../MLDropdown/MLDropdown';
-import MLTable from '../MLTable/MLTable';
-import MLButton from '../MLButton/MLButton';
-import MLDialog from '../MLDialog/MLDialog';
-import MLMessage from '../MLMessage/MLMessage';
-import MLSpinner from '../MLSpinner/MLSpinner';
-import DemoModal from '../MLModal/Modals/DemoModal';
-import CheckboxForm from '../MLCheckboxForm/MLCheckboxForm';
+import {
+  MLAccordion,
+  MLCard,
+  MLDropdown,
+  MLTable,
+  MLButton,
+  MLDialog,
+  MLMessage,
+  MLSpinner,
+  MLCheckboxForm
+} from './../MLComponents/index';
+import DemoModal from './../MLComponents/MLModal/Modals/DemoModal';
 
 import styles from './kitchenSink.css';
 
@@ -162,8 +164,8 @@ class KitchenSink extends Component {
           <MLCard
             type="rubric"
             title="Final Rubric"
-            role="instructor"
-            options={<div>Side icons</div>}>
+            role="instructor" >
+            <div>Side icons</div>
             <div>
               Bacon ipsum dolor amet sausage beef ribs meatloaf beef landjaeger. Alcatra salami short loin drumstick.
               Tongue t-bone shoulder, beef flank beef ribs biltong capicola pork chop hamburger strip steak meatloaf
@@ -346,7 +348,7 @@ class KitchenSink extends Component {
         </div>
         <div className="spacer">
           <h5>Checkbox Form with Selection Limit of 2</h5>
-          <CheckboxForm
+          <MLCheckboxForm
             fields={[
               {id: '1', question: 'first'},
               {id: '2', question: 'second'},
@@ -359,7 +361,7 @@ class KitchenSink extends Component {
           />
 
           <h5>Checkbox Form with Toggle Enabled</h5>
-          <CheckboxForm
+          <MLCheckboxForm
             fields={[
               {id: '1', title: 'first'},
               {id: '2', title: 'second'},
