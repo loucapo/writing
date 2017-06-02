@@ -3,7 +3,7 @@ module.exports = function(config, defaultData, sqlfixtures, knex) {
     const _knex = knex({
       client: 'pg',
       connection: config.postgres.config,
-      pool: {min: 0, max: 7}
+      pool: {min: 0, max: 5}
     });
     const fixtureCreator = new sqlfixtures(_knex);
     const options = {showWarning: false};
@@ -11,6 +11,7 @@ module.exports = function(config, defaultData, sqlfixtures, knex) {
     try {
       console.log(`==========loadData=========`);
       await fixtureCreator.create(defaultData(), options);
+      _knex.destroy();
       console.log(`==========END loadData=========`);
     } catch (err) {
       console.log(`==========err=========`);

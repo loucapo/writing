@@ -1,0 +1,100 @@
+let page = require('../pages/instructor-assignment-summary-page');
+//let rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
+var faker = require('faker');
+
+exports.define = function(steps) {
+
+  // TODO: review, ensure it's sane.
+  const filterAsync = (array, filter) =>
+        Promise.all(array.map(entry => filter(entry)))
+        .then(bits => array.filter(entry => bits.shift()));
+
+  const isViz = el => el.isDisplayed().then(bool => bool);
+
+  steps.given(/I launch the activity as a[n] "(.+)"/, function(user) {
+    driver.get(marvin.config.baseUrl + '/' + user);
+  });
+
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, elem) => {
+    driver.wait(() => {
+      return page[elem]('all').then(els => els.length === parseInt(count) );
+    }, 3500, `Couldn't find ${count} instances of ${elem}`);
+  });
+
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, elem) => {
+    driver.wait(() => {
+      return page[elem]('all').then(els => {
+        return filterAsync(els, isViz).then(results => {
+          return (results.length === parseInt(count));
+        });
+      });
+    }, 3500, `Couldn't find ${count} instances of ${elem}`);
+  });
+
+  //
+  // PLEASE NOTE as always, an element will match if it exists in the dom _at all_, not only if it's currently visible.
+  // I type "buncha text" in "some-page-object"       // => returns the 1st match it finds, or throws
+  // I type "buncha text" in "some-page-object" [13]  // => returns the 13th match it finds, or throws.  must be > 0
+  // I type "buncha text" in "some-page-object" [all] // => no, stop, why would you do this?  don't do this.
+  steps.then(/I type "(.*)" in "(.*)"(?:\s*\[(\w*)\])?/, (input, elem, arg) => {
+    // TODO: i bet these two lines get repeated a whoooole bunch and should be pulled out.
+    if (arg === undefined) { arg = 1; }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[elem](arg).then(el => el.sendKeys(input));
+  });
+
+  // TODO: doc this
+  steps.when(/I click "(.+)"(?:\s*\[(\w*)\])?/, function(element, arg) {
+    if (arg === undefined) { arg = 1; }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[element](arg).then(el => el.click());
+  });
+
+  // NOTE that this is an IS match, not a contains.
+  // the text of "some-page-object" is "some other string"      // => returns the 1st match it finds, or throws
+  // the text of "some-page-object" [13] is "some other string" // => returns the 13th match it finds, or throws.
+  // int arguments are 1-indexed, must be > 0
+  // the text of "some-page-object" is ""                       // => empty string also works fine
+  // TODO: is it worth it to switch to xregexp to actually get named capture groups?
+  steps.then(/the text of "(.*)"(?:\s*\[(.*)\])? should be "(.*)"/, (elem, arg, text) => {
+    // without named groups you do this dance
+    if (text === undefined) {
+      text = arg;
+      arg = 1;
+    }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[elem](arg).then(el => el.getText())
+      .then(actualText => { text.should.equal(actualText); });
+  });
+
+  // steps.when('I select "$text" in the activity title', function(text) {
+  //   // can't seem to get command+a or control+a to select all
+  //   // let's use shift and many lefts
+  //   let lefts = '';
+  //   for (let i = 0; i < text.length; i++) {
+  //     lefts += keys.LEFT;
+  //   }
+  //   page.edit_title_textarea.sendKeys(keys.SHIFT + lefts);
+  // });
+
+  steps.then('I should see a fresh assignment', function() {
+    // FIXME: do it
+    console.log('TODO check a fresh assignment');
+  });
+
+  steps.then('I sleep for $d seconds', function(d) {
+    driver.sleep(d * 1000);
+  });
+
+  steps.when('I reload the page', function() {
+    driver.navigate().refresh();
+  });
+
+  // TODO: common functions like gimmeNone need to be deduped and shared
+  // TODO: actually, need to grep for `steps.*`, sort the output, and dedupe
+  //  there's a ton of shared steps
+  function gimmeNone(arr) {
+    expect(arr.length).to.equal(0);
+  }
+
+};

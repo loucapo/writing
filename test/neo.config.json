@@ -2,8 +2,8 @@
 
   "baseUrl": "http://localhost:10080",
   "dbapi": "http://localhost:4667",
-  "featuresDir": "tests/features",
-  "stepsDir": "tests/steps",
+  "featuresDir": "tests-neo/features",
+  "stepsDir": "tests-neo/steps",
   "reportDir": "reports",
   "reporters": [{"name": "marvin-reporter"}],
   "threads": 1,
