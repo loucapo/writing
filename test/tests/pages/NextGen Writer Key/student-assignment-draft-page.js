@@ -82,6 +82,15 @@ module.exports = new Page({
       return this.element("[data-id='rubric-arrow-right']");
     }
   },
+  draft_submission_confirmation: {
+    get() { return this.element("[class*='MLDialog__alert_container']"); }
+  },
+  draft_submission_cancel: {
+    get() { return this.element("button[data-id='dialog-cancel']"); }
+  },
+  draft_submission_submit: {
+    get() { return this.element("button[data-id='dialog-submit']"); }
+  },
   reflection_questions: {
     get() {
       return this.element("[class^='ReflectionQuestions__reflection']");
@@ -97,9 +106,19 @@ module.exports = new Page({
       return this.elements("[class^='ReflectionQuestions__reflection'] form");
     }
   },
+  reflection_polls_first_options: {
+    get() {
+      return this.elements("[class^='ReflectionQuestions__reflection'] form input:first-child");
+    }
+  },
+  reflection_button_submit_enabled: {
+    get() {
+      return this.element("[data-id='submit-draft']:not([class*='MLButton__disabled'])");
+    }
+  },
   reflection_button_submit_disabled: {
     get() {
-      return this.element("[data-id='submit-draft'][class^='MLButton__disabled']");
+      return this.element("[data-id='submit-draft'][class*='MLButton__disabled']");
     }
   }
 });

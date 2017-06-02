@@ -24,21 +24,17 @@ exports.define = function(steps) {
         elem.sendKeys('yay');
       });
     });
-    studentPage.reflection_polls.then((elems) => {
-      // single element is not an array
-      if (!Array.isArray(elems)) {
-        elems = [elems];
-      }
-      // click first radio of each poll
+    studentPage.reflection_polls_first_options.then((elems) => {
       elems.forEach((elem) => {
-        console.log(elem);
-        elem.findElement('css', "input[type='radio']:first-of-type").click();
+        elem.click();
       });
     });
   });
 
   steps.then("Student sees '$elem'", function(elem) {
-    studentPage[elem].isDisplayed().should.eventually.equal(true);
+    studentPage[elem].then(function(elems) {
+      expect(elems.length).to.not.equal(0);
+    });
   });
 
   steps.then('Color Checker "$color" for "$elem"', function(expColor, elem) {
