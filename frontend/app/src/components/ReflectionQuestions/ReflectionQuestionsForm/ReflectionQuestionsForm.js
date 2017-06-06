@@ -15,8 +15,8 @@ class ReflectionQuestionsForm extends Component {
     showSubmitConfirm: false
   };
 
-  componentWillReceiveProps = (newProps, oldProps) => {
-    if(newProps.reflectionAnswers !== oldProps.reflectionAnswers) {
+  componentWillReceiveProps = (newProps) => {
+    if(newProps.reflectionAnswers !== this.props.reflectionAnswers) {
       this.setState({answers: newProps.reflectionAnswers});
     }
   };
@@ -80,6 +80,12 @@ class ReflectionQuestionsForm extends Component {
   };
 
   renderAnswerSpace = (question) => {
+    console.log(`==========question=========`);
+    console.log(question);
+    console.log(`==========END question=========`);
+    console.log(`==========this.state.answers=========`);
+    console.log(this.state.answers);
+    console.log(`==========END this.state.answers=========`);
     const answerObj = this.state.answers
       .find(x => question.studentReflectionQuestionId === x.studentReflectionQuestionId);
     const answer = answerObj ? answerObj.studentReflectionAnswer : undefined;
@@ -111,6 +117,9 @@ class ReflectionQuestionsForm extends Component {
   };
 
   render() {
+    console.log(`==========this.props.reflectionQuestions=========`);
+    console.log(this.props.reflectionQuestions);
+    console.log(`==========END this.props.reflectionQuestions=========`);
     return (
       <div className={styles.page}>
         <ReflectionQuestionsFormHeader

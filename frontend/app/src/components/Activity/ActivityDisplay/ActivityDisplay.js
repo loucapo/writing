@@ -7,9 +7,9 @@ import {
   ActivityPromptDisplay
 } from './../index';
 
+import { DraftListDisplay } from './../../Draft';
 import {
-  ActivityRubricDisplayContainer,
-  DraftListDisplayContainer
+  ActivityRubricDisplayContainer
 } from './../../../containers/index';
 
 import styles from './activityDisplay.css';
@@ -35,7 +35,7 @@ const ActivityDisplay = ({activityId, activity, drafts}) => (
           : null }
 
         <div className={styles.studentDraftSpacer}>
-          <DraftListDisplayContainer activityId={activity.activityId} />
+          <DraftListDisplay drafts={drafts} activityId={activity.activityId} />
         </div>
       </div>
     </div>

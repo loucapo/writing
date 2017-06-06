@@ -39,17 +39,6 @@ export default (state = [], action) => {
   }
 };
 
-export function createStudentDraftIfNotThere(studentActivityId, draftId) {
-  return {
-    type: CREATE_STUDENT_DRAFT.REQUEST,
-    states: CREATE_STUDENT_DRAFT,
-    url: `${config.apiUrl}studentactivity/${studentActivityId}/draft/${draftId}`,
-    params: {
-      method: 'PUT'
-    }
-  };
-}
-
 export function getStudentDraft(studentActivityId, draftId) {
   return {
     type: GET_STUDENT_DRAFT.REQUEST,
@@ -57,6 +46,18 @@ export function getStudentDraft(studentActivityId, draftId) {
     url: `${config.apiUrl}studentactivity/${studentActivityId}/draft/${draftId}`,
     params: {
       method: 'GET'
+    }
+  };
+}
+
+export function createStudentDraftIfNotThere(studentActivityId, draftId) {
+  return {
+    type: CREATE_STUDENT_DRAFT.REQUEST,
+    states: CREATE_STUDENT_DRAFT,
+    subsequentAction: getStudentDraft(studentActivityId, draftId),
+    url: `${config.apiUrl}studentactivity/${studentActivityId}/draft/${draftId}`,
+    params: {
+      method: 'PUT'
     }
   };
 }

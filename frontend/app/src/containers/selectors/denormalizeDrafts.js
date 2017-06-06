@@ -1,5 +1,5 @@
-export default (state, props) => {
-  return state.drafts.filter(x => x.activityId === props.activityId)
+export default (state) => {
+  return state.drafts.filter(x => x.activityId === state.auth.activity.activityId)
     .map(x => {
       let goals = [];
       let studentReflectionQuestions = [];
