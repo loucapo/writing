@@ -15,8 +15,7 @@
     "testOnce": "BABEL_DISABLE_CACHE=1 NODE_ENV=test mocha --compilers js:babel-core/register --require babel-polyfill --opts ./tests/mocha.opts ./app/tests/*/*.tests.js",
     "coverage": "nyc npm run testOnce",
     "lint": "eslint -c ./../.eslintrc-react.json .",
-    "licenses": "license-checker --production --csv | tee licenses.csv",
-    "validate": "npm ls"
+    "licenses": "license-checker --production --csv | tee licenses.csv"
   },
   "license": "UNLICENSED",
   "engines": {

@@ -10,7 +10,7 @@ import { getDraftsForActivity } from './../modules/draftModule';
 import { getStudentDrafts } from './../modules/studentDraftModule';
 
 class ActivityDisplayContainer extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.loadData();
   }
 
