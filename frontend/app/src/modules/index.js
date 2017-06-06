@@ -11,6 +11,7 @@ import studentActivities from './studentActivityModule';
 import studentDraft from './studentDraftModule';
 import reflectionQuestions from './reflectionQuestionsModule';
 import reflectionAnswers from './reflectionAnswersModule';
+import messaging from './messagingModule';
 
 export {activityAction} from './activityModule';
 export {submitFeedbackToolContentItem} from './feedbackToolContentModule';
@@ -28,5 +29,6 @@ export default {
   studentDraft,
   studentActivities,
   reflectionQuestions,
-  reflectionAnswers
+  reflectionAnswers,
+  messaging
 };

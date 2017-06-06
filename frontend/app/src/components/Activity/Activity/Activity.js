@@ -22,10 +22,13 @@ const Activity = ({activity, draftCount}) => (
     <div className={styles.container}>
       <div data-id="created-activity-alert" className={styles.spacer}>
         <MLMessage
-          message={'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
-          '. This is in draft mode and will not be visible to students until you assign it.'}
-          messageType="success"
-          iconType="check"
+          options={{
+            id: '12345',
+            message: 'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
+            '. This is in draft mode and will not be visible to students until you assign it.',
+            type: 'success',
+            icon: 'check'
+          }}
         />
 
         <ActivityTitleContainer activityId={activity.activityId} />

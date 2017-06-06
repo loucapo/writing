@@ -7,7 +7,7 @@ const CREATE_STUDENT_DRAFT = requestStates('create_student_draft');
 const GET_STUDENT_DRAFTS = requestStates('get_student_drafts');
 const GET_STUDENT_DRAFT = requestStates('get_student_draft');
 const UPDATE_DRAFT_PAPER = requestStates('update_draft_paper');
-const SUBMIT_DRAFT = requestStates('submit_draft_paper');
+export const SUBMIT_DRAFT = requestStates('submit_draft_paper');
 
 // Reducer
 export default (state = [], action) => {
