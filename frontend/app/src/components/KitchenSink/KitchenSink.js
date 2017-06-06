@@ -246,30 +246,45 @@ class KitchenSink extends Component {
           </p>
 
           <h4>Parameters:</h4>
+          MLMessage takes one single parameter called 'options' that contains:
           <ol>
+            <li>id: a unique identifier for the message</li>
             <li>message: a string to display in the message box</li>
-            <li>messageType: string of four possible types, default, success, warning, error</li>
-            <li>iconType: a string name of the icon wanted for display</li>
+            <li>type: string of four possible types, default, success, warning, error</li>
+            <li>icon: a string name of the icon (from MLIcon) wanted for display</li>
           </ol>
 
           <MLMessage
-            message={'default message would go here.'}
-            iconType="comment_text"
+            options={{
+              id: '09876',
+              message: 'notification message would go here.',
+              type: 'notification',
+              icon: 'comment_text'
+            }}
           />
           <MLMessage
-            message={'success message would go here.'}
-            messageType="success"
-            iconType="comment_thumbs_up"
+            options={{
+              id: '09876',
+              message: 'success message would go here.',
+              type: 'success',
+              icon: 'comment_thumbs_up'
+            }}
           />
           <MLMessage
-            message={'warning message would go here.'}
-            messageType="warning"
-            iconType="info_outline"
+            options={{
+              id: '09876',
+              message: 'warning message would go here.',
+              type: 'warning',
+              icon: 'info_outline'
+            }}
           />
           <MLMessage
-            message={'error message would go here.'}
-            messageType="error"
-            iconType="alert_outline"
+            options={{
+              id: '09876',
+              message: 'error message would go here.',
+              type: 'error',
+              icon: 'alert_outline'
+            }}
           />
 
         </div>

@@ -49,6 +49,7 @@ const mapStateToProps = (state) => {
   return {
     activityId,
     activity: state.activities.find(x => x.activityId === activityId),
+    submitDraftMessage: state.messaging.submit_draft,
     drafts
   };
 };

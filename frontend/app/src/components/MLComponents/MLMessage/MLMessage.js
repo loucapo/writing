@@ -1,32 +1,31 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 
 import styles from './mlMessageStyles.css';
 
-const MLMessage = ({message, messageType, iconType}) => {
+const MLMessage = ({options}) => {
 
   return (
-    <div className={ styles['message_' + (messageType || 'default')] }>
-      <span className={ styles['message_icon_' + (messageType || 'default')] }>
+    <div className={ styles['message_' + (options.type || 'default')] }>
+      <span className={ styles['message_icon_' + (options.type || 'default')] }>
         <MLIcon
-          title={messageType || 'default'}
-          type={iconType || 'help_outline'}
+          title={options.type || 'default'}
+          type={options.icon || 'help_outline'}
           width="24"
           height="24"
           viewBox="0 0 24 20"
         />
       </span>
       <span className={ styles.message }>
-        {message}
+        {options.message}
       </span>
     </div>
   );
 };
 
 MLMessage.propTypes = {
-  message: PropTypes.string,
-  messageType: PropTypes.string,
-  iconType: PropTypes.string
+  options: PropTypes.object
 };
 
 export default MLMessage;
