@@ -5,13 +5,13 @@ import {getDraftsForActivity,
   addDraftToActivity,
   removeDraftFromActivity,
   updateDraftInstructions} from './../modules/draftModule';
-import {setStudentReflectionQuestions, getStudentReflectionQuestions} from './../modules/studentReflectionQuestionsModule';
-import DraftList from '../components/Activity/DraftList/DraftList';
+import {setReflectionQuestions, getReflectionQuestions} from './../modules/reflectionQuestionsModule';
+import { DraftList } from '../components/Draft/index';
 
 class DraftListContainer extends Component {
   componentWillMount() {
     this.props.getDraftsForActivity(this.props.activityId);
-    this.props.getStudentReflectionQuestions();
+    this.props.getReflectionQuestions();
   }
 
   render() {
@@ -21,8 +21,8 @@ class DraftListContainer extends Component {
 
 DraftListContainer.propTypes = {
   activityId: PropTypes.string,
-  setStudentReflectionQuestions: PropTypes.func,
-  getStudentReflectionQuestions: PropTypes.func,
+  setReflectionQuestions: PropTypes.func,
+  getReflectionQuestions: PropTypes.func,
   getDraftsForActivity: PropTypes.func
 };
 
@@ -37,7 +37,7 @@ const mapStateToProps = (state, props) => {
     if (x.studentReflectionQuestions) {
       studentReflectionQuestions = x.studentReflectionQuestions
         .map(y => {
-          const question = state.studentReflectionQuestions.find(z => z.studentReflectionQuestionId === y);
+          const question = state.reflectionQuestions.find(z => z.studentReflectionQuestionId === y);
           return {question: question.question, questionType: question.questionType};
         });
     }
@@ -55,5 +55,5 @@ export default connect(mapStateToProps, {
   addDraftToActivity,
   removeDraftFromActivity,
   updateDraftInstructions,
-  getStudentReflectionQuestions,
-  setStudentReflectionQuestions})(DraftListContainer);
+  getReflectionQuestions,
+  setReflectionQuestions})(DraftListContainer);

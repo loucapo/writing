@@ -4,6 +4,11 @@ var faker = require('faker');
 
 exports.define = function(steps) {
 
+  // TODO: common functions like gimmeNone need to be deduped and shared
+  function gimmeNone(arr) {
+    expect(arr.length).to.equal(0);
+  }
+
   // TODO: review, ensure it's sane.
   const filterAsync = (array, filter) =>
         Promise.all(array.map(entry => filter(entry)))
@@ -94,16 +99,6 @@ exports.define = function(steps) {
       .then(actualText => { actualText.should.have.string(text); });
   });
 
-  // steps.when('I select "$text" in the activity title', function(text) {
-  //   // can't seem to get command+a or control+a to select all
-  //   // let's use shift and many lefts
-  //   let lefts = '';
-  //   for (let i = 0; i < text.length; i++) {
-  //     lefts += keys.LEFT;
-  //   }
-  //   page.edit_title_textarea.sendKeys(keys.SHIFT + lefts);
-  // });
-
   steps.then('I should see a fresh assignment', function() {
     // FIXME: do it
     console.log('TODO check a fresh assignment');
@@ -116,16 +111,5 @@ exports.define = function(steps) {
   steps.when('I reload the page', function() {
     driver.navigate().refresh();
   });
-
-  steps.then(`I see "$brap" is disabled`, function(brap) {
-    page[brap](1).then(el => el.isEnabled()).then(answer => expect(answer).to.be.true);
-  });
-
-  // TODO: common functions like gimmeNone need to be deduped and shared
-  // TODO: actually, need to grep for `steps.*`, sort the output, and dedupe
-  //  there's a ton of shared steps
-  function gimmeNone(arr) {
-    expect(arr.length).to.equal(0);
-  }
 
 };

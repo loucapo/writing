@@ -1,0 +1,41 @@
+@import 'variables.css';
+
+.icon {
+  fill: var(--aqua);
+}
+
+.hide {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.flexSpace {
+  composes: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addDraftInstForm {
+  font-weight: bold;
+}
+
+.addDraftHeading {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.addDraftInstField {
+  padding-top: 15px;
+}
+
+.addDraftInstField textarea {
+  font-weight: normal;
+  height: 100px;
+  width: 100%;
+}
+

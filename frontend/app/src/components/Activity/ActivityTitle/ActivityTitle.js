@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
-import MLButton from '../../MLButton/MLButton';
+import {
+  MLButton
+} from './../../MLComponents/index';
 
 import styles from './activityTitle.css';
 
@@ -29,7 +31,7 @@ class ActivityTitle extends Component {
 
   handleChange = (event) => {
     this.setState({title: event.target.value});
-  }
+  };
 
   render() {
     let charCount = 140 - this.state.title.length;
@@ -37,8 +39,8 @@ class ActivityTitle extends Component {
 
     return (
       <div className={styles.titleContainer}>
-        {(this.state.editable) ?
-          <div data-id="activity-title-editField" className={styles.title}>
+        {(this.state.editable)
+          ? <div data-id="activity-title-editField" className={styles.title}>
             <input
               className={styles.editField}
               type="text"
@@ -60,8 +62,7 @@ class ActivityTitle extends Component {
               />
             </div>
           </div>
-          :
-          <div data-id="activity-title" className={styles.title}>
+          : <div data-id="activity-title" className={styles.title}>
             {this.state.title}
             <a onClick={this.toggleEditable}>
               <MLIcon
@@ -81,12 +82,11 @@ class ActivityTitle extends Component {
             Drafting and Revising Activity
           </div>
 
-          {(this.state.editable) ?
-            <div data-id="char-limit-count" className={charCountClass}>
+          {(this.state.editable)
+            ? <div data-id="char-limit-count" className={charCountClass}>
               {charCount} characters left
             </div>
-          :
-            null
+          : null
           }
         </div>
       </div>

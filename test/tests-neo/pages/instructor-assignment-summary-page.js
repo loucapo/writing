@@ -111,7 +111,6 @@ module.exports = new Page({
     type: 'xpath'
   }),
 
-
   draft_delete_button: basePageObj({
     desc: `A button to display a modal prompting for confirmation to delete this draft from the assignment`,
     locator: `[data-id='draft-delete']`

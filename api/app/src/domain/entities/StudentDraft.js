@@ -11,6 +11,7 @@ module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
 
     updateDraftPaper(cmd) {
       this.paper = cmd.paper;
+      this.status = 'active';
     }
 
     setStudentReflectionAnswers(cmd) {
@@ -21,7 +22,7 @@ module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
     }
 
     isActive() {
-      return this.active;
+      return this.status === 'active';
     }
 
     studentReflectionQuestionsAnswered() {
@@ -29,7 +30,7 @@ module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
     }
 
     submit() {
-      this.submitted = true;
+      this.status = 'submitted';
     }
   };
 };

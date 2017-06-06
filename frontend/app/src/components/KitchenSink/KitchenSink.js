@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import moment from 'moment';
-import MLAccordion from '../MLAccordion/MLAccordion';
-import MLCard from '../MLCard/MLCard';
-import MLDropdown from '../MLDropdown/MLDropdown';
-import MLTable from '../MLTable/MLTable';
-import MLButton from '../MLButton/MLButton';
-import MLDialog from '../MLDialog/MLDialog';
-import MLMessage from '../MLMessage/MLMessage';
-import MLSpinner from '../MLSpinner/MLSpinner';
-import DemoModal from '../MLModal/Modals/DemoModal';
-import CheckboxForm from '../MLCheckboxForm/MLCheckboxForm';
+import {
+  MLAccordion,
+  MLCard,
+  MLDropdown,
+  MLTable,
+  MLButton,
+  MLDialog,
+  MLMessage,
+  MLSpinner,
+  MLCheckboxForm
+} from './../MLComponents/index';
+import DemoModal from './../MLComponents/MLModal/Modals/DemoModal';
 
 import styles from './kitchenSink.css';
 
@@ -162,8 +164,8 @@ class KitchenSink extends Component {
           <MLCard
             type="rubric"
             title="Final Rubric"
-            role="instructor"
-            options={<div>Side icons</div>}>
+            role="instructor" >
+            <div>Side icons</div>
             <div>
               Bacon ipsum dolor amet sausage beef ribs meatloaf beef landjaeger. Alcatra salami short loin drumstick.
               Tongue t-bone shoulder, beef flank beef ribs biltong capicola pork chop hamburger strip steak meatloaf
@@ -244,30 +246,45 @@ class KitchenSink extends Component {
           </p>
 
           <h4>Parameters:</h4>
+          MLMessage takes one single parameter called 'options' that contains:
           <ol>
+            <li>id: a unique identifier for the message</li>
             <li>message: a string to display in the message box</li>
-            <li>messageType: string of four possible types, default, success, warning, error</li>
-            <li>iconType: a string name of the icon wanted for display</li>
+            <li>type: string of four possible types, default, success, warning, error</li>
+            <li>icon: a string name of the icon (from MLIcon) wanted for display</li>
           </ol>
 
           <MLMessage
-            message={'default message would go here.'}
-            iconType="comment_text"
+            options={{
+              id: '09876',
+              message: 'notification message would go here.',
+              type: 'notification',
+              icon: 'comment_text'
+            }}
           />
           <MLMessage
-            message={'success message would go here.'}
-            messageType="success"
-            iconType="comment_thumbs_up"
+            options={{
+              id: '09876',
+              message: 'success message would go here.',
+              type: 'success',
+              icon: 'comment_thumbs_up'
+            }}
           />
           <MLMessage
-            message={'warning message would go here.'}
-            messageType="warning"
-            iconType="info_outline"
+            options={{
+              id: '09876',
+              message: 'warning message would go here.',
+              type: 'warning',
+              icon: 'info_outline'
+            }}
           />
           <MLMessage
-            message={'error message would go here.'}
-            messageType="error"
-            iconType="alert_outline"
+            options={{
+              id: '09876',
+              message: 'error message would go here.',
+              type: 'error',
+              icon: 'alert_outline'
+            }}
           />
 
         </div>
@@ -346,7 +363,7 @@ class KitchenSink extends Component {
         </div>
         <div className="spacer">
           <h5>Checkbox Form with Selection Limit of 2</h5>
-          <CheckboxForm
+          <MLCheckboxForm
             fields={[
               {id: '1', question: 'first'},
               {id: '2', question: 'second'},
@@ -359,7 +376,7 @@ class KitchenSink extends Component {
           />
 
           <h5>Checkbox Form with Toggle Enabled</h5>
-          <CheckboxForm
+          <MLCheckboxForm
             fields={[
               {id: '1', title: 'first'},
               {id: '2', title: 'second'},
