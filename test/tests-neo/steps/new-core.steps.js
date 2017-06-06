@@ -15,6 +15,21 @@ exports.define = function(steps) {
     driver.get(marvin.config.baseUrl + '/' + user);
   });
 
+  // TODO: move this one out of core.steps.js
+  steps.then(/the draft goal summary list should have (\d+) goal/, function(goals) {
+    goals = parseInt(goals);
+    page.draft_goal_summary_list(1).then(el => el.getText()).then(text => {
+      if (text === '') {
+        expect(0).to.equal(goals);
+      } else {
+        let lead = `Selected Draft Goals: `;
+        expect(text.startsWith(lead)).to.be.true;
+        let blocks = text.substring(lead.length, text.length).split(`,`);
+        expect(blocks.length).to.equal(goals);
+      }
+    });
+  });
+
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, elem) => {
     driver.wait(() => {
       return page[elem]('all').then(els => els.length === parseInt(count) );
@@ -67,6 +82,18 @@ exports.define = function(steps) {
       .then(actualText => { text.should.equal(actualText); });
   });
 
+  // NOTE that this is an INCLUDES match, not an IS.
+  // TODO: is it worth it to switch to xregexp to actually get named capture groups?
+  steps.then(/the text of "(.*)"(?:\s*\[(.*)\])? should include "(.*)"/, (elem, arg, text) => {
+    if (text === undefined) {
+      text = arg;
+      arg = 1;
+    }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[elem](arg).then(el => el.getText())
+      .then(actualText => { actualText.should.have.string(text); });
+  });
+
   // steps.when('I select "$text" in the activity title', function(text) {
   //   // can't seem to get command+a or control+a to select all
   //   // let's use shift and many lefts
@@ -88,6 +115,10 @@ exports.define = function(steps) {
 
   steps.when('I reload the page', function() {
     driver.navigate().refresh();
+  });
+
+  steps.then(`I see "$brap" is disabled`, function(brap) {
+    page[brap](1).then(el => el.isEnabled()).then(answer => expect(answer).to.be.true);
   });
 
   // TODO: common functions like gimmeNone need to be deduped and shared
