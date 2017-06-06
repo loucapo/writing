@@ -15,8 +15,8 @@ class ReflectionQuestionsForm extends Component {
     showSubmitConfirm: false
   };
 
-  componentWillReceiveProps = (newProps, oldProps) => {
-    if(newProps.reflectionAnswers !== oldProps.reflectionAnswers) {
+  componentWillReceiveProps = (newProps) => {
+    if(newProps.reflectionAnswers !== this.props.reflectionAnswers) {
       this.setState({answers: newProps.reflectionAnswers});
     }
   };

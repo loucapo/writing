@@ -8,19 +8,13 @@ const ActivityHeaderDisplay = ({drafts, activityId}) => {
     <header className={styles.studentHeader}>
       <div className={styles.rightContainer}>
         {
-          drafts.map((draft, index) => {
-            let cardTitle = 'Draft ' + (index + 1);
-            // substitute 'Final paper' for 'Draft #' on last element in array
-            if (index === (drafts.length - 1)) {
-              cardTitle = 'Final Paper';
-            }
-
+          drafts.map((draft) => {
             return (
               <MLButton
                 key={draft.draftId}
-                title={`Start ${cardTitle}`}
-                dataId={`start-${cardTitle}`}
-                disabled={index !== 0}
+                title={draft.studentInfo.buttonText}
+                dataId={draft.studentInfo.buttonText}
+                disabled={draft.studentInfo.disabled}
                 link={`/activity/${activityId}/draft/${draft.draftId}`}
               />
             );

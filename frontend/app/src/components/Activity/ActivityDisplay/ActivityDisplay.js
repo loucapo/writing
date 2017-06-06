@@ -7,9 +7,9 @@ import {
   ActivityPromptDisplay
 } from './../index';
 
+import { DraftListDisplay } from './../../Draft';
 import {
-  ActivityRubricDisplayContainer,
-  DraftListDisplayContainer
+  ActivityRubricDisplayContainer
 } from './../../../containers/index';
 
 import { MLMessage } from './../../MLComponents/index';
@@ -50,7 +50,7 @@ const ActivityDisplay = ({activityId, activity, drafts, submitDraftMessage}) => 
           : null }
 
         <div className={styles.studentDraftSpacer}>
-          <DraftListDisplayContainer activityId={activity.activityId} />
+          <DraftListDisplay drafts={drafts} activityId={activity.activityId} />
         </div>
       </div>
     </div>
