@@ -36,6 +36,16 @@ module.exports = function(faker) {
 
     return {
       activity: [
+        {
+          activity_id: `d3e3c2d5-cf43-4f63-924f-3ec7a125a334`,
+          course_id: 1234,
+          title: 'Hello World',
+          created_by_id: faker.random.uuid(),
+          created_date: `2017-06-01`,
+          prompt: null,
+          modified_by_id: null,
+          modified_date: null
+        },
         simpleActivity(),
         simpleActivity(),
         simpleActivity()
@@ -427,6 +437,7 @@ module.exports = function(faker) {
           modified_date: null
         }
       ],
+
       rubric: [
         {
           rubric_id: `a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
@@ -609,6 +620,37 @@ module.exports = function(faker) {
           question_type: `fixed`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
+        }
+      ],
+
+      draft: [
+        {
+          draft_id: `e8ce0d9c-9824-4028-b0d7-ecaabb0bcae5`,
+          activity_id: 'activity:0:activity_id',
+          index: 3,
+          created_by_id: `f3e3c2d5-cf43-4f63-924f-3ec7a125a334`,
+          created_date: `2017-05-30`,
+          modified_by_id: 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334'
+        }
+      ],
+      student_activity: [
+        {
+          student_activity_id: `f0d2123e-2e10-4138-8af8-f93499eb02f0`,
+          activity_id: 'activity:0:activity_id',
+          student_id: '5ef7fa10-f4a4-4add-9191-882de6b9065b',
+          created_by_id: `5ef7fa10-f4a4-4add-9191-882de6b9065b`,
+          created_date: `2017-06-01`
+        }
+      ],
+      student_draft: [
+        {
+          student_draft_id: `b9c60aa4-476a-4eae-9bc0-e8f026ef3ea2`,
+          student_activity_id: `f0d2123e-2e10-4138-8af8-f93499eb02f0`,
+          draft_id: 'd3e3c2d5-cf43-4f63-924f-3ec7a125a335',
+          created_by_id: `5ef7fa10-f4a4-4add-9191-882de6b9065b`,
+          created_date: `2017-06-01`,
+          active: `TRUE`,
+          submitted: `FALSE`
         }
       ]
     };
