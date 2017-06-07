@@ -31,7 +31,7 @@ const ActivityDisplay = ({activityId, activity, drafts, submitDraftMessage}) => 
           ? <MLMessage
             options={{
               id: '09876',
-              message: `Draft 1 was successfully submitted on ${submitDraftMessage.modified}.`,
+              message: `${submitDraftMessage.draftName} was successfully submitted on ${submitDraftMessage.modified}.`,
               type: submitDraftMessage.status || 'default',
               icon: 'check'
             }}

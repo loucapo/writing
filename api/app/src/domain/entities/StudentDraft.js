@@ -29,8 +29,9 @@ module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
       return this.studentReflectionAnswers.length > 0;
     }
 
-    submit() {
+    submit(cmd) {
       this.status = 'submitted';
+      this.submittedDate = cmd.submittedDate;
     }
   };
 };

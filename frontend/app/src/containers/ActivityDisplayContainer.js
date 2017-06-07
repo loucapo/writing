@@ -69,7 +69,7 @@ const mapStateToProps = (state, props) => {
     activityId,
     studentActivityId: studentActivity ? studentActivity.studentActivityId : undefined,
     activity: state.activities.find(x => x.activityId === activityId),
-    submitDraftMessage: state.messaging.submit_draft,
+    submitDraftMessage: state.messaging.submitDraft,
     drafts
   };
 };

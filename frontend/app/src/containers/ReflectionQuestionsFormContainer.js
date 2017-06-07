@@ -41,12 +41,19 @@ const mapStateToProps = (state, props) => {
   let reflectionAnswers = state.reflectionAnswers
     .filter(x => reflectionQuestions
       .find(y => y.studentReflectionQuestionId === x.studentReflectionQuestionId));
+
+  let draftName = draft.index === state.studentDraft
+      .filter(x => x.activityId === state.auth.activityId
+        && x.studentId === state.auth.studentId).length - 1
+    ? `Final Paper`
+    : `Draft ${draft.index + 1}`;
   return {
     reflectionQuestions,
     reflectionAnswers,
     studentActivityId: props.params.studentActivityId.trim(),
     studentDraftId: props.params.studentDraftId.trim(),
-    homeRoute: state.defaults.homeRoute
+    homeRoute: state.defaults.homeRoute,
+    draftName
   };
 };
 
@@ -57,3 +64,4 @@ export default connect(mapStateToProps,
     getReflectionQuestions,
     submitDraft
   })(ReflectionQuestionsFormContainer);
+

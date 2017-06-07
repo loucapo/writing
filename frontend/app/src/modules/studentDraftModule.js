@@ -91,12 +91,13 @@ const successFunction = route => (action, result) => {
   return {type: action.states.SUCCESS, action, result};
 };
 
-export function submitDraft(studentActivityId, studentDraftId, homeRoute) {
+export function submitDraft(studentActivityId, studentDraftId, homeRoute, draftName) {
   return {
     type: SUBMIT_DRAFT.REQUEST,
     states: SUBMIT_DRAFT,
     url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/submit`,
     studentDraftId,
+    draftName,
     successFunction: successFunction(homeRoute),
     params: {
       method: 'put'

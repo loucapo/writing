@@ -8,7 +8,7 @@ export default (state, props) => {
   x.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined));
   let denormalizedDrafts = denormalizeDrafts(state, props);
 
-  let finalDraftIndex = denormalizedDrafts.length;
+  let finalDraftIndex = denormalizedDrafts.length - 1;
 
   let getCurrentActiveIndex = (drafts) => {
     let lastStarted = drafts.filter(x => x.status && x.status !== 'notStarted').reverse()[0];

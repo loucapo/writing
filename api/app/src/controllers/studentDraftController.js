@@ -102,7 +102,8 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
       const studentActivityId = ctx.params.studentActivityId;
       let command = {
         studentDraftId: ctx.params.studentDraftId,
-        modifiedById: ctx.state.user.id
+        modifiedById: ctx.state.user.id,
+        submittedDate: moment().format('YYYY-MM-DD')
       };
 
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
