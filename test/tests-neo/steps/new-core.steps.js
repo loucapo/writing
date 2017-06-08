@@ -20,6 +20,12 @@ exports.define = function(steps) {
     driver.get(marvin.config.baseUrl + '/' + user);
   });
 
+  steps.given(/I create a new activity as a[n] "(.+)"/, function(user) {
+    const uuid = faker.random.uuid();
+    const createUrl = `${marvin.config.baseUrl}/${user}/${uuid}`;
+    driver.get(createUrl);
+  });
+
   // TODO: move this one out of core.steps.js
   steps.then(/the draft goal summary list should have (\d+) goal/, function(goals) {
     goals = parseInt(goals);
@@ -49,6 +55,13 @@ exports.define = function(steps) {
         });
       });
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
+  });
+
+  // TODO: doc this
+  steps.then(/I delete all text in "(.+)"(?:\s*\[(\w*)\])?/, function(element, arg) {
+    if (arg === undefined) { arg = 1; }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[element](arg).then(el => el.clear());
   });
 
   //
