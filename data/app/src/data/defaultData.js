@@ -649,8 +649,7 @@ module.exports = function(faker) {
           draft_id: 'd3e3c2d5-cf43-4f63-924f-3ec7a125a335',
           created_by_id: `5ef7fa10-f4a4-4add-9191-882de6b9065b`,
           created_date: `2017-06-01`,
-          active: `TRUE`,
-          submitted: `FALSE`
+          status: `active`
         }
       ]
     };
