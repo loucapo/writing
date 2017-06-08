@@ -4,6 +4,11 @@ var faker = require('faker');
 
 exports.define = function(steps) {
 
+  // TODO: common functions like gimmeNone need to be deduped and shared
+  function gimmeNone(arr) {
+    expect(arr.length).to.equal(0);
+  }
+
   // TODO: review, ensure it's sane.
   const filterAsync = (array, filter) =>
         Promise.all(array.map(entry => filter(entry)))
@@ -13,6 +18,21 @@ exports.define = function(steps) {
 
   steps.given(/I launch the activity as a[n] "(.+)"/, function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
+  });
+
+  // TODO: move this one out of core.steps.js
+  steps.then(/the draft goal summary list should have (\d+) goal/, function(goals) {
+    goals = parseInt(goals);
+    page.draft_goal_summary_list(1).then(el => el.getText()).then(text => {
+      if (text === '') {
+        expect(0).to.equal(goals);
+      } else {
+        let lead = `Selected Draft Goals: `;
+        expect(text.startsWith(lead)).to.be.true;
+        let blocks = text.substring(lead.length, text.length).split(`,`);
+        expect(blocks.length).to.equal(goals);
+      }
+    });
   });
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, elem) => {
@@ -67,15 +87,17 @@ exports.define = function(steps) {
       .then(actualText => { text.should.equal(actualText); });
   });
 
-  // steps.when('I select "$text" in the activity title', function(text) {
-  //   // can't seem to get command+a or control+a to select all
-  //   // let's use shift and many lefts
-  //   let lefts = '';
-  //   for (let i = 0; i < text.length; i++) {
-  //     lefts += keys.LEFT;
-  //   }
-  //   page.edit_title_textarea.sendKeys(keys.SHIFT + lefts);
-  // });
+  // NOTE that this is an INCLUDES match, not an IS.
+  // TODO: is it worth it to switch to xregexp to actually get named capture groups?
+  steps.then(/the text of "(.*)"(?:\s*\[(.*)\])? should include "(.*)"/, (elem, arg, text) => {
+    if (text === undefined) {
+      text = arg;
+      arg = 1;
+    }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[elem](arg).then(el => el.getText())
+      .then(actualText => { actualText.should.have.string(text); });
+  });
 
   steps.then('I should see a fresh assignment', function() {
     // FIXME: do it
@@ -89,12 +111,5 @@ exports.define = function(steps) {
   steps.when('I reload the page', function() {
     driver.navigate().refresh();
   });
-
-  // TODO: common functions like gimmeNone need to be deduped and shared
-  // TODO: actually, need to grep for `steps.*`, sort the output, and dedupe
-  //  there's a ton of shared steps
-  function gimmeNone(arr) {
-    expect(arr.length).to.equal(0);
-  }
 
 };

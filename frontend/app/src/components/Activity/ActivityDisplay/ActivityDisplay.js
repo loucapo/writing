@@ -7,14 +7,16 @@ import {
   ActivityPromptDisplay
 } from './../index';
 
+import { DraftListDisplay } from './../../Draft';
 import {
-  ActivityRubricDisplayContainer,
-  DraftListDisplayContainer
+  ActivityRubricDisplayContainer
 } from './../../../containers/index';
+
+import { MLMessage } from './../../MLComponents/index';
 
 import styles from './activityDisplay.css';
 
-const ActivityDisplay = ({activityId, activity, drafts}) => (
+const ActivityDisplay = ({activityId, activity, drafts, submitDraftMessage}) => (
   <div className={styles.page}>
     <ActivityHeaderDisplay
       title={activity.course}
@@ -22,7 +24,20 @@ const ActivityDisplay = ({activityId, activity, drafts}) => (
       drafts={drafts}
     />
     <div className={styles.container}>
+
       <div className={styles.spacer}>
+
+        {(submitDraftMessage && submitDraftMessage.status)
+          ? <MLMessage
+            options={{
+              id: '09876',
+              message: `${submitDraftMessage.draftName} was successfully submitted on ${submitDraftMessage.modified}.`,
+              type: submitDraftMessage.status || 'default',
+              icon: 'check'
+            }}
+          />
+          : null
+        }
 
         <ActivityTitleDisplay title={activity.title} type={activity.type} />
 
@@ -35,7 +50,7 @@ const ActivityDisplay = ({activityId, activity, drafts}) => (
           : null }
 
         <div className={styles.studentDraftSpacer}>
-          <DraftListDisplayContainer activityId={activity.activityId} />
+          <DraftListDisplay drafts={drafts} activityId={activity.activityId} />
         </div>
       </div>
     </div>
@@ -45,7 +60,8 @@ const ActivityDisplay = ({activityId, activity, drafts}) => (
 ActivityDisplay.propTypes = {
   activityId: PropTypes.string,
   drafts: PropTypes.array,
-  activity: PropTypes.object
+  activity: PropTypes.object,
+  submitDraftMessage: PropTypes.object
 };
 
 export default ActivityDisplay;

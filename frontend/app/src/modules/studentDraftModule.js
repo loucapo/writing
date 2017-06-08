@@ -7,7 +7,7 @@ const CREATE_STUDENT_DRAFT = requestStates('create_student_draft');
 const GET_STUDENT_DRAFTS = requestStates('get_student_drafts');
 const GET_STUDENT_DRAFT = requestStates('get_student_draft');
 const UPDATE_DRAFT_PAPER = requestStates('update_draft_paper');
-const SUBMIT_DRAFT = requestStates('submit_draft_paper');
+export const SUBMIT_DRAFT = requestStates('submit_draft_paper');
 
 // Reducer
 export default (state = [], action) => {
@@ -39,17 +39,6 @@ export default (state = [], action) => {
   }
 };
 
-export function createStudentDraftIfNotThere(studentActivityId, draftId) {
-  return {
-    type: CREATE_STUDENT_DRAFT.REQUEST,
-    states: CREATE_STUDENT_DRAFT,
-    url: `${config.apiUrl}studentactivity/${studentActivityId}/draft/${draftId}`,
-    params: {
-      method: 'PUT'
-    }
-  };
-}
-
 export function getStudentDraft(studentActivityId, draftId) {
   return {
     type: GET_STUDENT_DRAFT.REQUEST,
@@ -57,6 +46,18 @@ export function getStudentDraft(studentActivityId, draftId) {
     url: `${config.apiUrl}studentactivity/${studentActivityId}/draft/${draftId}`,
     params: {
       method: 'GET'
+    }
+  };
+}
+
+export function createStudentDraftIfNotThere(studentActivityId, draftId) {
+  return {
+    type: CREATE_STUDENT_DRAFT.REQUEST,
+    states: CREATE_STUDENT_DRAFT,
+    subsequentAction: getStudentDraft(studentActivityId, draftId),
+    url: `${config.apiUrl}studentactivity/${studentActivityId}/draft/${draftId}`,
+    params: {
+      method: 'PUT'
     }
   };
 }
@@ -90,12 +91,13 @@ const successFunction = route => (action, result) => {
   return {type: action.states.SUCCESS, action, result};
 };
 
-export function submitDraft(studentActivityId, studentDraftId, homeRoute) {
+export function submitDraft(studentActivityId, studentDraftId, homeRoute, draftName) {
   return {
     type: SUBMIT_DRAFT.REQUEST,
     states: SUBMIT_DRAFT,
     url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/submit`,
     studentDraftId,
+    draftName,
     successFunction: successFunction(homeRoute),
     params: {
       method: 'put'

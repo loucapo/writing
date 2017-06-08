@@ -44,7 +44,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       const event = this.mapper(cmd);
       let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
       studentDraft.updateDraftPaper(cmd);
-
+      event.status = studentDraft.status;
       this.raiseEvent({
         eventName: 'studentDraftPaperUpdated',
         event
@@ -85,6 +85,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       invariant(studentDraft.studentReflectionQuestionsAnswered(),
         `Student Draft, Id: ${cmd.studentDraftId}, must have Reflection Questions answered before it can be submitted`);
       studentDraft.submit(cmd);
+      event.status = studentDraft.status;
 
       this.raiseEvent({
         eventName: 'studentDraftSubmitted',
