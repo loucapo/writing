@@ -7,9 +7,10 @@ export default (state = {}, action) => {
     case SUBMIT_DRAFT.SUCCESS: {
       state = {
         ...state,
-        submit_draft: {
+        submitDraft: {
           status: 'success',
-          modified: moment(new Date()).format('MMMM Do, YYYY')
+          modified: moment(new Date()).format('MMMM Do, YYYY'),
+          draftName: action.action.draftName
         }
       };
     }

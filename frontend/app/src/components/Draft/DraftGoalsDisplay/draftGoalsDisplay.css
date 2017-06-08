@@ -1,6 +1,7 @@
 @import 'variables.css';
 
 .container {
+  margin-bottom: 15px;
   min-width: 48%;
 }
 

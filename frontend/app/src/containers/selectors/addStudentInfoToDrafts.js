@@ -8,7 +8,7 @@ export default (state, props) => {
   x.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined));
   let denormalizedDrafts = denormalizeDrafts(state, props);
 
-  let finalDraftIndex = denormalizedDrafts.length;
+  let finalDraftIndex = denormalizedDrafts.length - 1;
 
   let getCurrentActiveIndex = (drafts) => {
     let lastStarted = drafts.filter(x => x.status && x.status !== 'notStarted').reverse()[0];
@@ -27,14 +27,20 @@ export default (state, props) => {
 
     let buttonText = `Start ${title}`;
     if (studentDraft && studentDraft.status === 'submitted') {
-      buttonText = `view ${title}`;
+      buttonText = `View ${title}`;
     } else if (studentDraft && studentDraft.status === 'active') {
-      buttonText = `continue ${title}`;
+      buttonText = `Return to ${title}`;
     }
+
+    let submittedDate = studentDraft && studentDraft.submittedDate ? studentDraft.submittedDate : null;
+    let paper = studentDraft && studentDraft.paper ? studentDraft.paper : null;
     return {
       status: studentDraft ? studentDraft.status : 'notStarted',
+      studentDraftId: studentDraft ? studentDraft.studentDraftId : '',
       title,
       buttonText,
+      submittedDate,
+      paper,
       disabled: draft.index > currentActiveIndex
     };
   };

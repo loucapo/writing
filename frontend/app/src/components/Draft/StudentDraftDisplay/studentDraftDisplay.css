@@ -1,0 +1,19 @@
+@import 'variables.css';
+
+.checkIcon {
+  fill: var(--green-light);
+}
+
+.side, .submittedDate {
+  display: flex;
+}
+
+.submittedDate {
+  align-items: center;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.submittedDate strong {
+  margin-right: 5px;
+}

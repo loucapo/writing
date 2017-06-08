@@ -61,7 +61,7 @@ class DraftInstructions extends Component {
             <div>
               <div className={styles.addDraftHeading}>
                 <span>Draft Instructions</span>
-                <div>
+                <div className={styles.flex}>
                   <a data-id="draft-instructions-edit" onClick={this.toggleForm}>
                     <MLIcon
                       className={styles.icon}

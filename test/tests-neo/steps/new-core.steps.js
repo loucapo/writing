@@ -1,6 +1,6 @@
 let page = require('../pages/instructor-assignment-summary-page');
 //let rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
-var faker = require('faker');
+const faker = require('faker');
 
 exports.define = function(steps) {
 

@@ -56,5 +56,6 @@ where student_draft_id = :studentDraftId
 -- name: submitStudentDraft
 UPDATE student_draft
 SET status = :status,
+    submitted_date = :submittedDate,
     modified_by_id = :modifiedById
 WHERE student_draft_id = :studentDraftId
