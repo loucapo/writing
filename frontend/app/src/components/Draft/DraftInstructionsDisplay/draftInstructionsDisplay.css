@@ -12,6 +12,10 @@
   display: flex;
 }
 
+.draftInstContainer {
+  margin-bottom: 15px;
+}
+
 .flexSpace {
   composes: flex;
   justify-content: space-between;
