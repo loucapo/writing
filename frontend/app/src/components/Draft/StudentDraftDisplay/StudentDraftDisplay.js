@@ -7,7 +7,7 @@ import { MLButton, MLCard } from '../../MLComponents';
 import styles from './studentDraftDisplay.css';
 
 const StudentDraftDisplay = ({ draft, activityId }) => {
-  let finalInstruct = draft.index > 0 && !draft.studentInfo
+  let finalInstruct = draft.studentInfo.disabled && draft.studentInfo.status === 'notStarted'
     ? `You will be able to view and start this draft once you've received feedback on Draft ${draft.index}`
     : '';
 
