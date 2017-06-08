@@ -62,7 +62,7 @@ class ReflectionQuestionsForm extends Component {
     if (!this.state.answers.find(x => x.studentReflectionQuestionId === reflectionId)) {
       answers.push(answer);
     } else {
-      answers = answers.map(x => (x.studentReflectionQuestionId === reflectionId ? answer : x));
+      answers = answers.map(x => x.studentReflectionQuestionId === (reflectionId ? answer : x));
     }
     this.setState({ answers });
   };

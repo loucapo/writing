@@ -31,10 +31,13 @@ export default (state, props) => {
     } else if (studentDraft && studentDraft.status === 'active') {
       buttonText = `continue ${title}`;
     }
+
+    let submittedDate = studentDraft && studentDraft.submittedDate ? studentDraft.submittedDate : null;
     return {
       status: studentDraft ? studentDraft.status : 'notStarted',
       title,
       buttonText,
+      submittedDate,
       disabled: draft.index > currentActiveIndex
     };
   };
