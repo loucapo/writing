@@ -622,12 +622,11 @@ module.exports = function(faker) {
           created_date: `2017-04-10`
         }
       ],
-
       draft: [
         {
           draft_id: `e8ce0d9c-9824-4028-b0d7-ecaabb0bcae5`,
           activity_id: 'activity:0:activity_id',
-          index: 3,
+          index: 0,
           created_by_id: `f3e3c2d5-cf43-4f63-924f-3ec7a125a334`,
           created_date: `2017-05-30`,
           modified_by_id: 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334'
