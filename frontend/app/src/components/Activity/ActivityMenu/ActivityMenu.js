@@ -4,6 +4,8 @@ import {
   DraftListContainer
 } from './../../../containers/index';
 
+import { SubmissionStatusContainer } from './../../../containers';
+
 import styles from './activityMenu.css';
 
 class ActivityMenu extends Component {
@@ -36,6 +38,12 @@ class ActivityMenu extends Component {
           {(display === 'drafts')
           ? <DraftListContainer activityId={this.props.activityId} />
           : null}
+        </div>
+
+        <div className={styles.spacer}>
+          {(display === 'submissions')
+            ? <SubmissionStatusContainer />
+            : null}
         </div>
       </div>
     );

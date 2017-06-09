@@ -1,0 +1,16 @@
+@import 'variables.css';
+
+.row {
+  border-top: 1px solid var(--gray-light);
+  height: 50px;
+}
+
+.row td {
+  padding: 0 20px;
+  width: 25%;
+}
+
+.row a {
+  text-decoration: none;
+  color: var(--aqua);
+}
