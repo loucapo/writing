@@ -31,6 +31,44 @@ function basePageObj(opts) {
 
 module.exports = new Page({
 
+  // Activity overview
+  //
+  activity_title: basePageObj({
+    desc: ``,
+    locator: `[data-id='activity-title']`
+  }),
+
+  activity_type: basePageObj({
+    desc: ``,
+    locator: `[data-id='activity-type']`
+  }),
+
+  edit_title: basePageObj({
+    desc: `Button to make the activity title an editable field`,
+    locator: `[class^='ActivityTitle__editIcon__']`
+  }),
+
+  edit_title_cancel: basePageObj({
+    desc: ``,
+    locator: `[data-id='title-cancel']`
+  }),
+
+  edit_title_save: basePageObj({
+    desc: ``,
+    locator: `[data-id='title-save']`
+
+  }),
+
+  edit_title_textarea: basePageObj({
+    desc: ``,
+    locator: `[class^='ActivityTitle__editField__']`
+  }),
+
+  title_char_counter: basePageObj({
+    desc: ``,
+    locator: `[data-id='char-limit-count']`
+  }),
+
   // Draft goal modal
   //
 
