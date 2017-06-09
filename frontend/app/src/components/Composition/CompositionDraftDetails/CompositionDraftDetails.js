@@ -25,16 +25,17 @@ const CompositionDraftDetails = ({
   activity,
   draft,
   goals,
-  studentReflectionQuestions,
+  reflectionQuestions,
   newRubric,
   homeRoute
 }) => {
   const DraftAccordionList = (
     <div className={styles.accordionLeftBorder} data-id="draft-information-details-panel" >
       <DraftInstructionsDisplay instructions={draft && draft.instructions} />
-      <div className={styles.listSpacer} />
+
       <DraftGoalsDisplay goals={goals} />
-      <ReflectionQuestionsDisplay reflectionQuestions={studentReflectionQuestions} />
+
+      <ReflectionQuestionsDisplay reflectionQuestions={reflectionQuestions} />
     </div>
   );
 
@@ -78,7 +79,7 @@ CompositionDraftDetails.propTypes = {
   activity: PropTypes.object,
   draft: PropTypes.object,
   goals: PropTypes.array,
-  studentReflectionQuestions: PropTypes.array,
+  reflectionQuestions: PropTypes.array,
   newRubric: PropTypes.object,
   homeRoute: PropTypes.string
 };

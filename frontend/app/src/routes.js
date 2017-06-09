@@ -1,8 +1,9 @@
 import React from 'react';
-import {Route, IndexRedirect} from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
 import {
   LaunchContainer,
   CompositionContainer,
+  CompositionDisplayContainer,
   ReflectionQuestionsFormContainer
 } from './containers/index';
 import KitchenSink from './components/KitchenSink/KitchenSink';
@@ -15,7 +16,11 @@ const routes = (
     <Route path="/kitchensink" component={KitchenSink} />
     <Route path="/lms/:lmsId/course/:courseId/resource/:activityId" component={LaunchContainer} />
     <Route path="/activity/:activityId/draft/:draftId" component={CompositionContainer} />
-    <Route path="/reflectionQuestions/:studentActivityId/studentdraft/:studentDraftId"
-      component={ReflectionQuestionsFormContainer} />
-  </Route>);
+    <Route path="/studentDraft/:studentDraftId/display" component={CompositionDisplayContainer} />
+    <Route
+      path="/reflectionQuestions/:studentActivityId/studentdraft/:studentDraftId"
+      component={ReflectionQuestionsFormContainer}
+    />
+  </Route>
+);
 module.exports = routes;

@@ -7,6 +7,7 @@ import ActivityPromptContainer from './ActivityPromptContainer';
 import ActivityRubricSectorContainer from './ActivityRubricSelectorContainer';
 import ActivityDisplayContainer from './ActivityDisplayContainer';
 import CompositionContainer from './CompositionContainer';
+import CompositionDisplayContainer from './CompositionDisplayContainer';
 import ReflectionQuestionsFormContainer from './ReflectionQuestionsFormContainer';
 import ReflectionQuestionsSelectorModalContainer from './ReflectionQuestionsSelectorModalContainer';
 import ActivityRubricDisplayContainer from './ActivityRubricDisplayContainer';
@@ -22,6 +23,7 @@ export {
   ActivityRubricSectorContainer,
   ActivityDisplayContainer,
   CompositionContainer,
+  CompositionDisplayContainer,
   ReflectionQuestionsFormContainer,
   ReflectionQuestionsSelectorModalContainer,
   ActivityRubricDisplayContainer,

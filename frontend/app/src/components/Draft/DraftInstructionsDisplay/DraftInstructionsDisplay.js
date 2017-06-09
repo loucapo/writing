@@ -8,7 +8,7 @@ const DraftInstructionsDisplay = ({ instructions }) => {
     return null;
   }
   return (
-    <div>
+    <div className={styles.draftInstContainer}>
       <div data-id="draft-instructions" className={styles.addDraftHeading}>
         <span>Draft Instructions</span>
       </div>

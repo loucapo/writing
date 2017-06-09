@@ -27,17 +27,20 @@ export default (state, props) => {
 
     let buttonText = `Start ${title}`;
     if (studentDraft && studentDraft.status === 'submitted') {
-      buttonText = `view ${title}`;
+      buttonText = `View ${title}`;
     } else if (studentDraft && studentDraft.status === 'active') {
-      buttonText = `continue ${title}`;
+      buttonText = `Return to ${title}`;
     }
 
     let submittedDate = studentDraft && studentDraft.submittedDate ? studentDraft.submittedDate : null;
+    let paper = studentDraft && studentDraft.paper ? studentDraft.paper : null;
     return {
       status: studentDraft ? studentDraft.status : 'notStarted',
+      studentDraftId: studentDraft ? studentDraft.studentDraftId : '',
       title,
       buttonText,
       submittedDate,
+      paper,
       disabled: draft.index > currentActiveIndex
     };
   };

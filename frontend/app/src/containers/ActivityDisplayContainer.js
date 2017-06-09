@@ -8,6 +8,7 @@ import { createStudentActivityIfNotCreated } from './../modules/studentActivityM
 import { addStudentInfoToDrafts } from './selectors';
 import { getDraftsForActivity } from './../modules/draftModule';
 import { getStudentDrafts } from './../modules/studentDraftModule';
+import { getReflectionQuestions } from './../modules/reflectionQuestionsModule';
 
 class ActivityDisplayContainer extends Component {
   componentWillMount() {
@@ -24,6 +25,7 @@ class ActivityDisplayContainer extends Component {
       this.props.getRubricList();
       this.props.getDraftsForActivity(this.props.activityId);
       this.props.getStudentDrafts(this.props.studentActivityId);
+      this.props.getReflectionQuestions();
     }
   }
 
@@ -52,6 +54,7 @@ ActivityDisplayContainer.propTypes = {
   drafts: PropTypes.array,
   getStudentDrafts: PropTypes.func,
   getDraftsForActivity: PropTypes.func,
+  getReflectionQuestions: PropTypes.func,
   hasStudentDrafts: PropTypes.bool
 };
 
@@ -80,5 +83,6 @@ export default connect(mapStateToProps, {
   getRubricList,
   createStudentActivityIfNotCreated,
   getDraftsForActivity,
-  getStudentDrafts
+  getStudentDrafts,
+  getReflectionQuestions
 })(ActivityDisplayContainer);
