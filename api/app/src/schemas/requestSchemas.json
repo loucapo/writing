@@ -23,14 +23,13 @@
     },
     "updateActivityPrompt": {
       "title": "updateActivityPrompt",
-      "properties": [
-        {
-          "name": "prompt",
+      "properties": {
+        "prompt": {
           "in": "body",
           "type": "string",
           "required": true
         }
-      ]
+      }
     },
     "updateActivityTitle": {
       "title": "updateActivityTitle",
@@ -92,6 +91,40 @@
             "type": "string"
           },
           "uniqueItems": true
+        }
+      }
+    },
+    "updateStudentDraftPaper": {
+      "title": "updateStudentDraftPaper",
+      "properties": [
+        {
+          "name": "paper",
+          "in": "body",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "setStudentReflectionAnswers": {
+      "title": "setStudentReflectionAnswers",
+      "properties": {
+        "studentReflectionAnswers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/studentReflectionAnswer"
+          }
+        }
+      }
+    },
+    "studentReflectionAnswer": {
+      "title": "studentReflectionAnswer",
+      "properties": {
+        "studentReflectionQuestionId": {
+          "type": "string"
+        },
+        "studentReflectionAnswer": {
+          "type": "string"
         }
       }
     }

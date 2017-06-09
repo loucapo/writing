@@ -1,0 +1,32 @@
+@import 'variables.css';
+
+.titleContainer {
+  margin: 48px 0 20px;
+  width: 100%;}
+
+.title {
+  display: flex;
+  @apply --font-28;
+}
+
+.subheader {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 132px;
+}
+
+.editField {
+  width: 100%;
+}
+
+.type {
+  @apply --font-16;
+}
+
+.editIcon {
+  fill: var(--aqua);
+}
+
+.charLimit {
+  color: var(--red);
+}

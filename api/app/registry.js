@@ -12,10 +12,6 @@ module.exports = function(_options) {
           .for('customLogger').renameTo('logger') // eslint-disable-line newline-per-chained-call
           .groupAllInDirectory('./app/src/controllers', 'controllers')
           .groupAllInDirectory('./app/src/routes/routers', 'routers_array')
-          .groupAllInDirectory('./app/src/domain', 'domain')
-          .groupAllInDirectory('./app/src/domain/builders', 'domainBuilders')
-          .groupAllInDirectory('./app/src/domain/entities', 'entities')
-          .groupAllInDirectory('./app/src/domain/entities/builders', 'entityBuilders')
           .groupAllInDirectory('./app/src/schemas', 'schemas', true)
           .complete(),
       i => i.instantiate('logger').asFunc().complete());

@@ -33,26 +33,15 @@ exports.define = function(steps) {
    */
   // XXX this doesn't actually use the text it's given- is it supposed to?
   steps.when('I select "$text"', function(text) {
-    // can't seem to get command+a or control+a to select all
-    // let's use shift and many lefts
-    let lefts = '';
-    for (let i = 0; i < text.length; i++) {
-      lefts += keys.LEFT;
-    }
-    rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
+    // TODO: there's like 6 places that reuse this pattern or close to it.
+    // put it in a common-steps.js and refactor the tests to fit.
+    rtePage.draftEditor.sendKeys(keys.BACK_SPACE.repeat(text.length));
   });
 
   steps.when('I select all content', function() {
-    // can't seem to get command+a or control+a to select all
-    // let's use shift and many lefts
     rtePage.draftEditor.getText()
-      .then(function(content) {
-        let lefts = '';
-        let contentLength = content.length + 1;
-        for (let i = 0; i < contentLength; i++) {
-          lefts += keys.LEFT;
-        }
-        rtePage.draftEditor.sendKeys(keys.SHIFT + lefts);
+      .then(text => {
+        rtePage.draftEditor.sendKeys(keys.BACK_SPACE.repeat(text.length));
       });
   });
 

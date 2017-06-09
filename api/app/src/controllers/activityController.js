@@ -1,4 +1,4 @@
-module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger) {
+module.exports = function(Activity, repository, sqlLibrary, activityBuilder, logger) {
   return {
     async getActivity(ctx) {
       logger.info('Selecting activity ' + ctx.params.activityId + ' from repository');
@@ -28,7 +28,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       let activity = await repository.query(sqlLibrary.activity, 'getActivityById', {activityId: command.activityId});
       if (!activity || !activity[0]) {
         logger.info(`Creating Activity from wk_serve payload: ${JSON.stringify(command)}`);
-        activity = new domain.Activity();
+        activity = new Activity();
         let event = activity.createNewActivity(command);
         await repository.query(sqlLibrary.activity, 'createActivity', event);
         let draftEvent = activity.addDraftToActivity({
@@ -49,7 +49,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.modifiedById = ctx.state.user.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.updateActivityPrompt(command);
 
       await repository.query(sqlLibrary.activity, 'updateActivityPrompt', event);
@@ -62,7 +62,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.modifiedById = ctx.state.user.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.updateActivityTitle(command);
 
       await repository.query(sqlLibrary.activity, 'updateActivityTitle', event);
@@ -82,7 +82,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
         return ctx;
       }
 
-      let activity = new domain.Activity(props);
+      let activity = new Activity(props);
       let event = activity.updateActivityRubric(command);
       event.rubricId = event.rubricId.length > 16 ? event.rubricId : null;
       await repository.query(sqlLibrary.activity, 'updateActivityRubric', event);

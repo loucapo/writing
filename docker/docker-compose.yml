@@ -32,6 +32,7 @@ services:
         dockerfile: docker/Dockerfile
       volumes:
         - ./../data/app:/home/current/app
+        - ./../data/migrations:/home/current/migrations
       env_file:
         - ./../.envrc.example
       environment:

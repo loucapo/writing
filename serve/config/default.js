@@ -1,6 +1,6 @@
 module.exports = {
   app: {
-    port: process.env.WK_SERVE_PORT,
+    port: process.env.SERVE_PORT,
     env: process.env.NODE_ENV,
     keys: process.env.APPLICATION_KEYS,
     wk_api_url: process.env.WK_API_URL,
