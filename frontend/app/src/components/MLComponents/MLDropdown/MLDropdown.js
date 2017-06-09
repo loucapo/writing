@@ -11,22 +11,22 @@ class Dropdown extends Component {
     options: this.props.options || []
   };
 
-  setUpOptions = (_options = [], _selected) => {
+  setUpOptions = (_options = [], selectedId) => {
     let options = _options;
-    let selected = this.props.defaultOption;
+    let selected;
     if(!this.props.hideEmptyOption && _options.length > 0) {
       options = [this.props.defaultOption, ..._options];
-      selected = options.find(x => x.id === _selected) || this.props.defaultOption;
+      selected = options.find(x => x.id === selectedId);
     }
-    this.setState({ options, selected });
+    this.setState({ options, selected: selected || this.props.defaultOption });
   };
 
   componentDidMount() {
-    this.setUpOptions(this.props.options, this.props.selected);
+    this.setUpOptions(this.props.options, this.props.selectedId);
   }
 
   componentWillReceiveProps(newProps) {
-    this.setUpOptions(newProps.options, newProps.selected);
+    this.setUpOptions(newProps.options, newProps.selectedId);
   }
 
   toggleContents = () => {
@@ -107,7 +107,7 @@ Dropdown.propTypes = {
   defaultOption: PropTypes.object,
   options: PropTypes.array,
   onChange: PropTypes.func.isRequired,
-  selected: PropTypes.string,
+  selectedId: PropTypes.string,
   hideEmptyOption: PropTypes.bool,
   contentDataId: PropTypes.string,
   openDataId: PropTypes.string

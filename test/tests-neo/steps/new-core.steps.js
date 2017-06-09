@@ -1,6 +1,6 @@
 let page = require('../pages/instructor-assignment-summary-page');
 //let rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
-var faker = require('faker');
+const faker = require('faker');
 
 exports.define = function(steps) {
 
@@ -18,6 +18,12 @@ exports.define = function(steps) {
 
   steps.given(/I launch the activity as a[n] "(.+)"/, function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
+  });
+
+  steps.given(/I create a new activity as a[n] "(.+)"/, function(user) {
+    const uuid = faker.random.uuid();
+    const createUrl = `${marvin.config.baseUrl}/${user}/${uuid}`;
+    driver.get(createUrl);
   });
 
   // TODO: move this one out of core.steps.js
@@ -49,6 +55,13 @@ exports.define = function(steps) {
         });
       });
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
+  });
+
+  // TODO: doc this
+  steps.then(/I delete all text in "(.+)"(?:\s*\[(\w*)\])?/, function(element, arg) {
+    if (arg === undefined) { arg = 1; }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    page[element](arg).then(el => el.clear());
   });
 
   //

@@ -31,6 +31,7 @@ module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
 
     submit(cmd) {
       this.status = 'submitted';
+      this.reviewStatus = 'notStarted';
       this.submittedDate = cmd.submittedDate;
     }
   };

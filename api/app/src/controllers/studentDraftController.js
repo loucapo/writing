@@ -15,7 +15,7 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
 
       if (!studentDraft || !studentDraft[0]) {
         logger.info(`Creating studentDraft from payload: ${JSON.stringify(command)}`);
-        const studentActivity = new StudentActivity();
+        const studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
         let event = studentActivity.createNewStudentDraft(command);
         await repository.query(sqlLibrary.studentDraft, 'createStudentDraft', event);
       }

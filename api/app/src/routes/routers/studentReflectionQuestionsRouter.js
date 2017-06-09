@@ -19,7 +19,6 @@ module.exports = function(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-
     studentReflectionQuestionsRouter.get('studentReflectionQuestions',
       '/studentreflectionquestions',
       controllers.studentReflectionQuestionsController.getStudentReflectionQuestions);

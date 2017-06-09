@@ -232,7 +232,7 @@ class KitchenSink extends Component {
               {id: '1111', value: 'Option4'}
             ]}
             onChange={this.selectOnChange}
-            selected="0000"
+            selectedId="0000"
             contentDataId="rubric-selection-content"
             openDataId="rubric-selection-open"
           />
