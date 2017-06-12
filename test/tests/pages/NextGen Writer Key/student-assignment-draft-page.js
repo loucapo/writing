@@ -82,8 +82,8 @@ module.exports = new Page({
       return this.element("[data-id='rubric-arrow-right']");
     }
   },
-  draft_submission_confirmation: {
-    get() { return this.element("[class*='MLDialog__alert_container']"); }
+  drag_submission_confirmation_modal: {
+    get() { return this.element("[class*='MLDialog__alert']"); }
   },
   draft_submission_cancel: {
     get() { return this.element("button[data-id='dialog-cancel']"); }
@@ -91,24 +91,30 @@ module.exports = new Page({
   draft_submission_submit: {
     get() { return this.element("button[data-id='dialog-submit']"); }
   },
+  draft_submission_confirmation_banner: {
+    get() { return this.element("[class*='MLDialog__alert_container']"); }
+  },
+  draft_submission_confirmation_success_icon: {
+    get() { return this.element("[class*='MLMessage__message_icon_success']"); }
+  },
   reflection_questions: {
     get() {
-      return this.element("[class^='ReflectionQuestions__reflection']");
+      return this.element("[class^='ReflectionQuestionsForm__reflection']");
     }
   },
   reflection_textfields: {
     get() {
-      return this.elements("[class^='ReflectionQuestions__reflection'] textarea");
+      return this.elements("[class^='ReflectionQuestionsForm__reflection'] textarea");
     }
   },
   reflection_polls: {
     get() {
-      return this.elements("[class^='ReflectionQuestions__reflection'] form");
+      return this.elements("[class^='ReflectionQuestionsForm__reflection'] form");
     }
   },
   reflection_polls_first_options: {
     get() {
-      return this.elements("[class^='ReflectionQuestions__reflection'] form input:first-child");
+      return this.elements("[class^='ReflectionQuestionsForm__reflection'] form input:first-child");
     }
   },
   reflection_button_submit_enabled: {
@@ -120,5 +126,8 @@ module.exports = new Page({
     get() {
       return this.element("[data-id='submit-draft'][class*='MLButton__disabled']");
     }
+  },
+  view_final_draft_button: {
+    get() { return this.element("[data-id='View Final Paper']"); }
   }
 });
