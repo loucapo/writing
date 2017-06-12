@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { ActivityDisplay } from './../components/Activity/index';
+import { ActivityDisplay } from '../components/Activity/index';
 import { getActivity } from '../modules/activityModule';
 import { getCriteria } from '../modules/criteriaModule';
-import { getRubricList } from './../modules/rubricModule';
-import { createStudentActivityIfNotCreated } from './../modules/studentActivityModule';
+import { getRubricList } from '../modules/rubricModule';
+import { createStudentActivityIfNotCreated } from '../modules/studentActivityModule';
 import { addStudentInfoToDrafts } from './selectors';
-import { getDraftsForActivity } from './../modules/draftModule';
-import { getStudentDrafts } from './../modules/studentDraftModule';
-import { getReflectionQuestions } from './../modules/reflectionQuestionsModule';
+import { getDraftsForActivity } from '../modules/draftModule';
+import { getStudentDrafts } from '../modules/studentDraftModule';
+import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 
 class ActivityDisplayContainer extends Component {
   componentWillMount() {
@@ -36,10 +36,7 @@ class ActivityDisplayContainer extends Component {
   }
 
   render() {
-    if (!this.props.activity) {
-      return null;
-    }
-    return <ActivityDisplay {...this.props} />;
+    return this.props.activity ? <ActivityDisplay {...this.props} /> : null;
   }
 }
 
@@ -68,10 +65,12 @@ const mapStateToProps = (state, props) => {
   const drafts = addStudentInfoToDrafts(state, props);
 
   //activityId coming from auth so it's there but activity may not be
+  const activity = state.activities.find(x => x.activityId === activityId);
+
   return {
     activityId,
+    activity,
     studentActivityId: studentActivity ? studentActivity.studentActivityId : undefined,
-    activity: state.activities.find(x => x.activityId === activityId),
     submitDraftMessage: state.messaging.submitDraft,
     drafts
   };
