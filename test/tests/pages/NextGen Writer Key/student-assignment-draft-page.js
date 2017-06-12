@@ -94,6 +94,7 @@ module.exports = new Page({
   draft_submission_confirmation_banner: {
     get() { return this.element("[class*='MLDialog__alert_container']"); }
   },
+
   draft_submission_confirmation: {
     get() { return this.element("[data-id='submitted-draft-alert']"); }
   },
