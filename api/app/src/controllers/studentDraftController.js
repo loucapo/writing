@@ -50,6 +50,7 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
       command.modifiedById = ctx.state.user.id;
+      command.modifiedDate = moment().toISOString();
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.updateDraftPaper(command);
 

@@ -1,24 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
+import styles from './mlEditor.css';
 
 class MLEditor extends Component {
-  editorState = (this.props.content)
-    ? EditorState.createWithContent(convertFromRaw(this.props.content))
-    : null;
+  editorState = this.props.content ? EditorState.createWithContent(convertFromRaw(this.props.content)) : null;
 
   state = {
     editorState: this.editorState
   };
 
-  componentWillReceiveProps = (newProps) => {
+  componentWillReceiveProps = newProps => {
     if (newProps.editable) {
       this.refs.editor.focusEditor();
     }
   };
 
-  onEditorStateChange = (editorState) => {
+  onEditorStateChange = editorState => {
     this.setState({
       editorState
     });
@@ -28,16 +27,18 @@ class MLEditor extends Component {
     }
   };
 
-  handleBlur = (e) => {
+  handleBlur = e => {
     //TODO: need to use this as the data to post for the ID and as the data in the RTE on load.
-    if(!!e.relatedTarget && e.relatedTarget.id === 'cancel') {
+    if (!!e.relatedTarget && e.relatedTarget.id === 'cancel') {
       this.setState({
         editorState: EditorState.createWithContent(convertFromRaw(this.props.content))
       });
       return;
     }
     let content = convertToRaw(this.state.editorState.getCurrentContent());
-    this.props.handleSave(content);
+    if (this.props.handleSaveOnBlur) {
+      this.props.handleSaveOnBlur(content);
+    }
   };
 
   render = () => {
@@ -50,15 +51,16 @@ class MLEditor extends Component {
         toolbar={toolbar}
         ref="editor"
         toolbarOnFocus={!this.props.editable}
-        editorClassName="editor"
-        wrapperClassName="editorWrapper"
+        editorClassName={styles.editor}
+        wrapperClassName={styles.editorWrapper}
+        toolbarClassName={styles.toolbar}
       />
     );
   };
 }
 
 MLEditor.propTypes = {
-  handleSave: PropTypes.func,
+  handleSaveOnBlur: PropTypes.func,
   editable: PropTypes.bool,
   content: PropTypes.object,
   notifyOnEditorUpdate: PropTypes.func

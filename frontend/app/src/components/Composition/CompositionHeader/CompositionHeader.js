@@ -1,24 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MLButton } from './../../MLComponents/index';
+import { MLButton } from '../../MLComponents/index';
 
 import styles from './compositionHeader.css';
 
-const CompositionHeader = ({draftIsEmpty, studentDraft, studentActivityId}) => {
+const CompositionHeader = ({
+  draftIsEmpty,
+  studentDraftId,
+  studentActivityId,
+  handleSave,
+  hasStartedReflectionQuestions
+}) => {
+  const buttonTitle = hasStartedReflectionQuestions ? 'Done, Return to Reflection' : 'Done, Start Reflection';
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.headerRight}>
+          <MLButton handleClick={handleSave} title="Save" dataId="save-draft" disabled={draftIsEmpty} bordered={true} />
           <MLButton
-            title="Save"
-            dataId="save-draft"
-            disabled={draftIsEmpty}
-            bordered={true}
-          />
-          <MLButton
-            link={`/reflectionQuestions/
-            ${studentActivityId}/studentdraft/${studentDraft.studentDraftId}`}
-            title="Done, Start Reflection"
+            handleClick={handleSave}
+            link={`/reflectionQuestions/${studentActivityId}/studentdraft/${studentDraftId}`}
+            title={buttonTitle}
             dataId="start-reflection"
             disabled={draftIsEmpty}
           />
@@ -30,9 +32,10 @@ const CompositionHeader = ({draftIsEmpty, studentDraft, studentActivityId}) => {
 
 CompositionHeader.propTypes = {
   draftIsEmpty: PropTypes.bool,
-  studentDraft: PropTypes.object,
-  studentActivityId: PropTypes.string
-
+  studentDraftId: PropTypes.string,
+  studentActivityId: PropTypes.string,
+  handleSave: PropTypes.func,
+  hasStartedReflectionQuestions: PropTypes.bool
 };
 
 export default CompositionHeader;

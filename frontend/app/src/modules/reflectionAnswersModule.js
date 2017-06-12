@@ -3,7 +3,7 @@ import reducerMerge from './../utilities/reducerMerge';
 import { requestStates } from '../sagas/requestSaga';
 
 const GET_REFLECTION_ANSWERS = requestStates('get_reflection_answers');
-const SET_REFLECTION_ANSWERS = requestStates('set_reflection_answers');
+export const SET_REFLECTION_ANSWERS = requestStates('set_reflection_answers');
 
 // Reducer
 export default (state = [], action) => {
