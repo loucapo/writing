@@ -107,6 +107,51 @@ module.exports = new Page({
     locator: `[data-id='cancel-button']`
   }),
 
+  // reflection questions modal
+  //
+  ref_question_popup: basePageObj({
+    desc: ``,
+    locator: `[data-id='modal']`
+  }),
+
+  ref_question_popup_close: basePageObj({
+    desc: ``,
+    locator: `[data-id='close-modal']`
+  }),
+
+  ref_question_title: basePageObj({
+    desc: ``,
+    locator: `[data-id='input-fields'] [data-id='question-title']`
+  }),
+
+  ref_question_type: basePageObj({
+    desc: ``,
+    locator: `[data-id='input-fields'] [data-id='question-type']`
+  }),
+
+  // TODO: great place to use method_missing? or, what, es6 proxies?  also hover, other psuedo selectors.
+  // maybe.  maybe wildly unnecessary.
+  // You could also go the site_prism route and make checkbox a subclass of basePageObject or decorate it.
+  ref_question_check: basePageObj({
+    desc: `Checkbox toggling selection of nth reflection question`,
+    locator: `[data-id='modal'] [data-id='input-fields'] [data-id='checkbox']`
+  }),
+  ref_question_check__checked: basePageObj({
+    locator: `[data-id='modal'] [data-id='input-fields'] [data-id='checkbox']:checked`
+  }),
+  ref_question_check__unchecked: basePageObj({
+    locator: `[data-id='modal'] [data-id='input-fields'] [data-id='checkbox']:not(:checked)`
+  }),
+
+  // TODO: dev: data-ids for this and surrounding bits needs to be added / reevaluated
+  // there's no good way to get just the desc text here, since it's just a text-node
+  // with sibling element-nodes.  when done, change the following to actually just be
+  // the description.
+  ref_question_desc: basePageObj({
+    desc: ``,
+    locator: `[data-id='field-title']>div`
+  }),
+
   // Draft component on summary page
   //
 
@@ -129,6 +174,16 @@ module.exports = new Page({
     desc: ``,
     locator: `//*[@data-id='drafts-goal-list']/li[not(./a[@data-id='add-draft-goal'])]`,
     type: 'xpath'
+  }),
+
+  add_reflection_questions: basePageObj({
+    desc: ``,
+    locator: `[data-id='add-reflections']`
+  }),
+
+  reflection_question: basePageObj({
+    desc: ``,
+    locator: `[data-id='reflection-questions'] li`
   }),
 
   // instructor summary nav
