@@ -1,6 +1,23 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateActivityPrompt } from './../modules/activityModule';
+import { getReflectionQuestions } from './../modules/reflectionQuestionsModule';
 import { CompositionDraftDetails } from './../components/Composition/index';
+
+class CompositionDraftDetailsContainer extends Component {
+  componentWillMount() {
+    this.props.getReflectionQuestions();
+  }
+
+  render() {
+    return (<CompositionDraftDetails {...this.props} />);
+  }
+}
+
+CompositionDraftDetailsContainer.propTypes = {
+  getReflectionQuestions: PropTypes.func
+};
 
 const mapStateToProps = (state, props) => {
   const activity = state.activities.find(
@@ -23,14 +40,14 @@ const mapStateToProps = (state, props) => {
       newRubric.criteria = rubric.criteria.map(x => state.criteria.find(y => y.criteriaId === x));
     }
   }
-  let studentReflectionQuestions = [];
+  let reflectionQuestions = [];
   let goals = [];
   if (draft) {
     draft.studentReflectionQuestions.forEach(x => {
       let item = state.reflectionQuestions
         .find(y => y.studentReflectionQuestionId === x);
       if (item) {
-        studentReflectionQuestions.push(item);
+        reflectionQuestions.push(item);
       }
     });
 
@@ -43,10 +60,12 @@ const mapStateToProps = (state, props) => {
     activity,
     draft,
     newRubric,
-    studentReflectionQuestions,
+    reflectionQuestions,
     goals,
     homeRoute: state.defaults.homeRoute
   };
 };
 
-export default connect(mapStateToProps, {updateActivityPrompt})(CompositionDraftDetails);
+export default connect(mapStateToProps, {
+  updateActivityPrompt,
+  getReflectionQuestions})(CompositionDraftDetailsContainer);

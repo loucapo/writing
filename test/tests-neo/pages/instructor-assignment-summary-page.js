@@ -31,20 +31,122 @@ function basePageObj(opts) {
 
 module.exports = new Page({
 
+  // Activity overview
+  //
+  activity_title: basePageObj({
+    desc: ``,
+    locator: `[data-id='activity-title']`
+  }),
+
+  activity_type: basePageObj({
+    desc: ``,
+    locator: `[data-id='activity-type']`
+  }),
+
+  edit_title: basePageObj({
+    desc: `Button to make the activity title an editable field`,
+    locator: `[class^='ActivityTitle__editIcon__']`
+  }),
+
+  edit_title_cancel: basePageObj({
+    desc: ``,
+    locator: `[data-id='title-cancel']`
+  }),
+
+  edit_title_save: basePageObj({
+    desc: ``,
+    locator: `[data-id='title-save']`
+
+  }),
+
+  edit_title_textarea: basePageObj({
+    desc: ``,
+    locator: `[class^='ActivityTitle__editField__']`
+  }),
+
+  title_char_counter: basePageObj({
+    desc: ``,
+    locator: `[data-id='char-limit-count']`
+  }),
+
+  // Draft goal modal
+  //
+
+  draft_goal_popup: basePageObj({
+    desc: ``,
+    locator: `[data-id='modal']`
+  }),
+
+  draft_goal_checkbox: basePageObj({
+    desc: ``,
+    locator: `[data-id='modal'] [data-id='input-fields'] [data-id='checkbox']`
+  }),
+
+  draft_goal_summary_list: basePageObj({
+    desc: ``,
+    locator: `[data-id='modal'] [data-id='selected-fields']`
+  }),
+
+  draft_goal_goal_description: basePageObj({
+    desc: ``,
+    locator: `[data-id='modal'] [data-id='input-fields'] [data-id='field-content']`
+  }),
+
+  draft_goal_goal: basePageObj({
+    desc: ``,
+    locator: `[data-id='modal'] [class^='CheckboxField__container__']`
+  }),
+
+  draft_goal_save: basePageObj({
+    desc: ``,
+    locator: `[data-id='save-button']`
+  }),
+
+  draft_goal_cancel: basePageObj({
+    desc: ``,
+    locator: `[data-id='cancel-button']`
+  }),
+
+  // Draft component on summary page
+  //
+
+  draft_card: basePageObj({
+    desc: `Top container for a draft on the summary page`,
+    locator: `[data-id='draft-section']`
+  }),
+
+  add_draft_goals: basePageObj({
+    desc: `Button to display the modal to select the primary goals for this draft`,
+    locator: `[data-id='add-draft-goal']`
+  }),
+
+  edit_draft_goals: basePageObj({
+    desc: ``,
+    locator: `[data-id='draft-goal-edit']`
+  }),
+
+  saved_draft_goal: basePageObj({
+    desc: ``,
+    locator: `//*[@data-id='drafts-goal-list']/li[not(./a[@data-id='add-draft-goal'])]`,
+    type: 'xpath'
+  }),
+
+  // instructor summary nav
+  //
+
   add_draft_button: basePageObj({
     desc: `Button to add another draft to the current assignment`,
     locator: `[data-id='add-draft']`
   }),
 
+  // unsorted
+  //
+  //
+
   add_draft_instructions: basePageObj({
     desc: `Button that makes the draft instructions editable for the xth draft on the summary page`,
     locator: `//*[@data-id='add-instructions']`,
     type: 'xpath'
-  }),
-
-  draft_card: basePageObj({
-    desc: `Top container for a draft on the summary page`,
-    locator: `[data-id='draft-section']`
   }),
 
   draft_delete_button: basePageObj({

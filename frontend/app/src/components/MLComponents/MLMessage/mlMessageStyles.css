@@ -1,6 +1,7 @@
 @import 'variables.css';
 
-.message_default {
+.message_default,
+.message_notification {
   align-items: center;
   background-color: var(--messageBlue);
   border: 1px solid var(--messageBlueBorder);
@@ -11,7 +12,8 @@
   box-sizing: border-box;
 }
 
-.message_icon_default svg{
+.message_icon_default svg,
+.message_icon_notification svg {
   fill: var(--messageBlueBorder);
 }
 
@@ -22,7 +24,7 @@
   border-color: var(--messageGreenBorder);
 }
 
-.message_icon_success svg{
+.message_icon_success svg {
   fill: var(--messageGreenBorder);
 }
 
@@ -33,7 +35,7 @@
   border-color: var(--messageRedBorder);
 }
 
-.message_icon_error svg{
+.message_icon_error svg {
   fill: var(--messageRedBorder);
 }
 
@@ -44,7 +46,7 @@
   border-color: var(--messageYellowBorder);
 }
 
-.message_icon_warning svg{
+.message_icon_warning svg {
   fill: var(--messageYellowBorder);
 }
 

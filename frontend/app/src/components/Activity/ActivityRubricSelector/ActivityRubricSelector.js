@@ -33,7 +33,7 @@ const ActivityRubricSelector = ({
               defaultOption={{id: '0000', value: 'No Rubric'}}
               options={rubricOptions}
               onChange={selectOnChange}
-              selected={rubricId}
+              selectedId={rubricId}
               contentDataId="rubric-selection-content"
               openDataId="rubric-selection-open"
             />

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Composition } from './../components/Composition/index';
-import {getStudentDraft, createStudentDraftIfNotThere, updateDraftPaper} from './../modules/studentDraftModule';
+import { Composition } from '../components/Composition';
+import { getStudentDraft, createStudentDraftIfNotThere, updateDraftPaper } from '../modules/studentDraftModule';
 
 class CompositionContainer extends Component {
   componentWillMount() {
@@ -11,20 +11,14 @@ class CompositionContainer extends Component {
 
   loadData() {
     if (!this.props.studentDraft) {
-      this.props.createStudentDraftIfNotThere(
-        this.props.studentActivityId,
-        this.props.params.draftId
-      );
+      this.props.createStudentDraftIfNotThere(this.props.studentActivityId, this.props.params.draftId);
       // put in subsequentAction for action creator;
-      this.props.getStudentDraft(
-        this.props.studentActivityId,
-        this.props.params.draftId
-      );
+      this.props.getStudentDraft(this.props.studentActivityId, this.props.params.draftId);
     }
   }
 
   render() {
-    return this.props.studentDraft ? (<Composition {...this.props} />) : null;
+    return this.props.studentDraft ? <Composition {...this.props} /> : null;
   }
 }
 
@@ -52,4 +46,3 @@ export default connect(mapStateToProps, {
   createStudentDraftIfNotThere,
   updateDraftPaper
 })(CompositionContainer);
-

@@ -7,11 +7,14 @@ import ActivityPromptContainer from './ActivityPromptContainer';
 import ActivityRubricSectorContainer from './ActivityRubricSelectorContainer';
 import ActivityDisplayContainer from './ActivityDisplayContainer';
 import CompositionContainer from './CompositionContainer';
-import DraftListDisplayContainer from './DraftListDisplayContainer';
+import CompositionDisplayContainer from './CompositionDisplayContainer';
 import ReflectionQuestionsFormContainer from './ReflectionQuestionsFormContainer';
 import ReflectionQuestionsSelectorModalContainer from './ReflectionQuestionsSelectorModalContainer';
 import ActivityRubricDisplayContainer from './ActivityRubricDisplayContainer';
 import CompositionDraftDetailsContainer from './CompositionDraftDetailsContainer';
+import SubmissionStatusContainer from './SubmissionStatusContainer';
+import SubmissionStatusTableContainer from './SubmissionStatusTableContainer';
+
 
 export {
   ActivityContainer,
@@ -23,9 +26,11 @@ export {
   ActivityRubricSectorContainer,
   ActivityDisplayContainer,
   CompositionContainer,
-  DraftListDisplayContainer,
+  CompositionDisplayContainer,
   ReflectionQuestionsFormContainer,
   ReflectionQuestionsSelectorModalContainer,
   ActivityRubricDisplayContainer,
-  CompositionDraftDetailsContainer
+  CompositionDraftDetailsContainer,
+  SubmissionStatusContainer,
+  SubmissionStatusTableContainer
 };

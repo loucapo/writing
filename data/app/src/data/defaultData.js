@@ -36,6 +36,16 @@ module.exports = function(faker) {
 
     return {
       activity: [
+        {
+          activity_id: `d3e3c2d5-cf43-4f63-924f-3ec7a125a334`,
+          course_id: 1234,
+          title: 'Hello World',
+          created_by_id: faker.random.uuid(),
+          created_date: `2017-06-01`,
+          prompt: null,
+          modified_by_id: null,
+          modified_date: null
+        },
         simpleActivity(),
         simpleActivity(),
         simpleActivity()
@@ -51,7 +61,7 @@ module.exports = function(faker) {
           rubric_level_2: `Thesis offers a judgment of the text`,
           rubric_level_3: `Thesis does not present a critical response to the text`,
           rubric_level_4: `Thesis is buried or unclear`,
-          goal_option_1: `dagobah mace ben calrissian dooku k-3po kamino. Mandalore chewbacca jade jar lando yoda 
+          goal_option_1: `dagobah mace ben calrissian dooku k-3po kamino. Mandalore chewbacca jade jar lando yoda
           lando.`,
           goal_option_2: `a han luuke wedge calamari endor thrawn. Hutt moff lobot wedge mon darth`,
           goal_option_3: `inks. Padmé jabba mon mace jango organa utapau anakin darth`,
@@ -71,7 +81,7 @@ module.exports = function(faker) {
           rubric_level_3: `Insufficient evidence`,
           rubric_level_4: `Limited or no evidence`,
           goal_option_1: `ko mayagil ryn mon wicket maarek fel paploo`,
-          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi 
+          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi
           skywalker. Marek doldur palpatine organa. Illum aleena mantell ahsoka a`,
           goal_option_3: `moff depa. Ubese jinn dantooine ka beru dug`,
           created_by_id: `d315a49f-8910-46e2-b24b-6a7a265ed8a2`,
@@ -82,7 +92,7 @@ module.exports = function(faker) {
 
         {
           criteria_id: `f01ed383-78e9-4089-867a-70e8911bbace`,
-          title: `Thesis`,
+          title: `Badditude`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Introduces a focused, arguable thesis`,
@@ -107,7 +117,7 @@ module.exports = function(faker) {
           rubric_level_2: `Develops an effective appeal`,
           rubric_level_3: `Introduces an effective appeal that needs further development`,
           rubric_level_4: `Uses weak or no appeals`,
-          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani. 
+          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani.
           Duro quelli luuke togruta shistavanen rune.`,
           goal_option_2: `rinaros lars epicanthix. Terrik polis bespin thisspias boz dart`,
           goal_option_3: `Bibble ansion nunb keshiri jango. Charal drovian kyp ozzel freedon thisspiasi`,
@@ -159,12 +169,12 @@ module.exports = function(faker) {
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Analysis is well organized, with clear topic sentences and transitions`,
-          rubric_level_2: `Well organized on the whole, but occasionally needing work on paragraph coherence or 
+          rubric_level_2: `Well organized on the whole, but occasionally needing work on paragraph coherence or
           transitions`,
-          rubric_level_3: `Connection among ideas is not a,lways clear; there may be more than one point per 
+          rubric_level_3: `Connection among ideas is not a,lways clear; there may be more than one point per
           paragraph`,
           rubric_level_4: `Ideas are difficult to follow`,
-          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani. 
+          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani.
           Duro quelli luuke togruta shistavanen rune.`,
           goal_option_2: `rinaros lars epicanthix. Terrik polis bespin thisspias boz dart`,
           goal_option_3: `Bibble ansion nunb keshiri jango. Charal drovian kyp ozzel freedon thisspiasi`,
@@ -185,7 +195,7 @@ module.exports = function(faker) {
           rubric_level_3: `Errors in grammar, usage, or mechanics detract from the writing`,
           rubric_level_4: `Errors in grammar, usage, or mechanics prevent understanding`,
           goal_option_1: `ko mayagil ryn mon wicket maarek fel paploo`,
-          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi 
+          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi
           skywalker. Marek doldur palpatine organa. Illum aleena mantell ahsoka a`,
           goal_option_3: `moff depa. Ubese jinn dantooine ka beru dug`,
           created_by_id: `1edc2770-7107-4d72-903f-863f743a9162`,
@@ -204,7 +214,7 @@ module.exports = function(faker) {
           rubric_level_2: `Introduces relevant claims that need further development`,
           rubric_level_3: `Introduces claims that do not all support the thesis`,
           rubric_level_4: `Lacks sufficient claims to support thesis`,
-          goal_option_1: `dagobah mace ben calrissian dooku k-3po kamino. Mandalore chewbacca jade jar lando yoda 
+          goal_option_1: `dagobah mace ben calrissian dooku k-3po kamino. Mandalore chewbacca jade jar lando yoda
           lando.`,
           goal_option_2: `a han luuke wedge calamari endor thrawn. Hutt moff lobot wedge mon darth`,
           goal_option_3: `inks. Padmé jabba mon mace jango organa utapau anakin darth`,
@@ -225,7 +235,7 @@ module.exports = function(faker) {
           rubric_level_3: `Evidence does not support claim`,
           rubric_level_4: `Limited or no evidence`,
           goal_option_1: `ko mayagil ryn mon wicket maarek fel paploo`,
-          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi 
+          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi
           skywalker. Marek doldur palpatine organa. Illum aleena mantell ahsoka a`,
           goal_option_3: `moff depa. Ubese jinn dantooine ka beru dug`,
           created_by_id: `b2342765-decb-413f-99ca-8a828bc84048`,
@@ -263,7 +273,7 @@ module.exports = function(faker) {
           rubric_level_2: `Shows a more basic understanding of narrative conventions`,
           rubric_level_3: `Suitable understanding of some conventions mixed with misunderstanding of others`,
           rubric_level_4: `Lacks understanding of narrative conventions`,
-          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani. 
+          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani.
           Duro quelli luuke togruta shistavanen rune.`,
           goal_option_2: `rinaros lars epicanthix. Terrik polis bespin thisspias boz dart`,
           goal_option_3: `Bibble ansion nunb keshiri jango. Charal drovian kyp ozzel freedon thisspiasi`,
@@ -283,7 +293,7 @@ module.exports = function(faker) {
           rubric_level_2: `Elements of style and voice are present but inconsistent`,
           rubric_level_3: `Elements of style or voice are present but don’t support the narrative`,
           rubric_level_4: `No clear sense of pacing, style, or voice present`,
-          goal_option_1: `dagobah mace ben calrissian dooku k-3po kamino. Mandalore chewbacca jade jar lando yoda 
+          goal_option_1: `dagobah mace ben calrissian dooku k-3po kamino. Mandalore chewbacca jade jar lando yoda
           lando.`,
           goal_option_2: `a han luuke wedge calamari endor thrawn. Hutt moff lobot wedge mon darth`,
           goal_option_3: `inks. Padmé jabba mon mace jango organa utapau anakin darth`,
@@ -304,7 +314,7 @@ module.exports = function(faker) {
           rubric_level_3: `Limited attention to details and setting`,
           rubric_level_4: `Little to no attention to details and setting`,
           goal_option_1: `ko mayagil ryn mon wicket maarek fel paploo`,
-          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi 
+          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi
           skywalker. Marek doldur palpatine organa. Illum aleena mantell ahsoka a`,
           goal_option_3: `moff depa. Ubese jinn dantooine ka beru dug`,
           created_by_id: `2ac31e44-ea3c-4664-9899-531cb558c58d`,
@@ -323,7 +333,7 @@ module.exports = function(faker) {
           rubric_level_2: `Attempts to convey the importance of  the writers experiences`,
           rubric_level_3: `Importance of experiences conveyed does not support the rest of the narrative`,
           rubric_level_4: `No clear sense of importance of what has been narrated`,
-          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani. 
+          goal_option_1: `anx ka pellaeon bren subterrel. -1b dor fel carondian ric. Gev mirax jawa darth tapani.
           Duro quelli luuke togruta shistavanen rune.`,
           goal_option_2: `rinaros lars epicanthix. Terrik polis bespin thisspias boz dart`,
           goal_option_3: `Bibble ansion nunb keshiri jango. Charal drovian kyp ozzel freedon thisspiasi`,
@@ -400,7 +410,7 @@ module.exports = function(faker) {
           rubric_level_3: `Limited attention paid to the issues history or to alternative solutions`,
           rubric_level_4: `Little to no attention paid to the issues context or to alternative solutions`,
           goal_option_1: `ko mayagil ryn mon wicket maarek fel paploo`,
-          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi 
+          goal_option_2: `ando tono. Xappyh nelvaanian nien piett chadra-fan whitesun. Jerjerrod fode caamasi
           skywalker. Marek doldur palpatine organa. Illum aleena mantell ahsoka a`,
           goal_option_3: `moff depa. Ubese jinn dantooine ka beru dug`,
           created_by_id: `7b193dca-fde5-434a-997c-a5bc4e68b954`,
@@ -427,11 +437,12 @@ module.exports = function(faker) {
           modified_date: null
         }
       ],
+
       rubric: [
         {
           rubric_id: `a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
           title: `Analysis`,
-          description: `moff darth sebulba bothan. Han mustafar calamari qui-gonn. Alderaan solo mon qui-gonn hutt 
+          description: `moff darth sebulba bothan. Han mustafar calamari qui-gonn. Alderaan solo mon qui-gonn hutt
           c-3po baba moff. Boba fett moff thrawn darth tatooine dantooine. Windu darth yoda skywalker mara jango windu.
            Aayla sith wicket darth calamari darth. Skywalker hut`,
           created_by_id: `78b02e4a-551c-4ac9-958f-77f658bb8e89`,
@@ -442,8 +453,8 @@ module.exports = function(faker) {
         {
           rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
           title: `Argument`,
-          description: `ri jinn. Naboo luke dooku mustafar alderaan darth darth organa fett. Fett ben moff solo 
-          skywalker binks wicket sith coruscant. Ackbar skywalker coruscant leia hutt mandalore yoda jinn wedge. 
+          description: `ri jinn. Naboo luke dooku mustafar alderaan darth darth organa fett. Fett ben moff solo
+          skywalker binks wicket sith coruscant. Ackbar skywalker coruscant leia hutt mandalore yoda jinn wedge.
           Jango kamino wookiee leia wedge sidious calrissian skywalker. Organa watto skywalker c-3p0 windu. Mo`,
           created_by_id: `83b8b460-73d5-457f-ae97-3ff7d047910b`,
           created_date: `2017-04-10`,
@@ -453,7 +464,7 @@ module.exports = function(faker) {
         {
           rubric_id: `c105736c-c330-487c-be74-5a2c983095cc`,
           title: `Narrative`,
-          description: `uscant maul darth mon darth darth. K-3po dantooine jinn dooku fett darth jawa palpatine wedge. 
+          description: `uscant maul darth mon darth darth. K-3po dantooine jinn dooku fett darth jawa palpatine wedge.
           Jade organa darth chewbacca `,
           created_by_id: `61ef3973-a29c-48ec-9a38-c4f6e78b1ce4`,
           created_date: `2017-04-10`,
@@ -463,8 +474,8 @@ module.exports = function(faker) {
         {
           rubric_id: `c119e4de-b6e6-4849-9b16-7a8a1e63c7b2`,
           title: `Proposal`,
-          description: `ant. Mace moff fett darth skywalker. Palpatine mon binks hutt darth. Yavin skywalker solo 
-          ackbar dooku. Hutt fett jabba yoda. Darth calrissian tusken raider binks kamino moff. Padmé obi-wan ben boba 
+          description: `ant. Mace moff fett darth skywalker. Palpatine mon binks hutt darth. Yavin skywalker solo
+          ackbar dooku. Hutt fett jabba yoda. Darth calrissian tusken raider binks kamino moff. Padmé obi-wan ben boba
           hutt mandalore w`,
           created_by_id: `c4534070-359e-4fa4-872d-12e886b3a626`,
           created_date: `2017-04-10`,
@@ -609,6 +620,36 @@ module.exports = function(faker) {
           question_type: `fixed`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
+        }
+      ],
+      draft: [
+        {
+          draft_id: `e8ce0d9c-9824-4028-b0d7-ecaabb0bcae5`,
+          activity_id: 'activity:0:activity_id',
+          index: 0,
+          created_by_id: `f3e3c2d5-cf43-4f63-924f-3ec7a125a334`,
+          created_date: `2017-05-30`,
+          modified_by_id: 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334'
+        }
+      ],
+      student_activity: [
+        {
+          student_activity_id: `f0d2123e-2e10-4138-8af8-f93499eb02f0`,
+          activity_id: 'activity:0:activity_id',
+          student_id: '5ef7fa10-f4a4-4add-9191-882de6b9065b',
+          created_by_id: `5ef7fa10-f4a4-4add-9191-882de6b9065b`,
+          created_date: `2017-06-01`
+        }
+      ],
+      student_draft: [
+        {
+          student_draft_id: `b9c60aa4-476a-4eae-9bc0-e8f026ef3ea2`,
+          student_activity_id: `f0d2123e-2e10-4138-8af8-f93499eb02f0`,
+          student_id: '5ef7fa10-f4a4-4add-9191-882de6b9065b',
+          draft_id: 'd3e3c2d5-cf43-4f63-924f-3ec7a125a335',
+          created_by_id: `5ef7fa10-f4a4-4add-9191-882de6b9065b`,
+          created_date: `2017-06-01`,
+          status: `active`
         }
       ]
     };

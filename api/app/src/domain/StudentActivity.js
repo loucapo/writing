@@ -4,6 +4,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       super();
       this.type = 'StudentActivity';
       this.studentDrafts = [];
+      this.studentId = undefined;
       if (studentActivity) {
         this.mapper(studentActivity);
       }
@@ -17,6 +18,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       const event = this.mapper(cmd);
       event.activityId = cmd.activityId || uuid.v4();
       event.studentActivityId = this.studentActivityId = cmd.studentActivityId || uuid.v4();
+      event.studentId = this.studentId = cmd.studentId;
       this.raiseEvent({
         eventName: 'studentActivityCreated',
         event
@@ -32,6 +34,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       event.studentDraftId = uuid.v4();
       event.draftId = cmd.draftId;
       event.studentActivityId = cmd.studentActivityId;
+      event.studentId = this.studentId;
       this.raiseEvent({
         eventName: 'studentDraftCreated',
         event
@@ -44,7 +47,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       const event = this.mapper(cmd);
       let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
       studentDraft.updateDraftPaper(cmd);
-
+      event.status = studentDraft.status;
       this.raiseEvent({
         eventName: 'studentDraftPaperUpdated',
         event
@@ -85,6 +88,8 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       invariant(studentDraft.studentReflectionQuestionsAnswered(),
         `Student Draft, Id: ${cmd.studentDraftId}, must have Reflection Questions answered before it can be submitted`);
       studentDraft.submit(cmd);
+      event.status = studentDraft.status;
+      event.reviewStatus = studentDraft.reviewStatus;
 
       this.raiseEvent({
         eventName: 'studentDraftSubmitted',

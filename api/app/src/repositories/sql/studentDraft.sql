@@ -12,21 +12,22 @@ where student_activity_id = :studentActivityId
 INSERT INTO student_draft
     (student_draft_id,
     student_activity_id,
+    student_id,
     draft_id,
-    active,
     created_by_id,
     created_date)
 VALUES
     (:studentDraftId,
     :studentActivityId,
+    :studentId,
     :draftId,
-    true,
     :createdById,
     :createdDate)
 
 -- name: updateStudentDraftPaper
 UPDATE student_draft
 SET paper = :paper,
+    status = :status,
 modified_by_id = :modifiedById
 WHERE student_draft_id = :studentDraftId
 
@@ -56,6 +57,8 @@ where student_draft_id = :studentDraftId
 
 -- name: submitStudentDraft
 UPDATE student_draft
-SET submitted = true,
+SET status = :status,
+    review_status = :reviewStatus,
+    submitted_date = :submittedDate,
     modified_by_id = :modifiedById
 WHERE student_draft_id = :studentDraftId
