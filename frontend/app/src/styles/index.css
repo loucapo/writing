@@ -61,16 +61,3 @@ input:-moz-placeholder {
 .flex {
   display: flex;
 }
-
-/* Editor */
-.editor {
-  background: #FFF;
-  padding: 6px 5px 0;
-  height: 100%;
-  max-width: 100%;
-}
-
-.editorWrapper {
-  height: 100%;
-  max-width: 100%;
-}

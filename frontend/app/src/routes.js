@@ -1,19 +1,26 @@
 import React from 'react';
-import {Route, IndexRedirect} from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
+import {
+  LaunchContainer,
+  CompositionContainer,
+  CompositionDisplayContainer,
+  ReflectionQuestionsFormContainer
+} from './containers/index';
 import KitchenSink from './components/KitchenSink/KitchenSink';
-import AppContainer from './containers/AppContainer';
-import LaunchContainer from './containers/LaunchContainer';
-import StudentDraftContainer from './containers/StudentDraftContainer';
+import Layout from './components/Layout/Layout';
 
 let redirectActivity = '/resource';
-
 const routes = (
-  <Route path="/" component={AppContainer}>
+  <Route path="/" component={Layout}>
     <IndexRedirect to={redirectActivity} />
     <Route path="/kitchensink" component={KitchenSink} />
     <Route path="/lms/:lmsId/course/:courseId/resource/:activityId" component={LaunchContainer} />
-    <Route path="/activity/:activityId/draft/:draftId" component={StudentDraftContainer} />
-  </Route>);
+    <Route path="/activity/:activityId/draft/:draftId" component={CompositionContainer} />
+    <Route path="/studentDraft/:studentDraftId/display" component={CompositionDisplayContainer} />
+    <Route
+      path="/reflectionQuestions/:studentActivityId/studentdraft/:studentDraftId"
+      component={ReflectionQuestionsFormContainer}
+    />
+  </Route>
+);
 module.exports = routes;
-
-

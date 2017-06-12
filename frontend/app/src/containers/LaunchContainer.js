@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ActivityContainer from './../containers/ActivityContainer';
-import StudentActivityContainer from './../containers/StudentActivityContainer';
+import { ActivityContainer, ActivityDisplayContainer } from './../containers/index';
 import { loadAuth } from '../modules/authModule';
+import { loadDefaults } from '../modules/defaultsModule';
 import jwtDecode from 'jwt-decode';
 import cookie from 'react-cookie';
 
@@ -27,6 +27,12 @@ class LaunchContainer extends Component {
     };
 
     this.props.loadAuth(auth);
+
+    const defaultValues = {
+      homeRoute: window.location.pathname
+    };
+
+    this.props.loadDefaults(defaultValues);
   }
 
   render() {
@@ -35,7 +41,7 @@ class LaunchContainer extends Component {
         return <ActivityContainer />;
       }
       case 'student': {
-        return <StudentActivityContainer />;
+        return <ActivityDisplayContainer />;
       }
       default:
         return null;
@@ -46,9 +52,8 @@ class LaunchContainer extends Component {
 LaunchContainer.propTypes = {
   role: PropTypes.string,
   params: PropTypes.object,
-  loadAuth: PropTypes.func
+  loadAuth: PropTypes.func,
+  loadDefaults: PropTypes.func
 };
 
-export default connect(state => ({ role: state.auth.role }), { loadAuth })(
-  LaunchContainer
-);
+export default connect(state => ({ role: state.auth.role }), { loadAuth, loadDefaults })(LaunchContainer);

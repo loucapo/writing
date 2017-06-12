@@ -1,32 +1,34 @@
 {
-    "baseUrl": "http://localhost:10080",
-    "featuresDir": "tests/features",
-    "stepsDir": "tests/steps",
-    "reportDir": "reports",
-    "reporters": [{"name": "marvin-reporter"}],
-    "threads": 1,
 
-    "verbose": true,
-    "stepDelay": 0,
-    "testTimeout": 60000,
-    "elementTimeout": 1500,
+  "baseUrl": "http://localhost:10080",
+  "dbapi": "http://localhost:4667",
+  "featuresDir": "tests/features",
+  "stepsDir": "tests/steps",
+  "reportDir": "reports",
+  "reporters": [{"name": "marvin-reporter"}],
+  "threads": 1,
 
-    "copyReport": false,
-    "pending": true,
+  "verbose": true,
+  "stepDelay": 0,
+  "testTimeout": 60000,
+  "elementTimeout": 1500,
 
-    "tags": "!@wip,!@NSM,!@api,!@Bug",
-    "buildtag": "",
+  "copyReport": false,
+  "pending": true,
 
-    "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
+  "tags": "!@wip,!@NSM,!@api,!@Bug",
+  "buildtag": "",
 
-    "screenSize": {
-        "x": 1600,
-        "y": 900
-    },
-    "browsers": [{
-        "browserName": "chrome",
-        "chromeOptions": {
-            "args": ["--no-sandbox"]
-        }
-    }]
+  "testSourceLinkTemplate": "`https://bitbucket.org/mnv_tech/wk_test/commits/${config.gitsha}`",
+
+  "screenSize": {
+    "x": 1600,
+    "y": 900
+  },
+  "browsers": [{
+    "browserName": "chrome",
+    "chromeOptions": {
+      "args": ["--no-sandbox"]
+    }
+  }]
 }

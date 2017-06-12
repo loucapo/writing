@@ -1,4 +1,4 @@
-module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger) {
+module.exports = function(repository, StudentActivity, sqlLibrary, logger) {
   return {
     // check if it exists, if not create it;
     async createStudentActivityIfNotCreated(ctx) {
@@ -6,6 +6,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
       command.activityId = ctx.params.activityId;
       command.createdById = ctx.state.user.id;
       command.studentId = ctx.state.user.id;
+
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(command)}`);
       let studentActivity = await repository.query(
         sqlLibrary.studentActivity,
@@ -13,7 +14,7 @@ module.exports = function(domain, repository, sqlLibrary, domainBuilders, logger
         {activityId: command.activityId, studentId: command.studentId});
       if (!studentActivity || !studentActivity[0]) {
         logger.info(`Creating studentActivity from wk_serve payload: ${JSON.stringify(command)}`);
-        studentActivity = new domain.StudentActivity();
+        studentActivity = new StudentActivity();
         let event = studentActivity.createNewStudentActivity(command);
         await repository.query(sqlLibrary.studentActivity, 'createStudentActivity', event);
       }

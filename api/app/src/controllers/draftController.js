@@ -1,10 +1,10 @@
-module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
+module.exports = function(repository, activityBuilder, sqlLibrary) {
   return {
     async addDraftToActivity(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.createdById = ctx.state.user.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.addDraftToActivity(command);
       let draftIndexes = activity.getDraftIndexes();
       repository.transaction(async repo => {
@@ -21,7 +21,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
     },
 
     async removeDraftFromActivity(ctx) {
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(ctx.params.activityId);
+      let activity = await activityBuilder.getActivityARById(ctx.params.activityId);
       let event = activity.removeDraftFromActivity({draftId: ctx.params.draftId});
       let draftIndexes = activity.getDraftIndexes();
 
@@ -42,7 +42,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       const command = ctx.request.body;
       command.draftId = ctx.params.draftId;
       command.modifiedById = ctx.state.user.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(ctx.params.activityId);
+      let activity = await activityBuilder.getActivityARById(ctx.params.activityId);
       let event = activity.updateDraftInstructions(command);
 
       await repository.query(sqlLibrary.draft, 'updateDraftInstructions', event);
@@ -55,7 +55,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.draftId = ctx.params.draftId;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let activity = await activityBuilder.getActivityARById(command.activityId);
       activity.setDraftGoals(command);
       const goals = activity.getDraftGoalsByDraftId({draftId: command.draftId});
       repository.transaction(async repo => {
@@ -75,7 +75,7 @@ module.exports = function(domain, repository, domainBuilders, sqlLibrary) {
       command.activityId = ctx.params.activityId;
       command.draftId = ctx.params.draftId;
       command.modifiedById = ctx.state.user.id;
-      let activity = await domainBuilders.ActivityBuilder.getActivityARById(command.activityId);
+      let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.setStudentReflectionQuestions(command);
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'removeAllStudentReflectionQuestions', {draftId: command.draftId});

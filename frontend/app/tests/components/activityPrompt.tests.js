@@ -12,6 +12,9 @@ describe('<ActivityPrompt />', () => {
   let content;
 
   beforeEach(()=> {
+    console.log(`==========CUT=========`);
+    console.log(CUT);
+    console.log(`==========END CUT=========`);
     content = JSON.stringify(ContentState.createFromText('This is an activity prompt description.'));
     activityPrompt = shallow(<CUT prompt={content}/>);
     emptyPrompt = shallow(<CUT prompt={null}/>);

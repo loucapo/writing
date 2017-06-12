@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import Activity from '../components/Activity/Activity';
+import { Activity } from '../components/Activity/index';
 import {getActivity} from '../modules/activityModule';
 import { getCriteria } from '../modules/criteriaModule';
 

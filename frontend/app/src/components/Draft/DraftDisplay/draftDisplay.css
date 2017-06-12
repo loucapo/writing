@@ -1,0 +1,47 @@
+@import 'variables.css';
+
+.icon {
+  fill: var(--aqua);
+}
+
+.draftType, .draftDetails {
+  display: flex;
+  padding: 15px 20px;
+}
+
+.draftTypeLeft {
+  margin-right: 20px;
+  min-width: 33%;
+}
+
+.draftDetails {
+  justify-content: space-between;
+}
+
+.draftDetailsRight {
+  width: 48%;
+}
+
+.draftDetailsRight a {
+  display: flex;
+  text-decoration: none;
+}
+
+.subheader {
+  color: var(--gray-dark);
+  @apply --font-14;
+  font-weight: bold;
+  min-width: 32%;
+}
+
+.draftNote {
+  margin-top: 40px;
+}
+
+.studentReviewType {
+  font-weight: normal;
+}
+
+.studentNote {
+  font-style: italic;
+}
