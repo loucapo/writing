@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MLDialog, MLButton } from './../../MLComponents';
-
-import { ReflectionQuestionsFormHeader } from './../index';
+import { MLDialog, MLButton, MLMessage } from '../../MLComponents';
+import { ReflectionQuestionsFormHeader } from '../index';
 
 import styles from './reflectionQuestionsForm.css';
 
@@ -111,6 +110,30 @@ class ReflectionQuestionsForm extends Component {
     return <textarea onChange={x => this.handleChange(questionId, x.target.value)} value={value} />;
   };
 
+  renderSaveMessage = () => {
+    const saveMessage = this.props.saveReflectionMessage;
+    if (saveMessage && saveMessage.status) {
+      return saveMessage.status === 'success' ?
+        <MLMessage
+          options={{
+            id: '1234',
+            message: `Your reflection questions were successfully saved on ${saveMessage.modified}`,
+            type: 'success',
+            icon: 'check'
+          }}
+        />
+        :
+        <MLMessage
+          options={{
+            id: '1234',
+            message: 'There was a problem saving, please try again',
+            type: 'error',
+            icon: 'not'
+          }}
+        />;
+    }
+  };
+
   render() {
     return (
       <div className={styles.page}>
@@ -120,6 +143,7 @@ class ReflectionQuestionsForm extends Component {
           handleSubmit={this.handleSubmit}
         />
         <div className={styles.container}>
+          {this.renderSaveMessage()}
           <h3>Reflection Questions</h3>
           <sup>All questions are required</sup>
           {this.props.reflectionQuestions.map((reflection, idx) => (
@@ -156,7 +180,8 @@ ReflectionQuestionsForm.propTypes = {
   studentDraftId: PropTypes.string,
   submitDraft: PropTypes.func,
   draftName: PropTypes.string,
-  homeRoute: PropTypes.string
+  homeRoute: PropTypes.string,
+  saveReflectionMessage: PropTypes.object
 };
 
 export default ReflectionQuestionsForm;

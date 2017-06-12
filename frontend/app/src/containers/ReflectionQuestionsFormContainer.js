@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { ReflectionQuestionsForm } from './../components/ReflectionQuestions/index';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
-import {getReflectionAnswers, setReflectionAnswers} from '../modules/reflectionAnswersModule';
+import {setReflectionAnswers} from '../modules/reflectionAnswersModule';
 import { submitDraft } from '../modules/studentDraftModule';
 
 class ReflectionQuestionsFormContainer extends Component {
@@ -12,7 +12,6 @@ class ReflectionQuestionsFormContainer extends Component {
 
   loadData() {
     this.props.getReflectionQuestions();
-    this.props.getReflectionAnswers(this.props.studentDraftId);
   }
 
   render() {
@@ -24,7 +23,6 @@ ReflectionQuestionsFormContainer.propTypes = {
   studentReflectionQuestions: PropTypes.array,
   studentReflectionAnswers: PropTypes.array,
   setReflectionAnswers: PropTypes.func,
-  getReflectionAnswers: PropTypes.func,
   studentActivityId: PropTypes.string,
   studentDraftId: PropTypes.string,
   getReflectionQuestions: PropTypes.func
@@ -53,14 +51,14 @@ const mapStateToProps = (state, props) => {
     studentActivityId: props.params.studentActivityId.trim(),
     studentDraftId: props.params.studentDraftId.trim(),
     homeRoute: state.defaults.homeRoute,
-    draftName
+    draftName,
+    saveReflectionMessage: state.messaging.saveReflection
   };
 };
 
 export default connect(mapStateToProps,
   {
     setReflectionAnswers,
-    getReflectionAnswers,
     getReflectionQuestions,
     submitDraft
   })(ReflectionQuestionsFormContainer);

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './compositionDisplayHeader.css';
+import styles from './CompositionDisplayHeader.css';
 
 const Header = ({ homeRoute }) => {
   return (
