@@ -12,6 +12,9 @@ import ReflectionQuestionsFormContainer from './ReflectionQuestionsFormContainer
 import ReflectionQuestionsSelectorModalContainer from './ReflectionQuestionsSelectorModalContainer';
 import ActivityRubricDisplayContainer from './ActivityRubricDisplayContainer';
 import CompositionDraftDetailsContainer from './CompositionDraftDetailsContainer';
+import SubmissionStatusContainer from './SubmissionStatusContainer';
+import SubmissionStatusTableContainer from './SubmissionStatusTableContainer';
+
 
 export {
   ActivityContainer,
@@ -27,5 +30,7 @@ export {
   ReflectionQuestionsFormContainer,
   ReflectionQuestionsSelectorModalContainer,
   ActivityRubricDisplayContainer,
-  CompositionDraftDetailsContainer
+  CompositionDraftDetailsContainer,
+  SubmissionStatusContainer,
+  SubmissionStatusTableContainer
 };

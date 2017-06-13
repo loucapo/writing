@@ -9,8 +9,32 @@ exports.define = function(steps) {
     studentPage[elem].click();
   });
 
+  steps.when("I click '$element' on student assignment draft page", function(elem) {
+    studentPage[elem].click();
+  });
+
+  steps.when("I fill out the reflection questions", () => {
+    studentPage.reflection_textfields.then((elems) => {
+      // single element is not an array
+      if (!Array.isArray(elems)) {
+        elems = [elems];
+      }
+      // add 'yay' to each text field
+      elems.forEach((elem) => {
+        elem.sendKeys('yay');
+      });
+    });
+    studentPage.reflection_polls_first_options.then((elems) => {
+      elems.forEach((elem) => {
+        elem.click();
+      });
+    });
+  });
+
   steps.then("Student sees '$elem'", function(elem) {
-    studentPage[elem].isDisplayed().should.eventually.equal(true);
+    studentPage[elem].then(function(elems) {
+      expect(elems.length).to.not.equal(0);
+    });
   });
 
   steps.then('Color Checker "$color" for "$elem"', function(expColor, elem) {

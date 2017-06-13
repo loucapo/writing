@@ -15,7 +15,7 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
 
       if (!studentDraft || !studentDraft[0]) {
         logger.info(`Creating studentDraft from payload: ${JSON.stringify(command)}`);
-        const studentActivity = new StudentActivity();
+        const studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
         let event = studentActivity.createNewStudentDraft(command);
         await repository.query(sqlLibrary.studentDraft, 'createStudentDraft', event);
       }
@@ -50,6 +50,7 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
       command.modifiedById = ctx.state.user.id;
+      command.modifiedDate = moment().toISOString();
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.updateDraftPaper(command);
 

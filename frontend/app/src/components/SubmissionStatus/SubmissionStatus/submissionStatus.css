@@ -1,0 +1,6 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-bottom: 50px;
+}

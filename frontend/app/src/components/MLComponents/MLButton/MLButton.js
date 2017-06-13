@@ -38,6 +38,7 @@ const Button = ({
 
   const renderLink = () => (
     <Link
+      onClick={disabled ? () => {} : handleClick}
       to={disabled ? '' : link}
       data-id={dataId}
       className={`${styles.button} ${styles[buttonClass]}`} >

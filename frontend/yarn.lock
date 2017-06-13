@@ -3915,7 +3915,7 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "http://npm.macmillantech.com:8080/l/longest/_attachments/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
 
-loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0:
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3.1:
   version "1.3.1"
   resolved "http://npm.macmillantech.com:8080/l/loose-envify/_attachments/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
   dependencies:
@@ -4328,6 +4328,10 @@ object-is@^1.0.1:
 object-keys@^1.0.10, object-keys@^1.0.8:
   version "1.0.11"
   resolved "http://npm.macmillantech.com:8080/o/object-keys/_attachments/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
+
+object-path@0.6.0:
+  version "0.6.0"
+  resolved "http://npm.macmillantech.com:8080/o/object-path/_attachments/object-path-0.6.0.tgz#b69a7d110937934f336ca561fd9be1ad7b7e0cb7"
 
 object.assign@^4.0.4:
   version "4.0.4"
@@ -5206,11 +5210,18 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.5.8, prop-types@^15.0.0, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8:
+prop-types@15.5.8:
   version "15.5.8"
   resolved "http://npm.macmillantech.com:8080/p/prop-types/_attachments/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
     fbjs "^0.8.9"
+
+prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6:
+  version "15.5.10"
+  resolved "http://npm.macmillantech.com:8080/p/prop-types/_attachments/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
 
 proper-lockfile@^1.1.2:
   version "1.2.0"
@@ -5353,14 +5364,14 @@ react-dom@15.4.2, react-dom@^15.3.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-draft-wysiwyg@1.9.7:
-  version "1.9.7"
-  resolved "http://npm.macmillantech.com:8080/r/react-draft-wysiwyg/_attachments/react-draft-wysiwyg-1.9.7.tgz#f5e71790ce0349a997f35d2c24566223bc2af2be"
+react-draft-wysiwyg@^1.9.5:
+  version "1.10.0"
+  resolved "http://npm.macmillantech.com:8080/r/react-draft-wysiwyg/_attachments/react-draft-wysiwyg-1.10.0.tgz#110d887364bedcd4a6eabdb69d244e162e04e095"
   dependencies:
     classnames "^2.2.5"
     draftjs-utils "^0.7.5"
     immutable "^4.0.0-rc.1"
-    prop-types "^15.5.8"
+    prop-types "^15.5.10"
 
 react-hot-loader@^3.0.0-beta.2, react-hot-loader@^3.0.0-beta.3:
   version "3.0.0-beta.6"
@@ -6000,6 +6011,12 @@ sockjs@^0.3.15:
   dependencies:
     faye-websocket "^0.10.0"
     uuid "^2.0.2"
+
+sort-by@^1.2.0:
+  version "1.2.0"
+  resolved "http://npm.macmillantech.com:8080/s/sort-by/_attachments/sort-by-1.2.0.tgz#ed92bbff9fd2284b41f6503e38496607b225fe6f"
+  dependencies:
+    object-path "0.6.0"
 
 sort-keys@^1.0.0:
   version "1.1.2"
