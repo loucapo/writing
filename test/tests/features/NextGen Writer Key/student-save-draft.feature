@@ -1,27 +1,30 @@
 @WRITE-39
+@db=reset
 Feature: Student Saves Work
-  Scenario: Student Has Disabled Save Button
+  Scenario: Student Can Not Save Empty Draft
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
-   Then Student sees 'disabled_save_button'
+    Then Student sees 'draft_save_button_disabled'
 
   Scenario: Student Has Enabled Save Button
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
     When I type in 'happy'
-    Then Student sees 'enabled_save_button'
+    Then Student sees 'draft_save_button_enabled'
 
   Scenario: Student Clicks Save Button (Successful Save)
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
     When I type in 'happy'
-    Then Student clicks 'save_button'
-    Then Student sees 'save_confirmation'
-    When I reload the page
-    Then Student sees happy
+    And Student clicks 'draft_save_button_enabled'
+    And Student sees 'draft_save_confirmation'
+    And I launch the activity as a 'student'
+    And Student clicks 'start_draft_1_button'
+    Then I should see "happy" in the content editor
 
     #Dunno how to blow this up yet
-  Scenario: Student Clicks Save Button (Unsuccessful Save)
+@pending
+  Scenario: Student Clicks Save Button (Error State Returned)
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
     When I type in 'happy'
@@ -30,51 +33,37 @@ Feature: Student Saves Work
 
   Scenario: Student Sees Return To Draft Button
     Given I launch the activity as a 'student'
-    When Student clicks 'start_draft_1_button'
-    When I type in 'happy'
-    Then Student clicks 'save_button'
-    Given I launch the activity as a 'student'
-    Then Student sees 'return_to_draft_1_button'
+    Then Student sees 'return_to_final_draft_button'
 
   Scenario: Student Sees Saved Work
     Given I launch the activity as a 'student'
-    When Student clicks 'start_draft_1_button'
-    When I type in 'happy'
-    Then Student clicks 'save_button'
-    Given I launch the activity as a 'student'
-    Then Student clicks 'return_to_draft_1_button'
-    Then Student sees 'happy'
+    And Student clicks 'return_to_final_draft_button'
+    Then I should see "happy" in the content editor
 
+  Scenario: Instructor Sets Up Reflection Questions
+    Given I launch the activity as a 'instructor'
+    When I click a 'add_student_reflection_questions'
+    And I click 'reflection_question_checkbox' 1
+    And I click 'reflection_question_checkbox' 4
+    And I click a 'reflection_questions_save'
+
+@pending=WRITE-1102
   Scenario: Student Has Enabled Save Button in Reflection Page
     Given I launch the activity as a 'student'
-    When Student clicks 'start_draft_1_button'
-    When I type in 'happy'
+    And Student clicks 'start_draft_1_button'
     And Student clicks 'start_reflection_button'
-    Then Student sees 'enabled_save_button'
+    Then Student sees 'draft_save_button_disabled'
 
   Scenario: Student Saves in Reflection Page
     Given I launch the activity as a 'student'
     When Student clicks 'start_draft_1_button'
-    When I type in 'happy'
     And Student clicks 'start_reflection_button'
-    When I type in 'yay' in reflection question
-    Then Student clicks 'save_button'
-    Then Student sees 'save_confirmation'
-    When I reload the page
-    Then Student sees 'yay' in reflection question
+    And I fill out the reflection questions
+    And Student clicks 'draft_save_button_enabled'
+    Then Student sees 'draft_save_confirmation'
 
-  Scenario: Student Returns to Reflection Page
+  Scenario: Student Returns to Reflection Page and Sees Saved Work
     Given I launch the activity as a 'student'
-    When Student clicks 'start_draft_1_button'
-    When I type in 'happy'
+    And Student clicks 'return_to_final_draft_button'
     And Student clicks 'start_reflection_button'
-    When I type in 'yay' in reflection question
-    Then Student clicks 'save_button'
-    Then Student sees 'save_confirmation'
-    Given I launch the activity as a 'student'
-    Then Student clicks 'return_to_draft_1_button'
-    Then Student sees 'happy'
-    And Student sees 'done_return_to_reflection'
-    Then Student clicks 'done_return_to_reflection'
-    Then Student sees 'yay' in reflection question
-    Then Student sees 'submit_button'
+    Then Student sees reflection questions are filled out

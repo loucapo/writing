@@ -7,6 +7,9 @@ module.exports = new Page({
       return this.element("[data-id='start-draft']:first-of-type");
     }
   },
+  return_to_final_draft_button: {
+    get() { return this.element("[data-id='Return to Final Paper']"); }
+  },
   start_final_paper_button: {
     get() {
       return this.element("[data-id='start-draft']");
@@ -17,10 +20,14 @@ module.exports = new Page({
       return this.element("[data-id='start-reflection']");
     }
   },
-  draft_save_button: {
-    get() {
-      return this.element("[data-id='save-draft']");
-    }
+  draft_save_button_enabled: {
+    get() { return this.element("[data-id='save-draft']:not([class*='MLButton__disabled_'])"); }
+  },
+  draft_save_button_disabled: {
+    get() { return this.element("[data-id='save-draft'][class*='MLButton__disabled_']"); }
+  },
+  draft_save_confirmation: {
+    get() { return this.element("[class*='MLMessage__message_success']"); }
   },
   view_activity_summary_link: {
     get() {
@@ -82,9 +89,6 @@ module.exports = new Page({
       return this.element("[data-id='rubric-arrow-right']");
     }
   },
-  drag_submission_confirmation_modal: {
-    get() { return this.element("[class*='MLDialog__alert']"); }
-  },
   draft_submission_cancel: {
     get() { return this.element("button[data-id='dialog-cancel']"); }
   },
@@ -114,8 +118,11 @@ module.exports = new Page({
   },
   reflection_polls_first_options: {
     get() {
-      return this.elements("[class^='ReflectionQuestionsForm__reflection'] form input:first-child");
+      return this.elements("[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']:first-child");
     }
+  },
+  reflection_polls_checked_options: {
+    get() { return this.elements("[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']:checked"); }
   },
   reflection_button_submit_enabled: {
     get() {
