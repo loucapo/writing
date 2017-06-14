@@ -8,7 +8,9 @@ const Header = ({ homeRoute }) => {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.headerRight}>
-          <a href={homeRoute}>View Activity Summary</a>
+          <a data-id="header-activity-link" href={homeRoute}>
+            View Activity Summary
+          </a>
         </div>
       </div>
     </header>
