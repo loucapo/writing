@@ -1,0 +1,15 @@
+@import 'variables.css';
+
+.editor {
+  background: var(--white);
+  padding: 6px 5px 0;
+  width: auto !important;
+}
+
+.toolbar {
+  width: auto !important;
+}
+
+.editorWrapper {
+  height: 100%;
+}

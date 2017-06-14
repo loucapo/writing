@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import DraftListContainer from './../../../containers/DraftListContainer';
+import {
+  DraftListContainer
+} from './../../../containers/index';
+
+import { SubmissionStatusContainer } from './../../../containers';
 
 import styles from './activityMenu.css';
 
@@ -34,6 +38,12 @@ class ActivityMenu extends Component {
           {(display === 'drafts')
           ? <DraftListContainer activityId={this.props.activityId} />
           : null}
+        </div>
+
+        <div className={styles.spacer}>
+          {(display === 'submissions')
+            ? <SubmissionStatusContainer />
+            : null}
         </div>
       </div>
     );

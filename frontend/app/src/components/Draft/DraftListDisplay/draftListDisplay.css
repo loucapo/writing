@@ -1,0 +1,21 @@
+@import 'variables.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.addDraft {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.required {
+  color: var(--gray-dark);
+  font-weight: bold;
+  position: relative;
+  top: 10px;
+}

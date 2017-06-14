@@ -1,0 +1,33 @@
+@import 'variables.css';
+
+.container {
+  align-items: center;
+  display: flex;
+}
+
+.section {
+  width: 100%;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+  font-weight: bold;
+}
+
+.icons {
+  display: flex;
+}
+
+.icon {
+  fill: var(--aqua);
+}
+
+.helpIcon {
+  fill: var(--blue-dark);
+  margin-left: 10px;
+}

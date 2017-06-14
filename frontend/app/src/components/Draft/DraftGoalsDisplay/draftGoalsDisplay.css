@@ -1,0 +1,45 @@
+@import 'variables.css';
+
+.container {
+  margin-bottom: 15px;
+  min-width: 48%;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.title {
+  display: flex;
+  font-weight: bold;
+}
+
+.goalsList {
+  border: 1px solid var(--gray-light);
+  border-bottom: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.goalsList li {
+  display: flex;
+  border-bottom: 1px solid var(--gray-light);
+  padding: 10px;
+}
+
+.icon {
+  fill: var(--aqua);
+}
+
+.helpIcon {
+  fill: var(--blue-dark);
+  margin-left: 10px;
+}
+
+.commentIcon {
+  composes: icon;
+  margin-right: 5px;
+}

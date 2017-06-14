@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../styles/index.css';
+import './../../styles/index.css';
 
-const Layout = ({children}) => (
-  <div className={'app'}>
-    {children}
-  </div>);
+const Layout = ({children}) => {
+  return (
+    <div className={'app'}>
+      {children}
+    </div>);
+};
 
 
 Layout.propTypes = {

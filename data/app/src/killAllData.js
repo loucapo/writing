@@ -26,6 +26,7 @@ module.exports = function(config, knex) {
         return _knex.raw(`TRUNCATE ${t} RESTART IDENTITY CASCADE`);
       }));
     }).then(() => {
+      _knex.destroy();
       console.log('BLASTED!');
     });
   };

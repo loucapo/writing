@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
-import MLCard from '../../MLCard/MLCard';
-import MLButton from '../../MLButton/MLButton';
-import MLEditor from '../../MLEditor/MLEditor';
+import {
+  MLButton,
+  MLCard,
+  MLEditor
+} from './../../MLComponents/index';
 
 import styles from './activityPrompt.css';
 
@@ -39,8 +41,8 @@ class ActivityPrompt extends Component {
     return (
       <MLCard
         type="prompt"
-        title="Assignment Prompt"
-        options={
+        title="Assignment Prompt">
+        {
           (this.state.editable)
             ?
               <div className="flex">
@@ -76,11 +78,10 @@ class ActivityPrompt extends Component {
                 </a>
               </div>
         }
-      >
         <div data-id="prompt-description">
           {(this.props.prompt || this.state.editable)
             ?
-              <MLEditor handleSave={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
+              <MLEditor handleSaveOnBlur={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
             :
               <a data-id="add-prompt" onClick={this.toggleEditable}>Click to add prompt</a>}
         </div>
