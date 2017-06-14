@@ -135,6 +135,6 @@ module.exports = new Page({
     get() { return this.element("[data-id='View Final Paper']"); }
   },
   return_to_activity_page_button: {
-    get() { return this.element("[class^='CompositionDisplayHeader__headerRight__2zdzI'] a"); }
+    get() { return this.element("[data-id='header-activity-link']"); }
   }
 });
