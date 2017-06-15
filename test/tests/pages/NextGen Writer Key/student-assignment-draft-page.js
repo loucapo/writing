@@ -94,6 +94,10 @@ module.exports = new Page({
   draft_submission_confirmation_banner: {
     get() { return this.element("[class*='MLDialog__alert_container']"); }
   },
+
+  draft_submission_confirmation: {
+    get() { return this.element("[data-id='submitted-draft-alert']"); }
+  },
   draft_submission_confirmation_success_icon: {
     get() { return this.element("[class*='MLMessage__message_icon_success']"); }
   },
@@ -129,5 +133,8 @@ module.exports = new Page({
   },
   view_final_draft_button: {
     get() { return this.element("[data-id='View Final Paper']"); }
+  },
+  return_to_activity_page_button: {
+    get() { return this.element("[data-id='header-activity-link']"); }
   }
 });
