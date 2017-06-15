@@ -24,4 +24,6 @@
   font-size: 1.2em;
   text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
+  color: var(--aqua);
 }
