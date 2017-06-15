@@ -1,0 +1,14 @@
+@import 'variables.css';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 20px 20px 20px 3px;
+}
+
+.showing {
+  margin-right:5px;
+  font-weight: bold;
+  color: var(--gray);
+}
