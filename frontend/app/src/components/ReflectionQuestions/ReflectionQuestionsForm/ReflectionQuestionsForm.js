@@ -8,6 +8,9 @@ import styles from './reflectionQuestionsForm.css';
 class ReflectionQuestionsForm extends Component {
   state = {
     answers: this.props.reflectionAnswers || [],
+    // Using unsavedAnswers to keep track of unsaved state to use as a condition for showing the dialog.
+    // Defaulting to false because on load nothing has changed yet.
+    unsavedAnswers: false,
     showSubmitConfirm: false
   };
 
@@ -38,18 +41,24 @@ class ReflectionQuestionsForm extends Component {
     );
   };
 
-  handleSave = () =>
+  handleSave = () => {
     this.props.setReflectionAnswers(this.props.studentActivityId, this.props.studentDraftId, this.state.answers);
+    // We saved, so no more unsaved changes. No idea how to tell if the save succeeded.
+    this.setState({ unsavedAnswers: false });
+  };
 
   handleSubmit = () => {
     this.handleSave();
     this.showDialog();
   };
 
-  submitDraft = () => this.props.submitDraft(this.props.studentActivityId,
-    this.props.studentDraftId,
-    this.props.homeRoute,
-    this.props.draftName);
+  submitDraft = () =>
+    this.props.submitDraft(
+      this.props.studentActivityId,
+      this.props.studentDraftId,
+      this.props.homeRoute,
+      this.props.draftName
+    );
 
   handleChange = (reflectionId, value) => {
     let answers = [...this.state.answers];
@@ -61,9 +70,12 @@ class ReflectionQuestionsForm extends Component {
     if (!this.state.answers.find(x => x.studentReflectionQuestionId === reflectionId)) {
       answers.push(answer);
     } else {
-      answers = answers.map(x => x.studentReflectionQuestionId === reflectionId ? answer : x);
+      answers = answers.map(x => {
+        return x.studentReflectionQuestionId === reflectionId ? answer : x;
+      });
     }
-    this.setState({ answers });
+    // If we're setting the answer state, that means we have unsaved changes.
+    this.setState({ answers, unsavedAnswers: true });
   };
 
   checkIfQuestionsAreCompleted = () => {
@@ -94,14 +106,15 @@ class ReflectionQuestionsForm extends Component {
 
     return (
       <form onChange={x => this.handleChange(questionId, x.target.value)}>
-        {labels.map((label, index) => (
+        {labels.map((label, index) =>
           <div key={index}>
             <input type="radio" name="poll" value={label.value} checked={value === label.value} />
             <label htmlFor={label.value}>
               {label.text}
-            </label><br />
+            </label>
+            <br />
           </div>
-        ))}
+        )}
       </form>
     );
   };
@@ -113,24 +126,23 @@ class ReflectionQuestionsForm extends Component {
   renderSaveMessage = () => {
     const saveMessage = this.props.saveReflectionMessage;
     if (saveMessage && saveMessage.status) {
-      return saveMessage.status === 'success' ?
-        <MLMessage
+      return saveMessage.status === 'success'
+        ? <MLMessage
           options={{
             id: '1234',
             message: `Your reflection questions were successfully saved on ${saveMessage.modified}`,
             type: 'success',
             icon: 'check'
           }}
-        />
-        :
-        <MLMessage
+          />
+        : <MLMessage
           options={{
             id: '1234',
             message: 'There was a problem saving, please try again',
             type: 'error',
             icon: 'not'
           }}
-        />;
+          />;
     }
   };
 
@@ -138,20 +150,23 @@ class ReflectionQuestionsForm extends Component {
     return (
       <div className={styles.page}>
         <ReflectionQuestionsFormHeader
+          activityId={this.props.activityId}
+          draftId={this.props.draftId}
           questionsAreComplete={this.checkIfQuestionsAreCompleted()}
           handleSave={this.handleSave}
           handleSubmit={this.handleSubmit}
+          unsavedAnswers={this.state.unsavedAnswers}
         />
         <div className={styles.container}>
           {this.renderSaveMessage()}
           <h3>Reflection Questions</h3>
           <sup>All questions are required</sup>
-          {this.props.reflectionQuestions.map((reflection, idx) => (
+          {this.props.reflectionQuestions.map((reflection, idx) =>
             <div className={styles.reflection} key={reflection.studentReflectionQuestionId}>
               <p>{`${idx + 1}. ${reflection.question}`}</p>
               {this.renderAnswerSpace(reflection)}
             </div>
-          ))}
+          )}
         </div>
         <MLDialog
           title={'Ready to submit draft and reflections questions'}
@@ -178,6 +193,8 @@ ReflectionQuestionsForm.propTypes = {
   setReflectionAnswers: PropTypes.func,
   studentActivityId: PropTypes.string,
   studentDraftId: PropTypes.string,
+  activityId: PropTypes.string,
+  draftId: PropTypes.string,
   submitDraft: PropTypes.func,
   draftName: PropTypes.string,
   homeRoute: PropTypes.string,

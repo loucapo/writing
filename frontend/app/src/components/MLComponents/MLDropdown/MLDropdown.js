@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 
@@ -7,15 +7,17 @@ import styles from './mldropdown.css';
 class Dropdown extends Component {
   state = {
     showContents: false,
-    selected: this.props.defaultOption,
+    selected: this.props.defaultOption || {},
     options: this.props.options || []
   };
 
   setUpOptions = (_options = [], selectedId) => {
     let options = _options;
     let selected;
-    if(!this.props.hideEmptyOption && _options.length > 0) {
-      options = [this.props.defaultOption, ..._options];
+    if (!this.props.hideEmptyOption && options.length > 0) {
+      if (this.props.defaultOption) {
+        options = [this.props.defaultOption, ..._options];
+      }
       selected = options.find(x => x.id === selectedId);
     }
     this.setState({ options, selected: selected || this.props.defaultOption });
@@ -35,15 +37,7 @@ class Dropdown extends Component {
     });
   };
 
-  handleClick = () => {
-    this.toggleContents();
-  };
-
-  closeDropdown = () => {
-    this.toggleContents();
-  };
-
-  selectOption = (option) => {
+  selectOption = option => {
     this.setState({
       selected: option,
       showContents: !this.state.showContents
@@ -51,33 +45,39 @@ class Dropdown extends Component {
     this.props.onChange(option);
   };
 
+  handleBackgroundClick = event => {
+    if (event.target === event.currentTarget) {
+      this.toggleContents();
+    }
+  };
+
   render = () => {
-    let openClass = (this.state.showContents) ? ' ' + styles.dropdownOpen : '';
-    let openDataId = (this.state.showContents) ? this.props.openDataId : '';
+    let openClass = this.state.showContents ? ' ' + styles.dropdownOpen : '';
+    let openContainer = this.state.showContents ? styles.openContainer : '';
+    let openDataId = this.state.showContents ? this.props.openDataId : '';
     let dropdownClass = `${styles.dropdown}${openClass}`;
     // TODO: refactor into more mini components
     return (
       <div data-id="rubric-dropdown">
-        <div className={dropdownClass} data-id={openDataId} onClick={this.handleClick}>
+        <div className={openContainer} onClick={this.handleBackgroundClick} />
 
+        <div className={dropdownClass} data-id={openDataId} onClick={this.toggleContents}>
           <ul className={styles.dropdownContent} data-id={this.props.contentDataId}>
-            {this.state.options.map((option, idx) => {
-              return (
-                <li data-id={option.id} key={idx} onClick={() => this.selectOption(option)}>
-                  <a href="#">{option.value}</a>
-                  {(option.id === this.state.selected.id) ?
-                    <MLIcon
-                      className={styles.checkIcon}
-                      title="check"
-                      type="check"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 24 24"
-                    />
-                  : ''}
-                </li>
-              );
-            })}
+            {this.state.options.map((option, idx) => (
+              <li data-id={option.id} key={idx} onClick={() => this.selectOption(option)}>
+                <a href="#">{option.value}</a>
+                {option.id === this.state.selected.id ?
+                  <MLIcon
+                    className={styles.checkIcon}
+                    title="check"
+                    type="check"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  />
+                  : null}
+              </li>
+            ))}
           </ul>
 
           <div className={styles.dropdownTitle}>
@@ -95,13 +95,6 @@ class Dropdown extends Component {
     );
   };
 }
-
-Dropdown.defaultProps = {
-  defaultOption: {
-    id: '0000',
-    value: 'Please Select'
-  }
-};
 
 Dropdown.propTypes = {
   defaultOption: PropTypes.object,

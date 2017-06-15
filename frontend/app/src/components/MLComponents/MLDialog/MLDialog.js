@@ -18,7 +18,7 @@ const MLDialog = ({message, children, title, show, close}) => {
         <div className={styles.alert}>
           <div className={styles.heading}>
             {title}
-            <a href="#" onClick={closeDialog}>
+            <span onClick={closeDialog}>
               <MLIcon
                 className={styles.closeIcon}
                 title="close"
@@ -27,7 +27,7 @@ const MLDialog = ({message, children, title, show, close}) => {
                 height="19"
                 viewBox="0 0 24 24"
               />
-            </a>
+            </span>
           </div>
           <div className={styles.content}>
             <div className={styles.message}>

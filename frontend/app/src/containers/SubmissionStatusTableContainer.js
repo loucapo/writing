@@ -30,9 +30,9 @@ SubmissionStatusContainer.propTypes = {
 const mapStateToProps = (state, props) => {
   const submissionStatuses = state.submissionStatuses
     .filter(x => x.draftId === props.draftId)
-    .map(x => x.status === 'submitted'
+    .map(x => { return x.status === 'submitted'
         ? {...x, submittedDate: moment(x.submittedDate).format('MMMM Do, YYYY')}
-        : x)
+        : x; })
     .sort(sortBy('studentId'));
   return {
     draftId: props.draftId,

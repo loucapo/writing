@@ -60,4 +60,5 @@
 
 .closeIcon {
   fill: var(--aqua);
+  cursor: pointer;
 }
