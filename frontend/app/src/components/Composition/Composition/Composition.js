@@ -16,6 +16,8 @@ class Composition extends Component {
   handleSave = () => {
     let newContent = this.state.newContent;
     this.props.updateDraftPaper(this.props.studentActivityId, this.props.studentDraft.studentDraftId, newContent);
+    // Resetting newContent after save to be able to use it as a signal that unsaved changes have happened.
+    this.setState(newContent: null);
   };
 
   handleEditorStateChange = newContent => {
@@ -28,24 +30,25 @@ class Composition extends Component {
   renderSaveMessage = () => {
     const saveMessage = this.props.saveDraftMessage;
     if (saveMessage && saveMessage.status) {
-      return saveMessage.status === 'success' ?
-        <MLMessage
+      return saveMessage.status === 'success'
+        ? <MLMessage
           options={{
             id: '1234',
-            message: `This draft was successfully saved on ${moment(this.props.studentDraft.modifiedDate).format('MMMM Do, YYYY')}`,
+            message: `This draft was successfully saved on ${moment(this.props.studentDraft.modifiedDate).format(
+              'MMMM Do, YYYY'
+            )}`,
             type: 'success',
             icon: 'check'
           }}
-        />
-        :
-        <MLMessage
+          />
+        : <MLMessage
           options={{
             id: '1234',
             message: 'There was a problem saving, please try again',
             type: 'error',
             icon: 'not'
           }}
-        />;
+          />;
     }
   };
 
@@ -73,7 +76,11 @@ class Composition extends Component {
           </div>
         </div>
         <div className={styles.infoColumn}>
-          <CompositionDraftDetailsContainer activityId={this.props.activityId} studentDraft={this.props.studentDraft} />
+          <CompositionDraftDetailsContainer
+            activityId={this.props.activityId}
+            studentDraft={this.props.studentDraft}
+            unsavedChanges={!!this.state.newContent}
+          />
         </div>
       </div>
     );

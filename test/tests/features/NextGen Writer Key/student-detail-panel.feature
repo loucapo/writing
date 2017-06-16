@@ -1,4 +1,5 @@
 @WRITE-46
+@WRITE-1061
 Feature: Student Views Details Panel
 
   @db=reset
@@ -62,5 +63,16 @@ Feature: Student Views Details Panel
     Then Page Element Checker Verifies Text: '2 - Nearly Meets Expectations' at '[data-id='rubric-column-2']'
 
   @db=reset
+  Scenario: Student Launch Draft With Only Reflection Questions
+    Given I launch the activity as a 'instructor'
+    When I click a 'add_student_reflection_questions'
+    When I click 'reflection_question_checkbox' 1
+    And I click a 'reflection_questions_save'
+    Given I launch the activity as a 'student'
+    When Student clicks 'start_final_paper_button'
+    Then Page Element Checker Verifies Text: 'free: utt ben yavin fett naboo calamari. Obi-wan mon coruscant c' at '[data-id='reflections-list']'
+
+  @db=reset
   Scenario: Database Reset
     Given I launch the activity as a 'instructor'
+
