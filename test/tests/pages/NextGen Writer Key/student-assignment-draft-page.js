@@ -31,7 +31,12 @@ module.exports = new Page({
   },
   view_activity_summary_link: {
     get() {
-      return this.element("[data-id='details-panel-activity-link']");
+      return this.element("[data-id='details-panel-activity-link-div']");
+    }
+  },
+  view_draft_link: {
+    get() {
+      return this.element("[data-id='return-to-draft-from-reflection-questions']");
     }
   },
   activity_details_panel: {
@@ -98,7 +103,21 @@ module.exports = new Page({
   draft_submission_confirmation_banner: {
     get() { return this.element("[class*='MLDialog__alert_container']"); }
   },
-
+  leave_page_alert: {
+    get() { return this.element("[class*='MLDialog__alert_container_show']"); }
+  },
+  leave_draft_page_button: {
+    get() { return this.element("[data-id='details-panel-activity-link-dialog-leave']"); }
+  },
+  stay_draft_page_button: {
+    get() { return this.element("[data-id='details-panel-activity-link-dialog-stay']"); }
+  },
+  leave_reflection_page_button: {
+    get() { return this.element("[data-id='reflection-questions-dialog-leave']"); }
+  },
+  stay_reflection_page_button: {
+    get() { return this.element("[data-id='reflection-questions-dialog-stay']"); }
+  },
   draft_submission_confirmation: {
     get() { return this.element("[data-id='submitted-draft-alert']"); }
   },
