@@ -1,6 +1,9 @@
 const studentPage = require('../../pages/NextGen Writer Key/student-assignment-draft-page.js');
 
 exports.define = function(steps) {
+
+  let reflection_question_text_answer = 'yay';
+
   steps.given("I launch the activity as a '$user'", function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
   });
@@ -21,7 +24,7 @@ exports.define = function(steps) {
       }
       // add 'yay' to each text field
       elems.forEach((elem) => {
-        elem.sendKeys('yay');
+        elem.sendKeys(reflection_question_text_answer);
       });
     });
     studentPage.reflection_polls_first_options.then((elems) => {
@@ -33,6 +36,25 @@ exports.define = function(steps) {
 
   steps.then("Student sees '$elem'", function(elem) {
     studentPage[elem].then(function(elems) {
+      expect(elems.length).to.not.equal(0);
+    });
+  });
+  
+  steps.then("Student sees reflection questions are filled out", function(text) {
+    studentPage.reflection_textfields.then((elems) => {
+      // single element is not an array
+      if (!Array.isArray(elems)) {
+        elems = [elems];
+      }
+      // check for 'yay' in each text field
+      elems.forEach((elem) => {
+        elem.getText().then((field_text) => {
+          field_text.should.equal(reflection_question_text_answer);
+        });
+      });
+    });
+    // check that some polls have a checked answer
+    studentPage.reflection_polls_checked_options.then((elems) => {
       expect(elems.length).to.not.equal(0);
     });
   });
