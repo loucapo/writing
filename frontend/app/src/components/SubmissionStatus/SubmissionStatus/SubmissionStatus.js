@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { SubmissionStatusTableContainer } from './../../../containers';
+import { SubmissionStatusFilter } from '../index';
+import { SubmissionStatusTableContainer } from '../../../containers';
 
-import submissionStatus from './submissionStatus.css';
+import styles from './submissionStatus.css';
 
 
 class SubmissionStatus extends Component {
@@ -10,12 +11,18 @@ class SubmissionStatus extends Component {
     draftId: this.props.draftId
   };
 
+  selectDraftSubmissions = (draftId) => {
+    this.setState({draftId});
+  };
+
   render() {
     return (
-      <div className={ submissionStatus.wrapper }>
-        <div className={ submissionStatus.subList }>
-          <SubmissionStatusTableContainer draftId={this.state.draftId} />
-        </div>
+      <div className={ styles.wrapper }>
+        <SubmissionStatusFilter
+          draftOptions={this.props.draftOptions}
+          selectDraftSubmissions={this.selectDraftSubmissions}
+          draftId={this.state.draftId} />
+        <SubmissionStatusTableContainer draftId={this.state.draftId} />
       </div>);
   }
 }

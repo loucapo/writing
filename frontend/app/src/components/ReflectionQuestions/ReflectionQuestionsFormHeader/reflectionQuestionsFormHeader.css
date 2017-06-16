@@ -12,3 +12,18 @@
   flex-wrap: nowrap;
   justify-content: flex-end;
 }
+
+.draftLink {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--aqua);
+}
+
+.flex {
+  display:flex;
+}
+
+.linkContainer {
+  composes: flex;
+  align-items:center;
+}

@@ -1,21 +1,20 @@
 import { denormalizeDrafts } from './index';
 
 export default (state, props) => {
-  const studentActivity = state.studentActivities.find(x =>
-  x.activityId === state.auth.activity.activityId
-  && x.studentId === state.auth.id);
-  let studentDrafts = state.studentDraft.filter(x =>
-  x.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined));
+  const studentActivity = state.studentActivities.find(
+    x => x.activityId === state.auth.activity.activityId && x.studentId === state.auth.id
+  );
+  let studentDrafts = state.studentDraft.filter(
+    x => x.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined)
+  );
   let denormalizedDrafts = denormalizeDrafts(state, props);
 
   let finalDraftIndex = denormalizedDrafts.length - 1;
 
-  let getCurrentActiveIndex = (drafts) => {
+  let getCurrentActiveIndex = drafts => {
     let lastStarted = drafts.filter(x => x.status && x.status !== 'notStarted').reverse()[0];
     if (lastStarted) {
-      return lastStarted.status !== 'completed'
-        ? lastStarted.index
-        : lastStarted.index++;
+      return lastStarted.status !== 'completed' ? lastStarted.index : lastStarted.index++;
     }
     return 0;
   };
@@ -48,7 +47,6 @@ export default (state, props) => {
   return denormalizedDrafts.map(x => {
     let studentDraft = studentDrafts.find(sd => sd.draftId === x.draftId);
     let studentInfo = getStudentInfo(x, studentDraft);
-    return {...x, studentInfo};
+    return { ...x, studentInfo };
   });
-
 };
