@@ -7,6 +7,9 @@ module.exports = new Page({
       return this.element("[data-id='start-draft']:first-of-type");
     }
   },
+  return_to_final_draft_button: {
+    get() { return this.element("[data-id='Return to Final Paper']"); }
+  },
   start_final_paper_button: {
     get() {
       return this.element("[data-id='start-draft']");
@@ -17,14 +20,23 @@ module.exports = new Page({
       return this.element("[data-id='start-reflection']");
     }
   },
-  draft_save_button: {
-    get() {
-      return this.element("[data-id='save-draft']");
-    }
+  draft_save_button_enabled: {
+    get() { return this.element("[data-id='save-draft']:not([class*='MLButton__disabled_'])"); }
+  },
+  draft_save_button_disabled: {
+    get() { return this.element("[data-id='save-draft'][class*='MLButton__disabled_']"); }
+  },
+  draft_save_confirmation: {
+    get() { return this.element("[class*='MLMessage__message_success']"); }
   },
   view_activity_summary_link: {
     get() {
-      return this.element("[data-id='details-panel-activity-link']");
+      return this.element("[data-id='details-panel-activity-link-div']");
+    }
+  },
+  view_draft_link: {
+    get() {
+      return this.element("[data-id='return-to-draft-from-reflection-questions']");
     }
   },
   activity_details_panel: {
@@ -82,9 +94,6 @@ module.exports = new Page({
       return this.element("[data-id='rubric-arrow-right']");
     }
   },
-  drag_submission_confirmation_modal: {
-    get() { return this.element("[class*='MLDialog__alert']"); }
-  },
   draft_submission_cancel: {
     get() { return this.element("button[data-id='dialog-cancel']"); }
   },
@@ -94,7 +103,21 @@ module.exports = new Page({
   draft_submission_confirmation_banner: {
     get() { return this.element("[class*='MLDialog__alert_container']"); }
   },
-
+  leave_page_alert: {
+    get() { return this.element("[class*='MLDialog__alert_container_show']"); }
+  },
+  leave_draft_page_button: {
+    get() { return this.element("[data-id='details-panel-activity-link-dialog-leave']"); }
+  },
+  stay_draft_page_button: {
+    get() { return this.element("[data-id='details-panel-activity-link-dialog-stay']"); }
+  },
+  leave_reflection_page_button: {
+    get() { return this.element("[data-id='reflection-questions-dialog-leave']"); }
+  },
+  stay_reflection_page_button: {
+    get() { return this.element("[data-id='reflection-questions-dialog-stay']"); }
+  },
   draft_submission_confirmation: {
     get() { return this.element("[data-id='submitted-draft-alert']"); }
   },
@@ -118,8 +141,11 @@ module.exports = new Page({
   },
   reflection_polls_first_options: {
     get() {
-      return this.elements("[class^='ReflectionQuestionsForm__reflection'] form input:first-child");
+      return this.elements("[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']:first-child");
     }
+  },
+  reflection_polls_checked_options: {
+    get() { return this.elements("[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']:checked"); }
   },
   reflection_button_submit_enabled: {
     get() {
