@@ -129,6 +129,11 @@ module.exports = new Page({
     locator: `[data-id='input-fields'] [data-id='question-type']`
   }),
 
+  ref_question_save: basePageObj({
+    desc: ``,
+    locator: `[data-id='save-button']`
+  }),
+
   // TODO: great place to use method_missing? or, what, es6 proxies?  also hover, other psuedo selectors.
   // maybe.  maybe wildly unnecessary.
   // You could also go the site_prism route and make checkbox a subclass of basePageObject or decorate it.
@@ -188,16 +193,85 @@ module.exports = new Page({
 
   // instructor summary nav
   //
-
   add_draft_button: basePageObj({
     desc: `Button to add another draft to the current assignment`,
     locator: `[data-id='add-draft']`
   }),
+  draft_count: basePageObj({
+    desc: `A link to show the drafts pane on the assignment summary page that should also display the current number of drafts associated with an assignemnt`, // eslint-disable-line
+    locator: `[data-id='drafts']`
+  }),
+  student_submissions: basePageObj({
+    desc: ``, // eslint-disable-line
+    locator: `[data-id='student-submissions']`
+  }),
+
+  // submissions tab
+  //
+  submission_header_name: basePageObj({}),
+  submission_header_date: basePageObj({}),
+  submission_header_status: basePageObj({}),
+  submission_header_sent: basePageObj({}),
+  submission_alert: basePageObj({
+    desc: ``,
+    locator: `[class^='SubmissionStatusTable__notStartedAlert__']`
+  }),
+  submission_row_name: basePageObj({
+    desc: ``,
+    locator: `[class^='SubmissionStatusItem__row__'] [data-id='name']`
+  }),
+  submission_row_date: basePageObj({
+    desc: ``,
+    locator: `[class^='SubmissionStatusItem__row__'] [data-id='completion-date']`
+  }),
+  submission_row_status: basePageObj({
+    desc: ``,
+    locator: `[class^='SubmissionStatusItem__row__'] [data-id='review-status']`
+  }),
+  submission_row_sent: basePageObj({
+    desc: ``,
+    locator: `[class^='SubmissionStatusItem__row__'] [data-id='send-status']`
+  }),
+
+  // student top nav
+  //
+  start_next_draft: basePageObj({
+    desc: ``,
+    locator: ``
+  }),
+
+  // student activity draft card
+  //
+  start_draft: basePageObj({
+    desc: ``,
+    locator: `[data-id='start-draft']`
+  }),
+  start_draft_enabled: basePageObj({
+    desc: ``,
+    locator: `[data-id='start-draft']:not([class*='__disabled__'])`
+  }),
+  start_draft_disabled: basePageObj({
+    desc: ``,
+    locator: `[data-id='start-draft'][class*='__disabled__']`
+  }),
+
+  // student draft editor
+  //
+  draft_area: basePageObj({
+    desc: `Main textarea in which students edit their draft.`,
+    locator: `[class='public-DraftEditor-content']`
+  }),
+
+  // student answering reflection questions
+  // TODO: needs a lot of data-id dev love
+  //
+  reflection_question: basePageObj({
+    // QQQ
+    //ReflectionQuestionsForm__reflection__
+  }),
 
   // unsorted
   //
-  //
-
   add_draft_instructions: basePageObj({
     desc: `Button that makes the draft instructions editable for the xth draft on the summary page`,
     locator: `//*[@data-id='add-instructions']`,
@@ -257,11 +331,6 @@ module.exports = new Page({
     locator: `[data-id='draft-delete']`
   }),
 
-  draft_count: basePageObj({
-    desc: `A link to show the drafts pane on the assignment summary page that should also display the current number of drafts associated with an assignemnt`, // eslint-disable-line
-    locator: `[data-id='drafts']`
-  }),
-
   // TODO: get dev to give this text block a data-id
   draft_note: basePageObj({
     desc: `Text block per draft describing necessary preconditions to start work on this particular draft`,
@@ -277,6 +346,6 @@ module.exports = new Page({
   draft_alert_cancel_button: basePageObj({
     desc: `The cancellation button in the alert dialog that is presented on attempting to delete a draft`,
     locator: `[data-id='dialog-cancel']`
-  })
+  }),
 
 });

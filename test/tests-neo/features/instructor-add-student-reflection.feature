@@ -1,5 +1,5 @@
 @WRITE-750
-@only
+#@only
 Feature: Instructor Can Add Student Reflection Questions To Activity
 
   Scenario: The Instructor Sees Option to select student reflection questions
@@ -50,7 +50,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Then I wait until there is 3 "ref_question_check__checked" visible
     Then I wait until there is 2 "ref_question_check__unchecked" visible
 
-  @only
+  #@only
   @db=reset
   Scenario: The Instructor Saves Question
     Given I launch the activity as an "instructor"
