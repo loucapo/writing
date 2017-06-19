@@ -131,7 +131,6 @@ Feature: Add Another Draft To Activity
     Then I wait until there are 0 "draft_instructions_textarea" visible
     Then I wait until there are 0 "draft_instructions" visible
 
-  @hacky
   @db=reset
   Scenario: Draft Renaming
     Given I launch the activity as an "instructor"
