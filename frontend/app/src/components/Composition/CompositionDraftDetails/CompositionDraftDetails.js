@@ -3,13 +3,11 @@ import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { MLEditor, MLAccordion, MLButton, MLDialog } from './../../MLComponents/index';
 
-import { CompositionDraftDetailsHeader } from './../index';
+import { CompositionDraftDetailsHeader, CompositionDraftDetailsRubric } from './../index';
 
 import { DraftInstructionsDisplay, DraftGoalsDisplay } from './../../Draft/index';
 
 import { ReflectionQuestionsDisplay } from './../../ReflectionQuestions/index';
-
-import { Rubric } from './../../Rubric/index';
 
 import styles from './compositionDraftDetails.css';
 
@@ -31,11 +29,9 @@ class CompositionDraftDetails extends Component {
   };
 
   closeDialog = () => {
-    this.setState(
-      {
-        showDialog: false
-      }
-    );
+    this.setState({
+      showDialog: false
+    });
   };
 
   DraftAccordionList = (
@@ -65,7 +61,7 @@ class CompositionDraftDetails extends Component {
     },
     {
       title: 'Final Rubric',
-      content: <Rubric rubric={this.props.newRubric} />,
+      content: <CompositionDraftDetailsRubric rubric={this.props.newRubric} />,
       dataId: 'final-rubric-detail-panel'
     }
   ];
