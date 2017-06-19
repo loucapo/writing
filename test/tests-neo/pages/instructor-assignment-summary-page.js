@@ -133,6 +133,10 @@ module.exports = new Page({
     desc: ``,
     locator: `[data-id='save-button']`
   }),
+  ref_question_cancel: basePageObj({
+    desc: ``,
+    locator: `[data-id='cancel-button']`
+  }),
 
   // TODO: great place to use method_missing? or, what, es6 proxies?  also hover, other psuedo selectors.
   // maybe.  maybe wildly unnecessary.
@@ -188,7 +192,11 @@ module.exports = new Page({
 
   reflection_question: basePageObj({
     desc: ``,
-    locator: `[data-id='reflection-questions'] li`
+    locator: `[data-id='reflections-list'] li`
+  }),
+  edit_reflections: basePageObj({
+    desc: ``,
+    locator: `[data-id='reflections-edit']`
   }),
 
   // instructor summary nav
@@ -240,6 +248,11 @@ module.exports = new Page({
     locator: ``
   }),
 
+  success_flash: basePageObj({
+    desc: ``,
+    locator: `[class*='MLMessage__message_success__'] span[class*='MLMessage__message__']`
+  }),
+
   // student activity draft card
   //
   start_draft: basePageObj({
@@ -262,12 +275,37 @@ module.exports = new Page({
     locator: `[class='public-DraftEditor-content']`
   }),
 
+  save_draft: basePageObj({
+    desc: ``,
+    locator: `[data-id='save-draft']`
+  }),
+  start_reflection: basePageObj({
+    desc: ``,
+    locator: `[data-id='start-reflection']`
+  }),
+  draft_submit: basePageObj({
+    desc: ``,
+    locator: `[data-id='submit-draft']`
+  }),
+  draft_submit_confirm: basePageObj({
+    desc: ``,
+    locator: `[data-id='dialog-submit']`
+  }),
+  draft_submit_cancel: basePageObj({
+    desc: ``,
+    locator: `[data-id='dialog-cancel']`
+  }),
+
   // student answering reflection questions
   // TODO: needs a lot of data-id dev love
   //
-  reflection_question: basePageObj({
-    // QQQ
-    //ReflectionQuestionsForm__reflection__
+  student_reflection_answer: basePageObj({
+    desc: ``,
+    locator: `[class^='ReflectionQuestionsForm__reflection__']`
+  }),
+  student_reflection_text: basePageObj({
+    desc: ``,
+    locator: `[class^='ReflectionQuestionsForm__reflection__'] textarea`
   }),
 
   // unsorted
