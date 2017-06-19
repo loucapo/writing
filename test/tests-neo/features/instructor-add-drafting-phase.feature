@@ -149,3 +149,58 @@ Feature: Add Another Draft To Activity
     Then I sleep for 1 seconds
     And I wait until there is 1 "draft_card" visible
     Then the text of "draft_instructions" [1] should be "just some basic instructions"
+
+  @db=reset
+  @WRITE-1036
+  Scenario: New drafts are always inserted directly before the final draft
+    Given I launch the activity as an "instructor"
+    # i see one draft named final draft
+    # i name draft 1 as A
+    # i add a draft
+    # i see 2 drafts
+    # i see draft 1 as empty
+    # i see draft 2 as A
+    # i name draft 1 as B
+    # # --
+    # i add a draft
+    # i see 3 drafts
+    # I see draft 1 as B
+    # I see draft 2 as new
+    # I see draft 3 as A
+    # I name draft 2 as C
+    # #==
+    # I add a draft
+    # I see 4 drafts
+    # I see draft 1 as B
+    # I see draft 2 as C
+    # I see draft 3 as new
+    # I see draft 4 as A
+
+  @db=reset
+  @WRITE-1036
+  Scenario: Sole drafts are always named "Final Draft"
+    Given I launch the activity as an "instructor"
+    # I add 3 drafts
+    # I name draft 1 A
+    # I name draft 2 B
+    # I name draft 3 C
+    # I name draft 4 D
+    # #--
+    # I delete B
+    # I see 3 drafts
+    # I see draft 1 is A
+    # I see draft 2 is C
+    # I see draft 3 is D
+    # I see draft 3 is named final
+    # #-- 
+    # I delete D
+    # I see 2 drafts
+    # I see draft 1 is A
+    # I see draft 2 is C
+    # I see draft 2 is named final
+    # #--
+    # I delete C
+    # I see 1 draft
+    # I see draft 1 is A
+    # I see draft 1 is named final
+    # I see there is no delete icon
