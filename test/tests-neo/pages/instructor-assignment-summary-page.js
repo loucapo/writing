@@ -220,8 +220,8 @@ module.exports = new Page({
   submission_header_date: basePageObj({}),
   submission_header_status: basePageObj({}),
   submission_header_sent: basePageObj({}),
-  submission_alert: basePageObj({
-    desc: ``,
+  no_submissions_alert: basePageObj({
+    desc: `blank data for submitted student assignments`,
     locator: `[class^='SubmissionStatusTable__notStartedAlert__']`
   }),
   submission_row_name: basePageObj({
@@ -385,5 +385,37 @@ module.exports = new Page({
     desc: `The cancellation button in the alert dialog that is presented on attempting to delete a draft`,
     locator: `[data-id='dialog-cancel']`
   }),
+
+  // Student Page Object Stuff
+  //
+  reflection_button_submit_enabled: basePageObj({
+    desc: `Final submit button for reflection questions and draft submission`,
+    locator: `[data-id='submit-draft']:not([class*='MLButton__disabled']`
+  }),
+  draft_submission_confirmation_banner: basePageObj({
+    desc: `Green confirmation message for successful draft submission`,
+    locator: `[class*='MLMessage__message_success']`
+  }),
+  draft_select_dropdown_submission_grid: basePageObj({
+    desc: `Drop Down to change drafts`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown']`
+  }),
+  reflection_polls_radio_button: basePageObj({
+    desc: `Multiple choice reflection question answer choice`,
+    locator: `[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']`
+  }),
+  dropdown_drafts_submission_grid: basePageObj({
+    desc: `Available drafts in drop down on submission grid`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li`
+  }),
+  dropdown_drafts_submission_grid_selected: basePageObj({
+    desc: `Available drafts in drop down on submission grid`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li svg`
+  }),
+  dropdown_drafts_submission_grid_title: basePageObj({
+    desc: `Available drafts in drop down on submission grid`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [class^='MLDropdown__dropdownTitle']`
+  }),
+
 
 });
