@@ -12,7 +12,7 @@ Feature: Instructor can view status of student drafts
     When I click "ref_question_save"
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
-    Then I wait until there is 1 "submission_alert" visible
+    Then I wait until there is 1 "no_submissions_alert" visible
     Given I launch the activity as an "student"
     Then I wait until there are 2 "start_draft" visible
     Then I wait until there is 1 "start_draft_enabled" visible
@@ -20,7 +20,7 @@ Feature: Instructor can view status of student drafts
     Given I launch the activity as an "instructor"
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
-    Then I wait until there is 1 "submission_alert" visible
+    Then I wait until there is 1 "no_submissions_alert" visible
 
   @db=reset
   Scenario: Instructor's draft submission list contains students that have opened a draft for the activity
@@ -33,7 +33,7 @@ Feature: Instructor can view status of student drafts
     When I click "ref_question_save"
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
-    Then I wait until there is 1 "submission_alert" visible
+    Then I wait until there is 1 "no_submissions_alert" visible
     Given I launch the activity as an "student"
     Then I wait until there are 2 "start_draft" visible
     Then I wait until there is 1 "start_draft_enabled" visible
@@ -45,7 +45,7 @@ Feature: Instructor can view status of student drafts
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
     Then I wait until there is 1 "submission_row_name" visible
-    Then I wait until there are 0 "submission_alert" visible
+    Then I wait until there are 0 "no_submissions_alert" visible
     # TODO: And the text of "submission_row_name" is a GUID / student name
     And the text of "submission_row_date" [1] should be "—"
     And the text of "submission_row_status" [1] should be "—"
@@ -62,7 +62,7 @@ Feature: Instructor can view status of student drafts
     When I click "ref_question_save"
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
-    Then I wait until there is 1 "submission_alert" visible
+    Then I wait until there is 1 "no_submissions_alert" visible
     Given I launch the activity as an "student"
     Then I wait until there are 2 "start_draft" visible
     Then I wait until there is 1 "start_draft_enabled" visible
@@ -77,7 +77,7 @@ Feature: Instructor can view status of student drafts
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
     Then I wait until there is 1 "submission_row_name" visible
-    Then I wait until there are 0 "submission_alert" visible
+    Then I wait until there are 0 "no_submissions_alert" visible
     # TODO: And the text of "submission_row_name" is a GUID / student name
     And the text of "submission_row_status" [1] should be "—"
     And the text of "submission_row_sent" [1] should be "—"
@@ -94,7 +94,7 @@ Feature: Instructor can view status of student drafts
     When I click "ref_question_save"
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
-    Then I wait until there is 1 "submission_alert" visible
+    Then I wait until there is 1 "no_submissions_alert" visible
     Given I launch the activity as an "student"
     Then I wait until there are 2 "start_draft" visible
     Then I wait until there is 1 "start_draft_enabled" visible
@@ -111,7 +111,7 @@ Feature: Instructor can view status of student drafts
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
     Then I wait until there is 1 "submission_row_name" visible
-    Then I wait until there are 0 "submission_alert" visible
+    Then I wait until there are 0 "no_submissions_alert" visible
     # TODO: And the text of "submission_row_name" is a GUID / student name
     # TODO: And the text of "submission_row_date" [1] should be a date / today
     And the text of "submission_row_status" [1] should be "Start Review"

@@ -220,8 +220,8 @@ module.exports = new Page({
   submission_header_date: basePageObj({}),
   submission_header_status: basePageObj({}),
   submission_header_sent: basePageObj({}),
-  submission_alert: basePageObj({
-    desc: ``,
+  no_submissions_alert: basePageObj({
+    desc: `blank data for submitted student assignments`,
     locator: `[class^='SubmissionStatusTable__notStartedAlert__']`
   }),
   submission_row_name: basePageObj({
@@ -386,4 +386,58 @@ module.exports = new Page({
     locator: `[data-id='dialog-cancel']`
   }),
 
+  // Student Page Object Stuff
+  //
+  reflection_button_submit_enabled: basePageObj({
+    desc: `Final submit button for reflection questions and draft submission with properly filled out reflection questions`,
+    locator: `[data-id='submit-draft']:not([class*='MLButton__disabled'])`
+  }),
+  reflection_button_submit_disabled: basePageObj({
+    desc: `Final submit button for reflection questions and draft submission when reflection questions not answered fully`,
+    locator: `[data-id='submit-draft'][class*='MLButton__disabled']`
+  }),
+  draft_submission_confirmation_banner: basePageObj({
+    desc: `Green confirmation message for successful draft submission`,
+    locator: `[class*='MLMessage__message_success']`
+  }),
+  draft_select_dropdown_submission_grid: basePageObj({
+    desc: `Drop Down to change drafts`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown']`
+  }),
+  reflection_polls_radio_button: basePageObj({
+    desc: `Multiple choice reflection question answer choice`,
+    locator: `[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']`
+  }),
+  dropdown_drafts_submission_grid: basePageObj({
+    desc: `Available drafts in drop down on submission grid`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li`
+  }),
+  dropdown_drafts_submission_grid_selected: basePageObj({
+    desc: `Available drafts in drop down on submission grid`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li svg`
+  }),
+  dropdown_drafts_submission_grid_title: basePageObj({
+    desc: `Available drafts in drop down on submission grid`,
+    locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [class^='MLDropdown__dropdownTitle']`
+  }),
+  draft_save_button_disabled: basePageObj({
+    desc: `Button to save draft in editor when no text written`,
+    locator: `[data-id='save-draft'][class*='MLButton__disabled_']`
+  }),
+  draft_save_button_enabled: basePageObj({
+    desc: `Button to save draft in editor when text exists in editor`,
+    locator: `[data-id='save-draft']:not([class*='MLButton__disabled_'])`
+  }),
+  view_final_draft_button: basePageObj({
+    desc: `Button to view submitted draft`,
+    locator: `[data-id='View Final Paper']`
+  }),
+  draft_submission_date: basePageObj({
+    desc: `Green checkmark that appears after successful draft submission on draft card`,
+    locator: `[data-id='submitted-date']`
+  }),
+  reflection_question_submission_textarea: basePageObj({
+    desc: `Textarea of reflection questions on view of submitted draft`,
+    locator: `[data-id='MLCard-Reflection'] div div p`
+  }),
 });

@@ -16,7 +16,7 @@ exports.define = function(steps) {
 
   const isViz = el => el.isDisplayed().then(bool => bool);
 
-  steps.given(/I launch the activity as a[n] "(.+)"/, function(user) {
+  steps.given(/I launch the activity as a[n]? "(.+)"/, function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
   });
 
@@ -119,6 +119,10 @@ exports.define = function(steps) {
 
   steps.then('I sleep for $d seconds', function(d) {
     driver.sleep(d * 1000);
+  });
+
+  steps.when('I maximize the browser', function() {
+    driver.manage().window().maximize();
   });
 
   steps.when('I reload the page', function() {
