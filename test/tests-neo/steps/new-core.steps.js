@@ -120,7 +120,14 @@ exports.define = function(steps) {
   steps.then('I sleep for $d seconds', function(d) {
     driver.sleep(d * 1000);
   });
-
+  steps.when('I scroll down', function(pixels) {
+    driver.executeScript(function() {
+      window.scrollBy(0, 2000);
+    });
+  });
+  steps.when('I maximize the browser', function() {
+    driver.manage().window().maximize();
+  });
   steps.when('I reload the page', function() {
     driver.navigate().refresh();
   });
