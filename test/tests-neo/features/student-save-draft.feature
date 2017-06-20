@@ -2,8 +2,8 @@
 @db=reset
 Feature: Student Saves Work
   Scenario: Student Can Not Save Empty Draft
-    Given I launch the activity as a 'student'
-    When Student clicks 'start_draft_1_button'
+    Given I launch the activity as a "student"
+    When I click "start_draft"
     Then Student sees 'draft_save_button_disabled'
 
   Scenario: Student Has Enabled Save Button
