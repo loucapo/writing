@@ -1,11 +1,9 @@
 @WRITE-858
-
 Feature: Instructor can view status of student drafts
 
   @db=reset
   Scenario: Instructor's draft submission list is empty when no students have opened a draft for the activity
     Given I launch the activity as an "instructor"
-    When I maximize the browser
     When I click "add_draft_button"
     Then I wait until there is 2 "draft_card" visible
     When I click "add_reflection_questions" [1]
@@ -27,7 +25,6 @@ Feature: Instructor can view status of student drafts
   @db=reset
   Scenario: Instructor's draft submission list contains students that have opened a draft for the activity
     Given I launch the activity as an "instructor"
-    When I maximize the browser
     When I click "add_draft_button"
     Then I wait until there is 2 "draft_card" visible
     When I click "add_reflection_questions" [1]
@@ -57,7 +54,6 @@ Feature: Instructor can view status of student drafts
   @db=reset
   Scenario: Instructor's draft submission list contains students that have saved a version of their draft
     Given I launch the activity as an "instructor"
-    When I maximize the browser
     When I click "add_draft_button"
     Then I wait until there is 2 "draft_card" visible
     When I click "add_reflection_questions" [1]
@@ -90,7 +86,6 @@ Feature: Instructor can view status of student drafts
   @db=reset
   Scenario: Instructor's draft submission list contains students that have submitted their draft
     Given I launch the activity as an "instructor"
-    When I maximize the browser
     When I click "add_draft_button"
     Then I wait until there is 2 "draft_card" visible
     When I click "add_reflection_questions" [1]
