@@ -50,15 +50,15 @@ module.exports = function(AggregateRootBase, Draft, invariant, uuid) {
       });
       return event;
     }
-    addDraftToActivity(cmd) {
-      // check business rules here
 
+    addDraftToActivity(cmd) {
       cmd.draftId = uuid.v4();
       cmd.activityId = this.activityId;
-      this.drafts = this.bumpDraftIndexes(this.drafts);
-
-      let draft = new Draft(cmd);
-      this.drafts.push(draft);
+      let finalDraft = this.drafts[this.drafts.length - 1];
+      let newDraft = new Draft(cmd);
+      newDraft.index = finalDraft.index;
+      finalDraft.index++;
+      this.drafts.splice(this.drafts.length - 1, 0, newDraft);
       const event = this.mapper(cmd);
       this.raiseEvent({
         eventName: 'draftAddedToActivity',
@@ -146,13 +146,6 @@ module.exports = function(AggregateRootBase, Draft, invariant, uuid) {
     updatedDrafts(drafts) {
       return drafts.map((x, i) => {
         x.updateIndex(i);
-        return x;
-      });
-    }
-
-    bumpDraftIndexes(drafts) {
-      return drafts.map(x => {
-        x.index++;
         return x;
       });
     }
