@@ -388,7 +388,7 @@ module.exports = new Page({
   draft_alert_cancel_button: basePageObj({
     desc: `The cancellation button in the alert dialog that is presented on attempting to delete a draft`,
     locator: `[data-id='dialog-cancel']`
-  })
+  }),
 
   // Student Page Object Stuff
   //
@@ -431,6 +431,14 @@ module.exports = new Page({
   draft_save_button_enabled: basePageObj({
     desc: `Button to save draft in editor when text exists in editor`,
     locator: `[data-id='save-draft']:not([class*='MLButton__disabled_'])`
+  }),
+  start_reflection_button_disabled: basePageObj({
+    desc: `Button to go to reflection questions when text doesn't exists in editor`,
+    locator: `[data-id='start-reflection'][class*='MLButton__disabled_']`
+  }),
+  start_reflection_button_enabled: basePageObj({
+    desc: `Button to save draft in editor when text exists in editor`,
+    locator: `[data-id='start-reflection']:not([class*='MLButton__disabled_'])`
   }),
   view_final_draft_button: basePageObj({
     desc: `Button to view submitted draft`,
