@@ -1,5 +1,8 @@
-let page = require('../pages/instructor-assignment-summary-page');
-//let rtePage = require('../../pages/NextGen Writer Key/react-rte.js');
+/* eslint-disable camelcase */
+const pages = [];
+pages.instructor_summary = require('../pages/instructor-summary.page');
+
+let page = pages.instructor_summary;
 const faker = require('faker');
 
 exports.define = function(steps) {
@@ -16,7 +19,8 @@ exports.define = function(steps) {
 
   const isViz = el => el.isDisplayed().then(bool => bool);
 
-  steps.given(/I launch the activity as a[n] "(.+)"/, function(user) {
+  //steps.given(/I launch the activity as a[n]? "(.+)"/, user => {
+  steps.given(`I launch the activity as an "$user"`, user => {
     driver.get(marvin.config.baseUrl + '/' + user);
   });
 
@@ -96,8 +100,22 @@ exports.define = function(steps) {
       arg = 1;
     }
     arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
-    page[elem](arg).then(el => el.getText())
-      .then(actualText => { text.should.equal(actualText); });
+    // if elem contains a dot, it's a component
+    if (elem.includes('.')) {
+      // TODO: shouldnt be giving it >1 '.', but should handle it if we do.
+      let [component, element] = elem.split('.');
+      console.log(page[component]);
+      console.log(Object.getPrototypeOf(page[component]));
+      console.log(typeof page[component]);
+      console.log(component);
+      console.log(element);
+      console.log(page[component][element]);
+      page[component][element](arg).then(el => el.getText())
+        .then(actualText => { text.should.equal(actualText); });
+    } else {
+      page[elem](arg).then(el => el.getText())
+        .then(actualText => { text.should.equal(actualText); });
+    }
   });
 
   // NOTE that this is an INCLUDES match, not an IS.

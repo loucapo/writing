@@ -164,44 +164,7 @@ module.exports = new Page({
   // Draft component on summary page
   //
 
-  draft_card: basePageObj({
-    desc: `Top container for a draft on the summary page`,
-    locator: `[data-id='draft-section']`
-  }),
-  draft_title: basePageObj({
-    desc: `Top container for a draft on the summary page`,
-    locator: `[data-id='draft-section'] [class^='Heading__headingText__']`
-  }),
 
-  add_draft_goals: basePageObj({
-    desc: `Button to display the modal to select the primary goals for this draft`,
-    locator: `[data-id='add-draft-goal']`
-  }),
-
-  edit_draft_goals: basePageObj({
-    desc: ``,
-    locator: `[data-id='draft-goal-edit']`
-  }),
-
-  saved_draft_goal: basePageObj({
-    desc: ``,
-    locator: `//*[@data-id='drafts-goal-list']/li[not(./a[@data-id='add-draft-goal'])]`,
-    type: 'xpath'
-  }),
-
-  add_reflection_questions: basePageObj({
-    desc: ``,
-    locator: `[data-id='add-reflections']`
-  }),
-
-  reflection_question: basePageObj({
-    desc: ``,
-    locator: `[data-id='reflections-list'] li`
-  }),
-  edit_reflections: basePageObj({
-    desc: ``,
-    locator: `[data-id='reflections-edit']`
-  }),
 
   // instructor summary nav
   //
