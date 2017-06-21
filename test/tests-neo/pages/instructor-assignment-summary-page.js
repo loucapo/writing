@@ -388,7 +388,7 @@ module.exports = new Page({
   draft_alert_cancel_button: basePageObj({
     desc: `The cancellation button in the alert dialog that is presented on attempting to delete a draft`,
     locator: `[data-id='dialog-cancel']`
-  })
+  }),
 
   // Student Page Object Stuff
   //
