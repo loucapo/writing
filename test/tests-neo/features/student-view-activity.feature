@@ -2,11 +2,7 @@
 Feature: Student Views Activity
 
   @db=reset
-  @pending=rewrite
-  # what does this verify and how to rewrite it?  
   Scenario: Student Launches into Activity with No Rubric Selected
-    Given I launch the activity as a 'instructor'
-    And Draft Delete Cleanup '[data-id='draft-delete']'
     Given I launch the activity as a 'student'
     Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
     Then Page Element Checker Verifies: '0' '[data-id='MLCard-Final-Rubric']'
@@ -14,22 +10,23 @@ Feature: Student Views Activity
 
   @db=reset
   Scenario: Student Does Not See Instructer Options
-    Given I launch the activity as a 'student'
-    Then Page Element Checker Verifies: '0' '[data-id='created-activity-alert'] div'
-    Then Page Element Checker Verifies: '0' '[data-id='prompt-edit']'
-    Then Page Element Checker Verifies: '0' '[data-id='prompt-delete']'
-    Then Page Element Checker Verifies: '0' '[data-id='add-draft']'
-    Then Page Element Checker Verifies: '0' '[data-id='draft-goal-edit']'
-    Then Page Element Checker Verifies: '0' '[data-id='add-instructions']'
-    Then Page Element Checker Verifies: '0' '[data-id='add-reflections']'
+    Given I launch the activity as a "student"
+    Then I wait until there are 0 "success_flash"
+    Then I wait until there are 0 "activity_prompt_edit"
+    Then I wait until there are 0 "activity_prompt_delete"
+    Then I wait until there are 0 "add_draft_button"
+    Then I wait until there are 0 "add_draft_goals"
+    Then I wait until there are 0 "edit_draft_goals"
+    Then I wait until there are 0 "add_reflection_questions"
+    Then I wait until there are 0 "add_draft_instructions"
 
   @db=reset
   Scenario: Student Launches into Full Activity with More Than One Draft
-    Given I launch the activity as a 'instructor'
-    When I click a 'add_draft_button'
-    And I click a 'activity_prompt_edit'
-    And I type in 'hello world'
-    And I click a 'activity_prompt_save'
+    Given I launch the activity as an "instructor"
+    When I click "add_draft_button"
+    And I click "activity_prompt_edit"
+    And I type "hello world" in "activity_prompt_description"
+    And I click "activity_prompt_save"
     When I click a 'rubric_selection'
     When I click a 'rubric_option_2'
     Given I launch the activity as a 'student'

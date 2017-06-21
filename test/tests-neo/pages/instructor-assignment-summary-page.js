@@ -69,6 +69,31 @@ module.exports = new Page({
     locator: `[data-id='char-limit-count']`
   }),
 
+  activity_prompt_edit: basePageObj({
+    desc: `Button to edit the assignment prompt`,
+    locator: `[data-id='prompt-edit']`
+  }),
+
+  activity_prompt_delete: basePageObj({
+    desc: `Button to delete the assignment prompt`,
+    locator: `[data-id='prompt-delete']`
+  }),
+
+  activity_prompt_description: basePageObj({
+    desc: `Text area for prompt description`,
+    locator: `[data-id='prompt-description']`
+  }),
+
+  activity_prompt_save: basePageObj({
+    desc: `Button to save prompt description`,
+    locator: `[data-id='prompt-save']`
+  }),
+
+  activity_prompt_cancel: basePageObj({
+    desc: `Button to cancel changes to prompt description`,
+    locator: `[data-id='prompt-cancel']`
+  }),
+
   // Draft goal modal
   //
 
