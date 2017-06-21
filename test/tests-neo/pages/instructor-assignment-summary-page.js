@@ -132,6 +132,28 @@ module.exports = new Page({
     locator: `[data-id='cancel-button']`
   }),
 
+  // rubric card
+  //
+  rubric_dropdown: basePageObj({
+    desc: `Dropdown to select rubric`,
+    locator: `[data-id='rubric-dropdown']`
+  }),
+
+  rubric_dropdown_option: basePageObj({
+    desc: `Rubric options that are selectable`,
+    locator: `[data-id='rubric-selection-content'] li`
+  }),
+
+  rubric_preview: basePageObj({
+    desc: `Rubric that appears after selection from dropdown`,
+    locator: `[data-id='rubric-preview']`
+  }),
+
+  rubric_preview_name: basePageObj({
+    desc: `First cell with title of rubric that appears after selection from dropdown`,
+    locator: `[data-id='rubric-preview'] div`
+  }),
+
   // reflection questions modal
   //
   ref_question_popup: basePageObj({
@@ -464,5 +486,13 @@ module.exports = new Page({
   reflection_question_submission_textarea: basePageObj({
     desc: `Textarea of reflection questions on view of submitted draft`,
     locator: `[data-id='MLCard-Reflection'] div div p`
+  }),
+  student_preview: basePageObj({
+    desc: `Button in header to switch instructor view to student view`,
+    locator: `[data-id='student-preview']`
+  }),
+  student_draft_note: basePageObj({
+    desc: `Alert that draft is not startable yet`,
+    locator: `[class*='DraftDisplay__studentNote']`
   }),
 });

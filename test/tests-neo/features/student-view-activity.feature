@@ -3,10 +3,14 @@ Feature: Student Views Activity
 
   @db=reset
   Scenario: Student Launches into Activity with No Rubric Selected
-    Given I launch the activity as a 'student'
-    Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
-    Then Page Element Checker Verifies: '0' '[data-id='MLCard-Final-Rubric']'
-    #Then Page Element Checker Verifies: '0' '[data-id='student-preview']'
+    Given I launch the activity as a "student"
+    Then I wait until there are 1 "draft_card_title"
+    Then the text of "draft_card_title" [1] should be "Final Paper"
+    Then the text of "start_draft_enabled" should be "Start Final Paper"
+    Then I wait until there are 0 "rubric_preview"
+    Then I wait until there are 0 "student_draft_note"
+    Then I wait until there are 0 "activity_prompt_description"
+
 
   @db=reset
   Scenario: Student Does Not See Instructer Options
@@ -19,21 +23,24 @@ Feature: Student Views Activity
     Then I wait until there are 0 "edit_draft_goals"
     Then I wait until there are 0 "add_reflection_questions"
     Then I wait until there are 0 "add_draft_instructions"
+    Then I wait until there are 0 "student_preview"
 
   @db=reset
   Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
     And I click "activity_prompt_edit"
-    And I type "hello world" in "activity_prompt_description"
+    And I type "hello world" in "draft_area"
     And I click "activity_prompt_save"
-    When I click a 'rubric_selection'
-    When I click a 'rubric_option_2'
-    Given I launch the activity as a 'student'
-    Then Page Element Checker Verifies: '1' '[data-id='MLCard-Draft-1']'
-    Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Paper']'
-    #Then Page Element Checker Verifies: '0' '[data-id='student-preview']'
-    Then Page Element Checker Verifies: '1' '[data-id='prompt-section']'
-    Then Page Element Checker Verifies: '1' '[data-id='MLCard-Final-Rubric']'
-    Then Page Element Checker Verifies Text: 'hello world' at '[data-id='prompt-description']'
-    Then Page Element Checker Verifies Text: 'You will be able to view and start this draft once you've received feedback on Draft 1' at '[data-id='MLCard-Final-Paper'] > div > section > [class^='Draft__draftDetails']'
+    When I click "rubric_dropdown"
+    When I click "rubric_dropdown_option" [2]
+    Given I launch the activity as a "student"
+    Then I wait until there are 2 "draft_card_title"
+    Then the text of "draft_card_title" [1] should be "Draft 1"
+    Then the text of "draft_card_title" [2] should be "Final Paper"
+    Then the text of "activity_prompt_description" should be "hello world"
+    Then I wait until there are 2 "draft_card_title"
+    Then the text of "rubric_preview_name" should be "Analysis"
+    Then the text of "student_draft_note" should be "You will be able to view and start this draft once you've received feedback on Draft 1"
+    Then the text of "start_draft_enabled" should be "Start Draft 1"
+
