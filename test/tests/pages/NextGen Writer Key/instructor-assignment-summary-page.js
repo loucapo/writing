@@ -72,7 +72,7 @@ module.exports = new Page({
   }},
 
   add_draft_button: { get() {return this.element(`[data-id='add-draft']`); } },
-
+  draft_delete_button: { get() { return this.element("[data-id='draft-delete']"); } },
   draft_card: { get() { return this.element("[data-id='draft-section']"); } },
   add_draft_instructions: { get() { return this.element("[data-id='add-instructions']"); } },
   textarea_draft_instructions: { get() { return this.element("[data-id='textarea-draft-instructions']"); } },
