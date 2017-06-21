@@ -16,7 +16,7 @@ exports.define = function(steps) {
 
   const isViz = el => el.isDisplayed().then(bool => bool);
 
-  steps.given(/I launch the activity as a[n] "(.+)"/, function(user) {
+  steps.given(/I launch the activity as a[n]? "(.+)"/, function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
   });
 
