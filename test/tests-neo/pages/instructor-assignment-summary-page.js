@@ -327,6 +327,10 @@ module.exports = new Page({
     locator: `[class='public-DraftEditor-content']`
   }),
 
+  view_activity_summary_link: basePageObj({
+    desc: `Link on Draft Details panel to return user to activity summary page`,
+    locator: `[data-id='details-panel-activity-link-div']`
+  }),
   save_draft: basePageObj({
     desc: ``,
     locator: `[data-id='save-draft']`
@@ -346,6 +350,30 @@ module.exports = new Page({
   draft_submit_cancel: basePageObj({
     desc: ``,
     locator: `[data-id='dialog-cancel']`
+  }),
+  leave_page_alert: basePageObj({
+    desc: `Alert that appears when student tries to navigate away from page with unsaved work`,
+    locator: `[class*='MLDialog__alert_container_show']`
+  }),
+  leave_draft_page_button: basePageObj({
+    desc: `Button on alert that navigates student back to activity summary page`,
+    locator: `[data-id='details-panel-activity-link-dialog-leave']`
+  }),
+  stay_draft_page_button: basePageObj({
+    desc: `Button on alert that keeps student on drafting page`,
+    locator: `[data-id='details-panel-activity-link-dialog-stay']`
+  }),
+  leave_reflection_page_button: basePageObj({
+    desc: `Button on alert that navigates student back to drafting page`,
+    locator: `[data-id='reflection-questions-dialog-leave']`
+  }),
+  stay_reflection_page_button: basePageObj({
+    desc: `Button on alert that keeps student on reflection page`,
+    locator: `[data-id='reflection-questions-dialog-stay']`
+  }),
+  view_draft_link: basePageObj({
+    desc: `Link on the reflection page that takes user back to drafting page`,
+    locator: `[data-id='return-to-draft-from-reflection-questions']`
   }),
 
   // student answering reflection questions
@@ -500,4 +528,5 @@ module.exports = new Page({
     desc: `Alert that draft is not startable yet`,
     locator: `[class*='DraftDisplay__studentNote']`
   }),
+
 });
