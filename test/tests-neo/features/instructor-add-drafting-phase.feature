@@ -1,4 +1,3 @@
-@only
 Feature: Add Another Draft To Activity
 
   @db=reset
