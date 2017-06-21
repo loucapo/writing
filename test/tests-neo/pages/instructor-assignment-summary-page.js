@@ -295,6 +295,11 @@ module.exports = new Page({
     locator: ``
   }),
 
+  return_to_activity_page_link: basePageObj({
+    desc: `Link at header of read only student submission page to return user to activity summary page`,
+    locator: `[data-id='header-activity-link']`
+  }),
+
   success_flash: basePageObj({
     desc: ``,
     locator: `[class*='MLMessage__message_success__'] span[class*='MLMessage__message__']`
