@@ -168,6 +168,10 @@ module.exports = new Page({
     desc: `Top container for a draft on the summary page`,
     locator: `[data-id='draft-section']`
   }),
+  draft_title: basePageObj({
+    desc: `Top container for a draft on the summary page`,
+    locator: `[data-id='draft-section'] [class^='Heading__headingText__']`
+  }),
 
   add_draft_goals: basePageObj({
     desc: `Button to display the modal to select the primary goals for this draft`,
@@ -384,7 +388,7 @@ module.exports = new Page({
   draft_alert_cancel_button: basePageObj({
     desc: `The cancellation button in the alert dialog that is presented on attempting to delete a draft`,
     locator: `[data-id='dialog-cancel']`
-  }),
+  })
 
   // Student Page Object Stuff
   //
