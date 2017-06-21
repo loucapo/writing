@@ -393,8 +393,12 @@ module.exports = new Page({
   // Student Page Object Stuff
   //
   reflection_button_submit_enabled: basePageObj({
-    desc: `Final submit button for reflection questions and draft submission`,
-    locator: `[data-id='submit-draft']:not([class*='MLButton__disabled']`
+    desc: `Final submit button for reflection questions and draft submission with properly filled out reflection questions`,
+    locator: `[data-id='submit-draft']:not([class*='MLButton__disabled'])`
+  }),
+  reflection_button_submit_disabled: basePageObj({
+    desc: `Final submit button for reflection questions and draft submission when reflection questions not answered fully`,
+    locator: `[data-id='submit-draft'][class*='MLButton__disabled']`
   }),
   draft_submission_confirmation_banner: basePageObj({
     desc: `Green confirmation message for successful draft submission`,
@@ -420,6 +424,24 @@ module.exports = new Page({
     desc: `Available drafts in drop down on submission grid`,
     locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [class^='MLDropdown__dropdownTitle']`
   }),
-
-
+  draft_save_button_disabled: basePageObj({
+    desc: `Button to save draft in editor when no text written`,
+    locator: `[data-id='save-draft'][class*='MLButton__disabled_']`
+  }),
+  draft_save_button_enabled: basePageObj({
+    desc: `Button to save draft in editor when text exists in editor`,
+    locator: `[data-id='save-draft']:not([class*='MLButton__disabled_'])`
+  }),
+  view_final_draft_button: basePageObj({
+    desc: `Button to view submitted draft`,
+    locator: `[data-id='View Final Paper']`
+  }),
+  draft_submission_date: basePageObj({
+    desc: `Green checkmark that appears after successful draft submission on draft card`,
+    locator: `[data-id='submitted-date']`
+  }),
+  reflection_question_submission_textarea: basePageObj({
+    desc: `Textarea of reflection questions on view of submitted draft`,
+    locator: `[data-id='MLCard-Reflection'] div div p`
+  }),
 });
