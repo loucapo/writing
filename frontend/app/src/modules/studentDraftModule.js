@@ -52,6 +52,17 @@ export function getStudentDraft(studentActivityId, draftId) {
   };
 }
 
+export function getStudentDraftByStudentDraftId(studentDraftId) {
+  return {
+    type: GET_STUDENT_DRAFT.REQUEST,
+    states: GET_STUDENT_DRAFT,
+    url: `${config.apiUrl}studentDraft/${studentDraftId}`,
+    params: {
+      method: 'GET'
+    }
+  };
+}
+
 export function createStudentDraftIfNotThere(studentActivityId, draftId) {
   return {
     type: CREATE_STUDENT_DRAFT.REQUEST,

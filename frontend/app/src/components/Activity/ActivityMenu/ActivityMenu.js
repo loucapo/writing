@@ -10,7 +10,7 @@ import styles from './activityMenu.css';
 
 class ActivityMenu extends Component {
   state = {
-    display: 'drafts'
+    display: this.props.display || 'drafts'
   };
 
   toggleSelection = (selection) => {
@@ -52,7 +52,8 @@ class ActivityMenu extends Component {
 
 ActivityMenu.propTypes = {
   draftCount: PropTypes.number,
-  activityId: PropTypes.string
+  activityId: PropTypes.string,
+  display: PropTypes.string
 };
 
 
