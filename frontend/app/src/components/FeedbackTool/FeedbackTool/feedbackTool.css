@@ -1,0 +1,10 @@
+@import 'variables.css';
+
+.page {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  padding: 30px 80px;
+}

@@ -16,7 +16,7 @@ const SubmissionStatusItem = ({item}) => (
     <td data-id="review-status">
       {item.status === 'submitted'
         ? (!item.reviewStatus || item.reviewStatus === 'notStarted')
-          ? <Link to={`/feedbackTool/${item.studentDraftId}`}>Start Review</Link>
+          ? <Link to={`/studentdraft/${item.studentDraftId}/feedbacktool`}>Start Review</Link>
           : <MLIcon
             fill="#3B822E"
             title="check"

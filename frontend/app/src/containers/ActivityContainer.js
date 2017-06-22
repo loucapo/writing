@@ -36,11 +36,12 @@ ActivityContainer.propTypes = {
 const mapStateToProps = (state) => {
   const activityId = state.auth.activity.activityId;
   let draftCount = state.drafts.filter(d => d.activityId === activityId).length;
-
+  let display = state.routing.locationBeforeTransitions.query.display || null;
   return {
     activityId,
     activity: state.activities.find(x => x.activityId === activityId),
-    draftCount
+    draftCount,
+    display
   };
 };
 
