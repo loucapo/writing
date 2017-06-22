@@ -58,6 +58,30 @@ module.exports = function activityRouter(koarouter, controllers) {
      */
     router.get('/studentactivity/:studentActivityId/draft/:draftId',
       controllers.studentDraftController.getStudentDraftByStudentActivityId);
+        /**
+     * @swagger
+     * /studentDraft/{studentDraftId}:
+     *   get:
+     *     x-name: getStudentDraftByStudentDraftId
+     *     description: getStudentDraftByStudentDraftId
+     *     operationId: getStudentDraftByStudentDraftId
+     *     parameters:
+     *       - name: studentDraftId
+     *         in: path
+     *         type: string
+     *         required: true
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.get('/studentDraft/:studentDraftId',
+      controllers.studentDraftController.getStudentDraftByStudentDraftId);
     /**
      * @swagger
      * /studentactivity/{studentActivityId}/drafts:

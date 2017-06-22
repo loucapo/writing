@@ -16,7 +16,7 @@ import { MLMessage } from './../../MLComponents/index';
 
 import styles from './activity.css';
 
-const Activity = ({activity, draftCount}) => (
+const Activity = ({activity, draftCount, display}) => (
   <div className={styles.page}>
     <ActivityHeader title={activity.course} />
     <div className={styles.container}>
@@ -39,7 +39,7 @@ const Activity = ({activity, draftCount}) => (
 
       </div>
 
-      <ActivityMenu draftCount={draftCount} activityId={activity.activityId} />
+      <ActivityMenu draftCount={draftCount} activityId={activity.activityId} display={display} />
     </div>
   </div>
 );
@@ -47,7 +47,7 @@ const Activity = ({activity, draftCount}) => (
 Activity.propTypes = {
   activity: PropTypes.object,
   draftCount: PropTypes.number,
-  updateActivityRubric: PropTypes.func
+  display: PropTypes.string
 };
 
 export default Activity;

@@ -1,0 +1,33 @@
+@import 'variables.css';
+
+.header {
+  background-color: var(--white);
+  color: var(--gray);
+  font-weight: bold;
+  padding: 15px 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.leftContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.arrowIcon {
+  fill: var(--gray);
+  margin-right: 5px;
+}
+
+.instructorName {
+  font-size: 17px;
+}
+
+.draftInfo {
+  font-size: 13px;
+}
+
+.italic {
+  font-style: italic;
+}
