@@ -4,7 +4,8 @@ import {
   LaunchContainer,
   CompositionContainer,
   CompositionDisplayContainer,
-  ReflectionQuestionsFormContainer
+  ReflectionQuestionsFormContainer,
+  FeedbackToolContainer
 } from './containers/index';
 import KitchenSink from './components/KitchenSink/KitchenSink';
 import Layout from './components/Layout/Layout';
@@ -21,6 +22,7 @@ const routes = (
       path="/reflectionQuestions/:studentActivityId/studentdraft/:studentDraftId"
       component={ReflectionQuestionsFormContainer}
     />
+    <Route path="/studentdraft/:studentDraftId/feedbacktool" component={FeedbackToolContainer} />
   </Route>
 );
 module.exports = routes;
