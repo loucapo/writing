@@ -291,6 +291,21 @@ module.exports = new Page({
     desc: ``,
     locator: `[class^='SubmissionStatusItem__row__'] [data-id='send-status']`
   }),
+  review_status_start_review: basePageObj({
+    desc: `Link to launch feedback tool`,
+    locator: `[data-id='review-status'] a`
+  }),
+
+  // feedback tool
+  //
+  end_comment_textarea: basePageObj({
+    desc: `Text area for instructor to input end comments`,
+    locator: `[data-id='end-comment-textarea']`
+  }),
+  back_button: basePageObj({
+    desc: `Back arrow button to navigate from feedback tool to activity summary page`,
+    locator: `[data-id='header-back-button']`
+  }),
 
   // student top nav
   //
