@@ -14,6 +14,7 @@ import ActivityRubricDisplayContainer from './ActivityRubricDisplayContainer';
 import CompositionDraftDetailsContainer from './CompositionDraftDetailsContainer';
 import SubmissionStatusContainer from './SubmissionStatusContainer';
 import SubmissionStatusTableContainer from './SubmissionStatusTableContainer';
+import FeedbackToolContainer from './FeedbackToolContainer';
 
 
 export {
@@ -32,5 +33,6 @@ export {
   ActivityRubricDisplayContainer,
   CompositionDraftDetailsContainer,
   SubmissionStatusContainer,
-  SubmissionStatusTableContainer
+  SubmissionStatusTableContainer,
+  FeedbackToolContainer
 };

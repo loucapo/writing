@@ -3,6 +3,11 @@ SELECT *
 FROM student_draft
 WHERE student_activity_id = :studentActivityId AND draft_id = :draftId
 
+-- name: getStudentDraftByStudentDraftId
+SELECT *
+FROM student_draft
+WHERE student_draft_id = :studentDraftId
+
 -- name: getStudentDraftsByStudentActivityId
 SELECT *
 FROM student_draft
