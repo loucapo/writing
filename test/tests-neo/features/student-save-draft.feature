@@ -63,6 +63,6 @@ Feature: Student Saves Work
 
   Scenario: Student Returns to Reflection Page and Sees Saved Work
     Given I launch the activity as a "student"
-    When I click "start_draft"
+    When I click "view_final_draft_button"
     Then the text of "draft_area" should be "happy"
     Then the text of "reflection_question_submission_textarea" [1] should include "yay"

@@ -69,6 +69,31 @@ module.exports = new Page({
     locator: `[data-id='char-limit-count']`
   }),
 
+  activity_prompt_edit: basePageObj({
+    desc: `Button to edit the assignment prompt`,
+    locator: `[data-id='prompt-edit']`
+  }),
+
+  activity_prompt_delete: basePageObj({
+    desc: `Button to delete the assignment prompt`,
+    locator: `[data-id='prompt-delete']`
+  }),
+
+  activity_prompt_description: basePageObj({
+    desc: `Text area for prompt description`,
+    locator: `[data-id='prompt-description']`
+  }),
+
+  activity_prompt_save: basePageObj({
+    desc: `Button to save prompt description`,
+    locator: `[data-id='prompt-save']`
+  }),
+
+  activity_prompt_cancel: basePageObj({
+    desc: `Button to cancel changes to prompt description`,
+    locator: `[data-id='prompt-cancel']`
+  }),
+
   // Draft goal modal
   //
 
@@ -105,6 +130,28 @@ module.exports = new Page({
   draft_goal_cancel: basePageObj({
     desc: ``,
     locator: `[data-id='cancel-button']`
+  }),
+
+  // rubric card
+  //
+  rubric_dropdown: basePageObj({
+    desc: `Dropdown to select rubric`,
+    locator: `[data-id='rubric-dropdown']`
+  }),
+
+  rubric_dropdown_option: basePageObj({
+    desc: `Rubric options that are selectable`,
+    locator: `[data-id='rubric-selection-content'] li`
+  }),
+
+  rubric_preview: basePageObj({
+    desc: `Rubric that appears after selection from dropdown`,
+    locator: `[data-id='rubric-preview']`
+  }),
+
+  rubric_preview_name: basePageObj({
+    desc: `First cell with title of rubric that appears after selection from dropdown`,
+    locator: `[data-id='rubric-preview'] div`
   }),
 
   // reflection questions modal
@@ -252,6 +299,11 @@ module.exports = new Page({
     locator: ``
   }),
 
+  return_to_activity_page_link: basePageObj({
+    desc: `Link at header of read only student submission page to return user to activity summary page`,
+    locator: `[data-id='header-activity-link']`
+  }),
+
   success_flash: basePageObj({
     desc: ``,
     locator: `[class*='MLMessage__message_success__'] span[class*='MLMessage__message__']`
@@ -279,6 +331,10 @@ module.exports = new Page({
     locator: `[class='public-DraftEditor-content']`
   }),
 
+  view_activity_summary_link: basePageObj({
+    desc: `Link on Draft Details panel to return user to activity summary page`,
+    locator: `[data-id='details-panel-activity-link-div']`
+  }),
   save_draft: basePageObj({
     desc: ``,
     locator: `[data-id='save-draft']`
@@ -298,6 +354,30 @@ module.exports = new Page({
   draft_submit_cancel: basePageObj({
     desc: ``,
     locator: `[data-id='dialog-cancel']`
+  }),
+  leave_page_alert: basePageObj({
+    desc: `Alert that appears when student tries to navigate away from page with unsaved work`,
+    locator: `[class*='MLDialog__alert_container_show']`
+  }),
+  leave_draft_page_button: basePageObj({
+    desc: `Button on alert that navigates student back to activity summary page`,
+    locator: `[data-id='details-panel-activity-link-dialog-leave']`
+  }),
+  stay_draft_page_button: basePageObj({
+    desc: `Button on alert that keeps student on drafting page`,
+    locator: `[data-id='details-panel-activity-link-dialog-stay']`
+  }),
+  leave_reflection_page_button: basePageObj({
+    desc: `Button on alert that navigates student back to drafting page`,
+    locator: `[data-id='reflection-questions-dialog-leave']`
+  }),
+  stay_reflection_page_button: basePageObj({
+    desc: `Button on alert that keeps student on reflection page`,
+    locator: `[data-id='reflection-questions-dialog-stay']`
+  }),
+  view_draft_link: basePageObj({
+    desc: `Link on the reflection page that takes user back to drafting page`,
+    locator: `[data-id='return-to-draft-from-reflection-questions']`
   }),
 
   // student answering reflection questions
@@ -444,4 +524,13 @@ module.exports = new Page({
     desc: `Textarea of reflection questions on view of submitted draft`,
     locator: `[data-id='MLCard-Reflection'] div div p`
   }),
+  student_preview: basePageObj({
+    desc: `Button in header to switch instructor view to student view`,
+    locator: `[data-id='student-preview']`
+  }),
+  student_draft_note: basePageObj({
+    desc: `Alert that draft is not startable yet`,
+    locator: `[class*='DraftDisplay__studentNote']`
+  }),
+
 });
