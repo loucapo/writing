@@ -527,6 +527,14 @@ module.exports = new Page({
     desc: `Button to save draft in editor when text exists in editor`,
     locator: `[data-id='save-draft']:not([class*='MLButton__disabled_'])`
   }),
+  start_reflection_button_disabled: basePageObj({
+    desc: `Button to go to reflection questions when text doesn't exists in editor`,
+    locator: `[data-id='start-reflection'][class*='MLButton__disabled_']`
+  }),
+  start_reflection_button_enabled: basePageObj({
+    desc: `Button to save draft in editor when text exists in editor`,
+    locator: `[data-id='start-reflection']:not([class*='MLButton__disabled_'])`
+  }),
   view_final_draft_button: basePageObj({
     desc: `Button to view submitted draft`,
     locator: `[data-id='View Final Paper']`
