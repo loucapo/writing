@@ -54,13 +54,13 @@ Feature: Student Views Details Panel
     And I click "activity_final_rubric_panel"
     Then I wait until there is 1 "rubric_preview" visible
     Then the text of "final_rubric_panel_column_4" should include "4 - Exceeds Expectations"
-    When Student clicks 'final_rubric_panel_right_arrow'
+    When I click "final_rubric_panel_right_arrow"
     Then the text of "final_rubric_panel_column_1" should include "1 - Falls Below Expectations"
-    When Student clicks 'final_rubric_panel_right_arrow'
+    When I click "final_rubric_panel_right_arrow"
     Then the text of "final_rubric_panel_column_2" should include "2 - Nearly Meets Expectations"
-    When Student clicks 'final_rubric_panel_right_arrow'
+    When I click "final_rubric_panel_right_arrow"
     Then the text of "final_rubric_panel_column_3" should include "3 - Meets Expectations"
-    When Student clicks 'final_rubric_panel_left_arrow'
+    When I click "final_rubric_panel_left_arrow"
     Then the text of "final_rubric_panel_column_2" should include "2 - Nearly Meets Expectations"
 
   @db=reset
