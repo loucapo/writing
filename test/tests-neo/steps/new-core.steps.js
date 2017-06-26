@@ -125,15 +125,14 @@ exports.define = function(steps) {
     driver.manage().window().maximize();
   });
 
-  steps.when('I select all content on the draft editor', function() {
-    page.draft_area.getText()
-      .then(text => {
-        page.draftEditor.sendKeys(keys.BACK_SPACE.repeat(text.length));
-      });
-  });
-
-  steps.when('I press the delete key in the draft editor', function() {
-    page.draft_area.sendKeys(keys.DELETE);
+  steps.when('I delete all content on the draft editor', function() {
+    let elem;
+    page.draft_area(1).then(el => {
+      elem = el;
+      return el.getText();
+    }).then(text => {
+      elem.sendKeys(keys.BACK_SPACE.repeat(text.length));
+    });
   });
 
   steps.when('I reload the page', function() {

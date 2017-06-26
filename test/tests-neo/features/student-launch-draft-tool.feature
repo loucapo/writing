@@ -27,11 +27,10 @@ Feature: Student Launches Draft
     Then I wait until there is 1 "start_reflection_button_disabled" visible
     And I type "happy" in "draft_area"
     Then I wait until there is 1 "start_reflection_button_enabled" visible
-@only
+
   Scenario: Student Types in the draft and Deletes
     Given I launch the activity as an "student"
     When I click "start_draft"
     And I type "happy" in "draft_area"
-    And I select all content on the draft editor
-    And I press the delete key in the draft editor
+    And I delete all content on the draft editor
     Then I wait until there is 1 "start_reflection_button_disabled" visible
