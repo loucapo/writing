@@ -603,5 +603,9 @@ module.exports = new Page({
     desc: `Alert that draft is not startable yet`,
     locator: `[class*='DraftDisplay__studentNote']`
   }),
+  created_activity_alert: basePageObj({
+    desc: `Green alert banner upon creating activity`,
+    locator: `[data-id='created-activity-alert']`
+  }),
 
 });

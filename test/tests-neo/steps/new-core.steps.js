@@ -135,6 +135,25 @@ exports.define = function(steps) {
     });
   });
 
+  steps.then('"$elem" color should be "$color', function(elems, expColor) {
+    let elem;
+    page[elems].then(el => {
+      elem = el;
+      return el.getCssValue('background-color');
+    }).then(color => {
+      expect(rgbaToHex(color)).to.equal(expColor);
+    });
+  });
+
+  function rgbaToHex(rgba) {
+    rgba = rgba.slice(5, -1).split(',');
+    rgba = rgba.map(x => {
+      x = parseInt(x.trim()).toString(16);
+      return (x.length === 1) ? `0${x}` : x;
+    });
+    return `#${rgba[0]}${rgba[1]}${rgba[2]}`;
+  }
+
   steps.when('I reload the page', function() {
     driver.navigate().refresh();
   });
