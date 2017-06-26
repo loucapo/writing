@@ -1,6 +1,6 @@
 @WRITE-819
 @WRITE-942
-  @only
+
 Feature: Student Launches Draft
   @db=reset
   Scenario: Page Setup for Student Draft With Fleshed Out Activity
@@ -32,5 +32,6 @@ Feature: Student Launches Draft
     Given I launch the activity as an "student"
     When I click "start_draft"
     And I type "happy" in "draft_area"
-    And I delete all text in "draft_area"
+    And I select all content on the draft editor
+    And I press the delete key in the draft editor
     Then I wait until there is 1 "start_reflection_button_disabled" visible
