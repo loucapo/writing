@@ -33,7 +33,10 @@ function basePageObj(opts) {
 
 module.exports = new Page({
   url: { value: '/' },
+  add_draft_button: { get() {return this.element(`[data-id='add-draft']`); } },
   draft_card: basePageObj({locator: `[data-id='draft-section']`}),
+  draft_title: basePageObj({ locator: `[class^='Heading__headingText__']`}),
+  //class="Heading__headingText__2pF68"
   draft: { get() {
     return this.component(draft, `[data-id='draft-section']`);
   } }

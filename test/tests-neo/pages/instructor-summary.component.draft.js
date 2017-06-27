@@ -6,6 +6,8 @@ const Component = require('marvin-js').Component
 function basePageObj(opts) {
   return {value(v) {
     opts.type = (opts.type || 'css');
+    console.log("OOPS?");
+    console.log(opts.locator);
     switch (typeof v) {
       case 'undefined':
         return this.element(opts.locator, opts.type);
@@ -44,6 +46,11 @@ module.exports = new Component({
   title: basePageObj({
     desc: `Top container for a draft on the summary page`,
     locator: `[class^='Heading__headingText__']`
+  }),
+
+  reflection_question: basePageObj({
+    desc: ``,
+    locator: `[data-id="reflections-list"] li`
   }),
 
   add_draft_goals: basePageObj({

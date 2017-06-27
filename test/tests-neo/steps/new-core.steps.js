@@ -87,35 +87,52 @@ exports.define = function(steps) {
     page[element](arg).then(el => el.click());
   });
 
+  steps.when('i add draft', function() {
+    page.add_draft_button.click();
+  });
+
+  // where 'poloc', or the page object locator is the string used in steps that represents
+  // some particular page object.
+  function polocToPO(poloc) {
+    // if elem contains a dot, it's a component
+    let ook = 'fish';
+    if (poloc.includes('.')) {
+      // shouldnt be giving it >1 '.', as we're effectively making an API to write tests to, be overly explicit.
+      if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
+      let [component, element] = poloc.split('.');
+      let [comp, compArg] = extractArg(component);
+      let [elem, elemArg] = extractArg(element);
+      // TODO: args on a component not supported yet.  finish before merging. QQQ
+      //ook = page[comp](compArg)[elem](elemArg);
+      ook = page[comp][elem](elemArg);
+    } else {
+      let [elem, elemArg] = extractArg(poloc);
+      ook = page[elem](elemArg);
+    }
+    console.log(`ook: ${ook}`);
+    return ook;
+  }
+
+  function extractArg(poloc) {
+    const re = /^([_a-zA-Z0-9]*)\((.*)\)$/;
+    let r = poloc.match(re);
+    if (r) {
+      r[2] = (isNaN(parseInt(r[2]))) ? r[2] : parseInt(r[2]);
+      return [r[1], r[2]];
+    } else {
+      return [poloc, 1];
+    }
+  }
+
   // NOTE that this is an IS match, not a contains.
   // the text of "some-page-object" is "some other string"      // => returns the 1st match it finds, or throws
   // the text of "some-page-object" [13] is "some other string" // => returns the 13th match it finds, or throws.
   // int arguments are 1-indexed, must be > 0
   // the text of "some-page-object" is ""                       // => empty string also works fine
   // TODO: is it worth it to switch to xregexp to actually get named capture groups?
-  steps.then(/the text of "(.*)"(?:\s*\[(.*)\])? should be "(.*)"/, (elem, arg, text) => {
-    // without named groups you do this dance
-    if (text === undefined) {
-      text = arg;
-      arg = 1;
-    }
-    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
-    // if elem contains a dot, it's a component
-    if (elem.includes('.')) {
-      // TODO: shouldnt be giving it >1 '.', but should handle it if we do.
-      let [component, element] = elem.split('.');
-      console.log(page[component]);
-      console.log(Object.getPrototypeOf(page[component]));
-      console.log(typeof page[component]);
-      console.log(component);
-      console.log(element);
-      console.log(page[component][element]);
-      page[component][element](arg).then(el => el.getText())
-        .then(actualText => { text.should.equal(actualText); });
-    } else {
-      page[elem](arg).then(el => el.getText())
-        .then(actualText => { text.should.equal(actualText); });
-    }
+  steps.then(/the text of "(.*)" should be "(.*)"/, (elem, text) => {
+    polocToPO(elem).then(el => el.getText())
+      .then(actualText => { text.should.equal(actualText); });
   });
 
   // NOTE that this is an INCLUDES match, not an IS.
