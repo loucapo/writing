@@ -94,6 +94,11 @@ module.exports = new Page({
     locator: `[data-id='prompt-cancel']`
   }),
 
+  confirmation_message: basePageObj({
+    desc: `Green banner that shows instructor when assignment was created`,
+    locator: `[class*='MLMessage__message_success__']`
+  }),
+
   // Draft goal modal
   //
 

@@ -1,5 +1,4 @@
 @WRITE-438
-@only
 Feature: Instructor Creates Drafting Revising Activity
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I create a new activity as an "instructor"
@@ -8,7 +7,7 @@ Feature: Instructor Creates Drafting Revising Activity
   Scenario: Green Confirmation Message Exists After Creating Assignment
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
-    And "created_activity_alert" color should be "#daf4d4"
+    And "confirmation_message" color should be "#daf4d4"
 
   Scenario: Green Confirmation Message Exists After Creating Assignment Persists
     Given I create a new activity as an "instructor"

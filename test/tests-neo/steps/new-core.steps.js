@@ -135,14 +135,18 @@ exports.define = function(steps) {
     });
   });
 
-  steps.then('"$elem" color should be "$color', function(elems, expColor) {
-    let elem;
-    page[elems].then(el => {
-      elem = el;
-      return el.getCssValue('background-color');
-    }).then(color => {
-      expect(rgbaToHex(color)).to.equal(expColor);
-    });
+  steps.then(/"(.*)"(?:\s*\[(.*)\])? color should be "(.*)"/, (elem, arg, text) => {
+    if (text === undefined) {
+      text = arg;
+      arg = 1;
+    }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg); {
+      page[elem](arg).then(el => {
+        return el.getCssValue('background-color');
+      }).then(color => {
+        expect(rgbaToHex(color)).to.equal(text);
+      });
+    }
   });
 
   function rgbaToHex(rgba) {
