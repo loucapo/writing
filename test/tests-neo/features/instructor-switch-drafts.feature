@@ -1,12 +1,12 @@
 @only
 Feature: POComponent test
 
-  #@db=reset
+  @db=reset
   @only
   Scenario: Setup Student Draft Submission
     Given I launch the activity as an "instructor"
-    #Then I wait until there is 1 "draft_card"
-    #When I click "add_draft_button"
+    Then I wait until there is 1 "draft_card"
+    When I click "add_draft_button"
     #When i add draft
     Then I wait until there are 2 "draft_card" visible
     #When I click "add_reflection_questions"

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const pages = [];
-pages.instructor_summary = require('../pages/instructor-summary.page');
+pages.instructor_summary = require('../pages/instructor-summary.paige');
 
 let page = pages.instructor_summary;
 const faker = require('faker');
