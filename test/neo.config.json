@@ -11,7 +11,7 @@
   "verbose": true,
   "stepDelay": 0,
   "testTimeout": 60000,
-  "elementTimeout": 1500,
+  "elementTimeout": 1000,
 
   "copyReport": false,
   "pending": true,
