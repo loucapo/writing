@@ -7,6 +7,7 @@ import styles from './mlButton.css';
 const Button = ({
   title,
   dataId,
+  id,
   color,
   handleClick,
   icon,
@@ -19,6 +20,7 @@ const Button = ({
 
   const renderButton = () => (
     <button
+      id={id}
       data-id={dataId}
       className={`${styles.button} ${styles[buttonClass]}`}
       onClick={disabled ? '' : handleClick} >
@@ -38,6 +40,7 @@ const Button = ({
 
   const renderLink = () => (
     <Link
+      id={id}
       onClick={disabled ? () => {} : handleClick}
       to={disabled ? '' : link}
       data-id={dataId}
@@ -51,6 +54,7 @@ const Button = ({
 Button.propTypes = {
   title: PropTypes.string,
   dataId: PropTypes.string.isRequired,
+  id: PropTypes.string,
   color: PropTypes.string,
   handleClick: PropTypes.func,
   icon: PropTypes.string,
