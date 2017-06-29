@@ -125,6 +125,16 @@ exports.define = function(steps) {
     driver.manage().window().maximize();
   });
 
+  steps.when('I delete all content on the draft editor', function() {
+    let elem;
+    page.draft_area(1).then(el => {
+      elem = el;
+      return el.getText();
+    }).then(text => {
+      elem.sendKeys(keys.BACK_SPACE.repeat(text.length));
+    });
+  });
+
   steps.when('I reload the page', function() {
     driver.navigate().refresh();
   });

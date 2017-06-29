@@ -19,6 +19,7 @@ Feature: Instructor Views Draft Submissions Switcher
 
   Scenario: The Instructor Clicks on Dropdown
     Given I launch the activity as an "instructor"
+    When I maximize the browser
     And I click "student_submissions"
     And I click "draft_select_dropdown_submission_grid"
     Then I wait until there is 1 "dropdown_drafts_submission_grid" visible
@@ -26,7 +27,6 @@ Feature: Instructor Views Draft Submissions Switcher
 
   Scenario: The Instructor Changes Draft
     Given I launch the activity as an "instructor"
-    When I maximize the browser
     And I click "add_draft_button"
     And I click "student_submissions"
     Then I wait until there is 1 "no_submissions_alert" visible
