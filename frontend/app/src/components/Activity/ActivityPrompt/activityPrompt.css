@@ -1,9 +1,5 @@
 @import 'variables.css';
 
-.editIcon, .deleteIcon {
+.icon {
   fill: var(--aqua);
-}
-
-.toolbarClass {
-  width: 100%;
 }

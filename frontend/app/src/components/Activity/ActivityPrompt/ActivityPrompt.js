@@ -1,11 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
-import {
-  MLButton,
-  MLCard,
-  MLEditor
-} from './../../MLComponents/index';
+import { MLButton, MLCard, MLEditor } from '../../MLComponents';
 
 import styles from './activityPrompt.css';
 
@@ -49,6 +45,7 @@ class ActivityPrompt extends Component {
                 <MLButton
                   title="Cancel"
                   dataId="prompt-cancel"
+                  id="cancel"
                   handleClick={this.handleCancel}
                   bordered={true}
                 />
@@ -58,7 +55,7 @@ class ActivityPrompt extends Component {
               <div>
                 <a data-id="prompt-edit" onClick={this.toggleEditable}>
                   <MLIcon
-                    className={styles.editIcon}
+                    className={styles.icon}
                     title="edit"
                     type="edit"
                     width="18"
@@ -68,7 +65,7 @@ class ActivityPrompt extends Component {
                 </a>
                 <a data-id="prompt-delete">
                   <MLIcon
-                    className={styles.deleteIcon}
+                    className={styles.icon}
                     title="trash"
                     type="trash"
                     width="18"
