@@ -7,9 +7,7 @@ Feature: POComponent test
     Given I launch the activity as an "instructor"
     Then I wait until there is 1 "draft_card"
     When I click "add_draft_button"
-    #When i add draft
     Then I wait until there are 2 "draft_card" visible
-    #When I click "add_reflection_questions"
     Then the text of "draft.title(1)" should be "Draft 1"
     Then the text of "draft.title(2)" should be "Final Paper"
     Then the text of "draft.reflection_question(1)" should be "free: utt ben yavin fett naboo calamari. Obi-wan mon coruscant c"

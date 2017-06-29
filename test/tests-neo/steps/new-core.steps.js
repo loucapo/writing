@@ -91,6 +91,9 @@ exports.define = function(steps) {
     page.add_draft_button.click();
   });
 
+  function varlog(sym) {
+    console.log(`${sym}: sym`);
+  }
   // where 'poloc', or the page object locator is the string used in steps that represents
   // some particular page object.
   function polocToPO(poloc) {
@@ -101,10 +104,17 @@ exports.define = function(steps) {
       if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
       let [component, element] = poloc.split('.');
       let [comp, compArg] = extractArg(component);
+      console.log(`comp: ${comp}`);
+      console.log(`compArg: ${compArg}`);
       let [elem, elemArg] = extractArg(element);
-      // TODO: args on a component not supported yet.  finish before merging. QQQ
-      //ook = page[comp](compArg)[elem](elemArg);
-      ook = page[comp][elem](elemArg);
+      console.log(`elem: ${elem}`);
+      console.log(`elemArg: ${elemArg}`);
+      compArg = compArg || 1;
+      let foo = page[comp](compArg);
+      console.log(typeof foo);
+      console.log(foo);
+      console.log(Object.keys(foo));
+      ook = foo[elem](elemArg);
     } else {
       let [elem, elemArg] = extractArg(poloc);
       ook = page[elem](elemArg);

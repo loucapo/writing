@@ -4,7 +4,8 @@ const Komponent = require('marvin-js').Komponent
 
 // TODO: this should be moved into marvin itself once we hammer out usages and names and such
 function basePageObj(opts) {
-  return {value(v) {
+  //return {value(v) {
+  return function(v) {
     opts.type = (opts.type || 'css');
     console.log("OOPS?");
     console.log(opts.locator);
@@ -29,12 +30,27 @@ function basePageObj(opts) {
         console.log(v);
         throw new Error('WUTINTARNATION!');
     }
-  }};
-}
+  };
+};
 
 class Draft extends Komponent {
-  get url() {}
-
+  elements() {
+    return {
+      title: {
+        locator: ``,
+        desc: ``}
+      // all your properties and shit
+      // then in Komponent constructor, merge them from here.
+      // except actually don't just straight merge them, but decorate
+      // or whatever as necessary.
+    };
+  }
+  // title(index) {
+  //   return basePageObj({locator: `[class^='Heading__headingText__']`})(index);
+  // }
+  title(index) {
+    return this.element(`[class^='Heading__headingText__']`);
+  }
 }
 
 module.exports = Draft;

@@ -5,7 +5,7 @@ const draft = require('./instructor-summary.component.draft');
 
 // TODO: this should be moved into marvin itself once we hammer out usages and names and such
 function basePageObj(opts) {
-  return {value(v) {
+  return function(v) {
     opts.type = (opts.type || 'css');
     switch (typeof v) {
       case 'undefined':
@@ -28,8 +28,8 @@ function basePageObj(opts) {
         console.log(v);
         throw new Error('WUTINTARNATION!');
     }
-  }};
-}
+  };
+};
 
 module.exports = new Page({
   url: { value: '/' },

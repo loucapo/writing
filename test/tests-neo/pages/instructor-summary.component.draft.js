@@ -4,7 +4,7 @@ const Component = require('marvin-js').Component
 
 // TODO: this should be moved into marvin itself once we hammer out usages and names and such
 function basePageObj(opts) {
-  return {value(v) {
+  return function(v) {
     opts.type = (opts.type || 'css');
     console.log("OOPS?");
     console.log(opts.locator);
@@ -29,7 +29,7 @@ function basePageObj(opts) {
         console.log(v);
         throw new Error('WUTINTARNATION!');
     }
-  }};
+  };
 }
 
 module.exports = new Component({
