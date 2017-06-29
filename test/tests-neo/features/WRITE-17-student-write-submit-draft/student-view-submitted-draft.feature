@@ -13,10 +13,12 @@ Feature: Student Views Submitted Draft
     When I click "start_draft"
     And I type "Cookies are the best dessert known to man. Round, with the capacity to be topped with all the manner of chocolate or candy, it's the perfect treat no matter how young or old one is." in "draft_area"
     And I click "start_reflection"
+    Then I wait until there is 1 "student_reflection_text" visible
     And I type "yay" in "student_reflection_text"
     And I click "reflection_polls_radio_button" [1]
     And I click "reflection_button_submit_enabled"
     And I click "draft_submit_confirm"
+    Then I wait until there is 1 "view_final_draft_button" visible
     When I click "view_final_draft_button"
     Then I wait until there is 1 "success_flash" visible
     Then the text of "draft_area" should be "Cookies are the best dessert known to man. Round, with the capacity to be topped with all the manner of chocolate or candy, it's the perfect treat no matter how young or old one is."

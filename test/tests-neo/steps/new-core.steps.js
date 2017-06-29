@@ -125,6 +125,39 @@ exports.define = function(steps) {
     driver.manage().window().maximize();
   });
 
+  steps.when('I delete all content on the draft editor', function() {
+    let elem;
+    page.draft_area(1).then(el => {
+      elem = el;
+      return el.getText();
+    }).then(text => {
+      elem.sendKeys(keys.BACK_SPACE.repeat(text.length));
+    });
+  });
+
+  steps.then(/"(.*)"(?:\s*\[(.*)\])? color should be "(.*)"/, (elem, arg, text) => {
+    if (text === undefined) {
+      text = arg;
+      arg = 1;
+    }
+    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg); {
+      page[elem](arg).then(el => {
+        return el.getCssValue('background-color');
+      }).then(color => {
+        expect(rgbaToHex(color)).to.equal(text);
+      });
+    }
+  });
+
+  function rgbaToHex(rgba) {
+    rgba = rgba.slice(5, -1).split(',');
+    rgba = rgba.map(x => {
+      x = parseInt(x.trim()).toString(16);
+      return (x.length === 1) ? `0${x}` : x;
+    });
+    return `#${rgba[0]}${rgba[1]}${rgba[2]}`;
+  }
+
   steps.when('I reload the page', function() {
     driver.navigate().refresh();
   });

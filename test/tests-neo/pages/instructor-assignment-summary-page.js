@@ -94,6 +94,11 @@ module.exports = new Page({
     locator: `[data-id='prompt-cancel']`
   }),
 
+  confirmation_message: basePageObj({
+    desc: `Green banner that shows instructor when assignment was created`,
+    locator: `[class*='MLMessage__message_success__']`
+  }),
+
   // Draft goal modal
   //
 
@@ -350,6 +355,54 @@ module.exports = new Page({
     desc: `Link on Draft Details panel to return user to activity summary page`,
     locator: `[data-id='details-panel-activity-link-div']`
   }),
+  activity_draft_panel: basePageObj({
+    desc: `Link on Draft Details panel to expand or collapse draft info`,
+    locator: `[data-id='draft-activity-detail-panel']`
+  }),
+  activity_prompt_panel: basePageObj({
+    desc: `Link on Draft Details panel to expand or collapse activity prompt info`,
+    locator: `[data-id='activity-prompt-detail-panel']`
+  }),
+  activity_final_rubric_panel: basePageObj({
+    desc: `Link on Draft Details panel to expand or collapse final rubric info`,
+    locator: `[data-id='final-rubric-detail-panel']`
+  }),
+  activity_draft_goals_panel: basePageObj({
+    desc: `Subheader on Draft Activity panel that displays draft goals`,
+    locator: `[data-id='drafts-goal-list']`
+  }),
+  activity_reflection_questions_panel: basePageObj({
+    desc: `Subheader on Draft Activity panel that displays reflection questions`,
+    locator: `[data-id='reflections-list']`
+  }),
+  activity_prompt_description_panel: basePageObj({
+    desc: `Subheader on Activity Prompt panel that displays description content`,
+    locator: `[data-id='activity-prompt-content-detail-panel']`
+  }),
+  final_rubric_panel_column_4: basePageObj({
+    desc: `Rubric level 4 in final rubric panel`,
+    locator: `[data-id='rubric-column-4']`
+  }),
+  final_rubric_panel_column_3: basePageObj({
+    desc: `Rubric level 3 in final rubric panel`,
+    locator: `[data-id='rubric-column-3']`
+  }),
+  final_rubric_panel_column_2: basePageObj({
+    desc: `Rubric level 2 in final rubric panel`,
+    locator: `[data-id='rubric-column-2']`
+  }),
+  final_rubric_panel_column_1: basePageObj({
+    desc: `Rubric level 1 in final rubric panel`,
+    locator: `[data-id='rubric-column-1']`
+  }),
+  final_rubric_panel_right_arrow: basePageObj({
+    desc: `Scroll right arrow in final rubric panel`,
+    locator: `[data-id='rubric-arrow-right']`
+  }),
+  final_rubric_panel_left_arrow: basePageObj({
+    desc: `Scroll left arrow in final rubric panel`,
+    locator: `[data-id='rubric-arrow-left']`
+  }),
   save_draft: basePageObj({
     desc: ``,
     locator: `[data-id='save-draft']`
@@ -527,6 +580,14 @@ module.exports = new Page({
     desc: `Button to save draft in editor when text exists in editor`,
     locator: `[data-id='save-draft']:not([class*='MLButton__disabled_'])`
   }),
+  start_reflection_button_disabled: basePageObj({
+    desc: `Button to go to reflection questions when text doesn't exists in editor`,
+    locator: `[data-id='start-reflection'][class*='MLButton__disabled_']`
+  }),
+  start_reflection_button_enabled: basePageObj({
+    desc: `Button to save draft in editor when text exists in editor`,
+    locator: `[data-id='start-reflection']:not([class*='MLButton__disabled_'])`
+  }),
   view_final_draft_button: basePageObj({
     desc: `Button to view submitted draft`,
     locator: `[data-id='View Final Paper']`
@@ -546,6 +607,10 @@ module.exports = new Page({
   student_draft_note: basePageObj({
     desc: `Alert that draft is not startable yet`,
     locator: `[class*='DraftDisplay__studentNote']`
+  }),
+  created_activity_alert: basePageObj({
+    desc: `Green alert banner upon creating activity`,
+    locator: `[data-id='created-activity-alert']`
   }),
 
 });
