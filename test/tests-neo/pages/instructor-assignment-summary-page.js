@@ -94,6 +94,11 @@ module.exports = new Page({
     locator: `[data-id='prompt-cancel']`
   }),
 
+  confirmation_message: basePageObj({
+    desc: `Green banner that shows instructor when assignment was created`,
+    locator: `[class*='MLMessage__message_success__']`
+  }),
+
   // Draft goal modal
   //
 
@@ -602,6 +607,10 @@ module.exports = new Page({
   student_draft_note: basePageObj({
     desc: `Alert that draft is not startable yet`,
     locator: `[class*='DraftDisplay__studentNote']`
+  }),
+  created_activity_alert: basePageObj({
+    desc: `Green alert banner upon creating activity`,
+    locator: `[data-id='created-activity-alert']`
   }),
 
 });
