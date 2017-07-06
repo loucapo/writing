@@ -1,0 +1,11 @@
+@import 'variables.css';
+
+.addComment textarea {
+  width: 100%;
+  min-height: 80px;
+  border-color: var(--gray-medium);
+}
+
+.addComment button {
+  margin: 0;
+}

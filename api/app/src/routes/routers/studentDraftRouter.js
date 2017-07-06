@@ -237,6 +237,43 @@ module.exports = function activityRouter(koarouter, controllers) {
       '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/submit',
       controllers.studentDraftController.submitStudentDraft
     );
+    /**
+     * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/submitendcomment:
+     *   put:
+     *     x-name: submitEndComment
+     *     description: creates a drafts end comment
+     *     operationId: submitEndComment
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/submitEndComment"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/submitendcomment',
+      controllers.studentDraftController.submitEndComment
+    );
 
     appRouter.use(router.routes(), router.allowedMethods());
   };

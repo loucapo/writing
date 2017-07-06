@@ -127,6 +127,14 @@
           "type": "string"
         }
       }
+    },
+    "submitEndComment": {
+      "title": "submitEndComment",
+      "properties": {
+        "endComment": {
+          "type": "string"
+        }
+      }
     }
   }
 }

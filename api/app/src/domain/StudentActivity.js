@@ -98,5 +98,18 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
       return event;
     }
+
+    submitEndComment(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
+      studentDraft.submitEndComment(cmd);
+      this.raiseEvent({
+        eventName: 'studentDraftEndCommentSubmitted',
+        event
+      });
+
+      return event;
+    }
+
   };
 };
