@@ -41,7 +41,7 @@ module.exports = new Paige({
   //draft_card: {get() { return this.element(`[data-id='draft-section']`); } },
   draft_title: basePageObj({ locator: `[class^='Heading__headingText__']`}),
 
-  draft: Paige.componentGenerator(draftComponent, `[data-id='draft-section']`)
+  draft: Paige.componentGenerator(draftComponent, {locator: `[data-id='draft-section']`})
   // draft: { get() {
   //   return this.component(draft, `[data-id='draft-section']`);
   // } }

@@ -91,12 +91,12 @@ exports.define = function(steps) {
     page.add_draft_button.click();
   });
 
-  function varlog(sym) {
+  async function varlog(sym) {
     console.log(`${sym}: sym`);
   }
   // where 'poloc', or the page object locator is the string used in steps that represents
   // some particular page object.
-  function polocToPO(poloc) {
+  async function polocToPO(poloc) {
     // if elem contains a dot, it's a component
     let ook = 'fish';
     if (poloc.includes('.')) {
@@ -110,11 +110,17 @@ exports.define = function(steps) {
       console.log(`elem: ${elem}`);
       console.log(`elemArg: ${elemArg}`);
       compArg = compArg || 1;
-      let foo = page[comp](compArg);
-      console.log(typeof foo);
-      console.log(foo);
-      console.log(Object.keys(foo));
-      ook = foo[elem](elemArg);
+      console.log(`typeof page[comp]: ${(typeof page[comp])}`);
+      let particular_component = page[comp](compArg);
+      console.log("WUTT ARE WEEEE BEING HANDDDED??");
+      console.log(typeof particular_component);
+      console.log(particular_component);
+      console.log(Object.keys(particular_component));
+      console.log('======');
+      console.log(typeof particular_component[elem]);
+      console.log(Object.keys(particular_component[elem]));
+      let fook = await particular_component[elem];
+      ook = fook(elemArg);
     } else {
       let [elem, elemArg] = extractArg(poloc);
       ook = page[elem](elemArg);
