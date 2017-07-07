@@ -20,8 +20,9 @@ exports.define = function(steps) {
   const isViz = el => el.isDisplayed().then(bool => bool);
 
   //steps.given(/I launch the activity as a[n]? "(.+)"/, user => {
-  steps.given(`I launch the activity as an "$user"`, user => {
+  steps.given(`I launch the activity as an "$user"`, function(user, done) {
     driver.get(marvin.config.baseUrl + '/' + user);
+    done();
   });
 
   steps.given(/I create a new activity as a[n] "(.+)"/, function(user) {
@@ -46,7 +47,7 @@ exports.define = function(steps) {
   });
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, elem) => {
-    driver.wait(() => {
+    return driver.wait(() => {
       return page[elem]('all').then(els => els.length === parseInt(count) );
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
   });
@@ -84,7 +85,7 @@ exports.define = function(steps) {
   steps.when(/I click "(.+)"(?:\s*\[(\w*)\])?/, function(element, arg) {
     if (arg === undefined) { arg = 1; }
     arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
-    page[element](arg).then(el => el.click());
+    return page[element](arg).then(el => el.click());
   });
 
   steps.when('i add draft', function() {
@@ -104,28 +105,17 @@ exports.define = function(steps) {
       if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
       let [component, element] = poloc.split('.');
       let [comp, compArg] = extractArg(component);
-      console.log(`comp: ${comp}`);
-      console.log(`compArg: ${compArg}`);
       let [elem, elemArg] = extractArg(element);
-      console.log(`elem: ${elem}`);
-      console.log(`elemArg: ${elemArg}`);
       compArg = compArg || 1;
-      console.log(`typeof page[comp]: ${(typeof page[comp])}`);
+      elemArg = elemArg || 1;
+
       let particular_component = page[comp](compArg);
-      console.log("WUTT ARE WEEEE BEING HANDDDED??");
-      console.log(typeof particular_component);
-      console.log(particular_component);
-      console.log(Object.keys(particular_component));
-      console.log('======');
-      console.log(typeof particular_component[elem]);
-      console.log(Object.keys(particular_component[elem]));
-      let fook = await particular_component[elem];
-      ook = fook(elemArg);
+      let ttitle = await particular_component[elem];
+      ook = await ttitle(elemArg);
     } else {
       let [elem, elemArg] = extractArg(poloc);
       ook = page[elem](elemArg);
     }
-    console.log(`ook: ${ook}`);
     return ook;
   }
 
@@ -147,9 +137,15 @@ exports.define = function(steps) {
   // the text of "some-page-object" is ""                       // => empty string also works fine
   // TODO: is it worth it to switch to xregexp to actually get named capture groups?
   steps.then(/the text of "(.*)" should be "(.*)"/, (elem, text) => {
-    polocToPO(elem).then(el => el.getText())
-      .then(actualText => { text.should.equal(actualText); });
-  });
+    return polocToPO(elem)
+      .then(el => el.getText())
+      .then(actualText => {
+        console.log(text);
+        console.log(actualText);
+        text.should.equal(actualText); });
+    //}).catch(e => {throw e; }); //cqonsole.log("The sky is falling", e));
+    //console.log(fuck);
+  }); //, {}, {mode: 'async'});
 
   // NOTE that this is an INCLUDES match, not an IS.
   // TODO: is it worth it to switch to xregexp to actually get named capture groups?
