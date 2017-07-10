@@ -34,5 +34,9 @@ module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
       this.reviewStatus = 'notStarted';
       this.submittedDate = cmd.submittedDate;
     }
+
+    submitEndComment(cmd) {
+      this.endComment = cmd.endComment;
+    }
   };
 };

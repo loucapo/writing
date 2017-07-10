@@ -124,6 +124,21 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
 
       ctx.status = 200;
       return ctx;
+    },
+
+    async submitEndComment(ctx) {
+      const command = ctx.request.body;
+      const studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      command.modifiedById = ctx.state.user.id;
+      command.modifiedDate = moment().toISOString();
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
+      let event = studentActivity.submitEndComment(command);
+
+      await repository.query(sqlLibrary.studentDraft, 'submitStudentDraftEndComment', event);
+
+      ctx.status = 200;
+      return ctx;
     }
 
   };
