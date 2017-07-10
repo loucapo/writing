@@ -13,7 +13,7 @@ BUILD_PLANNAME=$2
 set -e
 
 echo "Logging into the ECR"
-$(aws ecr get-login --no-include-email --profile $AWS_PROFILE --region us-east-1)
+$(aws ecr get-login --profile $AWS_PROFILE --region us-east-1)
 
 echo "Creating the Build artifacts directory"
 rm -rf artifacts
