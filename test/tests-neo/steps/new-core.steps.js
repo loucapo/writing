@@ -13,9 +13,10 @@ exports.define = function(steps) {
   }
 
   // TODO: review, ensure it's sane.
-  const filterAsync = (array, filter) =>
-        Promise.all(array.map(entry => filter(entry)))
-        .then(bits => array.filter(entry => bits.shift()));
+  const filterAsync = (array, filter) => {
+    return Promise.all(array.map(entry => filter(entry)))
+      .then(bits => array.filter(entry => bits.shift()));
+  };
 
   const isViz = el => el.isDisplayed().then(bool => bool);
 
@@ -52,14 +53,18 @@ exports.define = function(steps) {
     }, 3500, `Couldn't find ${count} instances of ${elem}`);
   });
 
-  steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, elem) => {
-    driver.wait(() => {
-      return page[elem]('all').then(els => {
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, element) => {
+    return driver.wait(() => {
+      return polocToPO(element, true, true).then(els => {
+        if (els.length === 0) {
+          console.log(`rejecting because no such`);
+          return false; }
         return filterAsync(els, isViz).then(results => {
+          console.log(`attempting to match counts`);
           return (results.length === parseInt(count));
         });
       });
-    }, 3500, `Couldn't find ${count} instances of ${elem}`);
+    }, 3500, `Couldn't find ${count} instances of ${element}`);
   });
 
   // TODO: doc this
@@ -82,41 +87,53 @@ exports.define = function(steps) {
   });
 
   // TODO: doc this
-  steps.when(/I click "(.+)"(?:\s*\[(\w*)\])?/, function(element, arg) {
-    if (arg === undefined) { arg = 1; }
-    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
-    return page[element](arg).then(el => el.click());
+  steps.when(/I click "(.+)"/, function(element) {
+    return polocToPO(element)
+      .then(el => el.click());
   });
 
+  // TODO: remove me
   steps.when('i add draft', function() {
     page.add_draft_button.click();
   });
 
-  async function varlog(sym) {
-    console.log(`${sym}: sym`);
+  function splitPolocComp(poloc) {
+    // shouldnt be giving it >1 '.', as we're effectively making an API to write tests to, be overly explicit.
+    if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
+    let [component, element] = poloc.split('.');
+    let [comp, compArg] = extractArg(component);
+    let [elem, elemArg] = extractArg(element);
+    return [comp, compArg, elem, elemArg];
   }
-  // where 'poloc', or the page object locator is the string used in steps that represents
-  // some particular page object.
-  async function polocToPO(poloc) {
-    // if elem contains a dot, it's a component
-    let ook = 'fish';
-    if (poloc.includes('.')) {
-      // shouldnt be giving it >1 '.', as we're effectively making an API to write tests to, be overly explicit.
-      if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
-      let [component, element] = poloc.split('.');
-      let [comp, compArg] = extractArg(component);
-      let [elem, elemArg] = extractArg(element);
-      compArg = compArg || 1;
-      elemArg = elemArg || 1;
 
-      let particular_component = page[comp](compArg);
-      let ttitle = await particular_component[elem];
-      ook = await ttitle(elemArg);
-    } else {
-      let [elem, elemArg] = extractArg(poloc);
-      ook = page[elem](elemArg);
+  // PageObject-Locator to PageObject: return [] of WebElements
+  async function polocToPO(poloc, findAll = false, allowEmptyResult = false) {
+    let result = null;
+    if (poloc.includes('.')) {
+      let [comp, compArg, elem, elemArg] = splitPolocComp(poloc);
+      compArg = compArg || 1;
+      elemArg = findAll ? 'all' : (elemArg || 1);
+      try {
+        console.log(`${comp}, ${compArg}, ${elem}, ${elemArg}`);
+        result = await page[comp](compArg)[elem](elemArg);
+      } catch (error) {
+        if (allowEmptyResult) {
+          result = findAll ? [] : null;
+        } else { throw error; }
+      }
     }
-    return ook;
+    else {
+      let [elem, elemArg] = extractArg(poloc);
+      elemArg = findAll ? 'all' : (elemArg || 1);
+      try {
+        result = await page[elem](elemArg);
+      } catch (error) {
+        if (allowEmptyResult) {
+          result = findAll ? [] : null;
+        } else { throw error; }
+      }
+    }
+    return result;
   }
 
   function extractArg(poloc) {
@@ -139,13 +156,8 @@ exports.define = function(steps) {
   steps.then(/the text of "(.*)" should be "(.*)"/, (elem, text) => {
     return polocToPO(elem)
       .then(el => el.getText())
-      .then(actualText => {
-        console.log(text);
-        console.log(actualText);
-        text.should.equal(actualText); });
-    //}).catch(e => {throw e; }); //cqonsole.log("The sky is falling", e));
-    //console.log(fuck);
-  }); //, {}, {mode: 'async'});
+      .then(actualText => text.should.equal(actualText));
+  });
 
   // NOTE that this is an INCLUDES match, not an IS.
   // TODO: is it worth it to switch to xregexp to actually get named capture groups?
@@ -165,7 +177,7 @@ exports.define = function(steps) {
   });
 
   steps.then('I sleep for $d seconds', function(d) {
-    driver.sleep(d * 1000);
+    return driver.sleep(d * 1000);
   });
 
   steps.when('I maximize the browser', function() {

@@ -2,6 +2,8 @@
 // tests/pages/home.js
 const Paige = require('marvin-js').Paige;
 const draftComponent = require('./instructor-summary.komponent.draft');
+const refQuestionModal = require('./instructor-summary.komponent.add-student-reflection-questions-modal');
+
 //const draft = require('./instructor-summary.component.draft');
 
 // TODO: this should be moved into marvin itself once we hammer out usages and names and such
@@ -41,7 +43,12 @@ module.exports = new Paige({
   //draft_card: {get() { return this.element(`[data-id='draft-section']`); } },
   draft_title: basePageObj({ locator: `[class^='Heading__headingText__']`}),
 
-  draft: Paige.componentGenerator(draftComponent, {locator: `[data-id='draft-section']`})
+  //draft: Paige.componentGenerator(draftComponent, {locator: `[data-id='draft-section']`}),
+  draft: Paige.componentGenerator(draftComponent, {
+    locator: `//*[@data-id='draft-section']/ancestor::div[contains(@data-id, 'MLCard')]`,
+    type: `xpath`
+  }),
+  reflection_questions_modal: Paige.componentGenerator(refQuestionModal, {locator: `[data-id='modal']`})
   // draft: { get() {
   //   return this.component(draft, `[data-id='draft-section']`);
   // } }
