@@ -7,10 +7,20 @@
   padding: 15px 20px;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .leftContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.leftSubContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.rightContainer {
   display: flex;
   justify-content: center;
 }

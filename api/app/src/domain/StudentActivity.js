@@ -89,10 +89,21 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
         `Student Draft, Id: ${cmd.studentDraftId}, must have Reflection Questions answered before it can be submitted`);
       studentDraft.submit(cmd);
       event.status = studentDraft.status;
-      event.reviewStatus = studentDraft.reviewStatus;
+      event.reviewStatus = studentDraft.reviewStatus.key;
 
       this.raiseEvent({
         eventName: 'studentDraftSubmitted',
+        event
+      });
+
+      return event;
+    }
+    updateReviewStatus(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
+      studentDraft.updateReviewStatus(cmd);
+      this.raiseEvent({
+        eventName: 'studentDraftReviewStatusUpdated',
         event
       });
 

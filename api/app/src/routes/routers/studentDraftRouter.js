@@ -239,6 +239,44 @@ module.exports = function activityRouter(koarouter, controllers) {
     );
     /**
      * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/updatereviewstatus:
+     *   put:
+     *     x-name: updateReviewStatus
+     *     description: updateReviewStatus
+     *     operationId: updateReviewStatus
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/updateReviewStatus"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/updatereviewstatus',
+      controllers.studentDraftController.updateReviewStatus
+    );
+
+    /**
+     * @swagger
      * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/submitendcomment:
      *   put:
      *     x-name: submitEndComment

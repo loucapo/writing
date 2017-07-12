@@ -10,7 +10,8 @@ const FeedbackTool = ({
   homeRoute,
   draftTitle,
   instructorName,
-  submitEndComment
+  submitEndComment,
+  updateReviewStatus
 }) => (
   <div className={styles.page}>
     <FeedbackToolHeader
@@ -18,6 +19,9 @@ const FeedbackTool = ({
       draftTitle={draftTitle}
       submittedDate={studentDraft.submittedDate}
       instructorName={instructorName}
+      updateReviewStatus={updateReviewStatus}
+      studentActivityId={studentDraft.studentActivityId}
+      studentDraftId={studentDraft.studentDraftId}
     />
     <div className={styles.container}>
       <MLCard type="reflection" title="Reflection">
@@ -49,7 +53,8 @@ FeedbackTool.propTypes = {
   reflectionQuestions: PropTypes.array,
   draftTitle: PropTypes.string,
   instructorName: PropTypes.string,
-  submitEndComment: PropTypes.func
+  submitEndComment: PropTypes.func,
+  updateReviewStatus: PropTypes.func
 };
 
 export default FeedbackTool;

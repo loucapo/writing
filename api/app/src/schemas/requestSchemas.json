@@ -135,6 +135,14 @@
           "type": "string"
         }
       }
+    },
+    "updateReviewStatus": {
+      "title": "updateReviewStatus",
+      "properties": {
+        "reviewStatus": {
+          "type": "string"
+        }
+      }
     }
   }
 }

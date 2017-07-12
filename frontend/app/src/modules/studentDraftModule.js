@@ -8,6 +8,7 @@ const GET_STUDENT_DRAFTS = requestStates('get_student_drafts');
 const GET_STUDENT_DRAFT = requestStates('get_student_draft');
 export const UPDATE_DRAFT_PAPER = requestStates('update_draft_paper');
 export const SUBMIT_DRAFT = requestStates('submit_draft_paper');
+export const UPDATE_REVIEW_STATUS = requestStates('update_review_status');
 export const SUBMIT_DRAFT_END_COMMENT = requestStates('submit_draft_end_comment');
 
 // Reducer
@@ -33,6 +34,15 @@ export default (state = [], action) => {
       return state.map(x => {
         return x.studentDraftId === studentDraftId
           ? {...x, submitted: true}
+          : x;
+      });
+    }
+    case UPDATE_REVIEW_STATUS.SUCCESS: {
+      const body = JSON.parse(action.action.params.body);
+      const studentDraftId = action.action.studentDraftId;
+      return state.map(x => {
+        return x.studentDraftId === studentDraftId
+          ? {...x, reviewStatus: body.reviewStatus}
           : x;
       });
     }
@@ -124,6 +134,20 @@ export function submitDraft(studentActivityId, studentDraftId, homeRoute, draftN
     successFunction: successFunction(homeRoute),
     params: {
       method: 'put'
+    }
+  };
+}
+
+export function updateReviewStatus(studentActivityId, studentDraftId, reviewStatus, homeRoute) {
+  return {
+    type: UPDATE_REVIEW_STATUS.REQUEST,
+    states: UPDATE_REVIEW_STATUS,
+    url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/updatereviewstatus`,
+    studentDraftId,
+    successFunction: successFunction(homeRoute),
+    params: {
+      method: 'put',
+      body: {reviewStatus}
     }
   };
 }
