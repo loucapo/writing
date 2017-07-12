@@ -16,11 +16,18 @@ Feature: Instructor Close Feedback Tool
     And I click "reflection_button_submit_enabled"
     And I click "draft_submit_confirm"
 
+  Scenario: The Instructor Clicks on Back Button
+    Given I launch the activity as an "instructor"
+    And I maximize the browser
+    And I click "student_submissions"
+    And I click "submission_row_start" [1]
+    And I click "back_button"
+    And the text of "submission_row_status" [1] should be "Start Review"
+
   Scenario: The Instructor Clicks on Done
     Given I launch the activity as an "instructor"
+    And I maximize the browser
     And I click "student_submissions"
-    And I click "submission_row_status" [1]
-    And I click "done_with_review"
-    Then I wait until there is 1 "dropdown_drafts_submission_grid" visible
-    Then I wait until there is 0 "end_comment" visible
+    And I click "submission_row_start" [1]
+    And I click "done_button"
     And the text of "submission_row_status" [1] should be "Return to Review"
