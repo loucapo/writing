@@ -73,6 +73,7 @@ exports.define = function(steps) {
     // TODO: i bet these two lines get repeated a whoooole bunch and should be pulled out.
     if (arg === undefined) { arg = 1; }
     arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
+    if (!page[elem]) { throw new Error(`no such page object defined: ${elem}`); }
     page[elem](arg).then(el => el.sendKeys(input));
   });
 

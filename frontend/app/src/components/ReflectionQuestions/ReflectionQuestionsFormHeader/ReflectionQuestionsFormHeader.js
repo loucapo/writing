@@ -61,7 +61,11 @@ class Header extends Component {
                 dataId="reflection-questions-dialog-stay"
               />
             </MLDialog>
-            <MLButton title="Save" dataId="save-draft" bordered={true} handleClick={this.props.handleSave} />
+            <MLButton title="Save"
+              dataId="save-draft"
+              bordered={true}
+              disabled={!this.props.questionsHaveBeenBegun}
+              handleClick={this.props.handleSave} />
             <MLButton
               title="Submit Draft"
               dataId="submit-draft"
@@ -81,6 +85,7 @@ Header.propTypes = {
   questionsAreComplete: PropTypes.bool,
   handleSave: PropTypes.func,
   handleSubmit: PropTypes.func,
+  questionsHaveBeenBegun: PropTypes.bool,
   unsavedAnswers: PropTypes.bool
 };
 

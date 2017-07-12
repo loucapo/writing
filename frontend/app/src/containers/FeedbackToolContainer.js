@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FeedbackTool } from '../components/FeedbackTool/index';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
-import { getStudentDraftByStudentDraftId } from '../modules/studentDraftModule';
+import { getStudentDraftByStudentDraftId, submitEndComment, updateReviewStatus } from '../modules/studentDraftModule';
 
 class FeedbackToolContainer extends Component {
   componentWillMount() {
@@ -63,5 +63,7 @@ const mapStateToProps = (state, props) => {
 export default connect(mapStateToProps, {
   getReflectionQuestions,
   getReflectionAnswers,
-  getStudentDraftByStudentDraftId
+  getStudentDraftByStudentDraftId,
+  updateReviewStatus,
+  submitEndComment
 })(FeedbackToolContainer);

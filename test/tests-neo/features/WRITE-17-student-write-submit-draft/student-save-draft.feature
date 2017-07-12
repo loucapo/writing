@@ -23,8 +23,8 @@ Feature: Student Saves Work
     When I click "start_draft"
     Then the text of "draft_area" should be "happy"
 
-    #Dunno how to blow this up yet
-@pending
+  #Dunno how to blow this up yet
+  @pending
   Scenario: Student Clicks Save Button (Error State Returned)
     Given I launch the activity as a "student"
     When I click "start_draft"
@@ -34,6 +34,7 @@ Feature: Student Saves Work
 
   Scenario: Student Sees Return To Draft Button
     Given I launch the activity as a "student"
+    Then I sleep for 1 seconds
     Then the text of "start_draft" should be "Return to Final Paper"
 
   Scenario: Instructor Sets Up Reflection Questions
@@ -43,10 +44,10 @@ Feature: Student Saves Work
     When I click "ref_question_check" [4]
     And I click "ref_question_save"
 
-@pending=WRITE-1102
   Scenario: Student Has Enabled Save Button in Reflection Page
     Given I launch the activity as a "student"
     When I click "start_draft"
+    And I type "very " in "draft_area"
     And I click "start_reflection"
     Then I wait until there is 1 "reflection_button_submit_disabled" visible
 
@@ -64,5 +65,5 @@ Feature: Student Saves Work
   Scenario: Student Returns to Reflection Page and Sees Saved Work
     Given I launch the activity as a "student"
     When I click "view_final_draft_button"
-    Then the text of "draft_area" should be "happy"
+    Then the text of "draft_area" should be "very happy"
     Then the text of "reflection_question_submission_textarea" [1] should include "yay"
