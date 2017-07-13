@@ -1,4 +1,4 @@
-module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
+module.exports = function(EntityBase, StudentReflectionAnswer, ReviewStatus, uuid) {
   return class StudentDraft extends EntityBase {
     constructor(studentDraft) {
       super();
@@ -31,8 +31,17 @@ module.exports = function(EntityBase, StudentReflectionAnswer, uuid) {
 
     submit(cmd) {
       this.status = 'submitted';
-      this.reviewStatus = 'notStarted';
+      this.reviewStatus = ReviewStatus.notStarted;
       this.submittedDate = cmd.submittedDate;
+    }
+
+    updateReviewStatus(cmd) {
+      this.reviewStatus = cmd.reviewStatus;
+      this.reviewedDate = cmd.reviewedDate;
+    }
+
+    submitEndComment(cmd) {
+      this.endComment = cmd.endComment;
     }
   };
 };

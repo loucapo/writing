@@ -68,3 +68,17 @@ SET status = :status,
     submitted_date = :submittedDate,
     modified_by_id = :modifiedById
 WHERE student_draft_id = :studentDraftId
+
+-- name: updateReviewStatus
+UPDATE student_draft
+SET review_status = :reviewStatus,
+    modified_by_id = :modifiedById,
+    reviewed_date = :reviewedDate
+WHERE student_draft_id = :studentDraftId
+
+-- name: submitStudentDraftEndComment
+UPDATE student_draft
+SET end_comment = :endComment,
+modified_by_id = :modifiedById,
+modified_date = :modifiedDate
+WHERE student_draft_id = :studentDraftId

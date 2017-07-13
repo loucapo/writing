@@ -39,10 +39,10 @@ Feature: Instructor Views Draft Submissions Switcher
     Then I wait until there is 1 "submission_row_name" visible
     And the text of "submission_row_name" [1] should be "5ef7fa10-f4a4-4add-9191-882de6b9065b"
 
-    @db=reset
+  @db=reset
   Scenario: Setup Student Draft Submission
     Given I launch the activity as an "instructor"
-      And I click "add_draft_button"
+    And I click "add_draft_button"
     Given I launch the activity as an "student"
     When I click "start_draft"
     And I type "happy" in "draft_area"
