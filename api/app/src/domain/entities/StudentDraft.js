@@ -37,6 +37,7 @@ module.exports = function(EntityBase, StudentReflectionAnswer, ReviewStatus, uui
 
     updateReviewStatus(cmd) {
       this.reviewStatus = cmd.reviewStatus;
+      this.reviewedDate = cmd.reviewedDate;
     }
 
     submitEndComment(cmd) {

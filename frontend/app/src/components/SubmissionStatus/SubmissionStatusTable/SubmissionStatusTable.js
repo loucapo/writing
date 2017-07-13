@@ -4,7 +4,7 @@ import { SubmissionStatusItem } from '../index';
 
 import styles from './submissionStatusTable.css';
 
-const SubmissionStatusTable = ({ submissionStatuses }) => {
+const SubmissionStatusTable = ({ submissionStatuses, updateReviewStatus }) => {
   return (
     <table className={styles.table}>
       <thead>
@@ -16,21 +16,25 @@ const SubmissionStatusTable = ({ submissionStatuses }) => {
         </tr>
       </thead>
       <tbody>
-        {submissionStatuses && submissionStatuses.length > 0
-          ? submissionStatuses.map(x => <SubmissionStatusItem key={x.studentId} item={x} />)
+        {(submissionStatuses && submissionStatuses.length > 0) ?
+          submissionStatuses.map(x => (
+            <SubmissionStatusItem key={x.studentId} item={x} updateReviewStatus={updateReviewStatus} />
+          ))
           :
           <tr>
             <td className={styles.notStartedAlert} colSpan="4">
               No students have started this assignment
             </td>
-          </tr>}
+          </tr>
+        }
       </tbody>
     </table>
   );
 };
 
 SubmissionStatusTable.propTypes = {
-  submissionStatuses: PropTypes.array
+  submissionStatuses: PropTypes.array,
+  updateReviewStatus: PropTypes.func
 };
 
 export default SubmissionStatusTable;

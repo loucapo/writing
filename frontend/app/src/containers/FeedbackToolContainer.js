@@ -17,6 +17,12 @@ class FeedbackToolContainer extends Component {
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.studentDraft && newProps.studentDraft.reviewStatus === 'notStarted') {
+      this.props.updateReviewStatus(newProps.studentDraft.studentActivityId, newProps.studentDraft.studentDraftId, 'inProgress');
+    }
+  }
+
   render() {
     return this.props.studentDraft ? <FeedbackTool {...this.props} /> : null;
   }
@@ -29,7 +35,8 @@ FeedbackToolContainer.propTypes = {
   homeRoute: PropTypes.string,
   getReflectionQuestions: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
-  getStudentDraftByStudentDraftId: PropTypes.func
+  getStudentDraftByStudentDraftId: PropTypes.func,
+  updateReviewStatus: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
