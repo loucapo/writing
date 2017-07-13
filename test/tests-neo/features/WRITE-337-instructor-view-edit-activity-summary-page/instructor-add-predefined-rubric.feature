@@ -1,10 +1,6 @@
 @WRITE-30
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
 
-  Scenario: The Instructor Sees Select Rubric Dropdown
-    Given I launch the activity as an "instructor"
-    Then I wait until there is 1 "rubric_dropdown" visible
-
   @pending=WRITE-871
   Scenario: The Instructor Opens the Rubric Selector
     Given I launch the activity as an "instructor"
