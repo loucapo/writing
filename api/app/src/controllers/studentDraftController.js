@@ -144,6 +144,7 @@ module.exports = function(StudentActivity,
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
       command.modifiedById = ctx.state.user.id;
+      command.reviewedDate = (reviewStatus === 'submitted') ? moment().format('YYYY-MM-DD') : null;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.updateReviewStatus(command);
 

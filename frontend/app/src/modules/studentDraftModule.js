@@ -138,13 +138,12 @@ export function submitDraft(studentActivityId, studentDraftId, homeRoute, draftN
   };
 }
 
-export function updateReviewStatus(studentActivityId, studentDraftId, reviewStatus, homeRoute) {
+export function updateReviewStatus(studentActivityId, studentDraftId, reviewStatus) {
   return {
     type: UPDATE_REVIEW_STATUS.REQUEST,
     states: UPDATE_REVIEW_STATUS,
     url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/updatereviewstatus`,
     studentDraftId,
-    successFunction: successFunction(homeRoute),
     params: {
       method: 'put',
       body: {reviewStatus}
