@@ -1,11 +1,89 @@
 /* eslint-disable camelcase */
 const pages = [];
-pages.instructor_summary = require('../pages/instructor-summary.paige');
+const { InstructorSummaryPage } = require('../pages/instructor-summary.page');
+pages.instructor_summary = new InstructorSummaryPage();
 
 let page = pages.instructor_summary;
 const faker = require('faker');
+// TODO: bust these out to here \/
+//const ch = require('./core-helper');
 
 exports.define = function(steps) {
+
+  function splitPolocComp(poloc) {
+    // shouldnt be giving it >1 '.', as we're effectively making an API to write tests to, be overly explicit.
+    if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
+    let [component, element] = poloc.split('.');
+    let [comp, compArg] = extractArg(component);
+    let [elem, elemArg] = extractArg(element);
+    return [comp, compArg, elem, elemArg];
+  }
+
+  // PageObject-Locator to PageObject: return [] of WebElements
+  async function polocToPO(poloc, findAll = false, allowEmptyResult = false) {
+    //console.log(`========= POLOCTOPO: ${poloc} ============ `);
+    let result = null;
+    if (poloc.includes('.')) {
+      //console.log(' has a dot');
+      let [comp, compArg, elem, elemArg] = splitPolocComp(poloc);
+      compArg = compArg || 1;
+      elemArg = findAll ? 'all' : (elemArg || 1);
+      console.log(`POLOCTOPO START:: ${comp}, ${compArg}, ${elem}, ${elemArg}`);
+      try {
+        // let r1 = await page[comp]; //(compArg);
+        // console.log("r1: (should be a function from componentGenerator)");
+        // console.log(r1);
+
+        // let r1b = await r1(compArg);
+        // console.log("r1b: (should be a newed component)");
+        // console.log(r1b);
+        // let r2 = r1b[elem];
+        // console.log("r2:");
+        // console.log(r2);
+        // let r3 = r2(elemArg);
+        // console.log(r3);
+        result = await page[comp](compArg)(compArg)[elem](elemArg);
+      } catch (error) {
+        // if (allowEmptyResult) {
+        //   result = findAll ? [] : null;
+        // } else {
+          throw error;
+        //}
+      }
+    }
+    else {
+      //console.log(`has no dot`);
+      let [elem, elemArg] = extractArg(poloc);
+      elemArg = findAll ? 'all' : (elemArg || 1);
+      // console.log(`elem  ${elem}, elemarg  ${elemArg}`);
+      // console.log(Object.keys(page));
+      // console.log(page.things());
+      //console.log(page[elem]);
+      //console.log(" ");
+      try {
+        //console.log(`elem: ${elem}, arg: ${arg}`);
+        result = await page[elem](elemArg);
+      } catch (error) {
+        // console.log("well at least im here.................");
+        // console.log(error);
+        if (allowEmptyResult) {
+          result = findAll ? [] : null;
+        } else { throw error; }
+      }
+    }
+    return result;
+  }
+
+  function extractArg(poloc) {
+    const re = /^([_a-zA-Z0-9]*)\((.*)\)$/;
+    let r = poloc.match(re);
+    if (r) {
+      r[2] = (isNaN(parseInt(r[2]))) ? r[2] : parseInt(r[2]);
+      return [r[1], r[2]];
+    } else {
+      return [poloc, 1];
+    }
+  }
 
   // TODO: common functions like gimmeNone need to be deduped and shared
   function gimmeNone(arr) {
@@ -19,6 +97,8 @@ exports.define = function(steps) {
   };
 
   const isViz = el => el.isDisplayed().then(bool => bool);
+
+  /// ///
 
   //steps.given(/I launch the activity as a[n]? "(.+)"/, user => {
   steps.given(`I launch the activity as an "$user"`, function(user, done) {
@@ -57,10 +137,8 @@ exports.define = function(steps) {
     return driver.wait(() => {
       return polocToPO(element, true, true).then(els => {
         if (els.length === 0) {
-          console.log(`rejecting because no such`);
           return false; }
         return filterAsync(els, isViz).then(results => {
-          console.log(`attempting to match counts`);
           return (results.length === parseInt(count));
         });
       });
@@ -93,59 +171,9 @@ exports.define = function(steps) {
   });
 
   // TODO: remove me
-  steps.when('i add draft', function() {
+  steps.when('i add draft', async function() {
     page.add_draft_button.click();
   });
-
-  function splitPolocComp(poloc) {
-    // shouldnt be giving it >1 '.', as we're effectively making an API to write tests to, be overly explicit.
-    if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
-    let [component, element] = poloc.split('.');
-    let [comp, compArg] = extractArg(component);
-    let [elem, elemArg] = extractArg(element);
-    return [comp, compArg, elem, elemArg];
-  }
-
-  // PageObject-Locator to PageObject: return [] of WebElements
-  async function polocToPO(poloc, findAll = false, allowEmptyResult = false) {
-    let result = null;
-    if (poloc.includes('.')) {
-      let [comp, compArg, elem, elemArg] = splitPolocComp(poloc);
-      compArg = compArg || 1;
-      elemArg = findAll ? 'all' : (elemArg || 1);
-      try {
-        console.log(`${comp}, ${compArg}, ${elem}, ${elemArg}`);
-        result = await page[comp](compArg)[elem](elemArg);
-      } catch (error) {
-        if (allowEmptyResult) {
-          result = findAll ? [] : null;
-        } else { throw error; }
-      }
-    }
-    else {
-      let [elem, elemArg] = extractArg(poloc);
-      elemArg = findAll ? 'all' : (elemArg || 1);
-      try {
-        result = await page[elem](elemArg);
-      } catch (error) {
-        if (allowEmptyResult) {
-          result = findAll ? [] : null;
-        } else { throw error; }
-      }
-    }
-    return result;
-  }
-
-  function extractArg(poloc) {
-    const re = /^([_a-zA-Z0-9]*)\((.*)\)$/;
-    let r = poloc.match(re);
-    if (r) {
-      r[2] = (isNaN(parseInt(r[2]))) ? r[2] : parseInt(r[2]);
-      return [r[1], r[2]];
-    } else {
-      return [poloc, 1];
-    }
-  }
 
   // NOTE that this is an IS match, not a contains.
   // the text of "some-page-object" is "some other string"      // => returns the 1st match it finds, or throws
