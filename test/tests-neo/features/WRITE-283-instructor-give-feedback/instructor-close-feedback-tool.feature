@@ -22,7 +22,7 @@ Feature: Instructor Close Feedback Tool
     And I click "student_submissions"
     And I click "submission_row_start" [1]
     And I click "back_button"
-    And the text of "submission_row_status" [1] should be "Start Review"
+    And the text of "submission_row_status" [1] should be "Return to Review"
 
   Scenario: The Instructor Clicks on Done
     Given I launch the activity as an "instructor"
