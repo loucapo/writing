@@ -325,6 +325,10 @@ module.exports = new Page({
     desc: `Back arrow button to navigate from feedback tool to activity summary page`,
     locator: `[data-id='header-back-button']`
   }),
+  done_button: basePageObj({
+    desc: `Done button to navigate from feedback tool to activity summary page`,
+    locator: `[data-id='done']`
+  }),
 
   // student top nav
   //
