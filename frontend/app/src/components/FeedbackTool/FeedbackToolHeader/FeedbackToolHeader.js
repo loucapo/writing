@@ -4,20 +4,14 @@ import { Link } from 'react-router';
 import moment from 'moment';
 import MLIcon from 'ml-react-cdl-icons';
 import styles from './feedbackToolHeader.css';
-import { MLButton } from './../../MLComponents/index';
+import { MLButton } from '../../MLComponents/index';
 
-const Header = ({ homeRoute,
-                  draftTitle,
-                  submittedDate,
-                  instructorName,
-                  updateReviewStatus,
-                  studentActivityId,
-                  studentDraftId}) => {
-
-  let done = () => {
-    updateReviewStatus(studentActivityId, studentDraftId, 'inProgress', `${homeRoute}?display=submissions`);
-  };
-
+const Header = ({
+  homeRoute,
+  draftTitle,
+  submittedDate,
+  instructorName
+}) => {
   return (
     <header className={styles.header}>
       <div className={styles.leftContainer}>
@@ -44,19 +38,17 @@ const Header = ({ homeRoute,
         </div>
       </div>
       <div className={styles.rightContainer}>
-        <MLButton title="Done" dataId="done" handleClick={done} />
+        <MLButton dataId="done" link={`${homeRoute}?display=submissions`} title="Done" />
       </div>
-    </header>);
+    </header>
+  );
 };
 
 Header.propTypes = {
   homeRoute: PropTypes.string,
   draftTitle: PropTypes.string,
   submittedDate: PropTypes.string,
-  instructorName: PropTypes.string,
-  updateReviewStatus: PropTypes.func,
-  studentActivityId: PropTypes.string,
-  studentDraftId: PropTypes.string
+  instructorName: PropTypes.string
 };
 
 export default Header;
