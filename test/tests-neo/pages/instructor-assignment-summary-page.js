@@ -297,8 +297,12 @@ module.exports = new Page({
     locator: `[class^='SubmissionStatusItem__row__'] [data-id='review-status'] a`
   }),
   submission_row_sent: basePageObj({
-    desc: ``,
+    desc: `Text area cell of Send Status column`,
     locator: `[class^='SubmissionStatusItem__row__'] [data-id='send-status']`
+  }),
+  submission_row_send_review_link: basePageObj({
+    desc: `Send Review link that instructor hits on student submission grid to send student feedback`,
+    locator: `[class^='SubmissionStatusItem__row__'] [data-id='send-status'] a`
   }),
   review_status_start_review: basePageObj({
     desc: `Link to launch feedback tool`,

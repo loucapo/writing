@@ -1,4 +1,5 @@
 @WRITE-858
+  @only
 Feature: Instructor can view status of student drafts
 
   @db=reset
@@ -21,7 +22,7 @@ Feature: Instructor can view status of student drafts
     Then I wait until there is 1 "student_submissions" visible
     When I click "student_submissions"
     Then I wait until there is 1 "no_submissions_alert" visible
-
+  @pending=WRITE-1228
   @db=reset
   Scenario: Instructor's draft submission list contains students that have opened a draft for the activity
     Given I launch the activity as an "instructor"
@@ -50,7 +51,7 @@ Feature: Instructor can view status of student drafts
     And the text of "submission_row_date" [1] should be "—"
     And the text of "submission_row_status" [1] should be "—"
     And the text of "submission_row_sent" [1] should be "—"
-
+  @pending=WRITE-1228
   @db=reset
   Scenario: Instructor's draft submission list contains students that have saved a version of their draft
     Given I launch the activity as an "instructor"
