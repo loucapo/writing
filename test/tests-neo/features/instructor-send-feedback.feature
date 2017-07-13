@@ -1,4 +1,5 @@
 @WRITE-968
+  @only
 Feature: Instructor Sends Student Feedback
   @db=reset
   Scenario: Setup Student Draft Submission
@@ -19,8 +20,7 @@ Feature: Instructor Sends Student Feedback
   Scenario: The Instructor Sends Feedback
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
-    And I click "submission_row_status" [1]
-    And I click "done_with_review"
-    Then I wait until there is 1 "submission_row_sent" visible
+    And I click "submission_row_start" [1]
+    And I click "done_button"
     And I click "submission_row_sent" [1]
     And the text of "submission_row_sent" [1] should include "Review sent "
