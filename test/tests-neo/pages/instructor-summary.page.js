@@ -7,21 +7,25 @@ const refQuestionModal = require('./instructor-summary.component.add-student-ref
 exports.InstructorSummaryPage = class extends Page {
   things() {
     return {
-      add_draft_button: {locator: `[data-id='add-draft']`},
-      draft_card: {locator: `[data-id='draft-section']`},
-      draft_title: { locator: `[class^='Heading__headingText__']`}
+      add_draft_button: {
+        locator: `[data-id='add-draft']`},
+      draft_card: {
+        locator: `[data-id='draft-section']`},
+      draft_title: {
+        locator: `[class^='Heading__headingText__']`}
     };
   }
 
   // TODO: reimplement
   //url: { value: '/' },
 
-  draft(index) {
-    return Page.componentGenerator(draftComponent, index, {
+  draft(arg) {
+    return draftComponent.generate(arg, {
       locator: `//*[@data-id='draft-section']/ancestor::div[contains(@data-id, 'MLCard')]`,
       type: `xpath`}); }
 
-  reflection_questions_modal(index) {
-    return Page.componentGenerator(refQuestionModal, index, {
+  reflection_questions_modal(arg) {
+    return refQuestionModal.generate(arg, {
       locator: `[data-id='modal']`}); }
+
 };
