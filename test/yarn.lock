@@ -193,19 +193,22 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-chai-as-promised@6.0.0:
-  version "6.0.0"
-  resolved "http://npm.macmillantech.com:8080/c/chai-as-promised/_attachments/chai-as-promised-6.0.0.tgz#1a02a433a6f24dafac63b9c96fa1684db1aa8da6"
+chai-as-promised@^7.1.1:
+  version "7.1.1"
+  resolved "http://npm.macmillantech.com:8080/c/chai-as-promised/_attachments/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
   dependencies:
     check-error "^1.0.2"
 
-chai@3.5.0:
-  version "3.5.0"
-  resolved "http://npm.macmillantech.com:8080/c/chai/_attachments/chai-3.5.0.tgz#4d02637b067fe958bdbfdd3a40ec56fef7373247"
+chai@^4.1.0:
+  version "4.1.0"
+  resolved "http://npm.macmillantech.com:8080/c/chai/_attachments/chai-4.1.0.tgz#331a0391b55c3af8740ae9c3b7458bc1c3805e6d"
   dependencies:
     assertion-error "^1.0.1"
-    deep-eql "^0.1.3"
-    type-detect "^1.0.0"
+    check-error "^1.0.1"
+    deep-eql "^2.0.1"
+    get-func-name "^2.0.0"
+    pathval "^1.0.0"
+    type-detect "^4.0.0"
 
 chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
@@ -217,7 +220,7 @@ chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-check-error@^1.0.2:
+check-error@^1.0.1, check-error@^1.0.2:
   version "1.0.2"
   resolved "http://npm.macmillantech.com:8080/c/check-error/_attachments/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 
@@ -355,11 +358,11 @@ decamelize@^1.0.0, decamelize@^1.1.1:
   version "1.2.0"
   resolved "http://npm.macmillantech.com:8080/d/decamelize/_attachments/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
-deep-eql@^0.1.3:
-  version "0.1.3"
-  resolved "http://npm.macmillantech.com:8080/d/deep-eql/_attachments/deep-eql-0.1.3.tgz#ef558acab8de25206cd713906d74e56930eb69f2"
+deep-eql@^2.0.1:
+  version "2.0.2"
+  resolved "http://npm.macmillantech.com:8080/d/deep-eql/_attachments/deep-eql-2.0.2.tgz#b1bac06e56f0a76777686d50c9feb75c2ed7679a"
   dependencies:
-    type-detect "0.1.1"
+    type-detect "^3.0.0"
 
 deep-is@~0.1.3:
   version "0.1.3"
@@ -680,6 +683,10 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
+get-func-name@^2.0.0:
+  version "2.0.0"
+  resolved "http://npm.macmillantech.com:8080/g/get-func-name/_attachments/get-func-name-2.0.0.tgz#ead774abee72e20409433a066366023dd6887a41"
+
 getpass@^0.1.1:
   version "0.1.7"
   resolved "http://npm.macmillantech.com:8080/g/getpass/_attachments/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
@@ -697,7 +704,7 @@ glob@7.1.1:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5:
+glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.2:
   version "7.1.2"
   resolved "http://npm.macmillantech.com:8080/g/glob/_attachments/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
   dependencies:
@@ -1084,18 +1091,18 @@ lowercase-keys@^1.0.0:
   version "1.0.0"
   resolved "http://npm.macmillantech.com:8080/l/lowercase-keys/_attachments/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
 
-marvin-js@0.5.1:
-  version "0.5.1"
-  resolved "http://npm.macmillantech.com:8080/m/marvin-js/_attachments/marvin-js-0.5.1.tgz#a7a22bbc7f0df9bcedf75d0eb632e8c4b50e70ae"
+marvin-js@0.6.0-beta1:
+  version "0.6.0-beta1"
+  resolved "http://npm.macmillantech.com:8080/m/marvin-js/_attachments/marvin-js-0.6.0-beta1.tgz#387e2df47c79bfedbc2ed743f6a1795b39684f34"
   dependencies:
-    chai "3.5.0"
-    chai-as-promised "6.0.0"
+    chai "^4.1.0"
+    chai-as-promised "^7.1.1"
     chromedriver "^2.29.0"
     fs-extra "^3.0.1"
     geckodriver "^1.6.1"
-    glob "7.1.1"
+    glob "^7.1.2"
     marvin-reporter "0.5.0"
-    mocha "^3.3.0"
+    mocha "^3.4.2"
     mocha-bamboo-reporter "1.1.1"
     nconf "^0.8.4"
     sanitize-filename "1.6.1"
@@ -1168,7 +1175,7 @@ mocha-bamboo-reporter@1.1.1:
   dependencies:
     mocha ">=1.8.1"
 
-mocha@>=1.8.1, mocha@^3.3.0:
+mocha@>=1.8.1, mocha@^3.3.0, mocha@^3.4.2:
   version "3.4.2"
   resolved "http://npm.macmillantech.com:8080/m/mocha/_attachments/mocha-3.4.2.tgz#d0ef4d332126dbf18d0d640c9b382dd48be97594"
   dependencies:
@@ -1314,6 +1321,10 @@ path@0.12.7:
   dependencies:
     process "^0.11.1"
     util "^0.10.3"
+
+pathval@^1.0.0:
+  version "1.1.0"
+  resolved "http://npm.macmillantech.com:8080/p/pathval/_attachments/pathval-1.1.0.tgz#b942e6d4bde653005ef6b71361def8727d0645e0"
 
 pend@~1.2.0:
   version "1.2.0"
@@ -1712,13 +1723,13 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-detect@0.1.1:
-  version "0.1.1"
-  resolved "http://npm.macmillantech.com:8080/t/type-detect/_attachments/type-detect-0.1.1.tgz#0ba5ec2a885640e470ea4e8505971900dac58822"
+type-detect@^3.0.0:
+  version "3.0.0"
+  resolved "http://npm.macmillantech.com:8080/t/type-detect/_attachments/type-detect-3.0.0.tgz#46d0cc8553abb7b13a352b0d6dea2fd58f2d9b55"
 
-type-detect@^1.0.0:
-  version "1.0.0"
-  resolved "http://npm.macmillantech.com:8080/t/type-detect/_attachments/type-detect-1.0.0.tgz#762217cc06db258ec48908a1298e8b95121e8ea2"
+type-detect@^4.0.0:
+  version "4.0.3"
+  resolved "http://npm.macmillantech.com:8080/t/type-detect/_attachments/type-detect-4.0.3.tgz#0e3f2670b44099b0b46c284d136a7ef49c74c2ea"
 
 typedarray@^0.0.6:
   version "0.0.6"
