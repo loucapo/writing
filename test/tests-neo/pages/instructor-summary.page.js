@@ -16,13 +16,12 @@ exports.InstructorSummaryPage = class extends Page {
   // TODO: reimplement
   //url: { value: '/' },
 
-  draft(vx) {
-    console.log("DRAFT IS getting called ");
-    console.log(vx);
-    return Page.componentGenerator(draftComponent, {
-    locator: `//*[@data-id='draft-section']/ancestor::div[contains(@data-id, 'MLCard')]`,
-    type: `xpath`}); }
+  draft(index) {
+    return Page.componentGenerator(draftComponent, index, {
+      locator: `//*[@data-id='draft-section']/ancestor::div[contains(@data-id, 'MLCard')]`,
+      type: `xpath`}); }
 
-  reflection_questions_modal() { return Page.componentGenerator(refQuestionModal, {
-    locator: `[data-id='modal']`}); }
+  reflection_questions_modal(index) {
+    return Page.componentGenerator(refQuestionModal, index, {
+      locator: `[data-id='modal']`}); }
 };

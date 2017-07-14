@@ -8,6 +8,7 @@ Feature: POComponent test
     Then I wait until there is 1 "draft_card" visible
     When I click "add_draft_button"
     Then I wait until there are 2 "draft_card" visible
+    Then the text of "draft.title" should be "Draft 1"
     Then the text of "draft(1).title" should be "Draft 1"
     Then the text of "draft(2).title" should be "Final Paper"
     When I click "draft(2).add_reflection_questions"
