@@ -41,7 +41,7 @@ const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
         {item.studentId}
       </td>
       <td data-id="completion-date">
-        {item.submittedDate ? item.submittedDate : <span>&mdash;</span>}
+        {item.status === 'submitted' ? item.submittedDate : <span>&mdash;</span>}
       </td>
       <td data-id="review-status">
         {renderReviewStatus()}
