@@ -3,6 +3,11 @@ SELECT *
 FROM student_draft
 WHERE student_activity_id = :studentActivityId AND draft_id = :draftId
 
+-- name: getStudentDraftByStudentDraftId
+SELECT *
+FROM student_draft
+WHERE student_draft_id = :studentDraftId
+
 -- name: getStudentDraftsByStudentActivityId
 SELECT *
 FROM student_draft
@@ -62,4 +67,18 @@ SET status = :status,
     review_status = :reviewStatus,
     submitted_date = :submittedDate,
     modified_by_id = :modifiedById
+WHERE student_draft_id = :studentDraftId
+
+-- name: updateReviewStatus
+UPDATE student_draft
+SET review_status = :reviewStatus,
+    modified_by_id = :modifiedById,
+    reviewed_date = :reviewedDate
+WHERE student_draft_id = :studentDraftId
+
+-- name: submitStudentDraftEndComment
+UPDATE student_draft
+SET end_comment = :endComment,
+modified_by_id = :modifiedById,
+modified_date = :modifiedDate
 WHERE student_draft_id = :studentDraftId

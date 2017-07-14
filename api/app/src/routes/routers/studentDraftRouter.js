@@ -58,6 +58,30 @@ module.exports = function activityRouter(koarouter, controllers) {
      */
     router.get('/studentactivity/:studentActivityId/draft/:draftId',
       controllers.studentDraftController.getStudentDraftByStudentActivityId);
+        /**
+     * @swagger
+     * /studentDraft/{studentDraftId}:
+     *   get:
+     *     x-name: getStudentDraftByStudentDraftId
+     *     description: getStudentDraftByStudentDraftId
+     *     operationId: getStudentDraftByStudentDraftId
+     *     parameters:
+     *       - name: studentDraftId
+     *         in: path
+     *         type: string
+     *         required: true
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.get('/studentDraft/:studentDraftId',
+      controllers.studentDraftController.getStudentDraftByStudentDraftId);
     /**
      * @swagger
      * /studentactivity/{studentActivityId}/drafts:
@@ -212,6 +236,81 @@ module.exports = function activityRouter(koarouter, controllers) {
     router.put(
       '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/submit',
       controllers.studentDraftController.submitStudentDraft
+    );
+    /**
+     * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/updatereviewstatus:
+     *   put:
+     *     x-name: updateReviewStatus
+     *     description: updateReviewStatus
+     *     operationId: updateReviewStatus
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/updateReviewStatus"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/updatereviewstatus',
+      controllers.studentDraftController.updateReviewStatus
+    );
+
+    /**
+     * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/submitendcomment:
+     *   put:
+     *     x-name: submitEndComment
+     *     description: creates a drafts end comment
+     *     operationId: submitEndComment
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/submitEndComment"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/submitendcomment',
+      controllers.studentDraftController.submitEndComment
     );
 
     appRouter.use(router.routes(), router.allowedMethods());

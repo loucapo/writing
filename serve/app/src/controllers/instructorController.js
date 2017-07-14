@@ -11,7 +11,7 @@ module.exports = function(config, moment, superagent, logger, jsonwebtoken) {
       let dummyData = {
         id: 'f3e3c2d5-cf43-4f63-924f-3ec7a125a334',
         first_name: 'Judy',
-        name: 'Smith',
+        last_name: 'Smith',
         email: 'judy.smith@university.com',
         admin: 'false',
         auth_redirect: 'http://zombo.com',

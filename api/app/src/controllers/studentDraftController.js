@@ -1,4 +1,10 @@
-module.exports = function(StudentActivity, repository, sqlLibrary, moment, studentActivityBuilder, logger) {
+module.exports = function(StudentActivity,
+                          repository,
+                          sqlLibrary,
+                          moment,
+                          studentActivityBuilder,
+                          logger,
+                          ReviewStatus) {
   return {
     // check if it exists, if not create it;
     async createStudentDraftIfNotThere(ctx) {
@@ -30,6 +36,16 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
         sqlLibrary.studentDraft,
         'getStudentDraftByStudentActivityIdAndDraftId',
         {studentActivityId: ctx.params.studentActivityId, draftId: ctx.params.draftId});
+      ctx.status = 200;
+      ctx.body = studentDraft;
+      return ctx;
+    },
+
+    async getStudentDraftByStudentDraftId(ctx) {
+      const studentDraft = await repository.query(
+        sqlLibrary.studentDraft,
+        'getStudentDraftByStudentDraftId',
+        {studentDraftId: ctx.params.studentDraftId});
       ctx.status = 200;
       ctx.body = studentDraft;
       return ctx;
@@ -114,7 +130,43 @@ module.exports = function(StudentActivity, repository, sqlLibrary, moment, stude
 
       ctx.status = 200;
       return ctx;
-    }
+    },
 
+    async updateReviewStatus(ctx) {
+      const command = ctx.request.body;
+
+      const reviewStatus = ReviewStatus.fromKey(command.reviewStatus);
+      if (!reviewStatus) {
+        ctx.status = 422;
+        ctx.body = {error: `reviewStatus ${command.reviewStatus} is not a valid reviewStatus`};
+        return ctx;
+      }
+      const studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      command.modifiedById = ctx.state.user.id;
+      command.reviewedDate = (reviewStatus === 'submitted') ? moment().format('YYYY-MM-DD') : null;
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
+      let event = studentActivity.updateReviewStatus(command);
+
+      await repository.query(sqlLibrary.studentDraft, 'updateReviewStatus', event);
+
+      ctx.status = 200;
+      return ctx;
+    },
+
+    async submitEndComment(ctx) {
+      const command = ctx.request.body;
+      const studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      command.modifiedById = ctx.state.user.id;
+      command.modifiedDate = moment().toISOString();
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
+      let event = studentActivity.submitEndComment(command);
+
+      await repository.query(sqlLibrary.studentDraft, 'submitStudentDraftEndComment', event);
+
+      ctx.status = 200;
+      return ctx;
+    }
   };
 };
