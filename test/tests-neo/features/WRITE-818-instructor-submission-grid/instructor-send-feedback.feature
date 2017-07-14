@@ -1,5 +1,5 @@
-@WRITE-1137
-Feature: Instructor Close Feedback Tool
+@WRITE-968
+Feature: Instructor Sends Student Feedback
   @db=reset
   Scenario: Setup Student Draft Submission
     Given I launch the activity as an "instructor"
@@ -16,18 +16,11 @@ Feature: Instructor Close Feedback Tool
     And I click "reflection_button_submit_enabled"
     And I click "draft_submit_confirm"
 
-  Scenario: The Instructor Clicks on Back Button
+  Scenario: The Instructor Sends Feedback
     Given I launch the activity as an "instructor"
-    And I maximize the browser
-    And I click "student_submissions"
-    And I click "submission_row_start" [1]
-    And I click "back_button"
-    And the text of "submission_row_status" [1] should be "Return to Review"
-
-  Scenario: The Instructor Clicks on Done
-    Given I launch the activity as an "instructor"
-    And I maximize the browser
+    When I maximize the browser
     And I click "student_submissions"
     And I click "submission_row_start" [1]
     And I click "done_button"
-    And the text of "submission_row_status" [1] should be "Return to Review"
+    And I click "submission_row_send_review_link" [1]
+    And the text of "submission_row_sent" [1] should include "Review sent "
