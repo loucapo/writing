@@ -6,28 +6,25 @@ class AddStudentReflectionQuestionsModal extends Component {
   things() {
     return {
       close: {
-        desc: ``,
+        desc: `Close button on the modal`,
         locator: `[data-id='close-modal']`
       },
       question_title: {
-        desc: ``,
+        desc: `Reflection Question title`,
         locator: `[data-id='input-fields'] [data-id='question-title']`
       },
       question_type: {
-        desc: ``,
+        desc: `Genre the reflection question is`,
         locator: `[data-id='input-fields'] [data-id='question-type']`
       },
       save: {
-        desc: ``,
+        desc: `Button to save changes`,
         locator: `[data-id='save-button']`
       },
       cancel: {
-        desc: ``,
+        desc: `Cancel button on modal`,
         locator: `[data-id='cancel-button']`
       },
-      title: {
-        locator: `[class^='Heading__headingText__']`,
-        desc: `` },
       // TODO: great place to use method_missing? or, what, es6 proxies?  also hover, other psuedo selectors.
       // maybe.  maybe wildly unnecessary.
       // You could also go the site_prism route and make checkbox a subclass of basePageObject or decorate it.
@@ -36,9 +33,11 @@ class AddStudentReflectionQuestionsModal extends Component {
         locator: `[data-id='checkbox']`
       },
       check__checked: {
+        desc: `Checkbox that is selected`,
         locator: `[data-id='modal'] [data-id='input-fields'] [data-id='checkbox']:checked`
       },
       check__unchecked: {
+        desc: `Checkbox that is unselected`,
         locator: `[data-id='modal'] [data-id='input-fields'] [data-id='checkbox']:not(:checked)`
       },
 
@@ -47,9 +46,9 @@ class AddStudentReflectionQuestionsModal extends Component {
       // with sibling element-nodes.  when done, change the following to actually just be
       // the description.
       desc: {
-        desc: ``,
+        desc: `reflection question description`,
         locator: `[data-id='field-title']>div`
-      },
+      }
     }; }
 
 }
