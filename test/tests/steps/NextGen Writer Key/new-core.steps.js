@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 const pages = [];
-const { InstructorSummaryPage } = require('../pages/instructor-summary.page');
+const { InstructorSummaryPage } = require('../../pages/NextGen Writer Key/instructor-summary.page');
 pages.instructor_summary = new InstructorSummaryPage();
 
 let page = pages.instructor_summary;
