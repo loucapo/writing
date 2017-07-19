@@ -9,6 +9,10 @@ class StudentSubmissions extends Component {
         desc: `Available drafts in drop down on submission grid`,
         locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li`
       },
+      draft_select_dropdown_submission_grid: {
+        desc: `Drop Down to change drafts`,
+        locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown']`
+      },
       dropdown_drafts_submission_grid_selected: {
         desc: `Available drafts in drop down on submission grid`,
         locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li svg`
@@ -48,6 +52,10 @@ class StudentSubmissions extends Component {
       review_status_start_review: {
         desc: `Link to launch feedback tool`,
         locator: `[data-id='review-status'] a`
+      },
+      draft_submission_date: {
+        desc: `Green checkmark that appears after successful draft submission on draft card`,
+        locator: `[data-id='submitted-date']`
       }
     };
   }

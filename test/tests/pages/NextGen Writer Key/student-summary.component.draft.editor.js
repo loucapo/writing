@@ -108,6 +108,27 @@ class DraftEditor extends Component {
       view_draft_link: {
         desc: `Link on the reflection page that takes user back to drafting page`,
         locator: `[data-id='return-to-draft-from-reflection-questions']`
+      },
+      draft_save_button_disabled: {
+        desc: `Button to save draft in editor when no text written`,
+        locator: `[data-id='save-draft'][class*='MLButton__disabled_']`
+      },
+      draft_save_button_enabled: {
+        desc: `Button to save draft in editor when text exists in editor`,
+        locator: `[data-id='save-draft']:not([class*='MLButton__disabled_'])`
+      },
+      start_reflection_button_disabled: {
+        desc: `Button to go to reflection questions when text doesn't exists in editor`,
+        locator: `[data-id='start-reflection'][class*='MLButton__disabled_']`
+      },
+      start_reflection_button_enabled: {
+        desc: `Button to save draft in editor when text exists in editor`,
+        locator: `[data-id='start-reflection']:not([class*='MLButton__disabled_'])`
+      },
+      // Not sure if this one goes here (read only view of student draft?)
+      reflection_question_submission_textarea: {
+        desc: `Textarea of reflection questions on view of submitted draft`,
+        locator: `[data-id='MLCard-Reflection'] div div p`
       }
     }; }
 }
