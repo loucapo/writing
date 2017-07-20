@@ -3,6 +3,10 @@
 const Page = require('marvin-js').Page;
 const draftComponent = require('./instructor-summary.component.draft');
 const refQuestionModal = require('./instructor-summary.component.add-student-reflection-questions-modal');
+const activityPromptComponent = require('./instructor-summary.component.activity-prompt');
+const draftGoalsModal = require('./instructor-summary.component.draft-goals-modal');
+const rubricComponent = require('./instructor-summary.component.rubric');
+const studentSubmissionsComponent = require('./instructor-summary.component.student-submissions');
 
 exports.InstructorSummaryPage = class extends Page {
   things() {
@@ -82,12 +86,12 @@ exports.InstructorSummaryPage = class extends Page {
     return refQuestionModal.generate(arg, {
       locator: `[data-id='modal']`}); }
 
+  activity_prompt(arg) {
+    return activityPromptComponent.generate(arg, {
+      locator: `[data-id='MLCard-Assignment-Prompt']`}); }
+
+  rubric(arg) {
+    return rubricComponent.generate(arg, {
+      locator: `[data-id='MLCard-Final-Rubric']`}); }
 };
 
-
-
-
-
-
-//
-// });

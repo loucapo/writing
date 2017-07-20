@@ -7,7 +7,7 @@ Feature: Instructor Creates Drafting Revising Activity
   Scenario: Green Confirmation Message Exists After Creating Assignment
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
-    And "confirmation_message" color should be "#daf4d4"
+    And the color of "confirmation_message" should be "#daf4d4"
 
   Scenario: Green Confirmation Message Exists After Creating Assignment Persists
     Given I create a new activity as an "instructor"
@@ -30,8 +30,8 @@ Feature: Instructor Creates Drafting Revising Activity
     Then I wait until there are 1 "created_activity_alert" visible
     Then I wait until there are 1 "activity_title" visible
     And the text of "activity_title" should include "Untitled Writing Activity"
-    Then I wait until there are 1 "activity_prompt_description" visible
-    And the text of "activity_prompt_description" should include "Click to add prompt"
-    Then I wait until there are 1 "rubric_dropdown" visible
-    And the text of "rubric_dropdown" should include "No Rubric"
-    Then I wait until there are 0 "draft_card" visible
+    Then I wait until there are 1 "activity_prompt.activity_prompt_description" visible
+    And the text of "activity_prompt.activity_prompt_description" should include "Click to add prompt"
+    Then I wait until there are 1 "rubric.rubric_dropdown" visible
+    And the text of "rubric.rubric_dropdown" should include "No Rubric"
+    Then I wait until there are 0 "draft_card"

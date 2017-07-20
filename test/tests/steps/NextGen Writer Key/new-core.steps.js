@@ -1,9 +1,12 @@
 /* eslint-disable camelcase */
 const pages = [];
 const { InstructorSummaryPage } = require('../../pages/NextGen Writer Key/instructor-summary.page');
-const { StudentSummaryPage } = require('../../pages/NextGen Writer Key/instructor-summary.page');
+const { StudentSummaryPage } = require('../../pages/NextGen Writer Key/student-summary.page');
+const { InstructorFeedbackPage } = require('../../pages/NextGen Writer Key/instructor-feedback-tool.page');
+
 pages.instructor_summary = new InstructorSummaryPage();
 pages.student_summary = new StudentSummaryPage();
+pages.instructor_feedback = new InstructorFeedbackPage();
 
 let page = pages.instructor_summary;
 const faker = require('faker');

@@ -4,8 +4,8 @@ Feature: Student Views Activity
   @db=reset
   Scenario: Student Launches into Activity with No Rubric Selected
     Given I launch the activity as a "student"
-    Then I wait until there are 1 "draft_card_title"
-    Then the text of "draft_card_title" [1] should be "Final Paper"
+    Then I wait until there are 1 "draft.draft_card_title"
+    Then the text of "draft(1).draft_card_title" should be "Final Paper"
     Then the text of "start_draft_enabled" should be "Start Final Paper"
     Then I wait until there are 0 "rubric_preview"
     Then I wait until there are 0 "student_draft_note"

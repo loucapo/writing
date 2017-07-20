@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 
 const Page = require('marvin-js').Page;
+const draftEditor = require('./student-summary.component.draft.editor');
+const refQuestions = require('./student-summary.component.reflection-questions');
 
 exports.StudentSummaryPage = class extends Page {
   things() {
@@ -35,4 +37,11 @@ exports.StudentSummaryPage = class extends Page {
       },
     };
   }
+
+  draft_editor(arg) {
+    return draftEditor.generate(arg, {
+      desc: `Main textarea in which students edit their draft.`,
+      locator: `[class='public-DraftEditor-content']`}); }
+
+
 };
