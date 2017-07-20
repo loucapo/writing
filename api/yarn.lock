@@ -624,9 +624,9 @@ dag-map@~1.0.0:
   version "1.0.2"
   resolved "http://npm.macmillantech.com:8080/d/dag-map/_attachments/dag-map-1.0.2.tgz#e8379f041000ed561fc515475c1ed2c85eece8d7"
 
-dagon@reharik/dagon:
-  version "1.2.0"
-  resolved "https://codeload.github.com/reharik/dagon/tar.gz/78c8f822945eeced18e76cbc24a52276d879873c"
+dagon@1.3.4:
+  version "1.3.4"
+  resolved "http://npm.macmillantech.com:8080/d/dagon/_attachments/dagon-1.3.4.tgz#3cab19eac8bcd050716b7611d2c1be4f7f388585"
   dependencies:
     JSON "^1.0.0"
     fn-args "^2.0.0"
@@ -1890,9 +1890,9 @@ koa-logger@^2.0.0:
     humanize-number "0.0.2"
     passthrough-counter "^1.0.0"
 
-koa-papers@reharik/koa-papers:
+koa-papers@1.0.2:
   version "1.0.2"
-  resolved "https://codeload.github.com/reharik/koa-papers/tar.gz/19599c9daa99627e2d915851955c258ec1bde1e2"
+  resolved "http://npm.macmillantech.com:8080/k/koa-papers/_attachments/koa-papers-1.0.2.tgz#4881f43a1e29ed31aae5ecb363650a6d0b0b05a4"
   dependencies:
     co "^4.6.0"
 
@@ -3238,9 +3238,9 @@ swagger-methods@^1.0.0:
   version "1.0.0"
   resolved "http://npm.macmillantech.com:8080/s/swagger-methods/_attachments/swagger-methods-1.0.0.tgz#b39c77957d305a6535c0a1e015081185b99d61fc"
 
-swagger-model-validator@reharik/swagger-model-validator:
+swagger-model-validator@2.1.9:
   version "2.1.9"
-  resolved "https://codeload.github.com/reharik/swagger-model-validator/tar.gz/61003b8de646cc98ebc591239e35711ac69fb7bc"
+  resolved "http://npm.macmillantech.com:8080/s/swagger-model-validator/_attachments/swagger-model-validator-2.1.9.tgz#1582438491a27bf50b06b7b57ab4d268abf4d18f"
 
 swagger-parser@^3.4.0:
   version "3.4.1"
