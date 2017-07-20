@@ -10,6 +10,15 @@ const faker = require('faker');
 
 exports.define = function(steps) {
 
+  function rgbaToHex(rgba) {
+    rgba = rgba.slice(5, -1).split(',');
+    rgba = rgba.map(x => {
+      x = parseInt(x.trim()).toString(16);
+      return (x.length === 1) ? `0${x}` : x;
+    });
+    return `#${rgba[0]}${rgba[1]}${rgba[2]}`;
+  }
+
   function splitPolocComp(poloc) {
     // shouldnt be giving it >1 '.', as we're effectively making an API to write tests to, be overly explicit.
     if (poloc.split('.').length > 2) { throw new Error(`Only use a single dot in the page-object-locator: ${poloc}`);}
@@ -81,10 +90,11 @@ exports.define = function(steps) {
     done();
   });
 
-  steps.given(/I create a new activity as a[n] "(.+)"/, function(user) {
+  steps.given(/I create a new activity as a[n] "(.+)"/, function(user, done) {
     const uuid = faker.random.uuid();
     const createUrl = `${marvin.config.baseUrl}/${user}/${uuid}`;
     driver.get(createUrl);
+    done();
   });
 
   // TODO: move this one out of core.steps.js
@@ -102,16 +112,18 @@ exports.define = function(steps) {
     });
   });
 
-  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, elem) => {
+  steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, element) => {
     return driver.wait(() => {
-      return page[elem]('all').then(els => els.length === parseInt(count) );
-    }, 3500, `Couldn't find ${count} instances of ${elem}`);
+      return polocToPO(element, true, true)
+        .then(els => (els.length === parseInt(count)));
+    }, 3500, `Couldn't find ${count} instances of ${element}`);
   });
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, element) => {
     return driver.wait(() => {
       return polocToPO(element, true, true).then(els => {
         if (els.length === 0) {
+          if (count === 0) { return true; } // 0 present necessitates 0 visible
           return false; }
         return filterAsync(els, isViz).then(results => {
           return (results.length === parseInt(count));
@@ -121,42 +133,28 @@ exports.define = function(steps) {
   });
 
   // TODO: doc this
-  steps.then(/I delete all text in "(.+)"(?:\s*\[(\w*)\])?/, function(element, arg) {
-    if (arg === undefined) { arg = 1; }
-    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
-    page[element](arg).then(el => el.clear());
+  steps.then(/I delete all text in "(.+)"/, function(poloc) {
+    return polocToPO(poloc).then(el => el.clear());
   });
 
   //
   // PLEASE NOTE as always, an element will match if it exists in the dom _at all_, not only if it's currently visible.
   // I type "buncha text" in "some-page-object"       // => returns the 1st match it finds, or throws
-  // I type "buncha text" in "some-page-object" [13]  // => returns the 13th match it finds, or throws.  must be > 0
-  // I type "buncha text" in "some-page-object" [all] // => no, stop, why would you do this?  don't do this.
-  steps.then(/I type "(.*)" in "(.*)"(?:\s*\[(\w*)\])?/, (input, elem, arg) => {
-    // TODO: i bet these two lines get repeated a whoooole bunch and should be pulled out.
-    if (arg === undefined) { arg = 1; }
-    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
-    if (!page[elem]) { throw new Error(`no such page object defined: ${elem}`); }
-    page[elem](arg).then(el => el.sendKeys(input));
+  // I type "buncha text" in "some-page-object(1)"    // => identical to the above
+  // I type "buncha text" in "some-page-object(4)"    // => returns the 4th match it finds, or throws
+  // I type "buncha text" in "some-page-component.some-page-object        // => returns the first object match scoped under the first component match
+  // I type "buncha text" in "some-page-component(1).some-page-object(1)  // => identical to the above
+  // I type "buncha text" in "some-page-component(2).some-page-object(2)  // => returns the 2nd object match scoped under the 2nd component match
+  steps.then(/I type "(.*)" in "(.*)"/, (input, poloc) => {
+    return polocToPO(poloc).then(el => el.sendKeys(input));
   });
 
   // TODO: doc this
   steps.when(/I click "(.+)"/, function(element) {
-    return polocToPO(element)
-      .then(el => el.click());
-  });
-
-  // TODO: remove me
-  steps.when('i add draft', async function() {
-    page.add_draft_button.click();
+    return polocToPO(element).then(el => el.click());
   });
 
   // NOTE that this is an IS match, not a contains.
-  // the text of "some-page-object" is "some other string"      // => returns the 1st match it finds, or throws
-  // the text of "some-page-object" [13] is "some other string" // => returns the 13th match it finds, or throws.
-  // int arguments are 1-indexed, must be > 0
-  // the text of "some-page-object" is ""                       // => empty string also works fine
-  // TODO: is it worth it to switch to xregexp to actually get named capture groups?
   steps.then(/the text of "(.*)" should be "(.*)"/, (elem, text) => {
     return polocToPO(elem)
       .then(el => el.getText())
@@ -164,15 +162,10 @@ exports.define = function(steps) {
   });
 
   // NOTE that this is an INCLUDES match, not an IS.
-  // TODO: is it worth it to switch to xregexp to actually get named capture groups?
-  steps.then(/the text of "(.*)"(?:\s*\[(.*)\])? should include "(.*)"/, (elem, arg, text) => {
-    if (text === undefined) {
-      text = arg;
-      arg = 1;
-    }
-    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg);
-    page[elem](arg).then(el => el.getText())
-      .then(actualText => { actualText.should.have.string(text); });
+  steps.then(/the text of "(.*)" should include "(.*)"/, (elem, text) => {
+    return polocToPO(elem)
+      .then(el => el.getText())
+      .then(actualText => actualText.should.have.string(text));
   });
 
   steps.then('I should see a fresh assignment', function() {
@@ -185,7 +178,7 @@ exports.define = function(steps) {
   });
 
   steps.when('I maximize the browser', function() {
-    driver.manage().window().maximize();
+    return driver.manage().window().maximize();
   });
 
   steps.when('I delete all content on the draft editor', function() {
@@ -198,31 +191,16 @@ exports.define = function(steps) {
     });
   });
 
-  steps.then(/"(.*)"(?:\s*\[(.*)\])? color should be "(.*)"/, (elem, arg, text) => {
-    if (text === undefined) {
-      text = arg;
-      arg = 1;
-    }
-    arg = (isNaN(parseInt(arg))) ? arg : parseInt(arg); {
-      page[elem](arg).then(el => {
-        return el.getCssValue('background-color');
-      }).then(color => {
-        expect(rgbaToHex(color)).to.equal(text);
-      });
-    }
+  steps.then(/the color of "(.*)" should be "(.*)"/, (poloc, color) => {
+    return polocToPO(poloc).then(el => {
+      return el.getCssValue('background-color');
+    }).then(actualColor => {
+      expect(rgbaToHex(actualColor)).to.equal(color);
+    });
   });
 
-  function rgbaToHex(rgba) {
-    rgba = rgba.slice(5, -1).split(',');
-    rgba = rgba.map(x => {
-      x = parseInt(x.trim()).toString(16);
-      return (x.length === 1) ? `0${x}` : x;
-    });
-    return `#${rgba[0]}${rgba[1]}${rgba[2]}`;
-  }
-
   steps.when('I reload the page', function() {
-    driver.navigate().refresh();
+    return driver.navigate().refresh();
   });
 
 };
