@@ -1,7 +1,9 @@
 /* eslint-disable camelcase */
 const pages = [];
 const { InstructorSummaryPage } = require('../../pages/NextGen Writer Key/instructor-summary.page');
+const { StudentSummaryPage } = require('../../pages/NextGen Writer Key/instructor-summary.page');
 pages.instructor_summary = new InstructorSummaryPage();
+pages.student_summary = new StudentSummaryPage();
 
 let page = pages.instructor_summary;
 const faker = require('faker');
@@ -87,6 +89,13 @@ exports.define = function(steps) {
 
   steps.given(/I launch the activity as a[n]? "(.+)"/, function(user, done) {
     driver.get(marvin.config.baseUrl + '/' + user);
+    if (user === 'student') { page = pages.student_summary; }
+    if (user === 'instructor') { page = pages.instructor_summary; }
+    done();
+  });
+
+  steps.when(/Changing to using page "(.+)"/, function(newPage, done) {
+    page = pages[newPage];
     done();
   });
 
