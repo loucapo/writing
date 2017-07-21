@@ -5,19 +5,19 @@ const Component = require('marvin-js').Component
 class StudentSubmissions extends Component {
   things() {
     return {
-      dropdown_drafts_submission_grid: {
+      dropdown_drafts: {
         desc: `Available drafts in drop down on submission grid`,
         locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li`
       },
-      draft_select_dropdown_submission_grid: {
+      draft_select_dropdown: {
         desc: `Drop Down to change drafts`,
         locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown']`
       },
-      dropdown_drafts_submission_grid_selected: {
+      dropdown_drafts_selected: {
         desc: `Available drafts in drop down on submission grid`,
         locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [data-id='rubric-selection-content'] li svg`
       },
-      dropdown_drafts_submission_grid_title: {
+      dropdown_drafts_title: {
         desc: `Available drafts in drop down on submission grid`,
         locator: `[data-id='submission-status-filter'] [data-id='rubric-dropdown'] [class^='MLDropdown__dropdown'] [class^='MLDropdown__dropdownTitle']`
       },

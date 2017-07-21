@@ -39,7 +39,7 @@ class Draft extends Component {
         locator: `//*[@data-id='add-instructions']`,
         type: 'xpath'
       },
-      draft_delete_button: {
+      delete_button: {
         desc: `A button to display a modal prompting for confirmation to delete this draft from the assignment`,
         locator: `[data-id='draft-delete']`
       },
@@ -78,7 +78,7 @@ class Draft extends Component {
         desc: `Select to set the type of review for a draft`,
         locator: `[data-id='review-type-dropdown']`
       },
-      draft_alert_delete_button: {
+      alert_delete_button: {
         desc: `The confirmation button in the alert dialog that is presented on attempting to delete a draft`,
         locator: `[data-id='dialog-delete']`
       },
