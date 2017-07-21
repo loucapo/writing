@@ -24,7 +24,11 @@ class ActivityPrompt extends Component {
       cancel: {
         desc: `Button to cancel changes to prompt description`,
         locator: `[data-id='prompt-cancel']`
-      }
+      },
+      edit_area: {
+        desc: `Activity prompt editable space`,
+        locator: `[class='public-DraftEditor-content']`
+      },
     }; }
 }
 
