@@ -1,31 +1,31 @@
 @WRITE-858
 Feature: Instructor can view status of student drafts
-
+@only
   @db=reset
   Scenario: Instructor's draft submission list is empty when no students have opened a draft for the activity
     Given I launch the activity as an "instructor"
-    When I click "instructor_summary.add_draft_button"
-    Then I wait until there are 2 "instructor_summary.draft_card" visible
-    When I click "instructor_summary.draft(1).add_reflection_questions"
-    Then I wait until there is 1 "instructor_summary.ref_question.popup" visible
-    When I click "instructor_summary.ref_question.check(1)"
-    When I click " instructor_summary.ref_question.save"
-    Then I wait until there is 1 "instructor_summary.student_submissions" visible
-    When I click "instructor_summary.student_submissions"
-    Then I wait until there is 1 "instructor_summary.submissions.no_submissions_alert" visible
+    When I click "add_draft_button"
+    Then I wait until there are 2 "draft_card" visible
+    When I click "draft(1).add_reflection_questions"
+    #Then I wait until there is 1 "reflection_questions_modal.ref_question_modal" visible
+    When I click "reflection_questions_modal.check(1)"
+    When I click "reflection_questions_modal.save"
+    Then I wait until there is 1 "student_submissions" visible
+    When I click "student_submissions"
+    Then I wait until there is 1 "submissions.no_submissions_alert" visible
     Given I launch the activity as an "student"
-    Then I wait until there are 2 "student_summary.start_draft" visible
-    Then I wait until there is 1 "student_summary.start_draft_enabled" visible
-    Then I wait until there is 1 "student_summary.start_draft_disabled" visible
+    Then I wait until there are 2 "start_draft" visible
+    Then I wait until there is 1 "start_draft_enabled" visible
+    Then I wait until there is 1 "start_draft_disabled" visible
     Given I launch the activity as an "instructor"
-    Then I wait until there is 1 "instructor_summary.student_submissions" visible
-    When I click "instructor_summary.student_submissions"
-    Then I wait until there is 1 "instructor_summary.submissions.no_submissions_alert" visible
+    Then I wait until there is 1 "student_submissions" visible
+    When I click "student_submissions"
+    Then I wait until there is 1 "submissions.no_submissions_alert" visible
 
   Scenario: Instructor's draft submission list is empty when no students have opened a draft for the activity
     Given I launch the activity as an "instructor"
-    When I click "add_draft_button"
-    Then I wait until there is 2 "draft_card" visible
+    When I click "instructor_summary.add_draft_button"
+    Then I wait until there is 2 "instructor_summary.draft_card" visible
     When I click "add_reflection_questions" [1]
     Then I wait until there is 1 "ref_question_popup" visible
     When I click "ref_question_check" [1]
