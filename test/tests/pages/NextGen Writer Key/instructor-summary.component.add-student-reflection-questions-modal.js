@@ -5,6 +5,10 @@ const Component = require('marvin-js').Component
 class AddStudentReflectionQuestionsModal extends Component {
   things() {
     return {
+      ref_question_modal: {
+        desc: `popup for adding reflection questions`,
+        locator: `[data-id='modal']`
+      },
       close: {
         desc: `Close button on the modal`,
         locator: `[data-id='close-modal']`

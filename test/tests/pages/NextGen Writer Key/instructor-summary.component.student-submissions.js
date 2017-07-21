@@ -25,31 +25,31 @@ class StudentSubmissions extends Component {
         desc: `blank data for submitted student assignments`,
         locator: `[class^='SubmissionStatusTable__notStartedAlert__']`
       },
-      submission_row_name: {
-        desc: ``,
+      row_name: {
+        desc: `student name column`,
         locator: `[class^='SubmissionStatusItem__row__'] [data-id='name']`
       },
-      submission_row_date: {
-        desc: ``,
+      row_date: {
+        desc: `submission date column`,
         locator: `[class^='SubmissionStatusItem__row__'] [data-id='completion-date']`
       },
-      submission_row_status: {
-        desc: ``,
+      row_status: {
+        desc: `submission status column`,
         locator: `[class^='SubmissionStatusItem__row__'] [data-id='review-status']`
       },
-      submission_row_start: {
-        desc: ``,
+      row_start: {
+        desc: `start review link`,
         locator: `[class^='SubmissionStatusItem__row__'] [data-id='review-status'] a`
       },
-      submission_row_sent: {
+      row_sent: {
         desc: `Text area cell of Send Status column`,
         locator: `[class^='SubmissionStatusItem__row__'] [data-id='send-status']`
       },
-      submission_row_send_review_link: {
+      send_review_link: {
         desc: `Send Review link that instructor hits on student submission grid to send student feedback`,
         locator: `[class^='SubmissionStatusItem__row__'] [data-id='send-status'] a`
       },
-      review_status_start_review: {
+      start_review: {
         desc: `Link to launch feedback tool`,
         locator: `[data-id='review-status'] a`
       },

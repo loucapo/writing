@@ -73,18 +73,6 @@ class DraftEditor extends Component {
         desc: `Done, Start Reflection button`,
         locator: `[data-id='start-reflection']`
       },
-      draft_submit: {
-        desc: `Submit draft button`,
-        locator: `[data-id='submit-draft']`
-      },
-      draft_submit_confirm: {
-        desc: `Confirmation button on modal`,
-        locator: `[data-id='dialog-submit']`
-      },
-      draft_submit_cancel: {
-        desc: `Cancel button on modal`,
-        locator: `[data-id='dialog-cancel']`
-      },
       leave_page_alert: {
         desc: `Alert that appears when student tries to navigate away from page with unsaved work`,
         locator: `[class*='MLDialog__alert_container_show']`

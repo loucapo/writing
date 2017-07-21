@@ -40,8 +40,9 @@ exports.StudentSummaryPage = class extends Page {
 
   draft_editor(arg) {
     return draftEditor.generate(arg, {
-      desc: `Main textarea in which students edit their draft.`,
-      locator: `[class='public-DraftEditor-content']`}); }
+      locator: `[class^='Composition__page']`}); }
 
-
+  student_reflection_questions(arg) {
+    return refQuestions.generate(arg, {
+      locator: `[class^='ReflectionQuestionsForm__page']`}); }
 };

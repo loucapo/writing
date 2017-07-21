@@ -30,8 +30,8 @@ Feature: Instructor Creates Drafting Revising Activity
     Then I wait until there are 1 "created_activity_alert" visible
     Then I wait until there are 1 "activity_title" visible
     And the text of "activity_title" should include "Untitled Writing Activity"
-    Then I wait until there are 1 "activity_prompt.activity_prompt_description" visible
-    And the text of "activity_prompt.activity_prompt_description" should include "Click to add prompt"
-    Then I wait until there are 1 "rubric.rubric_dropdown" visible
-    And the text of "rubric.rubric_dropdown" should include "No Rubric"
+    Then I wait until there are 1 "activity_prompt.description" visible
+    And the text of "activity_prompt.description" should include "Click to add prompt"
+    Then I wait until there are 1 "rubric.dropdown" visible
+    And the text of "rubric.dropdown" should include "No Rubric"
     Then I wait until there are 0 "draft_card"

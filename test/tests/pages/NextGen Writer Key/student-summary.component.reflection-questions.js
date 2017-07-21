@@ -24,6 +24,18 @@ class StudentReflectionQuestions extends Component {
       reflection_polls_radio_button: {
         desc: `Multiple choice reflection question answer choice`,
         locator: `[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']`
+      },
+      draft_submit: {
+        desc: `Submit draft button`,
+        locator: `[data-id='submit-draft']`
+      },
+      draft_submit_confirm: {
+        desc: `Confirmation button on modal`,
+        locator: `[data-id='dialog-submit']`
+      },
+      draft_submit_cancel: {
+        desc: `Cancel button on modal`,
+        locator: `[data-id='dialog-cancel']`
       }
     }; }
 }

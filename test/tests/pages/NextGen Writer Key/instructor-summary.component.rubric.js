@@ -5,19 +5,19 @@ const Component = require('marvin-js').Component
 class Rubric extends Component {
   things() {
     return {
-      rubric_dropdown: {
+      dropdown: {
         desc: `Dropdown to select rubric`,
         locator: `[data-id='rubric-dropdown']`
       },
-      rubric_dropdown_option: {
+      dropdown_option: {
         desc: `Rubric options that are selectable`,
         locator: `[data-id='rubric-selection-content'] li`
       },
-      rubric_preview: {
+      preview: {
         desc: `Rubric that appears after selection from dropdown`,
         locator: `[data-id='rubric-preview']`
       },
-      rubric_preview_name: {
+      preview_name: {
         desc: `First cell with title of rubric that appears after selection from dropdown`,
         locator: `[data-id='rubric-preview'] div`
       },

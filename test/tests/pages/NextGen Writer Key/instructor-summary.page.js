@@ -84,7 +84,7 @@ exports.InstructorSummaryPage = class extends Page {
 
   reflection_questions_modal(arg) {
     return refQuestionModal.generate(arg, {
-      locator: `[data-id='modal']`}); }
+      locator: `[data-id='modal'] [class^='MLModal__modalWrapper']`}); }
 
   activity_prompt(arg) {
     return activityPromptComponent.generate(arg, {
@@ -93,5 +93,13 @@ exports.InstructorSummaryPage = class extends Page {
   rubric(arg) {
     return rubricComponent.generate(arg, {
       locator: `[data-id='MLCard-Final-Rubric']`}); }
+
+  submissions(arg) {
+    return studentSubmissionsComponent.generate(arg, {
+      locator: `[class^='SubmissionStatus__wrapper']`}); }
+
+  draft_goals_modal(arg) {
+    return draftGoalsModal.generate(arg, {
+      locator: `[data-id='modal']`}); }
 };
 
