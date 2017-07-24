@@ -6,7 +6,7 @@ class Draft extends Component {
   things() {
     return {
       title: {
-        locator: `[class^='Heading__headingText__']`,
+        locator: `[data-id='draft-section'] span [class^='Heading__headingText__']`,
         desc: `Draft heading title`
       },
       reflection_question: {

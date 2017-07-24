@@ -88,7 +88,7 @@ exports.InstructorSummaryPage = class extends Page {
 
   activity_prompt(arg) {
     return activityPromptComponent.generate(arg, {
-      locator: `[data-id='MLCard-Assignment-Prompt']`}); }
+      locator: `[data-id='MLCard-Assignment-Prompt'],[data-id='MLCard-Activity-Prompt']` }); }
 
   rubric(arg) {
     return rubricComponent.generate(arg, {
