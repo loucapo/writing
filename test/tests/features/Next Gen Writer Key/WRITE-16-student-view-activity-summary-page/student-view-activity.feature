@@ -27,7 +27,7 @@ Feature: Student Views Activity
     Then I wait until there are 0 "draft.add_reflection_questions"
     Then I wait until there are 0 "draft.add_draft_instructions"
     Then I wait until there are 0 "student_preview"
-  @only
+
   @db=reset
   Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as an "instructor"
