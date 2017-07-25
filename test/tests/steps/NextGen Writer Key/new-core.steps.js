@@ -43,6 +43,10 @@ exports.define = function(steps) {
       elemArg = findAll ? 'all' : (elemArg || 1);
       try {
         result = await page[comp](compArg);
+        if (!result[elem]) {
+          console.log(`No such object ${elem} found defined on component ${comp}`);
+          throw new Error(`No such object ${elem} found defined on component ${comp}`);
+        }
         result = await result[elem](elemArg);
       } catch (error) {
         if (allowEmptyResult) {
@@ -132,13 +136,14 @@ exports.define = function(steps) {
   });
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, element) => {
+    count = parseInt(count);
     return driver.wait(() => {
       return polocToPO(element, true, true).then(els => {
         if (els.length === 0) {
           if (count === 0) { return true; } // 0 present necessitates 0 visible
           return false; }
         return filterAsync(els, isViz).then(results => {
-          return (results.length === parseInt(count));
+          return (results.length === count);
         });
       });
     }, 3500, `Couldn't find ${count} instances of ${element}`);
