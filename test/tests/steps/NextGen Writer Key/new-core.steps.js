@@ -136,13 +136,14 @@ exports.define = function(steps) {
   });
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, element) => {
+    count = parseInt(count);
     return driver.wait(() => {
       return polocToPO(element, true, true).then(els => {
         if (els.length === 0) {
           if (count === 0) { return true; } // 0 present necessitates 0 visible
           return false; }
         return filterAsync(els, isViz).then(results => {
-          return (results.length === parseInt(count));
+          return (results.length === count);
         });
       });
     }, 3500, `Couldn't find ${count} instances of ${element}`);
