@@ -43,6 +43,10 @@ exports.define = function(steps) {
       elemArg = findAll ? 'all' : (elemArg || 1);
       try {
         result = await page[comp](compArg);
+        if (!result[elem]) {
+          console.log(`No such object ${elem} found defined on component ${comp}`);
+          throw new Error(`No such object ${elem} found defined on component ${comp}`);
+        }
         result = await result[elem](elemArg);
       } catch (error) {
         if (allowEmptyResult) {
