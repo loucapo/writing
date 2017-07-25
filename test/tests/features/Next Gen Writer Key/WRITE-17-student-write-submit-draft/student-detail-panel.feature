@@ -1,6 +1,5 @@
 @WRITE-46
 @WRITE-1061
-  @only
 Feature: Student Views Details Panel
   @db=reset
   Scenario: Page Setup for Student Detail Panel View
@@ -22,14 +21,12 @@ Feature: Student Views Details Panel
     When I click "reflection_questions_modal.check(4)"
     When I click "reflection_questions_modal.save"
 
-
   Scenario: Student Collapses Current Section
     Given I launch the activity as an "student"
     When I click "start_draft"
     When I click "draft_editor.activity_draft_panel"
     And Changing to using page "instructor_summary"
-    #Then I wait until there is 0 "draft.draft_instructions" visible
-
+    Then I wait until there is 0 "draft.draft_instructions" visible
 
   Scenario: Student Sees Assignment Details Panel
     Given I launch the activity as an "student"
@@ -40,9 +37,9 @@ Feature: Student Views Details Panel
     Then I wait until there is 1 "draft_editor.view_activity_summary_link" visible
     Then I wait until there is 1 "draft_editor.activity_reflection_questions_panel" visible
     Then I wait until there is 1 "draft_editor.activity_draft_goals_panel" visible
-    Then I wait until there is 1 "draft_editor.draft_instructions" visible
+    Then I wait until there is 1 "draft_editor.activity_draft_instructions_panel" visible
     Then I wait until there is 0 "draft_editor.activity_prompt_description_panel" visible
-    Then I wait until there is 0 "draft_editor.rubric_preview" visible
+    Then I wait until there is 0 "draft_editor.activity_rubric_panel_preview" visible
 
   Scenario: Student Expands New Section
     Given I launch the activity as an "student"
@@ -50,7 +47,7 @@ Feature: Student Views Details Panel
     When I click "draft_editor.activity_prompt_panel"
     Then I wait until there is 1 "draft_editor.activity_prompt_description_panel" visible
     Then the text of "draft_editor.activity_prompt_description_panel" should be "Cookies ftw"
-    #Then I wait until there is 0 "draft_editor.draft_instructions" visible
+    Then I wait until there is 0 "draft_editor.activity_draft_instructions_panel" visible
 
   Scenario: Student Scrolls Rubric Section
     Given I launch the activity as an "student"
@@ -74,5 +71,5 @@ Feature: Student Views Details Panel
     When I click "reflection_questions_modal.save"
     Given I launch the activity as an "student"
     When I click "start_draft"
-    Then the text of "draft_editor.reflection_question" should be "free: utt ben yavin fett naboo calamari. Obi-wan mon coruscant c"
+    Then the text of "draft_editor.activity_reflection_questions_panel" should be "free: utt ben yavin fett naboo calamari. Obi-wan mon coruscant c"
 

@@ -29,6 +29,14 @@ class DraftEditor extends Component {
         desc: `Subheader on Draft Activity panel that displays draft goals`,
         locator: `[data-id='drafts-goal-list']`
       },
+      activity_draft_instructions_panel: {
+        desc: `Subheader on Draft Activity panel that displays draft instructions`,
+        locator: `[data-id='draft-instructions']`
+      },
+      activity_rubric_panel_preview: {
+        desc: `Rubric panel that is previewed`,
+        locator: `[data-id='rubric-preview']`
+      },
       activity_reflection_questions_panel: {
         desc: `Subheader on Draft Activity panel that displays reflection questions`,
         locator: `[data-id='reflections-list']`
