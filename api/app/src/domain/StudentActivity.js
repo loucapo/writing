@@ -122,5 +122,23 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       return event;
     }
 
+    updateRubricScore(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+
+      studentDraft.updateRubricScore(cmd);
+
+      this.raiseEvent({
+        eventName: 'studentRubricScoreUpdated',
+        event
+      });
+
+      return event;
+    }
+
+    getRubricScores(cmd) {
+      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+      return studentDraft.rubricScores;
+    }
   };
 };
