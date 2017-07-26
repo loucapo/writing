@@ -4,12 +4,11 @@ import moment from 'moment';
 import { MLEditor, MLMessage } from '../../MLComponents';
 import { CompositionHeader } from '../index';
 import { CompositionDraftDetailsContainer } from '../../../containers';
-import selectn from 'selectn';
 import styles from './composition.css';
 
 class Composition extends Component {
   state = {
-    draftIsEmpty: !selectn('studentDraft.paper.blocks[0].text', this.props),
+    draftIsEmpty: this.props.draftIsEmpty,
     newContent: null
   };
 
@@ -93,7 +92,8 @@ Composition.propTypes = {
   activityId: PropTypes.string,
   updateDraftPaper: PropTypes.func,
   hasStartedReflectionQuestions: PropTypes.bool,
-  saveDraftMessage: PropTypes.object
+  saveDraftMessage: PropTypes.object,
+  draftIsEmpty: PropTypes.bool
 };
 
 export default Composition;
