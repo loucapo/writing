@@ -45,6 +45,7 @@ const mapStateToProps = (state, props) => {
   let numberOfDrafts = state.drafts.length;
   let draftTitle = '';
   let reflectionQuestions = [];
+  let rubricId = state.activities[0].rubricId;
   if (draft) {
     draftTitle = numberOfDrafts === draft.index ? `Final Paper` : `Draft ${draft.index + 1}`;
     reflectionQuestions = draft.studentReflectionQuestions.map(questionId => {
@@ -63,7 +64,8 @@ const mapStateToProps = (state, props) => {
     reflectionQuestions,
     homeRoute: state.defaults.homeRoute,
     draftTitle,
-    instructorName: `${state.auth.firstName} ${state.auth.lastName}`
+    instructorName: `${state.auth.firstName} ${state.auth.lastName}`,
+    rubricId
   };
 };
 

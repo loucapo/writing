@@ -6,6 +6,7 @@ import { browserHistory } from 'react-router';
 const CREATE_STUDENT_DRAFT = requestStates('create_student_draft');
 const GET_STUDENT_DRAFTS = requestStates('get_student_drafts');
 const GET_STUDENT_DRAFT = requestStates('get_student_draft');
+const GET_RUBRIC_SCORE = requestStates('get_rubric_score');
 export const UPDATE_DRAFT_PAPER = requestStates('update_draft_paper');
 export const SUBMIT_DRAFT = requestStates('submit_draft_paper');
 export const UPDATE_REVIEW_STATUS = requestStates('update_review_status');
@@ -160,6 +161,17 @@ export function submitEndComment(studentActivityId, studentDraftId, endComment) 
     params: {
       method: 'put',
       body: {endComment}
+    }
+  };
+}
+
+export function getRubricScores(studentDraftId) {
+  return {
+    type: GET_RUBRIC_SCORE.REQUEST,
+    states: GET_RUBRIC_SCORE,
+    url: `${config.apiUrl}studentdraft/${studentDraftId}/rubricscores`,
+    params: {
+      method: 'GET'
     }
   };
 }

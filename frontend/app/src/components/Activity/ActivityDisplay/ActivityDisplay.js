@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ActivityHeaderDisplay, ActivityTitleDisplay, ActivityPromptDisplay } from '../index';
+import { ActivityHeaderDisplay, ActivityTitleDisplay, ActivityPromptDisplay, ActivityRubricDisplay } from '../index';
 import { DraftListDisplay } from '../../Draft';
-import { ActivityRubricDisplayContainer } from '../../../containers';
 import { MLMessage } from '../../MLComponents';
 import styles from './activityDisplay.css';
 
@@ -28,7 +27,7 @@ const ActivityDisplay = ({ activityId, activity, drafts, submitDraftMessage }) =
 
         {activity.prompt ? <ActivityPromptDisplay prompt={activity.prompt} /> : null}
 
-        {activity.rubricId ? <ActivityRubricDisplayContainer rubricId={activity.rubricId} /> : null}
+        {activity.rubricId ? <ActivityRubricDisplay /> : null}
 
         <div className={styles.studentDraftSpacer}>
           <DraftListDisplay drafts={drafts} activityId={activity.activityId} />
