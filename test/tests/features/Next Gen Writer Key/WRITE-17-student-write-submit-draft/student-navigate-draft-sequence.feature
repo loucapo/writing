@@ -1,4 +1,5 @@
 @WRITE-861
+@TOREFACTOR
 Feature: Student Navigate Draft Screens
   @db=reset
   Scenario: Page Setup for Student Draft With Fleshed Out Activity
