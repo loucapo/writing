@@ -19,7 +19,7 @@ export default (state = [], action) => {
       return reducerMerge(state, action.result);
     }
     case GET_STUDENT_DRAFTS.SUCCESS: {
-      return reducerMerge(state, action.result);
+      return reducerMerge(state, action.result, 'studentDraftId');
     }
     case UPDATE_DRAFT_PAPER.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
@@ -98,8 +98,8 @@ export function createStudentDraftIfNotThere(studentActivityId, draftId) {
 
 export function getStudentDrafts(studentActivityId) {
   return {
-    type: GET_STUDENT_DRAFT.REQUEST,
-    states: GET_STUDENT_DRAFT,
+    type: GET_STUDENT_DRAFTS.REQUEST,
+    states: GET_STUDENT_DRAFTS,
     url: `${config.apiUrl}studentactivity/${studentActivityId}/drafts`,
     params: {
       method: 'GET'
