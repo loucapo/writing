@@ -16,6 +16,7 @@ module.exports = function(_options) {
           .for('repository').subWith(options.repositoryStub || function() {/*no--op*/})
           .complete(),
       i => i.instantiate('logger').asFunc().complete());
+
   } catch (ex) {
     console.log(ex); // eslint-disable-line no-console
     console.log(ex.stack); // eslint-disable-line no-console

@@ -2,30 +2,26 @@
 
 .message_default,
 .message_notification {
-  align-items: center;
   background-color: var(--messageBlue);
   border: 1px solid var(--messageBlueBorder);
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 20px 0 0;
   padding: 10px 20px;
   width: 100%;
   box-sizing: border-box;
 }
 
-.message_icon_default svg,
-.message_icon_notification svg {
-  fill: var(--messageBlueBorder);
+.leftContainer {
+  display: flex;
+  align-items: center;
 }
-
 
 .message_success {
   composes: message_default;
   background-color: var(--messageGreen);
   border-color: var(--messageGreenBorder);
-}
-
-.message_icon_success svg {
-  fill: var(--messageGreenBorder);
 }
 
 
@@ -35,10 +31,6 @@
   border-color: var(--messageRedBorder);
 }
 
-.message_icon_error svg {
-  fill: var(--messageRedBorder);
-}
-
 
 .message_warning {
   composes: message_default;
@@ -46,11 +38,26 @@
   border-color: var(--messageYellowBorder);
 }
 
-.message_icon_warning svg {
-  fill: var(--messageYellowBorder);
+.message {
+  margin-left: 10px;
+}
+
+/* Icon Colors */
+
+.message_icon_default,
+.message_icon_notification {
+  fill: var(--messageBlueBorder);
+}
+
+.message_icon_success {
+  fill: var(--messageGreenBorder);
+}
+
+.message_icon_error {
+  fill: var(--messageRedBorder);
 }
 
 
-.message {
-  margin-left: 10px;
+.message_icon_warning {
+  fill: var(--messageYellowBorder);
 }

@@ -28,8 +28,16 @@ class MLEditor extends Component {
   };
 
   handleBlur = e => {
-    //TODO: need to use this as the data to post for the ID and as the data in the RTE on load.
-    if (!!e.relatedTarget && e.relatedTarget.id === 'cancel') {
+    let id;
+    if (e.relatedTarget) {
+      // Chrome
+      id = e.relatedTarget.id;
+    } else if (e.nativeEvent.explicitOriginalTarget) {
+      // Firefox
+      id = e.nativeEvent.explicitOriginalTarget.id;
+    }
+
+    if (id === 'cancel') {
       this.setState({
         editorState: EditorState.createWithContent(convertFromRaw(this.props.content))
       });

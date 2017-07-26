@@ -237,6 +237,144 @@ module.exports = function activityRouter(koarouter, controllers) {
       '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/submit',
       controllers.studentDraftController.submitStudentDraft
     );
+    /**
+     * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/updatereviewstatus:
+     *   put:
+     *     x-name: updateReviewStatus
+     *     description: updateReviewStatus
+     *     operationId: updateReviewStatus
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/updateReviewStatus"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/updatereviewstatus',
+      controllers.studentDraftController.updateReviewStatus
+    );
+
+    /**
+     * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/submitendcomment:
+     *   put:
+     *     x-name: submitEndComment
+     *     description: creates a drafts end comment
+     *     operationId: submitEndComment
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/submitEndComment"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/submitendcomment',
+      controllers.studentDraftController.submitEndComment
+    );
+    /**
+     * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/rubric/{rubricId}:
+     *   put:
+     *     x-name: updateRubricScore
+     *     description: updates rubric criteria score
+     *     operationId: updateRubricScore
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity of the rubric
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft of the rubric
+     *         required: true
+     *         type: string
+     *       - name: rubricId
+     *         in: path
+     *         description: The id of the rubric to update
+     *         required: true
+     *         type: string
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/rubric/:rubricId',
+      controllers.studentDraftController.updateRubricScore
+    );
+    /**
+     * @swagger
+     * /studentdraft/{studentDraftId}/rubricscores:
+     *   get:
+     *     x-name: getRubricScores
+     *     description: getRubricScores
+     *     operationId: getRubricScores
+     *     parameters:
+     *       - name: studentDraftId
+     *         in: path
+     *         type: string
+     *         required: true
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.get(
+      '/studentdraft/:studentDraftId/rubricscores',
+      controllers.studentDraftController.getRubricScores
+    );
 
     appRouter.use(router.routes(), router.allowedMethods());
   };

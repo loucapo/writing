@@ -1,40 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router';
-import MLIcon from 'ml-react-cdl-icons';
+import { Link } from 'react-router';
 
 import styles from './submissionStatusItem.css';
 
-const SubmissionStatusItem = ({item}) => (
-  <tr className={ styles.row }>
-    <td data-id="name">
-      {item.studentId}
-    </td>
-    <td data-id="completion-date">
-      {item.submittedDate ? item.submittedDate : <span>&mdash;</span>}
-    </td>
-    <td data-id="review-status">
-      {item.status === 'submitted'
-        ? (!item.reviewStatus || item.reviewStatus === 'notStarted')
-          ? <Link to={`/studentdraft/${item.studentDraftId}/feedbacktool`}>Start Review</Link>
-          : <MLIcon
-            fill="#3B822E"
-            title="check"
-            type="check"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-          />
-        : <span>&mdash;</span> }
-    </td>
-    <td data-id="send-status" className={styles.reviewSent}>
-      &mdash;
-    </td>
-  </tr>
-);
+const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
+  const renderReviewStatus = () => {
+    const createLink = (text) => {
+      return (<Link to={`/studentdraft/${item.studentDraftId}/feedbacktool`}>{text}</Link>);
+    };
+
+    switch(item.reviewStatus) {
+      case 'submitted':
+      case 'inProgress': {
+        return createLink('Return to Review');
+      }
+      case 'notStarted' : {
+        return createLink('Start Review');
+      }
+      default: {
+        return (<span>&mdash;</span>);
+      }
+    }
+  };
+
+  const renderSendStatus = () => {
+    switch (item.reviewStatus) {
+      case 'inProgress':
+        return <a onClick={updateReviewStatus.bind(this, item.studentActivityId, item.studentDraftId, 'submitted')}>Send Review</a>;
+      case 'submitted':
+        return `Review sent ${item.reviewedDate}`;
+      default:
+        return <span>&mdash;</span>;
+    }
+  };
+
+  return (
+    <tr className={styles.row}>
+      <td data-id="name">
+        {item.studentId}
+      </td>
+      <td data-id="completion-date">
+        {item.status === 'submitted' ? item.submittedDate : <span>&mdash;</span>}
+      </td>
+      <td data-id="review-status">
+        {renderReviewStatus()}
+      </td>
+      <td data-id="send-status" className={styles.reviewSent}>
+        {renderSendStatus()}
+      </td>
+    </tr>
+  );
+};
 
 SubmissionStatusItem.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  updateReviewStatus: PropTypes.func
 };
 
 

@@ -1,19 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  MLCard
-} from './../../MLComponents/index';
+import { MLCard } from '../../MLComponents';
+import { RubricDisplayContainer } from '../../../containers';
 
-import { Rubric } from './../../Rubric/index';
-
-const ActivityRubricDisplay = ({ rubric }) => (
-  <MLCard type="rubric" title="Final Rubric" >
-    <Rubric rubric={rubric} />
+const ActivityRubricDisplay = () => (
+  <MLCard type="rubric" title="Final Rubric">
+    <RubricDisplayContainer />
   </MLCard>
 );
-
-ActivityRubricDisplay.propTypes = {
-  rubric: PropTypes.object
-};
 
 export default ActivityRubricDisplay;

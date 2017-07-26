@@ -13,6 +13,7 @@ import reflectionQuestions from './reflectionQuestionsModule';
 import reflectionAnswers from './reflectionAnswersModule';
 import messaging from './messagingModule';
 import submissionStatuses from './submissionStatusesModule';
+import rubricScores from './rubricScoresModule';
 
 export {activityAction} from './activityModule';
 export {submitFeedbackToolContentItem} from './feedbackToolContentModule';
@@ -32,5 +33,6 @@ export default {
   reflectionQuestions,
   reflectionAnswers,
   messaging,
-  submissionStatuses
+  submissionStatuses,
+  rubricScores
 };

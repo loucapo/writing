@@ -153,6 +153,7 @@ class ReflectionQuestionsForm extends Component {
           activityId={this.props.activityId}
           draftId={this.props.draftId}
           questionsAreComplete={this.checkIfQuestionsAreCompleted()}
+          questionsHaveBeenBegun={this.state.answers.length > 0}
           handleSave={this.handleSave}
           handleSubmit={this.handleSubmit}
           unsavedAnswers={this.state.unsavedAnswers}

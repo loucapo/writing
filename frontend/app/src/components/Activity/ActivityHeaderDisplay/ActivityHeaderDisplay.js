@@ -8,17 +8,20 @@ const ActivityHeaderDisplay = ({ drafts, activityId }) => {
     <header className={styles.studentHeader}>
       <div className={styles.rightContainer}>
         {drafts.map(draft => {
+          let link = `/activity/${activityId}/draft/${draft.draftId}`;
+          if (draft.studentInfo.reviewStatus === 'submitted') {
+            link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
+          } else if (draft.studentInfo.status === 'submitted') {
+            link = `/studentDraft/${draft.studentInfo.studentDraftId}/display`;
+          }
           return (
             <MLButton
               key={draft.draftId}
               title={draft.studentInfo.buttonText}
               dataId={draft.studentInfo.buttonText}
               disabled={draft.studentInfo.disabled}
-              link={
-                draft.studentInfo.status === 'submitted'
-                  ? `/studentDraft/${draft.studentInfo.studentDraftId}/display`
-                  : `/activity/${activityId}/draft/${draft.draftId}`
-              }
+              bordered={draft.studentInfo.reviewStatus === 'submitted'}
+              link={link}
             />
           );
         })}

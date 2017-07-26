@@ -1,22 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  MLDropdown,
-  MLCard
-} from './../../MLComponents/index';
-
-import { Rubric } from './../../Rubric/index';
+import { MLDropdown, MLCard } from '../../MLComponents';
+import { RubricDisplayContainer } from '../../../containers';
 
 import styles from './activityRubricSelector.css';
 
-const ActivityRubricSelector = ({
-  activityId,
-  rubric,
-  rubricOptions,
-  rubricId,
-  updateActivityRubric
-}) => {
-  let selectOnChange = (selected) => {
+const ActivityRubricSelector = ({ rubricId, activityId, rubricOptions, updateActivityRubric }) => {
+  let selectOnChange = selected => {
     let body = {
       rubricId: selected.id
     };
@@ -30,7 +20,7 @@ const ActivityRubricSelector = ({
           <div data-id="rubric-title">
             <span className={styles.labelText}>Select Rubric</span><br />
             <MLDropdown
-              defaultOption={{id: '0000', value: 'No Rubric'}}
+              defaultOption={{ id: '0000', value: 'No Rubric' }}
               options={rubricOptions}
               onChange={selectOnChange}
               selectedId={rubricId}
@@ -41,7 +31,7 @@ const ActivityRubricSelector = ({
           <a data-id="create-rubric" href="#">Create Custom Rubric</a>
         </div>
 
-        <Rubric rubric={rubric} />
+        <RubricDisplayContainer />
       </div>
     </MLCard>
   );
@@ -49,10 +39,9 @@ const ActivityRubricSelector = ({
 
 ActivityRubricSelector.propTypes = {
   activityId: PropTypes.string,
-  rubric: PropTypes.object,
   rubricOptions: PropTypes.array,
-  rubricId: PropTypes.string,
-  updateActivityRubric: PropTypes.func
+  updateActivityRubric: PropTypes.func,
+  rubricId: PropTypes.string
 };
 
 export default ActivityRubricSelector;

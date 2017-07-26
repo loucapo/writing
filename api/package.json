@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "config": "^1.21.0",
-    "dagon": "reharik/dagon",
+    "dagon": "1.3.4",
     "deref": "^0.6.4",
     "enumify": "^1.0.4",
     "humps": "^2.0.0",
@@ -33,7 +33,7 @@
     "koa-generic-session": "^1.11.3",
     "koa-jwt": "^1.3.1",
     "koa-logger": "^2.0.0",
-    "koa-papers": "reharik/koa-papers",
+    "koa-papers": "1.0.2",
     "koa-response-time": "^2.0.0",
     "koa-router": "^7.0.1",
     "koa-send": "^3.2.0",
@@ -43,7 +43,7 @@
     "pg-format": "^1.0.4",
     "puresql": "^1.4.2",
     "swagger-jsdoc": "^1.7.0",
-    "swagger-model-validator": "reharik/swagger-model-validator",
+    "swagger-model-validator": "2.1.9",
     "uuid-validate": "0.0.2",
     "winston": "^2.3.0",
     "winston-logstash": "^0.3.0"

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FeedbackTool } from '../components/FeedbackTool/index';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
-import { getStudentDraftByStudentDraftId } from '../modules/studentDraftModule';
+import { getStudentDraftByStudentDraftId, submitEndComment, updateReviewStatus } from '../modules/studentDraftModule';
 
 class FeedbackToolContainer extends Component {
   componentWillMount() {
@@ -15,6 +15,12 @@ class FeedbackToolContainer extends Component {
     this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
     this.props.getReflectionQuestions();
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.studentDraft && newProps.studentDraft.reviewStatus === 'notStarted') {
+      this.props.updateReviewStatus(newProps.studentDraft.studentActivityId, newProps.studentDraft.studentDraftId, 'inProgress');
+    }
   }
 
   render() {
@@ -29,7 +35,8 @@ FeedbackToolContainer.propTypes = {
   homeRoute: PropTypes.string,
   getReflectionQuestions: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
-  getStudentDraftByStudentDraftId: PropTypes.func
+  getStudentDraftByStudentDraftId: PropTypes.func,
+  updateReviewStatus: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
@@ -38,6 +45,7 @@ const mapStateToProps = (state, props) => {
   let numberOfDrafts = state.drafts.length;
   let draftTitle = '';
   let reflectionQuestions = [];
+  let rubricId = state.activities[0].rubricId;
   if (draft) {
     draftTitle = numberOfDrafts === draft.index ? `Final Paper` : `Draft ${draft.index + 1}`;
     reflectionQuestions = draft.studentReflectionQuestions.map(questionId => {
@@ -56,12 +64,15 @@ const mapStateToProps = (state, props) => {
     reflectionQuestions,
     homeRoute: state.defaults.homeRoute,
     draftTitle,
-    instructorName: `${state.auth.firstName} ${state.auth.lastName}`
+    instructorName: `${state.auth.firstName} ${state.auth.lastName}`,
+    rubricId
   };
 };
 
 export default connect(mapStateToProps, {
   getReflectionQuestions,
   getReflectionAnswers,
-  getStudentDraftByStudentDraftId
+  getStudentDraftByStudentDraftId,
+  updateReviewStatus,
+  submitEndComment
 })(FeedbackToolContainer);

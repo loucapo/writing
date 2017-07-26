@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { ActivityDisplay } from '../components/Activity/index';
 import { getActivity } from '../modules/activityModule';
-import { getCriteria } from '../modules/criteriaModule';
-import { getRubricList } from '../modules/rubricModule';
 import { createStudentActivityIfNotCreated } from '../modules/studentActivityModule';
 import { addStudentInfoToDrafts } from './selectors';
 import { getDraftsForActivity } from '../modules/draftModule';
@@ -19,10 +17,7 @@ class ActivityDisplayContainer extends Component {
     if (this.props.activityId) {
       // we can put this one in some kind of decorator perhaps
       this.props.createStudentActivityIfNotCreated(this.props.activityId);
-
       this.props.getActivity(this.props.activityId);
-      this.props.getCriteria();
-      this.props.getRubricList();
       this.props.getDraftsForActivity(this.props.activityId);
       this.props.getStudentDrafts(this.props.studentActivityId);
       this.props.getReflectionQuestions();
@@ -45,8 +40,6 @@ ActivityDisplayContainer.propTypes = {
   activityId: PropTypes.string,
   studentActivityId: PropTypes.string,
   getActivity: PropTypes.func,
-  getCriteria: PropTypes.func,
-  getRubricList: PropTypes.func,
   createStudentActivityIfNotCreated: PropTypes.func,
   drafts: PropTypes.array,
   getStudentDrafts: PropTypes.func,
@@ -71,15 +64,13 @@ const mapStateToProps = (state, props) => {
     activityId,
     activity,
     studentActivityId: studentActivity ? studentActivity.studentActivityId : undefined,
-    submitDraftMessage: state.messaging.submitDraft,
+    draftMessage: state.messaging.draftMessage,
     drafts
   };
 };
 
 export default connect(mapStateToProps, {
-  getCriteria,
   getActivity,
-  getRubricList,
   createStudentActivityIfNotCreated,
   getDraftsForActivity,
   getStudentDrafts,

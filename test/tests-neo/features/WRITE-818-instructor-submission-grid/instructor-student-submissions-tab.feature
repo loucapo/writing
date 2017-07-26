@@ -1,6 +1,5 @@
 @WRITE-858
 Feature: Instructor can view status of student drafts
-
   @db=reset
   Scenario: Instructor's draft submission list is empty when no students have opened a draft for the activity
     Given I launch the activity as an "instructor"

@@ -1,6 +1,7 @@
 -- name:getSubmissionStatusByDraftId
 SELECT
     student_draft_id,
+    student_activity_id,
     draft_id,
     student_id,
     submitted_date,
