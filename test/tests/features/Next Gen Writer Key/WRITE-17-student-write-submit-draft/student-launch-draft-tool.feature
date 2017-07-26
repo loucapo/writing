@@ -1,6 +1,6 @@
 @WRITE-819
 @WRITE-942
-
+@TOREFACTOR
 Feature: Student Launches Draft
   @db=reset
   Scenario: Page Setup for Student Draft With Fleshed Out Activity
