@@ -1,52 +1,54 @@
-import { denormalizeDrafts } from './index';
+import { addGoalsAndReflectionsToDrafts } from './index';
 
 export default (state, props) => {
   const studentActivity = state.studentActivities.find(
-    x => x.activityId === state.auth.activity.activityId && x.studentId === state.auth.id
+    activity => ((activity.activityId === state.auth.activity.activityId) && (activity.studentId === state.auth.id))
   );
-  let studentDrafts = state.studentDraft.filter(
-    x => x.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined)
+  let studentDraftsInState = state.studentDraft.filter(
+    studentDraft => studentDraft.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined)
   );
-  let denormalizedDrafts = denormalizeDrafts(state, props);
+  let drafts = addGoalsAndReflectionsToDrafts(state, props);
+  let finalDraftIndex = drafts.length - 1;
 
-  let finalDraftIndex = denormalizedDrafts.length - 1;
-
-  let getCurrentActiveIndex = drafts => {
-    let lastStarted = drafts.filter(x => x.status && x.status !== 'notStarted').reverse()[0];
+  const getCurrentActiveIndex = studentDrafts => {
+    let lastStarted = studentDrafts.filter(studentDraft => studentDraft.status && studentDraft.status !== 'notStarted').reverse()[0];
     if (lastStarted) {
-      return lastStarted.status !== 'completed' ? lastStarted.index : lastStarted.index++;
+      let matchIndex;
+      let matchDraft = drafts.find(studentDraft => studentDraft.draftId === lastStarted.draftId);
+      if (lastStarted.status !== 'submitted') {
+        matchIndex = matchDraft && matchDraft.index || 0;
+      } else {
+        matchIndex = matchDraft.index + 1;
+      }
+      return matchIndex;
     }
     return 0;
   };
 
-  const currentActiveIndex = getCurrentActiveIndex(denormalizedDrafts);
-
-  const getStudentInfo = (draft, studentDraft) => {
-    let title = draft.index === finalDraftIndex ? 'Final Paper' : 'Draft ' + (draft.index + 1);
-
+  const getStudentInfo = (draftIndex, studentDraft = {}) => {
+    let title = draftIndex === finalDraftIndex ? 'Final Paper' : `Draft ${draftIndex + 1}`;
     let buttonText = `Start ${title}`;
-    if (studentDraft && studentDraft.status === 'submitted') {
+
+    if (studentDraft.reviewStatus === 'submitted') {
+      buttonText = `View ${title} Feedback`;
+    } else if (studentDraft.status === 'submitted') {
       buttonText = `View ${title}`;
-    } else if (studentDraft && studentDraft.status === 'active') {
+    } else if (studentDraft.status === 'active') {
       buttonText = `Return to ${title}`;
     }
 
-    let submittedDate = studentDraft && studentDraft.submittedDate ? studentDraft.submittedDate : null;
-    let paper = studentDraft && studentDraft.paper ? studentDraft.paper : null;
     return {
-      status: studentDraft ? studentDraft.status : 'notStarted',
-      studentDraftId: studentDraft ? studentDraft.studentDraftId : '',
+      ...studentDraft,
+      status: studentDraft.status ? studentDraft.status : 'notStarted',
       title,
       buttonText,
-      submittedDate,
-      paper,
-      disabled: draft.index > currentActiveIndex
+      disabled: draftIndex > getCurrentActiveIndex(studentDraftsInState)
     };
   };
 
-  return denormalizedDrafts.map(x => {
-    let studentDraft = studentDrafts.find(sd => sd.draftId === x.draftId);
-    let studentInfo = getStudentInfo(x, studentDraft);
-    return { ...x, studentInfo };
+  return drafts.map(draft => {
+    let studentDraft = studentDraftsInState.find(sd => sd.draftId === draft.draftId);
+    let studentInfo = getStudentInfo(draft.index, studentDraft);
+    return { ...draft, studentInfo };
   });
 };

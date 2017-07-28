@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MLEditor, MLCard } from '../../MLComponents';
-import { FeedbackToolHeader, EndComment } from '../index';
+import { FeedbackToolHeader, EndComment, FinalGrade } from '../index';
 import { RubricContainer } from '../../../containers';
 import styles from './feedbackTool.css';
 
@@ -12,7 +12,9 @@ const FeedbackTool = ({
   draftTitle,
   instructorName,
   submitEndComment,
-  rubricId
+  submitFinalGrade,
+  rubricId,
+  lastDraft
 }) => (
   <div className={styles.page}>
     <FeedbackToolHeader
@@ -35,13 +37,22 @@ const FeedbackTool = ({
       <MLCard type="draft" title={draftTitle}>
         <MLEditor content={studentDraft.paper} editable={false} toolbarHidden={true} />
       </MLCard>
+      {lastDraft ?
+        <FinalGrade
+          studentActivityId={studentDraft.studentActivityId}
+          studentDraftId={studentDraft.studentDraftId}
+          submitFinalGrade={submitFinalGrade}
+          finalGrade={studentDraft.finalGrade}
+        />
+        : null
+      }
       <EndComment
         studentActivityId={studentDraft.studentActivityId}
         studentDraftId={studentDraft.studentDraftId}
         submitEndComment={submitEndComment}
         endComment={studentDraft.endComment}
       />
-      { rubricId ?
+      { (rubricId && rubricId !== '0000') ?
         <MLCard type="rubric" title="Final Rubric Evaluation">
           <RubricContainer
             studentActivityId={studentDraft.studentActivityId}
@@ -61,7 +72,9 @@ FeedbackTool.propTypes = {
   draftTitle: PropTypes.string,
   instructorName: PropTypes.string,
   submitEndComment: PropTypes.func,
-  rubricId: PropTypes.string
+  submitFinalGrade: PropTypes.func,
+  rubricId: PropTypes.string,
+  lastDraft: PropTypes.bool
 };
 
 export default FeedbackTool;

@@ -46,13 +46,15 @@ const mapStateToProps = (state, props) => {
   const studentActivity = state.studentActivities.find(x => x.activityId === props.params.activityId);
   const hasStartedReflectionQuestions =
     studentDraft && !!state.reflectionAnswers.some(x => x.studentDraftId === studentDraft.studentDraftId);
+  let draftIsEmpty = studentDraft && studentDraft.paper ? !studentDraft.paper.blocks[0].text : true;
 
   return {
     studentDraft,
     activityId: props.params.activityId,
     studentActivityId: studentActivity.studentActivityId.trim(),
     hasStartedReflectionQuestions,
-    saveDraftMessage: state.messaging.saveDraft
+    saveDraftMessage: state.messaging.saveDraft,
+    draftIsEmpty
   };
 };
 

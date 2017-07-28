@@ -82,3 +82,10 @@ SET end_comment = :endComment,
 modified_by_id = :modifiedById,
 modified_date = :modifiedDate
 WHERE student_draft_id = :studentDraftId
+
+-- name: submitStudentDraftFinalGrade
+UPDATE student_draft
+SET final_grade = :finalGrade,
+modified_by_id = :modifiedById,
+modified_date = :modifiedDate
+WHERE student_draft_id = :studentDraftId

@@ -314,6 +314,43 @@ module.exports = function activityRouter(koarouter, controllers) {
     );
     /**
      * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/submitfinalgrade:
+     *   put:
+     *     x-name: submitFinalGrade
+     *     description: creates a drafts final grade
+     *     operationId: submitFinalGrade
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity whose draft it is
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft to update
+     *         required: true
+     *         type: string
+     *       - name: body
+     *         in: body
+     *         required: true
+     *         schema:
+     *           $ref: "#/definitions/submitFinalGrade"
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/submitfinalgrade',
+      controllers.studentDraftController.submitFinalGrade
+    );
+    /**
+     * @swagger
      * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/rubric/{rubricId}:
      *   put:
      *     x-name: updateRubricScore
