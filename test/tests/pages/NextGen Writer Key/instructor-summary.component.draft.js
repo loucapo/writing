@@ -45,7 +45,7 @@ class Draft extends Component {
       },
       draft_instructions: {
         desc: `Text of the Draft Instructions displayed (non-editable)`,
-        locator: `[data-id='draft-instructions']`
+        locator: `[class^='DraftInstructionsDisplay'] div:nth-child(2)`
       },
       save_draft_instructions: {
         desc: `Button to save Draft Instructions for the current draft.  Only visible when instructions are editable.`,
