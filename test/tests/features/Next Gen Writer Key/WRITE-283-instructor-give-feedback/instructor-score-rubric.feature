@@ -1,4 +1,5 @@
 @WRITE-967
+  @pending
 Feature: Instructor Can Score Rubric
   @db=reset
   Scenario: Setup submission grid

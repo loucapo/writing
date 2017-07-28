@@ -24,6 +24,18 @@ exports.InstructorFeedbackPage = class extends Page {
       done_button: {
         desc: `Done button to navigate from feedback tool to activity summary page`,
         locator: `[data-id='done']`
+      },
+      final_grade_box_save_enabled: {
+        desc: `Save button for instructor grade on a paper`,
+        locator: `[data-id='done']`
+      },
+      final_grade_box_save_disabled: {
+        desc: `Done button to navigate from feedback tool to activity summary page`,
+        locator: `[data-id='done']`
+      },
+      final_grade_box: {
+        desc: `Done button to navigate from feedback tool to activity summary page`,
+        locator: `[data-id='done']`
       }
     };
   }

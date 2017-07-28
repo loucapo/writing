@@ -1,4 +1,5 @@
 @WRITE-228
+@pending
 Feature: Instructor can add end comment to completed draft
 
   @db=reset

@@ -1,4 +1,5 @@
 @WRITE-826
+@pending
 Feature: Instructor Can Open Feedback Tool From Submission Grid
 
   @db=reset
