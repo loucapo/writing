@@ -1,10 +1,13 @@
 @import 'variables.css';
 
 .rubric {
-  border: 1px solid var(--gray-medium);
-  border-width: 1px 0 0 1px;
   display: flex;
   flex-direction: column;
+}
+
+.table {
+  border: 1px solid var(--gray-medium);
+  border-width: 1px 0 0 1px;
 }
 
 .row {

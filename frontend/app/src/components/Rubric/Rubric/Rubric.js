@@ -41,30 +41,32 @@ class Rubric extends Component {
     let rubric = this.props.rubric;
 
     return rubric ?
-      <section data-id="rubric" className={styles.rubric}>
-        <header className={styles.header}>
-          <div className={styles.headerTitle}>{rubric.title}</div>
-          <div>1 - Falls Below Expectations</div>
-          <div>2 - Nearly Meets Expectations</div>
-          <div>3 - Meets Expectations</div>
-          <div>4 - Exceeds Expectations</div>
-        </header>
-        {rubric.criteria.map(criteria => (
-          <div key={criteria.criteriaId} className={styles.row}>
-            <div className={styles.heading}>{criteria.title}</div>
-            {criteria.rubricLevels.map((level, index) => (
-              <Criteria
-                key={index}
-                criteriaId={criteria.criteriaId}
-                score={level.score}
-                content={level.content}
-                selected={level.selected}
-                rubricScores={this.state.rubricScores}
-                setRubricScores={this.setRubricScores}
-              />
-            ))}
-          </div>
-        ))}
+      <section className={styles.rubric} data-id="rubric">
+        <div className={styles.table}>
+          <header className={styles.header}>
+            <div className={styles.headerTitle}>{rubric.title}</div>
+            <div>1 - Falls Below Expectations</div>
+            <div>2 - Nearly Meets Expectations</div>
+            <div>3 - Meets Expectations</div>
+            <div>4 - Exceeds Expectations</div>
+          </header>
+          {rubric.criteria.map(criteria => (
+            <div key={criteria.criteriaId} className={styles.row}>
+              <div className={styles.heading}>{criteria.title}</div>
+              {criteria.rubricLevels.map((level, index) => (
+                <Criteria
+                  key={index}
+                  criteriaId={criteria.criteriaId}
+                  score={level.score}
+                  content={level.content}
+                  selected={level.selected}
+                  rubricScores={this.state.rubricScores}
+                  setRubricScores={this.setRubricScores}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
         <RubricSave
           handleSave={this.handleSave}
           gradeIsComplete={this.gradeIsComplete()}

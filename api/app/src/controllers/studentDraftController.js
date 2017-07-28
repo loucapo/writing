@@ -202,6 +202,7 @@ module.exports = function(
       });
 
       ctx.status = 200;
+      ctx.body = scores;
       return ctx;
     },
 

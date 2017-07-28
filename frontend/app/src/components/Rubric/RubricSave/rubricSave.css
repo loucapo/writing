@@ -1,4 +1,7 @@
+.container {
+  align-self: flex-end;
+}
+
 .saveButton {
   margin-top: 10px;
-  align-self: flex-end;
 }

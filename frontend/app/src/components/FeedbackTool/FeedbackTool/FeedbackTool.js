@@ -41,7 +41,7 @@ const FeedbackTool = ({
         submitEndComment={submitEndComment}
         endComment={studentDraft.endComment}
       />
-      { rubricId ?
+      { (rubricId && rubricId !== '0000') ?
         <MLCard type="rubric" title="Final Rubric Evaluation">
           <RubricContainer
             studentActivityId={studentDraft.studentActivityId}
