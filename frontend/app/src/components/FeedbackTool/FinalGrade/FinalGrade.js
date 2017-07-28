@@ -45,6 +45,7 @@ class FinalGrade extends Component {
           <div className={styles.finalGrade}>
             <div className={styles.grade}>
               <input
+                data-id="final-grade"
                 type="number"
                 name="finalGrade"
                 max="100"
