@@ -11,6 +11,7 @@ export const UPDATE_DRAFT_PAPER = requestStates('update_draft_paper');
 export const SUBMIT_DRAFT = requestStates('submit_draft_paper');
 export const UPDATE_REVIEW_STATUS = requestStates('update_review_status');
 export const SUBMIT_DRAFT_END_COMMENT = requestStates('submit_draft_end_comment');
+export const SUBMIT_DRAFT_FINAL_GRADE = requestStates('submit_draft_final_grade');
 
 // Reducer
 export default (state = [], action) => {
@@ -50,10 +51,19 @@ export default (state = [], action) => {
     case SUBMIT_DRAFT_END_COMMENT.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
       const studentDraftId = action.action.studentDraftId;
+      return state.map(studentDraft => {
+        return studentDraft.studentDraftId === studentDraftId
+          ? {...studentDraft, endComment: body.endComment}
+          : studentDraft;
+      });
+    }
+    case SUBMIT_DRAFT_FINAL_GRADE.SUCCESS: {
+      const body = JSON.parse(action.action.params.body);
+      const studentDraftId = action.action.studentDraftId;
       return state.map(x => {
         return x.studentDraftId === studentDraftId
-          ? {...x, endComment: body.endComment}
-          : x;
+            ? {...x, finalGrade: body.finalGrade}
+            : x;
       });
     }
     default: {
@@ -161,6 +171,19 @@ export function submitEndComment(studentActivityId, studentDraftId, endComment) 
     params: {
       method: 'put',
       body: {endComment}
+    }
+  };
+}
+
+export function submitFinalGrade(studentActivityId, studentDraftId, finalGrade) {
+  return {
+    type: SUBMIT_DRAFT_FINAL_GRADE.REQUEST,
+    states: SUBMIT_DRAFT_FINAL_GRADE,
+    url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/submitfinalgrade`,
+    studentDraftId,
+    params: {
+      method: 'put',
+      body: {finalGrade}
     }
   };
 }

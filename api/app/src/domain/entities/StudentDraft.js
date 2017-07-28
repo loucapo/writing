@@ -45,6 +45,10 @@ module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScor
       this.endComment = cmd.endComment;
     }
 
+    submitFinalGrade(cmd) {
+      this.finalGrade = cmd.finalGrade;
+    }
+
     updateRubricScore(cmd) {
       this.rubricScores = cmd.rubricScores.map(score => {
         score.studentRubricScoreId = score.studentRubricScoreId || uuid.v4();

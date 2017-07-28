@@ -171,6 +171,21 @@ module.exports = function(
       return ctx;
     },
 
+    async submitFinalGrade(ctx) {
+      const command = ctx.request.body;
+      const studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      command.modifiedById = ctx.state.user.id;
+      command.modifiedDate = moment().toISOString();
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
+      let event = studentActivity.submitFinalGrade(command);
+
+      await repository.query(sqlLibrary.studentDraft, 'submitStudentDraftFinalGrade', event);
+
+      ctx.status = 200;
+      return ctx;
+    },
+
     async updateRubricScore(ctx) {
       const command = ctx.request.body;
       command.studentActivityId = ctx.params.studentActivityId;

@@ -122,6 +122,18 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       return event;
     }
 
+    submitFinalGrade(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+      studentDraft.submitFinalGrade(cmd);
+      this.raiseEvent({
+        eventName: 'studentDraftFinalGradeSubmitted',
+        event
+      });
+
+      return event;
+    }
+
     updateRubricScore(cmd) {
       const event = this.mapper(cmd);
       let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FeedbackTool } from '../components/FeedbackTool/index';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
-import { getStudentDraftByStudentDraftId, submitEndComment, updateReviewStatus } from '../modules/studentDraftModule';
+import { getStudentDraftByStudentDraftId, submitEndComment, submitFinalGrade, updateReviewStatus } from '../modules/studentDraftModule';
 
 class FeedbackToolContainer extends Component {
   componentWillMount() {
@@ -46,8 +46,10 @@ const mapStateToProps = (state, props) => {
   let draftTitle = '';
   let reflectionQuestions = [];
   let rubricId = state.activities[0].rubricId;
+  let lastDraft;
   if (draft) {
-    draftTitle = numberOfDrafts === draft.index ? `Final Paper` : `Draft ${draft.index + 1}`;
+    lastDraft = numberOfDrafts === draft.index + 1;
+    draftTitle = lastDraft ? `Final Paper` : `Draft ${draft.index + 1}`;
     reflectionQuestions = draft.studentReflectionQuestions.map(questionId => {
       let answer = state.reflectionAnswers.find(x => x.studentReflectionQuestionId === questionId);
       let question = state.reflectionQuestions.find(x => x.studentReflectionQuestionId === questionId);
@@ -65,7 +67,8 @@ const mapStateToProps = (state, props) => {
     homeRoute: state.defaults.homeRoute,
     draftTitle,
     instructorName: `${state.auth.firstName} ${state.auth.lastName}`,
-    rubricId
+    rubricId,
+    lastDraft
   };
 };
 
@@ -74,5 +77,6 @@ export default connect(mapStateToProps, {
   getReflectionAnswers,
   getStudentDraftByStudentDraftId,
   updateReviewStatus,
-  submitEndComment
+  submitEndComment,
+  submitFinalGrade
 })(FeedbackToolContainer);
