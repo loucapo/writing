@@ -11,6 +11,14 @@ exports.StudentSummaryPage = class extends Page {
         desc: `Confirmation message that appears upon successful submission and save`,
         locator: `[class*='MLMessage__message_success__'] span[class*='MLMessage__message__']`
       },
+      feedback_waiting_message: {
+        desc: `Message to notify user has feedback`,
+        locator: `[data-id='message']`
+      },
+      feedback_message_link: {
+        desc: `Link to instructor feedback`,
+        locator: `[data-id='message-link']`
+      },
       draft_submission_confirmation_banner: {
         desc: `Green confirmation message for successful draft submission`,
         locator: `[class*='MLMessage__message_success']`
@@ -26,6 +34,10 @@ exports.StudentSummaryPage = class extends Page {
       start_draft_disabled: {
         desc: `Start draft button in grayed out state`,
         locator: `[data-id='start-draft'][class*='__disabled__']`
+      },
+      start_final_paper: {
+        desc: `Start final paper button in enabled out state`,
+        locator: `[data-id='Start Final Paper']`
       },
       view_final_draft_button: {
         desc: `Button to view submitted draft`,
