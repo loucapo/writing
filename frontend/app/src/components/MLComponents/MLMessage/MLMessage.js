@@ -6,7 +6,7 @@ import styles from './mlMessage.css';
 
 const MLMessage = ({ options }) => {
   return (
-    <div className={styles[`message_${options.type || 'default'}`]}>
+    <div data-id="message" className={styles[`message_${options.type || 'default'}`]}>
       <div className={styles.leftContainer}>
         {options.icon ?
           <MLIcon
@@ -19,13 +19,13 @@ const MLMessage = ({ options }) => {
           />
           : null
         }
-        <span className={styles.message}>
+        <span data-id="message-text" className={styles.message}>
           {options.message}
         </span>
       </div>
 
       {options.link ?
-        <Link to={options.link} data-id="dialog-link">
+        <Link data-id="message-link" to={options.link}>
           {options.linkText}
         </Link> :
         null
