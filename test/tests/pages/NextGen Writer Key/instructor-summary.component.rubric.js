@@ -20,7 +20,7 @@ class Rubric extends Component {
       preview_name: {
         desc: `First cell with title of rubric that appears after selection from dropdown`,
         locator: `[data-id='rubric-preview'] div`
-      },
+      }
     }; }
 }
 
