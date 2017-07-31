@@ -28,8 +28,6 @@ Feature: Instructor Gives Score to Final Paper
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
-    And I click "add_draft_button"
-    And I reload the page
     When I click "draft(1).add_reflection_questions"
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
@@ -83,7 +81,7 @@ Feature: Instructor Gives Score to Final Paper
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I type "B" in "final_grade_box"
-    Then I wait until there is 1 "final_grade_box_error" visible
+    Then the text of "final_grade_box" should be ""
     Then I wait until there is 1 "final_grade_box_save_disabled" visible
 
   Scenario: Instructor Gives a Negative Grade
@@ -92,8 +90,7 @@ Feature: Instructor Gives Score to Final Paper
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I type "-78" in "final_grade_box"
-    Then I wait until there is 1 "final_grade_box_error" visible
-    Then I wait until there is 1 "final_grade_box_save_disabled" visible
+    Then the text of "final_grade_box" should be ""
 
   Scenario: Instructor Gives a Grade 0-100 and Saves
     Given I launch the activity as an "instructor"
@@ -101,7 +98,7 @@ Feature: Instructor Gives Score to Final Paper
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I type "95" in "final_grade_box"
-    Then I click "final_grade_box_save"
+    And I click "final_grade_box_save_enabled"
     Then I wait until there is 0 "final_grade_box_save" visible
 
 

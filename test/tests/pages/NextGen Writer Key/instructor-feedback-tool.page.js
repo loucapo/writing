@@ -27,15 +27,19 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       final_grade_box_save_enabled: {
         desc: `Save button for instructor grade on a paper`,
-        locator: `[data-id='done']`
+        locator: `[data-id='add-final-grade']:not([class*='__disabled__'])`
       },
       final_grade_box_save_disabled: {
-        desc: `Done button to navigate from feedback tool to activity summary page`,
-        locator: `[data-id='done']`
+        desc: `Save button for instructor grade on a paper grayed out`,
+        locator: `[data-id='add-final-grade'][class*='__disabled__']`
       },
       final_grade_box: {
-        desc: `Done button to navigate from feedback tool to activity summary page`,
-        locator: `[data-id='done']`
+        desc: `Final grade input for final paper`,
+        locator: `[data-id='final-grade']`
+      },
+      final_grade_box_error: {
+        desc: `Red warning for invalid input`,
+        locator: `[class^='FinalGrade__infoSpan'][class*='FinalGrade__error']`
       }
     };
   }
