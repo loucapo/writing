@@ -1,7 +1,5 @@
 @WRITE-96
-
 Feature: Student Views Activity
-
   @db=reset
   Scenario: Student Launches into Activity with No Rubric Selected
     Given I launch the activity as a "student"
