@@ -20,14 +20,16 @@ INSERT INTO student_draft
     student_id,
     draft_id,
     created_by_id,
-    created_date)
+    created_date,
+    paper)
 VALUES
     (:studentDraftId,
     :studentActivityId,
     :studentId,
     :draftId,
     :createdById,
-    :createdDate)
+    :createdDate,
+    :paper)
 
 -- name: updateStudentDraftPaper
 UPDATE student_draft

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Composition } from '../components/Composition';
-import { getStudentDraft, createStudentDraftIfNotThere, updateDraftPaper } from '../modules/studentDraftModule';
+import { getOrCreateStudentDraft, updateDraftPaper } from '../modules/studentDraftModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
 
 class CompositionContainer extends Component {
@@ -11,11 +11,8 @@ class CompositionContainer extends Component {
   }
 
   loadData() {
-    if (!this.props.studentDraft) {
-      this.props.createStudentDraftIfNotThere(this.props.studentActivityId, this.props.params.draftId);
-      // put in subsequentAction for action creator;
-      this.props.getStudentDraft(this.props.studentActivityId, this.props.params.draftId);
-    } else {
+    this.props.getOrCreateStudentDraft(this.props.studentActivityId, this.props.params.draftId);
+    if (this.props.studentDraft) {
       this.props.getReflectionAnswers(this.props.studentDraft.studentDraftId);
     }
   }
@@ -32,20 +29,19 @@ class CompositionContainer extends Component {
 }
 
 CompositionContainer.propTypes = {
-  getStudentDraft: PropTypes.func,
   studentDraft: PropTypes.object,
   params: PropTypes.object,
   studentActivityId: PropTypes.string,
   activityId: PropTypes.string,
   getReflectionAnswers: PropTypes.func,
-  createStudentDraftIfNotThere: PropTypes.func
+  getOrCreateStudentDraft: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
-  const studentDraft = state.studentDraft.find(x => x.draftId === props.params.draftId);
-  const studentActivity = state.studentActivities.find(x => x.activityId === props.params.activityId);
+  const studentDraft = state.studentDraft[0];
+  const studentActivity = state.studentActivities[0];
   const hasStartedReflectionQuestions =
-    studentDraft && !!state.reflectionAnswers.some(x => x.studentDraftId === studentDraft.studentDraftId);
+    studentDraft && !!state.reflectionAnswers.some(answer => answer.studentDraftId === studentDraft.studentDraftId);
   let draftIsEmpty = studentDraft && studentDraft.paper ? !studentDraft.paper.blocks[0].text : true;
 
   return {
@@ -59,8 +55,7 @@ const mapStateToProps = (state, props) => {
 };
 
 export default connect(mapStateToProps, {
-  getStudentDraft,
   getReflectionAnswers,
-  createStudentDraftIfNotThere,
+  getOrCreateStudentDraft,
   updateDraftPaper
 })(CompositionContainer);
