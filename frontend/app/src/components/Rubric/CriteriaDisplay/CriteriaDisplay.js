@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../Criteria/criteria.css';
 
-const CriteriaDisplay = ({ score, content, selected }) => {
+const CriteriaDisplay = ({ score, content, selected, studentDraftId }) => {
   const backgroundColor = () => {
     let color;
     switch (score) {
@@ -23,7 +23,7 @@ const CriteriaDisplay = ({ score, content, selected }) => {
 
   let className = selected ? `selected ${backgroundColor()}` : '';
   return (
-    <div className={className}>
+    <div className={studentDraftId ? className : ''}>
       {content}
     </div>
   );
@@ -33,7 +33,8 @@ CriteriaDisplay.propTypes = {
   score: PropTypes.string,
   content: PropTypes.string,
   selected: PropTypes.bool,
-  setRubricScores: PropTypes.func
+  setRubricScores: PropTypes.func,
+  studentDraftId: PropTypes.string
 };
 
 export default CriteriaDisplay;

@@ -7,7 +7,7 @@ import styles from './activityDisplay.css';
 
 const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
   const getLatestDraftWithFeedback = () => {
-    let reversedDrafts = drafts.reverse();
+    let reversedDrafts = drafts.slice().reverse();
     return reversedDrafts.find(draft => draft.studentInfo.reviewStatus === 'submitted');
   };
 
