@@ -25,7 +25,7 @@ const Activity = ({ activity, draftCount, display }) => (
 
         <ActivityTitleContainer activityId={activity.activityId} />
 
-        <ActivityPromptContainer activityId={activity.activityId} />
+        <ActivityPromptContainer activityId={activity.activityId} prompt={activity.prompt} />
 
         <ActivityRubricSelectorContainer activityId={activity.activityId} rubricId={activity.rubricId} />
 
