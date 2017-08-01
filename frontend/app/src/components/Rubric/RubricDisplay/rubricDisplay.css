@@ -1,0 +1,35 @@
+@import 'variables.css';
+
+.rubric {
+  border: 1px solid var(--gray-medium);
+  border-width: 1px 0 0 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+}
+
+.row div {
+  border: 1px solid var(--gray-medium);
+  border-width: 0 1px 1px 0;
+  padding: 10px;
+  flex-basis: 0;
+  flex-grow: 1;
+  word-break: break-word;
+}
+
+.header {
+  composes: row;
+}
+
+.header div, .heading {
+  background-color: var(--gray-very-light);
+  color: var(--gray-dark);
+}
+
+.headerTitle {
+  font-weight: bold;
+}

@@ -1,0 +1,25 @@
+@import 'variables.css';
+
+.enabled {
+  cursor: pointer;
+}
+
+.enabled:hover {
+  opacity: 0.5;
+}
+
+.red {
+  background: var(--red-light);
+}
+
+.orange {
+  background: var(--orange-light);
+}
+
+.yellow {
+  background: var(--yellow-light);
+}
+
+.green {
+  background: var(--green-light);
+}

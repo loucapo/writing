@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MLEditor, MLCard } from '../../MLComponents';
-import { FeedbackToolHeader, EndComment } from '../index.js';
+import { FeedbackToolHeader, EndComment, FinalGrade } from '../index';
+import { RubricContainer } from '../../../containers';
 import styles from './feedbackTool.css';
 
 const FeedbackTool = ({
@@ -10,7 +11,10 @@ const FeedbackTool = ({
   homeRoute,
   draftTitle,
   instructorName,
-  submitEndComment
+  submitEndComment,
+  submitFinalGrade,
+  rubricId,
+  lastDraft
 }) => (
   <div className={styles.page}>
     <FeedbackToolHeader
@@ -33,12 +37,30 @@ const FeedbackTool = ({
       <MLCard type="draft" title={draftTitle}>
         <MLEditor content={studentDraft.paper} editable={false} toolbarHidden={true} />
       </MLCard>
+      {lastDraft ?
+        <FinalGrade
+          studentActivityId={studentDraft.studentActivityId}
+          studentDraftId={studentDraft.studentDraftId}
+          submitFinalGrade={submitFinalGrade}
+          finalGrade={studentDraft.finalGrade}
+        />
+        : null
+      }
       <EndComment
         studentActivityId={studentDraft.studentActivityId}
         studentDraftId={studentDraft.studentDraftId}
         submitEndComment={submitEndComment}
         endComment={studentDraft.endComment}
       />
+      { (rubricId && rubricId !== '0000') ?
+        <MLCard type="rubric" title="Final Rubric Evaluation">
+          <RubricContainer
+            studentActivityId={studentDraft.studentActivityId}
+            studentDraftId={studentDraft.studentDraftId}
+          />
+        </MLCard>
+        : null
+      }
     </div>
   </div>
 );
@@ -49,7 +71,10 @@ FeedbackTool.propTypes = {
   reflectionQuestions: PropTypes.array,
   draftTitle: PropTypes.string,
   instructorName: PropTypes.string,
-  submitEndComment: PropTypes.func
+  submitEndComment: PropTypes.func,
+  submitFinalGrade: PropTypes.func,
+  rubricId: PropTypes.string,
+  lastDraft: PropTypes.bool
 };
 
 export default FeedbackTool;

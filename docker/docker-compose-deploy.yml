@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
   frontend:
     environment:
@@ -8,6 +8,14 @@ services:
     image: ${wk_frontend_image}
     env_file:
       - ./.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]
 
   api:
     environment:
@@ -17,6 +25,14 @@ services:
     image: ${wk_api_image}
     env_file:
       - ./.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]
 
   data:
     environment:
@@ -26,6 +42,9 @@ services:
     image: ${wk_data_image}
     env_file:
       - ./.env
+    deploy:
+      placement:
+        constraints: [node.role == worker]
 
   serve:
     environment:
@@ -35,6 +54,14 @@ services:
     image: ${wk_serve_image}
     env_file:
       - ./.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]
 
   swaggerUi:
     image: schickling/swagger-ui
@@ -43,3 +70,11 @@ services:
       PORT: 4666
     ports:
       - "${SWAGGER_PORT}:${SWAGGER_PORT}"
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]

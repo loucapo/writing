@@ -31,6 +31,12 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       invariant(!this.studentDrafts.find(x => x.active),
         `You may not start a new Draft while you still have an other active Draft`);
 
+      if (this.studentDrafts.length > 1) {
+        event.paper = this.studentDrafts[this.studentDrafts.length - 1].paper;
+      } else {
+        event.paper = null;
+      }
+
       event.studentDraftId = uuid.v4();
       event.draftId = cmd.draftId;
       event.studentActivityId = cmd.studentActivityId;
@@ -122,5 +128,35 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       return event;
     }
 
+    submitFinalGrade(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+      studentDraft.submitFinalGrade(cmd);
+      this.raiseEvent({
+        eventName: 'studentDraftFinalGradeSubmitted',
+        event
+      });
+
+      return event;
+    }
+
+    updateRubricScore(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+
+      studentDraft.updateRubricScore(cmd);
+
+      this.raiseEvent({
+        eventName: 'studentRubricScoreUpdated',
+        event
+      });
+
+      return event;
+    }
+
+    getRubricScores(cmd) {
+      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+      return studentDraft.rubricScores;
+    }
   };
 };

@@ -4,27 +4,30 @@ import moment from 'moment';
 import { MLEditor, MLMessage } from '../../MLComponents';
 import { CompositionHeader } from '../index';
 import { CompositionDraftDetailsContainer } from '../../../containers';
-import selectn from 'selectn';
 import styles from './composition.css';
 
 class Composition extends Component {
   state = {
-    draftIsEmpty: !selectn('studentDraft.paper.blocks[0].text', this.props),
-    newContent: null
+    draftIsEmpty: this.props.draftIsEmpty,
+    content: this.props.studentDraft.paper
   };
 
   handleSave = () => {
-    let newContent = this.state.newContent;
-    this.props.updateDraftPaper(this.props.studentActivityId, this.props.studentDraft.studentDraftId, newContent);
-    // Resetting newContent after save to be able to use it as a signal that unsaved changes have happened.
-    this.setState(newContent: null);
+    let content = this.state.content;
+    this.props.updateDraftPaper(this.props.studentActivityId, this.props.studentDraft.studentDraftId, content);
   };
 
   handleEditorStateChange = newContent => {
     this.setState({
       draftIsEmpty: !newContent.blocks[0].text,
-      newContent
+      content: newContent
     });
+  };
+
+  checkForUnSavedChanges = () => {
+    let paper = this.props.studentDraft.paper;
+    let content = this.state.content;
+    return paper && paper.blocks[0].text !== content.blocks[0].text;
   };
 
   renderSaveMessage = () => {
@@ -79,7 +82,7 @@ class Composition extends Component {
           <CompositionDraftDetailsContainer
             activityId={this.props.activityId}
             studentDraft={this.props.studentDraft}
-            unsavedChanges={!!this.state.newContent}
+            unsavedChanges={this.checkForUnSavedChanges()}
           />
         </div>
       </div>
@@ -93,7 +96,8 @@ Composition.propTypes = {
   activityId: PropTypes.string,
   updateDraftPaper: PropTypes.func,
   hasStartedReflectionQuestions: PropTypes.bool,
-  saveDraftMessage: PropTypes.object
+  saveDraftMessage: PropTypes.object,
+  draftIsEmpty: PropTypes.bool
 };
 
 export default Composition;

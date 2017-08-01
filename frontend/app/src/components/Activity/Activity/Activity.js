@@ -1,22 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import {
-  ActivityHeader,
-  ActivityMenu
-} from './../index';
-
-import {
-  ActivityTitleContainer,
-  ActivityPromptContainer,
-  ActivityRubricSectorContainer
-} from './../../../containers/index';
-
-import { MLMessage } from './../../MLComponents/index';
+import { ActivityHeader, ActivityMenu } from '../index';
+import { ActivityTitleContainer, ActivityPromptContainer, ActivityRubricSelectorContainer } from '../../../containers';
+import { MLMessage } from '../../MLComponents';
 
 import styles from './activity.css';
 
-const Activity = ({activity, draftCount, display}) => (
+const Activity = ({ activity, draftCount, display }) => (
   <div className={styles.page}>
     <ActivityHeader title={activity.course} />
     <div className={styles.container}>
@@ -24,8 +15,9 @@ const Activity = ({activity, draftCount, display}) => (
         <MLMessage
           options={{
             id: '12345',
-            message: 'Activity created on ' + moment(activity.createdDate).format('MMMM Do, YYYY') +
-            '. This is in draft mode and will not be visible to students until you assign it.',
+            message: 'Activity created on ' +
+              moment(activity.createdDate).format('MMMM Do, YYYY') +
+              '. This is in draft mode and will not be visible to students until you assign it.',
             type: 'success',
             icon: 'check'
           }}
@@ -33,9 +25,9 @@ const Activity = ({activity, draftCount, display}) => (
 
         <ActivityTitleContainer activityId={activity.activityId} />
 
-        <ActivityPromptContainer activityId={activity.activityId} />
+        <ActivityPromptContainer activityId={activity.activityId} prompt={activity.prompt} />
 
-        <ActivityRubricSectorContainer activityId={activity.activityId} rubricId={activity.rubricId} />
+        <ActivityRubricSelectorContainer activityId={activity.activityId} rubricId={activity.rubricId} />
 
       </div>
 

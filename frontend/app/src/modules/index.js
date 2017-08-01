@@ -8,11 +8,13 @@ import resourceLinks from './resourceLinksModule';
 import auth from './authModule';
 import defaults from './defaultsModule';
 import studentActivities from './studentActivityModule';
+import studentDrafts from './studentDraftsModule';
 import studentDraft from './studentDraftModule';
 import reflectionQuestions from './reflectionQuestionsModule';
 import reflectionAnswers from './reflectionAnswersModule';
 import messaging from './messagingModule';
 import submissionStatuses from './submissionStatusesModule';
+import rubricScores from './rubricScoresModule';
 
 export {activityAction} from './activityModule';
 export {submitFeedbackToolContentItem} from './feedbackToolContentModule';
@@ -28,9 +30,11 @@ export default {
   auth,
   defaults,
   studentDraft,
+  studentDrafts,
   studentActivities,
   reflectionQuestions,
   reflectionAnswers,
   messaging,
-  submissionStatuses
+  submissionStatuses,
+  rubricScores
 };

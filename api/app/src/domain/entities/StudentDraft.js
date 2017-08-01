@@ -1,9 +1,10 @@
-module.exports = function(EntityBase, StudentReflectionAnswer, ReviewStatus, uuid) {
+module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScore, ReviewStatus, uuid) {
   return class StudentDraft extends EntityBase {
     constructor(studentDraft) {
       super();
       this.type = 'StudentDraft';
       this.studentReflectionAnswers = [];
+      this.rubricScores = [];
       if (studentDraft) {
         this.mapper(studentDraft);
       }
@@ -42,6 +43,17 @@ module.exports = function(EntityBase, StudentReflectionAnswer, ReviewStatus, uui
 
     submitEndComment(cmd) {
       this.endComment = cmd.endComment;
+    }
+
+    submitFinalGrade(cmd) {
+      this.finalGrade = cmd.finalGrade;
+    }
+
+    updateRubricScore(cmd) {
+      this.rubricScores = cmd.rubricScores.map(score => {
+        score.studentRubricScoreId = score.studentRubricScoreId || uuid.v4();
+        return new StudentRubricScore(score);
+      });
     }
   };
 };

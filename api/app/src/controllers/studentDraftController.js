@@ -1,10 +1,12 @@
-module.exports = function(StudentActivity,
-                          repository,
-                          sqlLibrary,
-                          moment,
-                          studentActivityBuilder,
-                          logger,
-                          ReviewStatus) {
+module.exports = function(
+  StudentActivity,
+  repository,
+  sqlLibrary,
+  moment,
+  studentActivityBuilder,
+  logger,
+  ReviewStatus
+) {
   return {
     // check if it exists, if not create it;
     async createStudentDraftIfNotThere(ctx) {
@@ -17,17 +19,23 @@ module.exports = function(StudentActivity,
       let studentDraft = await repository.query(
         sqlLibrary.studentDraft,
         'getStudentDraftByStudentActivityIdAndDraftId',
-        {studentActivityId: command.studentActivityId, draftId: command.draftId});
+        { studentActivityId: command.studentActivityId, draftId: command.draftId }
+      );
 
       if (!studentDraft || !studentDraft[0]) {
         logger.info(`Creating studentDraft from payload: ${JSON.stringify(command)}`);
         const studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
         let event = studentActivity.createNewStudentDraft(command);
         await repository.query(sqlLibrary.studentDraft, 'createStudentDraft', event);
+        studentDraft = await repository.query(sqlLibrary.studentDraft,
+          'getStudentDraftByStudentActivityIdAndDraftId',
+          { studentActivityId: command.studentActivityId, draftId: command.draftId }
+        );
       }
       logger.debug(`Call to createStudentDraft successful with following payload: ${JSON.stringify(command)}`);
 
       ctx.status = 200;
+      ctx.body = studentDraft;
       return ctx;
     },
 
@@ -35,27 +43,26 @@ module.exports = function(StudentActivity,
       const studentDraft = await repository.query(
         sqlLibrary.studentDraft,
         'getStudentDraftByStudentActivityIdAndDraftId',
-        {studentActivityId: ctx.params.studentActivityId, draftId: ctx.params.draftId});
+        { studentActivityId: ctx.params.studentActivityId, draftId: ctx.params.draftId }
+      );
       ctx.status = 200;
       ctx.body = studentDraft;
       return ctx;
     },
 
     async getStudentDraftByStudentDraftId(ctx) {
-      const studentDraft = await repository.query(
-        sqlLibrary.studentDraft,
-        'getStudentDraftByStudentDraftId',
-        {studentDraftId: ctx.params.studentDraftId});
+      const studentDraft = await repository.query(sqlLibrary.studentDraft, 'getStudentDraftByStudentDraftId', {
+        studentDraftId: ctx.params.studentDraftId
+      });
       ctx.status = 200;
       ctx.body = studentDraft;
       return ctx;
     },
 
     async getAllStudentDraftsByStudentActivityId(ctx) {
-      const studentDrafts = await repository.query(
-        sqlLibrary.studentDraft,
-        'getStudentDraftsByStudentActivityId',
-        {studentActivityId: ctx.params.studentActivityId});
+      const studentDrafts = await repository.query(sqlLibrary.studentDraft, 'getStudentDraftsByStudentActivityId', {
+        studentActivityId: ctx.params.studentActivityId
+      });
       ctx.status = 200;
       ctx.body = studentDrafts;
       return ctx;
@@ -77,10 +84,9 @@ module.exports = function(StudentActivity,
     },
 
     async getStudentReflectionAnswers(ctx) {
-      const studentReflections = await repository.query(
-        sqlLibrary.studentDraft,
-        'getStudentReflectionAnswers',
-        {studentDraftId: ctx.params.studentDraftId});
+      const studentReflections = await repository.query(sqlLibrary.studentDraft, 'getStudentReflectionAnswers', {
+        studentDraftId: ctx.params.studentDraftId
+      });
       ctx.status = 200;
       ctx.body = studentReflections;
       return ctx;
@@ -92,12 +98,13 @@ module.exports = function(StudentActivity,
       command.studentDraftId = ctx.params.studentDraftId;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
       studentActivity.setStudentReflectionAnswers(command);
-      const answers = studentActivity.getStudentReflectionAnswersByStudentDraftId(
-        {studentDraftId: command.studentDraftId});
+      const answers = studentActivity.getStudentReflectionAnswersByStudentDraftId({
+        studentDraftId: command.studentDraftId
+      });
       repository.transaction(async repo => {
-        await repo.query(sqlLibrary.studentDraft,
-          'removeAllStudentReflectionAnswers',
-          { studentDraftId: command.studentDraftId });
+        await repo.query(sqlLibrary.studentDraft, 'removeAllStudentReflectionAnswers', {
+          studentDraftId: command.studentDraftId
+        });
 
         for (let answer of answers) {
           let data = {
@@ -138,13 +145,13 @@ module.exports = function(StudentActivity,
       const reviewStatus = ReviewStatus.fromKey(command.reviewStatus);
       if (!reviewStatus) {
         ctx.status = 422;
-        ctx.body = {error: `reviewStatus ${command.reviewStatus} is not a valid reviewStatus`};
+        ctx.body = { error: `reviewStatus ${command.reviewStatus} is not a valid reviewStatus` };
         return ctx;
       }
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
       command.modifiedById = ctx.state.user.id;
-      command.reviewedDate = (reviewStatus === 'submitted') ? moment().format('YYYY-MM-DD') : null;
+      command.reviewedDate = reviewStatus === 'submitted' ? moment().format('YYYY-MM-DD') : null;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.updateReviewStatus(command);
 
@@ -166,6 +173,65 @@ module.exports = function(StudentActivity,
       await repository.query(sqlLibrary.studentDraft, 'submitStudentDraftEndComment', event);
 
       ctx.status = 200;
+      return ctx;
+    },
+
+    async submitFinalGrade(ctx) {
+      const command = ctx.request.body;
+      const studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      command.modifiedById = ctx.state.user.id;
+      command.modifiedDate = moment().toISOString();
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
+      let event = studentActivity.submitFinalGrade(command);
+
+      await repository.query(sqlLibrary.studentDraft, 'submitStudentDraftFinalGrade', event);
+
+      ctx.status = 200;
+      return ctx;
+    },
+
+    async updateRubricScore(ctx) {
+      const command = ctx.request.body;
+      command.studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      command.rubricId = ctx.params.rubricId;
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
+      studentActivity.updateRubricScore(command);
+      const scores = studentActivity.getRubricScores({
+        studentDraftId: command.studentDraftId
+      });
+
+      repository.transaction(async repo => {
+        await repo.query(sqlLibrary.studentRubricScore, 'removeAllStudentRubricScores', {
+          studentDraftId: command.studentDraftId
+        });
+
+        for (let score of scores) {
+          let data = {
+            modifiedById: ctx.state.user.id,
+            modifiedDate: moment().toISOString(),
+            studentRubricScoreId: score.studentRubricScoreId,
+            studentDraftId: command.studentDraftId,
+            rubricId: command.rubricId,
+            criteriaId: score.criteriaId,
+            score: score.score
+          };
+          await repo.query(sqlLibrary.studentRubricScore, 'updateStudentRubricScore', data);
+        }
+      });
+
+      ctx.status = 200;
+      ctx.body = scores;
+      return ctx;
+    },
+
+    async getRubricScores(ctx) {
+      const rubricScores = await repository.query(sqlLibrary.studentRubricScore, 'getStudentRubricScores', {
+        studentDraftId: ctx.params.studentDraftId
+      });
+      ctx.status = 200;
+      ctx.body = rubricScores;
       return ctx;
     }
   };

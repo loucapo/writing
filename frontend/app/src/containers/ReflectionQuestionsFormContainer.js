@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ReflectionQuestionsForm } from './../components/ReflectionQuestions/index';
+import { ReflectionQuestionsForm } from '../components/ReflectionQuestions/index';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { setReflectionAnswers } from '../modules/reflectionAnswersModule';
+import { getStudentDraftByStudentDraftId } from '../modules/studentDraftModule';
 import { submitDraft } from '../modules/studentDraftModule';
 
 class ReflectionQuestionsFormContainer extends Component {
@@ -13,6 +14,7 @@ class ReflectionQuestionsFormContainer extends Component {
 
   loadData() {
     this.props.getReflectionQuestions();
+    this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
   }
 
   render() {
@@ -21,33 +23,33 @@ class ReflectionQuestionsFormContainer extends Component {
 }
 
 ReflectionQuestionsFormContainer.propTypes = {
+  params: PropTypes.object,
   studentReflectionQuestions: PropTypes.array,
   studentReflectionAnswers: PropTypes.array,
   setReflectionAnswers: PropTypes.func,
   studentActivityId: PropTypes.string,
   studentDraftId: PropTypes.string,
-  getReflectionQuestions: PropTypes.func
+  getReflectionQuestions: PropTypes.func,
+  getStudentDraftByStudentDraftId: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
-  let studentDraft = state.studentDraft.find(x => x.studentDraftId === props.params.studentDraftId);
-  let draft = state.drafts.find(x => x.draftId === studentDraft.draftId);
-  let reflectionQuestions = state.reflectionQuestions.length > 0
-    ? draft.studentReflectionQuestions.map(x =>
-        state.reflectionQuestions.find(y => y.studentReflectionQuestionId === x)
+  let studentDraft = state.studentDraft[0];
+
+  let draft = state.drafts.find(draftInState => draftInState.draftId === studentDraft.draftId);
+
+  let reflectionQuestions = (state.reflectionQuestions.length > 0) ?
+    draft.studentReflectionQuestions.map(questionId =>
+        state.reflectionQuestions.find(question => question.studentReflectionQuestionId === questionId)
       )
     : [];
 
-  let reflectionAnswers = state.reflectionAnswers.filter(x =>
-    reflectionQuestions.find(y => y.studentReflectionQuestionId === x.studentReflectionQuestionId)
+  let reflectionAnswers = state.reflectionAnswers.filter(answer =>
+    reflectionQuestions.find(question => question.studentReflectionQuestionId === answer.studentReflectionQuestionId)
   );
 
-  let draftName = draft.index ===
-    state.studentDraft.filter(x => x.activityId === state.auth.activityId && x.studentId === state.auth.studentId)
-      .length -
-      1
-    ? `Final Paper`
-    : `Draft ${draft.index + 1}`;
+  let draftName = (draft.index === studentDraft.length - 1) ?
+    `Final Paper` : `Draft ${draft.index + 1}`;
 
   return {
     reflectionQuestions,
@@ -65,5 +67,6 @@ const mapStateToProps = (state, props) => {
 export default connect(mapStateToProps, {
   setReflectionAnswers,
   getReflectionQuestions,
-  submitDraft
+  submitDraft,
+  getStudentDraftByStudentDraftId
 })(ReflectionQuestionsFormContainer);
