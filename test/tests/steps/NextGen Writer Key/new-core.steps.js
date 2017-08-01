@@ -194,10 +194,6 @@ exports.define = function(steps) {
     return driver.sleep(d * 1000);
   });
 
-  steps.when('I scroll to the end of the page', function() {
-    return driver.executeScript("scroll(0, 5050);")
-  });
-
   steps.when('I maximize the browser', function() {
     return driver.manage().window().maximize();
   });

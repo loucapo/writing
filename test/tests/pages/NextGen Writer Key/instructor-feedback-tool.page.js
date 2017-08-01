@@ -59,19 +59,19 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       rubric_row_2: {
         desc: `Second row of the rubric table for grading`,
-        locator: `[class^= 'Rubric__table'] [class^='Rubric__row'] div:nth-child(2)`
+        locator: `[class^= 'Rubric__table'] [class^='Rubric__row']:nth-child(3) div`
       },
       rubric_row_3: {
         desc: `Third row of the rubric table for grading`,
-        locator: `[class^= 'Rubric__table'] [class^='Rubric__row'] div:nth-child(3)`
+        locator: `[class^= 'Rubric__table'] [class^='Rubric__row']:nth-child(4) div`
       },
       rubric_row_4: {
         desc: `Forth row of the rubric table for grading`,
-        locator: `[class^= 'Rubric__table'] [class^='Rubric__row'] div:nth-child(4)`
+        locator: `[class^= 'Rubric__table'] [class^='Rubric__row']:nth-child(5) div`
       },
       rubric_row_5: {
         desc: `Fifth row of the rubric table for grading`,
-        locator: `[class^= 'Rubric__table'] [class^='Rubric__row'] div:nth-child(5)`
+        locator: `[class^= 'Rubric__table'] [class^='Rubric__row']:nth-child(6) div`
       },
     };
   }

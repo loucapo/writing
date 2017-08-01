@@ -2,7 +2,6 @@
   @only
 Feature: Instructor Can Score Rubric
   @db=reset
-
   Scenario: Setup submission grid
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"
@@ -51,24 +50,18 @@ Feature: Instructor Can Score Rubric
     And I click "rubric_row_1(3)"
     Then the color of "rubric_row_1(3)" should be "#ffc196"
     Then I wait until there is 0 "yellow_criteria_selected" visible
-@only
+
   Scenario: Instructor Scores Whole Rubric
     Given I launch the activity as an "instructor"
-  And I maximize the browser
+    And I maximize the browser
     When I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-  When I scroll to the end of the page
     And I click "rubric_row_1(5)"
-    And I sleep for 1 seconds
-    And I click "rubric_row_5(2)"
-  And I sleep for 1 seconds
-    And I click "rubric_row_4(3)"
-  And I sleep for 1 seconds
     And I click "rubric_row_2(4)"
-  And I sleep for 1 seconds
     And I click "rubric_row_3(3)"
-  And I sleep for 1 seconds
+    And I click "rubric_row_4(3)"
+    And I click "rubric_row_5(2)"
     Then the color of "rubric_row_1(5)" should be "#acdba2"
     Then the color of "rubric_row_2(4)" should be "#faf2a9"
     Then the color of "rubric_row_3(3)" should be "#ffc196"
