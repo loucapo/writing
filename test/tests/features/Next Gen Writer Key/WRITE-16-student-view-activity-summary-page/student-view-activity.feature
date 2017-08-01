@@ -26,6 +26,7 @@ Feature: Student Views Activity
     Then I wait until there are 0 "draft.add_draft_instructions"
     Then I wait until there are 0 "student_preview"
 
+    @TOREFACTOR
   @db=reset
   Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as an "instructor"
@@ -43,6 +44,6 @@ Feature: Student Views Activity
     Then the text of "activity_prompt.description" should be "hello world"
     Then the text of "rubric.preview_name" should be "Analysis"
     And Changing to using page "student_summary"
-    Then the text of "student_draft_note" should be "You will be able to view and start this draft once you've received feedback on Draft 1"
+    #Then the text of "student_draft_note" should be "You will be able to view and start this draft once you've received feedback on Draft 1"
     Then the text of "start_draft_enabled" should be "Start Draft 1"
 

@@ -1,5 +1,4 @@
 @WRITE-967
-  @only
 Feature: Instructor Can Score Rubric
   @db=reset
   Scenario: Setup submission grid
@@ -123,11 +122,11 @@ Feature: Instructor Can Score Rubric
     When I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "rubric_row_1(4)"
-    And I click "rubric_row_2(3)"
+    And I click "rubric_row_1(5)"
+    And I click "rubric_row_2(4)"
     And I click "rubric_row_3(3)"
-    And I click "rubric_row_4(2)"
-    And I click "rubric_row_5(1)"
+    And I click "rubric_row_4(3)"
+    And I click "rubric_row_5(2)"
     And I click "rubric_save_enabled"
     And I click "rubric_save_confirm"
     Then I wait until there is 0 "rubric_save_enabled"
