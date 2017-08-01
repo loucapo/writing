@@ -1,10 +1,8 @@
 import {config} from './../utilities/configValues';
-import reducerMerge from './../utilities/reducerMerge';
 import { requestStates } from '../sagas/requestSaga';
 import { browserHistory } from 'react-router';
 
 const CREATE_STUDENT_DRAFT = requestStates('create_student_draft');
-const GET_STUDENT_DRAFTS = requestStates('get_student_drafts');
 const GET_STUDENT_DRAFT = requestStates('get_student_draft');
 const GET_RUBRIC_SCORE = requestStates('get_rubric_score');
 export const UPDATE_DRAFT_PAPER = requestStates('update_draft_paper');
@@ -16,11 +14,11 @@ export const SUBMIT_DRAFT_FINAL_GRADE = requestStates('submit_draft_final_grade'
 // Reducer
 export default (state = [], action) => {
   switch (action.type) {
-    case GET_STUDENT_DRAFT.SUCCESS: {
-      return reducerMerge(state, action.result);
+    case CREATE_STUDENT_DRAFT.SUCCESS: {
+      return action.result;
     }
-    case GET_STUDENT_DRAFTS.SUCCESS: {
-      return reducerMerge(state, action.result, 'studentDraftId');
+    case GET_STUDENT_DRAFT.SUCCESS: {
+      return action.result;
     }
     case UPDATE_DRAFT_PAPER.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
@@ -94,25 +92,13 @@ export function getStudentDraftByStudentDraftId(studentDraftId) {
   };
 }
 
-export function createStudentDraftIfNotThere(studentActivityId, draftId) {
+export function getOrCreateStudentDraft(studentActivityId, draftId) {
   return {
     type: CREATE_STUDENT_DRAFT.REQUEST,
     states: CREATE_STUDENT_DRAFT,
-    subsequentAction: getStudentDraft(studentActivityId, draftId),
     url: `${config.apiUrl}studentactivity/${studentActivityId}/draft/${draftId}`,
     params: {
       method: 'PUT'
-    }
-  };
-}
-
-export function getStudentDrafts(studentActivityId) {
-  return {
-    type: GET_STUDENT_DRAFTS.REQUEST,
-    states: GET_STUDENT_DRAFTS,
-    url: `${config.apiUrl}studentactivity/${studentActivityId}/drafts`,
-    params: {
-      method: 'GET'
     }
   };
 }

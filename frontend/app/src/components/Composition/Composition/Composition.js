@@ -9,7 +9,7 @@ import styles from './composition.css';
 class Composition extends Component {
   state = {
     draftIsEmpty: this.props.draftIsEmpty,
-    newContent: null
+    newContent: this.props.studentDraft.paper
   };
 
   handleSave = () => {

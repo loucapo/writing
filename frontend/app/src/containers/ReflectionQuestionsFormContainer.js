@@ -30,7 +30,7 @@ ReflectionQuestionsFormContainer.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  let studentDraft = state.studentDraft.find(x => x.studentDraftId === props.params.studentDraftId);
+  let studentDraft = state.studentDrafts.find(x => x.studentDraftId === props.params.studentDraftId);
   let draft = state.drafts.find(x => x.draftId === studentDraft.draftId);
   let reflectionQuestions = state.reflectionQuestions.length > 0
     ? draft.studentReflectionQuestions.map(x =>

@@ -5,7 +5,7 @@ import { getActivity } from '../modules/activityModule';
 import { createStudentActivityIfNotCreated } from '../modules/studentActivityModule';
 import { addStudentInfoToDrafts } from './selectors';
 import { getDraftsForActivity } from '../modules/draftModule';
-import { getStudentDrafts } from '../modules/studentDraftModule';
+import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 
 class ActivityDisplayContainer extends Component {

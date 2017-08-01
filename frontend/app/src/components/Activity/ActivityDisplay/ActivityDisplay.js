@@ -50,7 +50,7 @@ const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
 
           <ActivityTitleDisplay title={activity.title} type={activity.type} />
 
-          {activity.prompt ? <ActivityPromptDisplay prompt={activity.prompt} /> : null}
+          <ActivityPromptDisplay prompt={activity.prompt} />
 
           {activity.rubricId ? <ActivityRubricDisplay /> : null}
 
