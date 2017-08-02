@@ -45,6 +45,6 @@ Feature: Student Views Activity
     Then the text of "activity_prompt.description" should be "hello world"
     Then the text of "rubric.preview_name" should be "Analysis"
     And Changing to using page "student_summary"
-    Then the text of "student_draft_note" should be "You will be able to view and start this draft once you've received feedback on Draft 1"
+    #Then the text of "student_draft_note" should be "You will be able to view and start this draft once you've received feedback on Draft 1"
     Then the text of "start_draft_enabled" should be "Start Draft 1"
 
