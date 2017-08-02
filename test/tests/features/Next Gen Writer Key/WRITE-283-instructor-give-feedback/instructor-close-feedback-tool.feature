@@ -1,4 +1,5 @@
 @WRITE-1137
+@TOREFACTOR
 Feature: Instructor Close Feedback Tool
   @db=reset
   Scenario: Setup Student Draft Submission
