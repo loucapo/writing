@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ActivityHeaderDisplay, ActivityTitleDisplay, ActivityPromptDisplay, ActivityRubricDisplay } from '../index';
+import { ActivityHeaderDisplay, ActivityTitleDisplay, ActivityPromptDisplay } from '../index';
 import { DraftListDisplay } from '../../Draft';
-import { MLMessage } from '../../MLComponents';
+import { RubricDisplayContainer } from '../../../containers';
+import { MLMessage, MLCard } from '../../MLComponents';
 import styles from './activityDisplay.css';
 
 const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
@@ -52,7 +53,11 @@ const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
 
           <ActivityPromptDisplay prompt={activity.prompt} />
 
-          {activity.rubricId ? <ActivityRubricDisplay /> : null}
+          {activity.rubricId ?
+            <MLCard type="rubric" title="Final Rubric">
+              <RubricDisplayContainer />
+            </MLCard>
+            : null}
 
           <div className={styles.studentDraftSpacer}>
             <DraftListDisplay drafts={drafts} activityId={activity.activityId} />
