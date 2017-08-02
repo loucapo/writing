@@ -1,4 +1,5 @@
 @WRITE-41
+@TOREFACTOR
 Feature: Student Views Submitted Draft
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
