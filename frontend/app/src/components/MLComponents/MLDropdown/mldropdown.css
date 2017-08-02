@@ -91,7 +91,7 @@
   opacity: 1;
   top: 5px;
   max-height: 344px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .dropdownOpen .dropdownTitle {
