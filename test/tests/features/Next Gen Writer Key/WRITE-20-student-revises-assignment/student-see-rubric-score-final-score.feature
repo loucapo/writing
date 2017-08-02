@@ -8,6 +8,8 @@ Feature: Student Views Grades
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
     When I click "reflection_questions_modal.save"
+    And I click "rubric.dropdown"
+    And I click "rubric.dropdown_option(2)"
     Given I launch the activity as an "student"
     When I click "start_draft"
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
@@ -31,7 +33,7 @@ Feature: Student Views Grades
   Scenario: Student opens instructor feedback with no final grade
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
-    And the text of "student_read_only.final_rubric_comment" should include "Instructor did not select rubric score"
+    And the text of "student_read_only.rubric_score_comment" should include "Instructor did not select rubric score"
 
   Scenario: Student sees instructor feedback with a final grade
     Given I launch the activity as an "instructor"
@@ -43,7 +45,7 @@ Feature: Student Views Grades
     And I click "done_button"
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
-    And the text of "student_read_only.final_grade_comment" should include "95"
+    And the text of "student_read_only.final_grade_display" should include "95"
 
   Scenario: Student sees instructor feedback with a rubric grade
     Given I launch the activity as an "instructor"
@@ -60,3 +62,8 @@ Feature: Student Views Grades
     And I click "done_button"
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
+    Then the color of "student_read_only.rubric_row_1(5)" should be "#acdba2"
+    Then the color of "student_read_only.rubric_row_2(4)" should be "#faf2a9"
+    Then the color of "student_read_only.rubric_row_3(3)" should be "#ffc196"
+    Then the color of "student_read_only.rubric_row_4(3)" should be "#ffc196"
+    Then the color of "student_read_only.rubric_row_5(2)" should be "#ffafaf"
