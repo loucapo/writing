@@ -58,7 +58,7 @@ class Composition extends Component {
   render() {
     return (
       <div className={styles.page}>
-        <div>
+        <div className={styles.subpage}>
           <CompositionHeader
             handleSave={this.handleSave}
             draftIsEmpty={this.state.draftIsEmpty}
