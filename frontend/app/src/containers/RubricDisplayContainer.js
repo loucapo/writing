@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getRubricList } from '../modules/rubricModule';
+import { getRubricScores } from '../modules/rubricScoresModule';
 import { getCriteria } from '../modules/criteriaModule';
 import { RubricDisplay } from '../components/Rubric';
 import { addCriteriaToRubric } from './selectors';
@@ -25,7 +26,9 @@ RubricDisplayContainer.propTypes = {
   getRubricList: PropTypes.func,
   getCriteria: PropTypes.func,
   getRubricScores: PropTypes.func,
-  studentDraftId: PropTypes.string
+  studentDraftId: PropTypes.string,
+  noRubricScores: PropTypes.bool,
+  title: PropTypes.string
 };
 
 const mapStateToProps = state => {
@@ -36,4 +39,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getRubricList, getCriteria })(RubricDisplayContainer);
+export default connect(mapStateToProps, { getRubricList, getRubricScores, getCriteria })(RubricDisplayContainer);

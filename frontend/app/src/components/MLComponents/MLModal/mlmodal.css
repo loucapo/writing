@@ -33,7 +33,7 @@
 .modalContent {
   padding: 20px;
   max-height: 620px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .closeIcon {

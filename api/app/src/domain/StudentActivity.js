@@ -31,6 +31,12 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       invariant(!this.studentDrafts.find(x => x.active),
         `You may not start a new Draft while you still have an other active Draft`);
 
+      if (this.studentDrafts.length > 1) {
+        event.paper = this.studentDrafts[this.studentDrafts.length - 1].paper;
+      } else {
+        event.paper = null;
+      }
+
       event.studentDraftId = uuid.v4();
       event.draftId = cmd.draftId;
       event.studentActivityId = cmd.studentActivityId;

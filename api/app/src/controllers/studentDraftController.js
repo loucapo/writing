@@ -27,10 +27,15 @@ module.exports = function(
         const studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
         let event = studentActivity.createNewStudentDraft(command);
         await repository.query(sqlLibrary.studentDraft, 'createStudentDraft', event);
+        studentDraft = await repository.query(sqlLibrary.studentDraft,
+          'getStudentDraftByStudentActivityIdAndDraftId',
+          { studentActivityId: command.studentActivityId, draftId: command.draftId }
+        );
       }
       logger.debug(`Call to createStudentDraft successful with following payload: ${JSON.stringify(command)}`);
 
       ctx.status = 200;
+      ctx.body = studentDraft;
       return ctx;
     },
 

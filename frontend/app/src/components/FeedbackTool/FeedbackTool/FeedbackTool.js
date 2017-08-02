@@ -52,7 +52,7 @@ const FeedbackTool = ({
         submitEndComment={submitEndComment}
         endComment={studentDraft.endComment}
       />
-      { (rubricId && rubricId !== '0000') ?
+      { (rubricId && rubricId !== '0000' && lastDraft) ?
         <MLCard type="rubric" title="Final Rubric Evaluation">
           <RubricContainer
             studentActivityId={studentDraft.studentActivityId}
