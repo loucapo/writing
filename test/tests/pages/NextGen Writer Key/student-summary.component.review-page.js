@@ -41,6 +41,14 @@ class StudentReview extends Component {
         desc: `Fifth row of the rubric table for grading`,
         locator: `[data-id= 'rubric-preview'] [class^='RubricDisplay__row']:nth-child(6) div`
       },
+      next_draft_button: {
+        desc: `Button to start next draft`,
+        locator: `[class^='MLButton__button__'][class*='MLButton__aqua']`
+      },
+      disabled_next_draft_button: {
+        desc: `Button to start a future disabled draft`,
+        locator: `[class^='MLButton__button__'][class*='MLButton__disabled']`
+      }
     }; }
 }
 
