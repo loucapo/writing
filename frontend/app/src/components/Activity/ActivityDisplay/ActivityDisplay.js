@@ -7,7 +7,7 @@ import styles from './activityDisplay.css';
 
 const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
   const getLatestDraftWithFeedback = () => {
-    let reversedDrafts = drafts.reverse();
+    let reversedDrafts = drafts.slice().reverse();
     return reversedDrafts.find(draft => draft.studentInfo.reviewStatus === 'submitted');
   };
 
@@ -50,7 +50,7 @@ const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
 
           <ActivityTitleDisplay title={activity.title} type={activity.type} />
 
-          {activity.prompt ? <ActivityPromptDisplay prompt={activity.prompt} /> : null}
+          <ActivityPromptDisplay prompt={activity.prompt} />
 
           {activity.rubricId ? <ActivityRubricDisplay /> : null}
 

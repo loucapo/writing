@@ -136,6 +136,14 @@
         }
       }
     },
+    "submitFinalGrade": {
+      "title": "submitFinalGrade",
+      "properties": {
+        "endComment": {
+          "type": "number"
+        }
+      }
+    },
     "updateReviewStatus": {
       "title": "updateReviewStatus",
       "properties": {

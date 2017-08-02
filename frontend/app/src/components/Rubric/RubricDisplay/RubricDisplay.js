@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { CriteriaDisplay } from '../index';
 import styles from './rubricDisplay.css';
 
-const RubricDisplay = ({ rubric }) => {
+const RubricDisplay = ({ rubric, studentDraftId }) => {
   return (
     <section data-id="rubric-preview" className={styles.rubric}>
       <header className={styles.header}>
@@ -24,6 +24,7 @@ const RubricDisplay = ({ rubric }) => {
                 score={level.score}
                 content={level.content}
                 selected={level.selected}
+                studentDraftId={studentDraftId}
               />
             ))}
           </div>
@@ -34,7 +35,8 @@ const RubricDisplay = ({ rubric }) => {
 };
 
 RubricDisplay.propTypes = {
-  rubric: PropTypes.object
+  rubric: PropTypes.object,
+  studentDraftId: PropTypes.string
 };
 
 export default RubricDisplay;

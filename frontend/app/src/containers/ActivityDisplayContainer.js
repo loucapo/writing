@@ -5,7 +5,7 @@ import { getActivity } from '../modules/activityModule';
 import { createStudentActivityIfNotCreated } from '../modules/studentActivityModule';
 import { addStudentInfoToDrafts } from './selectors';
 import { getDraftsForActivity } from '../modules/draftModule';
-import { getStudentDrafts } from '../modules/studentDraftModule';
+import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 
 class ActivityDisplayContainer extends Component {
@@ -55,7 +55,7 @@ const mapStateToProps = (state, props) => {
     x => x.activityId === activityId && x.studentId === state.auth.id
   );
 
-  const drafts = addStudentInfoToDrafts(state, props);
+  const drafts = addStudentInfoToDrafts(state, props).reverse();
 
   //activityId coming from auth so it's there but activity may not be
   const activity = state.activities.find(x => x.activityId === activityId);

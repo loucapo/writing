@@ -10,15 +10,14 @@ const FeedbackDisplay = ({
   homeRoute,
   draftTitle,
   activityTitle,
-  drafts
+  linkableDrafts
 }) => (
   <div className={styles.page}>
     <FeedbackDisplayHeader
       homeRoute={homeRoute}
       draftTitle={draftTitle}
       activityTitle={activityTitle}
-      drafts={drafts}
-      studentDraft={studentDraft}
+      linkableDrafts={linkableDrafts}
     />
     <div className={styles.container}>
       <MLCard type="end-comment" title="Instructor Comment">
@@ -49,7 +48,7 @@ FeedbackDisplay.propTypes = {
   reflectionQuestions: PropTypes.array,
   draftTitle: PropTypes.string,
   activityTitle: PropTypes.string,
-  drafts: PropTypes.array
+  linkableDrafts: PropTypes.array
 };
 
 export default FeedbackDisplay;

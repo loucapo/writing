@@ -8,6 +8,7 @@ import resourceLinks from './resourceLinksModule';
 import auth from './authModule';
 import defaults from './defaultsModule';
 import studentActivities from './studentActivityModule';
+import studentDrafts from './studentDraftsModule';
 import studentDraft from './studentDraftModule';
 import reflectionQuestions from './reflectionQuestionsModule';
 import reflectionAnswers from './reflectionAnswersModule';
@@ -29,6 +30,7 @@ export default {
   auth,
   defaults,
   studentDraft,
+  studentDrafts,
   studentActivities,
   reflectionQuestions,
   reflectionAnswers,

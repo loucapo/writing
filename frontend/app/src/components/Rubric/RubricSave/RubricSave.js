@@ -29,19 +29,25 @@ class SaveDialog extends Component {
   };
 
   render() {
+    let message;
+    if (this.props.gradeIsComplete) {
+      message = 'You are about to submit the rubric evaluation and you will no longer be able to edit it if you continue. Are you sure you want to continue?';
+    } else {
+      message = 'The rubric wasn\'t fully filled out and you won\'t be able to edit if you continue. Are you sure you want to continue?';
+    }
     return (
-      <div>
+      <div className={styles.container}>
         <div className={styles.saveButton}>
           <MLButton
             dataId="save-rubric"
-            handleClick={this.props.gradeIsComplete ? this.props.handleSave : this.showDialog}
+            handleClick={this.showDialog}
             disabled={this.props.gradeIsNotStarted}
             title="Save"
           />
         </div>
         <MLDialog
           title="Final Rubric Evaluation"
-          message="The rubric wasn't fully filled out and you won't be able to edit if you continue. Are you sure you want to continue?"
+          message={message}
           show={this.state.showDialog}
           close={this.closeDialog.bind(this, false)}
         >

@@ -4,7 +4,7 @@ export default (state, props) => {
   const studentActivity = state.studentActivities.find(
     activity => ((activity.activityId === state.auth.activity.activityId) && (activity.studentId === state.auth.id))
   );
-  let studentDraftsInState = state.studentDraft.filter(
+  let studentDraftsInState = state.studentDrafts.filter(
     studentDraft => studentDraft.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined)
   );
   let drafts = addGoalsAndReflectionsToDrafts(state, props);
@@ -13,14 +13,14 @@ export default (state, props) => {
   const getCurrentActiveIndex = studentDrafts => {
     let lastStarted = studentDrafts.filter(studentDraft => studentDraft.status && studentDraft.status !== 'notStarted').reverse()[0];
     if (lastStarted) {
-      let matchIndex;
-      let matchDraft = drafts.find(studentDraft => studentDraft.draftId === lastStarted.draftId);
-      if (lastStarted.status !== 'submitted') {
-        matchIndex = matchDraft && matchDraft.index || 0;
+      let index;
+      let matchDraft = drafts.find(draft => draft.draftId === lastStarted.draftId);
+      if (lastStarted.reviewStatus !== 'submitted') {
+        index = matchDraft && matchDraft.index || 0;
       } else {
-        matchIndex = matchDraft.index + 1;
+        index = matchDraft.index + 1;
       }
-      return matchIndex;
+      return index;
     }
     return 0;
   };
@@ -39,7 +39,6 @@ export default (state, props) => {
 
     return {
       ...studentDraft,
-      status: studentDraft.status ? studentDraft.status : 'notStarted',
       title,
       buttonText,
       disabled: draftIndex > getCurrentActiveIndex(studentDraftsInState)
@@ -47,7 +46,7 @@ export default (state, props) => {
   };
 
   return drafts.map(draft => {
-    let studentDraft = studentDraftsInState.find(sd => sd.draftId === draft.draftId);
+    let studentDraft = studentDraftsInState.find(studentDraftInState => studentDraftInState.draftId === draft.draftId);
     let studentInfo = getStudentInfo(draft.index, studentDraft);
     return { ...draft, studentInfo };
   });

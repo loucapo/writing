@@ -20,14 +20,16 @@ INSERT INTO student_draft
     student_id,
     draft_id,
     created_by_id,
-    created_date)
+    created_date,
+    paper)
 VALUES
     (:studentDraftId,
     :studentActivityId,
     :studentId,
     :draftId,
     :createdById,
-    :createdDate)
+    :createdDate,
+    :paper)
 
 -- name: updateStudentDraftPaper
 UPDATE student_draft
@@ -79,6 +81,13 @@ WHERE student_draft_id = :studentDraftId
 -- name: submitStudentDraftEndComment
 UPDATE student_draft
 SET end_comment = :endComment,
+modified_by_id = :modifiedById,
+modified_date = :modifiedDate
+WHERE student_draft_id = :studentDraftId
+
+-- name: submitStudentDraftFinalGrade
+UPDATE student_draft
+SET final_grade = :finalGrade,
 modified_by_id = :modifiedById,
 modified_date = :modifiedDate
 WHERE student_draft_id = :studentDraftId

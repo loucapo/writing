@@ -76,7 +76,7 @@ class ActivityPrompt extends Component {
               </div>
         }
         <div data-id="prompt-description">
-          {(this.props.prompt || this.state.editable)
+          {(this.props.promptText || this.state.editable)
             ?
               <MLEditor handleSaveOnBlur={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
             :
@@ -89,6 +89,7 @@ class ActivityPrompt extends Component {
 
 ActivityPrompt.propTypes = {
   prompt: PropTypes.object,
+  promptText: PropTypes.string,
   updateActivityPrompt: PropTypes.func,
   activityId: PropTypes.string
 };
