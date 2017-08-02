@@ -1,4 +1,5 @@
 @WRITE-228
+@TOREFACTOR
 Feature: Instructor can add end comment to completed draft
 
   @db=reset

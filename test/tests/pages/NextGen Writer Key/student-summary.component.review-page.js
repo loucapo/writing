@@ -8,7 +8,39 @@ class StudentReview extends Component {
       instructor_end_comment: {
         desc: `Instructor end comment given to student`,
         locator: `[data-id='MLCard-Instructor-Comment'] div span`
-      }
+      },
+      final_grade_comment: {
+        desc: `Final Grade: text in end comment`,
+        locator: `[data-id='end-comment-section'] [class^='FeedbackDisplay__finalGradeLabel']`
+      },
+      final_grade_display: {
+        desc: `Actual grade given to student`,
+        locator: `[data-id='end-comment-section'] [class^='FeedbackDisplay__finalGrade__']`
+      },
+      rubric_score_comment: {
+        desc: `Rubric text if no rubric grade`,
+        locator: `[data-id='rubric-section'] [class^='FeedbackDisplay__finalGradeLabel']`
+      },
+      rubric_row_1: {
+        desc: `First row of the rubric table for grading`,
+        locator: `[data-id= 'rubric-preview'] [class^='RubricDisplay__row'] div`
+      },
+      rubric_row_2: {
+        desc: `Second row of the rubric table for grading`,
+        locator: `[data-id= 'rubric-preview'] [class^='RubricDisplay__row']:nth-child(3) div`
+      },
+      rubric_row_3: {
+        desc: `Third row of the rubric table for grading`,
+        locator: `[data-id= 'rubric-preview'] [class^='RubricDisplay__row']:nth-child(4) div`
+      },
+      rubric_row_4: {
+        desc: `Forth row of the rubric table for grading`,
+        locator: `[data-id= 'rubric-preview'] [class^='RubricDisplay__row']:nth-child(5) div`
+      },
+      rubric_row_5: {
+        desc: `Fifth row of the rubric table for grading`,
+        locator: `[data-id= 'rubric-preview'] [class^='RubricDisplay__row']:nth-child(6) div`
+      },
     }; }
 }
 
