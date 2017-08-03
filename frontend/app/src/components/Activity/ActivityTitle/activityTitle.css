@@ -27,6 +27,10 @@
   fill: var(--aqua);
 }
 
-.charLimit {
+.redFont {
   color: var(--red);
+}
+
+.redBorder {
+  border: var(--red) 1px solid;
 }
