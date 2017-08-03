@@ -1,9 +1,6 @@
 module.exports = function(config, dbmigrate, pingDB) {
   return async () => {
     console.log('==========BEGIN ping db"=========');
-    console.log('&&& config in migrate &&&');
-    console.log(config);
-    console.log('&&&&&&&&&&&&&&&&');
     await pingDB();
     console.log('==========end ping db"=========');
 
