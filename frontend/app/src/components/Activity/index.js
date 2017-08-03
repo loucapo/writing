@@ -8,7 +8,6 @@ import ActivityRubricSelector from './ActivityRubricSelector/ActivityRubricSelec
 import ActivityTitle from './ActivityTitle/ActivityTitle';
 import ActivityTitleDisplay from './ActivityTitleDisplay/ActivityTitleDisplay';
 import ActivityMenu from './ActivityMenu/ActivityMenu';
-import ActivityRubricDisplay from './ActivityRubricDisplay/ActivityRubricDisplay';
 
 export {
   Activity,
@@ -20,6 +19,5 @@ export {
   ActivityRubricSelector,
   ActivityTitle,
   ActivityTitleDisplay,
-  ActivityMenu,
-  ActivityRubricDisplay
+  ActivityMenu
 };

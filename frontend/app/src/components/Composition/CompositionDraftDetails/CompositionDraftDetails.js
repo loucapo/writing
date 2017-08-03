@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
-import { MLEditor, MLAccordion, MLButton, MLDialog } from './../../MLComponents/index';
-
-import { CompositionDraftDetailsHeader, CompositionDraftDetailsRubric } from './../index';
-
-import { DraftInstructionsDisplay, DraftGoalsDisplay } from './../../Draft/index';
-
-import { ReflectionQuestionsDisplay } from './../../ReflectionQuestions/index';
-
+import { MLEditor, MLAccordion, MLButton, MLDialog } from '../../MLComponents/index';
+import { CompositionDraftDetailsHeader, CompositionDraftDetailsRubric } from '../index';
+import { DraftInstructionsDisplay, DraftGoalsDisplay } from '../../Draft/index';
+import { ReflectionQuestionsDisplay } from '../../ReflectionQuestions/index';
 import styles from './compositionDraftDetails.css';
 
 class CompositionDraftDetails extends Component {
@@ -17,8 +13,6 @@ class CompositionDraftDetails extends Component {
   };
 
   checkForUnsavedChanges = () => {
-    // If the editor has unsaved changes (as passed along in a prop), then show the dialog.
-    // Otherwise, send them on their way.
     if (this.props.unsavedChanges) {
       this.setState({
         showDialog: true
