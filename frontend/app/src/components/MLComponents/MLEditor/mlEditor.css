@@ -13,7 +13,7 @@
 
 .toolbar {
   width: auto !important;
-  min-height: 150px !important;
+  align-items: center;
 }
 
 .editorWrapper {
