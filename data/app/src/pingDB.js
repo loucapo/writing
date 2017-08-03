@@ -6,6 +6,9 @@ module.exports = function(config, pg, promiseretry) {
       const client = new pg.Client(configs);
       return new Promise((res, rej) => {
         // connect to our database
+        console.log('****** CONFIG IN PINGDB ***');
+        console.log(config);
+        console.log('*********************');
         return client.connect(connectErr => {
           if (connectErr) {
             return rej(connectErr);
