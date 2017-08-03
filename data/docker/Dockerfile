@@ -13,4 +13,4 @@ RUN yarn install
 
 ADD ./app /$HOME/app
 
-CMD yarn blastAndRebuild && yarn start
+CMD yarn blastAndRebuild && yarn start && yarn start_api
