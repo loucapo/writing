@@ -73,7 +73,7 @@ class Composition extends Component {
             <MLEditor
               content={this.props.studentDraft.paper}
               editable={true}
-              toolbarHidden
+              toolbarHidden={false}
               notifyOnEditorUpdate={this.handleEditorStateChange}
             />
           </div>

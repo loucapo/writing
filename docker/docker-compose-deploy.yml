@@ -35,8 +35,8 @@ services:
         constraints: [node.role == worker]
 
   data:
-    environment:
-      POSTGRES_HOST: postgres
+    # environment:
+    #   POSTGRES_HOST: ${POSTGRES_HOST}
     ports:
       - "${TESTING_API_PORT}:${TESTING_API_PORT}"
     image: ${wk_data_image}

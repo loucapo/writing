@@ -11,7 +11,7 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
     ? `You will be able to view and start this draft once you've received feedback on Draft ${draft.index}`
     : '';
   let link = `/activity/${activityId}/draft/${draft.draftId}`;
-  if (draft.studentInfo.reviewStatus === 'submitted') {
+  if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
     link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
   } else if (draft.studentInfo.status === 'submitted') {
     link = `/studentDraft/${draft.studentInfo.studentDraftId}/display`;
@@ -37,7 +37,7 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
           id="startDraft"
           title={draft.studentInfo.buttonText}
           dataId="start-draft"
-          bordered={draft.studentInfo.reviewStatus === 'submitted'}
+          bordered={draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed'}
           disabled={draft.studentInfo.disabled}
           link={link}
         />

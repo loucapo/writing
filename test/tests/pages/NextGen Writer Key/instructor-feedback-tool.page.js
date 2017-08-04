@@ -5,12 +5,10 @@ exports.InstructorFeedbackPage = class extends Page {
     return {
       end_comment: {
         desc: `End comment that will be shown to the student`,
-        //locator: `[data-id='end-comment-textarea']`
         locator: `[data-id='MLCard-End-Comment-(optional)'] [class^='MLCard__body__']`
       },
       end_comment_textarea: {
         desc: `Text area for instructor to input end comments`,
-        //locator: `[data-id='end-comment-textarea']`
         locator: `[class^='EndComment__addComment__'] textarea`
       },
       add_end_comment: {
@@ -73,6 +71,22 @@ exports.InstructorFeedbackPage = class extends Page {
         desc: `Fifth row of the rubric table for grading`,
         locator: `[class^= 'Rubric__table'] [class^='Rubric__row']:nth-child(6) div`
       },
+      final_grade_box_save_enabled: {
+        desc: `Save button for instructor grade on a paper`,
+        locator: `[data-id='add-final-grade']:not([class*='__disabled__'])`
+      },
+      final_grade_box_save_disabled: {
+        desc: `Save button for instructor grade on a paper grayed out`,
+        locator: `[data-id='add-final-grade'][class*='__disabled__']`
+      },
+      final_grade_box: {
+        desc: `Final grade input for final paper`,
+        locator: `[data-id='final-grade']`
+      },
+      final_grade_box_error: {
+        desc: `Red warning for invalid input`,
+        locator: `[class^='FinalGrade__infoSpan'][class*='FinalGrade__error']`
+      }
     };
   }
 };

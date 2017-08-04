@@ -13,10 +13,16 @@
 
 .toolbar {
   width: auto !important;
-  min-height: 150px !important;
+  align-items: center;
+  min-height: 75px;
+}
+
+.toolbarHide {
+  display: none !important;
 }
 
 .editorWrapper {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
