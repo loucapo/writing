@@ -25,3 +25,16 @@
   display: flex;
   flex-direction: column;
 }
+
+.highlight, .highlight span {
+  display: inline;
+  background-color: var(--orange-light);
+}
+
+::-moz-selection { /* Code for Firefox */
+  background-color: var(--orange-light);
+}
+
+::selection {
+  background-color: var(--orange-light);
+}

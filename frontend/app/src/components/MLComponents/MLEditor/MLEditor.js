@@ -27,6 +27,129 @@ class MLEditor extends Component {
     }
   };
 
+  getSafeRanges = dangerous => {
+    let a = dangerous.commonAncestorContainer;
+    // Starts -- Work inward from the start, selecting the largest safe range
+    let s = new Array(0);
+    let rs = new Array(0);
+    if (dangerous.startContainer !== a) {
+      for (let i = dangerous.startContainer; i !== a; i = i.parentNode) {
+        s.push(i);
+      }
+    }
+    if (s.length > 0) {
+      for (let i = 0; i < s.length; i++) {
+        let xs = document.createRange();
+        if (i) {
+          xs.setStartAfter(s[i - 1]);
+          xs.setEndAfter(s[i].lastChild);
+        }
+        else {
+          xs.setStart(s[i], dangerous.startOffset);
+          xs.setEndAfter(
+              (s[i].nodeType === Node.TEXT_NODE)
+                  ? s[i]
+                  : s[i].lastChild
+          );
+        }
+        rs.push(xs);
+      }
+    }
+
+    // Ends -- basically the same code reversed
+    let e = new Array(0);
+    let re = new Array(0);
+    if (dangerous.endContainer !== a) {
+      for (let i = dangerous.endContainer; i !== a; i = i.parentNode) {
+        e.push(i);
+      }
+    }
+    if (e.length > 0) {
+      for (let i = 0; i < e.length; i++) {
+        let xe = document.createRange();
+        if (i) {
+          xe.setStartBefore(e[i].firstChild);
+          xe.setEndBefore(e[i - 1]);
+        }
+        else {
+          xe.setStartBefore(
+            (e[i].nodeType === Node.TEXT_NODE)
+            ? e[i]
+            : e[i].firstChild
+          );
+          xe.setEnd(e[i], dangerous.endOffset);
+        }
+        re.unshift(xe);
+      }
+    }
+
+    // Middle -- the uncaptured middle
+    let xm;
+    if ((s.length > 0) && (e.length > 0)) {
+      xm = document.createRange();
+      xm.setStartAfter(s[s.length - 1]);
+      xm.setEndBefore(e[e.length - 1]);
+    }
+    else {
+      return [dangerous];
+    }
+
+    // Concat
+    rs.push(xm);
+    // response = rs.concat(re);
+
+    // Send to Console
+    return rs.concat(re);
+  };
+
+  getSelectedText = () => {
+    let userSelection = window.getSelection().getRangeAt(0);
+    let safeRanges = this.getSafeRanges(userSelection);
+    console.log(`==========safeRanges=========`);
+    console.log(safeRanges);
+    console.log(`==========END safeRanges=========`);
+    for (let i = 0; i < safeRanges.length; i++) {
+      if (!safeRanges[i].collapsed) {
+        let newNode = document.createElement('div');
+        newNode.id = 'marker' + i;
+        newNode.classList.add(styles.highlight); //add some class using the flag counter
+        safeRanges[i].surroundContents(newNode);
+      }
+    }
+    // let editorState = this.state.editorState;
+    // let currentContent = editorState.getCurrentContent();
+    // let selectionState = editorState.getSelection();
+    // let anchorKey = selectionState.getAnchorKey();
+    // let currentContentBlock = currentContent.getBlockForKey(anchorKey);
+    // let start = window.getSelection().anchorOffset;
+    // let end = window.getSelection().focusOffset;
+    // return currentContentBlock.getText().slice(start, end); //returns the selected text
+
+    /*
+    *
+    * sel = window.getSelection()
+    * ////window.getSelection().getRangeAt(0).selectNodeContents()
+    * range1 = document.createRange()
+    * range1.setStart(sel.anchorNode, sel.anchorOffset)
+    * range1.setEnd(sel.anchorNode, (sel.focusOffset < sel.anchorOffset) ? sel.anchorNode.length : sel.focusNode)
+    * var rangeObject = getRangeObject(userSelection);
+
+    * */
+  };
+
+  handleMouseUp = () => {
+    this.getSelectedText();
+    // console.log(`==========selectedText=========`);
+    // console.log(selectedText);
+    // console.log(`==========END selectedText=========`);
+    //
+    // if (selectedText.length > 0) {
+    //   console.log(`==========selectedText=========`);
+    //   console.log(selectedText);
+    //   console.log(`==========END selectedText=========`);
+    // }
+  };
+
   handleBlur = e => {
     let id;
     if (e.relatedTarget) {
@@ -57,18 +180,20 @@ class MLEditor extends Component {
       toolbarClass = styles.toolbar;
     }
     return (
-      <Editor
-        onBlur={this.handleBlur}
-        editorState={this.state.editorState}
-        onEditorStateChange={this.onEditorStateChange}
-        readOnly={!this.props.editable}
-        toolbar={this.props.toolbarHidden}
-        ref="editor"
-        toolbarOnFocus={!this.props.editable}
-        editorClassName={styles.editor}
-        wrapperClassName={styles.editorWrapper}
-        toolbarClassName={toolbarClass}
-      />
+      <div onMouseUp={this.handleMouseUp}>
+        <Editor
+          onBlur={this.handleBlur}
+          editorState={this.state.editorState}
+          onEditorStateChange={this.onEditorStateChange}
+          readOnly={!this.props.editable}
+          toolbar={this.props.toolbarHidden}
+          ref="editor"
+          toolbarOnFocus={!this.props.editable}
+          editorClassName={styles.editor}
+          wrapperClassName={styles.editorWrapper}
+          toolbarClassName={toolbarClass}
+        />
+      </div>
     );
   };
 }
