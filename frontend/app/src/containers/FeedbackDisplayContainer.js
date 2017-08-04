@@ -5,7 +5,7 @@ import { FeedbackDisplay } from '../components/FeedbackTool';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
 import { addStudentInfoToDrafts } from './selectors';
-import { getStudentDraftByStudentDraftId } from '../modules/studentDraftModule';
+import { getStudentDraftByStudentDraftId, updateReviewStatus } from '../modules/studentDraftModule';
 import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { getRubricScores } from '../modules/rubricScoresModule';
 
@@ -20,6 +20,10 @@ class FeedbackDisplayContainer extends Component {
     this.props.getReflectionQuestions();
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
     this.props.getRubricScores(this.props.params.studentDraftId);
+
+    if (this.props.studentDraft && this.props.studentDraft.reviewStatus === 'submitted') {
+      this.props.updateReviewStatus(this.props.studentDraft.studentActivityId, this.props.studentDraft.studentDraftId, 'viewed');
+    }
   }
 
   render() {
@@ -37,7 +41,8 @@ FeedbackDisplayContainer.propTypes = {
   getStudentDraftByStudentDraftId: PropTypes.func,
   getStudentDrafts: PropTypes.func,
   noRubricScores: PropTypes.bool,
-  getRubricScores: PropTypes.func
+  getRubricScores: PropTypes.func,
+  updateReviewStatus: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
@@ -93,5 +98,6 @@ export default connect(mapStateToProps, {
   getReflectionAnswers,
   getStudentDraftByStudentDraftId,
   getStudentDrafts,
-  getRubricScores
+  getRubricScores,
+  updateReviewStatus
 })(FeedbackDisplayContainer);
