@@ -24,8 +24,10 @@ class ActivityTitle extends Component {
   };
 
   handleSave = () => {
+    let trimmedTitle = this.state.title.trim();
+
     // Display warning if user is trying to save blank title.
-    if (this.state.title === '') {
+    if (trimmedTitle === '') {
       this.setState({
         tite: this.props.title,
         warning: true
@@ -33,12 +35,8 @@ class ActivityTitle extends Component {
       return;
     }
 
-    let trimmedTitle = this.state.title.trim();
     this.props.updateActivityTitle(this.props.activityId, { title: trimmedTitle });
-    this.setState({
-      title: trimmedTitle,
-      editable: false
-    });
+    this.setState({ title: trimmedTitle, editable: false });
   };
 
   handleChange = event => {
