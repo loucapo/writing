@@ -50,18 +50,24 @@ class MLEditor extends Component {
   };
 
   render = () => {
+    let toolbarClass;
+    if (this.props.toolbarHidden) {
+      toolbarClass = styles.toolbarHide;
+    } else {
+      toolbarClass = styles.toolbar;
+    }
     return (
       <Editor
         onBlur={this.handleBlur}
         editorState={this.state.editorState}
         onEditorStateChange={this.onEditorStateChange}
         readOnly={!this.props.editable}
-        toolbar={toolbar}
+        toolbar={this.props.toolbarHidden}
         ref="editor"
         toolbarOnFocus={!this.props.editable}
         editorClassName={styles.editor}
         wrapperClassName={styles.editorWrapper}
-        toolbarClassName={styles.toolbar}
+        toolbarClassName={toolbarClass}
       />
     );
   };
@@ -71,7 +77,8 @@ MLEditor.propTypes = {
   handleSaveOnBlur: PropTypes.func,
   editable: PropTypes.bool,
   content: PropTypes.object,
-  notifyOnEditorUpdate: PropTypes.func
+  notifyOnEditorUpdate: PropTypes.func,
+  toolbarHidden: PropTypes.bool
 };
 
 export default MLEditor;
