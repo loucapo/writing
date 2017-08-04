@@ -142,7 +142,7 @@ module.exports = function(
     async updateReviewStatus(ctx) {
       const command = ctx.request.body;
 
-      const reviewStatus = ReviewStatus.fromKey(command.reviewStatus);
+      const reviewStatus = ReviewStatus[command.reviewStatus];
       if (!reviewStatus) {
         ctx.status = 422;
         ctx.body = { error: `reviewStatus ${command.reviewStatus} is not a valid reviewStatus` };
@@ -157,6 +157,7 @@ module.exports = function(
 
       await repository.query(sqlLibrary.studentDraft, 'updateReviewStatus', event);
 
+      ctx.body = reviewStatus;
       ctx.status = 200;
       return ctx;
     },

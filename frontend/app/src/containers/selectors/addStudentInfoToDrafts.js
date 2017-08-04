@@ -1,9 +1,7 @@
 import { addGoalsAndReflectionsToDrafts } from './index';
 
 export default (state, props) => {
-  const studentActivity = state.studentActivities.find(
-    activity => ((activity.activityId === state.auth.activity.activityId) && (activity.studentId === state.auth.id))
-  );
+  const studentActivity = state.studentActivities[0];
   let studentDraftsInState = state.studentDrafts.filter(
     studentDraft => studentDraft.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined)
   );
@@ -11,17 +9,13 @@ export default (state, props) => {
   let finalDraftIndex = drafts.length - 1;
 
   const getCurrentActiveIndex = studentDrafts => {
-    let lastStarted = studentDrafts.filter(studentDraft => studentDraft.status && studentDraft.status !== 'notStarted').reverse()[0];
-    if (lastStarted) {
-      let index;
-      let matchDraft = drafts.find(draft => draft.draftId === lastStarted.draftId);
-      if (lastStarted.reviewStatus !== 'submitted') {
-        index = matchDraft && matchDraft.index || 0;
-      } else {
-        index = matchDraft.index + 1;
-      }
-      return index;
+    let lastReviewed = studentDrafts.reverse().find(studentDraft => studentDraft.reviewStatus && studentDraft.reviewStatus === 'viewed');
+
+    if (lastReviewed) {
+      let lastReviewedIndex = studentDrafts.indexOf(lastReviewed);
+      return lastReviewedIndex + 1;
     }
+
     return 0;
   };
 
@@ -29,7 +23,7 @@ export default (state, props) => {
     let title = draftIndex === finalDraftIndex ? 'Final Paper' : `Draft ${draftIndex + 1}`;
     let buttonText = `Start ${title}`;
 
-    if (studentDraft.reviewStatus === 'submitted') {
+    if (studentDraft.reviewStatus === 'submitted' || studentDraft.reviewStatus === 'viewed') {
       buttonText = `View ${title} Feedback`;
     } else if (studentDraft.status === 'submitted') {
       buttonText = `View ${title}`;
