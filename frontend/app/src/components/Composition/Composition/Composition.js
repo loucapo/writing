@@ -58,7 +58,7 @@ class Composition extends Component {
   render() {
     return (
       <div className={styles.page}>
-        <div>
+        <div className={styles.subpage}>
           <CompositionHeader
             handleSave={this.handleSave}
             draftIsEmpty={this.state.draftIsEmpty}
@@ -73,7 +73,7 @@ class Composition extends Component {
             <MLEditor
               content={this.props.studentDraft.paper}
               editable={true}
-              toolbarHidden
+              toolbarHidden={false}
               notifyOnEditorUpdate={this.handleEditorStateChange}
             />
           </div>

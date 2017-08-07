@@ -5,9 +5,16 @@
   display: flex;
 }
 
+.subpage {
+  height: 100%;
+  overflow: auto;
+}
+
 .container {
   height: 100%;
   padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
 }
 
 .alert {
