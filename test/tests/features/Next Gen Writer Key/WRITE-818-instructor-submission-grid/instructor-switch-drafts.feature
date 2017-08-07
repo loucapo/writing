@@ -54,8 +54,8 @@ Feature: Instructor Views Draft Submissions Switcher
     Given I launch the activity as an "instructor"
     When I maximize the browser
     And I click "student_submissions"
-    Then the text of "submissions.dropdown_drafts_title" should be "Draft 1"
     Then I wait until there is 1 "submissions.row_name" visible
+    Then the text of "submissions.dropdown_drafts_title" should be "Draft 1"
     And the text of "submissions.row_name(1)" should be "5ef7fa10-f4a4-4add-9191-882de6b9065b"
     And I click "draft_count"
     And I click "draft.delete_button"
