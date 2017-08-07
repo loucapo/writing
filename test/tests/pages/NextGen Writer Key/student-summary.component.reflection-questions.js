@@ -36,7 +36,15 @@ class StudentReflectionQuestions extends Component {
       draft_submit_cancel: {
         desc: `Cancel button on modal`,
         locator: `[data-id='dialog-cancel']`
-      }
+      },
+      save_button: {
+        desc: `save reflection questions button`,
+        locator: `[data-id='save-draft']`
+      },
+      view_draft_link: {
+        desc: `link from reflection questions back to draft page`,
+        locator: `[data-id='return-to-draft-from-reflection-questions']`
+      },
     }; }
 }
 
