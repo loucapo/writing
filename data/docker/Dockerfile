@@ -7,10 +7,10 @@ ADD ./config ./config
 
 ADD ./migrations ./migrations
 
-ADD ./database.json /$HOME/database.json 
+ADD ./database.json /$HOME/database.json
 
 RUN yarn install
 
 ADD ./app /$HOME/app
 
-CMD yarn start
+CMD yarn blastAndRebuild && yarn start && yarn start_api

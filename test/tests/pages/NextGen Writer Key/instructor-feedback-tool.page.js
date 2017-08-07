@@ -5,12 +5,10 @@ exports.InstructorFeedbackPage = class extends Page {
     return {
       end_comment: {
         desc: `End comment that will be shown to the student`,
-        //locator: `[data-id='end-comment-textarea']`
         locator: `[data-id='MLCard-End-Comment-(optional)'] [class^='MLCard__body__']`
       },
       end_comment_textarea: {
         desc: `Text area for instructor to input end comments`,
-        //locator: `[data-id='end-comment-textarea']`
         locator: `[class^='EndComment__addComment__'] textarea`
       },
       add_end_comment: {
