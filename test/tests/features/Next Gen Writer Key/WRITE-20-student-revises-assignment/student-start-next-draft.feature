@@ -29,11 +29,9 @@ Feature: Student Starts Next Draft
 
   Scenario: Student Cannot Start Final Draft without viewing feedback?
     Given I launch the activity as a "student"
-    And I click "feedback_message_link"
-    Then I wait until there is 0 "start_draft_enabled"
-    Then I wait until there is 0 "start_final_paper"
+    Then I wait until there is 1 "start_draft_disabled"
+    Then I wait until there is 1 "start_final_paper_disabled"
 
-  @only
   Scenario: Student Sees Start Draft Buttons
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
@@ -44,14 +42,10 @@ Feature: Student Starts Next Draft
 
   Scenario: Student Starts Next Draft
     Given I launch the activity as a "student"
-    And I click "feedback_message_link"
+    And I click "view_feedback_button"
     And I click "start_final_paper"
     Then I wait until there is 1 "draft_editor.draft_area" visible
     And the text of "draft_editor.draft_area" should include "Happy birthday Writer Key!"
-
-  Scenario: Student Cannot Start Final Draft without viewing feedback?
-    Given I launch the activity as a "student"
-    And I click "feedback_message_link"
 
   @db=reset
   Scenario: Student Can Start Draft 2 But Not Final Draft
