@@ -4,10 +4,10 @@ Feature: Student Views Reflection Questions
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
-    When I click "add_reflection_questions"
-    When I click "ref_question_check" [1]
-    When I click "ref_question_check" [4]
-    And I click "ref_question_save"
+    When I click "draft(1).add_reflection_questions"
+    When I click "reflection_questions_modal.check(1)"
+    When I click "reflection_questions_modal.check(4)"
+    When I click "reflection_questions_modal.save"
 
   Scenario: Student Reflection State
     Given I launch the activity as an "student"
