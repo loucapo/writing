@@ -1,25 +1,22 @@
 import { addGoalsAndReflectionsToDrafts } from './index';
 
 export default (state, props) => {
-  const studentActivity = state.studentActivities[0];
-  let studentDraftsInState = state.studentDrafts.filter(
-    studentDraft => studentDraft.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined)
-  );
   let drafts = addGoalsAndReflectionsToDrafts(state, props);
-  let finalDraftIndex = drafts.length - 1;
 
-  const getCurrentActiveIndex = studentDrafts => {
-    let lastReviewed = studentDrafts.reverse().find(studentDraft => studentDraft.reviewStatus && studentDraft.reviewStatus === 'viewed');
-
-    if (lastReviewed) {
-      let lastReviewedIndex = studentDrafts.indexOf(lastReviewed);
-      return lastReviewedIndex + 1;
-    }
-
-    return 0;
+  const getCurrentActiveIndex = () => {
+    let currentIndex = 0;
+    state.studentDrafts.map(studentDraft => {
+      let draft = drafts.find(draftWithIndex => draftWithIndex.draftId === studentDraft.draftId);
+      let nextDraftIndex = draft && draft.index + 1;
+      if (studentDraft.reviewStatus === 'viewed' && nextDraftIndex > currentIndex) {
+        currentIndex = nextDraftIndex;
+      }
+    });
+    return currentIndex;
   };
 
   const getStudentInfo = (draftIndex, studentDraft = {}) => {
+    let finalDraftIndex = drafts.length - 1;
     let title = draftIndex === finalDraftIndex ? 'Final Paper' : `Draft ${draftIndex + 1}`;
     let buttonText = `Start ${title}`;
 
@@ -35,12 +32,12 @@ export default (state, props) => {
       ...studentDraft,
       title,
       buttonText,
-      disabled: draftIndex > getCurrentActiveIndex(studentDraftsInState)
+      disabled: draftIndex > getCurrentActiveIndex()
     };
   };
 
   return drafts.map(draft => {
-    let studentDraft = studentDraftsInState.find(studentDraftInState => studentDraftInState.draftId === draft.draftId);
+    let studentDraft = state.studentDrafts.find(studentDraftInState => studentDraftInState.draftId === draft.draftId);
     let studentInfo = getStudentInfo(draft.index, studentDraft);
     return { ...draft, studentInfo };
   });

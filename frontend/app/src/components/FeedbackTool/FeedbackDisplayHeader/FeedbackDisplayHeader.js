@@ -38,7 +38,7 @@ const FeedbackDisplayHeader = ({ homeRoute, draftTitle, activityTitle, linkableD
             title={draft.studentInfo.buttonText}
             dataId={draft.studentInfo.buttonText}
             disabled={draft.studentInfo.disabled}
-            bordered={draft.studentInfo.reviewStatus === 'submitted'}
+            bordered={draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed'}
             link={link}
           />
         );
