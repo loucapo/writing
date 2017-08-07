@@ -125,6 +125,10 @@ class DraftEditor extends Component {
       reflection_question_submission_textarea: {
         desc: `Textarea of reflection questions on view of submitted draft`,
         locator: `[data-id='MLCard-Reflection'] div div p`
+      },
+      saved_draft_alert: {
+        desc: `Textarea of reflection questions on view of submitted draft`,
+        locator: `[data-id='saved-draft-alert']`
       }
     }; }
 }

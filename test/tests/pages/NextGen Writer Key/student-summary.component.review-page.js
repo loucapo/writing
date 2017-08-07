@@ -41,6 +41,14 @@ class StudentReview extends Component {
         desc: `Fifth row of the rubric table for grading`,
         locator: `[data-id= 'rubric-preview'] [class^='RubricDisplay__row']:nth-child(6) div`
       },
+      submitted_draft_text: {
+        desc: `Read only submitted draft`,
+        locator: `[class^='public-DraftEditor-content']`
+      },
+      submitted_reflection_question_textarea: {
+        desc: `Read only submitted reflection question answers`,
+        locator: `[data-id='MLCard-Reflection'] div div p`
+      },
     }; }
 }
 
