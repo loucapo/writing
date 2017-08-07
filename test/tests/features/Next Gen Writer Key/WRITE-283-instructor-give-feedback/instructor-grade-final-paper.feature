@@ -1,5 +1,6 @@
 @WRITE-970
 Feature: Instructor Gives Score to Final Paper
+  @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
