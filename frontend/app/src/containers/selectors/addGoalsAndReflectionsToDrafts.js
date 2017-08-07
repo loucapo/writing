@@ -21,5 +21,5 @@ export default state => {
       }
       return { ...draft, goals, studentReflectionQuestions };
     })
-    .sort((draftA, draftB) => draftB.index - draftA.index);
+    .sort((draftA, draftB) => draftA.index - draftB.index);
 };
