@@ -7,8 +7,6 @@ Feature: Instructor Close Feedback Tool
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
     When I click "reflection_questions_modal.save"
-    And I click "rubric.dropdown"
-    And I click "rubric.dropdown_option(2)"
     Given I launch the activity as an "student"
     When I click "start_draft"
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
