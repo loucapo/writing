@@ -49,6 +49,14 @@ class StudentReview extends Component {
         desc: `Read only submitted reflection question answers`,
         locator: `[data-id='MLCard-Reflection'] div div p`
       },
+      submitted_message: {
+        desc: `Read only submitted green message`,
+        locator: `[data-id='message']`
+      },
+      view_activity_summary_link: {
+        desc: `link to go back to main activity page`,
+        locator: `[data-id='header-activity-link']`
+      }
     }; }
 }
 
