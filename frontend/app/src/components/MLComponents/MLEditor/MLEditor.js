@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
+import { AddCommentButton } from '../../FeedbackTool';
 import styles from './mlEditor.css';
 
 class MLEditor extends Component {
@@ -135,10 +137,11 @@ class MLEditor extends Component {
     * */
 
     let parent = userSelection.commonAncestorContainer;
-    let addComment = document.createElement('span');
-    addComment.className = styles.addComment;
-    addComment.innerHTML = 'Add Comment';
-    parent.appendChild(addComment);
+    // let addComment = document.createElement('span');
+    // addComment.className = styles.addComment;
+    // addComment.innerHTML = 'Add Comment';
+    // parent.appendChild(<AddCommentButton />);
+    render(<AddCommentButton />, parent);
   };
 
   handleMouseUp = () => {
