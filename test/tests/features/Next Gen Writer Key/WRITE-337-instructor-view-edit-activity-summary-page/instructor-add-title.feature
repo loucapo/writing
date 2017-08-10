@@ -62,7 +62,8 @@ Feature: Activities have editable titles
     And I click "edit_title_save"
     And I wait until there is 1 "activity_title" visible
     And the text of "activity_title" should include "Cookies Are Awesome!"
-    Given I launch the activity as an "student"
+    Given I launch the activity as a "student"
+    And Changing to using page "instructor_summary"
     And I wait until there is 1 "activity_title" visible
     # TODO: Verify we're actually on the student page
     And the text of "activity_title" should be "Cookies Are Awesome!"
