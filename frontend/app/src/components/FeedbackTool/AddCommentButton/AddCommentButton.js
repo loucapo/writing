@@ -5,7 +5,7 @@ import MLIcon from 'ml-react-cdl-icons';
 import styles from './addCommentButton.css';
 
 const AddCommentButton = () => (
-  <div className={styles.addComment}>
+  <div id='addCommentButton' className={styles.addComment}>
     <MLIcon
       className={styles.commentIcon}
       title="comment"

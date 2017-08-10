@@ -5,7 +5,6 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { AddCommentButton } from '../../FeedbackTool';
 import styles from './mlEditor.css';
-import test from '../../FeedbackTool/AddCommentButton/addCommentButton.css';
 
 class MLEditor extends Component {
   editorState = this.props.content ? EditorState.createWithContent(convertFromRaw(this.props.content)) : null;
@@ -137,20 +136,29 @@ class MLEditor extends Component {
     * var rangeObject = getRangeObject(userSelection);
     * */
 
-    let parent = userSelection.commonAncestorContainer;
-    let newNode = parent.appendChild(document.createElement('div'));
-    render(<AddCommentButton />, newNode);
-    // parent.appendChild(<AddCommentButton />);
+    let parent = userSelection.commonAncestorContainer.parentNode;
+    let tempNode = document.createElement('div');
+    parent.appendChild(tempNode);
+    render(<AddCommentButton />, tempNode);
   };
 
   handleMouseUp = () => {
-    this.getSelectedText();
+    if (this.textHasBeenSelected()) {
+      this.getSelectedText();
+    }
   };
 
   handleMouseDown = () => {
-    // let addComment = document.getElementsByClassName(test.addComment)[0];
+    if (this.textHasBeenSelected()) {
+      let addCommentButton = document.getElementById('addCommentButton');
+      addCommentButton.remove();
+    }
     // React.unmountComponentAtNode(addComment);
   }
+
+  textHasBeenSelected = () => (
+    window.getSelection().toString() !== ''
+  )
 
   handleBlur = event => {
     let id;
