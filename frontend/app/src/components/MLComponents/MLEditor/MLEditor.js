@@ -113,22 +113,17 @@ class MLEditor extends Component {
     safeRanges.map((range, index) => {
       if (!range.collapsed) {
         let newNode = document.createElement('span');
-        // newNode.id = 'marker' + index;
+        newNode.id = 'marker' + index;
         newNode.classList.add(styles.highlight);
         range.surroundContents(newNode);
       }
     });
 
-    // var r=window.getSelection().getRangeAt(0).getBoundingClientRect();
-    // var relative=document.body.parentNode.getBoundingClientRect();
-    // ele.style.top =(r.bottom -relative.top)+'px';
-
-
     // Open 'Add Comment' button
     let parent = userSelection.commonAncestorContainer.parentNode;
-    let tempNode = document.createElement('div');
+    let tempNode = document.createElement('span');
     parent.appendChild(tempNode);
-    
+
     let highlights = Array.from(document.getElementsByClassName(styles.highlight));
     let top = highlights[0].offsetTop;
     render(<AddCommentButton position={top} />, tempNode);
@@ -137,23 +132,26 @@ class MLEditor extends Component {
   handleMouseUp = () => {
     if (this.textHasBeenSelected()) {
       this.getSelectedText();
+      document.addEventListener('mousedown', this.handleMouseDown);
     }
   };
 
   handleMouseDown = () => {
-    if (this.textHasBeenSelected()) {
-      let addCommentButton = document.getElementById('addCommentButton');
+    let addCommentButton = document.getElementById('addCommentButton');
+    if (this.textHasBeenSelected() && addCommentButton) {
       addCommentButton.remove();
 
       let highlights = Array.from(document.getElementsByClassName(styles.highlight));
       highlights.map(highlight => {
         highlight.classList.remove(styles.highlight);
       })
+
+      document.removeEventListener('mousedown', this.handleMouseDown);
     }
   }
 
   textHasBeenSelected = () => (
-    window.getSelection().toString() !== ''
+    (window.getSelection().toString() !== '') || window.getSelection().toString() 
   )
 
   handleBlur = event => {
@@ -186,7 +184,7 @@ class MLEditor extends Component {
       toolbarClass = styles.toolbar;
     }
     return (
-      <div onMouseUp={this.handleMouseUp} onMouseDown={this.handleMouseDown}>
+      <div onMouseUp={this.handleMouseUp}>
         <Editor
           onBlur={this.handleBlur}
           editorState={this.state.editorState}
