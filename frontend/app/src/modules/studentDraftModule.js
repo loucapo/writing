@@ -1,6 +1,7 @@
 import {config} from './../utilities/configValues';
 import { requestStates } from '../sagas/requestSaga';
 import { browserHistory } from 'react-router';
+import { getStudentDrafts } from './studentDraftsModule';
 
 const CREATE_STUDENT_DRAFT = requestStates('create_student_draft');
 const GET_STUDENT_DRAFT = requestStates('get_student_draft');
@@ -23,28 +24,23 @@ export default (state = [], action) => {
     case UPDATE_DRAFT_PAPER.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
       const studentDraftId = action.action.studentDraftId;
-      return state.map(x => {
-        return x.studentDraftId === studentDraftId
-          ? {...x, paper: body.paper}
-          : x;
+      return state.map(studentDraft => {
+        return studentDraft.studentDraftId === studentDraftId
+          ? {...studentDraft, paper: body.paper}
+          : studentDraft;
       });
     }
     case SUBMIT_DRAFT.SUCCESS: {
       const studentDraftId = action.action.studentDraftId;
-      return state.map(x => {
-        return x.studentDraftId === studentDraftId
-          ? {...x, submitted: true}
-          : x;
+      return state.map(studentDraft => {
+        return studentDraft.studentDraftId === studentDraftId
+          ? {...studentDraft, submitted: true}
+          : studentDraft;
       });
     }
     case UPDATE_REVIEW_STATUS.SUCCESS: {
-      const body = JSON.parse(action.action.params.body);
-      const studentDraftId = action.action.studentDraftId;
-      return state.map(x => {
-        return x.studentDraftId === studentDraftId
-          ? {...x, reviewStatus: body.reviewStatus}
-          : x;
-      });
+      state[0].reviewStatus = action.result.key;
+      return state;
     }
     case SUBMIT_DRAFT_END_COMMENT.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
@@ -58,10 +54,10 @@ export default (state = [], action) => {
     case SUBMIT_DRAFT_FINAL_GRADE.SUCCESS: {
       const body = JSON.parse(action.action.params.body);
       const studentDraftId = action.action.studentDraftId;
-      return state.map(x => {
-        return x.studentDraftId === studentDraftId
-            ? {...x, finalGrade: body.finalGrade}
-            : x;
+      return state.map(studentDraft => {
+        return studentDraft.studentDraftId === studentDraftId
+            ? {...studentDraft, finalGrade: body.finalGrade}
+            : studentDraft;
       });
     }
     default: {
@@ -141,6 +137,7 @@ export function updateReviewStatus(studentActivityId, studentDraftId, reviewStat
     states: UPDATE_REVIEW_STATUS,
     url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/updatereviewstatus`,
     studentDraftId,
+    subsequentAction: getStudentDrafts(studentActivityId),
     params: {
       method: 'put',
       body: {reviewStatus}

@@ -55,7 +55,7 @@ const mapStateToProps = (state, props) => {
     x => x.activityId === activityId && x.studentId === state.auth.id
   );
 
-  const drafts = addStudentInfoToDrafts(state, props).reverse();
+  const drafts = addStudentInfoToDrafts(state, props);
 
   //activityId coming from auth so it's there but activity may not be
   const activity = state.activities.find(x => x.activityId === activityId);
