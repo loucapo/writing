@@ -37,4 +37,5 @@
 
 ::selection {
   background-color: var(--orange-light);
+  flex: 1;
 }

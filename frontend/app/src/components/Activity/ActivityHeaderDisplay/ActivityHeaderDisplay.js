@@ -9,7 +9,7 @@ const ActivityHeaderDisplay = ({ drafts, activityId }) => {
       <div className={styles.rightContainer}>
         {drafts.map(draft => {
           let link = `/activity/${activityId}/draft/${draft.draftId}`;
-          if (draft.studentInfo.reviewStatus === 'submitted') {
+          if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
             link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
           } else if (draft.studentInfo.status === 'submitted') {
             link = `/studentDraft/${draft.studentInfo.studentDraftId}/display`;
@@ -20,7 +20,7 @@ const ActivityHeaderDisplay = ({ drafts, activityId }) => {
               title={draft.studentInfo.buttonText}
               dataId={draft.studentInfo.buttonText}
               disabled={draft.studentInfo.disabled}
-              bordered={draft.studentInfo.reviewStatus === 'submitted'}
+              bordered={draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed'}
               link={link}
             />
           );

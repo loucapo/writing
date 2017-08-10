@@ -1,35 +1,26 @@
 import { addGoalsAndReflectionsToDrafts } from './index';
 
 export default (state, props) => {
-  const studentActivity = state.studentActivities.find(
-    activity => ((activity.activityId === state.auth.activity.activityId) && (activity.studentId === state.auth.id))
-  );
-  let studentDraftsInState = state.studentDrafts.filter(
-    studentDraft => studentDraft.studentActivityId === (studentActivity ? studentActivity.studentActivityId : undefined)
-  );
   let drafts = addGoalsAndReflectionsToDrafts(state, props);
-  let finalDraftIndex = drafts.length - 1;
 
-  const getCurrentActiveIndex = studentDrafts => {
-    let lastStarted = studentDrafts.filter(studentDraft => studentDraft.status && studentDraft.status !== 'notStarted').reverse()[0];
-    if (lastStarted) {
-      let index;
-      let matchDraft = drafts.find(draft => draft.draftId === lastStarted.draftId);
-      if (lastStarted.reviewStatus !== 'submitted') {
-        index = matchDraft && matchDraft.index || 0;
-      } else {
-        index = matchDraft.index + 1;
+  const getCurrentActiveIndex = () => {
+    let currentIndex = 0;
+    state.studentDrafts.map(studentDraft => {
+      let draft = drafts.find(draftWithIndex => draftWithIndex.draftId === studentDraft.draftId);
+      let nextDraftIndex = draft && draft.index + 1;
+      if (studentDraft.reviewStatus === 'viewed' && nextDraftIndex > currentIndex) {
+        currentIndex = nextDraftIndex;
       }
-      return index;
-    }
-    return 0;
+    });
+    return currentIndex;
   };
 
   const getStudentInfo = (draftIndex, studentDraft = {}) => {
+    let finalDraftIndex = drafts.length - 1;
     let title = draftIndex === finalDraftIndex ? 'Final Paper' : `Draft ${draftIndex + 1}`;
     let buttonText = `Start ${title}`;
 
-    if (studentDraft.reviewStatus === 'submitted') {
+    if (studentDraft.reviewStatus === 'submitted' || studentDraft.reviewStatus === 'viewed') {
       buttonText = `View ${title} Feedback`;
     } else if (studentDraft.status === 'submitted') {
       buttonText = `View ${title}`;
@@ -41,12 +32,12 @@ export default (state, props) => {
       ...studentDraft,
       title,
       buttonText,
-      disabled: draftIndex > getCurrentActiveIndex(studentDraftsInState)
+      disabled: draftIndex > getCurrentActiveIndex()
     };
   };
 
   return drafts.map(draft => {
-    let studentDraft = studentDraftsInState.find(studentDraftInState => studentDraftInState.draftId === draft.draftId);
+    let studentDraft = state.studentDrafts.find(studentDraftInState => studentDraftInState.draftId === draft.draftId);
     let studentInfo = getStudentInfo(draft.index, studentDraft);
     return { ...draft, studentInfo };
   });
