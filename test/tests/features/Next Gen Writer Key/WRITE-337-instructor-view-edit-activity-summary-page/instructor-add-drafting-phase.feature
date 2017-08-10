@@ -1,11 +1,11 @@
-@only
+@TOREFACTOR
 Feature: Add Another Draft To Activity
   @db=reset
   @WRITE-27
   Scenario: Adding a second draft
     Given I launch the activity as an "instructor"
     Then I wait until there is 1 "draft_card" visible
-    And the text of "draft_title(1)" should be "Final Paper"
+    And the text of "draft_title" should be "Final Paper"
     When I click "add_draft_button"
     Then I wait until there are 2 "draft_card" visible
     And the text of "draft_title(2)" should be "Final Paper"
