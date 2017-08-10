@@ -28,14 +28,22 @@
 
 .highlight, .highlight span {
   display: inline;
-  background-color: var(--orange-light);
+  background-color: var(--blue-light);
 }
 
 ::-moz-selection { /* Code for Firefox */
-  background-color: var(--orange-light);
+  background-color: var(--blue-light);
 }
 
 ::selection {
-  background-color: var(--orange-light);
+  background-color: var(--blue-light);
   flex: 1;
+}
+
+.addComment {
+  position: absolute;
+  width: 100px;
+  top: 0px;
+  right: 0px;
+  border: red solid 2px;
 }

@@ -8,7 +8,8 @@ class MLEditor extends Component {
   editorState = this.props.content ? EditorState.createWithContent(convertFromRaw(this.props.content)) : null;
 
   state = {
-    editorState: this.editorState
+    editorState: this.editorState,
+    showAddComment: false
   };
 
   componentWillReceiveProps = newProps => {
@@ -105,9 +106,7 @@ class MLEditor extends Component {
   getSelectedText = () => {
     let userSelection = window.getSelection().getRangeAt(0);
     let safeRanges = this.getSafeRanges(userSelection);
-    console.log(`==========safeRanges=========`);
-    console.log(safeRanges);
-    console.log(`==========END safeRanges=========`);
+
     for (let i = 0; i < safeRanges.length; i++) {
       if (!safeRanges[i].collapsed) {
         let newNode = document.createElement('div');
@@ -133,31 +132,35 @@ class MLEditor extends Component {
     * range1.setStart(sel.anchorNode, sel.anchorOffset)
     * range1.setEnd(sel.anchorNode, (sel.focusOffset < sel.anchorOffset) ? sel.anchorNode.length : sel.focusNode)
     * var rangeObject = getRangeObject(userSelection);
-
     * */
+
+    let parent = userSelection.commonAncestorContainer;
+    let addComment = document.createElement('span');
+    addComment.className = styles.addComment;
+    addComment.innerHTML = 'Add Comment';
+    parent.appendChild(addComment);
   };
 
   handleMouseUp = () => {
     this.getSelectedText();
-    // console.log(`==========selectedText=========`);
-    // console.log(selectedText);
-    // console.log(`==========END selectedText=========`);
-    //
-    // if (selectedText.length > 0) {
-    //   console.log(`==========selectedText=========`);
-    //   console.log(selectedText);
-    //   console.log(`==========END selectedText=========`);
-    // }
   };
 
-  handleBlur = e => {
+  handleMouseDown = () => {
+    let addComment = document.getElementsByClassName(styles.addComment)[0];
+    if (addComment) {
+      let parent = addComment.parentNode;
+      parent.removeChild(addComment);
+    }
+  }
+
+  handleBlur = event => {
     let id;
-    if (e.relatedTarget) {
+    if (event.relatedTarget) {
       // Chrome
-      id = e.relatedTarget.id;
-    } else if (e.nativeEvent.explicitOriginalTarget) {
+      id = event.relatedTarget.id;
+    } else if (event.nativeEvent.explicitOriginalTarget) {
       // Firefox
-      id = e.nativeEvent.explicitOriginalTarget.id;
+      id = event.nativeEvent.explicitOriginalTarget.id;
     }
 
     if (id === 'cancel') {
@@ -180,7 +183,7 @@ class MLEditor extends Component {
       toolbarClass = styles.toolbar;
     }
     return (
-      <div onMouseUp={this.handleMouseUp}>
+      <div onMouseUp={this.handleMouseUp} onMouseDown={this.handleMouseDown}>
         <Editor
           onBlur={this.handleBlur}
           editorState={this.state.editorState}
