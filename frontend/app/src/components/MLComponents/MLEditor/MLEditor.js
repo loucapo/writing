@@ -107,39 +107,31 @@ class MLEditor extends Component {
 
   getSelectedText = () => {
     let userSelection = window.getSelection().getRangeAt(0);
+
+    // Add highlights
     let safeRanges = this.getSafeRanges(userSelection);
-
-    for (let i = 0; i < safeRanges.length; i++) {
-      if (!safeRanges[i].collapsed) {
-        let newNode = document.createElement('div');
-        newNode.id = 'marker' + i;
-        newNode.classList.add(styles.highlight); //add some class using the flag counter
-        safeRanges[i].surroundContents(newNode);
+    safeRanges.map((range, index) => {
+      if (!range.collapsed) {
+        let newNode = document.createElement('span');
+        // newNode.id = 'marker' + index;
+        newNode.classList.add(styles.highlight);
+        range.surroundContents(newNode);
       }
-    }
-    // let editorState = this.state.editorState;
-    // let currentContent = editorState.getCurrentContent();
-    // let selectionState = editorState.getSelection();
-    // let anchorKey = selectionState.getAnchorKey();
-    // let currentContentBlock = currentContent.getBlockForKey(anchorKey);
-    // let start = window.getSelection().anchorOffset;
-    // let end = window.getSelection().focusOffset;
-    // return currentContentBlock.getText().slice(start, end); //returns the selected text
+    });
 
-    /*
-    *
-    * sel = window.getSelection()
-    * ////window.getSelection().getRangeAt(0).selectNodeContents()
-    * range1 = document.createRange()
-    * range1.setStart(sel.anchorNode, sel.anchorOffset)
-    * range1.setEnd(sel.anchorNode, (sel.focusOffset < sel.anchorOffset) ? sel.anchorNode.length : sel.focusNode)
-    * var rangeObject = getRangeObject(userSelection);
-    * */
+    // var r=window.getSelection().getRangeAt(0).getBoundingClientRect();
+    // var relative=document.body.parentNode.getBoundingClientRect();
+    // ele.style.top =(r.bottom -relative.top)+'px';
 
+
+    // Open 'Add Comment' button
     let parent = userSelection.commonAncestorContainer.parentNode;
     let tempNode = document.createElement('div');
     parent.appendChild(tempNode);
-    render(<AddCommentButton />, tempNode);
+    
+    let highlights = Array.from(document.getElementsByClassName(styles.highlight));
+    let top = highlights[0].offsetTop;
+    render(<AddCommentButton position={top} />, tempNode);
   };
 
   handleMouseUp = () => {
@@ -152,8 +144,12 @@ class MLEditor extends Component {
     if (this.textHasBeenSelected()) {
       let addCommentButton = document.getElementById('addCommentButton');
       addCommentButton.remove();
+
+      let highlights = Array.from(document.getElementsByClassName(styles.highlight));
+      highlights.map(highlight => {
+        highlight.classList.remove(styles.highlight);
+      })
     }
-    // React.unmountComponentAtNode(addComment);
   }
 
   textHasBeenSelected = () => (

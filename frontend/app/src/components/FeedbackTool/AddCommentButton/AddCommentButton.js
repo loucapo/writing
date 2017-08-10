@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
 import MLIcon from 'ml-react-cdl-icons';
 import styles from './addCommentButton.css';
 
-const AddCommentButton = () => (
-  <div id='addCommentButton' className={styles.addComment}>
+const AddCommentButton = ({position}) => (
+  <div id='addCommentButton' className={styles.addComment} style={{top: `${position}px`}}>
     <MLIcon
       className={styles.commentIcon}
       title="comment"
@@ -19,7 +18,7 @@ const AddCommentButton = () => (
 );
 
 AddCommentButton.propTypes = {
-  homeRoute: PropTypes.string
+  position: PropTypes.number
 };
 
 export default AddCommentButton;
