@@ -5,6 +5,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import { AddCommentButton } from '../../FeedbackTool';
 import styles from './mlEditor.css';
+import test from '../../FeedbackTool/AddCommentButton/addCommentButton.css';
 
 class MLEditor extends Component {
   editorState = this.props.content ? EditorState.createWithContent(convertFromRaw(this.props.content)) : null;
@@ -137,11 +138,9 @@ class MLEditor extends Component {
     * */
 
     let parent = userSelection.commonAncestorContainer;
-    // let addComment = document.createElement('span');
-    // addComment.className = styles.addComment;
-    // addComment.innerHTML = 'Add Comment';
+    let newNode = parent.appendChild(document.createElement('div'));
+    render(<AddCommentButton />, newNode);
     // parent.appendChild(<AddCommentButton />);
-    render(<AddCommentButton />, parent);
   };
 
   handleMouseUp = () => {
@@ -149,11 +148,8 @@ class MLEditor extends Component {
   };
 
   handleMouseDown = () => {
-    let addComment = document.getElementsByClassName(styles.addComment)[0];
-    if (addComment) {
-      let parent = addComment.parentNode;
-      parent.removeChild(addComment);
-    }
+    // let addComment = document.getElementsByClassName(test.addComment)[0];
+    // React.unmountComponentAtNode(addComment);
   }
 
   handleBlur = event => {
