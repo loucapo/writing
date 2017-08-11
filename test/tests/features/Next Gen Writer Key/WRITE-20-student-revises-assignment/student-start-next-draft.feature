@@ -1,5 +1,4 @@
 @WRITE-71
-  @only
 Feature: Student Starts Next Draft
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -67,6 +66,7 @@ Feature: Student Starts Next Draft
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
     Given I launch the activity as an "instructor"
+    And I maximize the browser
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
