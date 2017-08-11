@@ -48,6 +48,14 @@ class StudentReview extends Component {
       disabled_next_draft_button: {
         desc: `Button to start a future disabled draft`,
         locator: `[class^='MLButton__button__'][class*='MLButton__disabled']`
+      },
+      submitted_draft_text: {
+        desc: `Read only submitted draft`,
+        locator: `[class^='public-DraftEditor-content']`
+      },
+      submitted_reflection_question_textarea: {
+        desc: `Read only submitted reflection question answers`,
+        locator: `[data-id='MLCard-Reflection'] div div p`
       }
     }; }
 }

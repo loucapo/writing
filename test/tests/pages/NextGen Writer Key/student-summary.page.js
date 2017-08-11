@@ -56,6 +56,10 @@ exports.StudentSummaryPage = class extends Page {
         desc: `Alert that draft is not startable yet`,
         locator: `[class*='DraftDisplay__studentNote']`
       },
+      draft_submitted_date: {
+        desc: `Date stamp of submitted draft`,
+        locator: `[data-id='submitted-date']`
+      }
     };
   }
 
@@ -65,7 +69,7 @@ exports.StudentSummaryPage = class extends Page {
 
   student_read_only(arg) {
     return StudentReview.generate(arg, {
-      locator: `[class^='FeedbackDisplay__page']`}); }
+      locator: `[class^='CompositionDisplay__page']`}); }
 
   student_reflection_questions(arg) {
     return refQuestions.generate(arg, {
