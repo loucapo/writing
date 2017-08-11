@@ -4,6 +4,7 @@ const Page = require('marvin-js').Page;
 const draftEditor = require('./student-summary.component.draft.editor');
 const refQuestions = require('./student-summary.component.reflection-questions');
 const StudentReview = require('./student-summary.component.review-page');
+const StudentReviewFeedback = require('./student-summary.component.review-feedback-page');
 
 exports.StudentSummaryPage = class extends Page {
   things() {
@@ -62,6 +63,10 @@ exports.StudentSummaryPage = class extends Page {
   student_read_only(arg) {
     return StudentReview.generate(arg, {
       locator: `[class^='CompositionDisplay__page']`}); }
+
+  student_read_only_feedback(arg) {
+    return StudentReviewFeedback.generate(arg, {
+      locator: `[class^='FeedbackDisplay__page']`}); }
 
   student_reflection_questions(arg) {
     return refQuestions.generate(arg, {
