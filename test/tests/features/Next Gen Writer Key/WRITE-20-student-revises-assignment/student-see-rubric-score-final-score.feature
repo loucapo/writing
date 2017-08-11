@@ -1,6 +1,5 @@
 @WRITE-984
 Feature: Student Views Grades
-
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
@@ -25,14 +24,15 @@ Feature: Student Views Grades
     And Changing to using page "instructor_summary"
     And I click "submissions.send_review_link(1)"
 
-  Scenario: Student opens instructor feedback with no rubric grade
+  Scenario: Student opens instructor feedback with no final grade
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
     And the text of "student_read_only_feedback.final_grade_comment" should include "Instructor did not select a final score"
 
-  Scenario: Student opens instructor feedback with no final grade
+  Scenario: Student opens instructor feedback with no rubric grade
     Given I launch the activity as a "student"
-    And I click "feedback_message_link"
+    And I sleep for 1 seconds
+    And I click "view_feedback_button"
     And the text of "student_read_only_feedback.rubric_score_comment" should include "Instructor did not select rubric score"
 
   Scenario: Student sees instructor feedback with a final grade
@@ -44,7 +44,8 @@ Feature: Student Views Grades
     And I click "final_grade_box_save_enabled"
     And I click "done_button"
     Given I launch the activity as a "student"
-    And I click "feedback_message_link"
+    And I sleep for 1 seconds
+    And I click "view_feedback_button"
     And the text of "student_read_only_feedback.final_grade_display" should include "95"
 
   Scenario: Student sees instructor feedback with a rubric grade
@@ -61,7 +62,8 @@ Feature: Student Views Grades
     And I click "rubric_save_confirm"
     And I click "done_button"
     Given I launch the activity as a "student"
-    And I click "feedback_message_link"
+    And I sleep for 1 seconds
+    And I click "view_feedback_button"
     Then the color of "student_read_only_feedback.rubric_row_1(5)" should be "#acdba2"
     Then the color of "student_read_only_feedback.rubric_row_2(4)" should be "#faf2a9"
     Then the color of "student_read_only_feedback.rubric_row_3(3)" should be "#ffc196"

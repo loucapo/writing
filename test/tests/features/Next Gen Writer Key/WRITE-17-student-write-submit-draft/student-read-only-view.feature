@@ -50,5 +50,5 @@ Feature: Student Views Instructor Feedback
     And I type "Good job" in "end_comment_textarea"
     And I click "add_end_comment"
     Given I launch the activity as a "student"
-    And I click "feedback_message_link"
+    And I click "view_feedback_button"
     And the text of "student_read_only_feedback.instructor_end_comment" should include "Good job"

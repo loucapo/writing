@@ -23,7 +23,7 @@ exports.StudentSummaryPage = class extends Page {
       },
       view_feedback_button: {
         desc: `Link to instructor feedback`,
-        locator: `[data-id='View Draft 1 Feedback']`
+        locator: `[class^='ActivityHeaderDisplay__rightContainer'] a`
       },
       draft_submission_confirmation_banner: {
         desc: `Green confirmation message for successful draft submission`,

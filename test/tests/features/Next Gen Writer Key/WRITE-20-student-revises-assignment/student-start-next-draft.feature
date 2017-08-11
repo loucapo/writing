@@ -1,5 +1,4 @@
 @WRITE-71
-  @only
 Feature: Student Starts Next Draft
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
