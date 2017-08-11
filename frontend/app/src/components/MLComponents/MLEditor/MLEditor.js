@@ -20,6 +20,14 @@ class MLEditor extends Component {
     }
   };
 
+  componentWillMount = () => {
+    document.addEventListener('mousedown', this.handleMouseDown);
+  };
+
+  componentWillUnmount = () => {
+    document.removeEventListener('mousedown', this.handleMouseDown);
+  };
+
   onEditorStateChange = editorState => {
     this.setState({
       editorState
@@ -114,47 +122,47 @@ class MLEditor extends Component {
       if (!range.collapsed) {
         let newNode = document.createElement('span');
         newNode.id = 'marker' + index;
-        newNode.classList.add(styles.highlight);
+        // newNode.classList.add(styles.highlight);
+        newNode.classList.add('selected');
         range.surroundContents(newNode);
       }
     });
+  };
 
-    // Open 'Add Comment' button
-    let highlights = Array.from(document.getElementsByClassName(styles.highlight));
-    let top = highlights[0].offsetTop;
-    let parent = highlights[0].offsetParent;
+  addCommentButton = () => {
+    let selections = Array.from(document.getElementsByClassName('selected'));
+    let top = selections[0].offsetTop;
+    let parent = selections[0].offsetParent;
 
     let tempNode = document.createElement('span');
     parent.appendChild(tempNode);
 
     render(<AddCommentButton position={top} />, tempNode);
+
+    // TODO: Remove entire span instead of just the class.
+    selections.map(selection => {
+      selection.classList.remove('selected');
+    });
   };
 
   handleMouseUp = () => {
-    if (this.textHasBeenSelected()) {
+    let addCommentButton = document.getElementById('addCommentButton');
+    if (this.textHasBeenSelected() && !addCommentButton) {
       this.addHighlights();
-      document.addEventListener('mousedown', this.handleMouseDown);
+      this.addCommentButton();
     }
   };
 
   handleMouseDown = () => {
     let addCommentButton = document.getElementById('addCommentButton');
-    if (this.textHasBeenSelected() && addCommentButton) {
+    if (addCommentButton) {
       addCommentButton.remove();
-
-      let highlights = Array.from(document.getElementsByClassName(styles.highlight));
-      // TODO: Remove entire span instead of just the class.
-      highlights.map(highlight => {
-        highlight.classList.remove(styles.highlight);
-      })
-
-      document.removeEventListener('mousedown', this.handleMouseDown);
     }
-  }
+  };
 
   textHasBeenSelected = () => (
-    (window.getSelection().toString() !== '') || window.getSelection().toString() 
-  )
+    window.getSelection().toString() !== ''
+  );
 
   handleBlur = event => {
     let id;
@@ -180,7 +188,7 @@ class MLEditor extends Component {
 
   render = () => {
     return (
-      <div onMouseUp={this.handleMouseUp}>
+      <div id="editor" onMouseUp={this.handleMouseUp}>
         <Editor
           onBlur={this.handleBlur}
           editorState={this.state.editorState}
