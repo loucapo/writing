@@ -9,6 +9,10 @@
   height: auto !important;
   flex: 1;
   overflow: visible !important;
+}
+
+.feedbackEditor {
+  composes: editor;
   width: 75% !important;
 }
 

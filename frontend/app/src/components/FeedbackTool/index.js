@@ -5,6 +5,7 @@ import FeedbackDisplayHeader from './FeedbackDisplayHeader/FeedbackDisplayHeader
 import EndComment from './EndComment/EndComment';
 import FinalGrade from './FinalGrade/FinalGrade';
 import AddCommentButton from './AddCommentButton/AddCommentButton';
+import FeedbackEditor from './FeedbackEditor/FeedbackEditor';
 
 export {
   FeedbackTool,
@@ -13,5 +14,6 @@ export {
   FeedbackDisplayHeader,
   EndComment,
   FinalGrade,
-  AddCommentButton
+  AddCommentButton,
+  FeedbackEditor
 };
