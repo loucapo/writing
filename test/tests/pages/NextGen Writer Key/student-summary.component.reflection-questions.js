@@ -25,9 +25,21 @@ class StudentReflectionQuestions extends Component {
         desc: `Multiple choice reflection question answer choice`,
         locator: `[class^='ReflectionQuestionsForm__reflection'] form input[type='radio']`
       },
+      leave_page_alert: {
+        desc: `Popup as you try to leave reflection questions without saving`,
+        locator: `[class*='MLDialog__alert']`
+      },
       draft_submit: {
         desc: `Submit draft button`,
         locator: `[data-id='submit-draft']`
+      },
+      leave_reflection_page_button: {
+        desc: `Button on alert that navigates student back to drafting page`,
+        locator: `[data-id='reflection-questions-dialog-leave']`
+      },
+      stay_reflection_page_button: {
+        desc: `Button on alert that keeps student on reflection page`,
+        locator: `[data-id='reflection-questions-dialog-stay']`
       },
       draft_submit_confirm: {
         desc: `Confirmation button on modal`,

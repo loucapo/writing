@@ -21,7 +21,8 @@ exports.InstructorSummaryPage = class extends Page {
       },
       draft_title: {
         desc: `Header where draft title lives`,
-        locator: `[class^='Heading__headingText__']`
+        //locator: `[class^='Heading__headingText']`
+        locator: `[data-id='draft-section'] span span`
       },
       draft_count: {
         desc: `A link to show the drafts pane on the assignment summary page that should also display the current number of drafts associated with an assignemnt`, // eslint-disable-line
