@@ -26,24 +26,23 @@ Feature: Student Views Activity
     Then I wait until there are 0 "draft.add_draft_instructions"
     Then I wait until there are 0 "student_preview"
 
-    @TOREFACTOR
+  #student draft note missing for some reason, bug?
   @db=reset
   Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
+    When I click "rubric.dropdown"
+    When I click "rubric.dropdown_option(2)"
     And I click "activity_prompt.edit"
     And I type "hello world" in "activity_prompt.edit_area"
     And I click "activity_prompt.save"
-    When I click "rubric.dropdown"
-    When I click "rubric.dropdown_option(2)"
     Given I launch the activity as a "student"
     And Changing to using page "instructor_summary"
     Then the text of "draft.title(1)" should be "Draft 1"
-    #Then I wait until there are 2 "draft.title"
-    #Then the text of "draft.title(2)" should be "Final Paper"
     Then the text of "activity_prompt.description" should be "hello world"
     Then the text of "rubric.preview_name" should be "Analysis"
     And Changing to using page "student_summary"
     #Then the text of "student_draft_note" should be "You will be able to view and start this draft once you've received feedback on Draft 1"
     Then the text of "start_draft_enabled" should be "Start Draft 1"
+    Then I wait until there are 1 "start_final_paper_disabled"
 

@@ -93,14 +93,6 @@ class DraftEditor extends Component {
         desc: `Button on alert that keeps student on drafting page`,
         locator: `[data-id='details-panel-activity-link-dialog-stay']`
       },
-      leave_reflection_page_button: {
-        desc: `Button on alert that navigates student back to drafting page`,
-        locator: `[data-id='reflection-questions-dialog-leave']`
-      },
-      stay_reflection_page_button: {
-        desc: `Button on alert that keeps student on reflection page`,
-        locator: `[data-id='reflection-questions-dialog-stay']`
-      },
       view_draft_link: {
         desc: `Link on the reflection page that takes user back to drafting page`,
         locator: `[data-id='return-to-draft-from-reflection-questions']`

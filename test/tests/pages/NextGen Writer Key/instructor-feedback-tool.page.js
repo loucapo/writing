@@ -86,7 +86,16 @@ exports.InstructorFeedbackPage = class extends Page {
       final_grade_box_error: {
         desc: `Red warning for invalid input`,
         locator: `[class^='FinalGrade__infoSpan'][class*='FinalGrade__error']`
-      }
+      },
+      student_reflection_answer: {
+        desc: `instructor view of student reflection question answer`,
+        locator: `[data-id='MLCard-Reflection'] div div p`
+      },
+      student_submitted_draft_text: {
+        desc: `Read only submitted draft from instructor view`,
+        locator: `[class^='public-DraftEditor-content']`
+      },
+
     };
   }
 };

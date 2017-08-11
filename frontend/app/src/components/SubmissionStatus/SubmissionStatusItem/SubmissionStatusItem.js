@@ -12,6 +12,7 @@ const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
 
     switch(item.reviewStatus) {
       case 'submitted':
+      case 'viewed':
       case 'inProgress': {
         return createLink('Return to Review');
       }
@@ -29,6 +30,7 @@ const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
       case 'inProgress':
         return <a onClick={updateReviewStatus.bind(this, item.studentActivityId, item.studentDraftId, 'submitted')}>Send Review</a>;
       case 'submitted':
+      case 'viewed':
         return `Review sent ${item.reviewedDate}`;
       default:
         return <span>&mdash;</span>;

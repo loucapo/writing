@@ -16,13 +16,22 @@ class FeedbackDisplayContainer extends Component {
 
   loadData() {
     this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
-    this.props.getStudentDrafts(this.props.studentDraft.studentActivityId);
     this.props.getReflectionQuestions();
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
     this.props.getRubricScores(this.props.params.studentDraftId);
+  }
 
-    if (this.props.studentDraft && this.props.studentDraft.reviewStatus === 'submitted') {
-      this.props.updateReviewStatus(this.props.studentDraft.studentActivityId, this.props.studentDraft.studentDraftId, 'viewed');
+  componentWillUpdate(newProps) {
+    if (newProps.studentDraft && newProps.studentDraft.reviewStatus === 'submitted') {
+      this.props.updateReviewStatus(
+        newProps.studentDraft.studentActivityId,
+        newProps.studentDraft.studentDraftId,
+        'viewed'
+      );
+    }
+
+    if (newProps.studentDraft !== this.props.studentDraft) {
+      this.props.getStudentDrafts(newProps.studentDraft.studentActivityId);
     }
   }
 
@@ -47,30 +56,29 @@ FeedbackDisplayContainer.propTypes = {
 
 const mapStateToProps = (state, props) => {
   const draftsWithInfo = addStudentInfoToDrafts(state, props);
-  let studentDraft = state.studentDrafts.find(studentDraftInState =>
-    studentDraftInState.studentDraftId === props.params.studentDraftId
-  ) || {};
+  let studentDraft = state.studentDraft[0];
   let rubricId = state.activities[0].rubricId;
   let lastDraft;
-  let draft = draftsWithInfo.find(draftWithInfo => draftWithInfo.draftId === studentDraft.draftId);
   let numberOfDrafts = state.drafts.length;
   let reflectionQuestions = [];
   let draftTitle = '';
   let activityTitle = state.activities[0].title;
-  let linkableDrafts = draftsWithInfo.filter((draftWithInfo) => draftWithInfo.draftId !== studentDraft.draftId);
   let noRubricScores = state.rubricScores.length === 0;
+  let draft = draftsWithInfo.find(draftWithInfo => draftWithInfo.draftId === (studentDraft && studentDraft.draftId));
+  let linkableDrafts = draftsWithInfo.filter(
+    draftWithInfo => draftWithInfo.draftId !== (studentDraft && studentDraft.draftId)
+  );
 
   if (draft) {
-    activityTitle = state.activities.find(activity => activity.activityId === draft.activityId).title;
     lastDraft = numberOfDrafts === draft.index + 1;
-    draftTitle = lastDraft ? `Final Paper` : `Draft ${draft.index + 1}`;
+    draftTitle = draft.studentInfo.buttonText;
 
     reflectionQuestions = draft.studentReflectionQuestions.map(reflection => {
-      let answer = state.reflectionAnswers.find(reflectionAnswer =>
-        reflectionAnswer.studentReflectionQuestionId === reflection.studentReflectionQuestionId
+      let answer = state.reflectionAnswers.find(
+        reflectionAnswer => reflectionAnswer.studentReflectionQuestionId === reflection.studentReflectionQuestionId
       );
-      let question = state.reflectionQuestions.find(reflectionQuestion =>
-        reflectionQuestion.studentReflectionQuestionId === reflection.studentReflectionQuestionId
+      let question = state.reflectionQuestions.find(
+        reflectionQuestion => reflectionQuestion.studentReflectionQuestionId === reflection.studentReflectionQuestionId
       );
       return {
         questionId: reflection.studentReflectionQuestionId,
@@ -88,7 +96,7 @@ const mapStateToProps = (state, props) => {
     draftTitle,
     activityTitle,
     lastDraft,
-    linkableDrafts: linkableDrafts.sort((draftA, draftB) => draftA.index - draftB.index),
+    linkableDrafts,
     noRubricScores
   };
 };
