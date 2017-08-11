@@ -51,20 +51,18 @@ class MLEditor extends Component {
 
   render = () => {
     return (
-      <div>
-        <Editor
-          onBlur={this.handleBlur}
-          editorState={this.state.editorState}
-          onEditorStateChange={this.onEditorStateChange}
-          readOnly={!this.props.editable}
-          toolbar={this.props.toolbarHidden}
-          ref="editor"
-          toolbarOnFocus={!this.props.editable}
-          editorClassName={this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor}
-          wrapperClassName={styles.editorWrapper}
-          toolbarClassName={this.props.toolbarHidden ? styles.toolbarHide : styles.toolbar}
-        />
-      </div>
+      <Editor
+        onBlur={this.handleBlur}
+        editorState={this.state.editorState}
+        onEditorStateChange={this.onEditorStateChange}
+        readOnly={!this.props.editable}
+        toolbar={this.props.toolbarHidden}
+        ref="editor"
+        toolbarOnFocus={!this.props.editable}
+        editorClassName={this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor}
+        wrapperClassName={styles.editorWrapper}
+        toolbarClassName={this.props.toolbarHidden ? styles.toolbarHide : styles.toolbar}
+      />
     );
   };
 }

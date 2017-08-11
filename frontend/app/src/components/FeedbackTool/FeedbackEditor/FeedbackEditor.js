@@ -12,6 +12,7 @@ class FeedbackEditor extends Component {
 
   componentWillUnmount = () => {
     document.removeEventListener('mousedown', this.handleMouseDown);
+    document.removeEventListener('mouseup', this.handleMouseUp);
   };
 
   handleMouseUp = () => {
@@ -128,11 +129,8 @@ class FeedbackEditor extends Component {
   };
 
   render() {
-    // onMouseUp={this.handleMouseUp
     return (
-      <div>
-        <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
-      </div>
+      <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
     );
   }
 }
