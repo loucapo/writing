@@ -105,7 +105,7 @@ class MLEditor extends Component {
     return rs.concat(re);
   };
 
-  getSelectedText = () => {
+  addHighlights = () => {
     let userSelection = window.getSelection().getRangeAt(0);
 
     // Add highlights
@@ -120,18 +120,19 @@ class MLEditor extends Component {
     });
 
     // Open 'Add Comment' button
-    let parent = userSelection.commonAncestorContainer.parentNode;
+    let highlights = Array.from(document.getElementsByClassName(styles.highlight));
+    let top = highlights[0].offsetTop;
+    let parent = highlights[0].offsetParent;
+
     let tempNode = document.createElement('span');
     parent.appendChild(tempNode);
 
-    let highlights = Array.from(document.getElementsByClassName(styles.highlight));
-    let top = highlights[0].offsetTop;
     render(<AddCommentButton position={top} />, tempNode);
   };
 
   handleMouseUp = () => {
     if (this.textHasBeenSelected()) {
-      this.getSelectedText();
+      this.addHighlights();
       document.addEventListener('mousedown', this.handleMouseDown);
     }
   };
@@ -142,6 +143,7 @@ class MLEditor extends Component {
       addCommentButton.remove();
 
       let highlights = Array.from(document.getElementsByClassName(styles.highlight));
+      // TODO: Remove entire span instead of just the class.
       highlights.map(highlight => {
         highlight.classList.remove(styles.highlight);
       })
@@ -177,12 +179,6 @@ class MLEditor extends Component {
   };
 
   render = () => {
-    let toolbarClass;
-    if (this.props.toolbarHidden) {
-      toolbarClass = styles.toolbarHide;
-    } else {
-      toolbarClass = styles.toolbar;
-    }
     return (
       <div onMouseUp={this.handleMouseUp}>
         <Editor
@@ -195,7 +191,7 @@ class MLEditor extends Component {
           toolbarOnFocus={!this.props.editable}
           editorClassName={styles.editor}
           wrapperClassName={styles.editorWrapper}
-          toolbarClassName={toolbarClass}
+          toolbarClassName={this.props.toolbarHidden ? styles.toolbarHide : styles.toolbar}
         />
       </div>
     );

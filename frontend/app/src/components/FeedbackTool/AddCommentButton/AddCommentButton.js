@@ -4,17 +4,8 @@ import MLIcon from 'ml-react-cdl-icons';
 import styles from './addCommentButton.css';
 
 const AddCommentButton = ({ position }) => {
-  let handleMouseDown = event => {
-    event.preventDefault();
-  };
-
   return (
-    <div
-      id="addCommentButton"
-      className={styles.addComment}
-      onMouseDown={handleMouseDown}
-      style={{ top: `${position - 10}px` }}
-    >
+    <div id="addCommentButton" className={styles.addComment} style={{ top: `${position}px` }}>
       <MLIcon
         className={styles.commentIcon}
         title="comment"
