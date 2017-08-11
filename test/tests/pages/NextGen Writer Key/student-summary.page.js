@@ -21,6 +21,10 @@ exports.StudentSummaryPage = class extends Page {
         desc: `Link to instructor feedback`,
         locator: `[data-id='message-link']`
       },
+      view_feedback_button: {
+        desc: `Link to instructor feedback`,
+        locator: `[data-id='View Draft 1 Feedback']`
+      },
       draft_submission_confirmation_banner: {
         desc: `Green confirmation message for successful draft submission`,
         locator: `[class*='MLMessage__message_success']`
@@ -40,6 +44,10 @@ exports.StudentSummaryPage = class extends Page {
       start_final_paper: {
         desc: `Start final paper button in enabled out state`,
         locator: `[data-id='Start Final Paper']`
+      },
+      start_final_paper_disabled: {
+        desc: `Start final paper button in disabled state`,
+        locator: `[data-id='Start Final Paper'][class*='__disabled__']`
       },
       view_final_draft_button: {
         desc: `Button to view submitted draft`,
