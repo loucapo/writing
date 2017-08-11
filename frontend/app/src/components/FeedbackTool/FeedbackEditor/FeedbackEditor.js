@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 import { MLEditor } from '../../MLComponents';
@@ -7,6 +7,7 @@ import { AddCommentButton } from '../index';
 class FeedbackEditor extends Component {
   componentWillMount = () => {
     document.addEventListener('mousedown', this.handleMouseDown);
+    document.addEventListener('mouseup', this.handleMouseUp);
   };
 
   componentWillUnmount = () => {
@@ -28,9 +29,7 @@ class FeedbackEditor extends Component {
     }
   };
 
-  textHasBeenSelected = () => (
-    window.getSelection().toString() !== ''
-  );
+  textHasBeenSelected = () => window.getSelection().toString() !== '';
 
   addHighlights = () => {
     let userSelection = window.getSelection().getRangeAt(0);
@@ -80,14 +79,9 @@ class FeedbackEditor extends Component {
         if (i) {
           xs.setStartAfter(s[i - 1]);
           xs.setEndAfter(s[i].lastChild);
-        }
-        else {
+        } else {
           xs.setStart(s[i], dangerous.startOffset);
-          xs.setEndAfter(
-              (s[i].nodeType === Node.TEXT_NODE)
-                  ? s[i]
-                  : s[i].lastChild
-          );
+          xs.setEndAfter(s[i].nodeType === Node.TEXT_NODE ? s[i] : s[i].lastChild);
         }
         rs.push(xs);
       }
@@ -107,13 +101,8 @@ class FeedbackEditor extends Component {
         if (i) {
           xe.setStartBefore(e[i].firstChild);
           xe.setEndBefore(e[i - 1]);
-        }
-        else {
-          xe.setStartBefore(
-            (e[i].nodeType === Node.TEXT_NODE)
-            ? e[i]
-            : e[i].firstChild
-          );
+        } else {
+          xe.setStartBefore(e[i].nodeType === Node.TEXT_NODE ? e[i] : e[i].firstChild);
           xe.setEnd(e[i], dangerous.endOffset);
         }
         re.unshift(xe);
@@ -122,12 +111,11 @@ class FeedbackEditor extends Component {
 
     // Middle -- the uncaptured middle
     let xm;
-    if ((s.length > 0) && (e.length > 0)) {
+    if (s.length > 0 && e.length > 0) {
       xm = document.createRange();
       xm.setStartAfter(s[s.length - 1]);
       xm.setEndBefore(e[e.length - 1]);
-    }
-    else {
+    } else {
       return [dangerous];
     }
 
@@ -140,9 +128,10 @@ class FeedbackEditor extends Component {
   };
 
   render() {
-    return (   
-      <div onMouseUp={this.handleMouseUp}>
-        <MLEditor content={this.props.content} editable={false} toolbarHidden={true} feedback={true} />
+    // onMouseUp={this.handleMouseUp
+    return (
+      <div>
+        <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
       </div>
     );
   }

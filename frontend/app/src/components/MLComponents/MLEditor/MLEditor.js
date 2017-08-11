@@ -60,7 +60,7 @@ class MLEditor extends Component {
           toolbar={this.props.toolbarHidden}
           ref="editor"
           toolbarOnFocus={!this.props.editable}
-          editorClassName={this.props.feedback ? styles.feedbackEditor : styles.editor}
+          editorClassName={this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor}
           wrapperClassName={styles.editorWrapper}
           toolbarClassName={this.props.toolbarHidden ? styles.toolbarHide : styles.toolbar}
         />
@@ -74,7 +74,8 @@ MLEditor.propTypes = {
   editable: PropTypes.bool,
   content: PropTypes.object,
   notifyOnEditorUpdate: PropTypes.func,
-  toolbarHidden: PropTypes.bool
+  toolbarHidden: PropTypes.bool,
+  onFeedbackEditor: PropTypes.bool
 };
 
 export default MLEditor;
