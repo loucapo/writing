@@ -6,27 +6,21 @@ import { AddCommentButton } from '../index';
 
 class FeedbackEditor extends Component {
   componentWillMount = () => {
-    document.addEventListener('mousedown', this.handleMouseDown);
     document.addEventListener('mouseup', this.handleMouseUp);
   };
 
   componentWillUnmount = () => {
-    document.removeEventListener('mousedown', this.handleMouseDown);
     document.removeEventListener('mouseup', this.handleMouseUp);
   };
 
   handleMouseUp = () => {
     let addCommentButton = document.getElementById('addCommentButton');
-    if (this.textHasBeenSelected() && !addCommentButton) {
-      this.addHighlights();
-      this.addCommentButton();
-    }
-  };
-
-  handleMouseDown = () => {
-    let addCommentButton = document.getElementById('addCommentButton');
     if (addCommentButton) {
       addCommentButton.remove();
+    }
+    if (this.textHasBeenSelected()) {
+      this.addHighlights();
+      this.addCommentButton();
     }
   };
 
