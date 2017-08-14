@@ -15,7 +15,7 @@ class DraftGoalModal extends Component {
       },
       goal_summary_list: {
         desc: `list element that tracks which draft goals have been selected`,
-        locator: `[data-id='modal'] [data-id='selected-fields']`
+        locator: `[data-id='selected-fields']`
       },
       goal_description: {
         desc: `description of the draft goal`,

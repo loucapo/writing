@@ -116,7 +116,7 @@ exports.define = function(steps) {
   // TODO: move this one out of core.steps.js
   steps.then(/the draft goal summary list should have (\d+) goal/, function(goals) {
     goals = parseInt(goals);
-    page.draft_goal_summary_list(1).then(el => el.getText()).then(text => {
+    page.draft_goals_modal(1).goal_summary_list(1).then(el => el.getText()).then(text => {
       if (text === '') {
         expect(0).to.equal(goals);
       } else {

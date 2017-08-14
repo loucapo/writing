@@ -1,6 +1,5 @@
 @WRITE-29
 @WRITE-94
-  @only
   #Summary list
 Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
   @db=reset
@@ -16,7 +15,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
     Then I wait until there is 1 "draft_goals_modal.goal_save" visible
     Then I wait until there is 1 "draft_goals_modal.goal_cancel" visible
-@only
+
   @db=reset
   Scenario: Instructor adds and removes draft goals
     Given I launch the activity as an "instructor"
@@ -87,12 +86,12 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I wait until there are 0 "draft.saved_draft_goal" visible
     And I wait until there is 1 "draft.edit_draft_goals" visible
     And I click "draft.add_draft_goals"
-    #Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
     And I click "draft_goals_modal.goal_cancel"
     And I wait until there are 0 "draft.saved_draft_goal" visible
     And I wait until there is 1 "draft.edit_draft_goals" visible
     And I click "draft.add_draft_goals"
-    #Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
     And I click "draft_goals_modal.goal_checkbox(2)"
     And I click "draft_goals_modal.goal_checkbox(3)"
     And I click "draft_goals_modal.goal_checkbox(4)"
@@ -100,7 +99,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I wait until there are 3 "draft.saved_draft_goal" visible
     And I wait until there are 0 "draft.add_draft_goals" visible
     And I click "draft.edit_draft_goals"
-    #Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
     And I click "draft_goals_modal.goal_checkbox(2)"
     And I click "draft_goals_modal.goal_checkbox(3)"
     And I click "draft_goals_modal.goal_checkbox(4)"
@@ -115,7 +114,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then I wait until there is 1 "draft.add_draft_goals" visible
     And I wait until there are 0 "draft.saved_draft_goal" visible
     And I click "draft.add_draft_goals"
-    #Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
     And I click "draft_goals_modal.goal_checkbox(1)"
     And I click "draft_goals_modal.goal_checkbox(2)"
     And I click "draft_goals_modal.goal_checkbox(3)"
@@ -136,12 +135,11 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     Then I wait until there is 1 "draft.add_draft_goals" visible
     And I wait until there are 0 "draft.saved_draft_goal" visible
     And I click "draft.add_draft_goals"
-    #Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
     And I click "draft_goals_modal.goal_checkbox(1)"
     And I click "draft_goals_modal.goal_save"
     Then I sleep for 1 seconds
     And I click "draft.edit_draft_goals"
-    #Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
     Then the draft goal summary list should have 1 goal
     And the text of "draft_goals_modal.goal_summary_list" should be "Selected Draft Goals: Thesis"
-    # And "draft_goal_checkbox" [1] should be checked
