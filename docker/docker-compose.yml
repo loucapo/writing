@@ -24,7 +24,7 @@ services:
         APPLICATION_NAME: wk_api
         POSTGRES_HOST: postgres
       ports:
-        - "3000:3000"
+        - "80:80"
 
   data:
       build:
@@ -50,14 +50,14 @@ services:
         - ./../.envrc.example
       environment:
         APPLICATION_NAME: wk_serve
-        WK_API_URL: http://api:3000
+        WK_API_URL: http://api/api
       ports:
         - "10080:10080"
 
   swaggerUi:
     image: schickling/swagger-ui
     environment:
-      API_URL: "http://localhost:3000/swagger"
+      API_URL: "http://api/swagger"
       PORT: 4666
     ports:
       - "4666:4666"
