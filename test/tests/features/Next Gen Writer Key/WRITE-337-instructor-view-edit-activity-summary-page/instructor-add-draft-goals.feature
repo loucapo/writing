@@ -1,6 +1,6 @@
 @WRITE-29
 @WRITE-94
-  @TOREFACTOR
+  @only
   #Summary list
 Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
   @db=reset

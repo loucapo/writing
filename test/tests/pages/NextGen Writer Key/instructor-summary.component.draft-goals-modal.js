@@ -7,7 +7,7 @@ class DraftGoalModal extends Component {
     return {
       goal_popup: {
         desc: `modal that appears with the selectable draft goals`,
-        locator: `[data-id='modal']`
+        locator: `[class^='MLModal__modalContent']`
       },
       goal_checkbox: {
         desc: `checkbox that allows user to select draft goals`,
