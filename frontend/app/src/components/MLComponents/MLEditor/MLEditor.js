@@ -27,14 +27,14 @@ class MLEditor extends Component {
     }
   };
 
-  handleBlur = e => {
+  handleBlur = event => {
     let id;
-    if (e.relatedTarget) {
+    if (event.relatedTarget) {
       // Chrome
-      id = e.relatedTarget.id;
-    } else if (e.nativeEvent.explicitOriginalTarget) {
+      id = event.relatedTarget.id;
+    } else if (event.nativeEvent.explicitOriginalTarget) {
       // Firefox
-      id = e.nativeEvent.explicitOriginalTarget.id;
+      id = event.nativeEvent.explicitOriginalTarget.id;
     }
 
     if (id === 'cancel') {
@@ -50,12 +50,6 @@ class MLEditor extends Component {
   };
 
   render = () => {
-    let toolbarClass;
-    if (this.props.toolbarHidden) {
-      toolbarClass = styles.toolbarHide;
-    } else {
-      toolbarClass = styles.toolbar;
-    }
     return (
       <Editor
         onBlur={this.handleBlur}
@@ -65,9 +59,9 @@ class MLEditor extends Component {
         toolbar={this.props.toolbarHidden}
         ref="editor"
         toolbarOnFocus={!this.props.editable}
-        editorClassName={styles.editor}
+        editorClassName={this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor}
         wrapperClassName={styles.editorWrapper}
-        toolbarClassName={toolbarClass}
+        toolbarClassName={this.props.toolbarHidden ? styles.toolbarHide : styles.toolbar}
       />
     );
   };
@@ -78,7 +72,8 @@ MLEditor.propTypes = {
   editable: PropTypes.bool,
   content: PropTypes.object,
   notifyOnEditorUpdate: PropTypes.func,
-  toolbarHidden: PropTypes.bool
+  toolbarHidden: PropTypes.bool,
+  onFeedbackEditor: PropTypes.bool
 };
 
 export default MLEditor;
