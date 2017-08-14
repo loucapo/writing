@@ -11,6 +11,11 @@
   overflow: visible !important;
 }
 
+.feedbackEditor {
+  composes: editor;
+  width: 75% !important;
+}
+
 .toolbar {
   width: auto !important;
   align-items: center;
@@ -24,5 +29,18 @@
 .editorWrapper {
   display: flex;
   flex-direction: column;
+}
+
+.highlight, .highlight span {
+  display: inline;
+  background-color: var(--blue-light);
+}
+
+::-moz-selection { /* Code for Firefox */
+  background-color: var(--blue-light);
+}
+
+::selection {
+  background-color: var(--blue-light);
   flex: 1;
 }
