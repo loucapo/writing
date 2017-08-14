@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MLEditor, MLCard } from '../../MLComponents';
-import { FeedbackToolHeader, EndComment, FinalGrade } from '../index';
+import { MLCard } from '../../MLComponents';
+import { FeedbackToolHeader, EndComment, FinalGrade, FeedbackEditor } from '../index';
 import { RubricContainer } from '../../../containers';
 import styles from './feedbackTool.css';
 
@@ -35,7 +35,7 @@ const FeedbackTool = ({
         </div>
       </MLCard>
       <MLCard type="draft" title={draftTitle}>
-        <MLEditor content={studentDraft.paper} editable={false} toolbarHidden={true} />
+        <FeedbackEditor content={studentDraft.paper} />
       </MLCard>
       {lastDraft ?
         <FinalGrade
