@@ -13,6 +13,10 @@
   padding: 5px;
 }
 
+.addComment a {
+  text-decoration: none;
+}
+
 .commentIcon {
  fill: var(--aqua);
 }

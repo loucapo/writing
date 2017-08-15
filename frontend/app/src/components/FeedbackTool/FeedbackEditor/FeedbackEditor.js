@@ -44,8 +44,8 @@ class FeedbackEditor extends Component {
 
   addCommentButton = () => {
     let selections = Array.from(document.getElementsByClassName('selected'));
-    let top = selections[0].offsetTop;
-    let parent = selections[0].offsetParent;
+    let top = selections[0].offsetParent.offsetTop + selections[0].offsetTop;
+    let parent = selections[0].offsetParent.offsetParent;
 
     let tempNode = document.createElement('span');
     parent.appendChild(tempNode);

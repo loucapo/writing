@@ -14,7 +14,7 @@ const AddCommentButton = ({ position }) => {
         height="22"
         viewBox="0 0 24 24"
       />
-      Add a Comment
+      <a href="#">Add a Comment</a>
     </div>
   );
 };
