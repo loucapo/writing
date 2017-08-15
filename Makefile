@@ -58,7 +58,7 @@ lint:
 	parallel "cd {} && yarn lint" ::: api data frontend serve
 
 ecr-login:
-	aws ecr get-login | bash -e
+	aws ecr get-login --no-include-email | bash
 
 exec:
 	docker exec -it $(con) bash
