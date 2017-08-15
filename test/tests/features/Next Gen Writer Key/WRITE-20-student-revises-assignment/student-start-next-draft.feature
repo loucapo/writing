@@ -75,8 +75,8 @@ Feature: Student Starts Next Draft
     And I click "submissions.send_review_link(1)"
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
-    Then I wait until there is 1 "student_read_only.disabled_next_draft_button" visible
-    Then I wait until there is 1 "student_read_only.next_draft_button" visible
+    Then I wait until there is 1 "start_final_paper_disabled" visible
+    Then I wait until there is 1 "student_read_only_feedback.start_next_draft" visible
 
   @db=reset
   Scenario: Student can only view feedback on final draft

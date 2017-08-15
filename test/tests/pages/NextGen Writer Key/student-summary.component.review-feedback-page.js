@@ -56,7 +56,11 @@ class StudentReviewFeedback extends Component {
       view_activity_summary_link: {
         desc: `link to go back to main activity page`,
         locator: `[data-id='header-activity-link']`
-      }
+      },
+      start_next_draft: {
+        desc: `Button to start next draft in the header`,
+        locator: `[class^='FeedbackDisplayHeader__rightContainer'] a[class*=MLButton__aqua]`
+      },
     }; }
 }
 

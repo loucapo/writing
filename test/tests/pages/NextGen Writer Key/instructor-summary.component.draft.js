@@ -45,7 +45,7 @@ class Draft extends Component {
       },
       draft_instructions: {
         desc: `Text of the Draft Instructions displayed (non-editable)`,
-        locator: `[class^='DraftInstructionsDisplay'] div:nth-child(2)`
+        locator: `[data-id='draft-instructions']`
       },
       save_draft_instructions: {
         desc: `Button to save Draft Instructions for the current draft.  Only visible when instructions are editable.`,
@@ -81,6 +81,10 @@ class Draft extends Component {
       alert_delete_button: {
         desc: `The confirmation button in the alert dialog that is presented on attempting to delete a draft`,
         locator: `[data-id='dialog-delete']`
+      },
+      final_draft_delete_button_alert: {
+        desc: `The confirmation button in the alert dialog that is presented on attempting to delete a draft`,
+        locator: `[class^='MLDialog__alert'] [class^='MLDialog__content'] [class^='MLDialog__buttons'] [data-id='dialog-delete']`
       },
       draft_alert_cancel_button: {
         desc: `The cancellation button in the alert dialog that is presented on attempting to delete a draft`,
