@@ -141,6 +141,10 @@ const webpackConfig = {
         API_BASE_URL: JSON.stringify(process.env.API_BASE_URL)
       }
     }),
+    new webpack.ProvidePlugin({
+      'Promise': 'es6-promise',
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    }),
     new HtmlWebpackPlugin({
       template: 'index.html',
       inject: true,
