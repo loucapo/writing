@@ -1,5 +1,3 @@
-@WRITE-1208
-
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -19,7 +17,9 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I type "yay" in "student_reflection_questions.student_reflection_text"
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
+
   @only
+  @WRITE-1208
   Scenario: The Instructor Can Highlight Text And See Comment Button
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
@@ -27,3 +27,42 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And Changing to using page "instructor_feedback"
     And I sleep for 1 seconds
     When I select "Happy"
+    Then I wait until there is 1 "add_comment_button" visible
+
+  @WRITE-1209
+  Scenario: The Instructor Opens Modal From Comment Button
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    And I sleep for 1 seconds
+    When I select "Happy"
+    And I click "add_comment_button"
+    Then I wait until there is 1 "add_comment_modal" visible
+
+  @WRITE-1212
+  Scenario: The Instructor Saves Comment
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    And I sleep for 1 seconds
+    When I select "Happy"
+    And I click "add_comment_button"
+    Then I wait until there is 1 "add_comment_modal" visible
+    And I click "save_comment"
+    Then I wait until there is 1 "instructor_draft_comment" visible
+
+  @pending
+  @WRITE-1212
+  Scenario: The Instructor Save Comment Error
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    And I sleep for 1 seconds
+    When I select "Happy"
+    And I click "add_comment_button"
+    And I click "save_comment"
+     # I somehow blow up the save process
+    Then I wait until there is 1 "save_comment_error" visible
