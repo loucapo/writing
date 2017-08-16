@@ -71,7 +71,11 @@ exports.InstructorSummaryPage = class extends Page {
       student_preview: {
         desc: `Button in header to switch instructor view to student view`,
         locator: `[data-id='student-preview']`
-      }
+      },
+      final_draft_delete_button_alert: {
+        desc: `The confirmation button in the alert dialog that is presented on attempting to delete a draft`,
+        locator: `[class^='MLDialog__alert'] [class^='MLDialog__content'] [class^='MLDialog__buttons'] [data-id='dialog-delete']`
+      },
     };
   }
 

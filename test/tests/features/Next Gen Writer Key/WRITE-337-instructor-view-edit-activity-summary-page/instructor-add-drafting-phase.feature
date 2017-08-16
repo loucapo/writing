@@ -1,4 +1,3 @@
-@TOREFACTOR
 Feature: Add Another Draft To Activity
   @db=reset
   @WRITE-27
@@ -74,7 +73,7 @@ Feature: Add Another Draft To Activity
     Then I sleep for 1 seconds
     Then I wait until there is 1 "draft_card" visible
     And the text of "draft_count" should be "DRAFTS (1)"
-  @TOREFACTOR
+
   @WRITE-27
   @db=reset
   Scenario: Removing 'Final Paper' converts remaining draft into a 'Final Paper'
@@ -84,9 +83,7 @@ Feature: Add Another Draft To Activity
     And the text of "draft(1).title" should be "Draft 1"
     And the text of "draft(2).title" should be "Final Paper"
     And I click "draft(2).delete_button"
-    Then I sleep for 1 seconds
-    Then I wait until there is 1 "draft.alert_delete_button" visible
-    When I click "draft(2).alert_delete_button"
+    And I click "final_draft_delete_button_alert(2)"
     # undiagnosed Stale Element ref here w/o sleep    
     Then I sleep for 1 seconds
     Then I wait until there is 1 "draft_card" visible
@@ -129,7 +126,7 @@ Feature: Add Another Draft To Activity
     And I reload the page
     Then I wait until there are 0 "draft.draft_instructions_textarea" visible
     Then I wait until there are 0 "draft.draft_instructions" visible
-  @TOREFACTOR
+
   @WRITE-27
   @db=reset
   Scenario: Draft Renaming
@@ -140,11 +137,8 @@ Feature: Add Another Draft To Activity
     Then I wait until there is 1 "draft.draft_instructions_textarea" visible
     And I type "just some basic instructions" in "draft.draft_instructions_textarea(1)"
     And I click "draft.save_draft_instructions"
-    And I reload the page
-    #And I wait until there is 1 "draft.draft_instructions" visible
     And I click "draft(2).delete_button"
-    And I wait until there is 1 "draft.alert_delete_button" visible
-    And I click "draft.alert_delete_button(2)"
+    And I click "final_draft_delete_button_alert(2)"
     # undiagnosed Stale Element ref here w/o sleep    
     Then I sleep for 1 seconds
     And I wait until there is 1 "draft_card" visible
@@ -197,7 +191,7 @@ Feature: Add Another Draft To Activity
     Then the text of "draft(2).draft_instructions" should be "C3"
     Then the text of "draft(3).draft_instructions" should be "D4"
     Then the text of "draft(4).draft_instructions" should be "A1"
-  @only
+
   @db=reset
   @WRITE-1036
   Scenario: Final and sole drafts are always named "Final Paper"
@@ -242,10 +236,8 @@ Feature: Add Another Draft To Activity
     Then the text of "draft(1).title" should be "Draft 1"
     Then the text of "draft(2).title" should be "Final Paper"
     #
-    And I reload the page
     When I click "draft(2).delete_button"
-    Then I sleep for 3 seconds
-    And I click "draft.final_draft_delete_button_alert"
+    And I click "final_draft_delete_button_alert(2)"
     Then I sleep for 1 seconds
     Then I wait until there is 1 "draft_card" visible
     Then the text of "draft.draft_instructions" should be "Ax1"
