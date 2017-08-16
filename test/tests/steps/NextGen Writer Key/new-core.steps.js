@@ -198,6 +198,28 @@ exports.define = function(steps) {
     return driver.manage().window().maximize();
   });
 
+  steps.when(/I select "(.*)"/, function(text) {
+    let elem;
+    var lefts = '';
+    page.student_submitted_draft_text(1).then(el => {
+      elem = el;
+      return el.getText();
+    }).then(text => {
+      for (i = 0; i< text.length; i++) {
+        lefts += keys.LEFT;
+      }
+      elem.sendKeys(keys.SHIFT + lefts);
+    });
+
+    //
+    // let page = pages.instructor_feedback;
+    // var lefts = '';
+    // for (i = 0; i< text.length; i++) {
+    //   lefts += keys.LEFT;
+    // }
+    // return page.student_submitted_draft_text(1).sendKeys(keys.SHIFT + lefts);
+  });
+
   steps.when('I delete all content on the draft editor', function() {
     let elem;
     page.draft_area(1).then(el => {
