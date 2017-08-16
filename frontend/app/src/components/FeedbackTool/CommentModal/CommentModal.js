@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 import { MLButton } from '../../MLComponents';
 import styles from './commentModal.css';
 
-const CommentModal = ({ position }) => {
-  console.log(`==========position=========`);
-  console.log(position);
-  console.log(`==========END position=========`);
+const CommentModal = ({ position, closeModal }) => {
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) {
+      closeModal();
+    }
+  };
+
   return (
     <div>
-      <div className={styles.overlay} />
-      <div id="commentModal" className={styles.commentModal} style={{ top: `${position.bottom}px`, left: `${position.left}px` }}>
+      <div className={styles.commentModalOverlay} onClick={handleBackgroundClick} />
+      <div id="commentModal" className={styles.commentModal} style={{ top: `${position.top}px`, left: `${position.left}px` }}>
         <div className={styles.header}>
           Comment
         </div>
@@ -53,6 +56,7 @@ const CommentModal = ({ position }) => {
             title="Cancel"
             color="red"
             bordered={true}
+            handleClick={closeModal}
           />
           <MLButton
             className={styles.addCommentButton}
@@ -66,7 +70,8 @@ const CommentModal = ({ position }) => {
 };
 
 CommentModal.propTypes = {
-  position: PropTypes.object
+  position: PropTypes.object,
+  closeModal: PropTypes.func
 };
 
 export default CommentModal;

@@ -41,14 +41,13 @@
   padding: 0 10px 10px;
 }
 
-.commentModal .overlay {
+.commentModalOverlay {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: transparent;
   opacity: 0.5;
   top: 0;
   left: 0;
-  pointer-events: none;
   z-index: 100;
 }

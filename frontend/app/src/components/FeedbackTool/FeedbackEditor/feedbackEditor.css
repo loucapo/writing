@@ -1,6 +1,6 @@
 @import 'variables.css';
 
-.highlight, .highlight span {
+.selected, .selected span {
   display: inline;
   background-color: var(--blue-light);
 }

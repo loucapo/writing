@@ -21,12 +21,16 @@ class FeedbackEditor extends Component {
   };
 
   handleMouseUp = () => {
-    if (event.target.id !== 'addCommentButton') {
+    if (event.target.id !== 'addCommentButton' && event.target.parentElement.id !== 'addCommentButton') {
       // FixMe: the buttons dont seem to be getting removed correctly now.
       // FixMe too: highlight should only run on text in the editor.
       let addCommentButton = document.getElementById('addCommentButton');
       if (addCommentButton) {
         addCommentButton.remove();
+        let selections = Array.from(document.getElementsByClassName(styles.selected));
+        selections.map(selection => {
+          selection.classList.remove(styles.selected);
+        });
       }
       if (this.textHasBeenSelected()) {
         this.addHighlights();
@@ -35,11 +39,25 @@ class FeedbackEditor extends Component {
     }
   };
 
+  closeModal = () => {
+    let selections = Array.from(document.getElementsByClassName(styles.selected));
+    selections.map(selection => {
+      selection.classList.remove(styles.selected);
+    });
+    this.setState({
+      showCommentModal: false
+    });
+  };
+
   showCommentModal = () => {
-    let highlights = document.querySelectorAll('.highlighted'); //first and only selected thingy
+    let addCommentButton = document.getElementById('addCommentButton');
+    if (addCommentButton) {
+      addCommentButton.remove();
+    }
+    let highlights = document.querySelectorAll(`.${styles.selected}`);
     let selected = highlights[highlights.length - 1];
     this.position = {
-      bottom: selected.getBoundingClientRect().bottom + 20,
+      top: selected.getBoundingClientRect().bottom + 20,
       left: selected.getBoundingClientRect().left
     };
     this.setState({
@@ -58,16 +76,15 @@ class FeedbackEditor extends Component {
       if (!range.collapsed) {
         let newNode = document.createElement('span');
         // newNode.id = 'marker' + index;
-        newNode.classList.add(styles.highlight);
-        newNode.classList.add('highlighted');
-        newNode.classList.add('selected');
+        // newNode.classList.add(styles.highlight);
+        newNode.classList.add(styles.selected);
         range.surroundContents(newNode);
       }
     });
   };
 
   addCommentButton = () => {
-    let selections = Array.from(document.getElementsByClassName('selected'));
+    let selections = Array.from(document.getElementsByClassName(styles.selected));
     let top = selections[0].offsetParent.offsetTop + selections[0].offsetTop;
     let parent = selections[0].offsetParent.offsetParent;
 
@@ -77,9 +94,9 @@ class FeedbackEditor extends Component {
     render(<AddCommentButton position={top} handleClick={this.showCommentModal} />, tempNode);
 
     // TODO: Remove entire span instead of just the class.
-    selections.map(selection => {
-      selection.classList.remove('selected');
-    });
+    // selections.map(selection => {
+    //   selection.classList.remove('selected');
+    // });
   };
 
   getSafeRanges = dangerous => {
@@ -151,7 +168,7 @@ class FeedbackEditor extends Component {
       <div>
         <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
         {this.state.showCommentModal
-          ? <CommentModal position={this.position} />
+          ? <CommentModal position={this.position} closeModal={this.closeModal} />
           : null
         }
       </div>
