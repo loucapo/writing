@@ -1,4 +1,3 @@
-# What frontend calls directly
 API_BASE_URL=http://localhost/api/
 API_SERVICE_NAME=API
 APPLICATION_KEYS=Writing_Tools
