@@ -176,20 +176,20 @@ class FeedbackEditor extends Component {
   };
 
   // tests if a selection is within a parent
-  elementContainsSelection = (el) => {
-    let sel;
+  elementContainsSelection = (element) => {
+    let selected;
     if (window.getSelection) {
-      sel = window.getSelection();
-      if (sel.rangeCount > 0) {
-        for (let i = 0; i < sel.rangeCount; ++i) {
-          if (!this.isOrContains(sel.getRangeAt(i).commonAncestorContainer, el)) {
+      selected = window.getSelection();
+      if (selected.rangeCount > 0) {
+        for (let i = 0; i < selected.rangeCount; ++i) {
+          if (!this.isOrContains(selected.getRangeAt(i).commonAncestorContainer, element)) {
             return false;
           }
         }
         return true;
       }
-    } else if ( (sel = document.selection) && sel.type !== 'Control') {
-      return this.isOrContains(sel.createRange().parentElement(), el);
+    } else if ( (selected = document.selection) && selected.type !== 'Control') {
+      return this.isOrContains(selected.createRange().parentElement(), element);
     }
     return false;
   };
