@@ -11,8 +11,13 @@
   display: flex;
   justify-content: space-between;
   padding: 5px;
+  cursor: pointer;
+}
+
+.addComment a {
+  text-decoration: none;
 }
 
 .commentIcon {
- fill: var(--aqua);
+  fill: var(--aqua);
 }

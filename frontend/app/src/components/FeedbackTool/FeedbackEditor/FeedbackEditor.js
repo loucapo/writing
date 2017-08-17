@@ -3,31 +3,71 @@ import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 import { MLEditor } from '../../MLComponents';
 import { AddCommentButton } from '../index';
+import { CommentModal } from '../index';
+import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
+  position = 0;
+  state = {
+    showCommentModal: false
+  };
+
+  // FixMe: modal positioning
+
   componentWillMount = () => {
-    document.addEventListener('mousedown', this.handleMouseDown);
     document.addEventListener('mouseup', this.handleMouseUp);
   };
 
   componentWillUnmount = () => {
-    document.removeEventListener('mousedown', this.handleMouseDown);
     document.removeEventListener('mouseup', this.handleMouseUp);
   };
 
+  removeSelections = () => {
+    // FixMe: Remove entire span instead of just the class.
+    let selections = Array.from(document.getElementsByClassName(styles.selected));
+    selections.map(selection => {
+      selection.classList.remove(styles.selected);
+    });
+  };
+
   handleMouseUp = () => {
-    let addCommentButton = document.getElementById('addCommentButton');
-    if (this.textHasBeenSelected() && !addCommentButton) {
-      this.addHighlights();
-      this.addCommentButton();
+    // stop if we are selecting outside the editor
+    if (!this.elementContainsSelection(document.querySelector(`.${styles.feedbackEditorWrapper}`))) { return null;}
+    if (event.target.id !== 'addCommentButton' && event.target.parentElement.id !== 'addCommentButton') {
+      // FixMe: the buttons dont seem to be getting removed correctly now.
+      let addCommentButton = document.getElementById('addCommentButton');
+      if (addCommentButton) {
+        addCommentButton.remove();
+        this.removeSelections();
+      }
+      if (this.textHasBeenSelected()) {
+        this.addHighlights();
+        this.addCommentButton();
+      }
     }
   };
 
-  handleMouseDown = () => {
+  closeModal = () => {
+    this.removeSelections();
+    this.setState({
+      showCommentModal: false
+    });
+  };
+
+  showCommentModal = () => {
     let addCommentButton = document.getElementById('addCommentButton');
     if (addCommentButton) {
       addCommentButton.remove();
     }
+    let highlights = document.querySelectorAll(`.${styles.selected}`);
+    let selected = highlights[highlights.length - 1];
+    this.position = {
+      top: selected.getBoundingClientRect().bottom + 20,
+      left: selected.getBoundingClientRect().left
+    };
+    this.setState({
+      showCommentModal: true
+    });
   };
 
   textHasBeenSelected = () => window.getSelection().toString() !== '';
@@ -37,33 +77,29 @@ class FeedbackEditor extends Component {
 
     // Add highlights
     let safeRanges = this.getSafeRanges(userSelection);
-    safeRanges.map((range, index) => {
+    safeRanges.map((range/*, index*/) => {
       if (!range.collapsed) {
         let newNode = document.createElement('span');
-        newNode.id = 'marker' + index;
+        // newNode.id = 'marker' + index;
         // newNode.classList.add(styles.highlight);
-        newNode.classList.add('selected');
+        newNode.classList.add(styles.selected);
         range.surroundContents(newNode);
       }
     });
   };
 
   addCommentButton = () => {
-    let selections = Array.from(document.getElementsByClassName('selected'));
-    let top = selections[0].offsetTop;
-    let parent = selections[0].offsetParent;
+    let selections = Array.from(document.getElementsByClassName(styles.selected));
+    let top = selections[0].offsetParent.offsetTop + selections[0].offsetTop;
+    let parent = selections[0].offsetParent.offsetParent;
 
     let tempNode = document.createElement('span');
     parent.appendChild(tempNode);
 
-    render(<AddCommentButton position={top} />, tempNode);
-
-    // TODO: Remove entire span instead of just the class.
-    selections.map(selection => {
-      selection.classList.remove('selected');
-    });
+    render(<AddCommentButton position={top} handleClick={this.showCommentModal} />, tempNode);
   };
 
+  // selects ranges across paragraphs with ease
   getSafeRanges = dangerous => {
     let a = dangerous.commonAncestorContainer;
     // Starts -- Work inward from the start, selecting the largest safe range
@@ -128,9 +164,45 @@ class FeedbackEditor extends Component {
     return rs.concat(re);
   };
 
+  // helper for elementContainsSelection
+  isOrContains = (node, container) => {
+    while (node) {
+      if (node === container) {
+        return true;
+      }
+      node = node.parentNode;
+    }
+    return false;
+  };
+
+  // tests if a selection is within a parent
+  elementContainsSelection = (element) => {
+    let selected;
+    if (window.getSelection) {
+      selected = window.getSelection();
+      if (selected.rangeCount > 0) {
+        for (let i = 0; i < selected.rangeCount; ++i) {
+          if (!this.isOrContains(selected.getRangeAt(i).commonAncestorContainer, element)) {
+            return false;
+          }
+        }
+        return true;
+      }
+    } else if ( (selected = document.selection) && selected.type !== 'Control') {
+      return this.isOrContains(selected.createRange().parentElement(), element);
+    }
+    return false;
+  };
+
   render() {
     return (
-      <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
+      <div className={styles.feedbackEditorWrapper}>
+        <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
+        {this.state.showCommentModal
+          ? <CommentModal position={this.position} closeModal={this.closeModal} />
+          : null
+        }
+      </div>
     );
   }
 }

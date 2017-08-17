@@ -1,0 +1,10 @@
+@import 'variables.css';
+
+.feedbackEditorWrapper {
+  display: inherit;
+}
+
+.selected, .selected span {
+  display: inline;
+  background-color: var(--blue-light);
+}
