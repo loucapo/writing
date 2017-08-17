@@ -33,7 +33,7 @@ const CommentModal = ({ position, closeModal }) => {
             <MLButton
               className={styles.addCommentButton}
               dataId="needs-work-comment-modal"
-              title="Need Work"
+              title="Needs Work"
               bordered={true}
             />
             <MLButton
