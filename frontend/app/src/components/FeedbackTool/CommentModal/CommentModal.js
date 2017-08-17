@@ -62,6 +62,7 @@ const CommentModal = ({ position, closeModal }) => {
             className={styles.addCommentButton}
             dataId="save-comment-modal"
             title="Save"
+            disabled={true}
           />
         </div>
       </div>
