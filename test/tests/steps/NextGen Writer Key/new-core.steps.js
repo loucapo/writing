@@ -198,18 +198,28 @@ exports.define = function(steps) {
     return driver.manage().window().maximize();
   });
 
+  create_essay_selection = function(child_span_id) {
+    return `var range = document.createRange();
+    var studentText = document.querySelector('div.public-DraftEditor-content div div div');
+    var textNode = studentText.getElementsByTagName('span')[${child_span_id}];
+    range.selectNode(textNode);
+    window.getSelection().addRange(range);`;
+  };
+
   steps.when(/I select "(.*)"/, function(text) {
-    let elem;
-    var lefts = '';
-    page.student_submitted_draft_text(1).then(el => {
-      elem = el;
-      return el.getText();
-    }).then(text => {
-      for (i = 0; i< text.length; i++) {
-        lefts += keys.LEFT;
-      }
-      elem.sendKeys(keys.SHIFT + lefts);
-    });
+    driver.executeScript(create_essay_selection(1));
+    // let elem;
+    // var lefts = '';
+    // page.student_submitted_draft_text(1).then(el => {
+    //   elem = el;
+    //   return el.getText();
+    // }).then(text => {
+    // // {
+    // //   for (i = 0; i< text.length; i++) {
+    // //     lefts += keys.LEFT;
+    // //   }
+    //   elem.sendKeys((keys.SHIFT + keys.LEFT).repeat(text.length));
+    //});
 
     //
     // let page = pages.instructor_feedback;
