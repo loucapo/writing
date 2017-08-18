@@ -200,34 +200,73 @@ exports.define = function(steps) {
 
   create_essay_selection = function(child_span_id) {
     return `var range = document.createRange();
-    var studentText = document.querySelector('div.public-DraftEditor-content div div div');
+    var studentText = document.querySelector('div.public-DraftEditor-content');
     var textNode = studentText.getElementsByTagName('span')[${child_span_id}];
     range.selectNode(textNode);
     window.getSelection().addRange(range);`;
   };
 
+  function selectElementText() {
+    return 'win = window;' +
+      'el = document.getElementsByClassName("public-DraftEditor-content");' +
+      'var doc = window.document, sel, range;\n' +
+      '    el = el[0];' +
+      '    if (window.getSelection && doc.createRange) {\n' +
+      '      sel = window.getSelection();\n' +
+      '      range = doc.createRange();\n' +
+      '      range.selectNodeContents(el);\n' +
+      '      sel.removeAllRanges();\n' +
+      '      sel.addRange(range);\n' +
+      '    } else if (doc.body.createTextRange) {\n' +
+      '      range = doc.body.createTextRange();\n' +
+      '      range.moveToElementText(el);\n' +
+      '      range.select().trigger(\'mouseUp\');\n' +
+      '    }'
+
+  }
+
+  function triggerEvent(el, type){
+   // if ('createEvent' in document) {
+      // modern browsers, IE9+
+    /*
+      return 'var e = document.createEvent("HTMLEvents");\n' +
+    'e.initEvent("mouseUp", false, true);\n' +
+    'el.dispatchEvent(e);'
+    */
+    return `var event = new MouseEvent("mouseUp", {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    });
+    document.dispatchEvent(event);
+    `
+    //}
+    //}
+  }
+
   steps.when(/I select "(.*)"/, function(text) {
-    driver.executeScript(create_essay_selection(1));
+
+
+    driver.executeScript(selectElementText());
+    // var event = driver.EventEmitter;
+    // event.emit('mouseUp');
+    driver.executeScript(triggerEvent(text, 'mouseUp'));
     // let elem;
     // var lefts = '';
-    // page.student_submitted_draft_text(1).then(el => {
+    // page.student_submitted_draft_text.dblclick().then(el => {
     //   elem = el;
     //   return el.getText();
     // }).then(text => {
-    // // {
-    // //   for (i = 0; i< text.length; i++) {
-    // //     lefts += keys.LEFT;
-    // //   }
-    //   elem.sendKeys((keys.SHIFT + keys.LEFT).repeat(text.length));
-    //});
+    //  elem.sendKeys((keys.SHIFT + keys.LEFT).repeat(text.length));
+    // });
 
-    //
-    // let page = pages.instructor_feedback;
+
+    //let page = pages.instructor_feedback;
     // var lefts = '';
     // for (i = 0; i< text.length; i++) {
     //   lefts += keys.LEFT;
     // }
-    // return page.student_submitted_draft_text(1).sendKeys(keys.SHIFT + lefts);
+    // page.student_submitted_draft_text(1).sendKeys(keys.SHIFT + lefts);
   });
 
   steps.when('I delete all content on the draft editor', function() {

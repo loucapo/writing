@@ -97,7 +97,7 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       add_comment_button: {
       desc: `Button to add comment to highlighted text`,
-        locator: `[class^='public-DraftEditor-content']`
+        locator: `[class^='addCommentButton']`
     },
     };
   }
