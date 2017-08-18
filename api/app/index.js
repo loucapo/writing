@@ -1,5 +1,3 @@
-// FORCING REBUILD 
-// DELET THIS
 process.env['ALLOW_CONFIG_MUTATIONS'] = true; // eslint-disable-line dot-notation
 const registry = require('./registry');
 
