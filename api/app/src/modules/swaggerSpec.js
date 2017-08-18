@@ -10,7 +10,7 @@ module.exports = function(swaggerjsdoc, fs, schemas, deref) {
           version: '0.0.1',
           title: 'Writer Key Api'
         },
-        basePath: '/',
+        basePath: '/api',
         schemes: [
           'http'
         ],

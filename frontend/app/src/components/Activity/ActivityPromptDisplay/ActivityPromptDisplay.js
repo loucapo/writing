@@ -8,7 +8,7 @@ const ActivityPromptDisplay = ({ prompt }) => {
     (promptText) ?
       <MLCard type="prompt" title="Activity Prompt">
         <div data-id="prompt-description">
-          <MLEditor content={prompt} editable={false} />
+          <MLEditor content={prompt} editable={false} toolbarHidden={true} />
         </div>
       </MLCard>
     : null

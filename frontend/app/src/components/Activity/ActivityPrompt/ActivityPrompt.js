@@ -78,7 +78,12 @@ class ActivityPrompt extends Component {
         <div data-id="prompt-description">
           {(this.props.promptText || this.state.editable)
             ?
-              <MLEditor handleSaveOnBlur={this.handleSave} editable={this.state.editable} content={this.props.prompt} />
+              <MLEditor
+                handleSaveOnBlur={this.handleSave}
+                editable={this.state.editable}
+                content={this.props.prompt}
+                toolbarHidden={!this.state.editable}
+              />
             :
               <a data-id="add-prompt" onClick={this.toggleEditable}>Click to add prompt</a>}
         </div>

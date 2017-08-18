@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import styles from './addCommentButton.css';
 
-const AddCommentButton = ({ position }) => {
+const AddCommentButton = ({ position, handleClick }) => {
   return (
-    <div id="addCommentButton" className={styles.addComment} style={{ top: `${position}px` }}>
+    <div
+      id="addCommentButton"
+      className={styles.addComment}
+      style={{ top: `${position}px` }}
+      onClick={handleClick}
+    >
       <MLIcon
         className={styles.commentIcon}
         title="comment"
@@ -20,7 +25,8 @@ const AddCommentButton = ({ position }) => {
 };
 
 AddCommentButton.propTypes = {
-  position: PropTypes.number
+  position: PropTypes.number,
+  handleClick: PropTypes.func
 };
 
 export default AddCommentButton;
