@@ -206,51 +206,38 @@ exports.define = function(steps) {
     window.getSelection().addRange(range);`;
   };
 
-  function selectElementText() {
-    return 'win = window;' +
-      'el = document.getElementsByClassName("public-DraftEditor-content");' +
-      'var doc = window.document, sel, range;\n' +
-      '    el = el[0];' +
-      '    if (window.getSelection && doc.createRange) {\n' +
-      '      sel = window.getSelection();\n' +
-      '      range = doc.createRange();\n' +
-      '      range.selectNodeContents(el);\n' +
-      '      sel.removeAllRanges();\n' +
-      '      sel.addRange(range);\n' +
-      '    } else if (doc.body.createTextRange) {\n' +
-      '      range = doc.body.createTextRange();\n' +
-      '      range.moveToElementText(el);\n' +
-      '      range.select().trigger(\'mouseUp\');\n' +
-      '    }'
 
-  }
+  function element_select_text_and_mouseup(selector) {
+    // XXX this could be expanded to set the start and end points of selected text
+    // might want to break out mouseup from select text too
 
-  function triggerEvent(el, type){
-   // if ('createEvent' in document) {
-      // modern browsers, IE9+
-    /*
-      return 'var e = document.createEvent("HTMLEvents");\n' +
-    'e.initEvent("mouseUp", false, true);\n' +
-    'el.dispatchEvent(e);'
-    */
-    return `var event = new MouseEvent("mouseUp", {
-      bubbles: true,
-      cancelable: true,
-      view: window
-    });
-    document.dispatchEvent(event);
-    `
-    //}
-    //}
+    // selector adjustment -- quotes inside template literals break
+    selector = '"' + selector + '"';
+    return `
+      var elem = document.querySelector(${selector});
+      var doc = window.document, sel, range;
+      if (window.getSelection && doc.createRange) {
+        sel = window.getSelection();
+        range = doc.createRange();
+        range.selectNodeContents(elem);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } else if (doc.body.createTextRange) {
+        range = doc.body.createTextRange();
+        range.moveToElementText(elem);
+        range.select();
+      }
+      var e = new MouseEvent("mouseup", {
+        bubbles: true,
+        cancelable: true,
+        view: window
+      });
+      elem.dispatchEvent(e);
+    `;
   }
 
   steps.when(/I select "(.*)"/, function(text) {
-
-
-    driver.executeScript(selectElementText());
-    // var event = driver.EventEmitter;
-    // event.emit('mouseUp');
-    driver.executeScript(triggerEvent(text, 'mouseUp'));
+    driver.executeScript(element_select_text_and_mouseup("div.public-DraftEditor-content"));
     // let elem;
     // var lefts = '';
     // page.student_submitted_draft_text.dblclick().then(el => {
