@@ -204,7 +204,6 @@ exports.define = function(steps) {
 
     // selector adjustment -- quotes inside template literals break
     selector = '"' + selector + '"';
-    console.log(selector);
     return `
       var elem = document.querySelector(${selector});
       var doc = window.document, sel, range;
@@ -231,10 +230,13 @@ exports.define = function(steps) {
   steps.when(/I select "(.*)" text/, function(element) {
 
     //the ideal but it doesn't work
-    return polocToPO(element).then(el => {return driver.executeScript(element_select_text_and_mouseup(el))})
+    // return polocToPO(element).then(el =>
+    //   {console.log(el[0]);
+    //   return driver.executeScript(element_select_text_and_mouseup(el.locator))}
+    // )
 
     //this works, just not ideal since it's not using the poloc
-    //driver.executeScript(element_select_text_and_mouseup(element));
+    driver.executeScript(element_select_text_and_mouseup(element));
 
     //this works but hard coded
     //driver.executeScript(element_select_text_and_mouseup("div.public-DraftEditor-content"));

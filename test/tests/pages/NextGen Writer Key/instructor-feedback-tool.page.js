@@ -99,11 +99,15 @@ exports.InstructorFeedbackPage = class extends Page {
       desc: `Button to add comment to highlighted text`,
         locator: `[id='addCommentButton']`
     },
+      good_job_comment_button: {
+        desc: `Button to quickly add good job comment`,
+        locator: `[data-id='good-job-comment-modal']`
+      },
     };
   }
 
-  add_comment_modal(arg) {
-    return AddCommentModal.generate(arg, {
-      locator: `[data-id='modal']`}); }
+  instructor_comment_modal(arg) {
+    return instructorCommentModal.generate(arg, {
+      locator: `[class^='CommentModal__buttons']`}); }
 };
 
