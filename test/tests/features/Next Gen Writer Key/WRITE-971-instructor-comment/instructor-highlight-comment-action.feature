@@ -1,5 +1,6 @@
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
   @db=reset
+
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -39,7 +40,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I click "add_comment_button"
     Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
-
+  @pending
   @WRITE-1212
   Scenario: The Instructor Saves Comment
     Given I launch the activity as an "instructor"
