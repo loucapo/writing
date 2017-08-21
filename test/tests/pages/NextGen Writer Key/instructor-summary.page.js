@@ -108,3 +108,4 @@ exports.InstructorSummaryPage = class extends Page {
       locator: `[data-id='modal']`}); }
 };
 
+

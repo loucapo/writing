@@ -29,7 +29,6 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     #And I sleep for 1 seconds
     Then I wait until there is 1 "add_comment_button" visible
 
-    @only
   @WRITE-1209
   Scenario: The Instructor Opens Modal From Comment Button
     Given I launch the activity as an "instructor"
@@ -38,8 +37,8 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And Changing to using page "instructor_feedback"
     When I select "div.public-DraftEditor-content" text
     And I click "add_comment_button"
-      And I sleep for 10 seconds
-    Then I wait until there is 1 "instructor_comment_modal.good_job_comment_button"
+    Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
+    Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
 
   @WRITE-1212
   Scenario: The Instructor Saves Comment
