@@ -25,8 +25,8 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    When I select "student_submitted_draft_text"
-    And I sleep for 11 seconds
+    When I select "div.public-DraftEditor-content" text
+    #And I sleep for 1 seconds
     Then I wait until there is 1 "add_comment_button" visible
 
   @WRITE-1209

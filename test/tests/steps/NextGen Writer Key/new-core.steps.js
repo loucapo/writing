@@ -198,21 +198,13 @@ exports.define = function(steps) {
     return driver.manage().window().maximize();
   });
 
-  create_essay_selection = function(child_span_id) {
-    return `var range = document.createRange();
-    var studentText = document.querySelector('div.public-DraftEditor-content');
-    var textNode = studentText.getElementsByTagName('span')[${child_span_id}];
-    range.selectNode(textNode);
-    window.getSelection().addRange(range);`;
-  };
-
-
   function element_select_text_and_mouseup(selector) {
     // XXX this could be expanded to set the start and end points of selected text
     // might want to break out mouseup from select text too
 
     // selector adjustment -- quotes inside template literals break
     selector = '"' + selector + '"';
+    console.log(selector);
     return `
       var elem = document.querySelector(${selector});
       var doc = window.document, sel, range;
@@ -236,24 +228,16 @@ exports.define = function(steps) {
     `;
   }
 
-  steps.when(/I select "(.*)"/, function(text) {
-    driver.executeScript(element_select_text_and_mouseup("div.public-DraftEditor-content"));
-    // let elem;
-    // var lefts = '';
-    // page.student_submitted_draft_text.dblclick().then(el => {
-    //   elem = el;
-    //   return el.getText();
-    // }).then(text => {
-    //  elem.sendKeys((keys.SHIFT + keys.LEFT).repeat(text.length));
-    // });
+  steps.when(/I select "(.*)" text/, function(element) {
 
+    //the ideal but it doesn't work
+    return polocToPO(element).then(el => {return driver.executeScript(element_select_text_and_mouseup(el))})
 
-    //let page = pages.instructor_feedback;
-    // var lefts = '';
-    // for (i = 0; i< text.length; i++) {
-    //   lefts += keys.LEFT;
-    // }
-    // page.student_submitted_draft_text(1).sendKeys(keys.SHIFT + lefts);
+    //this works, just not ideal since it's not using the poloc
+    //driver.executeScript(element_select_text_and_mouseup(element));
+
+    //this works but hard coded
+    //driver.executeScript(element_select_text_and_mouseup("div.public-DraftEditor-content"));
   });
 
   steps.when('I delete all content on the draft editor', function() {
