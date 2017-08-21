@@ -42,6 +42,11 @@ dockerUp: ecr-login
 dockerLoggingUp: ecr-login
 	docker-compose -f docker/docker-compose-logging.yml -p writing up -d
 
+dockerPurge:
+	containers="$$(docker ps -aq)"; \
+	docker stop $$containers; \
+	docker rm $$containers; \
+	docker rmi $$(docker images -q) -f
 
 .PHONY: test
 test:
