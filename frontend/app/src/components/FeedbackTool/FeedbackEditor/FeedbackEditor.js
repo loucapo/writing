@@ -91,7 +91,9 @@ class FeedbackEditor extends Component {
     console.log('add comment button');
     let selections = document.querySelectorAll(`.${styles.selected}`);
     let top = selections[0].getBoundingClientRect().top;
-    this.position.top = top;
+    this.position = {
+      top
+    };
 
     this.setState({
       showAddComment: true
