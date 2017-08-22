@@ -1,25 +1,65 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MLEditor } from '../../MLComponents';
+import { Editor } from 'react-draft-wysiwyg';
+// import Immutable from 'immutable';
+import { EditorState, ContentState, convertFromHTML } from 'draft-js';
 import { AddCommentButton } from '../index';
 import { CommentModal } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
   position;
+  editorState = null;
   state = {
     showCommentModal: false,
     showAddComment: false
   };
 
-  // FixMe: modal positioning
+  componentWillMount = () => {
+    this.editorState = EditorState.createWithContent(this.getInitialContentState());
+  };
+
+  handleSave = feedbackContent => {
+    this.addHighlights();
+
+    let content = document.querySelectorAll('[data-text=true]')[0].innerHTML;
+    this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
+    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
+
+    this.setState({ showCommentModal: false });
+  };
+
+  getInitialContentState = () => {
+    let blocks = convertFromHTML(this.props.content);
+    const contentState = ContentState.createFromBlockArray(blocks.contentBlocks, blocks.entityMap);
+    return contentState;
+  };
+
+  addSelections = () => {
+    let userSelection = window.getSelection().getRangeAt(0);
+    let safeRanges = this.getSafeRanges(userSelection);
+    safeRanges.map(range => {
+      if (!range.collapsed) {
+        let newNode = document.createElement('span');
+        newNode.classList.add(styles.selected);
+        range.surroundContents(newNode);
+      }
+    });
+  };
 
   removeSelections = () => {
     // FixMe: Remove entire span instead of just the class.
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     selections.map(selection => {
       selection.classList.remove(styles.selected);
-      // selection.replaceWith(selection.innerHTML);
+    });
+  };
+
+  addHighlights = () => {
+    let selections = Array.from(document.getElementsByClassName(styles.selected));
+    selections.map(selection => {
+      selection.classList.remove(styles.selected);
+      selection.classList.add('highlight');
     });
   };
 
@@ -29,8 +69,7 @@ class FeedbackEditor extends Component {
     // this.handleMouseUp();
   };
 
-  handleMouseUp = (e) => {
-    console.log('handle mouse up');
+  handleMouseUp = e => {
     if (e.target.id !== 'addCommentButton') {
       if (this.state.showAddComment) {
         this.setState({
@@ -39,7 +78,7 @@ class FeedbackEditor extends Component {
         this.removeSelections();
       }
       if (this.textHasBeenSelected()) {
-        this.addHighlights();
+        this.addSelections();
         this.addCommentButton();
       }
     }
@@ -53,9 +92,8 @@ class FeedbackEditor extends Component {
   };
 
   showCommentModal = () => {
-    console.log('show modal');
-    let highlights = document.querySelectorAll(`.${styles.selected}`);
-    let selected = highlights[highlights.length - 1];
+    let selections = document.querySelectorAll(`.${styles.selected}`);
+    let selected = selections[selections.length - 1];
     this.position = {
       top: selected.getBoundingClientRect().bottom + 20,
       left: selected.getBoundingClientRect().left
@@ -71,34 +109,14 @@ class FeedbackEditor extends Component {
 
   textHasBeenSelected = () => window.getSelection().toString() !== '';
 
-  addHighlights = () => {
-    console.log('add highlights');
-    let userSelection = window.getSelection().getRangeAt(0);
-
-    // Add highlights
-    let safeRanges = this.getSafeRanges(userSelection);
-    safeRanges.map((range/*, index*/) => {
-      if (!range.collapsed) {
-        let newNode = document.createElement('span');
-        // newNode.id = 'marker' + index;
-        newNode.classList.add(styles.selected);
-        range.surroundContents(newNode);
-      }
-    });
-  };
-
   addCommentButton = () => {
-    console.log('add comment button');
     let selections = document.querySelectorAll(`.${styles.selected}`);
     let top = selections[0].getBoundingClientRect().top;
-    this.position = {
-      top
-    };
+    this.position = { top };
 
     this.setState({
       showAddComment: true
     });
-
   };
 
   // selects ranges across paragraphs with ease
@@ -178,7 +196,7 @@ class FeedbackEditor extends Component {
   };
 
   // tests if a selection is within a parent
-  elementContainsSelection = (element) => {
+  elementContainsSelection = element => {
     let selected;
     if (window.getSelection) {
       selected = window.getSelection();
@@ -190,35 +208,52 @@ class FeedbackEditor extends Component {
         }
         return true;
       }
-    } else if ( (selected = document.selection) && selected.type !== 'Control') {
+    } else if ((selected = document.selection) && selected.type !== 'Control') {
       return this.isOrContains(selected.createRange().parentElement(), element);
     }
     return false;
   };
 
   render() {
+    //TODO: Used in next ticket to render highlights.
+    // const blockRenderMap = Immutable.Map({
+    //   highlight: {
+    //     element: '.highlight'
+    //   }
+    // });
+
+    // const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
+
     return (
       <div
         className={styles.feedbackEditorWrapper}
         onContextMenu={this.handleRightClick}
         onMouseUp={this.handleMouseUp}
       >
-        <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
+        <Editor
+          editorState={this.editorState}
+          editable={false}
+          toolbarHidden={true}
+          onFeedbackEditor={true}
+          // blockRenderMap={extendedBlockRenderMap}
+        />
         {this.state.showCommentModal
-          ? <CommentModal position={this.position} closeModal={this.closeModal} />
-          : null
-        }
+          ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
+          : null}
         {this.state.showAddComment
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
-          : null
-        }
+          : null}
       </div>
     );
   }
 }
 
 FeedbackEditor.propTypes = {
-  content: PropTypes.object
+  studentActivityId: PropTypes.string,
+  studentDraftId: PropTypes.string,
+  content: PropTypes.string,
+  updateFeedbackPaper: PropTypes.func,
+  createFeedback: PropTypes.func
 };
 
 export default FeedbackEditor;

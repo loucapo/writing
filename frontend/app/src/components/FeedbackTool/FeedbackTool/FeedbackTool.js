@@ -14,7 +14,9 @@ const FeedbackTool = ({
   submitEndComment,
   submitFinalGrade,
   rubricId,
-  lastDraft
+  lastDraft,
+  updateFeedbackPaper,
+  createFeedback
 }) => (
   <div className={styles.page}>
     <FeedbackToolHeader
@@ -35,7 +37,13 @@ const FeedbackTool = ({
         </div>
       </MLCard>
       <MLCard type="draft" title={draftTitle}>
-        <FeedbackEditor content={studentDraft.paper} />
+        <FeedbackEditor
+          studentActivityId={studentDraft.studentActivityId}
+          studentDraftId={studentDraft.studentDraftId}
+          updateFeedbackPaper={updateFeedbackPaper}
+          createFeedback={createFeedback}
+          content={studentDraft.feedbackPaper}
+        />
       </MLCard>
       {lastDraft ?
         <FinalGrade
@@ -74,7 +82,9 @@ FeedbackTool.propTypes = {
   submitEndComment: PropTypes.func,
   submitFinalGrade: PropTypes.func,
   rubricId: PropTypes.string,
-  lastDraft: PropTypes.bool
+  lastDraft: PropTypes.bool,
+  updateFeedbackPaper: PropTypes.func,
+  createFeedback: PropTypes.func
 };
 
 export default FeedbackTool;

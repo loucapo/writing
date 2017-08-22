@@ -28,8 +28,8 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     createNewStudentDraft(cmd) {
       const event = this.mapper(cmd);
-      invariant(!this.studentDrafts.find(x => x.active),
-        `You may not start a new Draft while you still have an other active Draft`);
+      invariant(!this.studentDrafts.find(studentDraft => studentDraft.active),
+        `You may not start a new Draft while you still have another active Draft`);
 
       if (this.studentDrafts.length > 1) {
         event.paper = this.studentDrafts[this.studentDrafts.length - 1].paper;
@@ -51,7 +51,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     updateDraftPaper(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.updateDraftPaper(cmd);
       event.status = studentDraft.status;
       this.raiseEvent({
@@ -62,9 +62,21 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       return event;
     }
 
+    updateFeedbackPaper(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      studentDraft.updateFeedbackPaper(cmd);
+      this.raiseEvent({
+        eventName: 'feedbackPaperUpdated',
+        event
+      });
+
+      return event;
+    }
+
     setStudentReflectionAnswers(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
 
       studentDraft.setStudentReflectionAnswers(cmd);
 
@@ -77,18 +89,18 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
     }
 
     getStudentReflectionAnswersByStudentDraftId(cmd) {
-      return this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId).studentReflectionAnswers
-        .map(x => ({
+      return this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId).studentReflectionAnswers
+        .map(answer => ({
           studentDraftId: cmd.studentDraftId,
-          studentReflectionQuestionId: x.studentReflectionQuestionId,
-          studentReflectionAnswerId: x.studentReflectionAnswerId,
-          studentReflectionAnswer: x.studentReflectionAnswer })
+          studentReflectionQuestionId: answer.studentReflectionQuestionId,
+          studentReflectionAnswerId: answer.studentReflectionAnswerId,
+          studentReflectionAnswer: answer.studentReflectionAnswer })
         );
     }
 
     submitDraft(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
       invariant(studentDraft.isActive(),
         `Student Draft, Id: ${cmd.studentDraftId}, must be active before it can be submitted`);
       invariant(studentDraft.studentReflectionQuestionsAnswered(),
@@ -106,7 +118,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
     }
     updateReviewStatus(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.updateReviewStatus(cmd);
       this.raiseEvent({
         eventName: 'studentDraftReviewStatusUpdated',
@@ -118,7 +130,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     submitEndComment(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(x => x.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.submitEndComment(cmd);
       this.raiseEvent({
         eventName: 'studentDraftEndCommentSubmitted',
@@ -130,7 +142,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     submitFinalGrade(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.submitFinalGrade(cmd);
       this.raiseEvent({
         eventName: 'studentDraftFinalGradeSubmitted',
@@ -142,7 +154,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     updateRubricScore(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
 
       studentDraft.updateRubricScore(cmd);
 
@@ -155,8 +167,27 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
     }
 
     getRubricScores(cmd) {
-      let studentDraft = this.studentDrafts.find(draft => draft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
       return studentDraft.rubricScores;
+    }
+
+    createFeedback(cmd) {
+      const event = this.mapper(cmd);
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+
+      studentDraft.createFeedback(cmd);
+
+      this.raiseEvent({
+        eventName: 'feedbackCreated',
+        event
+      });
+
+      return event;
+    }
+
+    getFeedback(cmd) {
+      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      return studentDraft.feedback;
     }
   };
 };

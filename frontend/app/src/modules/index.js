@@ -2,7 +2,7 @@ import activityReducer from './activityModule';
 import draftReducer from './draftModule';
 import rubricReducer from './rubricModule';
 import criteria from './criteriaModule';
-import feedbackToolContentItems from './feedbackToolContentModule';
+import feedback from './feedbackModule';
 import publisherContent from './publisherContentModule';
 import resourceLinks from './resourceLinksModule';
 import auth from './authModule';
@@ -17,13 +17,12 @@ import submissionStatuses from './submissionStatusesModule';
 import rubricScores from './rubricScoresModule';
 
 export {activityAction} from './activityModule';
-export {submitFeedbackToolContentItem} from './feedbackToolContentModule';
 
 export default {
   activities: activityReducer,
   drafts: draftReducer,
   criteria,
-  feedbackToolContentItems,
+  feedback,
   rubric: rubricReducer,
   publisherContent,
   resourceLinks,

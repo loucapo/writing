@@ -22,18 +22,6 @@ module.exports = function(faker) {
       };
     };
 
-    // let simpleQuickFeedback = function() {
-    //   return {
-    //     quick_feedback_id: faker.random.uuid(),
-    //     title: faker.random.words(),
-    //     description: `description...`,
-    //     created_by_id: faker.random.uuid(),
-    //     created_date: `2017-01-01`,
-    //     modified_by_id: faker.random.uuid(),
-    //     modified_date: null
-    //   };
-    // };
-
     return {
       activity: [
         {
