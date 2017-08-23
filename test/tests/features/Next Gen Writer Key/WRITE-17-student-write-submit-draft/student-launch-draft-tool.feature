@@ -35,3 +35,15 @@ Feature: Student Launches Draft
     And I type "happy" in "draft_editor.draft_area"
     And I delete all text in "draft_editor.draft_area"
     Then I wait until there is 1 "draft_editor.start_reflection_button_disabled" visible
+
+  @pending=WRITE-1336
+  @db=reset
+  Scenario: Page Setup for Student Draft With Fleshed Out Activity
+    Given I launch the activity as an "instructor"
+    And I click "draft.add_draft_goals"
+    And I click "draft_goals_modal.goal_checkbox(1)"
+    And I click "draft_goals_modal.goal_save"
+    Given I launch the activity as an "student"
+    When I click "start_draft"
+    Then I wait until there is 1 "draft_editor.start_reflection_button_disabled" visible
+    And the text of "draft_editor.start_reflection_button_disabled" should be "Done, Start Reflection"
