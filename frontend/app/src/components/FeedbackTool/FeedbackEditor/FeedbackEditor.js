@@ -24,7 +24,8 @@ class FeedbackEditor extends Component {
 
     let content = document.querySelectorAll('[data-text=true]')[0].innerHTML;
     this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
-    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
+    // TODO: Grab actual feedback level and pass to createFeedback.
+    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, 'testing');
 
     this.setState({ showCommentModal: false });
   };
