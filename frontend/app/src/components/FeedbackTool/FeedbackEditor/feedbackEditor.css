@@ -8,3 +8,26 @@
   display: inline;
   background-color: var(--blue-light);
 }
+
+.editor {
+  background: var(--white);
+  padding: 6px 5px 0;
+  width: auto !important;
+  height: auto !important;
+  flex: 1;
+  overflow: visible !important;
+}
+
+.feedbackEditor {
+  composes: editor;
+  width: 75% !important;
+}
+
+.toolbarHide {
+  display: none !important;
+}
+
+.editorWrapper {
+  display: flex;
+  flex-direction: column;
+}
