@@ -63,8 +63,8 @@ module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScor
 
     createFeedback(feedback) {
       feedback.feedbackId = feedback.feedbackId || uuid.v4();
-      new Feedback(feedback);
       this.feedback = feedback;
+      return new Feedback(feedback);
     }
   };
 };

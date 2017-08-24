@@ -22,7 +22,7 @@ class FeedbackEditor extends Component {
   handleSave = feedbackContent => {
     this.addHighlights();
 
-    let content = document.querySelectorAll('[data-text=true]')[0].innerHTML;
+    let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
     this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
     // TODO: Grab actual feedback level and pass to createFeedback.
     this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, 'testing');
@@ -237,6 +237,11 @@ class FeedbackEditor extends Component {
           toolbarHidden={true}
           onFeedbackEditor={true}
           // blockRenderMap={extendedBlockRenderMap}
+          readOnly={true}
+          toolbar={true}
+          editorClassName={styles.feedbackEditor}
+          wrapperClassName={styles.editorWrapper}
+          toolbarClassName={styles.toolbarHide}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
