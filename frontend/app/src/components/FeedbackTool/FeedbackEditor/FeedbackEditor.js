@@ -19,13 +19,13 @@ class FeedbackEditor extends Component {
     this.editorState = EditorState.createWithContent(this.getInitialContentState());
   };
 
-  handleSave = feedbackContent => {
+  handleSave = (feedbackContent, level) => {
     this.addHighlights();
 
     let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
     this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
     // TODO: Grab actual feedback level and pass to createFeedback.
-    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, 'testing');
+    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, level);
 
     this.setState({ showCommentModal: false });
   };
