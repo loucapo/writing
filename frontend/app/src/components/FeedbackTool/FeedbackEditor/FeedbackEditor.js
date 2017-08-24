@@ -236,6 +236,11 @@ class FeedbackEditor extends Component {
           toolbarHidden={true}
           onFeedbackEditor={true}
           // blockRenderMap={extendedBlockRenderMap}
+          readOnly={true}
+          toolbar={true}
+          editorClassName={styles.feedbackEditor}
+          wrapperClassName={styles.editorWrapper}
+          toolbarClassName={styles.toolbarHide}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />

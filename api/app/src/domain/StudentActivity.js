@@ -51,7 +51,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     updateDraftPaper(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.updateDraftPaper(cmd);
       event.status = studentDraft.status;
       this.raiseEvent({
@@ -64,7 +64,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     updateFeedbackPaper(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.updateFeedbackPaper(cmd);
       this.raiseEvent({
         eventName: 'feedbackPaperUpdated',
@@ -76,7 +76,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     setStudentReflectionAnswers(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
 
       studentDraft.setStudentReflectionAnswers(cmd);
 
@@ -89,7 +89,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
     }
 
     getStudentReflectionAnswersByStudentDraftId(cmd) {
-      return this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId).studentReflectionAnswers
+      return this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId).studentReflectionAnswers
         .map(answer => ({
           studentDraftId: cmd.studentDraftId,
           studentReflectionQuestionId: answer.studentReflectionQuestionId,
@@ -100,7 +100,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     submitDraft(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       invariant(studentDraft.isActive(),
         `Student Draft, Id: ${cmd.studentDraftId}, must be active before it can be submitted`);
       invariant(studentDraft.studentReflectionQuestionsAnswered(),
@@ -118,7 +118,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
     }
     updateReviewStatus(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.updateReviewStatus(cmd);
       this.raiseEvent({
         eventName: 'studentDraftReviewStatusUpdated',
@@ -130,7 +130,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     submitEndComment(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.submitEndComment(cmd);
       this.raiseEvent({
         eventName: 'studentDraftEndCommentSubmitted',
@@ -142,7 +142,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     submitFinalGrade(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       studentDraft.submitFinalGrade(cmd);
       this.raiseEvent({
         eventName: 'studentDraftFinalGradeSubmitted',
@@ -154,7 +154,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
 
     updateRubricScore(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
 
       studentDraft.updateRubricScore(cmd);
 
@@ -167,13 +167,13 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
     }
 
     getRubricScores(cmd) {
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       return studentDraft.rubricScores;
     }
 
     createFeedback(cmd) {
       const event = this.mapper(cmd);
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
 
       studentDraft.createFeedback(cmd);
 
@@ -186,7 +186,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
     }
 
     getFeedback(cmd) {
-      let studentDraft = this.studentDrafts.find(studentDraft => studentDraft.studentDraftId === cmd.studentDraftId);
+      let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       return studentDraft.feedback;
     }
   };
