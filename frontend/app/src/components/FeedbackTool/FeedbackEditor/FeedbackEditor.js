@@ -22,7 +22,7 @@ class FeedbackEditor extends Component {
   handleSave = feedbackContent => {
     this.addHighlights();
 
-    let content = document.querySelectorAll('[data-text=true]')[0].innerHTML;
+    let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
     this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
     this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
 
