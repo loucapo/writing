@@ -10,8 +10,15 @@ class CommentModal extends Component {
   };
 
   handleChange = event => {
-    let trimmedComment = event.target.lastChild.textContent.trim();
-    this.setState({ comment: trimmedComment });
+    console.log(`==========event.target.lastChild=========`);
+    console.log(event.target.lastChild);
+    console.log(`==========END event.target.lastChild=========`);
+    if (event.target.lastChild && event.target.lastChild.textContent) {
+      let trimmedComment = event.target.lastChild.textContent.trim();
+      this.setState({ comment: trimmedComment });
+    } else {
+      this.setState({ comment: null });
+    }
   };
 
   handleBackgroundClick = event => {
