@@ -145,6 +145,27 @@ module.exports = function activityRouter(koarouter, controllers) {
     );
     /**
      * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/feedbackpaper:
+     *   put:
+     *     x-name: updateFeedbackPaper
+     *     description: Updates a student draft's feedback paper
+     *     operationId: updateFeedbackPaper
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/feedbackpaper',
+      controllers.studentDraftController.updateFeedbackPaper
+    );
+    /**
+     * @swagger
      * /studentdraft/{studentDraftId}/studentreflectionanswers:
      *   get:
      *     x-name: getStudentReflectionAnswers
@@ -165,6 +186,7 @@ module.exports = function activityRouter(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
+
     router.get('/studentdraft/:studentDraftId/studentreflectionanswers',
       controllers.studentDraftController.getStudentReflectionAnswers);
     /**
@@ -412,6 +434,65 @@ module.exports = function activityRouter(koarouter, controllers) {
       '/studentdraft/:studentDraftId/rubricscores',
       controllers.studentDraftController.getRubricScores
     );
+    /**
+     * @swagger
+     * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/feedback:
+     *   put:
+     *     x-name: createFeedback
+     *     description: creates feedback
+     *     operationId: createFeedback
+     *     parameters:
+     *       - name: studentActivityId
+     *         in: path
+     *         description: The id of the studentActivity of the feedback
+     *         required: true
+     *         type: string
+     *       - name: studentDraftId
+     *         in: path
+     *         description: The id of the studentDraft of the feedback
+     *         required: true
+     *         type: string
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.put(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/feedback',
+      controllers.studentDraftController.createFeedback
+    );
+    /**
+     * @swagger
+     * /studentdraft/{studentDraftId}/feedback:
+     *   get:
+     *     x-name: getFeedback
+     *     description: gets feedback
+     *     operationId: getFeedback
+     *     parameters:
+     *       - name: studentDraftId
+     *         in: path
+     *         type: string
+     *         required: true
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    router.get(
+      '/studentdraft/:studentDraftId/feedback',
+      controllers.studentDraftController.getFeedback
+    );
+
 
     appRouter.use(router.routes(), router.allowedMethods());
   };

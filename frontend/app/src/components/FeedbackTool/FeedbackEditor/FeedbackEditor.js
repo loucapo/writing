@@ -1,25 +1,50 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { render } from 'react-dom';
-import { MLEditor } from '../../MLComponents';
+import { Editor } from 'react-draft-wysiwyg';
+// import Immutable from 'immutable';
+import { EditorState, ContentState, convertFromHTML } from 'draft-js';
 import { AddCommentButton } from '../index';
 import { CommentModal } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
-  position = 0;
+  position;
+  editorState = null;
   state = {
-    showCommentModal: false
+    showCommentModal: false,
+    showAddComment: false
   };
-
-  // FixMe: modal positioning
 
   componentWillMount = () => {
-    document.addEventListener('mouseup', this.handleMouseUp);
+    this.editorState = EditorState.createWithContent(this.getInitialContentState());
   };
 
-  componentWillUnmount = () => {
-    document.removeEventListener('mouseup', this.handleMouseUp);
+  handleSave = feedbackContent => {
+    this.addHighlights();
+
+    let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
+    this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
+    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
+
+    this.setState({ showCommentModal: false });
+  };
+
+  getInitialContentState = () => {
+    let blocks = convertFromHTML(this.props.content);
+    const contentState = ContentState.createFromBlockArray(blocks.contentBlocks, blocks.entityMap);
+    return contentState;
+  };
+
+  addSelections = () => {
+    let userSelection = window.getSelection().getRangeAt(0);
+    let safeRanges = this.getSafeRanges(userSelection);
+    safeRanges.map(range => {
+      if (!range.collapsed) {
+        let newNode = document.createElement('span');
+        newNode.classList.add(styles.selected);
+        range.surroundContents(newNode);
+      }
+    });
   };
 
   removeSelections = () => {
@@ -30,18 +55,30 @@ class FeedbackEditor extends Component {
     });
   };
 
-  handleMouseUp = () => {
-    // stop if we are selecting outside the editor
-    if (!this.elementContainsSelection(document.querySelector(`.${styles.feedbackEditorWrapper}`))) { return null;}
-    if (event.target.id !== 'addCommentButton' && event.target.parentElement.id !== 'addCommentButton') {
-      // FixMe: the buttons dont seem to be getting removed correctly now.
-      let addCommentButton = document.getElementById('addCommentButton');
-      if (addCommentButton) {
-        addCommentButton.remove();
+  addHighlights = () => {
+    let selections = Array.from(document.getElementsByClassName(styles.selected));
+    selections.map(selection => {
+      selection.classList.remove(styles.selected);
+      selection.classList.add('highlight');
+    });
+  };
+
+  handleRightClick = (/*e*/) => {
+    // e.preventDefault();
+    // console.log('right click happened');
+    // this.handleMouseUp();
+  };
+
+  handleMouseUp = e => {
+    if (e.target.id !== 'addCommentButton') {
+      if (this.state.showAddComment) {
+        this.setState({
+          showAddComment: false
+        });
         this.removeSelections();
       }
       if (this.textHasBeenSelected()) {
-        this.addHighlights();
+        this.addSelections();
         this.addCommentButton();
       }
     }
@@ -55,48 +92,31 @@ class FeedbackEditor extends Component {
   };
 
   showCommentModal = () => {
-    let addCommentButton = document.getElementById('addCommentButton');
-    if (addCommentButton) {
-      addCommentButton.remove();
-    }
-    let highlights = document.querySelectorAll(`.${styles.selected}`);
-    let selected = highlights[highlights.length - 1];
+    let selections = document.querySelectorAll(`.${styles.selected}`);
+    let selected = selections[selections.length - 1];
     this.position = {
       top: selected.getBoundingClientRect().bottom + 20,
       left: selected.getBoundingClientRect().left
     };
+    if (this.position.top > window.innerHeight - 270) {
+      this.position.top = selected.getBoundingClientRect().top - 285;
+    }
     this.setState({
-      showCommentModal: true
+      showCommentModal: true,
+      showAddComment: false
     });
   };
 
   textHasBeenSelected = () => window.getSelection().toString() !== '';
 
-  addHighlights = () => {
-    let userSelection = window.getSelection().getRangeAt(0);
-
-    // Add highlights
-    let safeRanges = this.getSafeRanges(userSelection);
-    safeRanges.map((range/*, index*/) => {
-      if (!range.collapsed) {
-        let newNode = document.createElement('span');
-        // newNode.id = 'marker' + index;
-        // newNode.classList.add(styles.highlight);
-        newNode.classList.add(styles.selected);
-        range.surroundContents(newNode);
-      }
-    });
-  };
-
   addCommentButton = () => {
-    let selections = Array.from(document.getElementsByClassName(styles.selected));
-    let top = selections[0].offsetParent.offsetTop + selections[0].offsetTop;
-    let parent = selections[0].offsetParent.offsetParent;
+    let selections = document.querySelectorAll(`.${styles.selected}`);
+    let top = selections[0].getBoundingClientRect().top;
+    this.position = { top };
 
-    let tempNode = document.createElement('span');
-    parent.appendChild(tempNode);
-
-    render(<AddCommentButton position={top} handleClick={this.showCommentModal} />, tempNode);
+    this.setState({
+      showAddComment: true
+    });
   };
 
   // selects ranges across paragraphs with ease
@@ -176,7 +196,7 @@ class FeedbackEditor extends Component {
   };
 
   // tests if a selection is within a parent
-  elementContainsSelection = (element) => {
+  elementContainsSelection = element => {
     let selected;
     if (window.getSelection) {
       selected = window.getSelection();
@@ -188,27 +208,57 @@ class FeedbackEditor extends Component {
         }
         return true;
       }
-    } else if ( (selected = document.selection) && selected.type !== 'Control') {
+    } else if ((selected = document.selection) && selected.type !== 'Control') {
       return this.isOrContains(selected.createRange().parentElement(), element);
     }
     return false;
   };
 
   render() {
+    //TODO: Used in next ticket to render highlights.
+    // const blockRenderMap = Immutable.Map({
+    //   highlight: {
+    //     element: '.highlight'
+    //   }
+    // });
+
+    // const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
+
     return (
-      <div className={styles.feedbackEditorWrapper}>
-        <MLEditor content={this.props.content} editable={false} toolbarHidden={true} onFeedbackEditor={true} />
+      <div
+        className={styles.feedbackEditorWrapper}
+        onContextMenu={this.handleRightClick}
+        onMouseUp={this.handleMouseUp}
+      >
+        <Editor
+          editorState={this.editorState}
+          editable={false}
+          toolbarHidden={true}
+          onFeedbackEditor={true}
+          // blockRenderMap={extendedBlockRenderMap}
+          readOnly={true}
+          toolbar={true}
+          editorClassName={styles.feedbackEditor}
+          wrapperClassName={styles.editorWrapper}
+          toolbarClassName={styles.toolbarHide}
+        />
         {this.state.showCommentModal
-          ? <CommentModal position={this.position} closeModal={this.closeModal} />
-          : null
-        }
+          ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
+          : null}
+        {this.state.showAddComment
+          ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
+          : null}
       </div>
     );
   }
 }
 
 FeedbackEditor.propTypes = {
-  content: PropTypes.object
+  studentActivityId: PropTypes.string,
+  studentDraftId: PropTypes.string,
+  content: PropTypes.string,
+  updateFeedbackPaper: PropTypes.func,
+  createFeedback: PropTypes.func
 };
 
 export default FeedbackEditor;

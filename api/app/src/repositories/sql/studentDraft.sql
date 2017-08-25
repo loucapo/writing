@@ -39,6 +39,11 @@ modified_by_id = :modifiedById,
 modified_date = :modifiedDate
 WHERE student_draft_id = :studentDraftId
 
+-- name: updateFeedbackPaper
+UPDATE student_draft
+SET feedback_paper = :feedbackPaper
+WHERE student_draft_id = :studentDraftId
+
 --name: getStudentReflectionAnswers
 SELECT * FROM student_reflection_answer
 WHERE student_draft_id = :studentDraftId

@@ -7,6 +7,7 @@ const CREATE_STUDENT_DRAFT = requestStates('create_student_draft');
 const GET_STUDENT_DRAFT = requestStates('get_student_draft');
 const GET_RUBRIC_SCORE = requestStates('get_rubric_score');
 export const UPDATE_DRAFT_PAPER = requestStates('update_draft_paper');
+export const UPDATE_FEEDBACK_PAPER = requestStates('update_feedback_paper');
 export const SUBMIT_DRAFT = requestStates('submit_draft_paper');
 export const UPDATE_REVIEW_STATUS = requestStates('update_review_status');
 export const SUBMIT_DRAFT_END_COMMENT = requestStates('submit_draft_end_comment');
@@ -27,6 +28,15 @@ export default (state = [], action) => {
       return state.map(studentDraft => {
         return studentDraft.studentDraftId === studentDraftId
           ? {...studentDraft, paper: body.paper}
+          : studentDraft;
+      });
+    }
+    case UPDATE_FEEDBACK_PAPER.SUCCESS: {
+      const body = JSON.parse(action.action.params.body);
+      const studentDraftId = action.action.studentDraftId;
+      return state.map(studentDraft => {
+        return studentDraft.studentDraftId === studentDraftId
+          ? {...studentDraft, feedbackPaper: body.feedbackPaper}
           : studentDraft;
       });
     }
@@ -108,6 +118,19 @@ export function updateDraftPaper(studentActivityId, studentDraftId, paper) {
     params: {
       method: 'put',
       body: {paper}
+    }
+  };
+}
+
+export function updateFeedbackPaper(studentActivityId, studentDraftId, feedbackPaper) {
+  return {
+    type: UPDATE_FEEDBACK_PAPER.REQUEST,
+    states: UPDATE_FEEDBACK_PAPER,
+    url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/feedbackpaper`,
+    studentDraftId,
+    params: {
+      method: 'put',
+      body: {feedbackPaper}
     }
   };
 }

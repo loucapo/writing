@@ -1,10 +1,11 @@
-module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScore, ReviewStatus, uuid) {
+module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScore, Feedback, ReviewStatus, uuid) {
   return class StudentDraft extends EntityBase {
     constructor(studentDraft) {
       super();
       this.type = 'StudentDraft';
       this.studentReflectionAnswers = [];
       this.rubricScores = [];
+      this.feedback = [];
       if (studentDraft) {
         this.mapper(studentDraft);
       }
@@ -15,10 +16,14 @@ module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScor
       this.status = 'active';
     }
 
+    updateFeedbackPaper(cmd) {
+      this.feedbackPaper = cmd.feedbackPaper;
+    }
+
     setStudentReflectionAnswers(cmd) {
-      this.studentReflectionAnswers = cmd.studentReflectionAnswers.map(x => {
-        x.studentReflectionAnswerId = x.studentReflectionAnswerId || uuid.v4();
-        return new StudentReflectionAnswer(x);
+      this.studentReflectionAnswers = cmd.studentReflectionAnswers.map(answer => {
+        answer.studentReflectionAnswerId = answer.studentReflectionAnswerId || uuid.v4();
+        return new StudentReflectionAnswer(answer);
       });
     }
 
@@ -54,6 +59,12 @@ module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScor
         score.studentRubricScoreId = score.studentRubricScoreId || uuid.v4();
         return new StudentRubricScore(score);
       });
+    }
+
+    createFeedback(feedback) {
+      feedback.feedbackId = feedback.feedbackId || uuid.v4();
+      this.feedback = feedback;
+      return new Feedback(feedback);
     }
   };
 };

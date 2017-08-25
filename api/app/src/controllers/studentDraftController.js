@@ -83,6 +83,19 @@ module.exports = function(
       return ctx;
     },
 
+    async updateFeedbackPaper(ctx) {
+      let command = ctx.request.body;
+      const studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
+      let event = studentActivity.updateFeedbackPaper(command);
+
+      await repository.query(sqlLibrary.studentDraft, 'updateFeedbackPaper', event);
+
+      ctx.status = 200;
+      return ctx;
+    },
+
     async getStudentReflectionAnswers(ctx) {
       const studentReflections = await repository.query(sqlLibrary.studentDraft, 'getStudentReflectionAnswers', {
         studentDraftId: ctx.params.studentDraftId
@@ -233,6 +246,41 @@ module.exports = function(
       });
       ctx.status = 200;
       ctx.body = rubricScores;
+      return ctx;
+    },
+
+    async createFeedback(ctx) {
+      let command = ctx.request.body;
+      command.studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      let studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
+      studentActivity.createFeedback(command);
+      const feedback = studentActivity.getFeedback({
+        studentDraftId: command.studentDraftId
+      });
+
+      repository.transaction(async repo => {
+        let data = {
+          createdById: ctx.state.user.id,
+          createdDate: moment().toISOString(),
+          studentDraftId: command.studentDraftId,
+          content: feedback.content,
+          feedbackId: feedback.feedbackId
+        };
+        await repo.query(sqlLibrary.feedback, 'createFeedback', data);
+      });
+
+      ctx.status = 200;
+      ctx.body = feedback;
+      return ctx;
+    },
+
+    async getFeedback(ctx) {
+      const feedback = await repository.query(sqlLibrary.feedback, 'getFeedback', {
+        studentDraftId: ctx.params.studentDraftId
+      });
+      ctx.status = 200;
+      ctx.body = feedback;
       return ctx;
     }
   };

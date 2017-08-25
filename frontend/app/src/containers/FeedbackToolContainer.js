@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FeedbackTool } from '../components/FeedbackTool/index';
+import { stateToHTML } from 'draft-js-export-html';
+import { convertFromRaw } from 'draft-js';
+import { FeedbackTool } from '../components/FeedbackTool';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
-import { getStudentDraftByStudentDraftId, submitEndComment, submitFinalGrade, updateReviewStatus } from '../modules/studentDraftModule';
+import {
+  getStudentDraftByStudentDraftId,
+  submitEndComment,
+  submitFinalGrade,
+  updateReviewStatus,
+  updateFeedbackPaper
+} from '../modules/studentDraftModule';
+import { createFeedback } from '../modules/feedbackModule';
 
 class FeedbackToolContainer extends Component {
   componentWillMount() {
@@ -19,7 +28,18 @@ class FeedbackToolContainer extends Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.studentDraft && newProps.studentDraft.reviewStatus === 'notStarted') {
-      this.props.updateReviewStatus(newProps.studentDraft.studentActivityId, newProps.studentDraft.studentDraftId, 'inProgress');
+      this.props.updateReviewStatus(
+        newProps.studentDraft.studentActivityId,
+        newProps.studentDraft.studentDraftId,
+        'inProgress'
+      );
+      let feedbackPaper = stateToHTML(convertFromRaw(newProps.studentDraft.paper));
+      this.props.updateFeedbackPaper(
+        newProps.studentDraft.studentActivityId,
+        newProps.studentDraft.studentDraftId,
+        feedbackPaper
+      );
+      newProps.studentDraft.feedbackPaper = feedbackPaper;
     }
   }
 
@@ -36,12 +56,14 @@ FeedbackToolContainer.propTypes = {
   getReflectionQuestions: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
   getStudentDraftByStudentDraftId: PropTypes.func,
-  updateReviewStatus: PropTypes.func
+  updateReviewStatus: PropTypes.func,
+  createFeedback: PropTypes.func,
+  updateFeedbackPaper: PropTypes.func
 };
 
-const mapStateToProps = (state, props) => {
-  let studentDraft = state.studentDraft.find(x => x.studentDraftId === props.params.studentDraftId);
-  let draft = state.drafts.find(x => x.draftId === (studentDraft && studentDraft.draftId));
+const mapStateToProps = (state) => {
+  let studentDraft = state.studentDraft[0];
+  let draft = state.drafts.find(draftInState => draftInState.draftId === (studentDraft && studentDraft.draftId));
   let numberOfDrafts = state.drafts.length;
   let draftTitle = '';
   let reflectionQuestions = [];
@@ -51,8 +73,12 @@ const mapStateToProps = (state, props) => {
     lastDraft = numberOfDrafts === draft.index + 1;
     draftTitle = lastDraft ? `Final Paper` : `Draft ${draft.index + 1}`;
     reflectionQuestions = draft.studentReflectionQuestions.map(questionId => {
-      let answer = state.reflectionAnswers.find(x => x.studentReflectionQuestionId === questionId);
-      let question = state.reflectionQuestions.find(x => x.studentReflectionQuestionId === questionId);
+      let answer = state.reflectionAnswers.find(
+        reflectionAnswer => reflectionAnswer.studentReflectionQuestionId === questionId
+      );
+      let question = state.reflectionQuestions.find(
+        reflectionQuestion => reflectionQuestion.studentReflectionQuestionId === questionId
+      );
       return {
         questionId,
         question: question ? question.question : null,
@@ -78,5 +104,7 @@ export default connect(mapStateToProps, {
   getStudentDraftByStudentDraftId,
   updateReviewStatus,
   submitEndComment,
-  submitFinalGrade
+  submitFinalGrade,
+  updateFeedbackPaper,
+  createFeedback
 })(FeedbackToolContainer);
