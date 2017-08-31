@@ -1,11 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, ContentState } from 'draft-js';
+import { Map } from 'immutable';
+import { EditorState, ContentState, DefaultDraftBlockRenderMap } from 'draft-js';
 import { convertFromHTML } from 'draft-convert';
 import { AddCommentButton } from '../index';
 import { CommentModal } from '../index';
 import styles from './feedbackEditor.css';
+
+class Highlight extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className='MyCustomBlock'>
+        {/* here, this.props.children contains a <section> container, as that was the matching element */}
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+function myBlockRenderer(contentBlock) {
+  debugger;
+}
+
+const blockRenderMap = Map({
+  'MyCustomBlock': {
+    element: 'section',
+    wrapper: Highlight
+  }
+});
 
 class FeedbackEditor extends Component {
   position;
@@ -28,7 +55,7 @@ class FeedbackEditor extends Component {
   handleSave = feedbackContent => {
     this.addHighlights();
 
-    let content = document.querySelectorAll('[data-text=true]')[0].innerHTML;
+    let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
     this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
     this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
 
@@ -42,6 +69,16 @@ class FeedbackEditor extends Component {
           return currentStyle.add('BLUE');
         }
         return currentStyle;
+      },
+      htmlToBlock: (nodeName, node) => {
+        if (node.className === 'highlight') {
+          return {
+            type: 'MyCustomBlock',
+            data: {
+              id: 'test'
+            }
+          };
+        }
       }
     })(this.props.content);
       
@@ -228,14 +265,10 @@ class FeedbackEditor extends Component {
   };
 
   render() {
-    //TODO: Used in next ticket to render highlights.
-    // const blockRenderMap = Immutable.Map({
-    //   highlight: {
-    //     element: '.highlight'
-    //   }
-    // });
+    const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
-    // const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
+    // console.log('===========')
+    // console.log(extendedBlockRenderMap)
 
     return (
       <div
@@ -248,8 +281,14 @@ class FeedbackEditor extends Component {
           editable={false}
           toolbarHidden={true}
           onFeedbackEditor={true}
-          // blockRenderMap={extendedBlockRenderMap}
           customStyleMap={this.styleMap}
+          readOnly={true}
+          toolbar={true}
+          editorClassName={styles.feedbackEditor}
+          wrapperClassName={styles.editorWrapper}
+          toolbarClassName={styles.toolbarHide}
+          blockRenderMap={extendedBlockRenderMap}
+          blockRendererFn={myBlockRenderer}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
