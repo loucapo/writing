@@ -2,46 +2,42 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
 import { Map } from 'immutable';
-import { EditorState, ContentState, DefaultDraftBlockRenderMap } from 'draft-js';
-import { convertFromHTML } from 'draft-convert';
-import { AddCommentButton } from '../index';
-import { CommentModal } from '../index';
+import { EditorState, ContentState, DefaultDraftBlockRenderMap, convertFromHTML } from 'draft-js';
+import { AddCommentButton, CommentModal } from '../index';
 import styles from './feedbackEditor.css';
 
-class Highlight extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+// class Highlight extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
 
-  render() {
-    return (
-      <div className='MyCustomBlock'>
-        {/* here, this.props.children contains a <section> container, as that was the matching element */}
-        {this.props.children}
-      </div>
-    );
+//   render() {
+//     return (
+//       <div className='MyCustomBlock'>
+//         {/* here, this.props.children contains a <section> container, as that was the matching element */}
+//         {this.props.children}
+//       </div>
+//     );
+//   }
+// }
+
+function myBlockStyleFn(contentBlock) {
+  const type = contentBlock.getType();
+  if (type === 'code-block') {
+    return 'highlight';
   }
 }
 
-function myBlockRenderer(contentBlock) {
-  debugger;
-}
-
-const blockRenderMap = Map({
-  'MyCustomBlock': {
-    element: 'section',
-    wrapper: Highlight
-  }
-});
+// const blockRenderMap = Map({
+//   'MyCustomBlock': {
+//     element: 'section',
+//     wrapper: Highlight
+//   }
+// });
 
 class FeedbackEditor extends Component {
   position;
   editorState = null;
-  styleMap = {
-    'BLUE': {
-      backgroundColor: '#b0daff'
-    }
-  };
 
   state = {
     showCommentModal: false,
@@ -63,25 +59,11 @@ class FeedbackEditor extends Component {
   };
 
   getInitialContentState = () => {
-    const contentState = convertFromHTML({
-      htmlToStyle: (nodeName, node, currentStyle) => {
-        if (node.className === 'highlight') {
-          return currentStyle.add('BLUE');
-        }
-        return currentStyle;
-      },
-      htmlToBlock: (nodeName, node) => {
-        if (node.className === 'highlight') {
-          return {
-            type: 'MyCustomBlock',
-            data: {
-              id: 'test'
-            }
-          };
-        }
-      }
-    })(this.props.content);
-      
+    const blocksFromHTML = convertFromHTML(this.props.content);
+    const contentState = ContentState.createFromBlockArray(
+      blocksFromHTML.contentBlocks,
+      blocksFromHTML.entityMap
+    );
     return contentState;
   };
 
@@ -90,7 +72,7 @@ class FeedbackEditor extends Component {
     let safeRanges = this.getSafeRanges(userSelection);
     safeRanges.map(range => {
       if (!range.collapsed) {
-        let newNode = document.createElement('span');
+        let newNode = document.createElement('pre');
         newNode.classList.add(styles.selected);
         range.surroundContents(newNode);
       }
@@ -265,10 +247,7 @@ class FeedbackEditor extends Component {
   };
 
   render() {
-    const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
-
-    // console.log('===========')
-    // console.log(extendedBlockRenderMap)
+    // const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
 
     return (
       <div
@@ -287,8 +266,8 @@ class FeedbackEditor extends Component {
           editorClassName={styles.feedbackEditor}
           wrapperClassName={styles.editorWrapper}
           toolbarClassName={styles.toolbarHide}
-          blockRenderMap={extendedBlockRenderMap}
-          blockRendererFn={myBlockRenderer}
+          // blockRenderMap={extendedBlockRenderMap}
+          blockRendererFn={myBlockStyleFn}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
