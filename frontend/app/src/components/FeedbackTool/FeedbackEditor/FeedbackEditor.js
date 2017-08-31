@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
-// import Immutable from 'immutable';
-import { EditorState, ContentState, convertFromHTML } from 'draft-js';
+import { EditorState, ContentState } from 'draft-js';
+import { convertFromHTML } from 'draft-convert';
 import { AddCommentButton } from '../index';
 import { CommentModal } from '../index';
 import styles from './feedbackEditor.css';
@@ -10,6 +10,12 @@ import styles from './feedbackEditor.css';
 class FeedbackEditor extends Component {
   position;
   editorState = null;
+  styleMap = {
+    'BLUE': {
+      backgroundColor: '#b0daff'
+    }
+  };
+
   state = {
     showCommentModal: false,
     showAddComment: false
@@ -30,8 +36,15 @@ class FeedbackEditor extends Component {
   };
 
   getInitialContentState = () => {
-    let blocks = convertFromHTML(this.props.content);
-    const contentState = ContentState.createFromBlockArray(blocks.contentBlocks, blocks.entityMap);
+    const contentState = convertFromHTML({
+      htmlToStyle: (nodeName, node, currentStyle) => {
+        if (node.className === 'highlight') {
+          return currentStyle.add('BLUE');
+        }
+        return currentStyle;
+      }
+    })(this.props.content);
+      
     return contentState;
   };
 
@@ -236,6 +249,7 @@ class FeedbackEditor extends Component {
           toolbarHidden={true}
           onFeedbackEditor={true}
           // blockRenderMap={extendedBlockRenderMap}
+          customStyleMap={this.styleMap}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
