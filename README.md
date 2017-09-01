@@ -2,23 +2,23 @@
 
 ## Prerequisites
 
-- nodejs
-- yarn
-- postgresql
-- make
-- parallel
-- direnv
+* [Homebrew](https://docs.brew.sh/Installation.html)
+* [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-install-macos.html)
+* [Docker for Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac)
+* PostgreSQL (`brew install postgresql`)
+* Node.js (`brew install node`)
+* Yarn (`brew install yarn`)
+* make (`brew install make`)
+* direnv (`brew install direnv`)
+* parallel (`brew install parallel`)
 
 ## Installation
 
 ```
-$ brew install postgresql
-$ brew install node
-$ brew install yarn
-$ brew install parallel
-$ brew install direnv
 $ make deps
 ```
+
+Note that you will need to be on the MacMillan VPN in order to download some of these dependencies.
 
 ## Database Initialization
 
@@ -43,6 +43,28 @@ $ open http://localhost:10080/student (for student experience)
 ```
 NOTE: You may additionally add a UUID for an activity after the instructor or student
 routes if you would like to target a specific resource.
+
+## Docker
+
+We typically do development in a non-containerized environment. However, we like to make sure that all changes still work inside the container that will be deployed to production.
+
+### Configuring the AWS Command-Line Tools
+In order to run the containerized version of the application, you'll need to configured your AWS CLI. To do this, run
+```$ aws configure```
+and enter your AWS Access Key ID and AWS Secret Access Key as needed. For the default region name, you can put `us-east-1`.
+
+### Running the Docker Container
+To build and run the Docker Container, run
+```
+$ make dockerDevUp
+```
+The application will run on the same ports as in the non-containerized environment (10080).
+
+### Stopping and Removing the Docker Container
+The containers should all stop gracefully when shutting down the server, but if you need to shut down and remove the containers for whatever reason, run
+```
+$ make dockerDevDown
+```
 
 ## Linting
 
