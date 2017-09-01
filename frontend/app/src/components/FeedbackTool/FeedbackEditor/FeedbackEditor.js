@@ -3,41 +3,33 @@ import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
 import { Map } from 'immutable';
 import { EditorState, ContentState, DefaultDraftBlockRenderMap, convertFromHTML } from 'draft-js';
-import { AddCommentButton, CommentModal } from '../index';
+import { AddCommentButton, CommentModal, Highlight } from '../index';
 import styles from './feedbackEditor.css';
-
-// class Highlight extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   render() {
-//     return (
-//       <div className='MyCustomBlock'>
-//         {/* here, this.props.children contains a <section> container, as that was the matching element */}
-//         {this.props.children}
-//       </div>
-//     );
-//   }
-// }
-
-function myBlockStyleFn(contentBlock) {
-  const type = contentBlock.getType();
-  if (type === 'code-block') {
-    return 'highlight';
-  }
-}
-
-// const blockRenderMap = Map({
-//   'MyCustomBlock': {
-//     element: 'section',
-//     wrapper: Highlight
-//   }
-// });
 
 class FeedbackEditor extends Component {
   position;
   editorState = null;
+
+  blockRenderMap = Map({
+    [Highlight]: {
+      element: 'pre'
+    }
+  }).merge(DefaultDraftBlockRenderMap);
+
+  blockRendererFn = (block) => {
+    const type = block.getType();
+    switch(type) {
+      case 'code-block':
+        return {
+          component: Highlight,
+          props: {
+            block
+          }
+        };
+      default:
+        return null;
+    }
+  };
 
   state = {
     showCommentModal: false,
@@ -247,8 +239,6 @@ class FeedbackEditor extends Component {
   };
 
   render() {
-    // const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
-
     return (
       <div
         className={styles.feedbackEditorWrapper}
@@ -266,8 +256,8 @@ class FeedbackEditor extends Component {
           editorClassName={styles.feedbackEditor}
           wrapperClassName={styles.editorWrapper}
           toolbarClassName={styles.toolbarHide}
-          // blockRenderMap={extendedBlockRenderMap}
-          blockRendererFn={myBlockStyleFn}
+          blockRenderMap={this.blockRenderMap}
+          blockRendererFn={this.blockRendererFn}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
