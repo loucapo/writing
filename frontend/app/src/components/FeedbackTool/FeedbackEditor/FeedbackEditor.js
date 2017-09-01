@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
 import { Map } from 'immutable';
-import { EditorState, ContentState, DefaultDraftBlockRenderMap, convertFromHTML } from 'draft-js';
-// import { convertFromHTML } from 'draft-convert';
+import { EditorState, ContentState, DefaultDraftBlockRenderMap } from 'draft-js';
+import { convertFromHTML } from 'draft-convert';
 import { AddCommentButton, CommentModal, Highlight } from '../index';
 import styles from './feedbackEditor.css';
 
@@ -11,30 +11,16 @@ class FeedbackEditor extends Component {
   position;
   editorState = null;
 
-  // blockRenderMap = Map({
-  //   [Highlight]: {
-  //     element: 'pre'
-  //   }
-  // }).merge(DefaultDraftBlockRenderMap);
-
-  blockRendererFn = (block) => {
-    const type = block.getType();
-    switch(type) {
-      case 'code-block':
-        return {
-          component: Highlight,
-          props: {
-            block
-          }
-        };
-      default:
-        return null;
+  styleMap = {
+    'highlight': {
+      backgroundColor: '#b0daff'
     }
   };
 
   state = {
     showCommentModal: false,
-    showAddComment: false
+    showAddComment: false,
+    // feedbackIds: []
   };
 
   componentWillMount = () => {
@@ -51,32 +37,36 @@ class FeedbackEditor extends Component {
   };
 
   getInitialContentState = () => {
-    const blocksFromHTML = convertFromHTML(this.props.content);
-    const contentState = ContentState.createFromBlockArray(
-      blocksFromHTML.contentBlocks,
-      blocksFromHTML.entityMap
-    );
-    return contentState;
-    // const contentState = convertFromHTML({
-    //   htmlToBlock: (nodeName, node) => {
-    //     if (node.className === 'highlight') {
-    //       return {
-    //         type: 'highlight',
-    //         data: {id: 'test'}
-    //       };
-    //     }
-    //   }
-    // })(this.props.content);
+    const contentState = convertFromHTML({
+      htmlToStyle: (nodeName, node, currentStyle) => {
+        //TODO: render flag component here
+        if (node.className === 'highlight') {
+          // this.loadFeedbackId(node.getAttribute('data-feedbackId'));
+          return currentStyle.add('highlight');
+        } else {
+          return currentStyle;
+        }
+      }
+    })(this.props.content);
       
-    // return contentState;
+    return contentState;
   };
+
+  // loadFeedbackId = (feedbackId) => {
+  //   this.setState({
+  //     feedbackIds: this.state.feedbackIds.push(feedbackId)
+  //   });
+  //   console.log(`==========this.state.feedbackIds=========`);
+  //   console.log(this.state.feedbackIds);
+  //   console.log(`==========END this.state.feedbackIds=========`);
+  // };
 
   addSelections = () => {
     let userSelection = window.getSelection().getRangeAt(0);
     let safeRanges = this.getSafeRanges(userSelection);
     safeRanges.map(range => {
       if (!range.collapsed) {
-        let newNode = document.createElement('pre');
+        let newNode = document.createElement('span');
         newNode.classList.add(styles.selected);
         range.surroundContents(newNode);
       }
@@ -91,12 +81,14 @@ class FeedbackEditor extends Component {
     });
   };
 
-  addHighlights = (feedbackId) => {
+  addHighlights = () => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
+    //TODO: render flag component here
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add('highlight');
-      // selection.id = feedbackId;
+      // selection.setAttribute('data-feedbackId', this.props.lastFeedback.feedbackId);
+      // this.loadFeedbackId(this.props.lastFeedback.feedbackId);
     });
   };
 
@@ -269,7 +261,6 @@ class FeedbackEditor extends Component {
           editorClassName={styles.feedbackEditor}
           wrapperClassName={styles.editorWrapper}
           toolbarClassName={styles.toolbarHide}
-          blockRendererFn={this.blockRendererFn}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
