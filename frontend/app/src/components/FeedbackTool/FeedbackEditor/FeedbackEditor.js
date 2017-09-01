@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
 import { Map } from 'immutable';
-import { EditorState, ContentState, DefaultDraftBlockRenderMap } from 'draft-js';
-import { convertFromHTML } from 'draft-convert';
+import { EditorState, ContentState, DefaultDraftBlockRenderMap, convertFromHTML } from 'draft-js';
+// import { convertFromHTML } from 'draft-convert';
 import { AddCommentButton, CommentModal, Highlight } from '../index';
 import styles from './feedbackEditor.css';
 
@@ -20,7 +20,7 @@ class FeedbackEditor extends Component {
   blockRendererFn = (block) => {
     const type = block.getType();
     switch(type) {
-      case 'highlight':
+      case 'code-block':
         return {
           component: Highlight,
           props: {
@@ -43,7 +43,7 @@ class FeedbackEditor extends Component {
 
   handleSave = feedbackContent => {
     this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
-    this.addHighlights(this.props.lastFeedback.feedbackId);
+    this.addHighlights();
     let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
     this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
 
@@ -51,24 +51,24 @@ class FeedbackEditor extends Component {
   };
 
   getInitialContentState = () => {
-    // const blocksFromHTML = convertFromHTML(this.props.content);
-    // const contentState = ContentState.createFromBlockArray(
-    //   blocksFromHTML.contentBlocks,
-    //   blocksFromHTML.entityMap
-    // );
-    // return contentState;
-    const contentState = convertFromHTML({
-      htmlToBlock: (nodeName, node) => {
-        if (node.className === 'highlight') {
-          return {
-            type: 'highlight',
-            data: {id: 'test'}
-          };
-        }
-      }
-    })(this.props.content);
-      
+    const blocksFromHTML = convertFromHTML(this.props.content);
+    const contentState = ContentState.createFromBlockArray(
+      blocksFromHTML.contentBlocks,
+      blocksFromHTML.entityMap
+    );
     return contentState;
+    // const contentState = convertFromHTML({
+    //   htmlToBlock: (nodeName, node) => {
+    //     if (node.className === 'highlight') {
+    //       return {
+    //         type: 'highlight',
+    //         data: {id: 'test'}
+    //       };
+    //     }
+    //   }
+    // })(this.props.content);
+      
+    // return contentState;
   };
 
   addSelections = () => {
@@ -96,7 +96,7 @@ class FeedbackEditor extends Component {
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add('highlight');
-      selection.id = feedbackId;
+      // selection.id = feedbackId;
     });
   };
 
