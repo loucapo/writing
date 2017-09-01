@@ -1,5 +1,4 @@
 import { config } from '../utilities/configValues';
-import reducerMerge from './../utilities/reducerMerge';
 import { requestStates } from '../sagas/requestSaga';
 
 export let GET_FEEDBACK = requestStates('get_feedback');
@@ -9,10 +8,10 @@ export let CREATE_FEEDBACK = requestStates('create_feedback');
 export default (state = [], action) => {
   switch (action.type) {
     case GET_FEEDBACK.SUCCESS: {
-      return reducerMerge(state, action.result, 'feedbackId');
+      return action.result;
     }
     case CREATE_FEEDBACK.SUCCESS: {
-      return reducerMerge(state, action.result, 'feedbackId');
+      return action.result;
     }
     default: {
       return state;

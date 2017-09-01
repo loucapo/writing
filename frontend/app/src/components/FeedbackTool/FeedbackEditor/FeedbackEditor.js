@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Editor } from 'react-draft-wysiwyg';
 import { Map } from 'immutable';
-import { EditorState, ContentState, DefaultDraftBlockRenderMap, convertFromHTML } from 'draft-js';
+import { EditorState, ContentState, DefaultDraftBlockRenderMap } from 'draft-js';
+import { convertFromHTML } from 'draft-convert';
 import { AddCommentButton, CommentModal, Highlight } from '../index';
 import styles from './feedbackEditor.css';
 
@@ -10,16 +11,16 @@ class FeedbackEditor extends Component {
   position;
   editorState = null;
 
-  blockRenderMap = Map({
-    [Highlight]: {
-      element: 'pre'
-    }
-  }).merge(DefaultDraftBlockRenderMap);
+  // blockRenderMap = Map({
+  //   [Highlight]: {
+  //     element: 'pre'
+  //   }
+  // }).merge(DefaultDraftBlockRenderMap);
 
   blockRendererFn = (block) => {
     const type = block.getType();
     switch(type) {
-      case 'code-block':
+      case 'highlight':
         return {
           component: Highlight,
           props: {
@@ -41,21 +42,32 @@ class FeedbackEditor extends Component {
   };
 
   handleSave = feedbackContent => {
-    this.addHighlights();
-
+    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
+    this.addHighlights(this.props.lastFeedback.feedbackId);
     let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
     this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
-    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
 
     this.setState({ showCommentModal: false });
   };
 
   getInitialContentState = () => {
-    const blocksFromHTML = convertFromHTML(this.props.content);
-    const contentState = ContentState.createFromBlockArray(
-      blocksFromHTML.contentBlocks,
-      blocksFromHTML.entityMap
-    );
+    // const blocksFromHTML = convertFromHTML(this.props.content);
+    // const contentState = ContentState.createFromBlockArray(
+    //   blocksFromHTML.contentBlocks,
+    //   blocksFromHTML.entityMap
+    // );
+    // return contentState;
+    const contentState = convertFromHTML({
+      htmlToBlock: (nodeName, node) => {
+        if (node.className === 'highlight') {
+          return {
+            type: 'highlight',
+            data: {id: 'test'}
+          };
+        }
+      }
+    })(this.props.content);
+      
     return contentState;
   };
 
@@ -79,11 +91,12 @@ class FeedbackEditor extends Component {
     });
   };
 
-  addHighlights = () => {
+  addHighlights = (feedbackId) => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add('highlight');
+      selection.id = feedbackId;
     });
   };
 
@@ -256,7 +269,6 @@ class FeedbackEditor extends Component {
           editorClassName={styles.feedbackEditor}
           wrapperClassName={styles.editorWrapper}
           toolbarClassName={styles.toolbarHide}
-          blockRenderMap={this.blockRenderMap}
           blockRendererFn={this.blockRendererFn}
         />
         {this.state.showCommentModal
@@ -275,7 +287,8 @@ FeedbackEditor.propTypes = {
   studentDraftId: PropTypes.string,
   content: PropTypes.string,
   updateFeedbackPaper: PropTypes.func,
-  createFeedback: PropTypes.func
+  createFeedback: PropTypes.func,
+  lastFeedback: PropTypes.object
 };
 
 export default FeedbackEditor;
