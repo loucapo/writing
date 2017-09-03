@@ -1846,6 +1846,13 @@ domutils@1.5.1, domutils@^1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+draft-convert@^1.4.9:
+  version "1.4.9"
+  resolved "http://npm.macmillantech.com:8080/d/draft-convert/_attachments/draft-convert-1.4.9.tgz#12eb52cabaebb977a954a6ac9348177f4f4224d2"
+  dependencies:
+    immutable "~3.7.4"
+    invariant "^2.2.1"
+
 draft-js-export-html@^0.3.0:
   version "0.3.0"
   resolved "http://npm.macmillantech.com:8080/d/draft-js-export-html/_attachments/draft-js-export-html-0.3.0.tgz#c0706dfd8c1cf09db44f9704b4ae0fac7caae55f"

@@ -4,6 +4,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import { Map } from 'immutable';
 import { EditorState, ContentState, DefaultDraftBlockRenderMap } from 'draft-js';
 import { convertFromHTML } from 'draft-convert';
+import _ from 'lodash';
 import { AddCommentButton, CommentModal, Highlight } from '../index';
 import styles from './feedbackEditor.css';
 
@@ -19,21 +20,29 @@ class FeedbackEditor extends Component {
 
   state = {
     showCommentModal: false,
-    showAddComment: false,
-    // feedbackIds: []
+    saving: false,
+    showAddComment: false
   };
 
   componentWillMount = () => {
     this.editorState = EditorState.createWithContent(this.getInitialContentState());
   };
 
-  handleSave = feedbackContent => {
-    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
-    this.addHighlights();
-    let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
-    this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
+  componentWillReceiveProps = (nextProps) => {
+    debugger
+    const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
 
-    this.setState({ showCommentModal: false });
+    if(this.state.saving && newFeedback) {
+        this.addHighlights(nextProps.lastFeedback.feedbackId);
+        let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
+        this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
+        this.setState({ showCommentModal: false });
+    }
+  }
+
+  handleSave = feedbackContent => {
+    this.setState({ saving: true });
+    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
   };
 
   getInitialContentState = () => {
@@ -81,13 +90,13 @@ class FeedbackEditor extends Component {
     });
   };
 
-  addHighlights = () => {
+  addHighlights = (feedbackId) => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     //TODO: render flag component here
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add('highlight');
-      // selection.setAttribute('data-feedbackId', this.props.lastFeedback.feedbackId);
+      selection.setAttribute('data-feedbackId', feedbackId);
       // this.loadFeedbackId(this.props.lastFeedback.feedbackId);
     });
   };

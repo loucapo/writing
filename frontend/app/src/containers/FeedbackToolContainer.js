@@ -28,6 +28,7 @@ class FeedbackToolContainer extends Component {
   }
 
   componentWillReceiveProps(newProps) {
+    debugger
     if (newProps.studentDraft && newProps.studentDraft.reviewStatus === 'notStarted') {
       this.props.updateReviewStatus(
         newProps.studentDraft.studentActivityId,
@@ -63,6 +64,7 @@ FeedbackToolContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+  debugger
   let studentDraft = state.studentDraft[0];
   let draft = state.drafts.find(draftInState => draftInState.draftId === (studentDraft && studentDraft.draftId));
   let numberOfDrafts = state.drafts.length;

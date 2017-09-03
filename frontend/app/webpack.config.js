@@ -57,7 +57,7 @@ const webpackConfig = {
         test: /\.json$/,
         loader: 'json-loader',
         include: [
-          path.resolve(__dirname, '../node_modules/draft-convert')
+          path.resolve(__dirname, '../node_modules/')
         ]
       },
       {
