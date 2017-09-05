@@ -20,10 +20,9 @@ const FeedbackFlag = ({ feedback, flagTop }) => {
         </svg>
       </div>
       <div className={styles.flagTitle}>
-        <MLIcon className={styles.icon} title="comment" type="comment" width="18" height="19" viewBox="0 0 24 24" />
+        <MLIcon className={styles.icon} title="comment" type="comment" width="24" height="24" viewBox="0 0 24 24" />
         Comment
       </div>
-
     </div>
   );
 };
