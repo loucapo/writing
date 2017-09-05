@@ -11,7 +11,7 @@ export default (state = [], action) => {
       return action.result;
     }
     case CREATE_FEEDBACK.SUCCESS: {
-      return action.result;
+      return [...state, action.result];
     }
     default: {
       return state;
