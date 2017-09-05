@@ -1,16 +1,9 @@
 @import 'variables.css';
 
-.highlight, .highlight span {
-  display: inline;
-  background-color: var(--blue-light);
-  margin: 0;
-}
-
 .flag {
   position: absolute;
-  width: 160px;
+  width: 150px;
   display: inline-block;
-  /*display: none;*/
   color: #080808;
   border-radius: 3px;
   font-size: 14px;
@@ -28,26 +21,18 @@
 
 .flagTitle {
   line-height: 38px;
-  padding: 0 15px 0 38px;
+  padding: 0 15px 0 30px;
   font-weight: bold;
-  border: none;
 }
 
-.flag-content {
-  padding: 8px 15px;
-}
-  
-.flag-title svg {
-    fill: #faf2a9;
-    position: absolute;
-    top: 8px;
-    left: 8px;
+.icon {
+  fill: var(--yellow-light)
 }
 
 .triangle {
-    fill: #fff;
-  }
+  fill: #fff;
+}
   
 .triangleOutline {
-    stroke: #faf2a9;
-  }
+  stroke: #faf2a9;
+}

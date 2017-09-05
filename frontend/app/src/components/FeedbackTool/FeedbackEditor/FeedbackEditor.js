@@ -234,7 +234,7 @@ class FeedbackEditor extends Component {
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
           : null}
         {this.props.feedback.map(feedback => {
-          let highlight = document.querySelector('[data-feedbackId="' + feedback.feedbackId + '"]');
+          let highlight = document.querySelector(`[data-feedbackId='${feedback.feedbackId}']`);
           let flagTop = highlight.offsetParent.offsetTop + highlight.offsetTop - 8;
           return <FeedbackFlag feedback={feedback} flagTop={flagTop} />;
         })}
