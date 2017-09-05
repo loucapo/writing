@@ -239,7 +239,7 @@ class FeedbackEditor extends Component {
         {this.props.feedback.map(feedback => {
           let highlight = document.querySelector(`[data-feedbackId='${feedback.feedbackId}']`);
           let flagTop = highlight.offsetParent.offsetTop + highlight.offsetTop - 8;
-          return <FeedbackFlag feedback={feedback} flagTop={flagTop} />;
+          return <FeedbackFlag key={feedback.feedbackId} feedback={feedback} flagTop={flagTop} />;
         })}
       </div>
     );
