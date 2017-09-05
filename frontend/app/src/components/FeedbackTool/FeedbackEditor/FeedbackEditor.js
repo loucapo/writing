@@ -1,74 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Editor } from 'react-draft-wysiwyg';
-import { Map } from 'immutable';
-import { EditorState, ContentState, DefaultDraftBlockRenderMap } from 'draft-js';
-import { convertFromHTML } from 'draft-convert';
 import _ from 'lodash';
-import { AddCommentButton, CommentModal, Highlight } from '../index';
+import { AddCommentButton, CommentModal, FeedbackFlag } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
   position;
-  editorState = null;
-
-  styleMap = {
-    'highlight': {
-      backgroundColor: '#b0daff'
-    }
-  };
 
   state = {
     showCommentModal: false,
     saving: false,
-    showAddComment: false
-  };
-
-  componentWillMount = () => {
-    this.editorState = EditorState.createWithContent(this.getInitialContentState());
+    showAddComment: false,
+    content: this.props.content
   };
 
   componentWillReceiveProps = (nextProps) => {
-    debugger
     const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
 
     if(this.state.saving && newFeedback) {
-        this.addHighlights(nextProps.lastFeedback.feedbackId);
-        let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
-        this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, content);
-        this.setState({ showCommentModal: false });
+      this.addHighlights(nextProps.lastFeedback.feedbackId);
+        // let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
+      this.setState({
+        showCommentModal: false,
+        content: document.getElementById('feedbackEditor').innerHTML
+      }, () => {
+        this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, this.state.content);
+      });
     }
-  }
+  };
 
   handleSave = feedbackContent => {
     this.setState({ saving: true });
     this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent);
   };
-
-  getInitialContentState = () => {
-    const contentState = convertFromHTML({
-      htmlToStyle: (nodeName, node, currentStyle) => {
-        //TODO: render flag component here
-        if (node.className === 'highlight') {
-          // this.loadFeedbackId(node.getAttribute('data-feedbackId'));
-          return currentStyle.add('highlight');
-        } else {
-          return currentStyle;
-        }
-      }
-    })(this.props.content);
-      
-    return contentState;
-  };
-
-  // loadFeedbackId = (feedbackId) => {
-  //   this.setState({
-  //     feedbackIds: this.state.feedbackIds.push(feedbackId)
-  //   });
-  //   console.log(`==========this.state.feedbackIds=========`);
-  //   console.log(this.state.feedbackIds);
-  //   console.log(`==========END this.state.feedbackIds=========`);
-  // };
 
   addSelections = () => {
     let userSelection = window.getSelection().getRangeAt(0);
@@ -97,7 +61,6 @@ class FeedbackEditor extends Component {
       selection.classList.remove(styles.selected);
       selection.classList.add('highlight');
       selection.setAttribute('data-feedbackId', feedbackId);
-      // this.loadFeedbackId(this.props.lastFeedback.feedbackId);
     });
   };
 
@@ -259,17 +222,10 @@ class FeedbackEditor extends Component {
         onContextMenu={this.handleRightClick}
         onMouseUp={this.handleMouseUp}
       >
-        <Editor
-          editorState={this.editorState}
-          editable={false}
-          toolbarHidden={true}
-          onFeedbackEditor={true}
-          customStyleMap={this.styleMap}
-          readOnly={true}
-          toolbar={true}
-          editorClassName={styles.feedbackEditor}
-          wrapperClassName={styles.editorWrapper}
-          toolbarClassName={styles.toolbarHide}
+        <div
+          id="feedbackEditor"
+          className={styles.feedbackEditor}
+          dangerouslySetInnerHTML={{ __html: this.state.content }}
         />
         {this.state.showCommentModal
           ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
@@ -277,6 +233,11 @@ class FeedbackEditor extends Component {
         {this.state.showAddComment
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
           : null}
+        {this.props.feedback.map(feedback => {
+          let highlight = document.querySelector('[data-feedbackId="' + feedback.feedbackId + '"]');
+          let flagTop = highlight.offsetParent.offsetTop + highlight.offsetTop - 8;
+          return <FeedbackFlag feedback={feedback} flagTop={flagTop} />;
+        })}
       </div>
     );
   }
@@ -288,7 +249,8 @@ FeedbackEditor.propTypes = {
   content: PropTypes.string,
   updateFeedbackPaper: PropTypes.func,
   createFeedback: PropTypes.func,
-  lastFeedback: PropTypes.object
+  lastFeedback: PropTypes.object,
+  feedback: PropTypes.array
 };
 
 export default FeedbackEditor;

@@ -45,6 +45,7 @@ const FeedbackTool = ({
           createFeedback={createFeedback}
           content={studentDraft.feedbackPaper}
           lastFeedback={feedback[feedback.length - 1]}
+          feedback={feedback}
         />
       </MLCard>
       {lastDraft ?

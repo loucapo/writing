@@ -59,7 +59,8 @@ FeedbackToolContainer.propTypes = {
   getStudentDraftByStudentDraftId: PropTypes.func,
   updateReviewStatus: PropTypes.func,
   createFeedback: PropTypes.func,
-  updateFeedbackPaper: PropTypes.func
+  updateFeedbackPaper: PropTypes.func,
+  getFeedback: PropTypes.func
 };
 
 const mapStateToProps = (state) => {

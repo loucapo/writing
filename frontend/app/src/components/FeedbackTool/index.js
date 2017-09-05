@@ -7,7 +7,7 @@ import FinalGrade from './FinalGrade/FinalGrade';
 import AddCommentButton from './AddCommentButton/AddCommentButton';
 import CommentModal from './CommentModal/CommentModal';
 import FeedbackEditor from './FeedbackEditor/FeedbackEditor';
-import Highlight from './Highlight/Highlight';
+import FeedbackFlag from './FeedbackFlag/FeedbackFlag';
 
 export {
   FeedbackTool,
@@ -19,5 +19,5 @@ export {
   AddCommentButton,
   CommentModal,
   FeedbackEditor,
-  Highlight
+  FeedbackFlag
 };

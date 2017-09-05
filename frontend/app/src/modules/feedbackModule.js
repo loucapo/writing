@@ -1,6 +1,5 @@
 import { config } from '../utilities/configValues';
 import { requestStates } from '../sagas/requestSaga';
-import _ from 'lodash';
 
 export let GET_FEEDBACK = requestStates('get_feedback');
 export let CREATE_FEEDBACK = requestStates('create_feedback');
