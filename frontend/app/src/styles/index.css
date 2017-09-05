@@ -66,3 +66,7 @@ input:-moz-placeholder {
   display: inline;
   background-color: #faf2a9;
 }
+
+.highlightGreen, .highlightGreen span {
+  background-color: #acdba2;
+}

@@ -18,7 +18,7 @@ class FeedbackEditor extends Component {
     const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
 
     if(this.state.saving && newFeedback) {
-      this.addHighlights(nextProps.lastFeedback.feedbackId);
+      this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
         // let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
       this.setState({
         showCommentModal: false,
@@ -54,12 +54,15 @@ class FeedbackEditor extends Component {
     });
   };
 
-  addHighlights = (feedbackId) => {
+  addHighlights = (feedbackId, level) => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     //TODO: render flag component here
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add('highlight');
+      if (level === 'Good Job') {
+        selection.classList.add('highlightGreen');
+      }
       selection.setAttribute('data-feedbackId', feedbackId);
     });
   };

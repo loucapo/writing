@@ -7,9 +7,13 @@
   color: #080808;
   border-radius: 3px;
   font-size: 14px;
-  border: 1px solid #faf2a9;
+  border: 1px solid var(--yellow-light);
   background: #fff;
   right: 100px;
+}
+
+.flagGreen {
+  border: 1px solid var(--green-light);
 }
 
 .flagCaret {
@@ -26,7 +30,11 @@
 }
 
 .icon {
-  fill: var(--yellow-light)
+  fill: var(--yellow-light);
+}
+
+.flagGreen .icon {
+  fill: var(--green-light);
 }
 
 .triangle {
@@ -34,5 +42,9 @@
 }
   
 .triangleOutline {
-  stroke: #faf2a9;
+  stroke: var(--yellow-light);
+}
+
+.flagGreen .triangleOutline {
+  stroke: var(--green-light);
 }
