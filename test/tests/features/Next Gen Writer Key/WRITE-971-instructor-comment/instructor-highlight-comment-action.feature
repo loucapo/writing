@@ -52,6 +52,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I click "comment_modal.save_comment"
     Then I wait until there is 1 "instructor_draft_comment" visible
 
+  @WRITE-1213
   Scenario: Comment Is Persistent
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
