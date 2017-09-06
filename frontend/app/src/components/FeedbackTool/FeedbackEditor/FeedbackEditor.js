@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import sanitizeHtml from 'sanitize-html';
 import { AddCommentButton, CommentModal, FeedbackFlag } from '../index';
 import styles from './feedbackEditor.css';
 
@@ -16,13 +17,23 @@ class FeedbackEditor extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
+    let htmlContent = document.getElementById('feedbackEditor').innerHTML;
+    let allowedAttributes = Object.assign(
+      {
+        span: ['data-feedbackid', 'class']
+      }, 
+      sanitizeHtml.defaults.allowedAttributes
+    );
+    let cleanContent = sanitizeHtml(htmlContent, {
+      allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'span' ]),
+      allowedAttributes
+    });
 
     if(this.state.saving && newFeedback) {
       this.addHighlights(nextProps.lastFeedback.feedbackId);
-        // let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
       this.setState({
         showCommentModal: false,
-        content: document.getElementById('feedbackEditor').innerHTML
+        content: cleanContent
       }, () => {
         this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, this.state.content);
       });
