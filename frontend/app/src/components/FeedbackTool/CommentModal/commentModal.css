@@ -57,6 +57,12 @@
   display: flex;
   justify-content: flex-end;
   padding: 0 10px 10px;
+  align-items: center;
+}
+
+.commentModal .feedbackError {
+  color: var(--red);
+  font-size: 12px;
 }
 
 .commentModalOverlay {

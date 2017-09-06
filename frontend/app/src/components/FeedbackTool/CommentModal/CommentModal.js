@@ -100,6 +100,12 @@ class CommentModal extends Component {
           </div>
 
           <div className={styles.controls}>
+            {(this.props.createFeedbackError && this.props.createFeedbackError.status)
+              ? <div className={styles.feedbackError}>
+                  There was a problem saving your comment, please try again.
+                </div>
+              : null
+            }
             <MLButton
               className={styles.addCommentButton}
               dataId="cancel-comment-modal"
@@ -125,7 +131,8 @@ class CommentModal extends Component {
 CommentModal.propTypes = {
   position: PropTypes.object,
   closeModal: PropTypes.func,
-  handleSave: PropTypes.func
+  handleSave: PropTypes.func,
+  createFeedbackError: PropTypes.object
 };
 
 export default CommentModal;

@@ -231,7 +231,12 @@ class FeedbackEditor extends Component {
           dangerouslySetInnerHTML={{ __html: this.state.content }}
         />
         {this.state.showCommentModal
-          ? <CommentModal position={this.position} handleSave={this.handleSave} closeModal={this.closeModal} />
+          ? <CommentModal
+            position={this.position}
+            handleSave={this.handleSave}
+            closeModal={this.closeModal}
+            createFeedbackError={this.createFeedbackError}
+            />
           : null}
         {this.state.showAddComment
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
@@ -253,7 +258,8 @@ FeedbackEditor.propTypes = {
   updateFeedbackPaper: PropTypes.func,
   createFeedback: PropTypes.func,
   lastFeedback: PropTypes.object,
-  feedback: PropTypes.array
+  feedback: PropTypes.array,
+  createFeedbackError: PropTypes.object
 };
 
 export default FeedbackEditor;
