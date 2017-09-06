@@ -7,15 +7,23 @@ class InstructorCommentModal extends Component {
     return {
       save_comment: {
         desc: `Button to save instructor draft comment`,
-        locator: `[data-id='comment-save']`
+        locator: `[data-id='save-comment-modal']`
       },
       add_comment_textarea: {
         desc: `Box to add text to a comment`,
-        locator: `[class^='CommentModal__comments']`
+        locator: `[class^='CommentModal__comments'] textarea`
       },
       good_job_comment_button: {
         desc: `Button to quickly add good job comment`,
         locator: `[data-id='good-job-comment-modal']`
+      },
+      needs_extensive_work_comment_button: {
+        desc: `Button to quickly add need a lot of work comment`,
+        locator: `[data-id='needs-extensive-work-comment-modal']`
+      },
+      needs_work_comment_button: {
+        desc: `Button to quickly add need work comment`,
+        locator: `[data-id='needs-work-comment-modal']`
       }
     };
   }
