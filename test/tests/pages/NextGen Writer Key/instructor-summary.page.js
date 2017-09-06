@@ -107,4 +107,3 @@ exports.InstructorSummaryPage = class extends Page {
     return draftGoalsModal.generate(arg, {
       locator: `[data-id='modal']`}); }
 };
-
