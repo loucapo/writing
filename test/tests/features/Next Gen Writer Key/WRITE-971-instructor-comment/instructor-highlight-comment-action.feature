@@ -1,4 +1,3 @@
-@only
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -40,6 +39,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
 
   @WRITE-1212
+  @WRITE-1213
   Scenario: The Instructor Saves Comment
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
@@ -50,7 +50,23 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
     And I click "comment_modal.save_comment"
-    #Then I wait until there is 1 "instructor_draft_comment" visible
+    Then I wait until there is 1 "instructor_draft_comment" visible
+
+  Scenario: Comment Is Persistent
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    When I select "student_submitted_draft_text" text
+    And I click "add_comment_button"
+    Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
+    And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
+    And I click "comment_modal.save_comment"
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "instructor_draft_comment" visible
 
   @pending
   @WRITE-1212
