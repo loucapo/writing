@@ -1,4 +1,4 @@
-Feature: Instructor Can Add Pre-Defined Rubric To Activity
+Feature: Instructor Can Add Pre-Defined Comment
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
@@ -18,38 +18,50 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
 
-  @WRITE-1208
-  Scenario: The Instructor Can Highlight Text And See Comment Button
-    Given I launch the activity as an "instructor"
-    And I click "student_submissions"
-    And I click "submissions.row_start(1)"
-    And Changing to using page "instructor_feedback"
-    When I select "student_submitted_draft_text" text
-    Then I wait until there is 1 "add_comment_button" visible
-
-  @WRITE-1209
-  Scenario: The Instructor Opens Modal From Comment Button
+  @WRITE-1199
+  Scenario: The Instructor Selects Needs Work
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
-    Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
-    Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
+    And I click "needs_work_comment_button"
+    And the text of "comment_modal.add_comment_textarea" should be "Needs work"
 
-  @WRITE-1212
-  Scenario: The Instructor Saves Comment
+  @WRITE-1199
+  Scenario: Disabled Submit Button
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
-    Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
-    And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
-    And I click "comment_modal.save_comment"
-    #Then I wait until there is 1 "instructor_draft_comment" visible
+    Then I wait until there is 1 "reflection_questions_modal.disabled_submit" visible
+
+  @WRITE-1199
+  Scenario: The Instructor Selects Good Job
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    When I select "student_submitted_draft_text" text
+    And I click "add_comment_button"
+    And I click "good_job_comment_button"
+    And the text of "comment_modal.add_comment_textarea" should be "Good Job"
+    Then I wait until there is 1 "comment_modal.active_submit" visible
+
+  @WRITE-1199
+  Scenario: The Instructor Selects Needs Extensive Work
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    When I select "student_submitted_draft_text" text
+    And I click "add_comment_button"
+    And I click "needs_extensive_work_comment_button"
+    And the text of "comment_modal.add_comment_textarea" should be "Needs Extensive Work"
+    Then I wait until there is 1 "reflection_questions_modal.active_submit" visible
 
   @pending
   @WRITE-1212
