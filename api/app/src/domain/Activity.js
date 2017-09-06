@@ -56,8 +56,13 @@ module.exports = function(AggregateRootBase, Draft, invariant, uuid) {
       cmd.activityId = this.activityId;
       let finalDraft = this.drafts[this.drafts.length - 1];
       let newDraft = new Draft(cmd);
-      newDraft.index = finalDraft.index;
-      finalDraft.index++;
+      if (typeof finalDraft === 'undefined') {
+        newDraft.index = 0;
+      }
+      else {
+        newDraft.index = finalDraft.index;
+        finalDraft.index++;
+      }
       this.drafts.splice(this.drafts.length - 1, 0, newDraft);
       const event = this.mapper(cmd);
       this.raiseEvent({
