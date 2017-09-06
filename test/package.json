@@ -5,7 +5,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-chai-friendly": "^0.3.6",
     "faker": "^4.1.0",
-    "marvin-js": "0.6.0-beta1"
+    "marvin-js": "0.6.0-beta2"
   },
   "scripts": {
     "test": "node node_modules/marvin-js/bin/marvin.js",
