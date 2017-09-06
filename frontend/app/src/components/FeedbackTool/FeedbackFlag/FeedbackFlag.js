@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import styles from './feedbackFlag.css';
 
-const FeedbackFlag = ({ feedback, flagTop }) => {
+const FeedbackFlag = ({ flagTop }) => {
   return (
     <div className={styles.flag} style={{ top: `${flagTop}px` }}>
       <div className={styles.flagCaret}>
@@ -25,6 +25,10 @@ const FeedbackFlag = ({ feedback, flagTop }) => {
       </div>
     </div>
   );
+};
+
+FeedbackFlag.propTypes = {
+  flagTop: PropTypes.number
 };
 
 export default FeedbackFlag;

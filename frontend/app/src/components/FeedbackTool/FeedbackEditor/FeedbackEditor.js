@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import sanitizeHtml from 'sanitize-html';
 import { AddCommentButton, CommentModal, FeedbackFlag } from '../index';
 import styles from './feedbackEditor.css';
 
