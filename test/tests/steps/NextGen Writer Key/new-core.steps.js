@@ -33,9 +33,24 @@ exports.define = function(steps) {
     return [comp, compArg, elem, elemArg];
   }
 
+  async function polocToPO(poloc) {
+    let result = null;
+    if (poloc.includes('.')) {
+      let [comp, compArg, elem, elemArg] = splitPolocComp(poloc);
+      compArg = compArg || 1;
+      elemArg = elemArg || 1;
+      let result = await page[comp](compArg);
+      return result[elem](undefined);
+    } else {
+      let [elem, elemArg] = extractArg(poloc);
+      elemArg = elemArg || 1;
+      return page[elem](undefined);
+    }
+  }
+
   // PageObject-Locator to PageObject: return [] of WebElements
   // findAll will return the full set of elements,
-  async function polocToPO(poloc, findAll = false, allowEmptyResult = false) {
+  async function polocToElem(poloc, findAll = false, allowEmptyResult = false) {
     let result = null;
     if (poloc.includes('.')) {
       let [comp, compArg, elem, elemArg] = splitPolocComp(poloc);
@@ -130,7 +145,7 @@ exports.define = function(steps) {
 
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)"$/, (count, element) => {
     return driver.wait(() => {
-      return polocToPO(element, true, true)
+      return polocToElem(element, true, true)
         .then(els => (els.length === parseInt(count)));
     }, 3500, `Couldn't find ${count} instances of ${element}`);
   });
@@ -138,7 +153,7 @@ exports.define = function(steps) {
   steps.then(/I wait until there (?:are|is) (\d+) "(.+)" visible/, (count, element) => {
     count = parseInt(count);
     return driver.wait(() => {
-      return polocToPO(element, true, true).then(els => {
+      return polocToElem(element, true, true).then(els => {
         if (els.length === 0) {
           if (count === 0) { return true; } // 0 present necessitates 0 visible
           return false; }
@@ -151,7 +166,7 @@ exports.define = function(steps) {
 
   // TODO: doc this
   steps.then(/I delete all text in "(.+)"/, function(poloc) {
-    return polocToPO(poloc).then(el => el.clear());
+    return polocToElem(poloc).then(el => el.clear());
   });
 
   //
@@ -163,24 +178,24 @@ exports.define = function(steps) {
   // I type "buncha text" in "some-page-component(1).some-page-object(1)  // => identical to the above
   // I type "buncha text" in "some-page-component(2).some-page-object(2)  // => returns the 2nd object match scoped under the 2nd component match
   steps.then(/I type "(.*)" in "(.*)"/, (input, poloc) => {
-    return polocToPO(poloc).then(el => el.sendKeys(input));
+    return polocToElem(poloc).then(el => el.sendKeys(input));
   });
 
   // TODO: doc this
   steps.when(/I click "(.+)"/, function(element) {
-    return polocToPO(element).then(el => el.click());
+    return polocToElem(element).then(el => el.click());
   });
 
   // NOTE that this is an IS match, not a contains.
   steps.then(/the text of "(.*)" should be "(.*)"/, (elem, text) => {
-    return polocToPO(elem)
+    return polocToElem(elem)
       .then(el => el.getText())
       .then(actualText => text.should.equal(actualText));
   });
 
   // NOTE that this is an INCLUDES match, not an IS.
   steps.then(/the text of "(.*)" should include "(.*)"/, (elem, text) => {
-    return polocToPO(elem)
+    return polocToElem(elem)
       .then(el => el.getText())
       .then(actualText => actualText.should.have.string(text));
   });
@@ -227,19 +242,11 @@ exports.define = function(steps) {
     `;
   }
 
-  steps.when(/I select "(.*)" text/, function(element) {
-
-    //the ideal but it doesn't work
-    // return polocToPO(element).then(el =>
-    //   {console.log(el[0]);
-    //   return driver.executeScript(element_select_text_and_mouseup(el.locator))}
-    // )
-
-    //this works, just not ideal since it's not using the poloc
-    driver.executeScript(element_select_text_and_mouseup(element));
-
-    //this works but hard coded
-    //driver.executeScript(element_select_text_and_mouseup("div.public-DraftEditor-content"));
+  steps.when(/I select "(.*)" text/, async function(element) {
+    let pageObject = await polocToPO(element);
+    return polocToElem(element).then(el => {
+      return driver.executeScript(element_select_text_and_mouseup(pageObject.locator));
+    });
   });
 
   steps.when('I delete all content on the draft editor', function() {

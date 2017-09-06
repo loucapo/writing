@@ -1,6 +1,6 @@
+@only
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
   @db=reset
-
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -19,15 +19,13 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
 
-
   @WRITE-1208
   Scenario: The Instructor Can Highlight Text And See Comment Button
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    When I select "div.public-DraftEditor-content" text
-    #And I sleep for 1 seconds
+    When I select "student_submitted_draft_text" text
     Then I wait until there is 1 "add_comment_button" visible
 
   @WRITE-1209
@@ -40,6 +38,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I click "add_comment_button"
     Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
+  
   @pending
   @WRITE-1212
   Scenario: The Instructor Saves Comment
