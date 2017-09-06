@@ -19,7 +19,6 @@ class FeedbackEditor extends Component {
 
     if(this.state.saving && newFeedback) {
       this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
-        // let content = document.querySelectorAll('[data-contents=true]')[0].innerHTML;
       this.setState({
         showCommentModal: false,
         content: document.getElementById('feedbackEditor').innerHTML

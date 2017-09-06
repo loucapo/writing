@@ -25,7 +25,6 @@
   "dependencies": {
     "babel-polyfill": "^6.22.0",
     "classnames": "^2.2.5",
-    "draft-convert": "^1.4.9",
     "draft-js": "^0.10.0",
     "es6-promise": "^4.1.1",
     "exports-loader": "^0.6.4",
