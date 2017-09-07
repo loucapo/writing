@@ -35,5 +35,9 @@
 
 .highlight, .highlight span {
   display: inline;
-  background-color: #b0daff;
+  background-color: #faf2a9;
+}
+
+.highlightGreen, .highlightGreen span {
+  background-color: #acdba2;
 }

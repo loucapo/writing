@@ -58,9 +58,9 @@ class FeedbackEditor extends Component {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     selections.map(selection => {
       selection.classList.remove(styles.selected);
-      selection.classList.add('highlight');
+      selection.classList.add(styles.highlight);
       if (level === 'Good Job') {
-        selection.classList.add('highlightGreen');
+        selection.classList.add(styles.highlightGreen);
       }
       selection.setAttribute('data-feedback-id', feedbackId);
     });
