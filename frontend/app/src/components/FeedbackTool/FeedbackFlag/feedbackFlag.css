@@ -9,7 +9,7 @@
   font-size: 14px;
   border: 1px solid var(--yellow-light);
   background: #fff;
-  right: 100px;
+  right: 0px;
 }
 
 .flagCaret {
@@ -21,10 +21,8 @@
 
 .flagTitle {
   line-height: 38px;
-  border-bottom: 1px solid #dddddd;
   padding: 0 15px;
   font-weight: bold;
-  border: none;
   padding-left: 38px;
 }
 

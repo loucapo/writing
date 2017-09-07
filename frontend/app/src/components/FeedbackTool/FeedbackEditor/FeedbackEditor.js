@@ -92,14 +92,13 @@ class FeedbackEditor extends Component {
   };
 
   showCommentModal = () => {
-    let selections = document.querySelectorAll(`.${styles.selected}`);
-    let selected = selections[selections.length - 1];
+    let selected = document.querySelector(`.${styles.selected}`);
     this.position = {
-      top: selected.getBoundingClientRect().bottom + 20,
+      top: selected.offsetTop - 8,
       left: selected.getBoundingClientRect().left
     };
-    if (this.position.top > window.innerHeight - 270) {
-      this.position.top = selected.getBoundingClientRect().top - 285;
+    if ((selected.getBoundingClientRect().bottom + 20) > window.innerHeight - 270) {
+      this.position.top = selected.offsetTop - 250;
     }
     this.setState({
       showCommentModal: true,
@@ -110,8 +109,8 @@ class FeedbackEditor extends Component {
   textHasBeenSelected = () => window.getSelection().toString() !== '';
 
   addCommentButton = () => {
-    let selections = document.querySelectorAll(`.${styles.selected}`);
-    let top = selections[0].getBoundingClientRect().top;
+    let selected = document.querySelector(`.${styles.selected}`);
+    let top = selected.offsetTop - 8;
     this.position = { top };
 
     this.setState({
@@ -226,8 +225,12 @@ class FeedbackEditor extends Component {
           className={styles.feedbackEditor}
           dangerouslySetInnerHTML={{ __html: this.state.content }}
         />
-        {this.state.showCommentModal
-          ? <CommentModal position={this.position} handleSave={this.handleCreateFeedback} closeModal={this.closeModal} />
+        {this.state.showCommentModal ?
+          <CommentModal
+            position={this.position}
+            handleSave={this.handleCreateFeedback}
+            closeModal={this.closeModal}
+          />
           : null}
         {this.state.showAddComment
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
@@ -235,7 +238,7 @@ class FeedbackEditor extends Component {
         {this.props.feedback.map(feedback => {
           let highlight = document.querySelector(`[data-feedback-id='${feedback.feedbackId}']`);
           if (highlight) {
-            let flagTop = highlight.offsetParent.offsetTop + highlight.offsetTop - 8;
+            let flagTop = highlight.offsetTop - 8;
             return <FeedbackFlag feedback={feedback} flagTop={flagTop} />;
           }
         })}
