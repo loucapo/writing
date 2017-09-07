@@ -2,6 +2,7 @@
 
 .feedbackEditorWrapper {
   display: inherit;
+  position: relative;
 }
 
 .selected, .selected span {
@@ -30,4 +31,9 @@
 .editorWrapper {
   display: flex;
   flex-direction: column;
+}
+
+.highlight, .highlight span {
+  display: inline;
+  background-color: #b0daff;
 }

@@ -1,0 +1,42 @@
+@import 'variables.css';
+
+.flag {
+  position: absolute;
+  width: 150px;
+  display: inline-block;
+  color: #080808;
+  border-radius: 3px;
+  font-size: 14px;
+  border: 1px solid var(--yellow-light);
+  background: #fff;
+  right: 0px;
+}
+
+.flagCaret {
+  position: absolute;
+  transform: rotate(180deg);
+  left: -6px;
+  top: 8px;
+}
+
+.flagTitle {
+  line-height: 38px;
+  padding: 0 15px;
+  font-weight: bold;
+  padding-left: 38px;
+}
+
+.icon {
+  fill: var(--yellow-light);
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.triangle {
+  fill: var(--white);
+}
+  
+.triangleOutline {
+  stroke: var(--yellow-light);
+}

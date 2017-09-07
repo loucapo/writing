@@ -10,6 +10,7 @@ const FeedbackTool = ({
   reflectionQuestions,
   homeRoute,
   draftTitle,
+  feedback,
   instructorName,
   submitEndComment,
   submitFinalGrade,
@@ -43,6 +44,8 @@ const FeedbackTool = ({
           updateFeedbackPaper={updateFeedbackPaper}
           createFeedback={createFeedback}
           content={studentDraft.feedbackPaper}
+          lastFeedback={feedback[feedback.length - 1]}
+          feedback={feedback}
         />
       </MLCard>
       {lastDraft ?
@@ -78,6 +81,7 @@ FeedbackTool.propTypes = {
   homeRoute: PropTypes.string,
   reflectionQuestions: PropTypes.array,
   draftTitle: PropTypes.string,
+  feedback: PropTypes.array,
   instructorName: PropTypes.string,
   submitEndComment: PropTypes.func,
   submitFinalGrade: PropTypes.func,
