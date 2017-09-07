@@ -30,14 +30,14 @@ export function getFeedback(studentDraftId) {
   };
 }
 
-export function createFeedback(studentActivityId, studentDraftId, content) {
+export function createFeedback(studentActivityId, studentDraftId, content, level) {
   return {
     type: CREATE_FEEDBACK.REQUEST,
     states: CREATE_FEEDBACK,
     url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/feedback`,
     params: {
       method: 'PUT',
-      body: { content }
+      body: { content, level }
     }
   };
 }

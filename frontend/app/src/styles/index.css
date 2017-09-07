@@ -61,8 +61,3 @@ input:-moz-placeholder {
 .flex {
   display: flex;
 }
-
-.highlight, .highlight span {
-  display: inline;
-  background-color: #faf2a9;
-}

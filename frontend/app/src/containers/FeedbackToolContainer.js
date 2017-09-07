@@ -98,7 +98,8 @@ const mapStateToProps = (state) => {
     feedback,
     instructorName: `${state.auth.firstName} ${state.auth.lastName}`,
     rubricId,
-    lastDraft
+    lastDraft,
+    createFeedbackError: state.messaging.createFeedbackError
   };
 };
 
