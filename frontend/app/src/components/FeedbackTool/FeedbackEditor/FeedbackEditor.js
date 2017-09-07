@@ -63,7 +63,7 @@ class FeedbackEditor extends Component {
       if (level === 'Good Job') {
         selection.classList.add('highlightGreen');
       }
-      selection.setAttribute('data-feedbackId', feedbackId);
+      selection.setAttribute('data-feedback-id', feedbackId);
     });
   };
 
