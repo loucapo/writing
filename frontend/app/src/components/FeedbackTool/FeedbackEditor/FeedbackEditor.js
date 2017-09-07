@@ -56,7 +56,6 @@ class FeedbackEditor extends Component {
 
   addHighlights = (feedbackId, level) => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
-    //TODO: render flag component here
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add('highlight');
