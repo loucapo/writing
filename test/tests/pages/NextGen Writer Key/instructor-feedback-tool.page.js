@@ -1,4 +1,5 @@
 const Page = require('marvin-js').Page;
+const InstructorCommentModal = require('./instructor-feedback-tool.component.add-comment');
 
 exports.InstructorFeedbackPage = class extends Page {
   things() {
@@ -95,7 +96,15 @@ exports.InstructorFeedbackPage = class extends Page {
         desc: `Read only submitted draft from instructor view`,
         locator: `[class^='public-DraftEditor-content']`
       },
-
+      add_comment_button: {
+      desc: `Button to add comment to highlighted text`,
+        locator: `[id='addCommentButton']`
+    },
     };
   }
+
+  comment_modal(arg) {
+    return InstructorCommentModal.generate(arg, {
+      locator: `[id='commentModal']`}); }
 };
+

@@ -21,6 +21,7 @@ class FeedbackEditor extends Component {
       this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
       this.setState({
         showCommentModal: false,
+        saving: false,
         content: document.getElementById('feedbackEditor').innerHTML
       }, () => {
         this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, this.state.content);
@@ -28,7 +29,7 @@ class FeedbackEditor extends Component {
     }
   };
 
-  handleSave = (feedbackContent, level) => {
+  handleCreateFeedback = (feedbackContent, level) => {
     this.setState({ saving: true });
     this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, level);
   };
@@ -232,7 +233,7 @@ class FeedbackEditor extends Component {
         {this.state.showCommentModal
           ? <CommentModal
             position={this.position}
-            handleSave={this.handleSave}
+            handleSave={this.handleCreateFeedback}
             closeModal={this.closeModal}
             createFeedbackError={this.createFeedbackError}
             />
@@ -241,9 +242,11 @@ class FeedbackEditor extends Component {
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
           : null}
         {this.props.feedback.map(feedback => {
-          let highlight = document.querySelector(`[data-feedbackId='${feedback.feedbackId}']`);
-          let flagTop = highlight.offsetParent.offsetTop + highlight.offsetTop - 8;
-          return <FeedbackFlag key={feedback.feedbackId} feedback={feedback} flagTop={flagTop} />;
+          let highlight = document.querySelector(`[data-feedback-id='${feedback.feedbackId}']`);
+          if (highlight) {
+            let flagTop = highlight.offsetParent.offsetTop + highlight.offsetTop - 8;
+            return <FeedbackFlag key={feedback.feedbackId} feedback={feedback} flagTop={flagTop} />;
+          }
         })}
       </div>
     );
