@@ -2,6 +2,7 @@
 
 .feedbackEditorWrapper {
   display: inherit;
+  position: relative;
 }
 
 .selected, .selected span {

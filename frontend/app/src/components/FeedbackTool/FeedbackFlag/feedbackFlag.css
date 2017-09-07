@@ -9,7 +9,7 @@
   font-size: 14px;
   border: 1px solid var(--yellow-light);
   background: #fff;
-  right: 100px;
+  right: 0;
 }
 
 .flagGreen {
@@ -27,7 +27,6 @@
   line-height: 38px;
   padding: 0 15px 0 38px;
   font-weight: bold;
-}
 
 .icon {
   fill: var(--yellow-light);
