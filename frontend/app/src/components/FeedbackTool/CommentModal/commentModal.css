@@ -7,7 +7,7 @@
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   background-color: var(--gray-very-light);
   z-index: 101;
-  width: 380px;
+  width: 460px;
 }
 
 .commentModal .header {
@@ -24,6 +24,13 @@
 .commentModal .buttons {
   display: flex;
   padding-right: 10px;
+  align-items: flex-end;
+}
+
+.commentModal .required {
+  color: var(--gray-base);
+  font-size: 12px;
+  margin-left: 10px;
 }
 
 .commentModal .comments {
@@ -31,15 +38,31 @@
   display: flex;
 }
 
-.commentModal textarea {
-  height: 80px;
+.commentModal .commentText {
+  background-color: #fff;
+  border: 1px solid var(--gray-dark);
   flex: 1;
+  height: 80px;
+  padding: 5px;
+}
+
+[contenteditable=true]:empty:before {
+  color: var(--gray-dark);
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+  font-style: italic;
 }
 
 .commentModal .controls {
   display: flex;
   justify-content: flex-end;
   padding: 0 10px 10px;
+  align-items: center;
+}
+
+.commentModal .feedbackError {
+  color: var(--red);
+  font-size: 12px;
 }
 
 .commentModalOverlay {

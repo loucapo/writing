@@ -54,6 +54,13 @@ const webpackConfig = {
   module: {
     loaders: [
       {
+        test: /\.json$/,
+        loader: 'json-loader',
+        include: [
+          path.resolve(__dirname, '../node_modules/')
+        ]
+      },
+      {
         test: /\.js$/,
         include: path.resolve('src/components/'),
         loader: 'istanbul-instrumenter-loader'
