@@ -56,7 +56,7 @@ module.exports = function(AggregateRootBase, Draft, invariant, uuid) {
       cmd.activityId = this.activityId;
       let finalDraft = this.drafts[this.drafts.length - 1];
       let newDraft = new Draft(cmd);
-      if (typeof finalDraft === 'undefined') {
+      if (!finalDraft) {
         newDraft.index = 0;
       }
       else {
