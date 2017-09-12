@@ -1,5 +1,6 @@
 @WRITE-438
 Feature: Instructor Creates Drafting Revising Activity
+  @db=reset
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
