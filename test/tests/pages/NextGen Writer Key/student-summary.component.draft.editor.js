@@ -13,6 +13,10 @@ class DraftEditor extends Component {
         desc: `Link on Draft Details panel to return user to activity summary page`,
         locator: `[data-id='details-panel-activity-link-div']`
       },
+      view_previous_draft_link: {
+        desc: `Link on Draft Details panel to return user to previous draft feedback`,
+        locator: `[data-id='details-panel-previous-draft-link-div']`
+      },
       activity_draft_panel: {
         desc: `Link on Draft Details panel to expand or collapse draft info`,
         locator: `[data-id='draft-activity-detail-panel']`
