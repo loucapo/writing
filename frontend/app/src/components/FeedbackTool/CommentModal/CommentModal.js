@@ -9,11 +9,38 @@ class CommentModal extends Component {
     level: null
   };
 
+  // componentDidUpdate = () => {
+    // if(this.state.level !== null) {
+    //   let ce = document.querySelector(`.${styles.commentText}`);
+    //   ce.addEventListener ('DOMNodeRemoved', this.onNodeRemoved, true);
+    // }
+  // };
+
+  onNodeRemoved = (e) => {
+    // debugger;
+    console.log(`==========e.target=========`);
+    console.log(e.target);
+    console.log(`==========END e.target=========`);
+    if(e.target.id === 'commentTag') {
+      this.setState({
+        level: null
+      });
+    }
+  };
+
+  // componentDidUpdate = () => {
+  //   console.log('updating!!!!!!!!!!');
+  //   console.log(this.state.comment);
+  //   if(this.state.comment)
+  // };
+
   handleChange = event => {
     if (event.target.lastChild && event.target.lastChild.textContent) {
       let trimmedComment = event.target.lastChild.textContent.trim();
       this.setState({ comment: trimmedComment });
     } else {
+      event.preventDefault();
+      event.stopPropagation();
       this.setState({ comment: null });
     }
   };
@@ -28,6 +55,7 @@ class CommentModal extends Component {
     this.setState({
       level: e.target.innerText
     });
+    document.querySelector(`.${styles.commentModal}`).focus();
   };
 
   deleteTag = (e) => {
@@ -86,11 +114,11 @@ class CommentModal extends Component {
               className={styles.commentText}
               placeholder="Please leave additional feedback here"
               contentEditable={true}
-              onKeyUp={this.handleChange}
+              onInput={this.handleChange}
               suppressContentEditableWarning={true}
             >
               {this.state.level
-                ? <MLTag text={this.state.level} deleteTag={this.deleteTag} />
+                ? <MLTag text={this.state.level} deleteTag={this.deleteTag} onNodeRemoved={this.onNodeRemoved} />
                 : null
               }
             </div>
@@ -116,7 +144,7 @@ class CommentModal extends Component {
               dataId="save-comment-modal"
               title="Save"
               handleClick={this.props.handleSave.bind(this, this.state.comment, this.state.level)}
-              disabled={!this.state.comment}
+              disabled={!this.state.level}
             />
           </div>
         </div>
