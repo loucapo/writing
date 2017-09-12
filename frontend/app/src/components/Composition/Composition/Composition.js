@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import _ from 'lodash';
 import { MLEditor, MLMessage } from '../../MLComponents';
 import { CompositionHeader } from '../index';
 import { CompositionDraftDetailsContainer } from '../../../containers';
@@ -25,9 +26,15 @@ class Composition extends Component {
   };
 
   checkForUnSavedChanges = () => {
-    let paper = this.props.studentDraft.paper;
-    let content = this.state.content;
-    return paper && paper.blocks[0].text !== content.blocks[0].text;
+    const content = this.state.content;
+    if (!content) {
+      return false;
+    }
+    const currentContent = content.blocks[0].text;
+    const paper = _.get(this.props, 'studentDraft.paper');
+    // Return true if the paper has already been saved and the current content is different
+    // or if there is no saved paper and the current draft has been started
+    return (paper && paper.blocks[0].text !== currentContent) || (!paper && currentContent.length > 0);
   };
 
   renderSaveMessage = () => {
@@ -81,6 +88,7 @@ class Composition extends Component {
         <div className={styles.infoColumn}>
           <CompositionDraftDetailsContainer
             activityId={this.props.activityId}
+            studentActivityId={this.props.studentActivityId}
             studentDraft={this.props.studentDraft}
             unsavedChanges={this.checkForUnSavedChanges()}
           />

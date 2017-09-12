@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { updateActivityPrompt } from './../modules/activityModule';
 import { getReflectionQuestions } from './../modules/reflectionQuestionsModule';
+import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { CompositionDraftDetails } from './../components/Composition/index';
+import { addStudentInfoToDrafts } from './selectors';
 
 class CompositionDraftDetailsContainer extends Component {
   componentWillMount() {
     this.props.getReflectionQuestions();
+    if (this.props.studentActivityId) {
+      this.props.getStudentDrafts(this.props.studentActivityId);
+    }
   }
 
   render() {
@@ -16,10 +22,27 @@ class CompositionDraftDetailsContainer extends Component {
 }
 
 CompositionDraftDetailsContainer.propTypes = {
-  getReflectionQuestions: PropTypes.func
+  getReflectionQuestions: PropTypes.func,
+  studentActivityId: PropTypes.string,
+  getStudentDrafts: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
+  const draftsWithInfo = addStudentInfoToDrafts(state, props);
+  let lastDraftWithFeedback;
+
+  if (draftsWithInfo.length > 0) {
+    const finalDraftIndex = draftsWithInfo[draftsWithInfo.length - 1];
+    lastDraftWithFeedback = _(draftsWithInfo)
+      .filter((draft) => {
+        const reviewStatus = draft.studentInfo.reviewStatus;
+        return (reviewStatus === 'submitted' || reviewStatus === 'viewed') && draft.index !== finalDraftIndex;
+      })
+      .maxBy((draft) => {
+        return draft.index;
+      });
+  }
+
   const activity = state.activities.find(
     x => x.activityId === props.activityId
   );
@@ -62,10 +85,12 @@ const mapStateToProps = (state, props) => {
     newRubric,
     reflectionQuestions,
     goals,
+    lastDraftWithFeedback,
     homeRoute: state.defaults.homeRoute
   };
 };
 
 export default connect(mapStateToProps, {
   updateActivityPrompt,
+  getStudentDrafts,
   getReflectionQuestions})(CompositionDraftDetailsContainer);
