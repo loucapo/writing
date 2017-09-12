@@ -12,15 +12,27 @@ class CompositionDraftDetails extends Component {
     showDialog: false
   };
 
-  checkForUnsavedChanges = () => {
+  checkForUnsavedChanges = (route) => {
     if (this.props.unsavedChanges) {
       this.setState({
-        showDialog: true
+        showDialog: true,
+        navigateTo: route
       });
     } else {
-      browserHistory.push(this.props.homeRoute);
+      browserHistory.push(route);
     }
   };
+
+  navigateToActivitySummary = () => {
+    this.checkForUnsavedChanges(this.props.homeRoute);
+  }
+
+  navigateToPreviousDraft = () => {
+    const lastDraftId = this.props.lastDraftWithFeedback.studentInfo.studentDraftId;
+    const currentDraftId = this.props.draft.draftId;
+    const link = `/studentDraft/${lastDraftId}/feedbackdisplay?fromDraftId=${currentDraftId}`;
+    this.checkForUnsavedChanges(link);
+  }
 
   closeDialog = () => {
     this.setState({
@@ -64,9 +76,18 @@ class CompositionDraftDetails extends Component {
     return (
       <div>
         <CompositionDraftDetailsHeader />
-        <div className={styles.actSummary} data-id="details-panel-activity-link-div">
-          <span onClick={this.checkForUnsavedChanges} className={styles.activityLink}>View Activity Summary</span>
+        <div className={styles.navigationButton} data-id="details-panel-activity-link-div">
+          <span onClick={this.navigateToActivitySummary} className={styles.link}>View Activity Summary</span>
         </div>
+        {this.props.lastDraftWithFeedback ?
+          (
+            <div className={`${styles.navigationButton} ${styles.previousDraft}`} data-id="details-panel-previous-draft-link-div">
+              <span onClick={this.navigateToPreviousDraft} className={styles.link}>
+                {this.props.lastDraftWithFeedback.studentInfo.buttonText}
+              </span>
+            </div>
+          ) : null
+        }
         <div className="spacer">
           <MLDialog
             title={'Do you want to leave this page?'}
@@ -81,7 +102,7 @@ class CompositionDraftDetails extends Component {
               bordered={true}
               color="red"
               dataId="details-panel-activity-link-dialog-leave"
-              link={this.props.homeRoute}
+              link={this.state.navigateTo}
             />
             <MLButton
               title="Stay"
@@ -103,6 +124,7 @@ CompositionDraftDetails.propTypes = {
   goals: PropTypes.array,
   reflectionQuestions: PropTypes.array,
   newRubric: PropTypes.object,
+  lastDraftWithFeedback: PropTypes.object,
   homeRoute: PropTypes.string,
   unsavedChanges: PropTypes.bool
 };

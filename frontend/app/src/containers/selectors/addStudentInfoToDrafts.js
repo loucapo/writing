@@ -1,7 +1,9 @@
 import { addGoalsAndReflectionsToDrafts } from './index';
+import _ from 'lodash';
 
 export default (state, props) => {
   let drafts = addGoalsAndReflectionsToDrafts(state, props);
+  const routingState = state.routing.locationBeforeTransitions;
 
   const getCurrentActiveIndex = () => {
     let currentIndex = 0;
@@ -16,16 +18,17 @@ export default (state, props) => {
   };
 
   const getStudentInfo = (draftIndex, studentDraft = {}) => {
-    let finalDraftIndex = drafts.length - 1;
-    let title = draftIndex === finalDraftIndex ? 'Final Paper' : `Draft ${draftIndex + 1}`;
+    const finalDraftIndex = drafts.length - 1;
+    const title = draftIndex === finalDraftIndex ? 'Final Paper' : `Draft ${draftIndex + 1}`;
     let buttonText = `Start ${title}`;
+    let fromDraftId = _.get(routingState, 'query.fromDraftId');
 
-    if (studentDraft.reviewStatus === 'submitted' || studentDraft.reviewStatus === 'viewed') {
+    if (studentDraft.status === 'active' || (fromDraftId && studentDraft.draftId === fromDraftId)) {
+      buttonText = `Return to ${title}`;
+    } else if (studentDraft.reviewStatus === 'submitted' || studentDraft.reviewStatus === 'viewed') {
       buttonText = `View ${title} Feedback`;
     } else if (studentDraft.status === 'submitted') {
       buttonText = `View ${title}`;
-    } else if (studentDraft.status === 'active') {
-      buttonText = `Return to ${title}`;
     }
 
     return {
