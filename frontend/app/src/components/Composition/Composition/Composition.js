@@ -20,7 +20,7 @@ class Composition extends Component {
 
   handleEditorStateChange = newContent => {
     this.setState({
-      draftIsEmpty: !newContent.blocks[0].text,
+      draftIsEmpty: this.props.getDraftIsEmpty(newContent),
       content: newContent
     });
   };
@@ -30,11 +30,10 @@ class Composition extends Component {
     if (!content) {
       return false;
     }
-    const currentContent = content.blocks[0].text;
     const paper = _.get(this.props, 'studentDraft.paper');
     // Return true if the paper has already been saved and the current content is different
-    // or if there is no saved paper and the current draft has been started
-    return (paper && paper.blocks[0].text !== currentContent) || (!paper && currentContent.length > 0);
+    // or if there is no saved paper and the current draft is not empty
+    return !_.isEqual(content, paper) || (!paper && !this.state.draftIsEmpty);
   };
 
   renderSaveMessage = () => {
@@ -105,7 +104,8 @@ Composition.propTypes = {
   updateDraftPaper: PropTypes.func,
   hasStartedReflectionQuestions: PropTypes.bool,
   saveDraftMessage: PropTypes.object,
-  draftIsEmpty: PropTypes.bool
+  draftIsEmpty: PropTypes.bool,
+  getDraftIsEmpty: PropTypes.func
 };
 
 export default Composition;
