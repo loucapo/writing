@@ -44,6 +44,11 @@
   flex: 1;
   height: 80px;
   padding: 5px;
+  overflow: scroll;
+}
+
+.commentText2{
+  display: inline;
 }
 
 [contenteditable=true]:empty:before {

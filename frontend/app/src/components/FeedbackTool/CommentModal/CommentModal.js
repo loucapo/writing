@@ -9,31 +9,6 @@ class CommentModal extends Component {
     level: null
   };
 
-  // componentDidUpdate = () => {
-    // if(this.state.level !== null) {
-    //   let ce = document.querySelector(`.${styles.commentText}`);
-    //   ce.addEventListener ('DOMNodeRemoved', this.onNodeRemoved, true);
-    // }
-  // };
-
-  onNodeRemoved = (e) => {
-    // debugger;
-    console.log(`==========e.target=========`);
-    console.log(e.target);
-    console.log(`==========END e.target=========`);
-    if(e.target.id === 'commentTag') {
-      this.setState({
-        level: null
-      });
-    }
-  };
-
-  // componentDidUpdate = () => {
-  //   console.log('updating!!!!!!!!!!');
-  //   console.log(this.state.comment);
-  //   if(this.state.comment)
-  // };
-
   handleChange = event => {
     if (event.target.lastChild && event.target.lastChild.textContent) {
       let trimmedComment = event.target.lastChild.textContent.trim();
@@ -112,15 +87,18 @@ class CommentModal extends Component {
           <div className={styles.comments}>
             <div
               className={styles.commentText}
-              placeholder="Please leave additional feedback here"
-              contentEditable={true}
-              onInput={this.handleChange}
-              suppressContentEditableWarning={true}
             >
               {this.state.level
-                ? <MLTag text={this.state.level} deleteTag={this.deleteTag} onNodeRemoved={this.onNodeRemoved} />
+                ? <MLTag text={this.state.level} deleteTag={this.deleteTag} />
                 : null
               }
+              <div
+                placeholder="Please leave additional feedback here"
+                contentEditable={true}
+                suppressContentEditableWarning={true}
+                className={styles.commentText2}
+
+              />
             </div>
           </div>
 
