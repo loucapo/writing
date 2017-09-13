@@ -1,7 +1,5 @@
 @WRITE-68
-  @only
 Feature: Student Navigate Draft Screens
-  @only
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
@@ -42,7 +40,7 @@ Feature: Student Navigate Draft Screens
     And I click "draft_editor.view_previous_draft_link"
     Then I wait until there is 1 "draft_editor.leave_draft_page_button" visible
     And I click "draft_editor.leave_draft_page_button"
-    #Then I wait until there are 1 "comment"
+    Then I wait until there are 1 "student_read_only_feedback.instructor_end_comment"
 
   Scenario: Student Stays On Draft Page Without Saving
     Given I launch the activity as a "student"
@@ -52,13 +50,14 @@ Feature: Student Navigate Draft Screens
     And I click "draft_editor.stay_draft_page_button"
     Then I wait until there are 1 "draft_editor.view_previous_draft_link"
 
-  Scenario: Student Saves Work And Navigates To Precious Draft
+  Scenario: Student Saves Work And Navigates To Previous Draft
     Given I launch the activity as a "student"
     And I click "view_feedback_button"
     When I click "start_final_paper"
     And I type "this is draft 2" in "draft_editor.draft_area"
     And I click "draft_editor.draft_save_button_enabled"
     And I click "draft_editor.view_previous_draft_link"
-    #Then I wait until there are 1 "comment"
+    Then I wait until there are 1 "student_read_only_feedback.instructor_end_comment"
     Then the text of "student_read_only_feedback.start_next_draft" should be "Return to Final Paper"
+    And the text of "student_read_only_feedback.submitted_draft_text" should be "Happy birthday Writer Key!"
     
