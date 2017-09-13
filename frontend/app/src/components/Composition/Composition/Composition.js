@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import _ from 'lodash';
 import { MLEditor, MLMessage } from '../../MLComponents';
 import { CompositionHeader } from '../index';
 import { CompositionDraftDetailsContainer } from '../../../containers';
@@ -19,15 +20,20 @@ class Composition extends Component {
 
   handleEditorStateChange = newContent => {
     this.setState({
-      draftIsEmpty: !newContent.blocks[0].text,
+      draftIsEmpty: this.props.getDraftIsEmpty(newContent),
       content: newContent
     });
   };
 
   checkForUnSavedChanges = () => {
-    let paper = this.props.studentDraft.paper;
-    let content = this.state.content;
-    return paper && paper.blocks[0].text !== content.blocks[0].text;
+    const content = this.state.content;
+    if (!content) {
+      return false;
+    }
+    const paper = _.get(this.props, 'studentDraft.paper');
+    // Return true if the paper has already been saved and the current content is different
+    // or if there is no saved paper and the current draft is not empty
+    return !_.isEqual(content, paper) || (!paper && !this.state.draftIsEmpty);
   };
 
   renderSaveMessage = () => {
@@ -81,6 +87,7 @@ class Composition extends Component {
         <div className={styles.infoColumn}>
           <CompositionDraftDetailsContainer
             activityId={this.props.activityId}
+            studentActivityId={this.props.studentActivityId}
             studentDraft={this.props.studentDraft}
             unsavedChanges={this.checkForUnSavedChanges()}
           />
@@ -97,7 +104,8 @@ Composition.propTypes = {
   updateDraftPaper: PropTypes.func,
   hasStartedReflectionQuestions: PropTypes.bool,
   saveDraftMessage: PropTypes.object,
-  draftIsEmpty: PropTypes.bool
+  draftIsEmpty: PropTypes.bool,
+  getDraftIsEmpty: PropTypes.func
 };
 
 export default Composition;

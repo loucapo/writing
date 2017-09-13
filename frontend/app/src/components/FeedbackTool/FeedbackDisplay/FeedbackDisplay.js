@@ -10,6 +10,8 @@ const FeedbackDisplay = ({
   reflectionQuestions,
   homeRoute,
   draftTitle,
+  backText,
+  backLink,
   activityTitle,
   rubricId,
   lastDraft,
@@ -20,6 +22,8 @@ const FeedbackDisplay = ({
     <FeedbackDisplayHeader
       homeRoute={homeRoute}
       draftTitle={draftTitle}
+      backText={backText}
+      backLink={backLink}
       activityTitle={activityTitle}
       linkableDrafts={linkableDrafts}
     />
@@ -83,6 +87,8 @@ FeedbackDisplay.propTypes = {
   activityTitle: PropTypes.string,
   rubricId: PropTypes.string,
   lastDraft: PropTypes.bool,
+  backLink: PropTypes.string,
+  backText: PropTypes.string,
   linkableDrafts: PropTypes.array,
   noRubricScores: PropTypes.bool
 };

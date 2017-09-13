@@ -5,11 +5,11 @@ import MLIcon from 'ml-react-cdl-icons';
 import { MLButton } from '../../MLComponents';
 import styles from './feedbackDisplayHeader.css';
 
-const FeedbackDisplayHeader = ({ homeRoute, draftTitle, activityTitle, linkableDrafts }) => (
+const FeedbackDisplayHeader = ({ backLink, backText, linkableDrafts }) => (
   <header className={styles.header}>
     <div className={styles.leftContainer}>
       <div data-id="header-back-button" className={styles.leftSubContainer}>
-        <Link to={`${homeRoute}?display=submissions`}>
+        <Link to={backLink}>
           <MLIcon
             className={styles.arrowIcon}
             title="arrow left"
@@ -21,7 +21,7 @@ const FeedbackDisplayHeader = ({ homeRoute, draftTitle, activityTitle, linkableD
         </Link>
       </div>
       <div>
-        <span data-id="instructor-name" className={styles.instructorName}>{activityTitle} - {draftTitle}</span>
+        <span data-id="instructor-name" className={styles.instructorName}>{backText}</span>
       </div>
     </div>
     <div className={styles.rightContainer}>
@@ -49,8 +49,8 @@ const FeedbackDisplayHeader = ({ homeRoute, draftTitle, activityTitle, linkableD
 
 FeedbackDisplayHeader.propTypes = {
   homeRoute: PropTypes.string,
-  draftTitle: PropTypes.string,
-  activityTitle: PropTypes.string,
+  backLink: PropTypes.string,
+  backText: PropTypes.string,
   linkableDrafts: PropTypes.array
 };
 

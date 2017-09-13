@@ -69,9 +69,23 @@ const mapStateToProps = (state, props) => {
     draftWithInfo => draftWithInfo.draftId !== (studentDraft && studentDraft.draftId)
   );
 
+  // Default back button goes to activity
+  let backLink = `${state.defaults.homeRoute}?display=submissions`;
+  let backText = activityTitle;
+
   if (draft) {
     lastDraft = numberOfDrafts === draft.index + 1;
     draftTitle = draft.studentInfo.buttonText;
+
+    const routingState = state.routing.locationBeforeTransitions;
+    if (routingState.query && routingState.query.fromDraftId) {
+      const fromDraftId = routingState.query.fromDraftId;
+      const fromDraft = draftsWithInfo.find(draftWithInfo => draftWithInfo.draftId === fromDraftId);
+      if (fromDraft) {
+        backLink = `/activity/${draft.activityId}/draft/${fromDraftId}`;
+        backText = fromDraft.studentInfo.title;
+      }
+    }
 
     reflectionQuestions = draft.studentReflectionQuestions.map(reflection => {
       let answer = state.reflectionAnswers.find(
@@ -96,6 +110,8 @@ const mapStateToProps = (state, props) => {
     draftTitle,
     activityTitle,
     lastDraft,
+    backLink,
+    backText,
     linkableDrafts,
     noRubricScores
   };
