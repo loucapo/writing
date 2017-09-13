@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { AddCommentButton, CommentModal, FeedbackFlag } from '../index';
+import { AddCommentButton, CommentModal, FeedbackFlags } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
@@ -239,13 +239,7 @@ class FeedbackEditor extends Component {
         {this.state.showAddComment
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
           : null}
-        {this.props.feedback.map(feedback => {
-          let highlight = document.querySelector(`[data-feedback-id='${feedback.feedbackId}']`);
-          if (highlight) {
-            let flagTop = highlight.offsetTop - 8;
-            return <FeedbackFlag key={feedback.feedbackId} feedback={feedback} flagTop={flagTop} />;
-          }
-        })}
+        <FeedbackFlags feedback={this.props.feedback} />
       </div>
     );
   }
