@@ -26,8 +26,8 @@ Feature: Instructor Can Add Pre-Defined Comment
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
-    And I click "needs_work_comment_button"
-    And the text of "comment_modal.add_comment_textarea" should be "Needs work"
+    And I click "comment_modal.needs_work_comment_button"
+    And the text of "comment_modal.add_comment_tag_text" should be "Needs Work"
 
   @WRITE-1199
   Scenario: Disabled Submit Button
@@ -37,7 +37,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
-    Then I wait until there is 1 "reflection_questions_modal.disabled_submit" visible
+    Then I wait until there is 1 "comment_modal.save_comment_disabled" visible
 
   @WRITE-1199
   Scenario: The Instructor Selects Good Job
@@ -47,9 +47,9 @@ Feature: Instructor Can Add Pre-Defined Comment
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
-    And I click "good_job_comment_button"
-    And the text of "comment_modal.add_comment_textarea" should be "Good Job"
-    Then I wait until there is 1 "comment_modal.active_submit" visible
+    And I click "comment_modal.good_job_comment_button"
+    And the text of "comment_modal.add_comment_tag_text" should be "Good Job"
+    Then I wait until there is 1 "comment_modal.save_comment" visible
 
   @WRITE-1199
   Scenario: The Instructor Selects Needs Extensive Work
@@ -59,9 +59,9 @@ Feature: Instructor Can Add Pre-Defined Comment
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
-    And I click "needs_extensive_work_comment_button"
-    And the text of "comment_modal.add_comment_textarea" should be "Needs Extensive Work"
-    Then I wait until there is 1 "reflection_questions_modal.active_submit" visible
+    And I click "comment_modal.needs_extensive_work_comment_button"
+    And the text of "comment_modal.add_comment_tag_text" should be "Needs Extensive Revision"
+    Then I wait until there is 1 "comment_modal.save_comment" visible
 
   @pending
   @WRITE-1212

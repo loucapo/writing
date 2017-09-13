@@ -94,17 +94,18 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       student_submitted_draft_text: {
         desc: `Read only submitted draft from instructor view`,
-        locator: `[class^='public-DraftEditor-content']`
+        locator: `[id='feedbackEditor']`
       },
       add_comment_button: {
-      desc: `Button to add comment to highlighted text`,
+        desc: `Button to add comment to highlighted text`,
         locator: `[id='addCommentButton']`
-    },
+      },
     };
   }
 
   comment_modal(arg) {
     return InstructorCommentModal.generate(arg, {
-      locator: `[id='commentModal']`}); }
+      locator: `[id='commentModal']`}); 
+  }
 };
 

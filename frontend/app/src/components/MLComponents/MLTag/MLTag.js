@@ -9,7 +9,7 @@ class MLTag extends Component {
   componentDidMount = () => {
     console.log('did mount');
     let ce = document.getElementById('commentTag');
-    ce.addEventListener ('DOMNodeRemoved', this.props.onNodeRemoved, false);
+    ce.addEventListener('DOMNodeRemoved', this.props.onNodeRemoved, false);
   };
 
   // componentWillUnmount = () => {
@@ -27,12 +27,12 @@ class MLTag extends Component {
         <div className={styles.tagClose} contentEditable={false}>
           <a data-id="delete-tag" onClick={this.props.deleteTag}>
             <MLIcon
-                className={styles.closeIcon}
-                title="close"
-                type="x"
-                width="18"
-                height="19"
-                viewBox="0 0 24 24"
+              className={styles.closeIcon}
+              title="close"
+              type="x"
+              width="18"
+              height="19"
+              viewBox="0 0 24 24"
             />
           </a>
         </div>
