@@ -1,3 +1,5 @@
+@WRITE-1198
+  @only
 Feature: Instructor Expand and Collapse Comment
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -33,10 +35,9 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "comment"
-    Then I wait until there is 1 "comment_header" visible
-    Then I wait until there is 1 "comment_label" visible
-    Then I wait until there is 1 "comment_text" visible
+    And I click "comment_flag"
+    Then I wait until there is 1 "comment_flag_title" visible
+    Then I wait until there is 1 "comment_flag_feedback" visible
 
   @WRITE-1198
   Scenario: The Instructor Clicks On Expanded Comment
@@ -44,10 +45,10 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "comment"
-    Then I wait until there is 1 "comment_header" visible
-    Then I wait until there is 0 "comment_label" visible
-    Then I wait until there is 0 "comment_text" visible
+    And I click "comment_flag"
+    And I click "comment_flag"
+    Then I wait until there is 1 "comment_flag_title" visible
+    Then I wait until there is 0 "comment_flag_feedback" visible
 
   @WRITE-1198
   Scenario: The Instructor Clicks On Outside Space of Expanded COmment
@@ -55,7 +56,7 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "comment"
-    Then I wait until there is 1 "comment_header" visible
-    Then I wait until there is 0 "comment_label" visible
-    Then I wait until there is 0 "comment_text" visible
+    And I click "comment_flag"
+    And I click "student_submitted_draft_text"
+    Then I wait until there is 1 "comment_flag_title" visible
+    Then I wait until there is 0 "comment_flag_feedback" visible

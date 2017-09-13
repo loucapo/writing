@@ -99,7 +99,19 @@ exports.InstructorFeedbackPage = class extends Page {
       add_comment_button: {
       desc: `Button to add comment to highlighted text`,
         locator: `[id='addCommentButton']`
-    },
+      },
+      comment_flag: {
+        desc: `Button to add comment to highlighted text`,
+        locator: `[class^='FeedbackFlag__flag']`
+      },
+      comment_flag_title: {
+        desc: `Button to add comment to highlighted text`,
+        locator: `[class^='FeedbackFlag__flagTitle']`
+      },
+      comment_flag_feedback: {
+        desc: `Button to add comment to highlighted text`,
+        locator: `[class^='FeedbackFlag__feedback']`
+      }
     };
   }
 
