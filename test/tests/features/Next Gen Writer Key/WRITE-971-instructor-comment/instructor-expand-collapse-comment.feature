@@ -23,7 +23,7 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    When I select "student_submitted_draft_text" text
+    When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     And I click "add_comment_button"
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
@@ -35,7 +35,7 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "comment_flag"
+    And I click "instructor_draft_comment"
     Then I wait until there is 1 "comment_flag_title" visible
     Then I wait until there is 1 "comment_flag_feedback" visible
 
@@ -45,8 +45,8 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "comment_flag"
-    And I click "comment_flag"
+    And I click "instructor_draft_comment"
+    And I click "instructor_draft_comment"
     Then I wait until there is 1 "comment_flag_title" visible
     Then I wait until there is 0 "comment_flag_feedback" visible
 
@@ -56,7 +56,7 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "comment_flag"
+    And I click "instructor_draft_comment"
     And I click "student_submitted_draft_text"
     Then I wait until there is 1 "comment_flag_title" visible
     Then I wait until there is 0 "comment_flag_feedback" visible

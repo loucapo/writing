@@ -94,15 +94,15 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       student_submitted_draft_text: {
         desc: `Read only submitted draft from instructor view`,
-        locator: `[class^='public-DraftEditor-content']`
+        locator: `[class^='FeedbackEditor__feedbackEditor']`
       },
       add_comment_button: {
       desc: `Button to add comment to highlighted text`,
         locator: `[id='addCommentButton']`
       },
-      comment_flag: {
-        desc: `Button to add comment to highlighted text`,
-        locator: `[class^='FeedbackFlag__flag']`
+      instructor_draft_comment: {
+        desc: `Feedback flag in the margin`,
+        locator: `[class^='FeedbackFlag__flagTitle']`
       },
       comment_flag_title: {
         desc: `Button to add comment to highlighted text`,
