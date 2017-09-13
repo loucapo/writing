@@ -274,7 +274,7 @@ exports.define = function(steps) {
   });
 
   steps.then(/the color of "(.*)" should be "(.*)"/, (poloc, color) => {
-    return polocToPO(poloc).then(el => {
+    return polocToElem(poloc).then(el => {
       return el.getCssValue('background-color');
     }).then(actualColor => {
       expect(rgbaToHex(actualColor)).to.equal(color);
