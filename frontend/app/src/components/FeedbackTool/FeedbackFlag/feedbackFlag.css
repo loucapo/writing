@@ -10,6 +10,11 @@
   border: 1px solid var(--yellow-light);
   background: #fff;
   right: 0;
+  z-index: 1;
+}
+
+.expanded {
+  z-index: 2;
 }
 
 .flagGreen {
@@ -27,6 +32,7 @@
   line-height: 38px;
   padding: 0 15px 0 38px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .icon {
@@ -50,4 +56,14 @@
 
 .flagGreen .triangleOutline {
   stroke: var(--green-light);
+}
+
+.feedback {
+  border-top: 1px solid var(--gray-light);
+  padding: 12px;
+}
+
+.feedbackLabel {
+  font-weight: bold;
+  padding-bottom: 5px;
 }
