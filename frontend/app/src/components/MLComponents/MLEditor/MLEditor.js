@@ -5,16 +5,20 @@ import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import styles from './mlEditor.css';
 
 class MLEditor extends Component {
-  editorState = this.props.content ? EditorState.createWithContent(convertFromRaw(this.props.content)) : null;
 
   state = {
-    editorState: this.editorState
+    editorState: null
+  };
+
+  componentWillMount = () => {
+    this.createOrUpdateEditorState(this.props.content);
   };
 
   componentWillReceiveProps = newProps => {
     if (newProps.editable) {
       this.refs.editor.focusEditor();
     }
+    this.createOrUpdateEditorState(newProps.content);
   };
 
   onEditorStateChange = editorState => {
@@ -26,6 +30,14 @@ class MLEditor extends Component {
       this.props.notifyOnEditorUpdate(content);
     }
   };
+
+  createOrUpdateEditorState = content => {
+    if (!this.state.editorState) {
+      this.setState({
+        editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : null
+      });
+    }
+  }
 
   handleBlur = event => {
     let id;
