@@ -1,5 +1,4 @@
 @WRITE-1198
-  @only
 Feature: Instructor Expand and Collapse Comment
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -27,7 +26,9 @@ Feature: Instructor Expand and Collapse Comment
     And I click "add_comment_button"
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
+    And I click "comment_modal.good_job_comment_button"
     And I click "comment_modal.save_comment"
+    And I sleep for 3 seconds
 
   @WRITE-1198
   Scenario: The Instructor Clicks On Collapsed Comment
@@ -51,7 +52,7 @@ Feature: Instructor Expand and Collapse Comment
     Then I wait until there is 0 "comment_flag_feedback" visible
 
   @WRITE-1198
-  Scenario: The Instructor Clicks On Outside Space of Expanded COmment
+  Scenario: The Instructor Clicks On Outside Space of Expanded Comment
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
