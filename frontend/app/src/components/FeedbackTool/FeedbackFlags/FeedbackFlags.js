@@ -21,7 +21,7 @@ class FeedbackFlags extends Component {
   };
 
   handleCollapse = () => {
-    let clickedElem = document.querySelector('[data-id=' + this.state.expandedId + ']');
+    let clickedElem = document.querySelector('[data-id="' + this.state.expandedId + '"]');
     if(!clickedElem.contains(event.target)) {
       this.setState({
         expandedId: null
