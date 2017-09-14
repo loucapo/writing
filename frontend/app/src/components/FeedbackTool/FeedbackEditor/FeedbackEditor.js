@@ -109,7 +109,7 @@ class FeedbackEditor extends Component {
         this.setState({ showAddComment: false });
         this.removeSelections();
       }
-      if (!this.state.showCommentMenu && this.textHasBeenSelected()) {
+      if (!this.state.showCommentMenu && !this.state.showCommentModal && this.textHasBeenSelected()) {
         this.addSelections();
         this.addCommentButton();
       }
