@@ -1,11 +1,15 @@
 @import 'variables.css';
 
 /* Tags */
+.tagWrapper {
+  display: inline-block;
+}
+
 .tag {
   background-color: var(--gray-very-light);
   border: 1px solid var(--gray-dark);
   border-radius: 3px;
-  display: inline-flex;
+  display: flex;
   margin-right: 10px;
 }
 
