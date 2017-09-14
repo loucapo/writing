@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MLEditor, MLCard } from '../../MLComponents';
-import { FeedbackDisplayHeader } from '../index.js';
+import { MLCard } from '../../MLComponents';
+import { FeedbackDisplayHeader, FeedbackFlags } from '../index.js';
 import { RubricDisplayContainer } from '../../../containers';
 import styles from './feedbackDisplay.css';
 
@@ -16,7 +16,8 @@ const FeedbackDisplay = ({
   rubricId,
   lastDraft,
   linkableDrafts,
-  noRubricScores
+  noRubricScores,
+  feedback
 }) => (
   <div className={styles.page}>
     <FeedbackDisplayHeader
@@ -37,16 +38,20 @@ const FeedbackDisplay = ({
           : null
         }
         { (lastDraft && !studentDraft.finalGrade) ?
-          <div>
-            <span className={styles.finalGradeLabel}>Instructor did not select a final score</span>
-          </div>
+          <span className={styles.finalGradeLabel}>Instructor did not select a final score</span>
           : null
         }
         {studentDraft.endComment ? <span>{studentDraft.endComment}</span> : <span>No end comment added.</span>}
       </MLCard>
 
       <MLCard type="draft" title={draftTitle}>
-        <MLEditor content={studentDraft.paper} editable={false} toolbarHidden={true} />
+        <div className={styles.feedbackPaperWrapper}>
+          <div
+            className={styles.feedbackPaper}
+            dangerouslySetInnerHTML={{ __html: studentDraft.feedbackPaper }}
+          />
+          <FeedbackFlags feedback={feedback} />
+        </div>
       </MLCard>
 
       <MLCard type="reflection" title="Reflection">
@@ -90,7 +95,8 @@ FeedbackDisplay.propTypes = {
   backLink: PropTypes.string,
   backText: PropTypes.string,
   linkableDrafts: PropTypes.array,
-  noRubricScores: PropTypes.bool
+  noRubricScores: PropTypes.bool,
+  feedback: PropTypes.array
 };
 
 export default FeedbackDisplay;
