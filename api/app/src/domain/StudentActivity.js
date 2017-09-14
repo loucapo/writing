@@ -189,5 +189,25 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       let studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
       return studentDraft.feedback;
     }
+
+    removeFeedbackFromStudentDraft(cmd) {
+      const event = this.mapper(cmd);
+      const studentDraft = this.studentDrafts.find(sDraft => sDraft.studentDraftId === cmd.studentDraftId);
+
+      // check business rules here
+      studentDraft.feedback = studentDraft.feedback.reduce((acc, f) => {
+        if (f.feedbackId !== cmd.feedbackId) {
+          acc.push(f);
+        }
+        return acc;
+      }, []);
+
+      this.raiseEvent({
+        eventName: 'feedbackRemovedFromStudentDraft',
+        event
+      });
+
+      return event;
+    }
   };
 };
