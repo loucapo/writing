@@ -1,4 +1,3 @@
-@only
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
