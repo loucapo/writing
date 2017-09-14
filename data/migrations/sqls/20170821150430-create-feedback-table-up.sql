@@ -4,7 +4,7 @@ CREATE TABLE "feedback"
 (
   feedback_id uuid NOT NULL,
   student_draft_id uuid NOT NULL,
-  content text NOT NULL,
+  content text,
   created_by_id text,
   created_date date
 )

@@ -22,3 +22,14 @@
   font-size: 14px;
   font-weight: bold;
 }
+
+.feedbackPaperWrapper {
+  position: relative;
+}
+
+.feedbackPaper {
+  padding: 6px 5px 0;
+  flex: 1;
+  overflow: visible;
+  width: 75%;
+}

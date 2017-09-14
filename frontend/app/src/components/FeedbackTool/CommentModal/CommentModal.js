@@ -10,12 +10,7 @@ class CommentModal extends Component {
   };
 
   handleChange = event => {
-    if (event.target.lastChild && event.target.lastChild.textContent) {
-      let trimmedComment = event.target.lastChild.textContent.trim();
-      this.setState({ comment: trimmedComment });
-    } else {
-      this.setState({ comment: null });
-    }
+    this.setState({ comment: event.target.textContent.trim() });
   };
 
   handleBackgroundClick = event => {
@@ -83,16 +78,19 @@ class CommentModal extends Component {
 
           <div className={styles.comments}>
             <div
-              className={styles.commentText}
-              placeholder="Please leave additional feedback here"
-              contentEditable={true}
-              onKeyUp={this.handleChange}
-              suppressContentEditableWarning={true}
+              className={styles.commentTextWrapper}
             >
               {this.state.level
                 ? <MLTag text={this.state.level} deleteTag={this.deleteTag} />
                 : null
               }
+              <div
+                placeholder="Please leave additional feedback here"
+                contentEditable={true}
+                suppressContentEditableWarning={true}
+                onKeyUp={this.handleChange}
+                className={styles.commentText}
+              />
             </div>
           </div>
 
@@ -116,7 +114,7 @@ class CommentModal extends Component {
               dataId="save-comment-modal"
               title="Save"
               handleClick={this.props.handleSave.bind(this, this.state.comment, this.state.level)}
-              disabled={!this.state.comment}
+              disabled={!this.state.level}
             />
           </div>
         </div>

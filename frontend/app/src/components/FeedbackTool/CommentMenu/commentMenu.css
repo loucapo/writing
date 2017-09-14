@@ -1,0 +1,19 @@
+@import 'variables.css';
+
+.commentMenu {
+  position: absolute;
+  background-color: var(--gray-very-light);
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  color: var(--aqua);
+  cursor: pointer;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.commentMenu li {
+  padding: 15px 30px;
+  border-bottom: 1px solid var(--gray-light);
+}
