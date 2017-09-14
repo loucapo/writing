@@ -10,14 +10,7 @@ class CommentModal extends Component {
   };
 
   handleChange = event => {
-    if (event.target.lastChild && event.target.lastChild.textContent) {
-      let trimmedComment = event.target.lastChild.textContent.trim();
-      this.setState({ comment: trimmedComment });
-    } else {
-      event.preventDefault();
-      event.stopPropagation();
-      this.setState({ comment: null });
-    }
+    this.setState({ comment: event.target.textContent.trim() });
   };
 
   handleBackgroundClick = event => {
@@ -30,7 +23,6 @@ class CommentModal extends Component {
     this.setState({
       level: e.target.innerText
     });
-    document.querySelector(`.${styles.commentModal}`).focus();
   };
 
   deleteTag = (e) => {
@@ -86,7 +78,7 @@ class CommentModal extends Component {
 
           <div className={styles.comments}>
             <div
-              className={styles.commentText}
+              className={styles.commentTextWrapper}
             >
               {this.state.level
                 ? <MLTag text={this.state.level} deleteTag={this.deleteTag} />
@@ -96,8 +88,8 @@ class CommentModal extends Component {
                 placeholder="Please leave additional feedback here"
                 contentEditable={true}
                 suppressContentEditableWarning={true}
-                className={styles.commentText2}
-
+                onKeyUp={this.handleChange}
+                className={styles.commentText}
               />
             </div>
           </div>
