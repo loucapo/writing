@@ -44,7 +44,7 @@
   flex: 1;
   height: 80px;
   padding: 5px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .commentText{

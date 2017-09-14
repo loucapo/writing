@@ -18,7 +18,9 @@ class MLEditor extends Component {
     if (newProps.editable) {
       this.refs.editor.focusEditor();
     }
-    this.createOrUpdateEditorState(newProps.content);
+    if (!this.state.editorState || newProps.content !== this.props.content) {
+      this.createOrUpdateEditorState(newProps.content);
+    }
   };
 
   onEditorStateChange = editorState => {
@@ -32,11 +34,9 @@ class MLEditor extends Component {
   };
 
   createOrUpdateEditorState = content => {
-    if (!this.state.editorState) {
-      this.setState({
-        editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : null
-      });
-    }
+    this.setState({
+      editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : null
+    });
   }
 
   handleBlur = event => {

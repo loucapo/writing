@@ -1,4 +1,5 @@
 @WRITE-228
+@only
 Feature: Instructor can add end comment to completed draft
   @db=reset
   Scenario: Setup A Student Draft Submission

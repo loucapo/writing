@@ -8,6 +8,7 @@ import { addStudentInfoToDrafts } from './selectors';
 import { getStudentDraftByStudentDraftId, updateReviewStatus } from '../modules/studentDraftModule';
 import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { getRubricScores } from '../modules/rubricScoresModule';
+import { getFeedback } from '../modules/feedbackModule';
 
 class FeedbackDisplayContainer extends Component {
   componentWillMount() {
@@ -19,6 +20,7 @@ class FeedbackDisplayContainer extends Component {
     this.props.getReflectionQuestions();
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
     this.props.getRubricScores(this.props.params.studentDraftId);
+    this.props.getFeedback(this.props.params.studentDraftId);
   }
 
   componentWillUpdate(newProps) {
@@ -41,23 +43,20 @@ class FeedbackDisplayContainer extends Component {
 }
 
 FeedbackDisplayContainer.propTypes = {
-  draft: PropTypes.object,
-  studentDraft: PropTypes.object,
   params: PropTypes.object,
-  homeRoute: PropTypes.string,
+  studentDraft: PropTypes.object,
   getReflectionQuestions: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
   getStudentDraftByStudentDraftId: PropTypes.func,
   getStudentDrafts: PropTypes.func,
-  noRubricScores: PropTypes.bool,
   getRubricScores: PropTypes.func,
-  updateReviewStatus: PropTypes.func
+  updateReviewStatus: PropTypes.func,
+  getFeedback: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
   const draftsWithInfo = addStudentInfoToDrafts(state, props);
   let studentDraft = state.studentDraft[0];
-  let rubricId = state.activities[0].rubricId;
   let lastDraft;
   let numberOfDrafts = state.drafts.length;
   let reflectionQuestions = [];
@@ -106,14 +105,15 @@ const mapStateToProps = (state, props) => {
     studentDraft,
     reflectionQuestions,
     homeRoute: state.defaults.homeRoute,
-    rubricId,
+    rubricId: state.activities[0].rubricId,
     draftTitle,
     activityTitle,
     lastDraft,
     backLink,
     backText,
     linkableDrafts,
-    noRubricScores
+    noRubricScores,
+    feedback: state.feedback
   };
 };
 
@@ -123,5 +123,6 @@ export default connect(mapStateToProps, {
   getStudentDraftByStudentDraftId,
   getStudentDrafts,
   getRubricScores,
-  updateReviewStatus
+  updateReviewStatus,
+  getFeedback
 })(FeedbackDisplayContainer);
