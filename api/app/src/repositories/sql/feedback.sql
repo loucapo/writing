@@ -17,3 +17,11 @@ VALUES
 --name: getFeedback
 SELECT * FROM feedback
 WHERE student_draft_id = :studentDraftId
+AND deleted_date is null
+
+--name: deleteFeedback
+UPDATE feedback
+SET
+    deleted_date = :deletedDate,
+    deleted_by_id = :deletedById
+WHERE feedback_id = :feedbackId;
