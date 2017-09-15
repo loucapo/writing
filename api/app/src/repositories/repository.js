@@ -44,7 +44,7 @@ module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
 
   // regular query that pulls a new client from the pool each time
   function query(queriesFile, query, event, debug) { //eslint-disable-line no-shadow
-    const adapter = makeAdapter(new pgasync.default(config.postgres.config), debug);
+    const adapter = makeAdapter(new pgasync.default(config.postgres.config), debug); //eslint-disable-line new-cap
     return executeQuery(adapter, queriesFile, query, event);
   }
 
@@ -59,7 +59,7 @@ module.exports = function(pgasync, config, puresql, humps, pgformat, moment) {
   }
 
   function transaction(callback) {
-    let pg = new pgasync.default(config.postgres.config);
+    let pg = new pgasync.default(config.postgres.config); //eslint-disable-line new-cap
     return pg.transaction(async client => {
       return callback(transactionRepo(client));
     });

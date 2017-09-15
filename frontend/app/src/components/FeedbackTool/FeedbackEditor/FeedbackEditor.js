@@ -84,7 +84,8 @@ class FeedbackEditor extends Component {
   };
 
   handleRightClick = e => {
-    if (this.textHasBeenSelected()) {
+    let selected = document.querySelector(`.${styles.selected}`);
+    if (selected) {
       e.preventDefault();
       this.position.top += 20;
 

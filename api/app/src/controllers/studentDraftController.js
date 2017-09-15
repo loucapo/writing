@@ -283,6 +283,30 @@ module.exports = function(
       ctx.status = 200;
       ctx.body = feedback;
       return ctx;
+    },
+
+    async deleteFeedback(ctx) {
+      const command = ctx.request.body;
+      command.studentActivityId = ctx.params.studentActivityId;
+      command.studentDraftId = ctx.params.studentDraftId;
+      command.feedbackId = ctx.params.feedbackId;
+      command.deletedById = ctx.state.user.id;
+      command.deletedDate = moment().toISOString();
+      const studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
+      const event = studentActivity.removeFeedbackFromStudentDraft(command);
+
+      const queryParams = {
+        feedbackId: event.feedbackId,
+        deletedById: ctx.state.user.id,
+        deletedDate: moment().toISOString()
+      };
+
+      repository.transaction(async repo => {
+        await repo.query(sqlLibrary.feedback, 'deleteFeedback', queryParams);
+      });
+
+      ctx.status = 200;
+      return ctx;
     }
   };
 };

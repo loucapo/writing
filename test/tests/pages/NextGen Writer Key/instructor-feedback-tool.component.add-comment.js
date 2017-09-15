@@ -7,7 +7,7 @@ class InstructorCommentModal extends Component {
     return {
       add_comment_textarea: {
         desc: `Box to add text to a comment`,
-        locator: `[class^='CommentModal__comments'] textarea`
+        locator: `[class^='CommentModal__commentText']`
       },
       add_comment_tag_text: {
         desc: `Tags text inside the comment text area`,
