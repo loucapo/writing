@@ -10,6 +10,7 @@ pages.instructor_feedback = new InstructorFeedbackPage();
 
 let page = pages.instructor_summary;
 const faker = require('faker');
+const fs = require('fs');
 // TODO: bust these out to here \/
 //const ch = require('./core-helper');
 
@@ -213,40 +214,53 @@ exports.define = function(steps) {
     return driver.manage().window().maximize();
   });
 
-  function element_select_text_and_mouseup(selector) {
-    // XXX this could be expanded to set the start and end points of selected text
-    // might want to break out mouseup from select text too
+  let rangySelectStartTextToEndText =
+      // TODO: make rangy only subselect from the text of `element`, instead of the entire page.
+    `function rangySelectStartTextToEndText(startText, endText, selector) {
+    let sel = rangy.createRange();
+    let rgx = new RegExp(startText.concat("(.*)", endText));
 
-    // selector adjustment -- quotes inside template literals break
-    selector = '"' + selector + '"';
-    return `
-      var elem = document.querySelector(${selector});
-      var doc = window.document, sel, range;
-      if (window.getSelection && doc.createRange) {
-        sel = window.getSelection();
-        range = doc.createRange();
-        range.selectNodeContents(elem);
-        sel.removeAllRanges();
-        sel.addRange(range);
-      } else if (doc.body.createTextRange) {
-        range = doc.body.createTextRange();
-        range.moveToElementText(elem);
-        range.select();
-      }
-      var e = new MouseEvent("mouseup", {
-        bubbles: true,
-        cancelable: true,
-        view: window
-      });
-      elem.dispatchEvent(e);
-    `;
+    sel.findText(rgx);
+    sel.select();
+    let e = new MouseEvent("mousedown", {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    });
+    let elem = document.querySelector(selector);
+    elem.dispatchEvent(e);
+    e = new MouseEvent("mouseup", {
+      bubbles: true,
+      cancelable: true,
+      view: window
+    });
+    elem.dispatchEvent(e);
+    return;
+  }`;
+
+  async function loadAndExecuteScript(files, strings) {
+    let scripts = files.map(scr => fs.readFileSync(marvin.config.stepsDir + '/../external/' + scr, 'utf8'));
+    let execStr = scripts.reduce(function(full, part) {
+      return full.concat(`\r\n`, part);
+    }, ``);
+    execStr = strings.reduce(function(full, part) {
+      return full.concat(`\r\n`, part);
+    }, execStr);
+    return await driver.executeScript(execStr);
   }
 
-  steps.when(/I select "(.*)" text/, async function(element) {
+  async function selectStartTextToEndText(startText, endText, selector) {
+    /*eslint-disable indent */
+    let scripts = ['rangy-core.js', 'rangy-textrange.js'];
+    return await loadAndExecuteScript(scripts,
+                                      [rangySelectStartTextToEndText,
+                                       `return rangySelectStartTextToEndText("${startText}", "${endText}", "${selector}");`]);
+    /*eslint-enable indent */
+  }
+
+  steps.when(/I select text from "(.*)" to "(.*)" in "(.*)"/, async function(startText, endText, element) {
     let pageObject = await polocToPO(element);
-    return polocToElem(element).then(el => {
-      return driver.executeScript(element_select_text_and_mouseup(pageObject.locator));
-    });
+    return await selectStartTextToEndText(startText, endText, pageObject.locator);
   });
 
   steps.when('I delete all content on the draft editor', function() {
@@ -260,7 +274,7 @@ exports.define = function(steps) {
   });
 
   steps.then(/the color of "(.*)" should be "(.*)"/, (poloc, color) => {
-    return polocToPO(poloc).then(el => {
+    return polocToElem(poloc).then(el => {
       return el.getCssValue('background-color');
     }).then(actualColor => {
       expect(rgbaToHex(actualColor)).to.equal(color);
