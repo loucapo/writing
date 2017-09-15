@@ -14,6 +14,7 @@ import CompositionDraftDetailsContainer from './CompositionDraftDetailsContainer
 import SubmissionStatusContainer from './SubmissionStatusContainer';
 import SubmissionStatusTableContainer from './SubmissionStatusTableContainer';
 import FeedbackToolContainer from './FeedbackToolContainer';
+import FeedbackEditorContainer from './FeedbackEditorContainer';
 import FeedbackDisplayContainer from './FeedbackDisplayContainer';
 import RubricContainer from './RubricContainer';
 import RubricDisplayContainer from './RubricDisplayContainer';
@@ -35,6 +36,7 @@ export {
   SubmissionStatusContainer,
   SubmissionStatusTableContainer,
   FeedbackToolContainer,
+  FeedbackEditorContainer,
   FeedbackDisplayContainer,
   RubricContainer,
   RubricDisplayContainer
