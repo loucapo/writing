@@ -1,3 +1,4 @@
+@only
 Feature: Instructor Can Add Pre-Defined Comment
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment

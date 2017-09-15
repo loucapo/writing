@@ -257,6 +257,13 @@ exports.define = function(steps) {
                                        `return rangySelectStartTextToEndText("${startText}", "${endText}", "${selector}");`]);
     /*eslint-enable indent */
   }
+  
+  steps.when(/I select "(.*)" text/, async function(element) {
+    let pageObject = await polocToPO(element);
+    return polocToElem(element).then(el => {
+      return driver.executeScript(element_select_text_and_mouseup(pageObject.locator));
+    });
+  });
 
   steps.when(/I select text from "(.*)" to "(.*)" in "(.*)"/, async function(startText, endText, element) {
     let pageObject = await polocToPO(element);
