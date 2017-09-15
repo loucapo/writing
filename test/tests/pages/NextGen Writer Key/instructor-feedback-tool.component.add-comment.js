@@ -11,7 +11,7 @@ class InstructorCommentModal extends Component {
       },
       add_comment_textarea: {
         desc: `Box to add text to a comment`,
-        locator: `[class^='CommentModal__comments'] textarea`
+        locator: `[class^='CommentModal__commentText']`
       },
       good_job_comment_button: {
         desc: `Button to quickly add good job comment`,
