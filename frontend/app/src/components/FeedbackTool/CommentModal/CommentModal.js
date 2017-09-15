@@ -1,22 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MLButton } from '../../MLComponents';
+import { MLButton, MLTag } from '../../MLComponents';
 import styles from './commentModal.css';
 
 class CommentModal extends Component {
   state = {
-    comment: null
+    comment: null,
+    level: null
   };
 
   handleChange = event => {
-    let trimmedComment = event.target.value.trim();
-    this.setState({ comment: trimmedComment });
+    this.setState({ comment: event.target.textContent.trim() });
   };
 
   handleBackgroundClick = event => {
     if (event.target === event.currentTarget) {
       this.props.closeModal();
     }
+  };
+
+  handleLevelClick = (e) => {
+    this.setState({
+      level: e.target.innerText
+    });
+  };
+
+  deleteTag = (e) => {
+    e.preventDefault();
+    this.setState({
+      level: null
+    });
   };
 
   render() {
@@ -42,28 +55,52 @@ class CommentModal extends Component {
                 className={styles.addCommentButton}
                 dataId="good-job-comment-modal"
                 title="Good Job"
-                bordered={true}
+                bordered={this.state.level !== 'Good Job'}
+                handleClick={this.handleLevelClick}
               />
               <MLButton
                 className={styles.addCommentButton}
                 dataId="needs-work-comment-modal"
                 title="Needs Work"
-                bordered={true}
+                bordered={this.state.level !== 'Needs Work'}
+                handleClick={this.handleLevelClick}
               />
               <MLButton
                 className={styles.addCommentButton}
                 dataId="needs-extensive-work-comment-modal"
-                title="Needs Extensive Work"
-                bordered={true}
+                title="Needs Extensive Revision"
+                bordered={this.state.level !== 'Needs Extensive Revision'}
+                handleClick={this.handleLevelClick}
               />
+              <span className={styles.required}>(required)</span>
             </div>
           </div>
 
           <div className={styles.comments}>
-            <textarea onChange={this.handleChange} placeholder="Please leave additional feedback here" />
+            <div
+              className={styles.commentTextWrapper}
+            >
+              {this.state.level
+                ? <MLTag text={this.state.level} deleteTag={this.deleteTag} />
+                : null
+              }
+              <div
+                placeholder="Please leave additional feedback here"
+                contentEditable={true}
+                suppressContentEditableWarning={true}
+                onKeyUp={this.handleChange}
+                className={styles.commentText}
+              />
+            </div>
           </div>
 
           <div className={styles.controls}>
+            {(this.props.createFeedbackError && this.props.createFeedbackError.status)
+              ? <div className={styles.feedbackError}>
+                  There was a problem saving your comment, please try again.
+                </div>
+              : null
+            }
             <MLButton
               className={styles.addCommentButton}
               dataId="cancel-comment-modal"
@@ -76,8 +113,8 @@ class CommentModal extends Component {
               className={styles.addCommentButton}
               dataId="save-comment-modal"
               title="Save"
-              handleClick={this.props.handleSave.bind(this, this.state.comment)}
-              disabled={!this.state.comment}
+              handleClick={this.props.handleSave.bind(this, this.state.comment, this.state.level)}
+              disabled={!this.state.level}
             />
           </div>
         </div>
@@ -89,7 +126,8 @@ class CommentModal extends Component {
 CommentModal.propTypes = {
   position: PropTypes.object,
   closeModal: PropTypes.func,
-  handleSave: PropTypes.func
+  handleSave: PropTypes.func,
+  createFeedbackError: PropTypes.object
 };
 
 export default CommentModal;

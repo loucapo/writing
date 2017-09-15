@@ -9,6 +9,7 @@ import MLMessage from './MLMessage/MLMessage';
 import MLModal from './MLModal/MLModal';
 import MLSpinner from './MLSpinner/MLSpinner';
 import MLTable from './MLTable/MLTable';
+import MLTag from './MLTag/MLTag';
 
 export {
   MLAccordion,
@@ -21,5 +22,6 @@ export {
   MLMessage,
   MLModal,
   MLSpinner,
-  MLTable
+  MLTable,
+  MLTag
 };

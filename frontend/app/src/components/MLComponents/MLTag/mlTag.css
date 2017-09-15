@@ -1,0 +1,35 @@
+@import 'variables.css';
+
+/* Tags */
+.tagWrapper {
+  display: inline-block;
+}
+
+.tag {
+  background-color: var(--gray-very-light);
+  border: 1px solid var(--gray-dark);
+  border-radius: 3px;
+  display: flex;
+  margin-right: 10px;
+}
+
+.tagText {
+  padding: 6px 15px;
+  color: var(--gray-base);
+}
+
+.tagClose {
+  align-items: center;
+  border-left: 1px solid var(--gray-dark);
+  display: flex;
+  padding: 0 5px;
+}
+
+.tag a {
+  display: flex;
+}
+
+.closeIcon {
+  fill: var(--gray-base);
+  cursor: pointer;
+}

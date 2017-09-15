@@ -9,7 +9,18 @@
   font-size: 14px;
   border: 1px solid var(--yellow-light);
   background: #fff;
-  right: 0px;
+  right: 0;
+  user-select: none;
+  z-index: 1;
+  word-wrap: break-word;
+}
+
+.expanded {
+  z-index: 2;
+}
+
+.flagGreen {
+  border: 1px solid var(--green-light);
 }
 
 .flagCaret {
@@ -21,9 +32,9 @@
 
 .flagTitle {
   line-height: 38px;
-  padding: 0 15px;
+  padding: 0 15px 0 38px;
   font-weight: bold;
-  padding-left: 38px;
+  cursor: pointer;
 }
 
 .icon {
@@ -33,10 +44,28 @@
   left: 8px;
 }
 
+.flagGreen .icon {
+  fill: var(--green-light);
+}
+
 .triangle {
   fill: var(--white);
 }
   
 .triangleOutline {
   stroke: var(--yellow-light);
+}
+
+.flagGreen .triangleOutline {
+  stroke: var(--green-light);
+}
+
+.feedback {
+  border-top: 1px solid var(--gray-light);
+  padding: 12px;
+}
+
+.feedbackLabel {
+  font-weight: bold;
+  padding-bottom: 5px;
 }

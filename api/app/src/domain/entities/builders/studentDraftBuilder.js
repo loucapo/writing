@@ -1,4 +1,4 @@
-module.exports = function(repository, studentReflectionAnswersBuilder, sqlLibrary, StudentDraft) {
+module.exports = function(repository, studentReflectionAnswersBuilder, sqlLibrary, StudentDraft, feedbackBuilder) {
   return {
     async getStudentDraftsByStudentActivityId(studentActivityId) {
       const keys = {studentActivityId};
@@ -9,6 +9,8 @@ module.exports = function(repository, studentReflectionAnswersBuilder, sqlLibrar
           studentDraft.studentReflectionAnswers =
             await studentReflectionAnswersBuilder
               .getStudentReflectionQuestionsByDraftsId(studentDraft.studentDraftId);
+
+          studentDraft.feedback = await feedbackBuilder.getFeedbackByStudentDraftId(studentDraft.studentDraftId);
         }
       }
       return studentDrafts;

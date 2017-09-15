@@ -1,5 +1,6 @@
-import { SUBMIT_DRAFT, UPDATE_DRAFT_PAPER } from '../modules/studentDraftModule';
-import { SET_REFLECTION_ANSWERS } from '../modules/reflectionAnswersModule';
+import { SUBMIT_DRAFT, UPDATE_DRAFT_PAPER } from './studentDraftModule';
+import { SET_REFLECTION_ANSWERS } from './reflectionAnswersModule';
+import { CREATE_FEEDBACK } from './feedbackModule';
 import moment from 'moment';
 
 // Reducer
@@ -49,6 +50,15 @@ export default (state = {}, action) => {
       state = {
         ...state,
         saveReflection: {
+          status: 'error'
+        }
+      };
+      return state;
+    }
+    case CREATE_FEEDBACK.FAILURE: {
+      state = {
+        ...state,
+        createFeedbackError: {
           status: 'error'
         }
       };

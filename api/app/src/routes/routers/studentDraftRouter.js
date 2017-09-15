@@ -466,6 +466,43 @@ module.exports = function activityRouter(koarouter, controllers) {
       '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/feedback',
       controllers.studentDraftController.createFeedback
     );
+   /**
+    * @swagger
+    * /studentactivity/{studentActivityId}/studentdraft/{studentDraftId}/feedback/{feedbackId}:
+    *   delete:
+    *     x-name: deleteFeedback
+    *     description: deletes feedback
+    *     operationId: deleteFeedback
+    *     parameters:
+    *       - name: studentActivityId
+    *         in: path
+    *         description: The id of the studentActivity of the feedback
+    *         required: true
+    *         type: string
+    *       - name: studentDraftId
+    *         in: path
+    *         description: The id of the studentDraft of the feedback
+    *         required: true
+    *         type: string
+    *       - name: feedbackId
+    *         in: path
+    *         description: The id of the feedback to delete
+    *         required: true
+    *         type: string
+    *     responses:
+    *       200:
+    *         description: Success
+    *         schema:
+    *             $ref: "#/definitions/SuccessNoResponse"
+    *       422:
+    *         description: Failure
+    *         schema:
+    *             $ref: "#/definitions/standardFailureResponse"
+    */
+    router.delete(
+      '/studentactivity/:studentActivityId/studentdraft/:studentDraftId/feedback/:feedbackId',
+      controllers.studentDraftController.deleteFeedback
+    );
     /**
      * @swagger
      * /studentdraft/{studentDraftId}/feedback:
