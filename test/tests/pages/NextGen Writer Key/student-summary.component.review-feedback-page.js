@@ -45,6 +45,10 @@ class StudentReviewFeedback extends Component {
         desc: `Read only submitted draft`,
         locator: `[class^='public-DraftEditor-content']`
       },
+      submitted_draft_paper: {
+        desc: `Read only submitted draft`,
+        locator: `[class^='FeedbackDisplay__feedbackPaper']`
+      },
       submitted_reflection_question_textarea: {
         desc: `Read only submitted reflection question answers`,
         locator: `[data-id='MLCard-Reflection'] div div p`

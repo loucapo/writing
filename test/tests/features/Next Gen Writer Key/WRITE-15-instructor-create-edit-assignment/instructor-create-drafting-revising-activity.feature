@@ -1,5 +1,6 @@
 @WRITE-438
 Feature: Instructor Creates Drafting Revising Activity
+  @db=reset
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
@@ -34,4 +35,4 @@ Feature: Instructor Creates Drafting Revising Activity
     And the text of "activity_prompt.description" should include "Click to add prompt"
     Then I wait until there are 1 "rubric.dropdown" visible
     And the text of "rubric.dropdown" should include "No Rubric"
-    Then I wait until there are 0 "draft_card"
+    Then I wait until there are 1 "draft_card"
