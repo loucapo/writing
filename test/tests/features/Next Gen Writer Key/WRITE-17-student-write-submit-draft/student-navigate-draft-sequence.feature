@@ -14,7 +14,6 @@ Feature: Student Navigate Draft Screens
     And I click "draft_editor.view_activity_summary_link"
     Then I wait until there is 1 "start_draft" visible
 
-    @pending=WRITE-1304
   Scenario: Student Leaves Work
     Given I launch the activity as a "student"
     When I click "start_draft"
@@ -22,12 +21,10 @@ Feature: Student Navigate Draft Screens
     And I click "draft_editor.view_activity_summary_link"
     Then I wait until there is 1 "draft_editor.leave_draft_page_button" visible
     And I click "draft_editor.leave_draft_page_button"
-    Then I wait until there are 1 "draft_card_title"
     Then the text of "start_draft" should be "Start Final Paper"
     When I click "start_draft"
     Then the text of "draft_editor.draft_area" should be ""
 
-  @pending=WRITE-1304
   Scenario: Student Stays On Draft Page
     Given I launch the activity as a "student"
     When I click "start_draft"
