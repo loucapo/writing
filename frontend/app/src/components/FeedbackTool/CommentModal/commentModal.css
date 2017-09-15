@@ -10,57 +10,61 @@
   width: 460px;
 }
 
-.commentModal .header {
+.header {
   border-bottom: 1px solid var(--gray-medium);
   padding: 10px;
   font-weight: bold;
 }
 
-.commentModal .buttonsHeader {
+.buttonsHeader {
   padding: 10px;
   font-weight:bold;
 }
 
-.commentModal .buttons {
+.buttons {
   display: flex;
   padding-right: 10px;
   align-items: flex-end;
 }
 
-.commentModal .required {
+.required {
   color: var(--gray-base);
   font-size: 12px;
   margin-left: 10px;
 }
 
-.commentModal .comments {
+.comments {
   padding: 10px;
   display: flex;
 }
 
-.commentModal .commentText {
+.commentTextWrapper {
   background-color: #fff;
   border: 1px solid var(--gray-dark);
   flex: 1;
   height: 80px;
   padding: 5px;
+  overflow-y: scroll;
+}
+
+.commentText{
+  display: inline;
 }
 
 [contenteditable=true]:empty:before {
   color: var(--gray-dark);
   content: attr(placeholder);
-  display: block; /* For Firefox */
   font-style: italic;
 }
 
-.commentModal .controls {
+.controls {
   display: flex;
   justify-content: flex-end;
   padding: 0 10px 10px;
   align-items: center;
 }
 
-.commentModal .feedbackError {
+.feedbackError {
   color: var(--red);
   font-size: 12px;
 }

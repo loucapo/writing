@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { AddCommentButton, CommentModal, FeedbackFlags } from '../index';
+import { AddCommentButton, CommentModal, FeedbackFlags, CommentMenu } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
@@ -9,8 +9,9 @@ class FeedbackEditor extends Component {
 
   state = {
     showCommentModal: false,
-    saving: false,
     showAddComment: false,
+    showCommentMenu: false,
+    saving: false,
     content: this.props.content
   };
 
@@ -29,6 +30,14 @@ class FeedbackEditor extends Component {
     }
   };
 
+  componentWillMount = () => {
+    document.body.addEventListener('contextmenu', this.handleRightClick.bind(this));
+  };
+
+  componentWillUnmount = () => {
+    document.body.removeEventListener('contextmenu', this.handleRightClick.bind(this));
+  };
+
   handleCreateFeedback = (feedbackContent, level) => {
     this.setState({ saving: true });
     this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, level);
@@ -44,6 +53,14 @@ class FeedbackEditor extends Component {
         range.surroundContents(newNode);
       }
     });
+
+    // Grab position of selected text
+    let selected = document.querySelector(`.${styles.selected}`);
+    this.position = {
+      top: selected.offsetTop,
+      left: selected.getBoundingClientRect().left,
+      bottom: selected.getBoundingClientRect().bottom
+    };
   };
 
   removeSelections = () => {
@@ -66,21 +83,33 @@ class FeedbackEditor extends Component {
     });
   };
 
-  handleRightClick = (/*e*/) => {
-    // e.preventDefault();
-    // console.log('right click happened');
-    // this.handleMouseUp();
+  handleRightClick = e => {
+    if (this.textHasBeenSelected()) {
+      e.preventDefault();
+      this.position.top += 20;
+
+      this.setState({
+        showCommentMenu: true,
+        showAddComment: false
+      });
+    }
   };
 
-  handleMouseUp = e => {
+  closeMenu = () => {
+    let commentMenu = document.querySelector('[data-id=menu-add-comment]');
+    if(commentMenu && !commentMenu.contains(event.target)) {
+      this.setState({ showCommentMenu: false });
+      this.removeSelections();
+    }
+  };
+
+  handleEditorMouseUp = e => {
     if (e.target.id !== 'addCommentButton') {
       if (this.state.showAddComment) {
-        this.setState({
-          showAddComment: false
-        });
+        this.setState({ showAddComment: false });
         this.removeSelections();
       }
-      if (this.textHasBeenSelected()) {
+      if (!this.state.showCommentMenu && !this.state.showCommentModal && this.textHasBeenSelected()) {
         this.addSelections();
         this.addCommentButton();
       }
@@ -89,36 +118,30 @@ class FeedbackEditor extends Component {
 
   closeModal = () => {
     this.removeSelections();
-    this.setState({
-      showCommentModal: false
-    });
+    this.setState({ showCommentModal: false });
   };
 
   showCommentModal = () => {
-    let selected = document.querySelector(`.${styles.selected}`);
-    this.position = {
-      top: selected.offsetTop - 8,
-      left: selected.getBoundingClientRect().left
-    };
-    if ((selected.getBoundingClientRect().bottom + 20) > window.innerHeight - 270) {
-      this.position.top = selected.offsetTop - 250;
+    this.position.top += 20;
+
+    if ((this.position.bottom + 20) > window.innerHeight - 270) {
+      this.position.top -= 250;
     }
     this.setState({
       showCommentModal: true,
-      showAddComment: false
+      showAddComment: false,
+      showCommentMenu: false
     });
   };
 
-  textHasBeenSelected = () => window.getSelection().toString() !== '';
+  textHasBeenSelected = () => {
+    let selected = document.querySelector(`.${styles.selected}`);
+    return selected || (window.getSelection().toString() !== '');
+  };
 
   addCommentButton = () => {
-    let selected = document.querySelector(`.${styles.selected}`);
-    let top = selected.offsetTop - 8;
-    this.position = { top };
-
-    this.setState({
-      showAddComment: true
-    });
+    this.position.top -= 8;
+    this.setState({ showAddComment: true });
   };
 
   // selects ranges across paragraphs with ease
@@ -218,11 +241,7 @@ class FeedbackEditor extends Component {
 
   render() {
     return (
-      <div
-        className={styles.feedbackEditorWrapper}
-        onContextMenu={this.handleRightClick}
-        onMouseUp={this.handleMouseUp}
-      >
+      <div className={styles.feedbackEditorWrapper} onMouseUp={this.handleEditorMouseUp}>
         <div
           id="feedbackEditor"
           className={styles.feedbackEditor}
@@ -238,6 +257,13 @@ class FeedbackEditor extends Component {
           : null}
         {this.state.showAddComment
           ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
+          : null}
+        {this.state.showCommentMenu ?
+          <CommentMenu
+            position={this.position}
+            showModal={this.showCommentModal.bind(this)}
+            closeMenu={this.closeMenu}
+          />
           : null}
         <FeedbackFlags feedback={this.props.feedback} />
       </div>

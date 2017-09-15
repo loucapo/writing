@@ -5,6 +5,7 @@ import FeedbackDisplayHeader from './FeedbackDisplayHeader/FeedbackDisplayHeader
 import EndComment from './EndComment/EndComment';
 import FinalGrade from './FinalGrade/FinalGrade';
 import AddCommentButton from './AddCommentButton/AddCommentButton';
+import CommentMenu from './CommentMenu/CommentMenu';
 import CommentModal from './CommentModal/CommentModal';
 import FeedbackEditor from './FeedbackEditor/FeedbackEditor';
 import FeedbackFlags from './FeedbackFlags/FeedbackFlags';
@@ -18,6 +19,7 @@ export {
   EndComment,
   FinalGrade,
   AddCommentButton,
+  CommentMenu,
   CommentModal,
   FeedbackEditor,
   FeedbackFlags,
