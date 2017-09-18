@@ -1,4 +1,3 @@
-@only
 Feature: Instructor Can Add Pre-Defined Comment
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -62,7 +61,11 @@ Feature: Instructor Can Add Pre-Defined Comment
     And I click "add_comment_button"
     And I click "comment_modal.needs_extensive_work_comment_button"
     And the text of "comment_modal.add_comment_tag_text" should be "Needs Extensive Revision"
-    Then I wait until there is 1 "comment_modal.save_comment" visible
+    And I wait until there is 1 "comment_modal.save_comment" visible
+    And I click "comment_modal.save_comment"
+    And I wait until there is 1 "feedback_flag" visible
+    And I click "feedback_flag"
+    Then the text of "feedback_flag_content" should be "Needs Extensive Revision"
 
   @pending
   @WRITE-1212

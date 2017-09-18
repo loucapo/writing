@@ -47,10 +47,10 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
     And I click "add_comment_button"
-    #Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
+    And I click "comment_modal.good_job_comment_button"
     And I click "comment_modal.save_comment"
-    Then I wait until there is 1 "instructor_draft_comment" visible
+    Then I wait until there is 1 "feedback_flag" visible
 
   @WRITE-1213
   Scenario: Comment Is Persistent
@@ -58,7 +58,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    Then I wait until there is 1 "instructor_draft_comment" visible
+    Then I wait until there is 1 "feedback_flag" visible
 
   @pending
   @WRITE-1212
