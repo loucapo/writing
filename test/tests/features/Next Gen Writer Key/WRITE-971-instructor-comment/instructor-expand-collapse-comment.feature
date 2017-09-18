@@ -36,9 +36,9 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "instructor_draft_comment"
-    Then I wait until there is 1 "comment_flag_title" visible
-    Then I wait until there is 1 "comment_flag_feedback" visible
+    And I click "feedback_flag"
+    Then I wait until there is 1 "feedback_flag_title" visible
+    Then I wait until there is 1 "feedback_flag_content" visible
 
   @WRITE-1198
   Scenario: The Instructor Clicks On Expanded Comment
@@ -46,10 +46,10 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "instructor_draft_comment"
-    And I click "instructor_draft_comment"
-    Then I wait until there is 1 "comment_flag_title" visible
-    Then I wait until there is 0 "comment_flag_feedback" visible
+    And I click "feedback_flag"
+    And I click "feedback_flag"
+    Then I wait until there is 1 "feedback_flag_title" visible
+    Then I wait until there is 0 "feedback_flag_content" visible
 
   @WRITE-1198
   Scenario: The Instructor Clicks On Outside Space of Expanded Comment
@@ -57,7 +57,7 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I click "instructor_draft_comment"
+    And I click "feedback_flag"
     And I click "student_submitted_draft_text"
-    Then I wait until there is 1 "comment_flag_title" visible
-    Then I wait until there is 0 "comment_flag_feedback" visible
+    Then I wait until there is 1 "feedback_flag_title" visible
+    Then I wait until there is 0 "feedback_flag_content" visible
