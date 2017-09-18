@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { AddCommentButton, CommentModal, FeedbackFlags, CommentMenu } from '../index';
+import { AddCommentButton, CommentModal, CommentMenu, FeedbackFlags } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {

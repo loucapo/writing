@@ -13,7 +13,6 @@ import {
   updateReviewStatus,
   updateFeedbackPaper
 } from '../modules/studentDraftModule';
-import { getFeedback, createFeedback } from '../modules/feedbackModule';
 
 class FeedbackToolContainer extends Component {
   componentWillMount() {
@@ -24,7 +23,6 @@ class FeedbackToolContainer extends Component {
     this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
     this.props.getReflectionQuestions();
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
-    this.props.getFeedback(this.props.params.studentDraftId);
   }
 
   componentWillReceiveProps(newProps) {
@@ -58,9 +56,7 @@ FeedbackToolContainer.propTypes = {
   getReflectionAnswers: PropTypes.func,
   getStudentDraftByStudentDraftId: PropTypes.func,
   updateReviewStatus: PropTypes.func,
-  createFeedback: PropTypes.func,
-  updateFeedbackPaper: PropTypes.func,
-  getFeedback: PropTypes.func
+  updateFeedbackPaper: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
@@ -70,7 +66,6 @@ const mapStateToProps = (state) => {
   let draftTitle = '';
   let reflectionQuestions = [];
   let rubricId = state.activities[0].rubricId;
-  let feedback = state.feedback;
   let lastDraft;
   if (draft) {
     lastDraft = numberOfDrafts === draft.index + 1;
@@ -95,11 +90,9 @@ const mapStateToProps = (state) => {
     reflectionQuestions,
     homeRoute: state.defaults.homeRoute,
     draftTitle,
-    feedback,
     instructorName: `${state.auth.firstName} ${state.auth.lastName}`,
     rubricId,
-    lastDraft,
-    createFeedbackError: state.messaging.createFeedbackError
+    lastDraft
   };
 };
 
@@ -110,7 +103,5 @@ export default connect(mapStateToProps, {
   updateReviewStatus,
   submitEndComment,
   submitFinalGrade,
-  updateFeedbackPaper,
-  getFeedback,
-  createFeedback
+  updateFeedbackPaper
 })(FeedbackToolContainer);

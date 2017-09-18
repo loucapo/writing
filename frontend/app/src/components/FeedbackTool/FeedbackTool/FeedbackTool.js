@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MLCard } from '../../MLComponents';
-import { FeedbackToolHeader, EndComment, FinalGrade, FeedbackEditor } from '../index';
-import { RubricContainer } from '../../../containers';
+import { FeedbackToolHeader, EndComment, FinalGrade } from '../index';
+import { FeedbackEditorContainer, RubricContainer } from '../../../containers';
 import styles from './feedbackTool.css';
 
 const FeedbackTool = ({
@@ -10,7 +10,6 @@ const FeedbackTool = ({
   reflectionQuestions,
   homeRoute,
   draftTitle,
-  feedback,
   instructorName,
   submitEndComment,
   submitFinalGrade,
@@ -39,14 +38,12 @@ const FeedbackTool = ({
         </div>
       </MLCard>
       <MLCard type="draft" title={draftTitle}>
-        <FeedbackEditor
+        <FeedbackEditorContainer
           studentActivityId={studentDraft.studentActivityId}
           studentDraftId={studentDraft.studentDraftId}
           updateFeedbackPaper={updateFeedbackPaper}
           createFeedback={createFeedback}
           content={studentDraft.feedbackPaper}
-          lastFeedback={feedback[feedback.length - 1]}
-          feedback={feedback}
           createFeedbackError={createFeedbackError}
         />
       </MLCard>
@@ -83,7 +80,6 @@ FeedbackTool.propTypes = {
   homeRoute: PropTypes.string,
   reflectionQuestions: PropTypes.array,
   draftTitle: PropTypes.string,
-  feedback: PropTypes.array,
   instructorName: PropTypes.string,
   submitEndComment: PropTypes.func,
   submitFinalGrade: PropTypes.func,
