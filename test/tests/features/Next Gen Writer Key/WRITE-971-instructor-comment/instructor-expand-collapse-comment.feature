@@ -34,6 +34,7 @@ Feature: Instructor Expand and Collapse Comment
   Scenario: The Instructor Clicks On Collapsed Comment
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
+    Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I click "instructor_draft_comment"
@@ -55,6 +56,7 @@ Feature: Instructor Expand and Collapse Comment
   Scenario: The Instructor Clicks On Outside Space of Expanded Comment
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
+    Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I click "instructor_draft_comment"

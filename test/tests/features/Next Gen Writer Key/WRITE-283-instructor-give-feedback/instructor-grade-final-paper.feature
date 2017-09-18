@@ -11,6 +11,7 @@ Feature: Instructor Gives Score to Final Paper
     When I click "reflection_questions_modal.check(4)"
     When I click "reflection_questions_modal.save"
     Given I launch the activity as an "student"
+    Then I sleep for 1 seconds
     When I click "start_draft"
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
     And I click "draft_editor.start_reflection"
@@ -22,6 +23,7 @@ Feature: Instructor Gives Score to Final Paper
   Scenario: Instructor Sees No Grading Box On Draft 1
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
+    Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     Then I wait until there is 0 "final_grade_box" visible
