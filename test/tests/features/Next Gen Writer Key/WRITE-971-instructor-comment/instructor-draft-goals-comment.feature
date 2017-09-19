@@ -62,3 +62,17 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     And I click "comment_modal.draft_goal_level(2)"
     Then I wait until there is 1 "comment_modal.draft_goal_level_tag" visible
     And the text of "comment_modal.draft_goal_level_tag" should include "what the what?"
+
+  @WRITE-973
+  Scenario: The Instructor Saves Draft Goals Comment
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
+    And I click "add_draft_goals_comment_button"
+    And I click "comment_modal.draft_goal(2)"
+    And I click "comment_modal.draft_goal_level(2)"
+    And I click "comment_modal.save_comment"
+    Then I wait until there is 1 "feedback_flag" visible
+    And the text of "feedback_flag" should include "#nameofdraftGoal"
