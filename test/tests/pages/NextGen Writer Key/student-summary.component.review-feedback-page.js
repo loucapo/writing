@@ -65,6 +65,26 @@ class StudentReviewFeedback extends Component {
         desc: `Button to start next draft in the header`,
         locator: `[class^='FeedbackDisplayHeader__rightContainer'] a[class*=MLButton__aqua]`
       },
+      instructor_draft_comment: {
+        desc: `Feedback flag in the margin`,
+        locator: `[class^='FeedbackFlag__flagTitle']`
+      },
+      instructor_draft_highlight: {
+        desc: `Feedback highlight in student essay`,
+        locator: `[class^='FeedbackEditor__highlight']`
+      },
+      comment_flag_title: {
+        desc: `Generic Comment Title`,
+        locator: `[class^='FeedbackFlag__flagTitle']`
+      },
+      comment_flag_feedback: {
+        desc: `Tag line of comment`,
+        locator: `[class^='FeedbackFlag__feedbackLabel']`
+      },
+      comment_flag_feedback_typed: {
+        desc: `Tag line of comment`,
+        locator: `[class^='FeedbackFlag__feedback'] div`
+      }
     }; }
 }
 

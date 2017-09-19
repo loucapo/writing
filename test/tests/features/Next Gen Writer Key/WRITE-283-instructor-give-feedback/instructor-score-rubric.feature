@@ -79,6 +79,7 @@ Feature: Instructor Can Score Rubric
   Scenario: Instructor Cannot Save With No Level
     Given I launch the activity as an "instructor"
     When I click "student_submissions"
+    Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     Then I wait until there is 1 "rubric_save_disabled" visible
@@ -94,6 +95,7 @@ Feature: Instructor Can Score Rubric
   Scenario: Instructor Leaves Page Without Saving
     Given I launch the activity as an "instructor"
     When I click "student_submissions"
+    Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I click "rubric_row_1(4)"
@@ -119,6 +121,7 @@ Feature: Instructor Can Score Rubric
   Scenario: Instructor Submits Whole Rubric
     Given I launch the activity as an "instructor"
     And I maximize the browser
+    Then I sleep for 1 seconds
     When I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
