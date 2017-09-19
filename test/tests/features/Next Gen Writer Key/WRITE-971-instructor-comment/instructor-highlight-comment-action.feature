@@ -1,5 +1,4 @@
 Feature: Instructor Can Add Comments To Student Draft
-
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
