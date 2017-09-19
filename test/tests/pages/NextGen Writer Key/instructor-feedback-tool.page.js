@@ -100,6 +100,14 @@ exports.InstructorFeedbackPage = class extends Page {
         desc: `Button to add comment to highlighted text`,
         locator: `[id='addCommentButton']`
       },
+      right_click_add_comment_button: {
+        desc: `Button to add comment to highlighted text`,
+        locator: `[data-id='menu-add-comment']`
+      },
+      right_click_cancel_comment_button: {
+        desc: `Button to cancel adding new comment`,
+        locator: `[data-id='menu-cancel']`
+      },
       feedback_flag: {
         desc: `Feedback flag in margin`,
         locator: `[class*='FeedbackFlag__flag__']`

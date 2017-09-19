@@ -290,4 +290,12 @@ exports.define = function(steps) {
     return driver.navigate().refresh();
   });
 
+  steps.when(/I right click "(.+)"/, function(element) {
+    return polocToElem(element).then(el => {
+      return driver.actions()
+        .click(el, selenium.Button["RIGHT"])
+        .perform();
+
+    });
+  });
 };
