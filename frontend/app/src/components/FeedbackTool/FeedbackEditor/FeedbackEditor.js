@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { AddCommentButton, CommentModal, CommentMenu, FeedbackFlags } from '../index';
+import { FeedbackMenu, CommentModal, FeedbackFlags, CommentMenu } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
   position;
 
   state = {
-    showCommentModal: false,
-    showAddComment: false,
+    showCommentModal: null,
+    showFeedbackMenu: false,
     showCommentMenu: false,
     saving: false,
     content: this.props.content
@@ -21,7 +21,7 @@ class FeedbackEditor extends Component {
     if(this.state.saving && newFeedback) {
       this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
       this.setState({
-        showCommentModal: false,
+        showCommentModal: null,
         saving: false,
         content: document.getElementById('feedbackEditor').innerHTML
       }, () => {
@@ -57,7 +57,7 @@ class FeedbackEditor extends Component {
     // Grab position of selected text
     let selected = document.querySelector(`.${styles.selected}`);
     this.position = {
-      top: selected.offsetTop,
+      top: selected.offsetTop - 60,
       left: selected.getBoundingClientRect().left,
       bottom: selected.getBoundingClientRect().bottom
     };
@@ -91,7 +91,7 @@ class FeedbackEditor extends Component {
 
       this.setState({
         showCommentMenu: true,
-        showAddComment: false
+        showFeedbackMenu: false
       });
     }
   };
@@ -105,9 +105,10 @@ class FeedbackEditor extends Component {
   };
 
   handleEditorMouseUp = e => {
-    if (e.target.id !== 'addCommentButton') {
-      if (this.state.showAddComment) {
-        this.setState({ showAddComment: false });
+    if (!e.target.classList.contains('feedbackButton')) {
+      // TODO: verify if this clicking anywhere outside of the editor should cancel the commenting
+      if (this.state.showFeedbackMenu) {
+        this.setState({ showFeedbackMenu: null });
         this.removeSelections();
       }
       if (!this.state.showCommentMenu && !this.state.showCommentModal && this.textHasBeenSelected()) {
@@ -119,18 +120,18 @@ class FeedbackEditor extends Component {
 
   closeModal = () => {
     this.removeSelections();
-    this.setState({ showCommentModal: false });
+    this.setState({ showCommentModal: null });
   };
 
-  showCommentModal = () => {
+  showCommentModal = (whichModal) => {
     this.position.top += 20;
 
     if ((this.position.bottom + 20) > window.innerHeight - 270) {
       this.position.top -= 250;
     }
     this.setState({
-      showCommentModal: true,
-      showAddComment: false,
+      showCommentModal: whichModal,
+      showFeedbackMenu: false,
       showCommentMenu: false
     });
   };
@@ -142,7 +143,7 @@ class FeedbackEditor extends Component {
 
   addCommentButton = () => {
     this.position.top -= 8;
-    this.setState({ showAddComment: true });
+    this.setState({ showFeedbackMenu: true });
   };
 
   // selects ranges across paragraphs with ease
@@ -248,7 +249,7 @@ class FeedbackEditor extends Component {
           className={styles.feedbackEditor}
           dangerouslySetInnerHTML={{ __html: this.state.content }}
         />
-        {this.state.showCommentModal
+        {this.state.showCommentModal === 'openComment'
           ? <CommentModal
             position={this.position}
             handleSave={this.handleCreateFeedback}
@@ -256,8 +257,8 @@ class FeedbackEditor extends Component {
             createFeedbackError={this.createFeedbackError}
             />
           : null}
-        {this.state.showAddComment
-          ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
+        {this.state.showFeedbackMenu
+          ? <FeedbackMenu position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
           : null}
         {this.state.showCommentMenu ?
           <CommentMenu
