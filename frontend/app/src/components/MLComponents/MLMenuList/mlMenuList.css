@@ -1,0 +1,21 @@
+@import 'variables.css';
+
+.menulist {
+  border: 1px solid var(--gray-light);
+  background: var(--off-white);
+  padding: 0;
+  overflow-y: auto;
+  height: 340px;
+}
+
+.menulist li {
+  list-style: none;
+  cursor: pointer;
+  border-bottom: 1px solid var(--gray-light);
+  padding: 10px;
+}
+
+.active {
+  background: var(--aqua-light);
+  color: var(--white);
+}
