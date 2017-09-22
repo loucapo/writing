@@ -12,18 +12,28 @@ class FeedbackEditor extends Component {
     showFeedbackMenu: false,
     showCommentMenu: false,
     saving: false,
+    removing: false,
     content: this.props.content
   };
 
   componentWillReceiveProps = (nextProps) => {
-    const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
 
-    if(this.state.saving && newFeedback) {
-      this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
+    const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
+    const removedFeedbackIds = _.map(_.differenceBy(this.props.feedback, nextProps.feedback, 'feedbackId'), 'feedbackId');
+
+    if((this.state.saving && newFeedback) || (this.state.removing && removedFeedbackIds.length > 0)) {
+
+      if (this.state.saving) {
+        this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
+      }
+      if (this.state.removing) {
+        this.removeHighlights(removedFeedbackIds);
+      }
       this.setState({
         showCommentModal: null,
         saving: false,
-        content: document.getElementById('feedbackEditor').innerHTML
+        removing: false,
+        content: document.getElementsByClassName(styles.feedbackEditor)[0].innerHTML
       }, () => {
         this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, this.state.content);
       });
@@ -39,8 +49,15 @@ class FeedbackEditor extends Component {
   };
 
   handleCreateFeedback = (feedbackContent, level) => {
-    this.setState({ saving: true });
-    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, level);
+    this.setState({ saving: true }, () => {
+      this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, level);
+    });
+  };
+
+  handleDeleteFeedback = (feedbackId) => {
+    this.setState({ removing: true }, () => {
+      this.props.deleteFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackId);
+    });
   };
 
   addSelections = () => {
@@ -64,10 +81,26 @@ class FeedbackEditor extends Component {
   };
 
   removeSelections = () => {
-    // FixMe: Remove entire span instead of just the class.
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     selections.map(selection => {
-      selection.classList.remove(styles.selected);
+      selection.parentNode.replaceChild(
+        document.createRange().createContextualFragment(selection.innerHTML),
+        selection
+      );
+    });
+  };
+
+  removeHighlights = (removedFeedbackIds) => {
+    removedFeedbackIds.map(removedFeedbackId => {
+      let highlights = document.querySelectorAll('.' + styles.highlight + `[data-feedback-id="${removedFeedbackId}"]`);
+      while (highlights.length > 0) {
+        const highlight = highlights[0];
+        highlight.parentNode.replaceChild(
+          document.createRange().createContextualFragment(highlight.innerHTML),
+          highlight
+        );
+        highlights = document.querySelectorAll('.' + styles.highlight + `[data-feedback-id="${removedFeedbackId}"]`);
+      }
     });
   };
 
@@ -245,7 +278,6 @@ class FeedbackEditor extends Component {
     return (
       <div className={styles.feedbackEditorWrapper} onMouseUp={this.handleEditorMouseUp}>
         <div
-          id="feedbackEditor"
           className={styles.feedbackEditor}
           dangerouslySetInnerHTML={{ __html: this.state.content }}
         />
@@ -267,7 +299,11 @@ class FeedbackEditor extends Component {
             closeMenu={this.closeMenu}
           />
           : null}
-        <FeedbackFlags feedback={this.props.feedback} />
+        <FeedbackFlags
+          feedback={this.props.feedback}
+          isDisplay={false}
+          handleDeleteFeedback={this.handleDeleteFeedback}
+          />
       </div>
     );
   }
@@ -279,6 +315,7 @@ FeedbackEditor.propTypes = {
   content: PropTypes.string,
   updateFeedbackPaper: PropTypes.func,
   createFeedback: PropTypes.func,
+  deleteFeedback: PropTypes.func,
   lastFeedback: PropTypes.object,
   feedback: PropTypes.array,
   createFeedbackError: PropTypes.object

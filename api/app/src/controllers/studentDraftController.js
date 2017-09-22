@@ -306,6 +306,7 @@ module.exports = function(
       });
 
       ctx.status = 200;
+      ctx.body = {feedbackId: event.feedbackId};
       return ctx;
     }
   };

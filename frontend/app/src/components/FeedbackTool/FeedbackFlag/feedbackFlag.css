@@ -30,18 +30,46 @@
   top: 8px;
 }
 
+.flagHeader {
+  display: flex;
+}
+
 .flagTitle {
+  padding-right: 9px;
+  flex: 1;
+}
+
+.flagTitleText {
   line-height: 38px;
-  padding: 0 15px 0 38px;
+  padding: 0 0 0 6px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.flagTitleCont {
+  display: flex;
+}
+
+.flagMenuToggle {
   cursor: pointer;
 }
 
 .icon {
   fill: var(--yellow-light);
-  position: absolute;
-  top: 8px;
-  left: 8px;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.moreIcon {
+  fill: var(--black);
+}
+
+.moreButton {
+  padding: 8px;
+  margin: 0;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
 }
 
 .flagGreen .icon {
@@ -68,4 +96,31 @@
 .feedbackLabel {
   font-weight: bold;
   padding-bottom: 5px;
+}
+
+.feedbackFlagMenu {
+  position: absolute;
+  padding: 33px 9px 0 0;
+  top: 0;
+  right: 0;
+}
+
+.feedbackFlagMenuList {
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.40);
+}
+
+.feedbackFlagMenuList li {
+  padding: 15px 30px;
+  border-bottom: 1px solid var(--gray-light);
+  min-width: 235px;
+}
+
+.feedbackFlagMenuList li:hover {
+  text-decoration: underline;
 }

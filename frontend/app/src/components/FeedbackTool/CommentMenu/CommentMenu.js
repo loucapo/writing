@@ -8,7 +8,7 @@ class CommentMenu extends Component {
   }
 
   componentWillUnmount = () => {
-    document.body.removeEventListener('mouseup', this.props.closeMenu.bind(this));
+    document.body.removeEventListener('mousedown', this.props.closeMenu.bind(this));
   }
 
   render() {
