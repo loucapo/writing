@@ -102,6 +102,7 @@ class FeedbackEditor extends Component {
         highlights = document.querySelectorAll('.' + styles.highlight + `[data-feedback-id="${removedFeedbackId}"]`);
       }
     });
+    window.getSelection().removeAllRanges();
   };
 
   addHighlights = (feedbackId, level) => {
@@ -130,11 +131,8 @@ class FeedbackEditor extends Component {
   };
 
   closeMenu = () => {
-    let commentMenu = document.querySelector('[data-id=menu-add-comment]');
-    if(commentMenu && !commentMenu.contains(event.target)) {
-      this.setState({ showCommentMenu: false });
-      this.removeSelections();
-    }
+    this.setState({ showCommentMenu: false });
+    this.removeSelections();
   };
 
   handleEditorMouseUp = e => {

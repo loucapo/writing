@@ -11,8 +11,6 @@
 }
 
 .feedbackMenu {
-  -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
-  -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   align-items: center;
   background-color: var(--aqua);
@@ -34,8 +32,6 @@
 }
 
 .feedbackButton {
-  -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
-  -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   align-items: center;
   background-color: #fff;
@@ -47,11 +43,16 @@
   justify-content: space-between;
   margin: 5px 10px 10px 0;
   padding: 5px 15px;
-  width: 75px;
+  width: 90px;
 }
 
 .feedbackButton div {
   pointer-events: none;
+  text-align: center;
+}
+
+.feedbackButtonText {
+  width: 50px;
 }
 
 .commentIcon {

@@ -10,7 +10,11 @@ const FeedbackMenu = ({ position, handleClick }) => {
         Feedback
       </div>
       <ul className={styles.feedbackButtons}>
-        <li className={styles.feedbackButton + ' feedbackButton'}>
+        <li
+          className={styles.feedbackButton + ' feedbackButton'}
+          title="Not implemented"
+          data-id="feedback-menu-draft-goals"
+        >
           <div>
             <MLIcon
               className={styles.commentIcon}
@@ -21,9 +25,13 @@ const FeedbackMenu = ({ position, handleClick }) => {
               viewBox="0 0 24 24"
             />
           </div>
-          <div>Draft Goals</div>
+          <div className={styles.feedbackButtonText}>Draft Goals</div>
         </li>
-        <li className={styles.feedbackButton + ' feedbackButton'}>
+        <li
+          className={styles.feedbackButton + ' feedbackButton'}
+          title="Not implemented"
+          data-id="feedback-menu-editing-marks"
+        >
           <div>
             <MLIcon
               className={styles.commentIcon}
@@ -34,9 +42,13 @@ const FeedbackMenu = ({ position, handleClick }) => {
               viewBox="0 0 24 24"
             />
           </div>
-          <div>Editing Marks</div>
+          <div className={styles.feedbackButtonText}>Editing Marks</div>
         </li>
-        <li className={styles.feedbackButton + ' feedbackButton'} onClick={handleClick.bind(this, 'openComment')}>
+        <li
+          className={styles.feedbackButton + ' feedbackButton'}
+          onClick={handleClick.bind(this, 'openComment')}
+          data-id="feedback-menu-open-comments"
+        >
           <div>
             <MLIcon
               className={styles.commentIcon}
@@ -47,7 +59,7 @@ const FeedbackMenu = ({ position, handleClick }) => {
               viewBox="0 0 24 24"
             />
           </div>
-          <div>Open Comments</div>
+          <div className={styles.feedbackButtonText}>Open Comments</div>
         </li>
       </ul>
     </div>
