@@ -1,0 +1,422 @@
+{  
+  student_reflection_question:[  
+     {  
+        student_reflection_question_id:`a3aa7312-68b4-43b9-85b6-fa1f52339a55`,
+        question:`The most challenging part of this assignment was:`,
+        question_type:`free`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`c8e363e5-7130-4cdb-8ff1-fed2d511efd8`,
+        question:`One thing I want my reader to understand is:`,
+        question_type:`free`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`823955a1-0a8e-42cc-b24c-cb30afcac95e`,
+        question:`I want you to know that:`,
+        question_type:`free`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
+        question:`The primary argument I'm making is:`,
+        question_type:`free`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+        question:`One piece of evidence I want to call attention to in my essay is:`,
+        question_type:`free`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`823955a1-0a8e-42cc-b24c-cb30afcac93f`,
+        question:`One idea I want to develop further is:`,
+        question_type:`free`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`c105736c-c330-487c-be74-5a2c983095cc`,
+        question:`I know the criteria that will be used for giving me feedback.`,
+        question_type:`fixed`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`c119e4de-b6e6-4849-9b16-7a8a1e63c7b2`,
+        question:`I reviewed my feedback on previous assignments before submitting my draft.`,
+        question_type:`fixed`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     },
+     {  
+        student_reflection_question_id:`c119e4de-b6e6-4849-9b16-7a8a1e63c7b2`,
+        question:`I focused on areas of feedback I received on previous writing.`,
+        question_type:`fixed`,
+        created_by_id:`565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
+        created_date:`2017-04-10`
+     }
+  ],
+  draft_goals:[  
+     {  
+        type:'Thesis',
+        content_links:[  
+           'Drafting and revising a working thesis',
+           'Developing the thesis statement',
+           'Five approaches to revising thesis statements'
+        ],
+        feedback_levels:[  
+           'Nice Job! Thesis offers a clear and insightful judgment.',
+           'Needs work. Thesis does not present a critical response to the issue.',
+           'Needs extensive revision. Thesis is missing, unclear, or does not present a critical response to the issue.'
+        ]
+     },
+     {  
+        type:'Reason and Support',
+        content_links:[  
+           'Supporting claims with evidence',
+           'Including details that support the main idea',
+           'Using appeals (ethos, logos, pathos) as a writer'
+        ],
+        feedback_levels:[  
+           'Nice Job! Reasons and evidence are convincing',
+           'Needs work. Needs additional reasons/support',
+           'Needs extensive revision. Inadequate reasons/support'
+        ]
+     },
+     {  
+        type:'Interpretation/Analysis',
+        content_links:[  
+           'Analyzing a written text',
+           'Writing guide: Analysis essay',
+           'Balancing summary with analysis for a written text'
+        ],
+        feedback_levels:[  
+           'Nice Job! Clear interpretation and insightful analysis',
+           'Needs work. Incorrect/inadequate interpretation or analysis',
+           'Needs extensive revision. Does not look at how the source conveys its ideas'
+        ]
+     },
+     {  
+        type:'Paragraph Development',
+        content_links:[  
+           'Building effective paragraphs',
+           'Making paragraphs coherent',
+           'Developing the main point',
+
+        ],
+        feedback_levels:[  
+           'Nice Job! All the sentences develop the idea and flow in a logical progression',
+           'Needs work. Ideas are not always linked clearly',
+           'Needs extensive revision. Choppy and difficult to follow'
+        ]
+     },
+     {  
+        type:'Integration of Research',
+        content_links:[  
+           'Avoiding plagiarism and integrating sources (MLA)',
+           'Synthesizing sources (MLA)',
+           'Managing information responsibly'
+        ],
+        feedback_levels:[  
+           `Nice Job! Research is introduced and smoothly integrated into the text.`,
+           `Needs work. Research is included with the analysis, but not integrated into the text.`,
+           `Needs extensive revision. Research is not integrated into the paper.`
+        ]
+     },
+     {  
+        type:`Counterarguments`,
+        content_links:[  
+           `Anticipating objections and countering opposing arguments`,
+           `Building common ground`,
+           `Using appeals (ethos, logos, pathos) as a writer`
+        ],
+        feedback_values:[  
+           `Nice Job! Expertly summarizes opposing positions and effectively counters them`,
+           `Needs work. Mentions opposing positions but does not effectively address them`,
+           `Needs extensive revision. Ignores opposing positions`
+        ]
+     },
+     {  
+        type:`Ideas/Content`,
+        content_links:[  
+           `Exploring the subject`,
+           `Drafting the body`,
+           `Developing the main point`
+        ],
+        feedback_values:[  
+           `Nice Job! Fully developed ideas.`,
+           `Needs work. Ideas are somewhat undeveloped; there may be more than one point per paragraph.`,
+           `Needs extensive revision. Ideas need to be developed.`
+        ]
+     },
+     {  
+        type:`Topic Sentence`,
+        content_links:[  
+           `Positioning the topic sentence`,
+           `Linking ideas to the topic sentence`,
+           `Developing the main point`
+        ],
+        feedback_values:[  
+           `Nice Job! Topic sentence very effectively orients the reader`,
+           `Needs work. Topic sentence does not effectively state the main point.`,
+           `Needs extensive revision. First sentence does not organize the paragraph.`
+        ]
+     },
+     {  
+        type:`Logical Appeals`,
+        content_links:[  
+           `Using appeals (ethos, logos, pathos) as a writer`,
+           `Legitimate vs. unfair emotional appeals`,
+           `Evaluating appeals (ethos, logos, pathos) as a reader`
+        ],
+        feedback_values:[  
+           `Nice Job! Effective use of appeals.`,
+           `Needs work. Introduces an effective appeal that needs further development.`,
+           `Needs extensive revision. Weak or ineffective appeal.`
+        ]
+     },
+     {  
+        type:`Evidence`,
+        content_links:[  
+           `Supporting claims with evidence`,
+           `Understanding the kinds of evidence writers in a discipline use`
+        ],
+        feedback_values:[  
+           `Nice Job! Evidence is convincing.`,
+           `Needs work. More evidence needed.`,
+           `Needs extensive revision. Evidence is lacking.`
+        ]
+     },
+     {  
+        type:`Style/Voice`,
+        content_links:[  
+           `The comment: Develop more`,
+           `Making paragraphs coherent`,
+           `Revising and editing sentences`
+        ],
+        feedback_values:[  
+           `Nice Job! Well-developed sense of pacing, style, and voice.`,
+           `Needs work. Elements of style or voice are present but don’t support the narrative.`,
+           `Needs extensive revision. Pacing, style, or voice isn't suited to the topic or purpose of the paper.`
+        ]
+     },
+     {  
+        type:`Conclusion`,
+        content_links:[  
+           `Drafting a conclusion`,
+           `Effective conclusions`
+        ],
+        feedback_values:[  
+           `Nice Job! Ties together main points and builds upon ideas or pushes them forward.`,
+           `Needs work. Concludes awkwardly or abruptly, without tying together main points.`,
+           `Needs extensive revision. Conclusion is unsatisfactory.`
+        ]
+     }
+  ],
+  quick_feedback:[  
+     {  
+        type:`Comma Splice`,
+        content_links:[  
+           `Quick help: Run-on sentences`,
+           `Recognizing run-on sentences`,
+           `Revising run-on sentences`
+        ],
+        flag_blurb:`A comma splice occurs when two independent clauses are connected by only a comma. Independent clauses can stand by themselves as sentences, but they can't be connected with just a comma.`
+     },
+     {  
+        type:`Fragment`,
+        content_links:[  
+           `Quick help: Sentence fragments`,
+           `Sentence fragments: Overview`,
+           `Test for sentence fragments`
+        ],
+        flag_blurb:`A fragment is an incomplete sentence. As you might suspect, it is also an incomplete expression of a thought.
+         Fragments come in two varieties:  
+         1. A dependent clause, which contains a subject and a verb but fails to express a complete thought 
+         2. A group of words that lacks either a subject or a verb `
+     },
+     {  
+        type:`Usage`,
+        content_links:[  
+           `Glossary of usage`,
+           `Consulting the dictionary and the thesaurus`,
+           `Misused words`
+        ],
+        flag_blurb:`If you are struggling with a usage error, this means that you're accidentally using a word incorrectly--usually because you've mistaken it for a similar word. Often times a spell-checker will not help because the mis-used word is usually not spelled incorrectly. 
+         Here are a few common usage errors:  
+          
+         YOUR VS. YOU'RE 
+         THERE VS. THEIR VS. THEY'RE 
+         THAT VS. WHICH 
+         TOWARD VS. TOWARDS 
+         EFFECT VS. AFFECT 
+         WHO VS. WHOM 
+         THEN VS. THAN`
+     },
+     {  
+        type:`Pronoun Agreement`,
+        content_links:[  
+           `Quick help: Pronoun agreement and reference`,
+           `Pronoun-antecedent agreement`
+        ],
+        flag_blurb:`Since pronouns take the place of nouns, it is important to use the correct pronouns so that your readers understand what you mean. There are three basic types of pronoun-antecedent agreement that will help you to write clearly: 
+         Agreement in number (A student should plan his or her schedule carefully.) 
+         Agreement in person (When people exercise, they feel energized.) 
+         Agreement in gender (Anna ate her breakfast.)`
+     },
+     {  
+        type:`Subject-Verb Agreement`,
+        content_links:[  
+           `Quick help: Subject-verb agreement`,
+           `Standard subject-verb combinations`,
+           `Subject-verb agreement at a glance`
+        ],
+        flag_blurb:`For your sentences to make sense, your subject must agree in number with your verb. A singular subject takes a singular verb, and a plural subject takes a plural verb.  
+          
+        Sometimes it can be a little tricky to tell whether a subject is singular or plural.`
+     },
+     {  
+        type:`Appropriate Language`,
+        content_links:[  
+           `Quick help: Appropriate language`,
+           `Quick help: Exact language`,
+           `Using an appropriate level of formality`
+        ],
+        flag_blurb:`The words you choose determine the tone of your work and how your reader responds to it. When you write, keep the following concerns in mind:
+         1. It is important to decide what tone you want to use to influence your audience’s response. 
+         2. You must determine whether to use formal language and whether to use disciplinary language. 
+         3. Be sure to avoid jargon and euphemisms. 
+         4. Avoid slang in formal writing. 
+         5. Avoid clichés. 
+         6. Avoid sexist terms that include or imply man.`
+     },
+     {  
+        type:`Needs Analysis`,
+        content_links:[  
+           `Balancing summary with analysis for a written text`,
+           `The comment: Summarize less, analyze more`,
+           `Analyzing a written text`
+        ],
+        flag_blurb:`Many college writing assignments ask students to think and write analytically about something they’ve viewed, read, or experienced. Describing or summarizing the “text” is a good first step, but analysis requires breaking the text down in order to make judgments and connections and to draw conclusions.`
+     },
+     {  
+        type:`Comma Error`,
+        content_links:[  
+           `Quick help: Commas`,
+           `The comma: Overview`,
+           `Quick help: Unnecessary commas`
+        ],
+        flag_blurb:`A comma is punctuation that separates parts of a sentence and tells readers to pause briefly. When commas are missing--or when unnecessary commas are present--readers can become confused.`
+     },
+     {  
+        type:`Apostrophe Error`,
+        content_links:[  
+           `Quick help: Apostrophes`,
+           `Apostrophe in possessives`,
+           `Common misuses of the apostrophe`
+        ],
+        flag_blurb:`Apostrophes have two main grammatical functions: 
+         1. To make a noun possessive: The team’s colors are blue and gold. 
+         2. To replace letters in contractions: Don't forget to use apostrophes.`
+     },
+     {  
+        type:`Integrate Source (MLA)`,
+        content_links:[  
+           `Avoiding plagiarism and integrating sources (MLA)`,
+           `Summarizing and paraphrasing in your own words (MLA)`,
+           `Using signal phrases to integrate sources (MLA)`
+        ],
+        flag_blurb:`Many academic writing assignments ask you to use sources. Writing well in college often means weaving together your ideas and the ideas of your sources--being careful to make the boundaries between the two clear. When you use direct quotations from your sources, be careful not to drop them into your writing without warning to your readers. Instead, integrate your sources by building up to the borrowed material and then following up with a comment that ties the material to your point.`
+     },
+     {  
+        type:`Integrate Source (APA)`,
+        content_links:[  
+           `Avoiding plagiarism and integrating sources (APA)`,
+           `Summarizing and paraphrasing in your own words (APA)`,
+           `Using signal phrases to integrate sources (APA)`
+        ],
+        flag_blurb:`Many academic writing assignments ask you to use sources. Writing well in college often means weaving together your ideas and the ideas of your sources--being careful to make the boundaries between the two clear. When you use direct quotations from your sources, be careful not to drop them into your writing without warning to your readers. Instead, integrate your sources by building up to the borrowed material and then following up with a comment that ties the material to your point.`
+     },
+     {  
+        type:`Needs Evidence`,
+        content_links:[  
+           `Supporting claims with evidence`,
+           `Understanding the kinds of evidence writers in a discipline use`
+        ],
+        flag_blurb:`When you are asked to use evidence (examples, data, facts, and expert testimony) to support the points you make, your challenge is to find evidence that is relevant and credible. When you do so, you become more credible as a research writer. You build your "ethos."
+          
+        Make a habit of asking yourself the following questions: 
+        Do I have data to support my claims? 
+        What example can I include that would connect my topic to my readers? 
+        How can I prove that I am familiar with the issue I'm writing about? 
+        Can I identify any places in my writing where readers might need more detail?`
+     },
+     {  
+        type:`Pronoun Reference`,
+        content_links:[  
+           `Quick help: Pronoun agreement and reference`,
+           `Pronoun reference`
+        ],
+        flag_blurb:`In order for your sentences to have correct pronoun reference, pronouns must clearly refer to their antecedents-- that is, to the nouns that they replace. 
+          
+        In the sentence "The travelers presented their identification," the pronoun their clearly refers to the travelers.
+          
+        Sometimes academic writers get into trouble if a pronoun could refer to more than one noun or if the antecedent doesn’t seem to be in the sentence at all.`
+     },
+     {  
+        type:`Quotation Marks`,
+        content_links:[  
+           `Quick help: Quotation marks`,
+           `Quotation marks with other punctuation`,
+           `Misuses of quotation marks`
+        ],
+        flag_blurb:`In academic writing, quotation marks are most commonly used to enclose a person's exact words or to enclose the title of a short work such as an article, a short story, or a song.
+          
+         Some writers get confused when they use quotation marks with other marks of punctuation; periods and commas most often go inside quotation marks.`
+     },
+     {  
+        type:`Spelling`,
+        content_links:[  
+           `Commonly misspelled words`,
+           `Spelling rules`,
+           `Words that sound alike but have different spellings (homophones)`
+        ],
+        flag_blurb:`Misspelled words cause confusion for the reader. Instructors use this mark to indicate that the word you used is misspelled.`
+     },
+     {  
+        type:`Documentation (MLA)`,
+        content_links:[  
+           `Quick help: MLA works cited`,
+           `Citation at a glance and other models (MLA)`,
+           `Formatting an MLA research paper; sample student writing`
+        ],
+        flag_blurb:`When borrowing ideas and words, writers must also acknowledge their sources. That means writers must document their sources so that their readers can also access them. MLA documentation style includes two parts: in-text citation, which appears within the same sentence as the borrowed material; bibliographic citation, which appears at the end of the work in a Works Cited page.`
+     },
+     {  
+        type:`Documentation (APA)`,
+        content_links:[  
+           `APA Style: Overview`,
+           `APA in-text citations`,
+           `Directory to APA reference list models`
+        ],
+        flag_blurb:`When borrowing ideas and words, writers must also acknowledge their sources. That means, writers must document their sources so that readers too can access them. APA documentation includes two parts: an in-text citation, which appears in the same sentence as the borrowed material; and a corresponding entry in the list of sources, which appears at the end of the work.`
+     },
+     {  
+        type:`Verb Error`,
+        content_links:[  
+           `Quick help: Verbs`,
+           `Shifts in verb tense, mood, and voice`,
+           `Verb form and tense`
+        ],
+        flag_blurb:`Consistent verb tenses clearly establish the time of the actions being described. When a passage begins in one tense and then shifts without warning and for no reason to another, readers can be distracted and confused.`
+     }
+  ]
+}
