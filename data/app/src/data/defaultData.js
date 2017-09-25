@@ -72,7 +72,7 @@ module.exports = function(faker) {
 
         {
           criteria_id: `f01ed383-78e9-4089-867a-70e8911bbace`,
-          title: `Interpretation/Analysis`,
+          title: `Interpretation / Analysis`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Limited or no analysis; does not look at how the text makes its point`,
@@ -109,10 +109,10 @@ module.exports = function(faker) {
           title: `Knowledge of Conventions`,
           description: `desco`,
           available_to_rubric: true,
-          rubric_level_1: `Develops a credible counterargument and addresses it adequately`,
-          rubric_level_2: `Introduces a credible counterargument`,
-          rubric_level_3: `Introduces a weak counterargument`,
-          rubric_level_4: `Does not address counterarguments`,
+          rubric_level_1: `Errors in grammar, usage, or mechanics prevent understanding`,
+          rubric_level_2: `Errors in grammar, usage, or mechanics detract from the writing`,
+          rubric_level_3: `Sufficient control of grammar, usage, and mechanics`,
+          rubric_level_4: `Fluent, controlled discussion`,
           goal_option_1: ``,
           goal_option_2: ``,
           goal_option_3: ``,
@@ -183,10 +183,10 @@ module.exports = function(faker) {
           title: `Logical Appeals`,
           description: `desco`,
           available_to_rubric: true,
-          rubric_level_1: `Limited or no evidence`,
-          rubric_level_2: `Evidence does not support claim`,
-          rubric_level_3: `Evidence supports claim`,
-          rubric_level_4: `Evidence supports claims and is well-chosen`,
+          rubric_level_1: `Uses weak or no appeals`,
+          rubric_level_2: `Introduces an effective appeal that needs further development`,
+          rubric_level_3: `Develops an effective appeal`,
+          rubric_level_4: `Develops multiple effective appeals`,
           goal_option_1: ``,
           goal_option_2: ``,
           goal_option_3: ``,
@@ -203,7 +203,7 @@ module.exports = function(faker) {
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Does not address counterarguments`,
-          rubric_level_2: `EIntroduces a weak counterargument`,
+          rubric_level_2: `Introduces a weak counterargument`,
           rubric_level_3: `Introduces a credible counterargument`,
           rubric_level_4: `Develops a credible counterargument and addresses it adequately`,
           goal_option_1: ``,
@@ -218,7 +218,7 @@ module.exports = function(faker) {
 
         {
           criteria_id: `c54305f8-6605-4021-92e5-0a03b4ef22fe`,
-          title: `Ideas/Content`,
+          title: `Ideas / Content`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Lacks coherent ideas and sense of purpose`,
@@ -253,7 +253,7 @@ module.exports = function(faker) {
 
         {
           criteria_id: `98f8e2b6-0252-4d33-b9e3-d11ee333250a`,
-          title: `Style/Voice`,
+          title: `Style / Voice`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `No clear sense of pacing, style, or voice present`,
@@ -367,7 +367,7 @@ module.exports = function(faker) {
 
         {
           criteria_id: `116e3415-4550-41ba-b976-883d34b844d7`,
-          title: `Comparisons/Counterarguments`,
+          title: `Comparisons / Counterarguments`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Little to no attention paid to the issue's context or to alternative solutions`,
@@ -461,42 +461,42 @@ module.exports = function(faker) {
         },
         {
           rubric_id: `a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
-          criteria_id: `3122600f-1c09-4f2d-bf8e-b6e84bfb6b1f`,
-          index: 3
-        },
-        {
-          rubric_id: `a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
-          criteria_id: `6e6743ea-04fc-449e-8af7-8c368bf5c11c`,
-          index: 4
-        },
-        {
-          rubric_id: `a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
-          criteria_id: `678ef716-4acf-42d2-bef2-583ceb891bfb`,
-          index: 5
-        },
-        {
-          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
           criteria_id: `f01ed383-78e9-4089-867a-70e8911bbace`,
-          index: 1
-        },
-        {
-          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
-          criteria_id: `91db94ee-a6f1-4be5-911c-9e7b8b992531`,
-          index: 2
-        },
-        {
-          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
-          criteria_id: `1740b6d4-e13d-4ea0-ad17-545bb4bb9546`,
           index: 3
         },
         {
-          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+          rubric_id: `a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
           criteria_id: `dd6f10e6-f07d-4c70-b5c6-2a3c5e3d35e9`,
           index: 4
         },
         {
-          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+          rubric_id: `a3aa7312-68b4-43b9-85b6-fa1f52339a54`,
           criteria_id: `02a8ae4e-2ae3-4390-bcb5-cadb6324567a`,
+          index: 5
+        },
+        {
+          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+          criteria_id: `3122600f-1c09-4f2d-bf8e-b6e84bfb6b1f`,
+          index: 1
+        },
+        {
+          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+          criteria_id: `6e6743ea-04fc-449e-8af7-8c368bf5c11c`,
+          index: 2
+        },
+        {
+          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+          criteria_id: `678ef716-4acf-42d2-bef2-583ceb891bfb`,
+          index: 3
+        },
+        {
+          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+          criteria_id: `91db94ee-a6f1-4be5-911c-9e7b8b992531`,
+          index: 4
+        },
+        {
+          rubric_id: `c8e363e5-7130-4cdb-8ff1-fed2d511efd2`,
+          criteria_id: `1740b6d4-e13d-4ea0-ad17-545bb4bb9546`,
           index: 5
         },
         {
