@@ -91,9 +91,9 @@ Feature: Student Can View Instructor Comments
 
   @intermittent-fail
   Scenario: Expanding One Comment Closes Another
-# And I click "student_read_only_feedback.instructor_draft_comment"
-# Error: Can't find any such component to mount as:  [class^='FeedbackDisplay__page']
-#     at StudentReviewFeedback.instructor_draft_comment (node_modules/marvin-js/lib/page-object/component.js:23:27)  
+  # And I click "student_read_only_feedback.instructor_draft_comment"
+  # Error: Can't find any such component to mount as:  [class^='FeedbackDisplay__page']
+  #     at StudentReviewFeedback.instructor_draft_comment (node_modules/marvin-js/lib/page-object/component.js:23:27)  
     Given I launch the activity as a "student"
     And I click "view_feedback_button"
     And I click "student_read_only_feedback.instructor_draft_comment"
