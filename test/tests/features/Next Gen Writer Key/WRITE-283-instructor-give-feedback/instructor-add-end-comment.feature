@@ -25,6 +25,7 @@ Feature: Instructor can add end comment to completed draft
     And I wait until there is 1 "end_comment_textarea" visible
     And I type "Good job" in "end_comment_textarea"
     Given I launch the activity as an "instructor"
+    Then I sleep for 1 seconds
     And I click "student_submissions"
     Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
@@ -43,6 +44,7 @@ Feature: Instructor can add end comment to completed draft
     And I wait until there is 1 "end_comment" visible
     Then the text of "end_comment" should be "Good job"
     Given I launch the activity as an "instructor"
+    Then I sleep for 1 seconds
     And I click "student_submissions"
     Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"

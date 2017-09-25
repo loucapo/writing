@@ -36,6 +36,7 @@ Feature: Instructor Can Right Click To Add Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     When I right click "student_submitted_draft_text"
     And I click "right_click_add_comment_button"
@@ -57,6 +58,7 @@ Feature: Instructor Can Right Click To Add Comment
   @WRITE-1210
   Scenario: Right Click With No Text Highlighted Should Not Bring Up Menu
     Given I launch the activity as an "instructor"
+    Then I sleep for 2 seconds
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"

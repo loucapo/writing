@@ -35,6 +35,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
     Then I wait until there is 1 "comment_modal.save_comment_disabled" visible
@@ -57,6 +58,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds    
     When I select "student_submitted_draft_text" text
     And I click "add_comment_button"
     And I click "comment_modal.needs_extensive_work_comment_button"

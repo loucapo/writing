@@ -33,6 +33,7 @@ Feature: Instructor Can Add Comments To Student Draft
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
     And I click "add_comment_button"
     Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
@@ -45,6 +46,7 @@ Feature: Instructor Can Add Comments To Student Draft
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
     And I click "add_comment_button"
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
@@ -58,6 +60,7 @@ Feature: Instructor Can Add Comments To Student Draft
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     Then I wait until there is 1 "feedback_flag" visible
 
   @pending
