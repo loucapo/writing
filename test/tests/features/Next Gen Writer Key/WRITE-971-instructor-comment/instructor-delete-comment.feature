@@ -1,5 +1,5 @@
-@WRITE-1210
-Feature: Instructor Can Right Click To Add Comment
+@WRITE-976
+Feature: Instructor Delete Comment
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
@@ -18,53 +18,52 @@ Feature: Instructor Can Right Click To Add Comment
     And I type "yay" in "student_reflection_questions.student_reflection_text"
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
-
-  @WRITE-1210
-  Scenario: The Instructor Can Highlight Text And Right Click See Comment Button
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
-    When I right click "student_submitted_draft_text"
-    Then I wait until there is 1 "right_click_add_open_comments_button" visible
-    Then I wait until there is 1 "right_click_add_draft_goals_comment_button" visible
-    Then I wait until there is 1 "right_click_add_editing_marks_comment_button" visible
-    Then I wait until there is 1 "right_click_cancel_comment_button" visible
+    And I click "add_open_comments_button"
+    Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
+    And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
+    And I click "comment_modal.good_job_comment_button"
+    And I click "comment_modal.save_comment"
+    And I sleep for 1 seconds
 
-  @WRITE-1210
-  Scenario: The Instructor Opens Modal From Comment Button
+  @WRITE-976
+  Scenario: The Instructor Does Not Sees Dot Menu
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    Then I sleep for 2 seconds
-    When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
-    When I right click "student_submitted_draft_text"
-    And I click "right_click_add_open_comments_button"
-    Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
+    Then I wait until there is 0 "feedback_flag_more_button" visible
 
-  @WRITE-1210
-  Scenario: The Instructor Can Cancel Right Click Menu
+  @WRITE-976
+  Scenario: The Instructor Sees Dot Menu
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
-    When I right click "student_submitted_draft_text"
-    And I click "right_click_cancel_comment_button"
-    Then I wait until there is 0 "comment_modal.good_job_comment_button" visible
-    Then I wait until there is 0 "right_click_add_open_comments_button" visible
-    Then I wait until there is 0 "add_open_comments_button" visible
+    And I click "feedback_flag"
+    Then I wait until there is 1 "feedback_flag_more_button" visible
 
-  @WRITE-1210
-  Scenario: Right Click With No Text Highlighted Should Not Bring Up Menu
+  @WRITE-976
+  Scenario: The Instructor Clicks 3 Dot Menu
     Given I launch the activity as an "instructor"
-    Then I sleep for 2 seconds
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    When I right click "student_submitted_draft_text"
-    Then I wait until there is 0 "comment_modal.good_job_comment_button" visible
-    Then I wait until there is 0 "right_click_add_open_comments_button" visible
+    And I click "feedback_flag"
+    And I click "feedback_flag_more_button"
+    Then I wait until there is 1 "comment_delete_option" visible
 
+  @WRITE-976
+  Scenario: The Instructor Deletes Comment
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    And I click "feedback_flag"
+    And I click "feedback_flag_more_button"
+    And I click "comment_delete_option"
+    Then I wait until there is 0 "feedback_flag" visible

@@ -67,7 +67,7 @@ class StudentReviewFeedback extends Component {
       },
       instructor_draft_comment: {
         desc: `Feedback flag in the margin`,
-        locator: `[class^='FeedbackFlag__flagTitle']`
+        locator: `[class^='FeedbackFlag__flagHeader']`
       },
       instructor_draft_highlight: {
         desc: `Feedback highlight in student essay`,
@@ -75,7 +75,7 @@ class StudentReviewFeedback extends Component {
       },
       comment_flag_title: {
         desc: `Generic Comment Title`,
-        locator: `[class^='FeedbackFlag__flagTitle']`
+        locator: `[class^='FeedbackFlag__flagTitleText']`
       },
       comment_flag_feedback: {
         desc: `Tag line of comment`,
