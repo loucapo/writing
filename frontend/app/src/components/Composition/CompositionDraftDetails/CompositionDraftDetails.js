@@ -25,14 +25,14 @@ class CompositionDraftDetails extends Component {
 
   navigateToActivitySummary = () => {
     this.checkForUnsavedChanges(this.props.homeRoute);
-  }
+  };
 
   navigateToPreviousDraft = () => {
     const lastDraftId = this.props.lastDraftWithFeedback.studentInfo.studentDraftId;
     const currentDraftId = this.props.draft.draftId;
     const link = `/studentDraft/${lastDraftId}/feedbackdisplay?fromDraftId=${currentDraftId}`;
     this.checkForUnsavedChanges(link);
-  }
+  };
 
   closeDialog = () => {
     this.setState({
@@ -40,20 +40,16 @@ class CompositionDraftDetails extends Component {
     });
   };
 
-  DraftAccordionList = (
-    <div className={styles.accordionLeftBorder} data-id="draft-information-details-panel">
-      <DraftInstructionsDisplay instructions={this.props.draft && this.props.draft.instructions} />
-
-      <DraftGoalsDisplay goals={this.props.goals} />
-
-      <ReflectionQuestionsDisplay reflectionQuestions={this.props.reflectionQuestions} />
-    </div>
-  );
-
-  detailsAccordionList = [
+  detailsAccordionList = () => ([
     {
       title: 'Draft',
-      content: this.DraftAccordionList,
+      content: (
+        <div className={styles.accordionLeftBorder} data-id="draft-information-details-panel">
+          <DraftInstructionsDisplay instructions={this.props.draft && this.props.draft.instructions} />
+          <DraftGoalsDisplay goals={this.props.goals} />
+          <ReflectionQuestionsDisplay reflectionQuestions={this.props.reflectionQuestions} />
+        </div>
+      ),
       dataId: 'draft-activity-detail-panel'
     },
     {
@@ -70,7 +66,7 @@ class CompositionDraftDetails extends Component {
       content: <CompositionDraftDetailsRubric rubric={this.props.newRubric} />,
       dataId: 'final-rubric-detail-panel'
     }
-  ];
+  ]);
 
   render() {
     return (
@@ -112,7 +108,7 @@ class CompositionDraftDetails extends Component {
           </MLDialog>
         </div>
         <h3 className={styles.actHeader}>Activity Details</h3>
-        <MLAccordion list={this.detailsAccordionList} />
+        <MLAccordion list={this.detailsAccordionList()} />
       </div>
     );
   }
