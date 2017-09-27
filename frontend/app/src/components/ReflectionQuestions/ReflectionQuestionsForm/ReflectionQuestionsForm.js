@@ -99,7 +99,7 @@ class ReflectionQuestionsForm extends Component {
     const labels = [
       { text: 'Strongly Agree', value: 'stronglyAgree' },
       { text: 'Agree', value: 'agree' },
-      { text: 'Undecided/Neutral', value: 'undecided' },
+      { text: 'Neutral', value: 'neutral' },
       { text: 'Disagree', value: 'disagree' },
       { text: 'Strongly Disagree', value: 'stronglyDisagree' }
     ];
