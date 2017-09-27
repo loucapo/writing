@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FeedbackEditor } from '../components/FeedbackTool';
-import { createFeedback, getFeedback } from '../modules/feedbackModule';
+import { createFeedback, getFeedback, deleteFeedback } from '../modules/feedbackModule';
 
 class FeedbackEditorContainer extends Component {
   componentWillMount() {
@@ -34,5 +34,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   getFeedback,
-  createFeedback
+  createFeedback,
+  deleteFeedback
 })(FeedbackEditorContainer);

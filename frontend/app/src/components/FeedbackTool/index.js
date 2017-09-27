@@ -4,12 +4,16 @@ import FeedbackDisplay from './FeedbackDisplay/FeedbackDisplay';
 import FeedbackDisplayHeader from './FeedbackDisplayHeader/FeedbackDisplayHeader';
 import EndComment from './EndComment/EndComment';
 import FinalGrade from './FinalGrade/FinalGrade';
-import AddCommentButton from './AddCommentButton/AddCommentButton';
+import FeedbackMenu from './FeedbackMenu/FeedbackMenu';
 import CommentMenu from './CommentMenu/CommentMenu';
 import CommentModal from './CommentModal/CommentModal';
+import DraftGoalsModal from './CommentModal/DraftGoalsModal';
+import EditingMarksModal from './CommentModal/EditingMarksModal';
+import OpenCommentModal from './CommentModal/OpenCommentModal';
 import FeedbackEditor from './FeedbackEditor/FeedbackEditor';
 import FeedbackFlags from './FeedbackFlags/FeedbackFlags';
 import FeedbackFlag from './FeedbackFlag/FeedbackFlag';
+import CommentLevelButtons from './CommentModal/CommentLevelButtons';
 
 export {
   FeedbackTool,
@@ -18,10 +22,14 @@ export {
   FeedbackDisplayHeader,
   EndComment,
   FinalGrade,
-  AddCommentButton,
+  FeedbackMenu,
   CommentMenu,
   CommentModal,
+  DraftGoalsModal,
+  EditingMarksModal,
+  OpenCommentModal,
   FeedbackEditor,
   FeedbackFlags,
-  FeedbackFlag
+  FeedbackFlag,
+  CommentLevelButtons
 };

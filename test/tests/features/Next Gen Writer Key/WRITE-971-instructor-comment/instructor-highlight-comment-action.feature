@@ -19,13 +19,16 @@ Feature: Instructor Can Add Comments To Student Draft
     And I click "student_reflection_questions.draft_submit_confirm"
 
   @WRITE-1208
+  @WRITE-1439
   Scenario: The Instructor Can Highlight Text And See Comment Button
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
-    Then I wait until there is 1 "add_comment_button" visible
+    Then I wait until there is 1 "add_draft_goals_comment_button" visible
+    Then I wait until there is 1 "add_editing_marks_comment_button" visible
+    Then I wait until there is 1 "add_open_comments_button" visible
 
   @WRITE-1209
   Scenario: The Instructor Opens Modal From Comment Button
@@ -33,8 +36,9 @@ Feature: Instructor Can Add Comments To Student Draft
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
 
@@ -45,8 +49,9 @@ Feature: Instructor Can Add Comments To Student Draft
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
     And I click "comment_modal.good_job_comment_button"
     And I click "comment_modal.save_comment"
@@ -58,6 +63,7 @@ Feature: Instructor Can Add Comments To Student Draft
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     Then I wait until there is 1 "feedback_flag" visible
 
   @pending

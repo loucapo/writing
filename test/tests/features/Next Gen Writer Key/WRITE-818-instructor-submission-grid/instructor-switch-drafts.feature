@@ -25,6 +25,7 @@ Feature: Instructor Views Draft Submissions Switcher
     Then I wait until there is 1 "submissions.dropdown_drafts" visible
     Then I wait until there is 1 "submissions.dropdown_drafts_selected" visible
 
+  @fails-on-small-resolutions
   Scenario: The Instructor Changes Draft
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"

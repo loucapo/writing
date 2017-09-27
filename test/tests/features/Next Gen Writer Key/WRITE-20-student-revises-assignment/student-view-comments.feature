@@ -1,6 +1,5 @@
 Feature: Student Can View Instructor Comments
   @db=reset
-
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -23,7 +22,7 @@ Feature: Student Can View Instructor Comments
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
     And I click "comment_modal.good_job_comment_button"
     And I click "comment_modal.save_comment"
@@ -35,7 +34,7 @@ Feature: Student Can View Instructor Comments
     Given I launch the activity as a "student"
     And I click "view_feedback_button"
     Then I wait until there is 1 "student_read_only_feedback.instructor_draft_highlight" visible
-    Then I wait until there is 1 "student_read_only_feedback.instructor_draft_comment" visible
+    Then I wait until there is 1 "student_read_only_feedback.comment_flag_title" visible
 
   Scenario: Student Sees Expanded Comments
     Given I launch the activity as a "student"
@@ -48,6 +47,7 @@ Feature: Student Can View Instructor Comments
     Given I launch the activity as a "student"
     And I click "view_feedback_button"
     And I click "student_read_only_feedback.instructor_draft_comment"
+    And I sleep for 1 seconds
     And I click "student_read_only_feedback.instructor_draft_comment"
     Then I wait until there is 1 "student_read_only_feedback.comment_flag_title" visible
     Then I wait until there is 0 "student_read_only_feedback.comment_flag_feedback" visible
@@ -75,13 +75,13 @@ Feature: Student Can View Instructor Comments
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "consectetur adipiscing elit" in "student_submitted_draft_text"
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
     And I click "comment_modal.good_job_comment_button"
     And I click "comment_modal.save_comment"
-  And I sleep for 1 seconds
+    And I sleep for 1 seconds
     When I select text from "Nullam facilisis mattis" to "tristique ullamcorper dolor" in "student_submitted_draft_text"
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I type "This is no bueno" in "comment_modal.add_comment_textarea"
     And I click "comment_modal.needs_extensive_work_comment_button"
     And I click "comment_modal.save_comment"
@@ -89,10 +89,15 @@ Feature: Student Can View Instructor Comments
     And Changing to using page "instructor_summary"
     And I click "submissions.send_review_link(1)"
 
+  @intermittent-fail
   Scenario: Expanding One Comment Closes Another
+  # And I click "student_read_only_feedback.instructor_draft_comment"
+  # Error: Can't find any such component to mount as:  [class^='FeedbackDisplay__page']
+  #     at StudentReviewFeedback.instructor_draft_comment (node_modules/marvin-js/lib/page-object/component.js:23:27)  
     Given I launch the activity as a "student"
     And I click "view_feedback_button"
     And I click "student_read_only_feedback.instructor_draft_comment"
+      And I sleep for 1 seconds
     And I click "student_read_only_feedback.instructor_draft_comment(2)"
     Then I wait until there is 2 "student_read_only_feedback.comment_flag_title" visible
     Then I wait until there is 1 "student_read_only_feedback.comment_flag_feedback" visible

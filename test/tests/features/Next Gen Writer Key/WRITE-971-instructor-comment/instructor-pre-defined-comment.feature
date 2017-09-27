@@ -25,7 +25,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I click "comment_modal.needs_work_comment_button"
     And the text of "comment_modal.add_comment_tag_text" should be "Needs Work"
 
@@ -35,8 +35,9 @@ Feature: Instructor Can Add Pre-Defined Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select "student_submitted_draft_text" text
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     Then I wait until there is 1 "comment_modal.save_comment_disabled" visible
 
   @WRITE-1199
@@ -46,7 +47,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I click "comment_modal.good_job_comment_button"
     And the text of "comment_modal.add_comment_tag_text" should be "Good Job"
     Then I wait until there is 1 "comment_modal.save_comment" visible
@@ -57,8 +58,9 @@ Feature: Instructor Can Add Pre-Defined Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds    
     When I select "student_submitted_draft_text" text
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I click "comment_modal.needs_extensive_work_comment_button"
     And the text of "comment_modal.add_comment_tag_text" should be "Needs Extensive Revision"
     And I wait until there is 1 "comment_modal.save_comment" visible
@@ -76,7 +78,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     And Changing to using page "instructor_feedback"
     And I sleep for 1 seconds
     When I select "Happy"
-    And I click "add_comment_button"
+    And I click "add_open_comments_button"
     And I click "save_comment"
      # I somehow blow up the save process
     Then I wait until there is 1 "save_comment_error" visible
