@@ -13,6 +13,7 @@ const FeedbackMenu = ({ position, handleClick }) => {
         <li
           className={styles.feedbackButton + ' feedbackButton'}
           title="Not implemented"
+          onClick={handleClick.bind(this, 'draftGoals')}
           data-id="feedback-menu-draft-goals"
         >
           <div>
@@ -30,6 +31,7 @@ const FeedbackMenu = ({ position, handleClick }) => {
         <li
           className={styles.feedbackButton + ' feedbackButton'}
           title="Not implemented"
+          onClick={handleClick.bind(this, 'editingMarks')}
           data-id="feedback-menu-editing-marks"
         >
           <div>

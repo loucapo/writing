@@ -7,7 +7,16 @@
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   background-color: var(--gray-very-light);
   z-index: 101;
-  width: 460px;
+}
+
+.modalWrapper {
+  padding: 15px;
+  display: flex;
+}
+
+.commentWrapper {
+  background-color: var(--white);
+  margin-left: 15px;
 }
 
 .header {
@@ -16,9 +25,25 @@
   font-weight: bold;
 }
 
-.buttonsHeader {
-  padding: 10px;
+.sectionHeader {
+  padding: 10px 0;
   font-weight:bold;
+  font-size: 11px;
+  display: flex;
+  color: var(--gray-medium);
+}
+
+.sectionHeaderText {
+  letter-spacing: 1px;
+}
+
+.commentsHeadingLine {
+  border-top: 1px solid var(--gray-medium);
+  bottom: -7px;
+  position: relative;
+  width: 100%;
+  flex: 1;
+  margin-left: 10px;
 }
 
 .buttons {
@@ -36,11 +61,12 @@
 .comments {
   padding: 10px;
   display: flex;
+  flex-direction: column;
 }
 
 .commentTextWrapper {
   background-color: #fff;
-  border: 1px solid var(--gray-dark);
+  border: 1px solid var(--gray-medium);
   flex: 1;
   height: 80px;
   padding: 5px;
@@ -52,7 +78,7 @@
 }
 
 [contenteditable=true]:empty:before {
-  color: var(--gray-dark);
+  color: var(--gray-medium);
   content: attr(placeholder);
   font-style: italic;
 }
@@ -62,6 +88,7 @@
   justify-content: flex-end;
   padding: 0 10px 10px;
   align-items: center;
+  align-self: flex-end;
 }
 
 .feedbackError {
@@ -78,4 +105,9 @@
   top: 0;
   left: 0;
   z-index: 100;
+}
+
+.commentLevelButtons {
+  width: 460px;
+  padding: 10px;
 }

@@ -279,13 +279,14 @@ class FeedbackEditor extends Component {
           className={styles.feedbackEditor}
           dangerouslySetInnerHTML={{ __html: this.state.content }}
         />
-        {this.state.showCommentModal === 'openComment'
+        {this.state.showCommentModal
           ? <CommentModal
             position={this.position}
             handleSave={this.handleCreateFeedback}
             closeModal={this.closeModal}
             createFeedbackError={this.createFeedbackError}
-            />
+            modalType={this.state.showCommentModal}
+          />
           : null}
         {this.state.showFeedbackMenu
           ? <FeedbackMenu position={this.position.top} handleClick={this.showCommentModal.bind(this)} />

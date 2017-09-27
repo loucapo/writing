@@ -1,21 +1,28 @@
 @import 'variables.css';
 
 .menulist {
-  border: 1px solid var(--gray-light);
-  background: var(--off-white);
   padding: 0;
+  margin: 0;
   overflow-y: auto;
-  height: 340px;
+  max-height: 340px;
+  min-width: 175px;
 }
 
 .menulist li {
+  border-color: var(--gray-light);
+  border-style: solid;
+  border-width: 1px 1px 0 1px;
+  background: var(--off-white);
   list-style: none;
   cursor: pointer;
-  border-bottom: 1px solid var(--gray-light);
   padding: 10px;
 }
 
-.active {
-  background: var(--aqua-light);
+.menulist li:last-child {
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.menulist li.active {
+  background: var(--aqua-medium);
   color: var(--white);
 }

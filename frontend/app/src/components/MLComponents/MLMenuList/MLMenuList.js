@@ -4,12 +4,12 @@ import styles from './mlMenuList.css';
 
 class MenuList extends Component {
   state = {
-    active: null
+    active: this.props.list[0].id
   };
 
   handleClick = (e) => {
     this.setState({active: e.target.dataset.id});
-    this.props.callback();
+    this.props.callback(e);
   };
 
   render() {
