@@ -76,8 +76,8 @@ const mapStateToProps = (state, props) => {
     });
 
     goals = draft.goals ? draft.goals.map(goalId => {
-      let criteria = state.criteria.find(goal => goalId === goal.criteriaId);
-      return criteria ? criteria.title : null;
+      let draftGoal = state.goal.find(goal => goalId === goal.goalId);
+      return draftGoal ? draftGoal.title : null;
     }) : [];
   }
 

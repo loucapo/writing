@@ -536,6 +536,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Thesis is missing, unclear, or does not present a critical response to the issue.',
           option_2: 'Needs work. Thesis does not present a critical response to the issue.',
           option_3: 'Nice Job! Thesis offers a clear and insightful judgment.',
+          index: 1,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -546,6 +547,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Inadequate reasons/support',
           option_2: 'Needs work. Needs additional reasons/support',
           option_3: 'Nice Job! Reasons and evidence are convincing',
+          index: 2,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -556,6 +558,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Does not look at how the source conveys its ideas',
           option_2: 'Needs work. Incorrect/inadequate interpretation or analysis',
           option_3: 'Nice Job! Clear interpretation and insightful analysis',
+          index: 3,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -566,6 +569,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Choppy and difficult to follow',
           option_2: 'Needs work. Ideas are not always linked clearly',
           option_3: 'Nice Job! All the sentences develop the idea and flow in a logical progression',
+          index: 4,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -576,6 +580,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Research is not integrated into the paper.',
           option_2: 'Needs work. Research is included with the analysis, but not integrated into the text.',
           option_3: 'Nice Job! Research is introduced and smoothly integrated into the text.',
+          index: 5,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -586,6 +591,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Ignores opposing positions',
           option_2: 'Needs work. Mentions opposing positions but does not effectively address them',
           option_3: 'Nice Job! Expertly summarizes opposing positions and effectively counters them',
+          index: 6,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -596,6 +602,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Ideas need to be developed.',
           option_2: 'Needs work. Ideas are somewhat undeveloped; there may be more than one point per paragraph.',
           option_3: 'Nice Job! Fully developed ideas.',
+          index: 7,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -606,6 +613,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. First sentence does not organize the paragraph.',
           option_2: 'Needs work. Topic sentence does not effectively state the main point.',
           option_3: 'Nice Job! Topic sentence very effectively orients the reader',
+          index: 8,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -616,6 +624,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Weak or ineffective appeal.',
           option_2: 'Needs work. Introduces an effective appeal that needs further development.',
           option_3: 'Nice Job! Effective use of appeals.',
+          index: 9,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -626,6 +635,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Evidence is lacking.',
           option_2: 'Needs work. More evidence needed.',
           option_3: 'Nice Job! Evidence is convincing.',
+          index: 10,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -636,6 +646,7 @@ module.exports = function(faker) {
           option_1: `Needs extensive revision. Pacing, style, or voice isn't suited to the topic or purpose of the paper.`,
           option_2: 'Needs work. Elements of style or voice are present but don’t support the narrative.',
           option_3: 'Nice Job! Well-developed sense of pacing, style, and voice.',
+          index: 11,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -646,6 +657,7 @@ module.exports = function(faker) {
           option_1: 'Needs extensive revision. Conclusion is unsatisfactory.',
           option_2: 'Needs work. Concludes awkwardly or abruptly, without tying together main points.',
           option_3: 'Nice Job! Ties together main points and builds upon ideas or pushes them forward.',
+          index: 12,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         }
@@ -656,6 +668,7 @@ module.exports = function(faker) {
           editing_mark_id: '3156da74-4172-4f91-b476-8c22b33f74cc',
           title: 'Comma Splice',
           description: `A comma splice occurs when two independent clauses are connected by only a comma. Independent clauses can stand by themselves as sentences, but they can't be connected with just a comma.`,
+          index: 1,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -666,6 +679,7 @@ module.exports = function(faker) {
             Fragments come in two varieties::  
             1. A dependent clause, which contains a subject and a verb but fails to express a complete thought 
             2. A group of words that lacks either a subject or a verb `,
+          index: 2,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -682,6 +696,7 @@ module.exports = function(faker) {
             EFFECT VS. AFFECT 
             WHO VS. WHOM 
             THEN VS. THAN`,
+          index: 3,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -692,6 +707,7 @@ module.exports = function(faker) {
             Agreement in number (A student should plan his or her schedule carefully.) 
             Agreement in person (When people exercise, they feel energized.) 
             Agreement in gender (Anna ate her breakfast.)`,
+          index: 4,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -701,6 +717,7 @@ module.exports = function(faker) {
           description: `For your sentences to make sense, your subject must agree in number with your verb. A singular subject takes a singular verb, and a plural subject takes a plural verb.  
           
            Sometimes it can be a little tricky to tell whether a subject is singular or plural.`,
+          index: 5,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -714,6 +731,7 @@ module.exports = function(faker) {
             4. Avoid slang in formal writing. 
             5. Avoid clichés. 
             6. Avoid sexist terms that include or imply man.`,
+          index: 6,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -721,6 +739,7 @@ module.exports = function(faker) {
           editing_mark_id: '999d9ca1-d762-4b38-833d-50d4520a345e',
           title: 'Needs Analysis',
           description: `Many college writing assignments ask students to think and write analytically about something they’ve viewed, read, or experienced. Describing or summarizing the “text” is a good first step, but analysis requires breaking the text down in order to make judgments and connections and to draw conclusions.`,
+          index: 7,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -728,6 +747,7 @@ module.exports = function(faker) {
           editing_mark_id: 'c722aeed-ce6d-4161-a12e-009087c94f5b',
           title: 'Comma Error',
           description: `A comma is punctuation that separates parts of a sentence and tells readers to pause briefly. When commas are missing--or when unnecessary commas are present--readers can become confused.`,
+          index: 8,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -737,6 +757,7 @@ module.exports = function(faker) {
           description: `Apostrophes have two main grammatical functions:: 
             1. To make a noun possessive:: The team’s colors are blue and gold. 
             2. To replace letters in contractions:: Don't forget to use apostrophes.`,
+          index: 9,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -744,6 +765,7 @@ module.exports = function(faker) {
           editing_mark_id: '1204b4e9-17d2-4b7c-b381-1d4362d95906',
           title: 'Integrate Source (MLA)',
           description: `Many academic writing assignments ask you to use sources. Writing well in college often means weaving together your ideas and the ideas of your sources--being careful to make the boundaries between the two clear. When you use direct quotations from your sources, be careful not to drop them into your writing without warning to your readers. Instead, integrate your sources by building up to the borrowed material and then following up with a comment that ties the material to your point.`,
+          index: 10,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -751,6 +773,7 @@ module.exports = function(faker) {
           editing_mark_id: '76435288-b5c9-463c-af4e-a822635e7caa',
           title: 'Integrate Source (APA)',
           description: `Many academic writing assignments ask you to use sources. Writing well in college often means weaving together your ideas and the ideas of your sources--being careful to make the boundaries between the two clear. When you use direct quotations from your sources, be careful not to drop them into your writing without warning to your readers. Instead, integrate your sources by building up to the borrowed material and then following up with a comment that ties the material to your point.`,
+          index: 11,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -764,6 +787,7 @@ module.exports = function(faker) {
            What example can I include that would connect my topic to my readers? 
            How can I prove that I am familiar with the issue I'm writing about? 
            Can I identify any places in my writing where readers might need more detail?`,
+          index: 12,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -775,6 +799,7 @@ module.exports = function(faker) {
            In the sentence "The travelers presented their identification," the pronoun their clearly refers to the travelers.
           
            Sometimes academic writers get into trouble if a pronoun could refer to more than one noun or if the antecedent doesn’t seem to be in the sentence at all.`,
+          index: 13,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -784,6 +809,7 @@ module.exports = function(faker) {
           description: `In academic writing, quotation marks are most commonly used to enclose a person's exact words or to enclose the title of a short work such as an article, a short story, or a song.
           
             Some writers get confused when they use quotation marks with other marks of punctuation; periods and commas most often go inside quotation marks.`,
+          index: 14,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -791,6 +817,7 @@ module.exports = function(faker) {
           editing_mark_id: '531d9133-1a76-4749-a90f-13c7d9cc9ba2',
           title: 'Spelling',
           description: `Misspelled words cause confusion for the reader. Instructors use this mark to indicate that the word you used is misspelled.`,
+          index: 15,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -798,6 +825,7 @@ module.exports = function(faker) {
           editing_mark_id: '6630d5e1-d554-4df9-af3e-7d1e79142379',
           title: 'Documentation (MLA)',
           description: `When borrowing ideas and words, writers must also acknowledge their sources. That means writers must document their sources so that their readers can also access them. MLA documentation style includes two parts:: in-text citation, which appears within the same sentence as the borrowed material; bibliographic citation, which appears at the end of the work in a Works Cited page.`,
+          index: 16,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -805,6 +833,7 @@ module.exports = function(faker) {
           editing_mark_id: 'c6dad3df-a15d-41f6-927e-40c882ddef85',
           title: 'Documentation (APA)',
           description: `When borrowing ideas and words, writers must also acknowledge their sources. That means, writers must document their sources so that readers too can access them. APA documentation includes two parts:: an in-text citation, which appears in the same sentence as the borrowed material; and a corresponding entry in the list of sources, which appears at the end of the work.`,
+          index: 17,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         },
@@ -812,6 +841,7 @@ module.exports = function(faker) {
           editing_mark_id: '1c37dac7-239b-49b3-bbf0-ad91f8063cfa',
           title: 'Verb Error',
           description: `Consistent verb tenses clearly establish the time of the actions being described. When a passage begins in one tense and then shifts without warning and for no reason to another, readers can be distracted and confused.`,
+          index: 18,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
         }

@@ -4,8 +4,8 @@ export default state => {
     .map(draft => {
       let goals = [];
       let studentReflectionQuestions = [];
-      if (draft.goals && state.criteria.length > 0) {
-        goals = draft.goals.map(goalId => state.criteria.find(criteria => criteria.criteriaId === goalId).title);
+      if (draft.goals && state.goal.length > 0) {
+        goals = draft.goals.map(goalId => state.goal.find(goal => goal.goalId === goalId).title);
       }
       if (draft.studentReflectionQuestions && state.reflectionQuestions.length > 0) {
         studentReflectionQuestions = draft.studentReflectionQuestions.map(questionId => {

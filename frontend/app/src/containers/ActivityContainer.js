@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Activity } from '../components/Activity/index';
 import { getActivity } from '../modules/activityModule';
+import { getGoals } from '../modules/goalModule';
 
 class ActivityContainer extends Component {
   componentWillMount() {
@@ -12,6 +13,7 @@ class ActivityContainer extends Component {
   loadData() {
     if (this.props.activityId) {
       this.props.getActivity(this.props.activityId);
+      this.props.getGoals();
     }
   }
   render() {
@@ -24,7 +26,8 @@ ActivityContainer.propTypes = {
   activityId: PropTypes.string,
   getActivity: PropTypes.func,
   openDraftFocusModal: PropTypes.func,
-  draftsCount: PropTypes.number
+  draftsCount: PropTypes.number,
+  getGoals: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -40,4 +43,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getActivity })(ActivityContainer);
+export default connect(mapStateToProps, { getActivity, getGoals })(ActivityContainer);

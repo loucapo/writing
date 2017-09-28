@@ -119,13 +119,49 @@
         "rubricLevel4": {
           "type": "string"
         },
-        "goalOption1": {
+        "createdById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "createdDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modifiedById": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "criteriaId",
+        "createdById",
+        "createdDate"
+      ]
+    },
+    "goal": {
+      "title": "goal",
+      "properties": {
+        "goalId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
           "type": "string"
         },
-        "goalOption2": {
+        "description": {
           "type": "string"
         },
-        "goalOption3": {
+        "option1": {
+          "type": "string"
+        },
+        "option2": {
+          "type": "string"
+        },
+        "option3": {
           "type": "string"
         },
         "createdById": {
@@ -151,6 +187,7 @@
         "createdDate"
       ]
     },
+    
     "draft": {
       "title": "draft",
       "properties": {
