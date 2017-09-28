@@ -10,8 +10,8 @@ class OpenCommentModal extends Component {
     level: null
   };
 
-  handleChange = event => {
-    this.setState({ comment: event.target.textContent.trim() });
+  handleChange = e => {
+    this.setState({ comment: e.target.textContent.trim() });
   };
 
   handleLevelClick = (e) => {
@@ -39,7 +39,11 @@ class OpenCommentModal extends Component {
           handleLevelClick={this.handleLevelClick}
         />
 
-        <div className={styles.comments}>
+        <div className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionHeaderText}>Additional Comment</div>
+            <div className={styles.commentsHeadingLine} />
+          </div>
           <div
             className={styles.commentTextWrapper}
           >
@@ -55,30 +59,32 @@ class OpenCommentModal extends Component {
               className={styles.commentText}
             />
           </div>
-        </div>
 
-        <div className={styles.controls}>
-          {(this.props.createFeedbackError && this.props.createFeedbackError.status)
-            ? <div className={styles.feedbackError}>
-                There was a problem saving your comment, please try again.
-              </div>
-            : null
-          }
-          <MLButton
-            className={styles.addCommentButton}
-            dataId="cancel-comment-modal"
-            title="Cancel"
-            color="red"
-            bordered={true}
-            handleClick={this.props.closeModal}
-          />
-          <MLButton
-            className={styles.addCommentButton}
-            dataId="save-comment-modal"
-            title="Save"
-            handleClick={this.props.handleSave.bind(this, this.state.comment, this.state.level)}
-            disabled={!this.state.level}
-          />
+          <div className={styles.controlsWrapper}>
+            <div className={styles.controls}>
+              {(this.props.createFeedbackError && this.props.createFeedbackError.status)
+                ? <div className={styles.feedbackError}>
+                  There was a problem saving your comment, please try again.
+                </div>
+                : null
+              }
+              <MLButton
+                className={styles.addCommentButton}
+                dataId="cancel-comment-modal"
+                title="Cancel"
+                color="red"
+                bordered={true}
+                handleClick={this.props.closeModal}
+              />
+              <MLButton
+                className={styles.addCommentButton}
+                dataId="save-comment-modal"
+                title="Save"
+                handleClick={this.props.handleSave.bind(this, this.state.comment, this.state.level)}
+                disabled={!this.state.level}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

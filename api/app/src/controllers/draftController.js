@@ -113,6 +113,14 @@ module.exports = function(repository, activityBuilder, sqlLibrary) {
       ctx.status = 200;
       ctx.body = denormalizedDraft;
       return ctx;
+    },
+
+    async getEditingMarks(ctx) {
+      // TODO: Should eventually only get editingMarks associated with draft
+      const editingMarks = await repository.query(sqlLibrary.editingMarks, 'getEditingMarks', {});
+      ctx.status = 200;
+      ctx.body = editingMarks;
+      return ctx;
     }
   };
 };

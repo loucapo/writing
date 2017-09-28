@@ -6,7 +6,7 @@ import styles from './commentModal.css';
 class CommentLevelButtons extends Component {
   render() {
     return (
-      <div className={styles.commentLevelButtons}>
+      <div className={styles.section}>
         <div className={styles.sectionHeader}>
           <div className={styles.sectionHeaderText}>
             Please select one and leave your comment below
@@ -36,7 +36,6 @@ class CommentLevelButtons extends Component {
             bordered={this.props.level !== 'Needs Extensive Revision'}
             handleClick={this.props.handleLevelClick}
           />
-          <span className={styles.required}>(required)</span>
         </div>
       </div>
     );

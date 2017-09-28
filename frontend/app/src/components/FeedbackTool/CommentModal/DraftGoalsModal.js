@@ -61,31 +61,33 @@ class DraftGoalsModal extends Component {
         <div className={styles.modalWrapper}>
           <MLMenuList list={this.dummyDraftGoals} callback={this.handleDraftGoalChange} />
 
-          <div className={styles.commentWrapper}>
-            <CommentLevelButtons level={this.state.level} handleLevelClick={this.handleLevelClick} />
+          <div className={styles.rightPanel}>
+            <div className={styles.commentWrapper}>
+              <CommentLevelButtons level={this.state.level} handleLevelClick={this.handleLevelClick} />
 
-            <div className={styles.comments}>
-              <div className={styles.sectionHeader}>
-                <div className={styles.sectionHeaderText}>Comment</div>
-                <div className={styles.commentsHeadingLine} />
-              </div>
-              <div className={styles.commentTextWrapper}>
-                {this.state.level ? <MLTag text={this.state.level} deleteTag={this.deleteTag} /> : null}
-                <div
-                  placeholder="Please leave additional feedback here"
-                  contentEditable={true}
-                  suppressContentEditableWarning={true}
-                  onKeyUp={this.handleCommentChange}
-                  className={styles.commentText}
-                />
+              <div className={styles.section}>
+                <div className={styles.sectionHeader}>
+                  <div className={styles.sectionHeaderText}>Comment</div>
+                  <div className={styles.commentsHeadingLine} />
+                </div>
+                <div className={styles.commentTextWrapper}>
+                  {this.state.level ? <MLTag text={this.state.level} deleteTag={this.deleteTag} /> : null}
+                  <div
+                    placeholder="Please leave additional feedback here"
+                    contentEditable={true}
+                    suppressContentEditableWarning={true}
+                    onKeyUp={this.handleCommentChange}
+                    className={styles.commentText}
+                  />
+                </div>
               </div>
             </div>
 
             <div className={styles.controls}>
               {this.props.createFeedbackError && this.props.createFeedbackError.status
                 ? <div className={styles.feedbackError}>
-                    There was a problem saving your comment, please try again.
-                  </div>
+                  There was a problem saving your comment, please try again.
+                </div>
                 : null}
               <MLButton
                 className={styles.addCommentButton}

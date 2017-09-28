@@ -6,7 +6,8 @@ module.exports = function server(koa,
                                  koabodyparser,
                                  koa2cors,
                                  koarouter,
-                                 dbrefreshController) {
+                                 dbrefreshController,
+                                 fixtureLoaderController) {
   return function module() {
     console.log('approot ' + __dirname);
     console.log('appTitle WK_DATA_API');
@@ -19,12 +20,14 @@ module.exports = function server(koa,
     app.use(koacompress());
 
     const router = koarouter();
-    router.get('dbrefresh', '/dbrefresh', dbrefreshController.dbRefresh);
+    router
+      .get('dbrefresh', '/dbrefresh', dbrefreshController.dbRefresh)
+      .get('load', '/load/:data', fixtureLoaderController.fixtureLoad);
     app.use(router.routes());
     app.use(router.allowedMethods());
     app.listen(config.testingAPI.port);
     console.log('Data Server started, listening on port: ' + config.testingAPI.port);
-    console.log('Environment: QA');
+    console.log(router);
     return app;
   };
 };

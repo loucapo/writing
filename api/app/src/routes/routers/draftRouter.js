@@ -227,6 +227,28 @@ module.exports = function(koarouter, controllers) {
       controllers.draftController.setStudentReflectionQuestions
     );
 
-    appRouter.use(draftRouter.routes(), draftRouter. allowedMethods());
+    /**
+     * @swagger
+     * /editingMarks:
+     *   get:
+     *     x-name: getEditingMarks
+     *     description: gets editingMarks
+     *     operationId: getEditingMarks
+     *     responses:
+     *       200:
+     *         description: Success
+     *         schema:
+     *             $ref: "#/definitions/SuccessNoResponse"
+     *       422:
+     *         description: Failure
+     *         schema:
+     *             $ref: "#/definitions/standardFailureResponse"
+     */
+    draftRouter.get(
+      '/editingMarks',
+      controllers.draftController.getEditingMarks
+    );
+
+    appRouter.use(draftRouter.routes(), draftRouter.allowedMethods());
   };
 };

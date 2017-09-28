@@ -1,7 +1,8 @@
 import activityReducer from './activityModule';
 import draftReducer from './draftModule';
-import rubricReducer from './rubricModule';
+import rubric from './rubricModule';
 import criteria from './criteriaModule';
+import editingMarks from './editingMarksModule';
 import feedback from './feedbackModule';
 import publisherContent from './publisherContentModule';
 import resourceLinks from './resourceLinksModule';
@@ -22,8 +23,9 @@ export default {
   activities: activityReducer,
   drafts: draftReducer,
   criteria,
+  editingMarks,
   feedback,
-  rubric: rubricReducer,
+  rubric,
   publisherContent,
   resourceLinks,
   auth,
