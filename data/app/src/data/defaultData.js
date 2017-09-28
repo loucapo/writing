@@ -1,14 +1,6 @@
 /* eslint-disable camelcase, max-len */
 module.exports = function(faker) {
   return function() {
-  // TODO:
-  // break fixtures out to another file
-  // allow calling of fixtures other than the hardcoded dataSpec
-  // allow accepting a faker seed
-  // should probably print the seed that's actually used
-
-    faker.seed(123);
-
     let simpleActivity = function() {
       return {
         activity_id: faker.random.uuid(),
@@ -89,7 +81,7 @@ module.exports = function(faker) {
           available_to_rubric: true,
           rubric_level_1: `Ideas are difficult to follow`,
           rubric_level_2: `Connection among ideas is not always clear; there may be more than one point per paragraph`,
-          rubric_level_3: `Well organized on the whole, but occasionally needing work on paragraph coherence or 
+          rubric_level_3: `Well organized on the whole, but occasionally needing work on paragraph coherence or
                           transitions`,
           rubric_level_4: `Analysis is well organized, with clear topic sentences and transitions`,
           created_by_id: `d8cc5bd4-f1ed-401f-be68-693f6a3d9ae0`,
@@ -257,7 +249,7 @@ module.exports = function(faker) {
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Does not identify or describe a specific problem`,
-          rubric_level_2: `Does not describe the problem in enough detail:: readers do not see a 
+          rubric_level_2: `Does not describe the problem in enough detail:: readers do not see a
           compelling need for action`,
           rubric_level_3: `Describes a specific problem and need for action`,
           rubric_level_4: `Clearly describes a problem and communicates the nature, scope, and urgency of the problem`,
