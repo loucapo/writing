@@ -1,5 +1,6 @@
 Feature: Student Can View Instructor Comments
   @db=reset
+  @only
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"

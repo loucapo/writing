@@ -41,7 +41,7 @@ Feature: Student Saves Work
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"
     When I click "reflection_questions_modal.check(1)"
-    When I click "reflection_questions_modal.check(4)"
+    When I click "reflection_questions_modal.check(7)"
     When I click "reflection_questions_modal.save"
 
   Scenario: Student Has Enabled Save Button in Reflection Page
