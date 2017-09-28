@@ -286,6 +286,7 @@ class FeedbackEditor extends Component {
             closeModal={this.closeModal}
             createFeedbackError={this.createFeedbackError}
             modalType={this.state.showCommentModal}
+            editingMarks={this.props.editingMarks}
           />
           : null}
         {this.state.showFeedbackMenu
@@ -317,7 +318,8 @@ FeedbackEditor.propTypes = {
   deleteFeedback: PropTypes.func,
   lastFeedback: PropTypes.object,
   feedback: PropTypes.array,
-  createFeedbackError: PropTypes.object
+  createFeedbackError: PropTypes.object,
+  editingMarks: PropTypes.array
 };
 
 export default FeedbackEditor;

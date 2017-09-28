@@ -6,32 +6,13 @@ import styles from './commentModal.css';
 class EditingMarksModal extends Component {
   state = {
     comment: null,
-    editingMark: null
+    editingMark: this.props.editingMarks[0]
   };
 
-  dummyEditingMarks = [
-    { title: 'Comma splice', id: '1' },
-    { title: 'Fragment', id: '2' },
-    { title: 'Usage', id: '3' },
-    { title: 'Pronoun Agreement', id: '4' },
-    { title: 'Subject-verb Agreement', id: '5' },
-    { title: 'Appropriate Language', id: '6' },
-    { title: 'Needs Analysis', id: '7' },
-    { title: 'Comma Error', id: '8' },
-    { title: 'Apostrophe Error', id: '9' },
-    { title: 'Integrate Source (MLA)', id: '10' },
-    { title: 'Integrate Souce (APA)', id: '11' },
-    { title: 'Needs Evidence', id: '12' },
-    { title: 'Pronoun Reference', id: '13' },
-    { title: 'Quotation Marks', id: '14' },
-    { title: 'Spelling', id: '15' },
-    { title: 'Documentation (MLA)', id: '16' },
-    { title: 'Documentation (APA)', id: '17' },
-    { title: 'Verb Error', id: '18' }
-  ];
-
   handleEditingMarkChange = e => {
-    this.setState({ editingMark: e.target.textContent });
+    let id = e.target.dataset.id;
+    let editingMark = this.props.editingMarks.find(mark => mark.editingMarkId === id);
+    this.setState({ editingMark });
   };
 
   handleCommentChange = e => {
@@ -46,7 +27,7 @@ class EditingMarksModal extends Component {
         </div>
 
         <div className={styles.modalWrapper}>
-          <MLMenuList list={this.dummyEditingMarks} callback={this.handleEditingMarkChange} />
+          <MLMenuList list={this.props.editingMarks} callback={this.handleEditingMarkChange} />
 
           <div className={styles.rightPanel}>
             <div className={styles.commentWrapper}>
@@ -57,8 +38,7 @@ class EditingMarksModal extends Component {
                   <div className={styles.commentsHeadingLine} />
                 </div>
                 <div className={styles.commentDescription}>
-                  A comma splice occurs when two independent clauses are connected by only a comma. Independent clauses
-                  can stand by themselves as sentences, but they can't be connected with just a comma.
+                  {this.state.editingMark.description}
                 </div>
               </div>
 
@@ -97,7 +77,7 @@ class EditingMarksModal extends Component {
                 className={styles.addCommentButton}
                 dataId="save-comment-modal"
                 title="Save"
-                // handleClick={this.props.handleSave.bind(this, this.state.comment)}
+                // handleClick={this.props.handleSave.bind(this)}
                 disabled={!this.state.editingMark}
               />
             </div>
@@ -111,7 +91,8 @@ class EditingMarksModal extends Component {
 EditingMarksModal.propTypes = {
   closeModal: PropTypes.func,
   handleSave: PropTypes.func,
-  createFeedbackError: PropTypes.object
+  createFeedbackError: PropTypes.object,
+  editingMarks: PropTypes.array
 };
 
 export default EditingMarksModal;
