@@ -1,6 +1,5 @@
 Feature: Student Can View Instructor Comments
   @db=reset
-  @only
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -24,6 +23,7 @@ Feature: Student Can View Instructor Comments
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
     And I click "add_open_comments_button"
+    And I click "comment_modal.add_comment_textarea"
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
     And I click "comment_modal.good_job_comment_button"
     And I click "comment_modal.save_comment"
