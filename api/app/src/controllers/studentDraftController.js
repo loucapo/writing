@@ -266,7 +266,8 @@ module.exports = function(
           studentDraftId: command.studentDraftId,
           content: feedback.content,
           level: feedback.level || null,
-          showHeader: feedback.showHeader || null,
+          showHeader: !!feedback.showHeader,
+          goalId: feedback.goalId || null,
           editingMarkId: feedback.editingMarkId || null,
           feedbackId: feedback.feedbackId
         };

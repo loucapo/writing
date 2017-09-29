@@ -27,7 +27,9 @@ class CommentMenu extends Component {
         className={styles.commentMenu}
         style={{ top: `${this.props.position.top}px`, left: `${this.props.position.left}px` }}
       >
-        <li data-id="comment-menu-draft-goals" title="Not implemented">Draft Goals</li>
+        {this.props.showDraftGoals ? (
+          <li data-id="comment-menu-draft-goals" title="Not implemented">Draft Goals</li>
+        ) : null}
         <li data-id="comment-menu-editing-marks" title="Not implemented">Editing Marks</li>
         <li data-id="comment-menu-open-comments" onClick={this.props.showModal.bind(this, 'openComment')}>Open Comments</li>
         <li data-id="comment-menu-cancel">Cancel</li>
@@ -37,6 +39,7 @@ class CommentMenu extends Component {
 }
 
 CommentMenu.propTypes = {
+  showDraftGoals: PropTypes.bool,
   position: PropTypes.object,
   showModal: PropTypes.func,
   closeMenu: PropTypes.func

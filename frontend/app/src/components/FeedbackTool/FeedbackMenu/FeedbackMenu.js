@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import styles from './feedbackMenu.css';
 
-const FeedbackMenu = ({ position, handleClick }) => {
+const FeedbackMenu = ({ position, handleClick, showDraftGoals }) => {
   return (
     <div className={styles.feedbackMenuWrapper} style={{ top: `${position}px` }}>
       <div className={styles.feedbackMenu}>
         Feedback
       </div>
       <ul className={styles.feedbackButtons}>
+      {showDraftGoals ? (
         <li
           className={styles.feedbackButton + ' feedbackButton'}
           onClick={handleClick.bind(this, 'draftGoals')}
@@ -27,6 +28,7 @@ const FeedbackMenu = ({ position, handleClick }) => {
           </div>
           <div className={styles.feedbackButtonText}>Draft Goals</div>
         </li>
+      ) : null}
         <li
           className={styles.feedbackButton + ' feedbackButton'}
           onClick={handleClick.bind(this, 'editingMarks')}
@@ -68,7 +70,8 @@ const FeedbackMenu = ({ position, handleClick }) => {
 
 FeedbackMenu.propTypes = {
   position: PropTypes.number,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  showDraftGoals: PropTypes.bool
 };
 
 export default FeedbackMenu;

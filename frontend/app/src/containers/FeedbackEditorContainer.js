@@ -25,28 +25,24 @@ class FeedbackEditorContainer extends Component {
 FeedbackEditorContainer.propTypes = {
   studentDraftId: PropTypes.string,
   feedback: PropTypes.array,
+  createFeedback: PropTypes.func,
   getFeedback: PropTypes.func,
   getEditingMarks: PropTypes.func,
   getGoals: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
-  let editingMarks = state.editingMarks.map(mark => {
-    // Parses editingMarkId to generic id so it can be used in MLMenuList
-    mark.id = mark.editingMarkId;
-    return mark;
-  });
 
   let feedback = state.feedback.map(item => {
     // Grabs feedback titles and predefined comments
-    if (item.editingMarkId) {
+    if (item.editingMarkId && state.editingMarks) {
       let editingMark = state.editingMarks.find(mark => mark.id === item.editingMarkId);
       if (editingMark) {
         item.title = editingMark.title;
         item.predefined = editingMark.description;
       }
-    } else if (item.goalId) {
-      let draftGoal = state.goals.find(goal => goal.goalId === item.goalId);
+    } else if (item.goalId && state.goal) {
+      let draftGoal = state.goal.find(goal => goal.goalId === item.goalId);
       if (draftGoal) {
         item.title = draftGoal.title;
         item.predefined = draftGoal[`option${item.level}`];
@@ -58,11 +54,16 @@ const mapStateToProps = (state) => {
     return item;
   });
 
+  const draftGoals = state.goal && state.goal.length > 0 ? state.goal.filter(goal => {
+      return draft.goals && draft.goals.includes(goal.goalId);
+  }) : [];
+
   return {
     feedback,
     lastFeedback: state.feedback[state.feedback.length - 1],
     createFeedbackError: state.messaging.createFeedbackError,
-    editingMarks
+    draftGoals,
+    editingMarks: state.editingMarks
   };
 };
 

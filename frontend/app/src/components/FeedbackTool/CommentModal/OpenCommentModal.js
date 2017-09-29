@@ -33,6 +33,10 @@ class OpenCommentModal extends Component {
     });
   };
 
+  handleCreateFeedback = () => {
+    this.props.handleSave(this.state.comment, this.state.level, this.state.showStaticComment);
+  };
+
   render() {
     return (
       <div>
@@ -92,7 +96,7 @@ class OpenCommentModal extends Component {
                 className={styles.addCommentButton}
                 dataId="save-comment-modal"
                 title="Save"
-                handleClick={() => this.props.handleSave(this.state.comment, this.state.level)}
+                handleClick={this.handleCreateFeedback}
                 disabled={!this.state.level}
               />
             </div>

@@ -9,33 +9,32 @@ class DraftGoalsModal extends Component {
   state = {
     comment: null,
     level: null,
-    draftGoal: null,
-    showStaticComment: true
+    selectedDraftGoal: null,
+    showStaticComment: true,
+    draftGoals: []
   };
 
-  componentDidMount = () => {
-    this.setState({
-      draftGoal: this.dummyDraftGoals[0]
+  handleCreateFeedback = () => {
+    this.props.handleSave(
+      this.state.comment,
+      this.state.level,
+      this.state.showStaticComment,
+      this.state.selectedDraftGoal.goalId
+    );
+  };
+
+  componentWillMount = () => {
+    const draftGoals = this.props.draftGoals.map((draftGoal) => {
+      // Parses goalId to generic id so it can be used in MLMenuList
+      draftGoal.id = draftGoal.goalId;
+      return draftGoal;
     });
-  };
 
-  /* TODO: https://macmillanlearning.atlassian.net/browse/WRITE-1517 will make this load from actual data insted of
-     being hard coded like this
-  */
-  dummyDraftGoals = [
-    { title: 'Thesis', id: '1', option_1: 'asdf', option_2: 'qwerty', option_3: 'uiop' },
-    { title: 'Reason and Support', id: '2' },
-    { title: 'Paragraph Development', id: '3' },
-    { title: 'Interpretation/Analysis', id: '4' },
-    { title: 'Integration of Research', id: '5' },
-    { title: 'Counterarguments', id: '6' },
-    { title: 'Ideas/Content', id: '7' },
-    { title: 'Topic Sentence', id: '8' },
-    { title: 'Logical Appeals', id: '9' },
-    { title: 'Evidence', id: '10' },
-    { title: 'Style/Voice', id: '11' },
-    { title: 'Conclusion', id: '12' }
-  ];
+    this.setState({
+      draftGoals,
+      selectedDraftGoal: draftGoals[0]
+    });
+  }
 
   handleCommentChange = e => {
     this.setState({ comment: e.target.value });
@@ -43,7 +42,7 @@ class DraftGoalsModal extends Component {
 
   handleDraftGoalChange = e => {
     this.setState({
-      draftGoal: this.dummyDraftGoals.find(goal => {
+      selectedDraftGoal: this.state.draftGoals.find(goal => {
         return goal.id === e.target.dataset.id;
       })
     });
@@ -71,7 +70,7 @@ class DraftGoalsModal extends Component {
         </div>
 
         <div className={styles.modalWrapper}>
-          <MLMenuList list={this.dummyDraftGoals} callback={this.handleDraftGoalChange} />
+          <MLMenuList list={this.state.draftGoals} callback={this.handleDraftGoalChange} />
 
           <div className={styles.rightPanel}>
             <div className={styles.commentWrapper}>
@@ -87,7 +86,7 @@ class DraftGoalsModal extends Component {
                       <div className={styles.commentsHeadingLine} />
                     </div>
                     <div className={styles.commentDescription}>
-                      {this.state.draftGoal[`option_${this.state.level}`]}
+                      {this.state.selectedDraftGoal[`option${this.state.level}`]}
                     </div>
                     <div className={styles.removeComment}>
                       <a href="#" onClick={this.deleteTag}>remove</a>
@@ -130,7 +129,7 @@ class DraftGoalsModal extends Component {
                 className={styles.addCommentButton}
                 dataId="save-comment-modal"
                 title="Save"
-                handleClick={this.props.handleSave.bind(this, this.state.comment, this.state.level)}
+                handleClick={this.handleCreateFeedback}
                 disabled={!this.state.level}
               />
             </div>
@@ -144,7 +143,9 @@ class DraftGoalsModal extends Component {
 DraftGoalsModal.propTypes = {
   closeModal: PropTypes.func,
   handleSave: PropTypes.func,
-  createFeedbackError: PropTypes.object
+  createFeedbackError: PropTypes.object,
+  createFeedback: PropTypes.func,
+  draftGoals: PropTypes.array
 };
 
 export default DraftGoalsModal;
