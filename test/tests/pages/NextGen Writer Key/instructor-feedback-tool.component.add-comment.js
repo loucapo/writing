@@ -9,6 +9,10 @@ class InstructorCommentModal extends Component {
         desc: `Box to add text to a comment`,
         locator: `[class*='CommentModal__commentTextWrapper']`
       },
+      comment_level_button: {
+        desc: `Buttons to assign level to a comment`,
+        locator: `[id='commentModal'] [class^='CommentModal__buttons'] button`
+      },
       nice_job_comment_button: {
         desc: `Button to quickly add nice job comment`,
         locator: `[data-id='nice-job-comment-modal']`
