@@ -48,9 +48,9 @@ class FeedbackEditor extends Component {
     document.body.removeEventListener('contextmenu', this.handleRightClick.bind(this));
   };
 
-  handleCreateFeedback = (feedbackContent, level) => {
+  handleSave = (saveFeedback) => {
     this.setState({ saving: true }, () => {
-      this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, level);
+      saveFeedback(this.props.studentActivityId, this.props.studentDraftId);
     });
   };
 
@@ -110,7 +110,7 @@ class FeedbackEditor extends Component {
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add(styles.highlight);
-      if (level === 'Good Job') {
+      if (level === 3) {
         selection.classList.add(styles.highlightGreen);
       }
       selection.setAttribute('data-feedback-id', feedbackId);
@@ -282,11 +282,10 @@ class FeedbackEditor extends Component {
         {this.state.showCommentModal
           ? <CommentModal
             position={this.position}
-            handleSave={this.handleCreateFeedback}
+            handleSave={this.handleSave}
             closeModal={this.closeModal}
             createFeedbackError={this.createFeedbackError}
             modalType={this.state.showCommentModal}
-            editingMarks={this.props.editingMarks}
           />
           : null}
         {this.state.showFeedbackMenu
@@ -314,12 +313,10 @@ FeedbackEditor.propTypes = {
   studentDraftId: PropTypes.string,
   content: PropTypes.string,
   updateFeedbackPaper: PropTypes.func,
-  createFeedback: PropTypes.func,
   deleteFeedback: PropTypes.func,
   lastFeedback: PropTypes.object,
   feedback: PropTypes.array,
-  createFeedbackError: PropTypes.object,
-  editingMarks: PropTypes.array
+  createFeedbackError: PropTypes.object
 };
 
 export default FeedbackEditor;

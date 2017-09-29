@@ -265,7 +265,9 @@ module.exports = function(
           createdDate: moment().toISOString(),
           studentDraftId: command.studentDraftId,
           content: feedback.content,
-          level: feedback.level,
+          level: feedback.level || null,
+          showHeader: feedback.showHeader || null,
+          editingMarkId: feedback.editingMarkId || null,
           feedbackId: feedback.feedbackId
         };
         await repo.query(sqlLibrary.feedback, 'createFeedback', data);

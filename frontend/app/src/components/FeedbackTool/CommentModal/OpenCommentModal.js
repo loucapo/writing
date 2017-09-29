@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MLButton, MLTag } from '../../MLComponents';
+import { MLButton } from '../../MLComponents';
 import { CommentLevelButtons } from '../index.js';
 import styles from './commentModal.css';
 
@@ -10,21 +10,25 @@ class OpenCommentModal extends Component {
     level: null
   };
 
-  handleChange = e => {
-    this.setState({ comment: e.target.textContent.trim() });
+  handleCommentChange = e => {
+    this.setState({ comment: e.target.value });
   };
 
-  handleLevelClick = (e) => {
+  handleLevelClick = (levelId) => {
     this.setState({
-      level: e.target.innerText
+      level: levelId
     });
   };
 
-  deleteTag = (e) => {
+  deleteTag = e => {
     e.preventDefault();
     this.setState({
       level: null
     });
+  };
+
+  handleCreateFeedback = (studentActivityId, studentDraftId) => {
+    this.props.createFeedback(studentActivityId, studentDraftId, this.state.comment, this.state.level);
   };
 
   render() {
@@ -34,40 +38,26 @@ class OpenCommentModal extends Component {
           Open Comments
         </div>
 
-        <CommentLevelButtons
-          level={this.state.level}
-          handleLevelClick={this.handleLevelClick}
-        />
+        <CommentLevelButtons level={this.state.level} handleLevelClick={this.handleLevelClick} />
 
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
             <div className={styles.sectionHeaderText}>Additional Comment</div>
             <div className={styles.commentsHeadingLine} />
           </div>
-          <div
+          <textarea
             className={styles.commentTextWrapper}
-          >
-            {this.state.level
-              ? <MLTag text={this.state.level} deleteTag={this.deleteTag} />
-              : null
-            }
-            <div
-              placeholder="Please leave additional feedback here"
-              contentEditable={true}
-              suppressContentEditableWarning={true}
-              onKeyUp={this.handleChange}
-              className={styles.commentText}
-            />
-          </div>
+            placeholder="Please leave additional feedback here"
+            onKeyUp={this.handleCommentChange}
+          />
 
           <div className={styles.controlsWrapper}>
             <div className={styles.controls}>
-              {(this.props.createFeedbackError && this.props.createFeedbackError.status)
+              {this.props.createFeedbackError && this.props.createFeedbackError.status
                 ? <div className={styles.feedbackError}>
-                  There was a problem saving your comment, please try again.
-                </div>
-                : null
-              }
+                    There was a problem saving your comment, please try again.
+                  </div>
+                : null}
               <MLButton
                 className={styles.addCommentButton}
                 dataId="cancel-comment-modal"
@@ -80,7 +70,7 @@ class OpenCommentModal extends Component {
                 className={styles.addCommentButton}
                 dataId="save-comment-modal"
                 title="Save"
-                handleClick={this.props.handleSave.bind(this, this.state.comment, this.state.level)}
+                handleClick={this.props.handleSave.bind(this, this.handleCreateFeedback)}
                 disabled={!this.state.level}
               />
             </div>
@@ -94,7 +84,8 @@ class OpenCommentModal extends Component {
 OpenCommentModal.propTypes = {
   closeModal: PropTypes.func,
   handleSave: PropTypes.func,
-  createFeedbackError: PropTypes.object
+  createFeedbackError: PropTypes.object,
+  createFeedback: PropTypes.func
 };
 
 export default OpenCommentModal;

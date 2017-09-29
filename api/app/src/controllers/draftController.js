@@ -95,14 +95,14 @@ module.exports = function(repository, activityBuilder, sqlLibrary) {
       let drafts = await repository.query(sqlLibrary.draft,
         'getDraftsByActivityId',
         {activityId: ctx.params.activityId});
-      let draftGoal = await repository.query(sqlLibrary.draft, 'getDraftCriteria', {});
+      let draftGoal = await repository.query(sqlLibrary.draft, 'getDraftGoals', {});
       let draftStudentReflectionQuestions = await repository.query(
         sqlLibrary.draft,
         'getDraftStudentReflectionQuestions',
         {});
 
       const denormalizedDraft = drafts.map(x => {
-        x.goals = draftGoal.filter(y=>y.draftId === x.draftId).map(z => z.criteriaId);
+        x.goals = draftGoal.filter(y=>y.draftId === x.draftId).map(z => z.goalId);
         x.studentReflectionQuestions = draftStudentReflectionQuestions
           .filter(y=>y.draftId === x.draftId).map(z => {
             return z.studentReflectionQuestionId;

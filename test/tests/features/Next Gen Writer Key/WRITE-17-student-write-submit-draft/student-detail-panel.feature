@@ -18,7 +18,7 @@ Feature: Student Views Details Panel
     When I click "draft(1).add_reflection_questions"
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
-    When I click "reflection_questions_modal.check(4)"
+    When I click "reflection_questions_modal.check(7)"
     When I click "reflection_questions_modal.save"
 
   Scenario: Student Collapses Current Section
@@ -71,5 +71,5 @@ Feature: Student Views Details Panel
     When I click "reflection_questions_modal.save"
     Given I launch the activity as an "student"
     When I click "start_draft"
-    Then the text of "draft_editor.activity_reflection_questions_panel" should be "free: utt ben yavin fett naboo calamari. Obi-wan mon coruscant c"
+    Then the text of "draft_editor.activity_reflection_questions_panel" should be "free: The most challenging part of this assignment was:"
 

@@ -19,6 +19,7 @@ CREATE TABLE goal
   option_1 text,
   option_2 text,
   option_3 text,
+  index integer,
   created_by_id uuid,
   created_date date,
   modified_by_id uuid,
@@ -41,6 +42,7 @@ CREATE TABLE editing_mark
   editing_mark_id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
   title text,
   description text,
+  index integer,
   created_by_id uuid,
   created_date date,
   modified_by_id uuid,
@@ -126,3 +128,7 @@ ALTER TABLE editing_mark2related_content
 -- Table: feedback
 ALTER TABLE feedback ADD COLUMN goal_id uuid REFERENCES goal;
 ALTER TABLE feedback ADD COLUMN editing_mark_id uuid REFERENCES editing_mark;
+ALTER TABLE feedback ADD COLUMN show_header boolean;
+
+-- Table: draft_criteria
+DROP TABLE IF EXISTS "draft_criteria" CASCADE;

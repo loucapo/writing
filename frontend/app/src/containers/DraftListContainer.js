@@ -32,7 +32,7 @@ const mapStateToProps = (state, props) => {
     let goals = [];
     let studentReflectionQuestions = [];
     if (x.goals) {
-      goals = x.goals.map(y => state.criteria.find(z => z.criteriaId === y).title);
+      goals = x.goals.map(y => state.goal.find(z => z.goalId === y).title);
     }
     if (x.studentReflectionQuestions) {
       studentReflectionQuestions = x.studentReflectionQuestions
