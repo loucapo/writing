@@ -17,24 +17,24 @@ class CommentLevelButtons extends Component {
         <div className={styles.buttons}>
           <MLButton
             className={styles.addCommentButton}
-            dataId="good-job-comment-modal"
-            title="Good Job"
-            bordered={this.props.level !== 'Good Job'}
-            handleClick={this.props.handleLevelClick}
+            dataId="nice-job-comment-modal"
+            title="Nice Job"
+            bordered={this.props.level !== 3}
+            handleClick={this.props.handleLevelClick.bind(this, 3)}
           />
           <MLButton
             className={styles.addCommentButton}
             dataId="needs-work-comment-modal"
             title="Needs Work"
-            bordered={this.props.level !== 'Needs Work'}
-            handleClick={this.props.handleLevelClick}
+            bordered={this.props.level !== 2}
+            handleClick={this.props.handleLevelClick.bind(this, 2)}
           />
           <MLButton
             className={styles.addCommentButton}
             dataId="needs-extensive-work-comment-modal"
             title="Needs Extensive Revision"
-            bordered={this.props.level !== 'Needs Extensive Revision'}
-            handleClick={this.props.handleLevelClick}
+            bordered={this.props.level !== 1}
+            handleClick={this.props.handleLevelClick.bind(this, 1)}
           />
         </div>
       </div>
@@ -44,7 +44,7 @@ class CommentLevelButtons extends Component {
 
 CommentLevelButtons.propTypes = {
   handleLevelClick: PropTypes.func,
-  level: PropTypes.string
+  level: PropTypes.number
 };
 
 export default CommentLevelButtons;

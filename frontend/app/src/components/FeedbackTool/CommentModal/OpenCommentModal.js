@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MLButton, MLTag } from '../../MLComponents';
+import { MLButton } from '../../MLComponents';
 import { CommentLevelButtons } from '../index.js';
 import styles from './commentModal.css';
 
@@ -10,13 +10,13 @@ class OpenCommentModal extends Component {
     level: null
   };
 
-  handleChange = e => {
-    this.setState({ comment: e.target.textContent.trim() });
+  handleCommentChange = e => {
+    this.setState({ comment: e.target.value });
   };
 
-  handleLevelClick = e => {
+  handleLevelClick = (levelId) => {
     this.setState({
-      level: e.target.innerText
+      level: levelId
     });
   };
 
@@ -45,16 +45,11 @@ class OpenCommentModal extends Component {
             <div className={styles.sectionHeaderText}>Additional Comment</div>
             <div className={styles.commentsHeadingLine} />
           </div>
-          <div className={styles.commentTextWrapper}>
-            {this.state.level ? <MLTag text={this.state.level} deleteTag={this.deleteTag} /> : null}
-            <div
-              placeholder="Please leave additional feedback here"
-              contentEditable={true}
-              suppressContentEditableWarning={true}
-              onKeyUp={this.handleChange}
-              className={styles.commentText}
-            />
-          </div>
+          <textarea
+            className={styles.commentTextWrapper}
+            placeholder="Please leave additional feedback here"
+            onKeyUp={this.handleCommentChange}
+          />
 
           <div className={styles.controlsWrapper}>
             <div className={styles.controls}>

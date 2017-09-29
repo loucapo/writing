@@ -122,3 +122,7 @@
 .panel {
   padding: 15px;
 }
+
+.removeComment {
+  text-align: right;
+}

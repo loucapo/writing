@@ -110,7 +110,7 @@ class FeedbackEditor extends Component {
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add(styles.highlight);
-      if (level === 'Good Job') {
+      if (level === 3) {
         selection.classList.add(styles.highlightGreen);
       }
       selection.setAttribute('data-feedback-id', feedbackId);
