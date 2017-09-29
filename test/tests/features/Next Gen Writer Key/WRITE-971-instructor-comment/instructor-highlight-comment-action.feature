@@ -39,7 +39,7 @@ Feature: Instructor Can Add Comments To Student Draft
     Then I sleep for 2 seconds
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
     And I click "add_open_comments_button"
-    Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
+    Then I wait until there is 1 "comment_modal.nice_job_comment_button" visible
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
 
   @WRITE-1212
@@ -53,7 +53,7 @@ Feature: Instructor Can Add Comments To Student Draft
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
     And I click "add_open_comments_button"
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
-    And I click "comment_modal.good_job_comment_button"
+    And I click "comment_modal.nice_job_comment_button"
     And I click "comment_modal.save_comment"
     Then I wait until there is 1 "feedback_flag" visible
 
