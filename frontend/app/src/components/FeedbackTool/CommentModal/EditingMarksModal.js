@@ -10,13 +10,24 @@ class EditingMarksModal extends Component {
   };
 
   handleEditingMarkChange = e => {
-    let id = e.target.dataset.id;
-    let editingMark = this.props.editingMarks.find(mark => mark.editingMarkId === id);
+    let editingMarkId = e.target.dataset.id;
+    let editingMark = this.props.editingMarks.find(mark => mark.id === editingMarkId);
     this.setState({ editingMark });
   };
 
   handleCommentChange = e => {
     this.setState({ comment: e.target.textContent.trim() });
+  };
+
+  handleCreateFeedback = (studentActivityId, studentDraftId) => {
+    this.props.createFeedback(
+      studentActivityId,
+      studentDraftId,
+      this.state.comment,
+      null,
+      true,
+      this.state.editingMark.id
+    );
   };
 
   render() {
@@ -62,8 +73,8 @@ class EditingMarksModal extends Component {
             <div className={styles.controls}>
               {this.props.createFeedbackError && this.props.createFeedbackError.status
                 ? <div className={styles.feedbackError}>
-                  There was a problem saving your comment, please try again.
-                </div>
+                    There was a problem saving your comment, please try again.
+                  </div>
                 : null}
               <MLButton
                 className={styles.addCommentButton}
@@ -77,7 +88,7 @@ class EditingMarksModal extends Component {
                 className={styles.addCommentButton}
                 dataId="save-comment-modal"
                 title="Save"
-                // handleClick={this.props.handleSave.bind(this)}
+                handleClick={this.props.handleSave.bind(this, this.handleCreateFeedback)}
                 disabled={!this.state.editingMark}
               />
             </div>
@@ -92,6 +103,7 @@ EditingMarksModal.propTypes = {
   closeModal: PropTypes.func,
   handleSave: PropTypes.func,
   createFeedbackError: PropTypes.object,
+  createFeedback: PropTypes.func,
   editingMarks: PropTypes.array
 };
 
