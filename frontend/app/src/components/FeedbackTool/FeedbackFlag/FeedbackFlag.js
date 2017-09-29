@@ -44,7 +44,7 @@ class FeedbackFlag extends Component {
 
     const {feedback, flagTop, handleFlagClick, expandedId, isDisplay} = this.props;
 
-    const preClass = (feedback.level === 'Good Job') ? ` ${styles.flagGreen}` : '';
+    const preClass = (parseInt(feedback.level) === 3) ? ` ${styles.flagGreen}` : '';
     const expandedClass = (expandedId) ? ` ${styles.expanded}` : '';
     const flagClass = styles.flag + preClass + expandedClass;
 
