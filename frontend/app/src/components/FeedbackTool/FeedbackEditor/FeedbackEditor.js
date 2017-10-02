@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { AddCommentButton, CommentModal, CommentMenu, FeedbackFlags } from '../index';
+import { FeedbackMenu, CommentModal, FeedbackFlags, CommentMenu } from '../index';
 import styles from './feedbackEditor.css';
 
 class FeedbackEditor extends Component {
   position;
 
   state = {
-    showCommentModal: false,
-    showAddComment: false,
+    showCommentModal: null,
+    showFeedbackMenu: false,
     showCommentMenu: false,
     saving: false,
-    content: this.props.content
+    removing: false,
+    content: this.props.content,
+    draftHasGoals: false
   };
 
   componentWillReceiveProps = (nextProps) => {
-    const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
 
-    if(this.state.saving && newFeedback) {
-      this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
+    const newFeedback = !_.isEqual(this.props.lastFeedback, nextProps.lastFeedback);
+    const removedFeedbackIds = _.map(_.differenceBy(this.props.feedback, nextProps.feedback, 'feedbackId'), 'feedbackId');
+
+    if((this.state.saving && newFeedback) || (this.state.removing && removedFeedbackIds.length > 0)) {
+
+      if (this.state.saving) {
+        this.addHighlights(nextProps.lastFeedback);
+      }
+      if (this.state.removing) {
+        this.removeHighlights(removedFeedbackIds);
+      }
       this.setState({
-        showCommentModal: false,
+        showCommentModal: null,
         saving: false,
-        content: document.getElementById('feedbackEditor').innerHTML
+        removing: false,
+        content: document.getElementsByClassName(styles.feedbackEditor)[0].innerHTML
       }, () => {
         this.props.updateFeedbackPaper(this.props.studentActivityId, this.props.studentDraftId, this.state.content);
       });
@@ -38,9 +49,24 @@ class FeedbackEditor extends Component {
     document.body.removeEventListener('contextmenu', this.handleRightClick.bind(this));
   };
 
-  handleCreateFeedback = (feedbackContent, level) => {
-    this.setState({ saving: true });
-    this.props.createFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackContent, level);
+  handleSave = (comment, level, showHeader, goalId, editorMarkId) => {
+    this.setState({ saving: true }, () => {
+      this.props.createFeedback(
+        this.props.studentActivityId,
+        this.props.studentDraftId,
+        comment,
+        level,
+        showHeader,
+        goalId,
+        editorMarkId
+      );
+    });
+  };
+
+  handleDeleteFeedback = (feedbackId) => {
+    this.setState({ removing: true }, () => {
+      this.props.deleteFeedback(this.props.studentActivityId, this.props.studentDraftId, feedbackId);
+    });
   };
 
   addSelections = () => {
@@ -57,29 +83,48 @@ class FeedbackEditor extends Component {
     // Grab position of selected text
     let selected = document.querySelector(`.${styles.selected}`);
     this.position = {
-      top: selected.offsetTop,
+      top: selected.offsetTop - 60,
       left: selected.getBoundingClientRect().left,
       bottom: selected.getBoundingClientRect().bottom
     };
   };
 
   removeSelections = () => {
-    // FixMe: Remove entire span instead of just the class.
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     selections.map(selection => {
-      selection.classList.remove(styles.selected);
+      selection.parentNode.replaceChild(
+        document.createRange().createContextualFragment(selection.innerHTML),
+        selection
+      );
     });
   };
 
-  addHighlights = (feedbackId, level) => {
+  removeHighlights = (removedFeedbackIds) => {
+    removedFeedbackIds.map(removedFeedbackId => {
+      let highlights = document.querySelectorAll('.' + styles.highlight + `[data-feedback-id="${removedFeedbackId}"]`);
+      while (highlights.length > 0) {
+        const highlight = highlights[0];
+        highlight.parentNode.replaceChild(
+          document.createRange().createContextualFragment(highlight.innerHTML),
+          highlight
+        );
+        highlights = document.querySelectorAll('.' + styles.highlight + `[data-feedback-id="${removedFeedbackId}"]`);
+      }
+    });
+    window.getSelection().removeAllRanges();
+  };
+
+  addHighlights = (feedback) => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add(styles.highlight);
-      if (level === 'Good Job') {
+      if (feedback.level === 3) {
         selection.classList.add(styles.highlightGreen);
+      } else if (feedback.editingMarkId) {
+        selection.classList.add(styles.highlightOrange);
       }
-      selection.setAttribute('data-feedback-id', feedbackId);
+      selection.setAttribute('data-feedback-id', feedback.feedbackId);
     });
   };
 
@@ -91,23 +136,21 @@ class FeedbackEditor extends Component {
 
       this.setState({
         showCommentMenu: true,
-        showAddComment: false
+        showFeedbackMenu: false
       });
     }
   };
 
   closeMenu = () => {
-    let commentMenu = document.querySelector('[data-id=menu-add-comment]');
-    if(commentMenu && !commentMenu.contains(event.target)) {
-      this.setState({ showCommentMenu: false });
-      this.removeSelections();
-    }
+    this.setState({ showCommentMenu: false });
+    this.removeSelections();
   };
 
   handleEditorMouseUp = e => {
-    if (e.target.id !== 'addCommentButton') {
-      if (this.state.showAddComment) {
-        this.setState({ showAddComment: false });
+    if (!e.target.classList.contains('feedbackButton')) {
+      // TODO: verify if this clicking anywhere outside of the editor should cancel the commenting
+      if (this.state.showFeedbackMenu) {
+        this.setState({ showFeedbackMenu: null });
         this.removeSelections();
       }
       if (!this.state.showCommentMenu && !this.state.showCommentModal && this.textHasBeenSelected()) {
@@ -119,18 +162,18 @@ class FeedbackEditor extends Component {
 
   closeModal = () => {
     this.removeSelections();
-    this.setState({ showCommentModal: false });
+    this.setState({ showCommentModal: null });
   };
 
-  showCommentModal = () => {
+  showCommentModal = (whichModal) => {
     this.position.top += 20;
 
     if ((this.position.bottom + 20) > window.innerHeight - 270) {
       this.position.top -= 250;
     }
     this.setState({
-      showCommentModal: true,
-      showAddComment: false,
+      showCommentModal: whichModal,
+      showFeedbackMenu: false,
       showCommentMenu: false
     });
   };
@@ -142,7 +185,7 @@ class FeedbackEditor extends Component {
 
   addCommentButton = () => {
     this.position.top -= 8;
-    this.setState({ showAddComment: true });
+    this.setState({ showFeedbackMenu: true });
   };
 
   // selects ranges across paragraphs with ease
@@ -241,32 +284,46 @@ class FeedbackEditor extends Component {
   };
 
   render() {
+    const draftHasGoals = this.props.draftGoals && this.props.draftGoals.length > 0;
+
     return (
       <div className={styles.feedbackEditorWrapper} onMouseUp={this.handleEditorMouseUp}>
         <div
-          id="feedbackEditor"
           className={styles.feedbackEditor}
           dangerouslySetInnerHTML={{ __html: this.state.content }}
         />
         {this.state.showCommentModal
           ? <CommentModal
             position={this.position}
-            handleSave={this.handleCreateFeedback}
+            handleSave={this.handleSave}
             closeModal={this.closeModal}
             createFeedbackError={this.createFeedbackError}
-            />
+            modalType={this.state.showCommentModal}
+            editingMarks={this.props.editingMarks}
+            draftGoals={this.props.draftGoals}
+          />
           : null}
-        {this.state.showAddComment
-          ? <AddCommentButton position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
+        {this.state.showFeedbackMenu ?
+          <FeedbackMenu
+            position={this.position.top}
+            handleClick={this.showCommentModal.bind(this)}
+            showDraftGoals={draftHasGoals}
+          />
           : null}
         {this.state.showCommentMenu ?
           <CommentMenu
             position={this.position}
             showModal={this.showCommentModal.bind(this)}
             closeMenu={this.closeMenu}
+            showDraftGoals={draftHasGoals}
           />
           : null}
-        <FeedbackFlags feedback={this.props.feedback} />
+        <FeedbackFlags
+          feedback={this.props.feedback}
+          isDisplay={false}
+          handleDeleteFeedback={this.handleDeleteFeedback}
+          editingMarks={this.props.editingMarks}
+          />
       </div>
     );
   }
@@ -277,10 +334,13 @@ FeedbackEditor.propTypes = {
   studentDraftId: PropTypes.string,
   content: PropTypes.string,
   updateFeedbackPaper: PropTypes.func,
-  createFeedback: PropTypes.func,
+  deleteFeedback: PropTypes.func,
   lastFeedback: PropTypes.object,
   feedback: PropTypes.array,
-  createFeedbackError: PropTypes.object
+  createFeedback: PropTypes.func,
+  createFeedbackError: PropTypes.object,
+  editingMarks: PropTypes.array,
+  draftGoals: PropTypes.array
 };
 
 export default FeedbackEditor;

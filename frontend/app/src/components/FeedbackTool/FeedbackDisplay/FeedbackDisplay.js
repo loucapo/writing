@@ -50,7 +50,7 @@ const FeedbackDisplay = ({
             className={styles.feedbackPaper}
             dangerouslySetInnerHTML={{ __html: studentDraft.feedbackPaper }}
           />
-          <FeedbackFlags feedback={feedback} />
+          <FeedbackFlags feedback={feedback} isDisplay={true} />
         </div>
       </MLCard>
 

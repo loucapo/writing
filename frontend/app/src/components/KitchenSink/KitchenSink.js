@@ -9,10 +9,10 @@ import {
   MLDialog,
   MLMessage,
   MLSpinner,
-  MLCheckboxForm
-} from './../MLComponents/index';
+  MLCheckboxForm,
+  MLMenuList
+} from './../MLComponents';
 import DemoModal from './../MLComponents/MLModal/Modals/DemoModal';
-
 import styles from './kitchenSink.css';
 
 const dummyCriteria = [
@@ -83,6 +83,29 @@ const dummyAccordionList = [
     content: 'second content test',
     dataId: 'second test'
   }
+];
+
+let testCallback = () => alert('test'); // eslint-disable-line no-alert
+
+const dummyMenuList = [
+  {title: 'Comma splice', id: '1'},
+  {title: 'Fragment', id: '2'},
+  {title: 'Usage', id: '3'},
+  {title: 'Pronoun Agreement', id: '4'},
+  {title: 'Subject-verb Agreement', id: '5'},
+  {title: 'Appropriate Language', id: '6'},
+  {title: 'Needs Analysis', id: '7'},
+  {title: 'Comma Error', id: '8'},
+  {title: 'Apostrophe Error', id: '9'},
+  {title: 'Integrate Source (MLA)', id: '10'},
+  {title: 'Integrate Souce (APA)', id: '11'},
+  {title: 'Needs Evidence', id: '12'},
+  {title: 'Pronoun Reference', id: '13'},
+  {title: 'Quotation Marks', id: '14'},
+  {title: 'Spelling', id: '15'},
+  {title: 'Documentation (MLA)', id: '16'},
+  {title: 'Documentation (APA)', id: '17'},
+  {title: 'Verb Error', id: '18'}
 ];
 
 class KitchenSink extends Component {
@@ -387,6 +410,16 @@ class KitchenSink extends Component {
             saveForm={() => console.log('submitted!')}
             isFormTogglable={true}
           />
+        </div>
+
+        <div className={styles.padder}>
+          <h3>Menu List Component</h3>
+          <h4>Parameters:</h4>
+          <ol>
+            <li>list: array of objects, each object needs a title and id (required)</li>
+            <li>callback: callback that fires once list items are clicked on</li>
+          </ol>
+          <MLMenuList list={dummyMenuList} callback={testCallback} />
         </div>
       </div>
     );

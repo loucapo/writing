@@ -87,9 +87,9 @@ class CheckboxField extends Component {
           <p>{field.description}</p>
           <strong>Feedback Options:</strong>
           <ul>
-            <li>{`Great job! ${field.goalOption1 || ''}`}</li>
-            <li>{`Needs work. ${field.goalOption2 || ''}`}</li>
-            <li>{`Needs extensive revision. ${field.goalOption3 || ''}`}</li>
+            <li>{`${field.option1 || ''}`}</li>
+            <li>{`${field.option2 || ''}`}</li>
+            <li>{`${field.option3 || ''}`}</li>
           </ul>
         </div>
       </div>

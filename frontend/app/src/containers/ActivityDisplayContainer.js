@@ -7,6 +7,7 @@ import { addStudentInfoToDrafts } from './selectors';
 import { getDraftsForActivity } from '../modules/draftModule';
 import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
+import { getGoals } from '../modules/goalModule';
 
 class ActivityDisplayContainer extends Component {
   componentWillMount() {
@@ -21,6 +22,7 @@ class ActivityDisplayContainer extends Component {
       this.props.getDraftsForActivity(this.props.activityId);
       this.props.getStudentDrafts(this.props.studentActivityId);
       this.props.getReflectionQuestions();
+      this.props.getGoals();
     }
   }
 
@@ -45,7 +47,8 @@ ActivityDisplayContainer.propTypes = {
   getStudentDrafts: PropTypes.func,
   getDraftsForActivity: PropTypes.func,
   getReflectionQuestions: PropTypes.func,
-  hasStudentDrafts: PropTypes.bool
+  hasStudentDrafts: PropTypes.bool,
+  getGoals: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
@@ -74,5 +77,6 @@ export default connect(mapStateToProps, {
   createStudentActivityIfNotCreated,
   getDraftsForActivity,
   getStudentDrafts,
-  getReflectionQuestions
+  getReflectionQuestions,
+  getGoals
 })(ActivityDisplayContainer);

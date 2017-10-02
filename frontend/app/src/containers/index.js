@@ -18,6 +18,8 @@ import FeedbackEditorContainer from './FeedbackEditorContainer';
 import FeedbackDisplayContainer from './FeedbackDisplayContainer';
 import RubricContainer from './RubricContainer';
 import RubricDisplayContainer from './RubricDisplayContainer';
+import EditingMarksModalContainer from './EditingMarksModalContainer';
+import OpenCommentModalContainer from './OpenCommentModalContainer';
 
 export {
   ActivityContainer,
@@ -39,5 +41,7 @@ export {
   FeedbackEditorContainer,
   FeedbackDisplayContainer,
   RubricContainer,
-  RubricDisplayContainer
+  RubricDisplayContainer,
+  EditingMarksModalContainer,
+  OpenCommentModalContainer
 };

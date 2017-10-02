@@ -6,6 +6,7 @@ import { updateActivityPrompt } from './../modules/activityModule';
 import { getReflectionQuestions } from './../modules/reflectionQuestionsModule';
 import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { CompositionDraftDetails } from './../components/Composition/index';
+import { getCriteria } from '../modules/criteriaModule';
 import { addStudentInfoToDrafts } from './selectors';
 
 class CompositionDraftDetailsContainer extends Component {
@@ -14,6 +15,7 @@ class CompositionDraftDetailsContainer extends Component {
     if (this.props.studentActivityId) {
       this.props.getStudentDrafts(this.props.studentActivityId);
     }
+    this.props.getCriteria();
   }
 
   render() {
@@ -24,7 +26,8 @@ class CompositionDraftDetailsContainer extends Component {
 CompositionDraftDetailsContainer.propTypes = {
   getReflectionQuestions: PropTypes.func,
   studentActivityId: PropTypes.string,
-  getStudentDrafts: PropTypes.func
+  getStudentDrafts: PropTypes.func,
+  getCriteria: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
@@ -43,9 +46,7 @@ const mapStateToProps = (state, props) => {
       });
   }
 
-  const activity = state.activities.find(
-    x => x.activityId === props.activityId
-  );
+  const activity = state.activities[0];
 
   let draft;
   if (props.studentDraft) {
@@ -55,7 +56,6 @@ const mapStateToProps = (state, props) => {
   }
 
   let newRubric;
-
   if (activity.rubricId) {
     let rubric = state.rubric.find(x => x.rubricId === activity.rubricId);
     if (rubric && rubric.criteria) {
@@ -63,6 +63,7 @@ const mapStateToProps = (state, props) => {
       newRubric.criteria = rubric.criteria.map(x => state.criteria.find(y => y.criteriaId === x));
     }
   }
+
   let reflectionQuestions = [];
   let goals = [];
   if (draft) {
@@ -74,9 +75,10 @@ const mapStateToProps = (state, props) => {
       }
     });
 
-    goals = draft.goals ? draft.goals.map(goalId => (
-      state.criteria.find(goal => goalId === goal.criteriaId).title
-    )) : [];
+    goals = draft.goals ? draft.goals.map(goalId => {
+      let draftGoal = state.goal.find(goal => goalId === goal.goalId);
+      return draftGoal ? draftGoal.title : null;
+    }) : [];
   }
 
   return {
@@ -93,4 +95,5 @@ const mapStateToProps = (state, props) => {
 export default connect(mapStateToProps, {
   updateActivityPrompt,
   getStudentDrafts,
-  getReflectionQuestions})(CompositionDraftDetailsContainer);
+  getReflectionQuestions,
+  getCriteria})(CompositionDraftDetailsContainer);

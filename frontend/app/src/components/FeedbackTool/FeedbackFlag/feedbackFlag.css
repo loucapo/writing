@@ -2,9 +2,9 @@
 
 .flag {
   position: absolute;
-  width: 150px;
+  width: 230px;
   display: inline-block;
-  color: #080808;
+  color: var(--black);
   border-radius: 3px;
   font-size: 14px;
   border: 1px solid var(--yellow-light);
@@ -23,6 +23,10 @@
   border: 1px solid var(--green-light);
 }
 
+.flagOrange {
+  border: 1px solid var(--orange-light);
+}
+
 .flagCaret {
   position: absolute;
   transform: rotate(180deg);
@@ -30,22 +34,49 @@
   top: 8px;
 }
 
-.flagTitle {
-  line-height: 38px;
-  padding: 0 15px 0 38px;
-  font-weight: bold;
+.flagHeader {
+  display: flex;
   cursor: pointer;
 }
 
-.icon {
-  fill: var(--yellow-light);
-  position: absolute;
-  top: 8px;
-  left: 8px;
+.flagTitle {
+  flex: 1;
 }
 
-.flagGreen .icon {
+.flagTitleText {
+  line-height: 20px;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.flagTitleCont {
+  display: flex;
+}
+
+.commentIcon {
+  fill: var(--yellow-light);
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.moreIcon {
+  fill: var(--black);
+}
+
+.moreButton {
+  padding: 6px 8px 8px 8px;
+  margin: 0;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+}
+
+.flagGreen .commentIcon {
   fill: var(--green-light);
+}
+
+.flagOrange .commentIcon {
+  fill: var(--orange-light);
 }
 
 .triangle {
@@ -60,12 +91,43 @@
   stroke: var(--green-light);
 }
 
+.flagOrange .triangleOutline {
+  stroke: var(--orange-light);
+}
+
 .feedback {
   border-top: 1px solid var(--gray-light);
   padding: 12px;
 }
 
-.feedbackLabel {
+.predefined {
   font-weight: bold;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.feedbackFlagMenu {
+  position: absolute;
+  padding: 33px 9px 0 0;
+  top: 0;
+  right: 0;
+}
+
+.feedbackFlagMenuList {
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.40);
+}
+
+.feedbackFlagMenuList li {
+  padding: 15px 30px;
+  border-bottom: 1px solid var(--gray-light);
+  min-width: 235px;
+}
+
+.feedbackFlagMenuList li:hover {
+  text-decoration: underline;
 }

@@ -9,6 +9,8 @@ import { getStudentDraftByStudentDraftId, updateReviewStatus } from '../modules/
 import { getStudentDrafts } from '../modules/studentDraftsModule';
 import { getRubricScores } from '../modules/rubricScoresModule';
 import { getFeedback } from '../modules/feedbackModule';
+import { getEditingMarks } from '../modules/editingMarksModule';
+import { getGoals } from '../modules/goalModule';
 
 class FeedbackDisplayContainer extends Component {
   componentWillMount() {
@@ -21,6 +23,8 @@ class FeedbackDisplayContainer extends Component {
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
     this.props.getRubricScores(this.props.params.studentDraftId);
     this.props.getFeedback(this.props.params.studentDraftId);
+    this.props.getEditingMarks();
+    this.props.getGoals();
   }
 
   componentWillUpdate(newProps) {
@@ -51,7 +55,9 @@ FeedbackDisplayContainer.propTypes = {
   getStudentDrafts: PropTypes.func,
   getRubricScores: PropTypes.func,
   updateReviewStatus: PropTypes.func,
-  getFeedback: PropTypes.func
+  getFeedback: PropTypes.func,
+  getEditingMarks: PropTypes.func,
+  getGoals: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
@@ -101,6 +107,33 @@ const mapStateToProps = (state, props) => {
     });
   }
 
+  let feedback = state.feedback.map(item => {
+    // Grabs feedback titles and predefined comments
+    if (item.editingMarkId) {
+      let editingMark = state.editingMarks.find(mark => mark.editingMarkId === item.editingMarkId);
+      if (editingMark) {
+        item.title = editingMark.title;
+        item.predefined = editingMark.description;
+      }
+    } else if (item.goalId) {
+      let draftGoal = state.goal.find(goal => goal.goalId === item.goalId);
+      if (draftGoal) {
+        item.title = draftGoal.title;
+        item.predefined = draftGoal[`option${item.level}`];
+      }
+    } else {
+      item.title = 'Comment';
+      if (item.level === 1) {
+        item.predefined = 'Needs extensive revision';
+      } else if (item.level === 2) {
+        item.predefined = 'Needs work';
+      } else if (item.level === 3) {
+        item.predefined = 'Nice job!';
+      }
+    }
+    return item;
+  });
+
   return {
     studentDraft,
     reflectionQuestions,
@@ -113,7 +146,7 @@ const mapStateToProps = (state, props) => {
     backText,
     linkableDrafts,
     noRubricScores,
-    feedback: state.feedback
+    feedback
   };
 };
 
@@ -124,5 +157,7 @@ export default connect(mapStateToProps, {
   getStudentDrafts,
   getRubricScores,
   updateReviewStatus,
-  getFeedback
+  getFeedback,
+  getEditingMarks,
+  getGoals
 })(FeedbackDisplayContainer);

@@ -27,7 +27,9 @@ Feature: Instructor Can Right Click To Add Comment
     And Changing to using page "instructor_feedback"
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     When I right click "student_submitted_draft_text"
-    Then I wait until there is 1 "right_click_add_comment_button" visible
+    Then I wait until there is 1 "right_click_add_open_comments_button" visible
+    Then I wait until there is 1 "right_click_add_draft_goals_comment_button" visible
+    Then I wait until there is 1 "right_click_add_editing_marks_comment_button" visible
     Then I wait until there is 1 "right_click_cancel_comment_button" visible
 
   @WRITE-1210
@@ -36,10 +38,11 @@ Feature: Instructor Can Right Click To Add Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I sleep for 2 seconds
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     When I right click "student_submitted_draft_text"
-    And I click "right_click_add_comment_button"
-    Then I wait until there is 1 "comment_modal.good_job_comment_button" visible
+    And I click "right_click_add_open_comments_button"
+    Then I wait until there is 1 "comment_modal.nice_job_comment_button" visible
 
   @WRITE-1210
   Scenario: The Instructor Can Cancel Right Click Menu
@@ -50,17 +53,18 @@ Feature: Instructor Can Right Click To Add Comment
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     When I right click "student_submitted_draft_text"
     And I click "right_click_cancel_comment_button"
-    Then I wait until there is 0 "comment_modal.good_job_comment_button" visible
-    Then I wait until there is 0 "right_click_add_comment_button" visible
-    Then I wait until there is 0 "add_comment_button" visible
+    Then I wait until there is 0 "comment_modal.nice_job_comment_button" visible
+    Then I wait until there is 0 "right_click_add_open_comments_button" visible
+    Then I wait until there is 0 "add_open_comments_button" visible
 
   @WRITE-1210
   Scenario: Right Click With No Text Highlighted Should Not Bring Up Menu
     Given I launch the activity as an "instructor"
+    Then I sleep for 2 seconds
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I right click "student_submitted_draft_text"
-    Then I wait until there is 0 "comment_modal.good_job_comment_button" visible
-    Then I wait until there is 0 "right_click_add_comment_button" visible
+    Then I wait until there is 0 "comment_modal.nice_job_comment_button" visible
+    Then I wait until there is 0 "right_click_add_open_comments_button" visible
 

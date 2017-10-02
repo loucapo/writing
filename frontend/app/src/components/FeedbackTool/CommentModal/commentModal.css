@@ -7,40 +7,66 @@
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   background-color: var(--gray-very-light);
   z-index: 101;
+}
+
+.modalWrapper {
+  padding: 15px;
+  display: flex;
+}
+
+.commentWrapper {
+  background-color: var(--white);
+  margin: 0 0 15px 15px;
   width: 460px;
+  border: 1px solid var(--gray);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .header {
-  border-bottom: 1px solid var(--gray-medium);
+  border-bottom: 1px solid var(--gray);
   padding: 10px;
   font-weight: bold;
 }
 
-.buttonsHeader {
-  padding: 10px;
+.sectionHeader {
+  padding: 10px 0;
   font-weight:bold;
+  font-size: 11px;
+  display: flex;
+  color: var(--gray);
+}
+
+.sectionHeaderText {
+  letter-spacing: 1px;
+}
+
+.commentsHeadingLine {
+  border-top: 1px solid var(--gray);
+  bottom: -7px;
+  position: relative;
+  width: 100%;
+  flex: 1;
+  margin-left: 10px;
 }
 
 .buttons {
   display: flex;
   padding-right: 10px;
-  align-items: flex-end;
+  justify-content: center;
 }
 
-.required {
-  color: var(--gray-base);
-  font-size: 12px;
-  margin-left: 10px;
-}
-
-.comments {
+.section {
   padding: 10px;
   display: flex;
+  flex-direction: column;
 }
 
 .commentTextWrapper {
   background-color: #fff;
-  border: 1px solid var(--gray-dark);
+  border: 1px solid var(--gray);
   flex: 1;
   height: 80px;
   padding: 5px;
@@ -52,16 +78,18 @@
 }
 
 [contenteditable=true]:empty:before {
-  color: var(--gray-dark);
+  color: var(--gray);
   content: attr(placeholder);
   font-style: italic;
+}
+
+.controlsWrapper {
+  padding-top: 15px;
 }
 
 .controls {
   display: flex;
   justify-content: flex-end;
-  padding: 0 10px 10px;
-  align-items: center;
 }
 
 .feedbackError {
@@ -73,9 +101,28 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: var(--gray-light);
   opacity: 0.5;
   top: 0;
   left: 0;
   z-index: 100;
+}
+
+.commentDescription {
+  margin-left: 20px;
+  color: var(--gray);
+  font-size: 13px;
+}
+
+.rightPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  padding: 15px;
+}
+
+.removeComment {
+  text-align: right;
 }

@@ -265,7 +265,10 @@ module.exports = function(
           createdDate: moment().toISOString(),
           studentDraftId: command.studentDraftId,
           content: feedback.content,
-          level: feedback.level,
+          level: feedback.level || null,
+          showHeader: !!feedback.showHeader,
+          goalId: feedback.goalId || null,
+          editingMarkId: feedback.editingMarkId || null,
           feedbackId: feedback.feedbackId
         };
         await repo.query(sqlLibrary.feedback, 'createFeedback', data);
@@ -280,6 +283,7 @@ module.exports = function(
       const feedback = await repository.query(sqlLibrary.feedback, 'getFeedback', {
         studentDraftId: ctx.params.studentDraftId
       });
+
       ctx.status = 200;
       ctx.body = feedback;
       return ctx;
@@ -306,6 +310,7 @@ module.exports = function(
       });
 
       ctx.status = 200;
+      ctx.body = {feedbackId: event.feedbackId};
       return ctx;
     }
   };

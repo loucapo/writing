@@ -46,19 +46,19 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And the text of "draft_goals_modal.goal_summary_list" should be ""
     And I click "draft_goals_modal.goal_checkbox(1)"
     And I click "draft_goals_modal.goal_checkbox(2)"
-    And the text of "draft_goals_modal.goal_summary_list" should be "Selected Draft Goals: Thesis, Evidence"
+    And the text of "draft_goals_modal.goal_summary_list" should be "Selected Draft Goals: Thesis, Reason and Support"
 
   @db=reset
   Scenario: Instructor expands and collapses draft goals
     Given I launch the activity as an "instructor"
     And I click "draft.add_draft_goals"
-    Then I wait until there are 20 "draft_goals_modal.goal_description"
+    Then I wait until there are 12 "draft_goals_modal.goal_description"
     Then I wait until there are 0 "draft_goals_modal.goal_description" visible
     And I click "draft_goals_modal.goal(1)"
     And I click "draft_goals_modal.goal(2)"
-    And I click "draft_goals_modal.goal(16)"
+    And I click "draft_goals_modal.goal(10)"
     Then I wait until there are 3 "draft_goals_modal.goal_description" visible
-    Then I wait until there are 20 "draft_goals_modal.goal_description"
+    Then I wait until there are 12 "draft_goals_modal.goal_description"
 
   @db=reset
   Scenario: Instructor saves draft goal
@@ -76,8 +76,8 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click "draft_goals_modal.goal_save"
     Then I wait until there are 3 "draft.saved_draft_goal" visible
     And the text of "draft.saved_draft_goal(1)" should include "Thesis"
-    And the text of "draft.saved_draft_goal(2)" should include "Evidence"
-    And the text of "draft.saved_draft_goal(3)" should include "Badditude"
+    And the text of "draft.saved_draft_goal(2)" should include "Reason and Support"
+    And the text of "draft.saved_draft_goal(3)" should include "Interpretation/Analysis"
 
   @db=reset
   Scenario: Instructor cancels adding  and removing draft goals

@@ -10,6 +10,7 @@ import MLModal from './MLModal/MLModal';
 import MLSpinner from './MLSpinner/MLSpinner';
 import MLTable from './MLTable/MLTable';
 import MLTag from './MLTag/MLTag';
+import MLMenuList from './MLMenuList/MLMenuList';
 
 export {
   MLAccordion,
@@ -23,5 +24,6 @@ export {
   MLModal,
   MLSpinner,
   MLTable,
-  MLTag
+  MLTag,
+  MLMenuList
 };

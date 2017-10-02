@@ -96,17 +96,33 @@ exports.InstructorFeedbackPage = class extends Page {
         desc: `Read only submitted draft from instructor view`,
         locator: `[class^='FeedbackEditor__feedbackEditor']`
       },
-      add_comment_button: {
+      add_open_comments_button: {
         desc: `Button to add comment to highlighted text`,
-        locator: `[id='addCommentButton']`
+        locator: `[data-id='feedback-menu-open-comments']`
       },
-      right_click_add_comment_button: {
+      add_draft_goals_comment_button: {
+        desc: `Button to add draft goals comment to highlighted text`,
+        locator: `[data-id='feedback-menu-draft-goals']`
+      },
+      add_editing_marks_comment_button: {
+        desc: `Button to add editing marks to highlighted text`,
+        locator: `[data-id='feedback-menu-editing-marks']`
+      },
+      right_click_add_open_comments_button: {
         desc: `Button to add comment to highlighted text`,
-        locator: `[data-id='menu-add-comment']`
+        locator: `[data-id='comment-menu-open-comments']`
+      },
+      right_click_add_draft_goals_comment_button: {
+        desc: `Button to add draft goals comment to highlighted text`,
+        locator: `[data-id='comment-menu-draft-goals']`
+      },
+      right_click_add_editing_marks_comment_button: {
+        desc: `Button to add editing marks to highlighted text`,
+        locator: `[data-id='comment-menu-editing-marks']`
       },
       right_click_cancel_comment_button: {
         desc: `Button to cancel adding new comment`,
-        locator: `[data-id='menu-cancel']`
+        locator: `[data-id='comment-menu-cancel']`
       },
       feedback_flag: {
         desc: `Feedback flag in margin`,
@@ -116,9 +132,21 @@ exports.InstructorFeedbackPage = class extends Page {
         desc: `Feedback flag title`,
         locator: `[class^='FeedbackFlag__flagTitle']`
       },
+      feedback_flag_title_text: {
+        desc: `Feedback flag title text`,
+        locator: `[class^='FeedbackFlag__flagTitleText']`
+      },
       feedback_flag_content: {
         desc: `Feedback flag content`,
         locator: `[class*='FeedbackFlag__feedback__']`
+      },
+      feedback_flag_more_button: {
+        desc: `Feedback flag three dots`,
+        locator: `[class^='FeedbackFlag__moreIcon']`
+      },
+      comment_delete_option: {
+        desc: `Delete comment button`,
+        locator: `[data-id='menu-delete']`
       },
     };
   }
