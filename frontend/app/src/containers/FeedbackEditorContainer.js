@@ -23,6 +23,7 @@ class FeedbackEditorContainer extends Component {
 }
 
 FeedbackEditorContainer.propTypes = {
+  draft: PropTypes.object,
   studentDraftId: PropTypes.string,
   feedback: PropTypes.array,
   createFeedback: PropTypes.func,
@@ -31,7 +32,7 @@ FeedbackEditorContainer.propTypes = {
   getGoals: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
 
   let feedback = state.feedback.map(item => {
     // Grabs feedback titles and predefined comments
@@ -49,13 +50,19 @@ const mapStateToProps = (state) => {
       }
     } else {
       item.title = 'Comment';
-      item.predefined = item.level;
+      if (item.level === 1) {
+        item.predefined = 'Needs extensive revision';
+      } else if (item.level === 2) {
+        item.predefined = 'Needs work';
+      } else if (item.level === 3) {
+        item.predefined = 'Nice job!';
+      }
     }
     return item;
   });
 
   const draftGoals = state.goal && state.goal.length > 0 ? state.goal.filter(goal => {
-      return draft.goals && draft.goals.includes(goal.goalId);
+    return props.draft.goals && props.draft.goals.includes(goal.goalId);
   }) : [];
 
   return {

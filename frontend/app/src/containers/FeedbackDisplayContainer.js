@@ -116,14 +116,20 @@ const mapStateToProps = (state, props) => {
         item.predefined = editingMark.description;
       }
     } else if (item.goalId) {
-      let draftGoal = state.goals.find(goal => goal.goalId === item.goalId);
+      let draftGoal = state.goal.find(goal => goal.goalId === item.goalId);
       if (draftGoal) {
         item.title = draftGoal.title;
         item.predefined = draftGoal[`option${item.level}`];
       }
     } else {
       item.title = 'Comment';
-      item.predefined = item.level;
+      if (item.level === 1) {
+        item.predefined = 'Needs extensive revision';
+      } else if (item.level === 2) {
+        item.predefined = 'Needs work';
+      } else if (item.level === 3) {
+        item.predefined = 'Nice job!';
+      }
     }
     return item;
   });

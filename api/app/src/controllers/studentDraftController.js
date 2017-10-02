@@ -283,6 +283,7 @@ module.exports = function(
       const feedback = await repository.query(sqlLibrary.feedback, 'getFeedback', {
         studentDraftId: ctx.params.studentDraftId
       });
+
       ctx.status = 200;
       ctx.body = feedback;
       return ctx;

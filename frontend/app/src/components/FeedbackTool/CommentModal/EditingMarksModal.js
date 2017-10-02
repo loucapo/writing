@@ -6,14 +6,14 @@ import styles from './commentModal.css';
 class EditingMarksModal extends Component {
   state = {
     comment: null,
-    editingMarks: []
+    editingMarks: [],
     selectedEditingMark: null
   };
 
   handleEditingMarkChange = e => {
     let editingMarkId = e.target.dataset.id;
-    let editingMark = this.state.editingMarks.find(mark => mark.id === editingMarkId);
-    this.setState({ editingMark });
+    let selectedEditingMark = this.state.editingMarks.find(mark => mark.id === editingMarkId);
+    this.setState({ selectedEditingMark });
   };
 
   handleCommentChange = e => {
@@ -26,7 +26,7 @@ class EditingMarksModal extends Component {
       null,
       true,
       null,
-      this.state.editingMark.id
+      this.state.selectedEditingMark.editingMarkId
     );
   };
 

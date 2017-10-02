@@ -10,25 +10,25 @@ const FeedbackMenu = ({ position, handleClick, showDraftGoals }) => {
         Feedback
       </div>
       <ul className={styles.feedbackButtons}>
-      {showDraftGoals ? (
-        <li
-          className={styles.feedbackButton + ' feedbackButton'}
-          onClick={handleClick.bind(this, 'draftGoals')}
-          data-id="feedback-menu-draft-goals"
-        >
-          <div>
-            <MLIcon
-              className={styles.commentIcon}
-              title="comment"
-              type="flag"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-            />
-          </div>
-          <div className={styles.feedbackButtonText}>Draft Goals</div>
-        </li>
-      ) : null}
+        {showDraftGoals ? (
+          <li
+            className={styles.feedbackButton + ' feedbackButton'}
+            onClick={handleClick.bind(this, 'draftGoals')}
+            data-id="feedback-menu-draft-goals"
+          >
+            <div>
+              <MLIcon
+                className={styles.commentIcon}
+                title="comment"
+                type="flag"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+              />
+            </div>
+            <div className={styles.feedbackButtonText}>Draft Goals</div>
+          </li>
+        ) : null}
         <li
           className={styles.feedbackButton + ' feedbackButton'}
           onClick={handleClick.bind(this, 'editingMarks')}

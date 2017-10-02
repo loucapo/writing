@@ -49,7 +49,7 @@ CommentModal.propTypes = {
   closeModal: PropTypes.func,
   createFeedbackError: PropTypes.object,
   modalType: PropTypes.string,
-  editingMarks: PropTypes.array
+  editingMarks: PropTypes.array,
   draftGoals: PropTypes.array
 };
 
