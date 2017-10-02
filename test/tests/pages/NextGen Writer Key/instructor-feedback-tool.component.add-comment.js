@@ -28,7 +28,12 @@ class InstructorCommentModal extends Component {
       save_comment_disabled: {
         desc: `Disabled button to save instructor comment`,
         locator: `[data-id='save-comment-modal'][class*='MLButton__disabled']`
-      }
+      },
+      draft_goal_list_item: {
+        desc: `Draft goal in comment modal`,
+        locator: `[class*='MLMenuList__menulist'] li`
+      },
+
     };
   }
 }

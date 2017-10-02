@@ -113,8 +113,10 @@ Feature: Student Can View Instructor Comments
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
     When I click "reflection_questions_modal.save"
-    And I click "rubric.dropdown"
-    And I click "rubric.dropdown_option(2)"
+    And I click "draft.add_draft_goals"
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    And I click "draft_goals_modal.goal_checkbox(1)"
+    And I click "draft_goals_modal.goal_save"
     Given I launch the activity as an "student"
     When I click "start_draft"
     And I type "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor neque eget sapien fringilla cursus. Nunc molestie lectus sit amet blandit tempus. Sed et magna fermentum, posuere purus sed, volutpat erat. In hac habitasse platea dictumst. Etiam vitae pharetra lacus. Proin lacinia ex vitae libero pretium commodo. Quisque euismod ultrices mollis. Mauris sit amet turpis arcu. Aliquam erat volutpat. Phasellus ullamcorper tincidunt rhoncus. Nullam pharetra nisl a turpis eleifend, vel ullamcorper magna suscipit. Nulla eleifend mollis dolor, sit amet efficitur lorem dapibus et." in "draft_editor.draft_area"
