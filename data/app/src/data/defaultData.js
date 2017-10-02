@@ -62,12 +62,12 @@ module.exports = function(faker) {
         },
         {
           criteria_id: `f01ed383-78e9-4089-867a-70e8911bbace`,
-          title: `Interpretation / Analysis`,
+          title: `Interpretation/Analysis`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Limited or no analysis; does not look at how the text makes its point`,
           rubric_level_2: `Includes some discussion of how the text makes its point`,
-          rubric_level_3: `Interpretation /analysis is accurate and advances the argument`,
+          rubric_level_3: `Interpretation/analysis is accurate and advances the argument`,
           rubric_level_4: `Clear interpretation and insightful analysis`,
           created_by_id: `a5538cab-003c-4406-9f10-a7b423961f78`,
           created_date: `2017-04-10`,
@@ -81,8 +81,7 @@ module.exports = function(faker) {
           available_to_rubric: true,
           rubric_level_1: `Ideas are difficult to follow`,
           rubric_level_2: `Connection among ideas is not always clear; there may be more than one point per paragraph`,
-          rubric_level_3: `Well organized on the whole, but occasionally needing work on paragraph coherence or
-                          transitions`,
+          rubric_level_3: `Well organized on the whole, but occasionally needing work on paragraph coherence or transitions`,
           rubric_level_4: `Analysis is well organized, with clear topic sentences and transitions`,
           created_by_id: `d8cc5bd4-f1ed-401f-be68-693f6a3d9ae0`,
           created_date: `2017-04-10`,
@@ -175,7 +174,7 @@ module.exports = function(faker) {
         },
         {
           criteria_id: `c54305f8-6605-4021-92e5-0a03b4ef22fe`,
-          title: `Ideas / Content`,
+          title: `Ideas/Content`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Lacks coherent ideas and sense of purpose`,
@@ -203,7 +202,7 @@ module.exports = function(faker) {
         },
         {
           criteria_id: `98f8e2b6-0252-4d33-b9e3-d11ee333250a`,
-          title: `Style / Voice`,
+          title: `Style/Voice`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `No clear sense of pacing, style, or voice present`,
@@ -249,8 +248,7 @@ module.exports = function(faker) {
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Does not identify or describe a specific problem`,
-          rubric_level_2: `Does not describe the problem in enough detail:: readers do not see a
-          compelling need for action`,
+          rubric_level_2: `Does not describe the problem in enough detail:: readers do not see a compelling need for action`,
           rubric_level_3: `Describes a specific problem and need for action`,
           rubric_level_4: `Clearly describes a problem and communicates the nature, scope, and urgency of the problem`,
           created_by_id: `2f4abe21-613d-409d-9b4e-bf2368e81d8e`,
@@ -288,7 +286,7 @@ module.exports = function(faker) {
         },
         {
           criteria_id: `116e3415-4550-41ba-b976-883d34b844d7`,
-          title: `Comparisons / Counterarguments`,
+          title: `Comparisons/Counterarguments`,
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Little to no attention paid to the issue's context or to alternative solutions`,
@@ -466,42 +464,42 @@ module.exports = function(faker) {
       student_reflection_question: [
         {
           student_reflection_question_id: `60bc8787-dd48-4702-8135-bec9fd8cd623`,
-          question: `The most challenging part of this assignment was::`,
+          question: `The most challenging part of this assignment was`,
           question_type: `free`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         },
         {
           student_reflection_question_id: `f1b0e2d8-21c8-4ea7-9b28-5b9be7ecf9aa`,
-          question: `One thing I want my reader to understand is::`,
+          question: `One thing I want my reader to understand is`,
           question_type: `free`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         },
         {
           student_reflection_question_id: `556a98d1-bf89-4aef-9b73-81254a787af0`,
-          question: `I want you to know that::`,
+          question: `I want you to know that`,
           question_type: `free`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         },
         {
           student_reflection_question_id: `4886a427-bf88-4d94-b3bd-721ef74333db`,
-          question: `The primary argument I'm making is::`,
+          question: `The primary argument I'm making is`,
           question_type: `free`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         },
         {
           student_reflection_question_id: `179b9ad1-ec34-42ca-a8c3-098127fc91a8`,
-          question: `One piece of evidence I want to call attention to in my essay is::`,
+          question: `One piece of evidence I want to call attention to in my essay is`,
           question_type: `free`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         },
         {
           student_reflection_question_id: `823955a1-0a8e-42cc-b24c-cb30afcac93f`,
-          question: `One idea I want to develop further is::`,
+          question: `One idea I want to develop further is`,
           question_type: `free`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
@@ -544,9 +542,9 @@ module.exports = function(faker) {
           goal_id: 'b5bda75d-17c3-46ca-9a5e-7657abe5513a',
           title: 'Reason and Support',
           description: null,
-          option_1: 'Needs extensive revision. Inadequate reasons/support',
-          option_2: 'Needs work. Needs additional reasons/support',
-          option_3: 'Nice Job! Reasons and evidence are convincing',
+          option_1: 'Needs extensive revision. Inadequate reasons/support.',
+          option_2: 'Needs work. Needs additional reasons/support.',
+          option_3: 'Nice Job! Reasons and evidence are convincing.',
           index: 2,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -555,9 +553,9 @@ module.exports = function(faker) {
           goal_id: '5b8ab539-1c27-4e84-a3b9-bfebbabb5872',
           title: 'Interpretation/Analysis',
           description: null,
-          option_1: 'Needs extensive revision. Does not look at how the source conveys its ideas',
-          option_2: 'Needs work. Incorrect/inadequate interpretation or analysis',
-          option_3: 'Nice Job! Clear interpretation and insightful analysis',
+          option_1: 'Needs extensive revision. Does not look at how the source conveys its ideas.',
+          option_2: 'Needs work. Incorrect/inadequate interpretation or analysis.',
+          option_3: 'Nice Job! Clear interpretation and insightful analysis.',
           index: 3,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -566,9 +564,9 @@ module.exports = function(faker) {
           goal_id: '865a7afd-67d7-4443-9e8b-7dea357b1f09',
           title: 'Paragraph Development',
           description: null,
-          option_1: 'Needs extensive revision. Choppy and difficult to follow',
-          option_2: 'Needs work. Ideas are not always linked clearly',
-          option_3: 'Nice Job! All the sentences develop the idea and flow in a logical progression',
+          option_1: 'Needs extensive revision. Choppy and difficult to follow.',
+          option_2: 'Needs work. Ideas are not always linked clearly.',
+          option_3: 'Nice Job! All the sentences develop the idea and flow in a logical progression.',
           index: 4,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -588,9 +586,9 @@ module.exports = function(faker) {
           goal_id: 'b219dda3-287e-45a7-839c-c4354c16413f',
           title: 'Counterarguments',
           description: null,
-          option_1: 'Needs extensive revision. Ignores opposing positions',
-          option_2: 'Needs work. Mentions opposing positions but does not effectively address them',
-          option_3: 'Nice Job! Expertly summarizes opposing positions and effectively counters them',
+          option_1: 'Needs extensive revision. Ignores opposing positions.',
+          option_2: 'Needs work. Mentions opposing positions but does not effectively address them.',
+          option_3: 'Nice Job! Expertly summarizes opposing positions and effectively counters them.',
           index: 6,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -612,7 +610,7 @@ module.exports = function(faker) {
           description: null,
           option_1: 'Needs extensive revision. First sentence does not organize the paragraph.',
           option_2: 'Needs work. Topic sentence does not effectively state the main point.',
-          option_3: 'Nice Job! Topic sentence very effectively orients the reader',
+          option_3: 'Nice Job! Topic sentence very effectively orients the reader.',
           index: 8,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -676,9 +674,9 @@ module.exports = function(faker) {
           editing_mark_id: '0ec95a43-b46e-4e14-b27b-d4481440ae60',
           title: 'Fragment',
           description: `A fragment is an incomplete sentence. As you might suspect, it is also an incomplete expression of a thought.
-            Fragments come in two varieties::  
-            1. A dependent clause, which contains a subject and a verb but fails to express a complete thought 
-            2. A group of words that lacks either a subject or a verb `,
+Fragments come in two varieties::
+1. A dependent clause, which contains a subject and a verb but fails to express a complete thought
+2. A group of words that lacks either a subject or a verb`,
           index: 2,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -686,16 +684,16 @@ module.exports = function(faker) {
         {
           editing_mark_id: '41ff9324-3322-4b51-bdaa-6dd3a17edc82',
           title: 'Usage',
-          description: `If you are struggling with a usage error, this means that you're accidentally using a word incorrectly--usually because you've mistaken it for a similar word. Often times a spell-checker will not help because the mis-used word is usually not spelled incorrectly. 
-            Here are a few common usage errors::  
-          
-            YOUR VS. YOU'RE 
-            THERE VS. THEIR VS. THEY'RE 
-            THAT VS. WHICH 
-            TOWARD VS. TOWARDS 
-            EFFECT VS. AFFECT 
-            WHO VS. WHOM 
-            THEN VS. THAN`,
+          description: `If you are struggling with a usage error, this means that you're accidentally using a word incorrectly--usually because you've mistaken it for a similar word. Often times a spell-checker will not help because the mis-used word is usually not spelled incorrectly.
+Here are a few common usage errors::
+
+YOUR VS. YOU'RE
+THERE VS. THEIR VS. THEY'RE
+THAT VS. WHICH
+TOWARD VS. TOWARDS
+EFFECT VS. AFFECT
+WHO VS. WHOM
+THEN VS. THAN`,
           index: 3,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -703,10 +701,10 @@ module.exports = function(faker) {
         {
           editing_mark_id: 'e1c56134-45c9-40d6-ad75-af4f6ba36975',
           title: 'Pronoun Agreement',
-          description: `Since pronouns take the place of nouns, it is important to use the correct pronouns so that your readers understand what you mean. There are three basic types of pronoun-antecedent agreement that will help you to write clearly:: 
-            Agreement in number (A student should plan his or her schedule carefully.) 
-            Agreement in person (When people exercise, they feel energized.) 
-            Agreement in gender (Anna ate her breakfast.)`,
+          description: `Since pronouns take the place of nouns, it is important to use the correct pronouns so that your readers understand what you mean. There are three basic types of pronoun-antecedent agreement that will help you to write clearly::
+Agreement in number (A student should plan his or her schedule carefully.) 
+Agreement in person (When people exercise, they feel energized.) 
+Agreement in gender (Anna ate her breakfast.)`,
           index: 4,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -714,9 +712,7 @@ module.exports = function(faker) {
         {
           editing_mark_id: '21b0da90-7433-43aa-8b93-fcce70c51e22',
           title: 'Subject-Verb Agreement',
-          description: `For your sentences to make sense, your subject must agree in number with your verb. A singular subject takes a singular verb, and a plural subject takes a plural verb.  
-          
-           Sometimes it can be a little tricky to tell whether a subject is singular or plural.`,
+          description: `For your sentences to make sense, your subject must agree in number with your verb. A singular subject takes a singular verb, and a plural subject takes a plural verb.`,
           index: 5,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -725,12 +721,12 @@ module.exports = function(faker) {
           editing_mark_id: 'f01759ab-ba63-483a-8187-a348a862ef12',
           title: 'Appropriate Language',
           description: `The words you choose determine the tone of your work and how your reader responds to it. When you write, keep the following concerns in mind::
-            1. It is important to decide what tone you want to use to influence your audience’s response. 
-            2. You must determine whether to use formal language and whether to use disciplinary language. 
-            3. Be sure to avoid jargon and euphemisms. 
-            4. Avoid slang in formal writing. 
-            5. Avoid clichés. 
-            6. Avoid sexist terms that include or imply man.`,
+1. It is important to decide what tone you want to use to influence your audience’s response.
+2. You must determine whether to use formal language and whether to use disciplinary language.
+3. Be sure to avoid jargon and euphemisms.
+4. Avoid slang in formal writing.
+5. Avoid clichés.
+6. Avoid sexist terms that include or imply man.`,
           index: 6,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -754,9 +750,9 @@ module.exports = function(faker) {
         {
           editing_mark_id: '91647929-b801-4c55-87e9-0d9bcd061a7d',
           title: 'Apostrophe Error',
-          description: `Apostrophes have two main grammatical functions:: 
-            1. To make a noun possessive:: The team’s colors are blue and gold. 
-            2. To replace letters in contractions:: Don't forget to use apostrophes.`,
+          description: `Apostrophes have two main grammatical functions::
+1. To make a noun possessive:: The team’s colors are blue and gold.
+2. To replace letters in contractions:: Don't forget to use apostrophes.`,
           index: 9,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -781,12 +777,12 @@ module.exports = function(faker) {
           editing_mark_id: 'f08bcf50-4c5a-4268-a1c5-ddea7b35585e',
           title: 'Needs Evidence',
           description: `When you are asked to use evidence (examples, data, facts, and expert testimony) to support the points you make, your challenge is to find evidence that is relevant and credible. When you do so, you become more credible as a research writer. You build your "ethos."
-          
-           Make a habit of asking yourself the following questions:: 
-           Do I have data to support my claims? 
-           What example can I include that would connect my topic to my readers? 
-           How can I prove that I am familiar with the issue I'm writing about? 
-           Can I identify any places in my writing where readers might need more detail?`,
+
+Make a habit of asking yourself the following questions::
+Do I have data to support my claims?
+What example can I include that would connect my topic to my readers?
+How can I prove that I am familiar with the issue I'm writing about?
+Can I identify any places in my writing where readers might need more detail?`,
           index: 12,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -794,11 +790,11 @@ module.exports = function(faker) {
         {
           editing_mark_id: '4f36b0f0-5957-4b0a-ad27-473426bf0952',
           title: 'Pronoun Reference',
-          description: `In order for your sentences to have correct pronoun reference, pronouns must clearly refer to their antecedents-- that is, to the nouns that they replace. 
-          
-           In the sentence "The travelers presented their identification," the pronoun their clearly refers to the travelers.
-          
-           Sometimes academic writers get into trouble if a pronoun could refer to more than one noun or if the antecedent doesn’t seem to be in the sentence at all.`,
+          description: `In order for your sentences to have correct pronoun reference, pronouns must clearly refer to their antecedents-- that is, to the nouns that they replace.
+
+In the sentence "The travelers presented their identification," the pronoun their clearly refers to the travelers.
+
+Sometimes academic writers get into trouble if a pronoun could refer to more than one noun or if the antecedent doesn’t seem to be in the sentence at all.`,
           index: 13,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'
@@ -807,8 +803,8 @@ module.exports = function(faker) {
           editing_mark_id: '00c5bd95-aa38-4153-8bae-715cd3a3cd05',
           title: 'Quotation Marks',
           description: `In academic writing, quotation marks are most commonly used to enclose a person's exact words or to enclose the title of a short work such as an article, a short story, or a song.
-          
-            Some writers get confused when they use quotation marks with other marks of punctuation; periods and commas most often go inside quotation marks.`,
+
+Some writers get confused when they use quotation marks with other marks of punctuation; periods and commas most often go inside quotation marks.`,
           index: 14,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
           created_date: '2017-04-10'

@@ -112,6 +112,7 @@
   margin-left: 20px;
   color: var(--gray);
   font-size: 13px;
+  white-space: pre-wrap;
 }
 
 .rightPanel {
