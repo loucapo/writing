@@ -12,7 +12,6 @@ const FeedbackMenu = ({ position, handleClick }) => {
       <ul className={styles.feedbackButtons}>
         <li
           className={styles.feedbackButton + ' feedbackButton'}
-          title="Not implemented"
           onClick={handleClick.bind(this, 'draftGoals')}
           data-id="feedback-menu-draft-goals"
         >
@@ -20,7 +19,7 @@ const FeedbackMenu = ({ position, handleClick }) => {
             <MLIcon
               className={styles.commentIcon}
               title="comment"
-              type="comment"
+              type="flag"
               width="22"
               height="22"
               viewBox="0 0 24 24"
@@ -30,7 +29,6 @@ const FeedbackMenu = ({ position, handleClick }) => {
         </li>
         <li
           className={styles.feedbackButton + ' feedbackButton'}
-          title="Not implemented"
           onClick={handleClick.bind(this, 'editingMarks')}
           data-id="feedback-menu-editing-marks"
         >
@@ -38,7 +36,7 @@ const FeedbackMenu = ({ position, handleClick }) => {
             <MLIcon
               className={styles.commentIcon}
               title="comment"
-              type="comment"
+              type="writing_edit"
               width="22"
               height="22"
               viewBox="0 0 24 24"
@@ -55,7 +53,7 @@ const FeedbackMenu = ({ position, handleClick }) => {
             <MLIcon
               className={styles.commentIcon}
               title="comment"
-              type="comment"
+              type="comment_text"
               width="22"
               height="22"
               viewBox="0 0 24 24"
