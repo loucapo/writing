@@ -7,7 +7,13 @@ import styles from './commentModal.css';
 class OpenCommentModal extends Component {
   state = {
     comment: null,
-    level: null
+    level: null,
+    showStaticComment: true,
+    options: {
+      option1: 'Needs extensive revision',
+      option2: 'Needs work',
+      option3: 'Nice job!'
+    }
   };
 
   handleCommentChange = e => {
@@ -23,7 +29,7 @@ class OpenCommentModal extends Component {
   deleteTag = e => {
     e.preventDefault();
     this.setState({
-      level: null
+      showStaticComment: false
     });
   };
 
@@ -35,6 +41,26 @@ class OpenCommentModal extends Component {
         </div>
 
         <CommentLevelButtons level={this.state.level} handleLevelClick={this.handleLevelClick} />
+
+        {(this.state.level && this.state.showStaticComment)
+            ? <div>
+              <div className={styles.section}>
+                <div className={styles.sectionHeader}>
+                  <div className={styles.sectionHeaderText}>
+                    This is the default comment that will be included
+                  </div>
+                  <div className={styles.commentsHeadingLine} />
+                </div>
+                <div className={styles.commentDescription}>
+                  {this.state.options[`option${this.state.level}`]}
+                </div>
+                <div className={styles.removeComment}>
+                  <a href="#" onClick={this.deleteTag}>remove</a>
+                </div>
+              </div>
+            </div>
+            : null
+        }
 
         <div className={styles.section}>
           <div className={styles.sectionHeader}>
