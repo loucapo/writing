@@ -248,7 +248,7 @@ module.exports = function(faker) {
           description: `desco`,
           available_to_rubric: true,
           rubric_level_1: `Does not identify or describe a specific problem`,
-          rubric_level_2: `Does not describe the problem in enough detail:: readers do not see a compelling need for action`,
+          rubric_level_2: `Does not describe the problem in enough detail; readers do not see a compelling need for action`,
           rubric_level_3: `Describes a specific problem and need for action`,
           rubric_level_4: `Clearly describes a problem and communicates the nature, scope, and urgency of the problem`,
           created_by_id: `2f4abe21-613d-409d-9b4e-bf2368e81d8e`,
