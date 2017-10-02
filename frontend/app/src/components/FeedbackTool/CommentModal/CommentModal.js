@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { DraftGoalsModal } from '../index';
-import { OpenCommentModalContainer, EditingMarksModalContainer } from '../../../containers';
+import { OpenCommentModal, EditingMarksModal, DraftGoalsModal } from '../index';
 import styles from './commentModal.css';
 
 class CommentModal extends Component {
@@ -10,9 +9,9 @@ class CommentModal extends Component {
   };
 
   modals = {
-    openComment: OpenCommentModalContainer,
+    openComment: OpenCommentModal,
     draftGoals: DraftGoalsModal,
-    editingMarks: EditingMarksModalContainer
+    editingMarks: EditingMarksModal
   };
 
   handleBackgroundClick = event => {
@@ -35,6 +34,7 @@ class CommentModal extends Component {
             handleSave={this.props.handleSave}
             closeModal={this.props.closeModal}
             createFeedbackError={this.props.createFeedbackError}
+            editingMarks={this.props.editingMarks}
           />
         </div>
       </div>
@@ -47,7 +47,8 @@ CommentModal.propTypes = {
   handleSave: PropTypes.func,
   closeModal: PropTypes.func,
   createFeedbackError: PropTypes.object,
-  modalType: PropTypes.string
+  modalType: PropTypes.string,
+  editingMarks: PropTypes.array
 };
 
 export default CommentModal;

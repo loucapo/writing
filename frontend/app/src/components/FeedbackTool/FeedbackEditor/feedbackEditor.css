@@ -35,9 +35,13 @@
 
 .highlight, .highlight span {
   display: inline;
-  background-color: #faf2a9;
+  background-color: var(--yellow-light);
 }
 
 .highlightGreen, .highlightGreen span {
-  background-color: #acdba2;
+  background-color: var(--green-light);
+}
+
+.highlightOrange, .highlightOrange span {
+  background-color: var(--orange-light); 
 }

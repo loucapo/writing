@@ -5,7 +5,6 @@ import MLIcon from 'ml-react-cdl-icons';
 import styles from './feedbackFlag.css';
 
 class FeedbackFlag extends Component {
-
   state = {
     menuOpen: false
   };
@@ -18,42 +17,48 @@ class FeedbackFlag extends Component {
 
   componentWillUnmount = () => {
     document.body.removeEventListener('click', this.handleCollapse);
-  }
+  };
 
   menuClose = () => {
     this.setState({ menuOpen: false });
     document.body.removeEventListener('click', this.handleCollapse);
-  }
+  };
 
   handleCollapse = () => {
-    let clickedElem = document.querySelector('[data-id="' + _.get(this.props, 'feedback.feedbackId') + '"] .' + styles.feedbackFlagMenuList);
-    if(clickedElem && !clickedElem.contains(event.target)) {
+    let clickedElem = document.querySelector(
+      `[data-id='${_.get(this.props, 'feedback.feedbackId')}'] .${styles.feedbackFlagMenuList}`
+    );
+    if (clickedElem && !clickedElem.contains(event.target)) {
       this.menuClose();
     }
   };
 
   handleDeleteFeedback = () => {
     this.props.handleDeleteFeedback(_.get(this.props, 'feedback.feedbackId'));
-  }
+  };
 
   handleMenuToggle = () => {
     this.setState({ menuOpen: !this.state.menuOpen });
-  }
+  };
+
+  flagColor = () => {
+    let feedback = this.props.feedback;
+    let color = '';
+    if (parseInt(feedback.level, 10) === 3) {
+      color = ` ${styles.flagGreen}`;
+    } else if (feedback.editingMarkId) {
+      color = ` ${styles.flagOrange}`;
+    }
+    return color;
+  };
 
   render() {
-
-    const {feedback, flagTop, handleFlagClick, expandedId, isDisplay} = this.props;
-
-    const preClass = (parseInt(feedback.level) === 3) ? ` ${styles.flagGreen}` : '';
-    const expandedClass = (expandedId) ? ` ${styles.expanded}` : '';
-    const flagClass = styles.flag + preClass + expandedClass;
+    const { feedback, flagTop, handleFlagClick, expandedId, isDisplay } = this.props;
+    const expandedClass = expandedId ? ` ${styles.expanded}` : '';
+    const flagClass = styles.flag + this.flagColor() + expandedClass;
 
     return (
-      <div
-        className={flagClass}
-        style={{top: `${flagTop}px`}}
-        data-id={feedback.feedbackId}
-      >
+      <div className={flagClass} style={{ top: `${flagTop}px` }} data-id={feedback.feedbackId}>
         <div className={styles.flagCaret}>
           <svg width="7px" height="12px" viewBox="0 0 7 12" version="1.1">
             <defs />
@@ -68,53 +73,54 @@ class FeedbackFlag extends Component {
           </svg>
         </div>
         <div className={styles.flagHeader}>
-          <div
-            className={styles.flagTitle}
-            onClick={() => {
-              handleFlagClick(feedback.feedbackId);
-            }}
+          <div className={styles.flagTitle}
+            onClick={() => handleFlagClick(feedback.feedbackId)}
           >
             <div className={styles.flagTitleCont}>
-              <MLIcon className={styles.icon} title="comment" type="comment" width="24" height="24" viewBox="0 0 24 24" />
-              <div className={styles.flagTitleText}>Comment</div>
+              <MLIcon
+                className={styles.commentIcon}
+                title="comment"
+                type="comment"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              />
+              <div className={styles.flagTitleText}>{feedback.title}</div>
             </div>
           </div>
           {!isDisplay && expandedId ?
-            <div className={styles.flagMenuToggle}>
-              <a
-                className={styles.moreButton}
-                onClick={this.handleMenuToggle}
-              >
-                <MLIcon className={styles.moreIcon} title="more" type="more" width="24" height="24" viewBox="0 0 24 24" />
-              </a>
-            </div>
-            : null
-          }
+            <a className={styles.moreButton} onClick={this.handleMenuToggle}>
+              <MLIcon
+                className={styles.moreIcon}
+                title="more"
+                type="more"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              />
+            </a>
+            : null}
         </div>
         {expandedId ?
           <div className={styles.feedback}>
-            <div className={styles.feedbackLabel}>
-              {feedback.level}
+            <div className={styles.predefined}>
+              {feedback.predefined}
             </div>
-            <div>
-              {feedback.content}
-            </div>
+            {feedback.content}
           </div>
-          : null
-        }
-        {
-          this.state.menuOpen ?
-            <div className={styles.feedbackFlagMenu}>
-              <ul className={styles.feedbackFlagMenuList}>
-                <li data-id="menu-delete" onClick={this.handleDeleteFeedback}>Delete Comment</li>
-              </ul>
-            </div>
-          : null
-        }
+          : null}
+        {this.state.menuOpen ?
+          <div className={styles.feedbackFlagMenu}>
+            <ul className={styles.feedbackFlagMenuList}>
+              <li data-id="menu-delete" onClick={this.handleDeleteFeedback}>
+                Delete Comment
+              </li>
+            </ul>
+          </div>
+          : null}
       </div>
     );
   }
-
 }
 
 FeedbackFlag.propTypes = {

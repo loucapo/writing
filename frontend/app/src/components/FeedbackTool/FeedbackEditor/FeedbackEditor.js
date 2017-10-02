@@ -24,7 +24,7 @@ class FeedbackEditor extends Component {
     if((this.state.saving && newFeedback) || (this.state.removing && removedFeedbackIds.length > 0)) {
 
       if (this.state.saving) {
-        this.addHighlights(nextProps.lastFeedback.feedbackId, nextProps.lastFeedback.level);
+        this.addHighlights(nextProps.lastFeedback);
       }
       if (this.state.removing) {
         this.removeHighlights(removedFeedbackIds);
@@ -48,9 +48,16 @@ class FeedbackEditor extends Component {
     document.body.removeEventListener('contextmenu', this.handleRightClick.bind(this));
   };
 
-  handleSave = (saveFeedback) => {
+  handleSave = (comment, level, showHeader, editingMarkId) => {
     this.setState({ saving: true }, () => {
-      saveFeedback(this.props.studentActivityId, this.props.studentDraftId);
+      this.props.createFeedback(
+        this.props.studentActivityId,
+        this.props.studentDraftId,
+        comment,
+        level,
+        showHeader,
+        editingMarkId
+      );
     });
   };
 
@@ -105,15 +112,17 @@ class FeedbackEditor extends Component {
     window.getSelection().removeAllRanges();
   };
 
-  addHighlights = (feedbackId, level) => {
+  addHighlights = (feedback) => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
     selections.map(selection => {
       selection.classList.remove(styles.selected);
       selection.classList.add(styles.highlight);
-      if (level === 3) {
+      if (feedback.level === 3) {
         selection.classList.add(styles.highlightGreen);
+      } else if (feedback.editingMarkId) {
+        selection.classList.add(styles.highlightOrange);
       }
-      selection.setAttribute('data-feedback-id', feedbackId);
+      selection.setAttribute('data-feedback-id', feedback.feedbackId);
     });
   };
 
@@ -286,6 +295,8 @@ class FeedbackEditor extends Component {
             closeModal={this.closeModal}
             createFeedbackError={this.createFeedbackError}
             modalType={this.state.showCommentModal}
+            createFeedback={this.props.createFeedback}
+            editingMarks={this.props.editingMarks}
           />
           : null}
         {this.state.showFeedbackMenu
@@ -302,6 +313,7 @@ class FeedbackEditor extends Component {
           feedback={this.props.feedback}
           isDisplay={false}
           handleDeleteFeedback={this.handleDeleteFeedback}
+          editingMarks={this.props.editingMarks}
           />
       </div>
     );
@@ -316,7 +328,9 @@ FeedbackEditor.propTypes = {
   deleteFeedback: PropTypes.func,
   lastFeedback: PropTypes.object,
   feedback: PropTypes.array,
-  createFeedbackError: PropTypes.object
+  createFeedbackError: PropTypes.object,
+  createFeedback: PropTypes.func,
+  editingMarks: PropTypes.array
 };
 
 export default FeedbackEditor;

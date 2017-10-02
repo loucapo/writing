@@ -8,7 +8,7 @@ class FeedbackFlags extends Component {
     expandedId: null
   };
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     // clear expandedId if it equals a feedbackId that was removed
     const nextFeedback = _.get(nextProps, 'feedback');
     const thisFeedback = _.get(this.props, 'feedback');
@@ -20,28 +20,28 @@ class FeedbackFlags extends Component {
         this.setState({ expandedId: null });
       }
     }
-  }
+  };
 
   componentDidUpdate = () => {
     document.body.removeEventListener('click', this.handleCollapse);
-    if(this.state.expandedId) {
+    if (this.state.expandedId) {
       document.body.addEventListener('click', this.handleCollapse);
     }
   };
 
   componentWillUnmount = () => {
     document.body.removeEventListener('click', this.handleCollapse);
-  }
+  };
 
-  handleFlagClick = (feedbackId) => {
+  handleFlagClick = feedbackId => {
     this.setState({
-      expandedId: (this.state.expandedId !== feedbackId) ? feedbackId : null
+      expandedId: this.state.expandedId !== feedbackId ? feedbackId : null
     });
   };
 
   handleCollapse = () => {
-    let clickedElem = document.querySelector('[data-id="' + this.state.expandedId + '"]');
-    if(clickedElem && !clickedElem.contains(event.target)) {
+    let clickedElem = document.querySelector(`[data-id='${this.state.expandedId}']`);
+    if (clickedElem && !clickedElem.contains(event.target)) {
       this.setState({
         expandedId: null
       });
@@ -49,7 +49,7 @@ class FeedbackFlags extends Component {
   };
 
   render() {
-    if(this.props.feedback.length < 1) {
+    if (this.props.feedback.length < 1) {
       return null;
     }
 
@@ -59,15 +59,17 @@ class FeedbackFlags extends Component {
           let highlight = document.querySelector(`[data-feedback-id='${feedback.feedbackId}']`);
           if (highlight) {
             let flagTop = highlight.offsetTop - 8;
-            return (<FeedbackFlag
-              key={feedback.feedbackId}
-              feedback={feedback}
-              flagTop={flagTop}
-              handleFlagClick={this.handleFlagClick}
-              expandedId={feedback.feedbackId === this.state.expandedId}
-              isDisplay={this.props.isDisplay}
-              handleDeleteFeedback={this.props.handleDeleteFeedback}
-            />);
+            return (
+              <FeedbackFlag
+                key={feedback.feedbackId}
+                feedback={feedback}
+                flagTop={flagTop}
+                handleFlagClick={this.handleFlagClick}
+                expandedId={feedback.feedbackId === this.state.expandedId}
+                isDisplay={this.props.isDisplay}
+                handleDeleteFeedback={this.props.handleDeleteFeedback}
+              />
+            );
           } else {
             return null;
           }
@@ -80,7 +82,8 @@ class FeedbackFlags extends Component {
 FeedbackFlags.propTypes = {
   feedback: PropTypes.array,
   isDisplay: PropTypes.bool,
-  handleDeleteFeedback: PropTypes.func
+  handleDeleteFeedback: PropTypes.func,
+  editingMarks: PropTypes.array
 };
 
 export default FeedbackFlags;

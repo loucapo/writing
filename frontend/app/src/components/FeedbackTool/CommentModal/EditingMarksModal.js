@@ -19,17 +19,6 @@ class EditingMarksModal extends Component {
     this.setState({ comment: e.target.textContent.trim() });
   };
 
-  handleCreateFeedback = (studentActivityId, studentDraftId) => {
-    this.props.createFeedback(
-      studentActivityId,
-      studentDraftId,
-      this.state.comment,
-      null,
-      true,
-      this.state.editingMark.id
-    );
-  };
-
   render() {
     return (
       <div>
@@ -88,7 +77,7 @@ class EditingMarksModal extends Component {
                 className={styles.addCommentButton}
                 dataId="save-comment-modal"
                 title="Save"
-                handleClick={this.props.handleSave.bind(this, this.handleCreateFeedback)}
+                handleClick={() => this.props.handleSave(this.state.comment, null, true, this.state.editingMark.id)}
                 disabled={!this.state.editingMark}
               />
             </div>
@@ -103,7 +92,6 @@ EditingMarksModal.propTypes = {
   closeModal: PropTypes.func,
   handleSave: PropTypes.func,
   createFeedbackError: PropTypes.object,
-  createFeedback: PropTypes.func,
   editingMarks: PropTypes.array
 };
 

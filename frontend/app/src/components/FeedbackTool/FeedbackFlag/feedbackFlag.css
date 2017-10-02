@@ -2,9 +2,9 @@
 
 .flag {
   position: absolute;
-  width: 150px;
+  width: 230px;
   display: inline-block;
-  color: #080808;
+  color: var(--black);
   border-radius: 3px;
   font-size: 14px;
   border: 1px solid var(--yellow-light);
@@ -23,6 +23,10 @@
   border: 1px solid var(--green-light);
 }
 
+.flagOrange {
+  border: 1px solid var(--orange-light);
+}
+
 .flagCaret {
   position: absolute;
   transform: rotate(180deg);
@@ -32,29 +36,24 @@
 
 .flagHeader {
   display: flex;
+  cursor: pointer;
 }
 
 .flagTitle {
-  padding-right: 9px;
   flex: 1;
 }
 
 .flagTitleText {
-  line-height: 38px;
-  padding: 0 0 0 6px;
+  line-height: 20px;
+  padding: 8px;
   font-weight: bold;
-  cursor: pointer;
 }
 
 .flagTitleCont {
   display: flex;
 }
 
-.flagMenuToggle {
-  cursor: pointer;
-}
-
-.icon {
+.commentIcon {
   fill: var(--yellow-light);
   margin-top: 8px;
   margin-left: 8px;
@@ -65,15 +64,19 @@
 }
 
 .moreButton {
-  padding: 8px;
+  padding: 6px 8px 8px 8px;
   margin: 0;
   display: inline-block;
   width: 22px;
   height: 22px;
 }
 
-.flagGreen .icon {
+.flagGreen .commentIcon {
   fill: var(--green-light);
+}
+
+.flagOrange .commentIcon {
+  fill: var(--orange-light);
 }
 
 .triangle {
@@ -88,14 +91,18 @@
   stroke: var(--green-light);
 }
 
+.flagOrange .triangleOutline {
+  stroke: var(--orange-light);
+}
+
 .feedback {
   border-top: 1px solid var(--gray-light);
   padding: 12px;
 }
 
-.feedbackLabel {
+.predefined {
   font-weight: bold;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .feedbackFlagMenu {
