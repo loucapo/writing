@@ -6,18 +6,42 @@ import styles from './commentModal.css';
 class EditingMarksModal extends Component {
   state = {
     comment: null,
-    editingMark: this.props.editingMarks[0]
+    editingMarks: [],
+    selectedEditingMark: null
   };
 
   handleEditingMarkChange = e => {
     let editingMarkId = e.target.dataset.id;
-    let editingMark = this.props.editingMarks.find(mark => mark.id === editingMarkId);
-    this.setState({ editingMark });
+    let selectedEditingMark = this.state.editingMarks.find(mark => mark.id === editingMarkId);
+    this.setState({ selectedEditingMark });
   };
 
   handleCommentChange = e => {
     this.setState({ comment: e.target.textContent.trim() });
   };
+
+  handleCreateFeedback = () => {
+    this.props.handleSave(
+      this.state.comment,
+      null,
+      true,
+      null,
+      this.state.selectedEditingMark.editingMarkId
+    );
+  };
+
+  componentWillMount = () => {
+    const editingMarks = this.props.editingMarks.map(mark => {
+      // Parses editingMarkId to generic id so it can be used in MLMenuList
+      mark.id = mark.editingMarkId;
+      return mark;
+    });
+
+    this.setState({
+      editingMarks,
+      selectedEditingMark: editingMarks[0]
+    });
+  }
 
   render() {
     return (
@@ -27,7 +51,7 @@ class EditingMarksModal extends Component {
         </div>
 
         <div className={styles.modalWrapper}>
-          <MLMenuList list={this.props.editingMarks} callback={this.handleEditingMarkChange} />
+          <MLMenuList list={this.state.editingMarks} callback={this.handleEditingMarkChange} />
 
           <div className={styles.rightPanel}>
             <div className={styles.commentWrapper}>
@@ -38,7 +62,7 @@ class EditingMarksModal extends Component {
                   <div className={styles.commentsHeadingLine} />
                 </div>
                 <div className={styles.commentDescription}>
-                  {this.state.editingMark.description}
+                  {this.state.selectedEditingMark.description}
                 </div>
               </div>
 
@@ -77,8 +101,8 @@ class EditingMarksModal extends Component {
                 className={styles.addCommentButton}
                 dataId="save-comment-modal"
                 title="Save"
-                handleClick={() => this.props.handleSave(this.state.comment, null, true, this.state.editingMark.id)}
-                disabled={!this.state.editingMark}
+                handleClick={this.handleCreateFeedback}
+                disabled={!this.state.selectedEditingMark}
               />
             </div>
           </div>

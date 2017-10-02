@@ -3,30 +3,32 @@ import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import styles from './feedbackMenu.css';
 
-const FeedbackMenu = ({ position, handleClick }) => {
+const FeedbackMenu = ({ position, handleClick, showDraftGoals }) => {
   return (
     <div className={styles.feedbackMenuWrapper} style={{ top: `${position}px` }}>
       <div className={styles.feedbackMenu}>
         Feedback
       </div>
       <ul className={styles.feedbackButtons}>
-        <li
-          className={styles.feedbackButton + ' feedbackButton'}
-          onClick={handleClick.bind(this, 'draftGoals')}
-          data-id="feedback-menu-draft-goals"
-        >
-          <div>
-            <MLIcon
-              className={styles.commentIcon}
-              title="comment"
-              type="flag"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-            />
-          </div>
-          <div className={styles.feedbackButtonText}>Draft Goals</div>
-        </li>
+        {showDraftGoals ? (
+          <li
+            className={styles.feedbackButton + ' feedbackButton'}
+            onClick={handleClick.bind(this, 'draftGoals')}
+            data-id="feedback-menu-draft-goals"
+          >
+            <div>
+              <MLIcon
+                className={styles.commentIcon}
+                title="comment"
+                type="flag"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+              />
+            </div>
+            <div className={styles.feedbackButtonText}>Draft Goals</div>
+          </li>
+        ) : null}
         <li
           className={styles.feedbackButton + ' feedbackButton'}
           onClick={handleClick.bind(this, 'editingMarks')}
@@ -68,7 +70,8 @@ const FeedbackMenu = ({ position, handleClick }) => {
 
 FeedbackMenu.propTypes = {
   position: PropTypes.number,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  showDraftGoals: PropTypes.bool
 };
 
 export default FeedbackMenu;

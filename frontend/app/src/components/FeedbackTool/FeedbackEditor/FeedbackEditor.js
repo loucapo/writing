@@ -13,7 +13,8 @@ class FeedbackEditor extends Component {
     showCommentMenu: false,
     saving: false,
     removing: false,
-    content: this.props.content
+    content: this.props.content,
+    draftHasGoals: false
   };
 
   componentWillReceiveProps = (nextProps) => {
@@ -48,7 +49,7 @@ class FeedbackEditor extends Component {
     document.body.removeEventListener('contextmenu', this.handleRightClick.bind(this));
   };
 
-  handleSave = (comment, level, showHeader, editingMarkId) => {
+  handleSave = (comment, level, showHeader, goalId, editorMarkId) => {
     this.setState({ saving: true }, () => {
       this.props.createFeedback(
         this.props.studentActivityId,
@@ -56,7 +57,8 @@ class FeedbackEditor extends Component {
         comment,
         level,
         showHeader,
-        editingMarkId
+        goalId,
+        editorMarkId
       );
     });
   };
@@ -282,6 +284,8 @@ class FeedbackEditor extends Component {
   };
 
   render() {
+    const draftHasGoals = this.props.draftGoals && this.props.draftGoals.length > 0;
+
     return (
       <div className={styles.feedbackEditorWrapper} onMouseUp={this.handleEditorMouseUp}>
         <div
@@ -295,18 +299,23 @@ class FeedbackEditor extends Component {
             closeModal={this.closeModal}
             createFeedbackError={this.createFeedbackError}
             modalType={this.state.showCommentModal}
-            createFeedback={this.props.createFeedback}
             editingMarks={this.props.editingMarks}
+            draftGoals={this.props.draftGoals}
           />
           : null}
-        {this.state.showFeedbackMenu
-          ? <FeedbackMenu position={this.position.top} handleClick={this.showCommentModal.bind(this)} />
+        {this.state.showFeedbackMenu ?
+          <FeedbackMenu
+            position={this.position.top}
+            handleClick={this.showCommentModal.bind(this)}
+            showDraftGoals={draftHasGoals}
+          />
           : null}
         {this.state.showCommentMenu ?
           <CommentMenu
             position={this.position}
             showModal={this.showCommentModal.bind(this)}
             closeMenu={this.closeMenu}
+            showDraftGoals={draftHasGoals}
           />
           : null}
         <FeedbackFlags
@@ -328,9 +337,10 @@ FeedbackEditor.propTypes = {
   deleteFeedback: PropTypes.func,
   lastFeedback: PropTypes.object,
   feedback: PropTypes.array,
-  createFeedbackError: PropTypes.object,
   createFeedback: PropTypes.func,
-  editingMarks: PropTypes.array
+  createFeedbackError: PropTypes.object,
+  editingMarks: PropTypes.array,
+  draftGoals: PropTypes.array
 };
 
 export default FeedbackEditor;

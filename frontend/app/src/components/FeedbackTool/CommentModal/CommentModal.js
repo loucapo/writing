@@ -35,6 +35,7 @@ class CommentModal extends Component {
             closeModal={this.props.closeModal}
             createFeedbackError={this.props.createFeedbackError}
             editingMarks={this.props.editingMarks}
+            draftGoals={this.props.draftGoals}
           />
         </div>
       </div>
@@ -48,7 +49,8 @@ CommentModal.propTypes = {
   closeModal: PropTypes.func,
   createFeedbackError: PropTypes.object,
   modalType: PropTypes.string,
-  editingMarks: PropTypes.array
+  editingMarks: PropTypes.array,
+  draftGoals: PropTypes.array
 };
 
 export default CommentModal;

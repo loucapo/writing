@@ -266,7 +266,8 @@ module.exports = function(
           studentDraftId: command.studentDraftId,
           content: feedback.content,
           level: feedback.level || null,
-          showHeader: feedback.showHeader || null,
+          showHeader: !!feedback.showHeader,
+          goalId: feedback.goalId || null,
           editingMarkId: feedback.editingMarkId || null,
           feedbackId: feedback.feedbackId
         };
@@ -282,6 +283,7 @@ module.exports = function(
       const feedback = await repository.query(sqlLibrary.feedback, 'getFeedback', {
         studentDraftId: ctx.params.studentDraftId
       });
+
       ctx.status = 200;
       ctx.body = feedback;
       return ctx;

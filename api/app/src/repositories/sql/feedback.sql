@@ -5,6 +5,7 @@ INSERT INTO feedback
   content,
   level,
   show_header,
+  goal_id,
   editing_mark_id,
   created_date,
   created_by_id)
@@ -14,6 +15,7 @@ VALUES
   :content,
   :level,
   :showHeader,
+  :goalId,
   :editingMarkId,
   :createdDate,
   :createdById)

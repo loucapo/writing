@@ -44,7 +44,7 @@ class FeedbackFlag extends Component {
   flagColor = () => {
     let feedback = this.props.feedback;
     let color = '';
-    if (parseInt(feedback.level, 10) === 3) {
+    if (feedback.level === 3) {
       color = ` ${styles.flagGreen}`;
     } else if (feedback.editingMarkId) {
       color = ` ${styles.flagOrange}`;
@@ -103,9 +103,11 @@ class FeedbackFlag extends Component {
         </div>
         {expandedId ?
           <div className={styles.feedback}>
-            <div className={styles.predefined}>
-              {feedback.predefined}
-            </div>
+            {feedback.showHeader ?
+              <div className={styles.predefined}>
+                {feedback.predefined}
+              </div>
+            : null }
             {feedback.content}
           </div>
           : null}
