@@ -21,15 +21,6 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     And I click "student_reflection_questions.draft_submit_confirm"
 
   @WRITE-1442
-  Scenario: The Instructor Can Highlight Text And See Comment Button
-    Given I launch the activity as an "instructor"
-    And I click "student_submissions"
-    And I click "submissions.row_start(1)"
-    And Changing to using page "instructor_feedback"
-    When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
-    Then I wait until there is 1 "add_draft_goals_comment_button" visible
-
-  @WRITE-1442
   Scenario: The Instructor Opens Modal From Comment Button
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
@@ -38,21 +29,11 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
     And I click "add_draft_goals_comment_button"
     Then I wait until there is 1 "comment_modal.draft_goal_list" visible
-    Then I wait until there is 1 "comment_modal.draft_goal(1)_selected" visible
+    Then I wait until there is 1 "comment_modal.draft_goal_selected(1)" visible
+    Then I wait until there is 3 "comment_modal.comment_level_button" visible
+    And the text of "comment_modal.comment_level_button(2)" should include "Needs Work"
 
-  @WRITE-1442
-  Scenario: The Instructor Selects Draft Goal And Sees Levels
-    Given I launch the activity as an "instructor"
-    And I click "student_submissions"
-    And I click "submissions.row_start(1)"
-    And Changing to using page "instructor_feedback"
-    When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
-    And I click "add_draft_goals_comment_button"
-    And I click "comment_modal.draft_goal(2)"
-    Then I wait until there is 4 "comment_modal.draft_goal_level" visible
-    And the text of "comment_modal.draft_goal_level(2)" should include "blah blah"
-
-  @WRITE-1442
+  @pending=WRITE-1527
   Scenario: The Instructor Selects Draft Goal And Levels
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
@@ -61,7 +42,7 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
     And I click "add_draft_goals_comment_button"
     And I click "comment_modal.draft_goal(2)"
-    And I click "comment_modal.draft_goal_level(2)"
+    And I click "comment_modal.comment_level_button(2)"
     Then I wait until there is 1 "comment_modal.draft_goal_level_tag" visible
     And the text of "comment_modal.draft_goal_level_tag" should include "what the what?"
 
