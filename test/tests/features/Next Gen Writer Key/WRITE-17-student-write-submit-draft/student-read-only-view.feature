@@ -9,7 +9,7 @@ Feature: Student Views Instructor Feedback
     When I click "draft(1).add_reflection_questions"
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
-    When I click "reflection_questions_modal.check(4)"
+    When I click "reflection_questions_modal.check(7)"
     When I click "reflection_questions_modal.save"
     When I click "draft(2).draft_add_instructions"
     And I type "Write about cookies" in "draft(2).draft_instructions_textarea"

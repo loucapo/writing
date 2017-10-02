@@ -27,7 +27,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     When I select "student_submitted_draft_text" text
     And I click "add_open_comments_button"
     And I click "comment_modal.needs_work_comment_button"
-    And the text of "comment_modal.add_comment_tag_text" should be "Needs Work"
+    Then the color of "comment_modal.needs_work_comment_button" should be "#00758e"
 
   @WRITE-1199
   Scenario: Disabled Submit Button
@@ -48,8 +48,8 @@ Feature: Instructor Can Add Pre-Defined Comment
     And Changing to using page "instructor_feedback"
     When I select "student_submitted_draft_text" text
     And I click "add_open_comments_button"
-    And I click "comment_modal.good_job_comment_button"
-    And the text of "comment_modal.add_comment_tag_text" should be "Good Job"
+    And I click "comment_modal.nice_job_comment_button"
+    And the color of "comment_modal.nice_job_comment_button" should be "#00758e"
     Then I wait until there is 1 "comment_modal.save_comment" visible
 
   @WRITE-1199
@@ -62,7 +62,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     When I select "student_submitted_draft_text" text
     And I click "add_open_comments_button"
     And I click "comment_modal.needs_extensive_work_comment_button"
-    And the text of "comment_modal.add_comment_tag_text" should be "Needs Extensive Revision"
+    And the color of "comment_modal.needs_extensive_work_comment_button" should be "#00758e"
     And I wait until there is 1 "comment_modal.save_comment" visible
     And I click "comment_modal.save_comment"
     And I wait until there is 1 "feedback_flag" visible

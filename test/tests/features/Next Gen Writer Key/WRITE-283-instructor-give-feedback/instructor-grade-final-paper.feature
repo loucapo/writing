@@ -8,7 +8,7 @@ Feature: Instructor Gives Score to Final Paper
     When I click "draft(1).add_reflection_questions"
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
-    When I click "reflection_questions_modal.check(4)"
+    When I click "reflection_questions_modal.check(7)"
     When I click "reflection_questions_modal.save"
     Given I launch the activity as an "student"
     Then I sleep for 1 seconds
@@ -34,7 +34,7 @@ Feature: Instructor Gives Score to Final Paper
     When I click "draft(1).add_reflection_questions"
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"
-    When I click "reflection_questions_modal.check(4)"
+    When I click "reflection_questions_modal.check(7)"
     When I click "reflection_questions_modal.save"
     Given I launch the activity as an "student"
     When I click "start_draft"

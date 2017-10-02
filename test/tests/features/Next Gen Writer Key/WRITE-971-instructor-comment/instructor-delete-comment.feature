@@ -26,7 +26,7 @@ Feature: Instructor Delete Comment
     And I click "add_open_comments_button"
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
-    And I click "comment_modal.good_job_comment_button"
+    And I click "comment_modal.nice_job_comment_button"
     And I click "comment_modal.save_comment"
     And I sleep for 1 seconds
 
