@@ -73,3 +73,21 @@ Feature: Student Views Details Panel
     When I click "start_draft"
     Then the text of "draft_editor.activity_reflection_questions_panel" should be "free: The most challenging part of this assignment was:"
 
+  @WRITE-1062
+  @db=reset
+  Scenario: Hidden Detail Panel For Non-Selected Options
+    Given I launch the activity as an "instructor"
+    And I click "draft.add_draft_goals"
+    And I click "draft_goals_modal.goal_checkbox(1)"
+    And I click "draft_goals_modal.goal_save"
+    Given I launch the activity as an "student"
+    When I click "start_draft"
+    Then I wait until there is 1 "draft_editor.activity_draft_panel" visible
+    Then I wait until there is 0 "draft_editor.activity_prompt_panel" visible
+    Then I wait until there is 0 "draft_editor.activity_final_rubric_panel" visible
+    Then I wait until there is 1 "draft_editor.view_activity_summary_link" visible
+    Then I wait until there is 0 "draft_editor.activity_reflection_questions_panel" visible
+    Then I wait until there is 1 "draft_editor.activity_draft_goals_panel" visible
+    Then I wait until there is 0 "draft_editor.activity_draft_instructions_panel" visible
+    Then I wait until there is 0 "draft_editor.activity_prompt_description_panel" visible
+    Then I wait until there is 0 "draft_editor.activity_rubric_panel_preview" visible
