@@ -129,8 +129,8 @@ Feature: Student Can View Instructor Comments
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
-    And I click "comment_modal.draft_goal(2)"
-    And I click "comment_modal.draft_goal_level(2)"
+    And I click "add_draft_goals_comment_button"
+    And I click "comment_modal.needs_work_comment_button"
     And I click "comment_modal.save_comment"
     And I click "done_button"
     And Changing to using page "instructor_summary"
@@ -142,3 +142,4 @@ Feature: Student Can View Instructor Comments
     And I click "view_feedback_button"
     Then I wait until there is 1 "student_read_only_feedback.instructor_draft_highlight" visible
     Then I wait until there is 1 "student_read_only_feedback.instructor_draft_comment" visible
+    And Then the text of "student_read_only_feedback.comment_flag_title" should be "Thesis"

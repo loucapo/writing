@@ -54,8 +54,7 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
     And I click "add_draft_goals_comment_button"
-    And I click "comment_modal.draft_goal_list_item(1)"
-    And I click "comment_modal.needs_extensive_work_comment_button"
+    And I click "comment_modal.needs_work_comment_button"
     And I click "comment_modal.save_comment"
     Then I wait until there is 1 "feedback_flag" visible
-    And the text of "feedback_flag" should include "#nameofdraftGoal"
+    And the text of "feedback_flag" should include "Thesis"
