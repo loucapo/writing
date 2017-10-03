@@ -1,4 +1,3 @@
-@only
 Feature: Student Can View Instructor Comments
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
