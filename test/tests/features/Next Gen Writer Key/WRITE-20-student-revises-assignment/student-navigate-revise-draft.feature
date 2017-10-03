@@ -29,6 +29,8 @@ Feature: Student Navigate Draft Screens
   Scenario: Student Sees View Previous Draft Link
     Given I launch the activity as a "student"
     And I click "view_feedback_button"
+    Then I wait until there is 1 "start_final_paper" visible
+    Then I sleep for 2 seconds
     And I click "start_final_paper"
     Then I wait until there is 1 "draft_editor.view_previous_draft_link" visible
 
