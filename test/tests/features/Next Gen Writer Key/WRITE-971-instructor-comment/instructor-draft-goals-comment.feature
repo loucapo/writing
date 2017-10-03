@@ -20,6 +20,45 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
 
+  @WRITE-973
+  Scenario: Zero Draft Goals Should Hide Draft Goals Comment Option
+    Given I launch the activity as an "instructor"
+    And I click "draft.edit_draft_goals"
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    And I click "draft_goals_modal.goal_checkbox(1)"
+    And I click "draft_goals_modal.goal_save"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
+    Then I wait until there is 0 "add_draft_goals_comment_button" visible
+
+  @WRITE-973
+  Scenario: Instructor Draft Goal Choices Should Reflect Availability In Draft Goals Comments
+    Given I launch the activity as an "instructor"
+    And I click "draft.edit_draft_goals"
+    Then I wait until there is 1 "draft_goals_modal.goal_popup" visible
+    And I click "draft_goals_modal.goal_checkbox(1)"
+    And I click "draft_goals_modal.goal_checkbox(2)"
+    And I click "draft_goals_modal.goal_checkbox(3)"
+    And I click "draft_goals_modal.goal_checkbox(4)"
+    And I click "draft_goals_modal.goal_checkbox(5)"
+    And I click "draft_goals_modal.goal_checkbox(6)"
+    And I click "draft_goals_modal.goal_save"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
+    And I click "add_draft_goals_comment_button"
+    Then I wait until there is 6 "comment_modal.draft_goal" visible
+    And the text of "comment_modal.draft_goal(1)" should include "Thesis"
+    And the text of "comment_modal.draft_goal(2)" should include "Reason and Support"
+    And the text of "comment_modal.draft_goal(3)" should include "Interpretation/Analysis"
+    And the text of "comment_modal.draft_goal(4)" should include "Paragraph Development"
+    And the text of "comment_modal.draft_goal(5)" should include "Integration of Research"
+    And the text of "comment_modal.draft_goal(6)" should include "Counterarguments"
+
+
   @WRITE-1442
   Scenario: The Instructor Opens Modal From Comment Button
     Given I launch the activity as an "instructor"
@@ -41,8 +80,7 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     And Changing to using page "instructor_feedback"
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
     And I click "add_draft_goals_comment_button"
-    And I click "comment_modal.draft_goal(2)"
-    And I click "comment_modal.comment_level_button(2)"
+    And I click "comment_modal.needs_work_comment_button"
     Then I wait until there is 1 "comment_modal.draft_goal_level_tag" visible
     And the text of "comment_modal.draft_goal_level_tag" should include "what the what?"
 
@@ -57,4 +95,6 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     And I click "comment_modal.needs_work_comment_button"
     And I click "comment_modal.save_comment"
     Then I wait until there is 1 "feedback_flag" visible
+    And I click "feedback_flag"
     And the text of "feedback_flag" should include "Thesis"
+    And the text of "feedback_flag_content" should include "Needs work. Thesis does not present a critical response to the issue."
