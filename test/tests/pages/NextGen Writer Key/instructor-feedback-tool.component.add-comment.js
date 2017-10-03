@@ -44,7 +44,7 @@ class InstructorCommentModal extends Component {
       draft_goal: {
         desc: `The currently selected draft goal for instructor comment`,
         locator: `ul[class^='MLMenuList__menulist'] li`
-      },
+      }
     };
   }
 }
