@@ -1,3 +1,4 @@
+@only
 Feature: Student Can View Instructor Comments
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -21,6 +22,7 @@ Feature: Student Can View Instructor Comments
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
     And I click "add_open_comments_button"
     And I click "comment_modal.add_comment_textarea"
@@ -54,7 +56,7 @@ Feature: Student Can View Instructor Comments
     Then I wait until there is 0 "student_read_only_feedback.comment_flag_feedback" visible
 
   @db=reset
-  Scenario: Instructor Sets Up Student Reflection Environment
+  Scenario: Instructor Sets Up Student Reflection Environment Again
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
     And I reload the page
@@ -75,6 +77,7 @@ Feature: Student Can View Instructor Comments
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Lorem ipsum dolor" to "consectetur adipiscing elit" in "student_submitted_draft_text"
     And I click "add_open_comments_button"
     And I type "Good Job Bro" in "comment_modal.add_comment_textarea"
@@ -90,25 +93,25 @@ Feature: Student Can View Instructor Comments
     And Changing to using page "instructor_summary"
     And I click "submissions.send_review_link(1)"
 
-  @intermittent-fail
   Scenario: Expanding One Comment Closes Another
-  # And I click "student_read_only_feedback.instructor_draft_comment"
-  # Error: Can't find any such component to mount as:  [class^='FeedbackDisplay__page']
-  #     at StudentReviewFeedback.instructor_draft_comment (node_modules/marvin-js/lib/page-object/component.js:23:27)  
     Given I launch the activity as a "student"
     And I click "view_feedback_button"
     And I click "student_read_only_feedback.instructor_draft_comment"
-      And I sleep for 1 seconds
+    And Then the text of "student_read_only_feedback.comment_flag_feedback_typed(1)" should include "Nice job!"
+    And Then the text of "student_read_only_feedback.comment_flag_feedback_typed(1)" should include "Good Job Bro"
     And I click "student_read_only_feedback.instructor_draft_comment(2)"
     Then I wait until there is 2 "student_read_only_feedback.comment_flag_title" visible
     Then I wait until there is 1 "student_read_only_feedback.comment_flag_feedback" visible
-    And Then the text of "student_read_only_feedback.comment_flag_feedback_typed(2)" should be "This is no bueno"
+    And Then the text of "student_read_only_feedback.comment_flag_feedback_typed(1)" should include "Needs extensive revision"
+    And Then the text of "student_read_only_feedback.comment_flag_feedback_typed(1)" should include "This is no bueno"
 
-    @WRITE-973
-  Scenario: Instructor Sets Up Student Reflection Environment
+  @WRITE-973
+  @db=reset
+  Scenario: Instructor Sets Up Student Reflection Environment Another Time
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
     And I reload the page
+    Then I wait until there is 1 "draft(1).add_reflection_questions" visible
     When I click "draft(1).add_reflection_questions"
     Then I wait until there is 1 "reflection_questions_modal.close" visible
     When I click "reflection_questions_modal.check(1)"

@@ -11,16 +11,16 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     #Then I wait until there is 1 "reflection_questions_modal.ref_question_modal" visible
     Then the text of "reflection_questions_modal.question_title(1)" should be "Question 1"
     Then the text of "reflection_questions_modal.question_type(1)" should be "free"
-    And the text of "reflection_questions_modal.desc(1)" should include "The most challenging part of this assignment was:"
+    And the text of "reflection_questions_modal.desc(1)" should include "The most challenging part of this assignment was"
     Then the text of "reflection_questions_modal.question_title(2)" should be "Question 2"
     Then the text of "reflection_questions_modal.question_type(2)" should be "free"
-    And the text of "reflection_questions_modal.desc(2)" should include "One thing I want my reader to understand is:"
+    And the text of "reflection_questions_modal.desc(2)" should include "One thing I want my reader to understand is"
     Then the text of "reflection_questions_modal.question_title(3)" should be "Question 3"
     Then the text of "reflection_questions_modal.question_type(3)" should be "free"
-    And the text of "reflection_questions_modal.desc(3)" should include "I want you to know that:"
+    And the text of "reflection_questions_modal.desc(3)" should include "I want you to know that"
     Then the text of "reflection_questions_modal.question_title(4)" should be "Question 4"
     Then the text of "reflection_questions_modal.question_type(4)" should be "free"
-    And the text of "reflection_questions_modal.desc(4)" should include "The primary argument I'm making is:"
+    And the text of "reflection_questions_modal.desc(4)" should include "The primary argument I'm making is"
     Then the text of "reflection_questions_modal.question_title(7)" should be "Question 7"
     Then the text of "reflection_questions_modal.question_type(7)" should be "fixed"
     And the text of "reflection_questions_modal.desc(7)" should include "I know the criteria that will be used for giving me feedback."
@@ -91,7 +91,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     And I click "reflection_questions_modal.save"
     Then I wait until there is 0 "reflection_questions_modal.ref_question_modal" visible
     Then I wait until there are 2 "draft.reflection_question" visible
-    Then the text of "draft.reflection_question(1)" should include "free: One thing I want my reader to understand is:"
+    Then the text of "draft.reflection_question(1)" should include "free: One thing I want my reader to understand is"
     Then the text of "draft.reflection_question(2)" should include "fixed: I know the criteria that will be used for giving me feedback."
     When I click "draft.edit_reflections(1)"
     #Then I wait until there is 1 "reflection_questions_modal.ref_question_modal" visible
@@ -101,4 +101,4 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Then I wait until there is 0 "reflection_questions_modal.ref_question_modal" visible
     Then I wait until there are 2 "draft.reflection_question" visible
     Then the text of "draft.reflection_question(1)" should include "fixed: I know the criteria that will be used for giving me feedback."
-    Then the text of "draft.reflection_question(2)" should include "free: I want you to know that:"
+    Then the text of "draft.reflection_question(2)" should include "free: I want you to know that"

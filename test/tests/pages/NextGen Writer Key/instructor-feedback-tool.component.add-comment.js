@@ -9,6 +9,18 @@ class InstructorCommentModal extends Component {
         desc: `Box to add text to a comment`,
         locator: `[class*='CommentModal__commentTextWrapper']`
       },
+      feedback_preset_menu: {
+        desc: `List of presets for instructor feedback`,
+        locator: `ul[class^='MLMenuList__menulist']`
+      },
+      feedback_preset_menu_item: {
+        desc: `Single presets for instructor feedback`,
+        locator: `ul[class^='MLMenuList__menulist'] li`
+      },
+      feedback_preset_text_preview: {
+        desc: `Default text defined by feedback preset`,
+        locator: `[class^='CommentModal__commentDescription']`
+      },
       comment_level_button: {
         desc: `Buttons to assign level to a comment`,
         locator: `[id='commentModal'] [class^='CommentModal__buttons'] button`
@@ -50,7 +62,3 @@ class InstructorCommentModal extends Component {
 }
 
 module.exports = InstructorCommentModal;
-
-
-
-

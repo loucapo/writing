@@ -79,17 +79,13 @@ class StudentReviewFeedback extends Component {
       },
       comment_flag_feedback: {
         desc: `Tag line of comment`,
-        locator: `[class^='FeedbackFlag__feedbackLabel']`
+        locator: `[class^='FeedbackFlag__feedback__']`
       },
       comment_flag_feedback_typed: {
         desc: `Tag line of comment`,
-        locator: `[class^='FeedbackFlag__feedback'] div`
+        locator: `[class^='FeedbackFlag__feedback__']`
       }
     }; }
 }
 
 module.exports = StudentReviewFeedback;
-
-
-
-

@@ -110,11 +110,11 @@ exports.define = function(steps) {
 
   const isViz = el => el.isDisplayed().then(bool => bool);
 
-  steps.given(/I launch the activity as a[n]? "(.+)"/, function(user, done) {
+  steps.given(/I launch the activity as a[n]? "(.+)"/, async function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
     if (user === 'student') { page = pages.student_summary; }
     if (user === 'instructor') { page = pages.instructor_summary; }
-    done();
+    await driver.sleep(2000);
   });
 
   steps.when(/Changing to using page "(.+)"/, function(newPage, done) {
@@ -257,7 +257,7 @@ exports.define = function(steps) {
                                        `return rangySelectStartTextToEndText("${startText}", "${endText}", "${selector}");`]);
     /*eslint-enable indent */
   }
-  
+
   steps.when(/I select "(.*)" text/, async function(element) {
     let pageObject = await polocToPO(element);
     return await selectStartTextToEndText(0, 0, pageObject.locator);

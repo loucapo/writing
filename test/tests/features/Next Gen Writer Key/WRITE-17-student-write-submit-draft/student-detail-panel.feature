@@ -71,5 +71,5 @@ Feature: Student Views Details Panel
     When I click "reflection_questions_modal.save"
     Given I launch the activity as an "student"
     When I click "start_draft"
-    Then the text of "draft_editor.activity_reflection_questions_panel" should be "free: The most challenging part of this assignment was:"
+    Then the text of "draft_editor.activity_reflection_questions_panel" should be "free: The most challenging part of this assignment was"
 

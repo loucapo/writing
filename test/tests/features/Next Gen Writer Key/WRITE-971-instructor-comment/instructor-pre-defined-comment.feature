@@ -27,6 +27,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     When I select "student_submitted_draft_text" text
     And I click "add_open_comments_button"
     And I click "comment_modal.needs_work_comment_button"
+    Then the text of "comment_modal.feedback_preset_text_preview" should be "Needs work"
     Then the color of "comment_modal.needs_work_comment_button" should be "#00758e"
 
   @WRITE-1199
@@ -41,7 +42,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     Then I wait until there is 1 "comment_modal.save_comment_disabled" visible
 
   @WRITE-1199
-  Scenario: The Instructor Selects Good Job
+  Scenario: The Instructor Selects Nice Job
     Given I launch the activity as an "instructor"
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
@@ -49,6 +50,7 @@ Feature: Instructor Can Add Pre-Defined Comment
     When I select "student_submitted_draft_text" text
     And I click "add_open_comments_button"
     And I click "comment_modal.nice_job_comment_button"
+    Then the text of "comment_modal.feedback_preset_text_preview" should be "Nice job!"
     And the color of "comment_modal.nice_job_comment_button" should be "#00758e"
     Then I wait until there is 1 "comment_modal.save_comment" visible
 
@@ -62,12 +64,13 @@ Feature: Instructor Can Add Pre-Defined Comment
     When I select "student_submitted_draft_text" text
     And I click "add_open_comments_button"
     And I click "comment_modal.needs_extensive_work_comment_button"
+    Then the text of "comment_modal.feedback_preset_text_preview" should be "Needs extensive revision"
     And the color of "comment_modal.needs_extensive_work_comment_button" should be "#00758e"
     And I wait until there is 1 "comment_modal.save_comment" visible
     And I click "comment_modal.save_comment"
     And I wait until there is 1 "feedback_flag" visible
     And I click "feedback_flag"
-    Then the text of "feedback_flag_content" should be "Needs Extensive Revision"
+    Then the text of "feedback_flag_content" should be "Needs extensive revision"
 
   @pending
   @WRITE-1212
