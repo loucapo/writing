@@ -55,8 +55,8 @@
 }
 
 .checkbox {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   appearance: none;
   background: var(--white);
   border: 1px solid var(--gray-medium);
@@ -71,11 +71,11 @@
 
 .checkbox:after {
   content: '';
-  width: 9px;
-  height: 4px;
+  width: 8px;
+  height: 3px;
   position:absolute;
-  top: 3.5px;
-  left: 3px;
+  top: 3px;
+  left: 2px;
   border: 2px solid var(--white);
   border-top: none;
   border-right: none;
