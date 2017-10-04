@@ -81,6 +81,7 @@ class CheckboxField extends Component {
             name="check"
             value={field.id}
             checked={this.props.isSelected}
+            disabled={this.props.isDisabled}
           />
         </div>
         <div data-id="field-content" className={styles.content}>
