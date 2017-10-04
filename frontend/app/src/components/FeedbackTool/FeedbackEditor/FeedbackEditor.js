@@ -322,8 +322,7 @@ class FeedbackEditor extends Component {
           feedback={this.props.feedback}
           isDisplay={false}
           handleDeleteFeedback={this.handleDeleteFeedback}
-          editingMarks={this.props.editingMarks}
-          />
+        />
       </div>
     );
   }

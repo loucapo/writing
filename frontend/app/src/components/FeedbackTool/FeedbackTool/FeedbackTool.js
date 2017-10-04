@@ -11,7 +11,6 @@ const FeedbackTool = ({
   homeRoute,
   draft,
   draftTitle,
-  instructorName,
   submitEndComment,
   submitFinalGrade,
   rubricId,
@@ -25,7 +24,6 @@ const FeedbackTool = ({
       homeRoute={homeRoute}
       draftTitle={draftTitle}
       submittedDate={studentDraft.submittedDate}
-      instructorName={instructorName}
     />
     <div className={styles.container}>
       <MLCard type="reflection" title="Reflection">
@@ -83,7 +81,6 @@ FeedbackTool.propTypes = {
   reflectionQuestions: PropTypes.array,
   draft: PropTypes.object,
   draftTitle: PropTypes.string,
-  instructorName: PropTypes.string,
   submitEndComment: PropTypes.func,
   submitFinalGrade: PropTypes.func,
   rubricId: PropTypes.string,

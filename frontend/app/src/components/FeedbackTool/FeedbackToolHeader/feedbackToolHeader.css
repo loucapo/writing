@@ -1,8 +1,8 @@
 @import 'variables.css';
 
 .header {
-  background-color: var(--white);
-  color: var(--gray);
+  background-color: var(--header-background-blue);
+  color: var(--white);
   font-weight: bold;
   padding: 15px 20px;
   display: flex;
@@ -15,29 +15,16 @@
   justify-content: center;
 }
 
-.leftSubContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.rightContainer {
-  display: flex;
-  justify-content: center;
-}
-
 .arrowIcon {
-  fill: var(--gray);
+  fill: var(--white);
   margin-right: 5px;
 }
 
-.instructorName {
+.draftTitle {
   font-size: 17px;
 }
 
 .draftInfo {
   font-size: 13px;
-}
-
-.italic {
   font-style: italic;
 }
