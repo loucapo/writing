@@ -82,8 +82,7 @@ class FeedbackFlags extends Component {
 FeedbackFlags.propTypes = {
   feedback: PropTypes.array,
   isDisplay: PropTypes.bool,
-  handleDeleteFeedback: PropTypes.func,
-  editingMarks: PropTypes.array
+  handleDeleteFeedback: PropTypes.func
 };
 
 export default FeedbackFlags;

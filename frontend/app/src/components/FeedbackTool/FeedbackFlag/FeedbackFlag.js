@@ -108,7 +108,7 @@ class FeedbackFlag extends Component {
                 {feedback.predefined}
               </div>
             : null }
-            {feedback.content}
+            <div className={styles.feedbackContent}>{feedback.content}</div>
           </div>
           : null}
         {this.state.menuOpen ?

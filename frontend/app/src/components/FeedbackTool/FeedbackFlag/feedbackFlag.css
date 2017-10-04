@@ -103,6 +103,11 @@
 .predefined {
   font-weight: bold;
   padding-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.feedbackContent {
+  white-space: pre-wrap;
 }
 
 .feedbackFlagMenu {
