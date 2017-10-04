@@ -7,13 +7,12 @@
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.15);
   @apply --font-15;
   margin:  var(--global-margin);
-  min-height: 160px;
-  padding: var(--global-padding);
   width: 100%;
 }
 
 .body {
   padding: 18px var(--padding);
+  min-height: 50px;
 }
 
 .disabled {

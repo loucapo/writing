@@ -10,13 +10,15 @@ class ActivityPrompt extends Component {
     editable: false
   };
 
-  toggleEditable = () => {
+  toggleEditable = (e) => {
+    e.stopPropagation();
     this.setState({
       editable: !this.state.editable
     });
   };
 
-  handleCancel = () => {
+  handleCancel = (e) => {
+    e.stopPropagation();
     this.setState({
       editable: false,
       prompt: this.props.prompt || null
