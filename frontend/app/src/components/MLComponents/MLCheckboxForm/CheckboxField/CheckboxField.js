@@ -78,7 +78,7 @@ class CheckboxField extends Component {
             onChange={this.handleChange}
             onClick={this.handleClick}
             type="checkbox"
-            name="draftGoalOption"
+            name="check"
             value={field.id}
             checked={this.props.isSelected}
           />

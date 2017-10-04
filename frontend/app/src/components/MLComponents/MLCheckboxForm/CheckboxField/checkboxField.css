@@ -52,14 +52,37 @@
 .checkbox {
   width: 18px;
   height: 18px;
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: var(--white);
   border: 1px solid var(--gray-light);
+  border-radius: 3px;
+  position: relative;
 }
 
 .checkbox:checked {
   background: var(--aqua);
+  border: 1px solid var(--aqua);
+}
+
+.checkbox:after {
+  content: '';
+  width: 9px;
+  height: 4px;
+  position:absolute;
+  top: 3.5px;
+  left: 3px;
+  border: 2px solid var(--white);
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+
+.checkbox:checked:after {
+  opacity: 1;
 }
 
 .disabled {
