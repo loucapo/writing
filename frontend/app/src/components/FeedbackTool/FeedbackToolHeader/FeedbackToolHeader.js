@@ -9,13 +9,12 @@ import { MLButton } from '../../MLComponents/index';
 const Header = ({
   homeRoute,
   draftTitle,
-  submittedDate,
-  instructorName
+  submittedDate
 }) => {
   return (
     <header className={styles.header}>
       <div className={styles.leftContainer}>
-        <div data-id="header-back-button" className={styles.leftSubContainer}>
+        <div data-id="header-back-button">
           <Link to={`${homeRoute}?display=submissions`}>
             <MLIcon
               className={styles.arrowIcon}
@@ -28,18 +27,13 @@ const Header = ({
           </Link>
         </div>
         <div>
-          <span data-id="instructor-name" className={styles.instructorName}>{instructorName}</span>
+          <span data-id="draft-title" className={styles.draftTitle}>{draftTitle}</span>
           <div data-id="draft-info" className={styles.draftInfo}>
-            {`${draftTitle}, `}
-            <span className={styles.italic}>
-              {`Submitted ${moment(submittedDate).format('MMMM, Do, YYYY, h:mm:ss a')}`}
-            </span>
+            {`Submitted ${moment(submittedDate).format('MMMM, Do, YYYY, h:mm:ss a')}`}
           </div>
         </div>
       </div>
-      <div className={styles.rightContainer}>
-        <MLButton dataId="done" link={`${homeRoute}?display=submissions`} title="Done" />
-      </div>
+      <MLButton dataId="done" link={`${homeRoute}?display=submissions`} title="Done" />
     </header>
   );
 };
@@ -47,8 +41,7 @@ const Header = ({
 Header.propTypes = {
   homeRoute: PropTypes.string,
   draftTitle: PropTypes.string,
-  submittedDate: PropTypes.string,
-  instructorName: PropTypes.string
+  submittedDate: PropTypes.string
 };
 
 export default Header;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import { Composition } from '../components/Composition';
 import { getOrCreateStudentDraft, updateDraftPaper } from '../modules/studentDraftModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';

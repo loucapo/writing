@@ -91,7 +91,6 @@ const mapStateToProps = (state) => {
     homeRoute: state.defaults.homeRoute,
     draft,
     draftTitle,
-    instructorName: `${state.auth.firstName} ${state.auth.lastName}`,
     rubricId,
     lastDraft
   };
