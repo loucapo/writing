@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {getDraftsForActivity,
-  addDraftToActivity,
+import {addDraftToActivity,
   removeDraftFromActivity,
   updateDraftInstructions} from './../modules/draftModule';
 import {setReflectionQuestions, getReflectionQuestions} from './../modules/reflectionQuestionsModule';
@@ -10,7 +9,6 @@ import { DraftList } from '../components/Draft/index';
 
 class DraftListContainer extends Component {
   componentWillMount() {
-    this.props.getDraftsForActivity(this.props.activityId);
     this.props.getReflectionQuestions();
   }
 
@@ -20,14 +18,14 @@ class DraftListContainer extends Component {
 }
 
 DraftListContainer.propTypes = {
+  drafts: PropTypes.array,
   activityId: PropTypes.string,
   setReflectionQuestions: PropTypes.func,
-  getReflectionQuestions: PropTypes.func,
-  getDraftsForActivity: PropTypes.func
+  getReflectionQuestions: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
-  const drafts = state.drafts.filter(x => x.activityId === props.activityId);
+  const drafts = props.drafts ? props.drafts.filter(x => x.activityId === props.activityId) : [];
   const denormalizedDraft = drafts.map(x => {
     let goals = [];
     let studentReflectionQuestions = [];
@@ -51,7 +49,6 @@ const mapStateToProps = (state, props) => {
 };
 
 export default connect(mapStateToProps, {
-  getDraftsForActivity,
   addDraftToActivity,
   removeDraftFromActivity,
   updateDraftInstructions,

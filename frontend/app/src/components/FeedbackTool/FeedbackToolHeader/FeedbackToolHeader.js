@@ -8,6 +8,7 @@ import { MLButton } from '../../MLComponents/index';
 
 const Header = ({
   homeRoute,
+  draftId,
   draftTitle,
   submittedDate
 }) => {
@@ -15,7 +16,7 @@ const Header = ({
     <header className={styles.header}>
       <div className={styles.leftContainer}>
         <div data-id="header-back-button">
-          <Link to={`${homeRoute}?display=submissions`}>
+          <Link to={`${homeRoute}?currentDraft=${draftId}`}>
             <MLIcon
               className={styles.arrowIcon}
               title="arrow left"
@@ -33,13 +34,14 @@ const Header = ({
           </div>
         </div>
       </div>
-      <MLButton dataId="done" link={`${homeRoute}?display=submissions`} title="Done" />
+      <MLButton dataId="done" link={`${homeRoute}?currentDraft=${draftId}`} title="Done" />
     </header>
   );
 };
 
 Header.propTypes = {
   homeRoute: PropTypes.string,
+  draftId: PropTypes.string,
   draftTitle: PropTypes.string,
   submittedDate: PropTypes.string
 };
