@@ -1,3 +1,4 @@
+@intermittent-fail
 @WRITE-438
 Feature: Instructor Creates Drafting Revising Activity
   @db=reset

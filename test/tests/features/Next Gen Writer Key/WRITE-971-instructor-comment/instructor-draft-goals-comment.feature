@@ -24,6 +24,7 @@ Feature: Instructor Can Add Draft Goals Comments To Student Draft
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Lorem ipsum dolor" to "Sed auctor neque eget" in "student_submitted_draft_text"
     And I click "add_draft_goals_comment_button"
     Then I wait until there is 1 "comment_modal.draft_goal_list" visible
