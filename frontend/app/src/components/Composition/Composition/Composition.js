@@ -45,7 +45,8 @@ class Composition extends Component {
         ? <MLMessage
           options={{
             id: '1234',
-            message: `This draft was successfully saved on ${moment(this.props.studentDraft.modifiedDate).format(
+            message: `This draft was successfully saved on ${moment(
+              this.props.studentDraft.modifiedDate || this.props.studentDraft.createdDate).format(
               'MMMM Do, YYYY'
             )}`,
             type: 'success',
