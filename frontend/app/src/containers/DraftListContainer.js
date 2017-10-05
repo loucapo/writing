@@ -32,7 +32,7 @@ const mapStateToProps = (state, props) => {
     if (x.goals) {
       goals = x.goals.map(y => state.goal.find(z => z.goalId === y).title);
     }
-    if (x.studentReflectionQuestions) {
+    if (state.reflectionQuestions.length > 0 && x.studentReflectionQuestions) {
       studentReflectionQuestions = x.studentReflectionQuestions
         .map(y => {
           const question = state.reflectionQuestions.find(z => z.studentReflectionQuestionId === y);
