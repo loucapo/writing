@@ -507,21 +507,21 @@ module.exports = function(faker) {
         {
           student_reflection_question_id: `1682012f-ea61-4448-8b93-6165054cbce4`,
           question: `I know the criteria that will be used for giving me feedback.`,
-          question_type: `fixed`,
+          question_type: `agree/disagree`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         },
         {
           student_reflection_question_id: `562e29ca-97e0-408f-bf42-5982dda017c9`,
           question: `I reviewed my feedback on previous assignments before submitting my draft.`,
-          question_type: `fixed`,
+          question_type: `agree/disagree`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         },
         {
           student_reflection_question_id: `fdf4a34b-fd26-42a1-bf03-62e881f2cc5e`,
           question: `I focused on areas of feedback I received on previous writing.`,
-          question_type: `fixed`,
+          question_type: `agree/disagree`,
           created_by_id: `565d993b-d1a4-4eb9-8e8b-68b0c7151356`,
           created_date: `2017-04-10`
         }
