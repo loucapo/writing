@@ -1,23 +1,22 @@
 @import 'variables.css';
 
 .header {
-  align-items: center;
   background-color: var(--white);
-  color: var(--blue-light);
+  padding: 15px 20px;
   display: flex;
-  justify-content: space-between;
-  padding: 15px 80px;
-}
-
-.headerContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
+  min-height: 35px;
+  align-items: center;
 }
 
-.headerRight {
+.header a {
+  text-decoration: none;
+  color: var(--blue-light);
+}
+
+.buttonsContainer {
   display: flex;
   justify-content: center;
+  margin-right: 60px;
 }

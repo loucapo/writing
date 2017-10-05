@@ -14,7 +14,8 @@ const DetailsPanelHeader = () => {
         height="36"
         scale={1.2}
         viewBox="0 0 36 36"
-        className="activityDetailsIcon" />
+        className="activityDetailsIcon"
+      />
     </header>
   );
 };

@@ -29,6 +29,7 @@
 .editorWrapper {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .highlight, .highlight span {
