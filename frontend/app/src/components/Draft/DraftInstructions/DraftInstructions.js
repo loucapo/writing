@@ -72,16 +72,6 @@ class DraftInstructions extends Component {
                       viewBox="0 0 24 24"
                     />
                   </a>
-                  <a data-id="draft-instructions-delete">
-                    <MLIcon
-                      className={styles.icon}
-                      title="trash"
-                      type="trash"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 24 24"
-                    />
-                  </a>
                 </div>
               </div>
               <div data-id="draft-instructions">

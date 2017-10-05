@@ -13,7 +13,7 @@ const ActivityTitleDisplay = ({title, type}) => {
       </div>
 
       <div data-id="activity-type" className={styles.type}>
-        {type || 'Drafting and Revising Activity'}
+        {type || 'Writing Activity'}
       </div>
     </div>
 

@@ -24,16 +24,6 @@ class ReflectionQuestionsSelector extends Component {
               <div className={styles.heading}>
                 <div className={styles.title}>
                   Student Reflection Questions
-                  <span data-id="reflections-help">
-                    <MLIcon
-                      className={styles.helpIcon}
-                      title="help"
-                      type="help"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 24 24"
-                    />
-                  </span>
                 </div>
                 <div className={styles.icons}>
                   <span data-id="reflections-edit">
@@ -47,16 +37,6 @@ class ReflectionQuestionsSelector extends Component {
                         viewBox="0 0 24 24"
                       />
                     </a>
-                  </span>
-                  <span data-id="reflections-delete">
-                    <MLIcon
-                      className={styles.icon}
-                      title="trash"
-                      type="trash"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 24 24"
-                    />
                   </span>
                 </div>
               </div>

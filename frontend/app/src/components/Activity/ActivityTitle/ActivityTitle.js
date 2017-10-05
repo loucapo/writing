@@ -97,7 +97,7 @@ class ActivityTitle extends Component {
 
         <div className={styles.subheader}>
           <div data-id="activity-type" className={styles.type}>
-            Drafting and Revising Activity
+            Writing Activity
           </div>
 
           {this.renderWarning()}
