@@ -26,7 +26,8 @@ class Draft extends Component {
     this.props.updateInstructions(this.props.draft.draftId, instructions);
   };
 
-  showDialog = () => {
+  showDialog = (e) => {
+    e.stopPropagation();
     this.setState({
       showDeleteConfirm: true
     });
