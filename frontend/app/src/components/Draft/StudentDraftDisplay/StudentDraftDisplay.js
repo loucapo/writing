@@ -7,7 +7,7 @@ import { MLButton, MLCard } from '../../MLComponents';
 import styles from './studentDraftDisplay.css';
 
 const StudentDraftDisplay = ({ draft, activityId }) => {
-  let finalInstruct = draft.studentInfo.disabled && draft.studentInfo.status === 'notStarted'
+  let finalInstruct = draft.studentInfo.disabled && !draft.studentInfo.status
     ? `You will be able to view and start this draft once you've received feedback on Draft ${draft.index}`
     : '';
   let link = `/activity/${activityId}/draft/${draft.draftId}`;
@@ -33,14 +33,17 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
               <strong>Submitted</strong> {moment(draft.submittedDate).format('MMMM Do, YYYY')}
             </span>
           : null}
-        <MLButton
-          id="startDraft"
-          title={draft.studentInfo.buttonText}
-          dataId="start-draft"
-          bordered={draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed'}
-          disabled={draft.studentInfo.disabled}
-          link={link}
-        />
+        {draft.studentInfo.status ?
+          <MLButton
+            id="startDraft"
+            title={draft.studentInfo.buttonText}
+            dataId="start-draft"
+            bordered={draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed'}
+            disabled={draft.studentInfo.disabled}
+            link={link}
+          />
+          : null
+        }
       </div>
       <DraftDisplay
         activityId={activityId}
