@@ -22,6 +22,7 @@ const FeedbackTool = ({
   <div className={styles.page}>
     <FeedbackToolHeader
       homeRoute={homeRoute}
+      draftId={draft.draftId}
       draftTitle={draftTitle}
       submittedDate={studentDraft.submittedDate}
     />

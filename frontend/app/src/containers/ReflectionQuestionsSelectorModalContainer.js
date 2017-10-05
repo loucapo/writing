@@ -7,11 +7,12 @@ const mapStateToProps = (state, props) => {
     .map(x => ({...x, id: x.studentReflectionQuestionId}));
   const draft = props.draftId ? state.drafts.find(x => x.draftId === props.draftId) : {studentReflectionQuestions: []};
 
-  const selectedQuestions = draft.studentReflectionQuestions ? draft.studentReflectionQuestions.map(rqId => (
-    {
-      title: reflectionQuestions.find(rq => rqId === rq.id).question,
-      id: rqId
-    }
+  const selectedQuestions = state.reflectionQuestions.length > 0 && draft.studentReflectionQuestions ?
+    draft.studentReflectionQuestions.map(rqId => (
+      {
+        title: reflectionQuestions.find(rq => rqId === rq.id).question,
+        id: rqId
+      }
   )) : [];
 
   return {

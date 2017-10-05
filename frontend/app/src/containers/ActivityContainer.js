@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Activity } from '../components/Activity/index';
 import { getActivity } from '../modules/activityModule';
 import { getGoals } from '../modules/goalModule';
+import { getDraftsForActivity } from '../modules/draftModule';
 
 class ActivityContainer extends Component {
   componentWillMount() {
@@ -13,6 +14,7 @@ class ActivityContainer extends Component {
   loadData() {
     if (this.props.activityId) {
       this.props.getActivity(this.props.activityId);
+      this.props.getDraftsForActivity(this.props.activityId);
       this.props.getGoals();
     }
   }
@@ -25,6 +27,7 @@ ActivityContainer.propTypes = {
   activity: PropTypes.object,
   activityId: PropTypes.string,
   getActivity: PropTypes.func,
+  getDraftsForActivity: PropTypes.func,
   openDraftFocusModal: PropTypes.func,
   draftsCount: PropTypes.number,
   getGoals: PropTypes.func
@@ -32,15 +35,20 @@ ActivityContainer.propTypes = {
 
 const mapStateToProps = state => {
   const activityId = state.auth.activity.activityId;
-  let draftCount = state.drafts.filter(d => d.activityId === activityId).length;
-  let display = state.routing.locationBeforeTransitions.query.display || null;
+  const drafts = state.drafts;
+  let draftCount = drafts ? drafts.filter(d => d.activityId === activityId).length : 0;
+  let currentDraft = state.routing.locationBeforeTransitions.query.currentDraft || null;
 
   return {
     activityId,
+    drafts,
     activity: state.activities.find(x => x.activityId === activityId),
     draftCount,
-    display
+    currentDraft
   };
 };
 
-export default connect(mapStateToProps, { getActivity, getGoals })(ActivityContainer);
+export default connect(mapStateToProps, {
+  getActivity,
+  getDraftsForActivity,
+  getGoals})(ActivityContainer);
