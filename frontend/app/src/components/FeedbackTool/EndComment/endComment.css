@@ -9,3 +9,7 @@
 .addComment button {
   margin: 0;
 }
+
+.endComment {
+  white-space: pre-wrap;
+}

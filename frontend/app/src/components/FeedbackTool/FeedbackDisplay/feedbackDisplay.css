@@ -33,3 +33,7 @@
   overflow: visible;
   width: 75%;
 }
+
+.endComment {
+  white-space: pre-wrap;
+}

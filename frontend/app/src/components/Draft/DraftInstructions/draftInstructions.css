@@ -39,3 +39,7 @@
   width: 100%;
 }
 
+.instructions {
+  white-space: pre-wrap;
+}
+

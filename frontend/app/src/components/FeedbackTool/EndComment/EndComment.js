@@ -22,7 +22,9 @@ class EndComment extends Component {
     return (
       <MLCard type="end-comment" title="End Comment (optional)">
         {this.props.endComment ?
-          <span>{this.props.endComment}</span>
+          <div className={styles.endComment}>
+            {this.props.endComment}
+          </div>
         :
           <div className={styles.addComment}>
             <textarea onChange={this.handleChange} placeholder="Add comment">

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
-import {
-  MLButton
-} from './../../MLComponents/index';
+import { MLButton } from './../../MLComponents';
 
 import styles from './draftInstructions.css';
 
@@ -84,7 +82,7 @@ class DraftInstructions extends Component {
                   </a>
                 </div>
               </div>
-              <div data-id="draft-instructions">
+              <div className={styles.instructions} data-id="draft-instructions">
                 {this.state.value}
               </div>
             </div>
