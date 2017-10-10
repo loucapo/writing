@@ -52,6 +52,7 @@ Feature: Add Another Draft To Activity
 
   @db=reset
   @WRITE-27
+  @QA-Fix
   Scenario: Draft Sequencing
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -242,4 +243,5 @@ Feature: Add Another Draft To Activity
     Then I wait until there is 1 "draft_card" visible
     Then the text of "draft.draft_instructions" should be "Ax1"
     Then the text of "draft.title" should be "Final Paper"
-    Then I wait until there are 0 "draft.delete_button" visible
+    Then I wait until there is 1 "draft.delete_button" visible
+    Then "draft.delete_button" should be disabled

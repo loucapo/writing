@@ -65,16 +65,6 @@ class ActivityPrompt extends Component {
                     viewBox="0 0 24 24"
                   />
                 </a>
-                <a data-id="prompt-delete">
-                  <MLIcon
-                    className={styles.icon}
-                    title="trash"
-                    type="trash"
-                    width="18"
-                    height="19"
-                    viewBox="0 0 24 24"
-                  />
-                </a>
               </div>
         }
         <div data-id="prompt-description">

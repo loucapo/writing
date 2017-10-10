@@ -110,6 +110,12 @@ exports.define = function(steps) {
 
   const isViz = el => el.isDisplayed().then(bool => bool);
 
+  const isDisabled = el => {
+    return el.getAttribute('disabled').then((attributeValue) => {
+      return !!attributeValue;
+    });
+  }
+
   steps.given(/I launch the activity as a[n]? "(.+)"/, async function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
     if (user === 'student') { page = pages.student_summary; }
@@ -296,6 +302,14 @@ exports.define = function(steps) {
         .click(el, selenium.Button["RIGHT"])
         .perform();
 
+    });
+  });
+
+  steps.then(/"(.+)" should be disabled/, (element) => {
+    return polocToElem(element).then(el => {
+      return isDisabled(el).then(isDisabled => {
+        return expect(isDisabled).to.equal(true);
+      });
     });
   });
 };
