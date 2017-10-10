@@ -1,6 +1,6 @@
-@WRITE-826
 Feature: Instructor Can Open Feedback Tool From Submission Grid
   @db=reset
+  @WRITE-826
   Scenario: Setup submission grid
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"
@@ -15,6 +15,25 @@ Feature: Instructor Can Open Feedback Tool From Submission Grid
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
 
+  @WRITE-545
+  @db=reset
+  @pending
+  Scenario: Instructor Collapses ML Feedback Cards
+    Given I launch the activity as an "instructor"
+    And I maximize the browser
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    And I click "Draft 1 card"
+    And I click "reflection question answer card"
+    And I click "final score card"
+    And I click "end comment card"
+    Then I wait until there are 0 "student_submitted_draft_text"
+    Then I wait until there are 0 "student_reflection_answer(1)"
+    Then I wait until there are 0 "final_grade"
+    Then I wait until there are 0 "end_comment_comment"
+
+  @WRITE-826
   Scenario: Start Review
     Given I launch the activity as an "instructor"
     And I maximize the browser
@@ -25,7 +44,7 @@ Feature: Instructor Can Open Feedback Tool From Submission Grid
     Then the text of "student_reflection_answer(1)" should include "yay"
     Then I wait until there is 1 "end_comment_textarea" visible
 
-
+  @WRITE-826
   Scenario: Navigate Back to Instructor Summary Page From Feedback Tool
     Given I launch the activity as an "instructor"
     And I maximize the browser
