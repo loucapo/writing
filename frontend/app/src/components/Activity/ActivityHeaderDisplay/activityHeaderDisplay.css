@@ -1,17 +1,11 @@
 @import 'variables.css';
 
-.header, .studentHeader {
+.studentHeader {
   align-items: center;
   background-color: var(--header-background-blue);
-  color: var(--blue-light);
   display: flex;
-  justify-content: space-between;
-  padding: 15px 20px;
-}
-
-.studentHeader {
-  background-color: var(--white);
   justify-content: flex-end;
+  padding: 15px 20px;
 }
 
 .rightContainer {

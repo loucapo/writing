@@ -20,7 +20,6 @@ const CompositionHeader = ({
           title="Save"
           dataId="save-draft"
           disabled={draftIsEmpty}
-          bordered={true}
         />
         <MLButton
           handleClick={handleSave}
@@ -28,6 +27,7 @@ const CompositionHeader = ({
           title={buttonTitle}
           dataId="start-reflection"
           disabled={draftIsEmpty}
+          color="green"
         />
       </div>
     </header>
