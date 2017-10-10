@@ -8,6 +8,8 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .leftContainer {
