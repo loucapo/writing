@@ -57,12 +57,14 @@ const FeedbackTool = ({
         />
         : null
       }
-      <EndComment
-        studentActivityId={studentDraft.studentActivityId}
-        studentDraftId={studentDraft.studentDraftId}
-        submitEndComment={submitEndComment}
-        endComment={studentDraft.endComment}
-      />
+      <MLCard type="end-comment" title="End Comment (optional)">
+        <EndComment
+          studentActivityId={studentDraft.studentActivityId}
+          studentDraftId={studentDraft.studentDraftId}
+          submitEndComment={submitEndComment}
+          endComment={studentDraft.endComment}
+        />
+      </MLCard>
       { (rubricId && rubricId !== '0000' && lastDraft) ?
         <MLCard type="rubric" title="Final Rubric Evaluation">
           <RubricContainer
