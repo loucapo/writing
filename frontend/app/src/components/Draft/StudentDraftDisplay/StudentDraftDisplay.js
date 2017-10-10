@@ -16,6 +16,7 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
   } else if (draft.studentInfo.status === 'submitted') {
     link = `/studentDraft/${draft.studentInfo.studentDraftId}/display`;
   }
+
   return (
     <MLCard key={draft.draftId} type="draft" title={draft.studentInfo.title} disabled={draft.studentInfo.disabled}>
       <div className={styles.side}>
@@ -33,7 +34,7 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
               <strong>Submitted</strong> {moment(draft.submittedDate).format('MMMM Do, YYYY')}
             </span>
           : null}
-        {draft.studentInfo.status ?
+        {!draft.studentInfo.disabled ?
           <MLButton
             id="startDraft"
             title={draft.studentInfo.buttonText}
