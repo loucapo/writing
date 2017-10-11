@@ -121,6 +121,7 @@ exports.define = function(steps) {
     if (user === 'student') { page = pages.student_summary; }
     if (user === 'instructor') { page = pages.instructor_summary; }
     await driver.sleep(2000);
+
   });
 
   steps.when(/Changing to using page "(.+)"/, function(newPage, done) {
