@@ -64,7 +64,7 @@ class CompositionDraftDetails extends Component {
       });
     }
 
-    if (this.props.activityPrompt) {
+    if (this.props.promptIsNotEmpty) {
       list.push({
         title: 'Activity Prompt',
         content: (
@@ -126,8 +126,9 @@ class CompositionDraftDetails extends Component {
 
 CompositionDraftDetails.propTypes = {
   activityPrompt: PropTypes.object,
+  promptIsNotEmpty: PropTypes.bool,
   draft: PropTypes.object,
-  draftInstructions: PropTypes.object,
+  draftInstructions: PropTypes.string,
   goals: PropTypes.array,
   reflectionQuestions: PropTypes.array,
   rubric: PropTypes.object,
