@@ -35,9 +35,9 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
           : null}
         {draft.studentInfo.status ?
           <MLButton
-            id="startDraft"
+            id={draft.draftId}
             title={draft.studentInfo.buttonText}
-            dataId="start-draft"
+            dataId={draft.studentInfo.buttonText}
             bordered={draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed'}
             disabled={draft.studentInfo.disabled}
             link={link}
