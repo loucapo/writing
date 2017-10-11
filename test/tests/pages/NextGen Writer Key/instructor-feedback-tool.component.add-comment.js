@@ -56,10 +56,6 @@ class InstructorCommentModal extends Component {
       draft_goal: {
         desc: `The currently selected draft goal for instructor comment`,
         locator: `ul[class^='MLMenuList__menulist'] li`
-      },
-      comment_level_button: {
-        desc: `Any button used to define a comment level`,
-        locator: `[class^='CommentModal__buttons'] button`
       }
     };
   }
