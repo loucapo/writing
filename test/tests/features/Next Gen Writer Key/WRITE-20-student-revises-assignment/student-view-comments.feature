@@ -145,3 +145,40 @@ Feature: Student Can View Instructor Comments
     Then I wait until there is 1 "student_read_only_feedback.instructor_draft_highlight" visible
     Then I wait until there is 1 "student_read_only_feedback.instructor_draft_comment" visible
     And Then the text of "student_read_only_feedback.comment_flag_title" should be "Thesis"
+
+  @WRITE-974
+  Scenario: Instructor Sets Up Student Reflection Environment
+    Given I launch the activity as an "instructor"
+    And I click "add_draft_button"
+    And I reload the page
+    When I click "draft(1).add_reflection_questions"
+    Then I wait until there is 1 "reflection_questions_modal.close" visible
+    When I click "reflection_questions_modal.check(1)"
+    When I click "reflection_questions_modal.save"
+    And I click "rubric.dropdown"
+    And I click "rubric.dropdown_option(2)"
+    Given I launch the activity as an "student"
+    When I click "start_draft"
+    And I type "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor neque eget sapien fringilla cursus. Nunc molestie lectus sit amet blandit tempus. Sed et magna fermentum, posuere purus sed, volutpat erat. In hac habitasse platea dictumst. Etiam vitae pharetra lacus. Proin lacinia ex vitae libero pretium commodo. Quisque euismod ultrices mollis. Mauris sit amet turpis arcu. Aliquam erat volutpat. Phasellus ullamcorper tincidunt rhoncus. Nullam pharetra nisl a turpis eleifend, vel ullamcorper magna suscipit. Nulla eleifend mollis dolor, sit amet efficitur lorem dapibus et." in "draft_editor.draft_area"
+    And I click "draft_editor.start_reflection"
+    And I type "yay" in "student_reflection_questions.student_reflection_text"
+    And I click "student_reflection_questions.reflection_button_submit_enabled"
+    And I click "student_reflection_questions.draft_submit_confirm"
+    Given I launch the activity as an "instructor"
+    And I click "student_submissions"
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    When I select text from "Lorem ipsum dolor" to "platea dictumst" in "student_submitted_draft_text"
+    And I click "comment_modal.edit_marks"
+    And I click "comment_modal.edit_marks(2)"
+    And I click "comment_modal.save_comment"
+    And I click "done_button"
+    And Changing to using page "instructor_summary"
+    And I click "submissions.send_review_link(1)"
+
+  @WRITE-974
+  Scenario: Student Sees Instructor Highlights and Comments
+    Given I launch the activity as a "student"
+    And I click "view_feedback_button"
+    Then I wait until there is 1 "student_read_only_feedback.instructor_draft_highlight" visible
+    Then I wait until there is 1 "student_read_only_feedback.instructor_draft_comment" visible

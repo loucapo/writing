@@ -9,7 +9,7 @@
 .container {
   flex: 1;
   overflow-y: auto;
-  padding: 30px 80px;
+  padding: 20px 80px;
 }
 
 .finalGradeLabel {
@@ -32,4 +32,8 @@
   flex: 1;
   overflow: visible;
   width: 75%;
+}
+
+.endComment {
+  white-space: pre-wrap;
 }

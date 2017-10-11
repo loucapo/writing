@@ -11,7 +11,6 @@ import CompositionDisplayContainer from './CompositionDisplayContainer';
 import ReflectionQuestionsFormContainer from './ReflectionQuestionsFormContainer';
 import ReflectionQuestionsSelectorModalContainer from './ReflectionQuestionsSelectorModalContainer';
 import CompositionDraftDetailsContainer from './CompositionDraftDetailsContainer';
-import SubmissionStatusContainer from './SubmissionStatusContainer';
 import SubmissionStatusTableContainer from './SubmissionStatusTableContainer';
 import FeedbackToolContainer from './FeedbackToolContainer';
 import FeedbackEditorContainer from './FeedbackEditorContainer';
@@ -35,7 +34,6 @@ export {
   ReflectionQuestionsFormContainer,
   ReflectionQuestionsSelectorModalContainer,
   CompositionDraftDetailsContainer,
-  SubmissionStatusContainer,
   SubmissionStatusTableContainer,
   FeedbackToolContainer,
   FeedbackEditorContainer,

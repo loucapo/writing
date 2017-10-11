@@ -24,6 +24,8 @@
 .green, a.green,
 .disabled, a.disabled {
   color: var(--white) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .aqua, a.aqua {
@@ -32,17 +34,19 @@
 
 .green, a.green {
   background-color: var(--green);
+
 }
 
 .disabled, a.disabled {
-  background-color: var(--gray-light);
+  background-color: var(--gray-base);
 }
 
 
 /* Bordered Buttons */
 .disabled_border, a.disabled_border,
 .red_border, a.red_border,
-.aqua_border, a.aqua_border {
+.aqua_border, a.aqua_border,
+.white_border, a.white_border {
   background-color: transparent;
   border: 1px solid var(--aqua);
 }
@@ -53,12 +57,17 @@
 
 .red_border, a.red_border {
   border-color: var(--red);
-  color: var(--red);
+  color: var(--red) !important;
+}
+
+.white_border, a.white_border {
+  border-color: var(--white);
+  color: var(--white) !important;
 }
 
 .disabled_border, a.disabled_border {
-  border-color: var(--gray-light);
-  color: var(--gray-light);
+  border-color: var(--gray-base);
+  color: var(--gray-base);
 }
 
 .disabled:hover, a.disabled:hover,

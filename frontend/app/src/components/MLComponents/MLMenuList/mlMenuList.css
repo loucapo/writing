@@ -6,6 +6,7 @@
   overflow-y: auto;
   max-height: 340px;
   min-width: 175px;
+  border-bottom: 1px solid var(--gray-light);
 }
 
 .menulist li {
@@ -16,10 +17,6 @@
   list-style: none;
   cursor: pointer;
   padding: 10px;
-}
-
-.menulist li:last-child {
-  border-bottom: 1px solid var(--gray-light);
 }
 
 .menulist li.active {

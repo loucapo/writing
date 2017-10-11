@@ -11,7 +11,6 @@ const FeedbackTool = ({
   homeRoute,
   draft,
   draftTitle,
-  instructorName,
   submitEndComment,
   submitFinalGrade,
   rubricId,
@@ -23,9 +22,9 @@ const FeedbackTool = ({
   <div className={styles.page}>
     <FeedbackToolHeader
       homeRoute={homeRoute}
+      draftId={draft.draftId}
       draftTitle={draftTitle}
       submittedDate={studentDraft.submittedDate}
-      instructorName={instructorName}
     />
     <div className={styles.container}>
       <MLCard type="reflection" title="Reflection">
@@ -58,12 +57,14 @@ const FeedbackTool = ({
         />
         : null
       }
-      <EndComment
-        studentActivityId={studentDraft.studentActivityId}
-        studentDraftId={studentDraft.studentDraftId}
-        submitEndComment={submitEndComment}
-        endComment={studentDraft.endComment}
-      />
+      <MLCard type="end-comment" title="End Comment (optional)">
+        <EndComment
+          studentActivityId={studentDraft.studentActivityId}
+          studentDraftId={studentDraft.studentDraftId}
+          submitEndComment={submitEndComment}
+          endComment={studentDraft.endComment}
+        />
+      </MLCard>
       { (rubricId && rubricId !== '0000' && lastDraft) ?
         <MLCard type="rubric" title="Final Rubric Evaluation">
           <RubricContainer
@@ -83,7 +84,6 @@ FeedbackTool.propTypes = {
   reflectionQuestions: PropTypes.array,
   draft: PropTypes.object,
   draftTitle: PropTypes.string,
-  instructorName: PropTypes.string,
   submitEndComment: PropTypes.func,
   submitFinalGrade: PropTypes.func,
   rubricId: PropTypes.string,

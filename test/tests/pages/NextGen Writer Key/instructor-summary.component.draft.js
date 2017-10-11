@@ -100,4 +100,3 @@ class Draft extends Component {
 }
 
 module.exports = Draft;
-

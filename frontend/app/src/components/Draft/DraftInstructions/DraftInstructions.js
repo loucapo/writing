@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
-import {
-  MLButton
-} from './../../MLComponents/index';
+import { MLButton } from './../../MLComponents';
 
 import styles from './draftInstructions.css';
 
@@ -72,19 +70,9 @@ class DraftInstructions extends Component {
                       viewBox="0 0 24 24"
                     />
                   </a>
-                  <a data-id="draft-instructions-delete">
-                    <MLIcon
-                      className={styles.icon}
-                      title="trash"
-                      type="trash"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 24 24"
-                    />
-                  </a>
                 </div>
               </div>
-              <div data-id="draft-instructions">
+              <div className={styles.instructions} data-id="draft-instructions">
                 {this.state.value}
               </div>
             </div>

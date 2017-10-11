@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MLButton } from '../../MLComponents/index';
+import { MLButton } from '../../MLComponents';
 
 import styles from './compositionHeader.css';
 
@@ -14,17 +14,21 @@ const CompositionHeader = ({
   const buttonTitle = hasStartedReflectionQuestions ? 'Done, Return to Reflection' : 'Done, Start Reflection';
   return (
     <header className={styles.header}>
-      <div className={styles.headerContainer}>
-        <div className={styles.headerRight}>
-          <MLButton handleClick={handleSave} title="Save" dataId="save-draft" disabled={draftIsEmpty} bordered={true} />
-          <MLButton
-            handleClick={handleSave}
-            link={`/reflectionQuestions/${studentActivityId}/studentdraft/${studentDraftId}`}
-            title={buttonTitle}
-            dataId="start-reflection"
-            disabled={draftIsEmpty}
-          />
-        </div>
+      <div className={styles.buttonsContainer}>
+        <MLButton
+          handleClick={handleSave}
+          title="Save"
+          dataId="save-draft"
+          disabled={draftIsEmpty}
+        />
+        <MLButton
+          handleClick={handleSave}
+          link={`/reflectionQuestions/${studentActivityId}/studentdraft/${studentDraftId}`}
+          title={buttonTitle}
+          dataId="start-reflection"
+          disabled={draftIsEmpty}
+          color="green"
+        />
       </div>
     </header>
   );

@@ -41,7 +41,11 @@ const FeedbackDisplay = ({
           <span className={styles.finalGradeLabel}>Instructor did not select a final score</span>
           : null
         }
-        {studentDraft.endComment ? <span>{studentDraft.endComment}</span> : <span>No end comment added.</span>}
+        {studentDraft.endComment ?
+          <span className={styles.endComment}>
+            {studentDraft.endComment}
+          </span>
+          : <span>No end comment added.</span>}
       </MLCard>
 
       <MLCard type="draft" title={draftTitle}>

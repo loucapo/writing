@@ -38,33 +38,31 @@ class OpenCommentModal extends Component {
   };
 
   render() {
+    const showSectionClassName = this.state.level && this.state.showStaticComment ? styles.shown : '';
     return (
-      <div>
+      <div className={styles.openCommentModal}>
         <div className={styles.header}>
           Open Comments
         </div>
 
         <CommentLevelButtons level={this.state.level} handleLevelClick={this.handleLevelClick} />
 
-        {(this.state.level && this.state.showStaticComment)
-            ? <div>
-              <div className={styles.section}>
-                <div className={styles.sectionHeader}>
-                  <div className={styles.sectionHeaderText}>
-                    This is the default comment that will be included
-                  </div>
-                  <div className={styles.commentsHeadingLine} />
-                </div>
-                <div className={styles.commentDescription}>
-                  {this.state.options[`option${this.state.level}`]}
-                </div>
-                <div className={styles.removeComment}>
-                  <a href="#" onClick={this.deleteTag}>remove</a>
-                </div>
+        <div className={`${styles.sectionContainer} ${showSectionClassName}`}>
+          <div className={styles.section}>
+            <div className={styles.sectionHeader}>
+              <div className={styles.sectionHeaderText}>
+                This is the default comment that will be included
               </div>
+              <div className={styles.commentsHeadingLine} />
             </div>
-            : null
-        }
+            <div className={styles.commentDescription}>
+              {this.state.options[`option${this.state.level}`]}
+            </div>
+            <div className={styles.removeComment}>
+              <a href="#" onClick={this.deleteTag}>remove</a>
+            </div>
+          </div>
+        </div>
 
         <div className={styles.section}>
           <div className={styles.sectionHeader}>

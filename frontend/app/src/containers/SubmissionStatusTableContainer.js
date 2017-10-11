@@ -7,7 +7,7 @@ import { SubmissionStatusTable } from '../components/SubmissionStatus';
 import sortBy from 'sort-by';
 import moment from 'moment';
 
-class SubmissionStatusContainer extends Component {
+class SubmissionStatusTableContainer extends Component {
   componentWillMount() {
     this.props.getSubmissionStatuses(this.props.draftId);
   }
@@ -23,7 +23,7 @@ class SubmissionStatusContainer extends Component {
   }
 }
 
-SubmissionStatusContainer.propTypes = {
+SubmissionStatusTableContainer.propTypes = {
   draftId: PropTypes.string,
   getSubmissionStatuses: PropTypes.func,
   updateReviewStatus: PropTypes.func
@@ -49,4 +49,4 @@ const mapStateToProps = (state, props) => {
 export default connect(mapStateToProps, {
   getSubmissionStatuses,
   updateReviewStatus
-})(SubmissionStatusContainer);
+})(SubmissionStatusTableContainer);

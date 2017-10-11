@@ -7,7 +7,7 @@ Feature: Activities have editable titles
     Then I wait until there is 1 "activity_title" visible
     And the text of "activity_title" should include "Untitled Writing Activity"
     Then I wait until there is 1 "activity_type" visible
-    And the text of "activity_type" should be "Drafting and Revising Activity"
+    And the text of "activity_type" should be "Writing Activity"
 
   @db=reset
   Scenario: Edit title

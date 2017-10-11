@@ -2,22 +2,23 @@
 
 .header {
   align-items: center;
-  background-color: var(--white);
-  color: var(--blue-light);
+  background-color: var(--header-background-blue);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 15px 80px;
+  min-height: 36px;
 }
 
 .headerContainer {
   width: 100%;
   display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
+  min-height: 35px;
+  align-items: center;
 }
 
-.headerRight {
+.buttonsContainer {
   display: flex;
   justify-content: center;
 }

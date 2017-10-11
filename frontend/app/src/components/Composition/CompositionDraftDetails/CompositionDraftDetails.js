@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
-import { MLEditor, MLAccordion, MLButton, MLDialog } from '../../MLComponents/index';
-import { CompositionDraftDetailsHeader, CompositionDraftDetailsRubric } from '../index';
-import { DraftInstructionsDisplay, DraftGoalsDisplay } from '../../Draft/index';
-import { ReflectionQuestionsDisplay } from '../../ReflectionQuestions/index';
+import { MLEditor, MLAccordion, MLButton, MLDialog } from '../../MLComponents';
+import { CompositionDraftDetailsRubric } from '../index';
+import { DraftInstructionsDisplay, DraftGoalsDisplay } from '../../Draft';
+import { ReflectionQuestionsDisplay } from '../../ReflectionQuestions';
 import styles from './compositionDraftDetails.css';
 
 class CompositionDraftDetails extends Component {
@@ -40,38 +40,48 @@ class CompositionDraftDetails extends Component {
     });
   };
 
-  detailsAccordionList = () => ([
-    {
-      title: 'Draft',
-      content: (
-        <div className={styles.accordionLeftBorder} data-id="draft-information-details-panel">
-          <DraftInstructionsDisplay instructions={this.props.draft && this.props.draft.instructions} />
-          <DraftGoalsDisplay goals={this.props.goals} />
-          <ReflectionQuestionsDisplay reflectionQuestions={this.props.reflectionQuestions} />
-        </div>
-      ),
-      dataId: 'draft-activity-detail-panel'
-    },
-    {
-      title: 'Activity Prompt',
-      content: (
-        <div data-id="activity-prompt-content-detail-panel">
-          <MLEditor content={this.props.activity.prompt} editable={false} />
-        </div>
-      ),
-      dataId: 'activity-prompt-detail-panel'
-    },
-    {
-      title: 'Final Rubric',
-      content: <CompositionDraftDetailsRubric rubric={this.props.newRubric} />,
-      dataId: 'final-rubric-detail-panel'
+  detailsAccordionList = () => {
+    const list = [];
+    if (this.props.draftDetails) {
+      list.push({
+        title: 'Draft',
+        content: (
+          <div className={styles.accordionLeftBorder} data-id="draft-information-details-panel">
+            <DraftInstructionsDisplay instructions={this.props.draftInstructions} />
+            <DraftGoalsDisplay goals={this.props.goals} />
+            <ReflectionQuestionsDisplay reflectionQuestions={this.props.reflectionQuestions} />
+          </div>
+        ),
+        dataId: 'draft-activity-detail-panel'
+      });
     }
-  ]);
+
+    if (this.props.rubric) {
+      list.push({
+        title: 'Final Rubric',
+        content: <CompositionDraftDetailsRubric rubric={this.props.rubric} />,
+        dataId: 'final-rubric-detail-panel'
+      });
+    }
+
+    if (this.props.activityPrompt) {
+      list.push({
+        title: 'Activity Prompt',
+        content: (
+          <div data-id="activity-prompt-content-detail-panel">
+            <MLEditor content={this.props.activityPrompt} editable={false} />
+          </div>
+        ),
+        dataId: 'activity-prompt-detail-panel'
+      });
+    }
+
+    return list;
+  };
 
   render() {
     return (
-      <div>
-        <CompositionDraftDetailsHeader />
+      <div className={styles.sidePanel}>
         <div className={styles.navigationButton} data-id="details-panel-activity-link-div">
           <span onClick={this.navigateToActivitySummary} className={styles.link}>View Activity Summary</span>
         </div>
@@ -115,14 +125,16 @@ class CompositionDraftDetails extends Component {
 }
 
 CompositionDraftDetails.propTypes = {
-  activity: PropTypes.object,
+  activityPrompt: PropTypes.object,
   draft: PropTypes.object,
+  draftInstructions: PropTypes.object,
   goals: PropTypes.array,
   reflectionQuestions: PropTypes.array,
-  newRubric: PropTypes.object,
+  rubric: PropTypes.object,
   lastDraftWithFeedback: PropTypes.object,
   homeRoute: PropTypes.string,
-  unsavedChanges: PropTypes.bool
+  unsavedChanges: PropTypes.bool,
+  draftDetails: PropTypes.bool
 };
 
 export default CompositionDraftDetails;

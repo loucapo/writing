@@ -4,3 +4,7 @@
   flex-flow: column nowrap;
   padding-bottom: 50px;
 }
+
+.submissionStatusEmpty {
+  padding: 10px;
+}

@@ -17,7 +17,7 @@ class EditingMarksModal extends Component {
   };
 
   handleCommentChange = e => {
-    this.setState({ comment: e.target.textContent.trim() });
+    this.setState({ comment: e.target.value });
   };
 
   handleCreateFeedback = () => {
@@ -41,18 +41,19 @@ class EditingMarksModal extends Component {
       editingMarks,
       selectedEditingMark: editingMarks[0]
     });
-  }
+  };
 
   render() {
     return (
-      <div>
+      <div className={styles.editingMarksModal}>
         <div className={styles.header}>
           Editing Marks
         </div>
 
         <div className={styles.modalWrapper}>
-          <MLMenuList list={this.state.editingMarks} callback={this.handleEditingMarkChange} />
-
+          <div>
+            <MLMenuList list={this.state.editingMarks} callback={this.handleEditingMarkChange} />
+          </div>
           <div className={styles.rightPanel}>
             <div className={styles.commentWrapper}>
 
@@ -71,15 +72,11 @@ class EditingMarksModal extends Component {
                   <div className={styles.sectionHeaderText}>Additional Comment</div>
                   <div className={styles.commentsHeadingLine} />
                 </div>
-                <div className={styles.commentTextWrapper}>
-                  <div
-                    placeholder="(Optional)"
-                    contentEditable={true}
-                    suppressContentEditableWarning={true}
-                    onKeyUp={this.handleCommentChange}
-                    className={styles.commentText}
-                  />
-                </div>
+                <textarea
+                  className={styles.commentTextWrapper}
+                  placeholder="Optional"
+                  onKeyUp={this.handleCommentChange}
+                />
               </div>
             </div>
 

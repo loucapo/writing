@@ -18,7 +18,7 @@ class MLEditor extends Component {
     if (newProps.editable) {
       this.refs.editor.focusEditor();
     }
-    if (!this.state.editorState || newProps.content !== this.props.content) {
+    if (!this.state.editorState) {
       this.createOrUpdateEditorState(newProps.content);
     }
   };
@@ -37,7 +37,7 @@ class MLEditor extends Component {
     this.setState({
       editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : null
     });
-  }
+  };
 
   handleBlur = event => {
     let id;
@@ -53,11 +53,11 @@ class MLEditor extends Component {
       this.setState({
         editorState: EditorState.createWithContent(convertFromRaw(this.props.content))
       });
-      return;
-    }
-    let content = convertToRaw(this.state.editorState.getCurrentContent());
-    if (this.props.handleSaveOnBlur) {
-      this.props.handleSaveOnBlur(content);
+    } else {
+      let content = convertToRaw(this.state.editorState.getCurrentContent());
+      if (this.props.handleSaveOnBlur) {
+        this.props.handleSaveOnBlur(content);
+      }
     }
   };
 
