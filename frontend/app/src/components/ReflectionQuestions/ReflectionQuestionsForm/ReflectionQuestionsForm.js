@@ -90,7 +90,7 @@ class ReflectionQuestionsForm extends Component {
       x => question.studentReflectionQuestionId === x.studentReflectionQuestionId
     );
     const answer = answerObj ? answerObj.studentReflectionAnswer : undefined;
-    return question.questionType === 'free'
+    return question.questionType === 'free response'
       ? this.renderTextArea(question.studentReflectionQuestionId, answer)
       : this.renderPoll(question.studentReflectionQuestionId, answer);
   };

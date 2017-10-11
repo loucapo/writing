@@ -5,8 +5,11 @@
   width: 100%;}
 
 .title {
-  display: flex;
   @apply --font-28;
+}
+
+.titleEdit {
+  margin-left: 10px;
 }
 
 .subheader {
