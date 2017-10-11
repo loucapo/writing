@@ -20,6 +20,7 @@
   width: auto !important;
   align-items: center;
   min-height: 75px;
+  border: 1px solid var(--gray-light) !important;
 }
 
 .toolbarHide {
@@ -30,6 +31,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.border {
+  border: 1px solid var(--gray-light);
 }
 
 .highlight, .highlight span {

@@ -4,6 +4,7 @@
 .sidePanel {
   border: 1px solid var(--gray-light);
   height: 100%;
+  overflow-y: auto;
 }
 
 .padder {
