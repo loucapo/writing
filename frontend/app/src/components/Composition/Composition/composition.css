@@ -10,6 +10,7 @@
   overflow-y: overlay;
   margin-top: 66px;
   height: calc(100% - 66px);
+  flex: 1;
 }
 
 .container {
