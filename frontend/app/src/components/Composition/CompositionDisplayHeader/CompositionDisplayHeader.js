@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { MLButton } from '../../MLComponents/index';
 
-import styles from '../CompositionHeader/compositionHeader.css';
+import styles from './compositionDisplayHeader.css';
 
 const Header = ({ homeRoute }) => {
   return (
     <header className={styles.header}>
-      <Link data-id="header-activity-link" to={homeRoute}>
-        View Activity Summary
-      </Link>
+      <div className={styles.headerContainer}>
+        <div className={styles.headerRight}>
+          <MLButton
+            title="View Activity Summary"
+            dataId="header-activity-link"
+            bordered={true}
+            color="white"
+            link={homeRoute}
+          />
+        </div>
+      </div>
     </header>
   );
 };

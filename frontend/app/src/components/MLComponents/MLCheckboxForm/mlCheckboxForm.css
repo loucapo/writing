@@ -3,7 +3,7 @@
 .inputs {
   overflow: auto;
   border: 1px solid var(--gray);
-  max-height: 360px;
+  max-height: 375px;
 }
 
 .buttons {

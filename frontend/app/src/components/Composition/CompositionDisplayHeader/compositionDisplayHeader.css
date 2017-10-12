@@ -3,31 +3,29 @@
 .header {
   align-items: center;
   background-color: var(--header-background-blue);
+  color: var(--blue-light);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 15px 80px;
-  min-height: 36px;
   position: fixed;
-  margin-top: -66px;
-  width: calc(100% - 480px);
+  width: calc(100% - 160px);
+  top: 0;
 }
 
 .headerContainer {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding: 15px 80px;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
 }
 
-.buttonsContainer {
+.headerRight {
   display: flex;
   justify-content: center;
 }
 
-.headerRight {
-  display: flex;
-  justify-content: center;
+.headerRight a {
+  text-decoration: none;
+  color: var(--blue-light);
 }

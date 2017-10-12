@@ -126,7 +126,7 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       feedback_flag: {
         desc: `Feedback flag in margin`,
-        locator: `[class*='FeedbackFlag__flag__']`
+        locator: `[class^='FeedbackFlag__flag__']`
       },
       feedback_flag_title: {
         desc: `Feedback flag title`,

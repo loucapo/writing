@@ -1,5 +1,8 @@
-.wrapper {
+.submissionStatusArea {
   width: 100%;
+}
+
+.wrapper {
   display: flex;
   flex-flow: column nowrap;
   padding-bottom: 50px;

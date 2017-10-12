@@ -3,3 +3,8 @@
 .icon {
   fill: var(--aqua);
 }
+
+.prompt {
+  overflow-y: auto;
+  max-height: 200px;
+}

@@ -14,29 +14,84 @@ class CommentModal extends Component {
     editingMarks: EditingMarksModal
   };
 
-  handleBackgroundClick = event => {
-    if (event.target === event.currentTarget) {
+  componentDidMount = () => {
+    document.body.addEventListener('mousedown', this.handleCollapse);
+    const modal = document.querySelector(`.${styles.commentModalContainerContainer}`);
+    modal.addEventListener('contextmenu', this.handleRightClick);
+    //do the repositioning after render()
+    this.repositionModal();
+  };
+
+  componentWillUnmount = () => {
+    document.body.removeEventListener('mousedown', this.handleCollapse);
+    const modal = document.querySelector(`.${styles.commentModalContainerContainer}`);
+    modal.removeEventListener('contextmenu', this.handleRightClick);
+  };
+
+  handleRightClick = event => {
+    event.stopPropagation();
+  };
+
+  handleCollapse = event => {
+    event.stopPropagation();
+    let clickedElem = document.querySelector(`.${styles.commentModal}`);
+    if (clickedElem && !clickedElem.contains(event.target)) {
       this.props.closeModal();
     }
+  };
+
+  repositionModal = () => {
+    const modal = document.querySelector(`.${styles.commentModalContainerContainer}`);
+    modal.style.top = this.calculatePosition(this.props.position, modal.offsetHeight);
+  };
+
+  calculatePosition = (position, modalHeight) => {
+    // figure out if we're going to display above, below, or in the middle
+    let top = null;
+    const verticalPadding = 15;
+    const topSpace = position.y;
+    const bottomSpace = window.innerHeight - position.y - position.height;
+    const relativeTop = position.y - position.parentY;
+    // if there is more room above the highlight and the modal fits, put it on top
+    if (topSpace >= bottomSpace && topSpace > modalHeight) {
+      top = relativeTop - modalHeight - verticalPadding;
+      // if the top is off the screen, try again
+      if (top < 0 && (position.parentY + top) < 80) {
+        top = null;
+      }
+    }
+    // if there is more room below the highlight and the modal fits, put it on bottom
+    if (top === null && bottomSpace > topSpace && bottomSpace > modalHeight) {
+      top = relativeTop + position.height + verticalPadding;
+      // not bothering to check if the modal is too low since it's currently not an issue
+    }
+    // vertically center the modal, obscuring the highlight
+    if (top === null) {
+      top = Math.floor(relativeTop + (position.height / 2) - (modalHeight / 2));
+    }
+    return top + 'px';
   };
 
   render() {
     const ModalType = this.modals[this.state.modalType];
     return (
       <div>
-        <div className={styles.commentModalOverlay} onClick={this.handleBackgroundClick} />
-        <div
-          id="commentModal"
-          className={styles.commentModal}
-          style={{ top: `${this.props.position.top}px`, left: `${this.props.position.left}px` }}
-        >
-          <ModalType
-            handleSave={this.props.handleSave}
-            closeModal={this.props.closeModal}
-            createFeedbackError={this.props.createFeedbackError}
-            editingMarks={this.props.editingMarks}
-            draftGoals={this.props.draftGoals}
-          />
+        <div className={styles.commentModalOverlay} />
+        <div className={styles.commentModalContainerContainer}>
+          <div className={styles.commentModalContainer}>
+            <div
+              id="commentModal"
+              className={styles.commentModal}
+            >
+              <ModalType
+                handleSave={this.props.handleSave}
+                closeModal={this.props.closeModal}
+                createFeedbackError={this.props.createFeedbackError}
+                editingMarks={this.props.editingMarks}
+                draftGoals={this.props.draftGoals}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

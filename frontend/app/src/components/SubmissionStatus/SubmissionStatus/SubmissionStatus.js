@@ -44,7 +44,7 @@ class SubmissionStatus extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.submissionStatusArea}>
         {(this.props.drafts && this.props.drafts.length) > 0 ?
           <div className={ styles.wrapper }>
             <SubmissionStatusFilter

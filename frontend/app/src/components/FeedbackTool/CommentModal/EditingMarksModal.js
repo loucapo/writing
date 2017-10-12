@@ -45,14 +45,15 @@ class EditingMarksModal extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.editingMarksModal}>
         <div className={styles.header}>
           Editing Marks
         </div>
 
         <div className={styles.modalWrapper}>
-          <MLMenuList list={this.state.editingMarks} callback={this.handleEditingMarkChange} />
-
+          <div>
+            <MLMenuList list={this.state.editingMarks} callback={this.handleEditingMarkChange} />
+          </div>
           <div className={styles.rightPanel}>
             <div className={styles.commentWrapper}>
 
