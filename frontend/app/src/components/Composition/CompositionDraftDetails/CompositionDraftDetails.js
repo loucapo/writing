@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { MLEditor, MLAccordion, MLButton, MLDialog } from '../../MLComponents';
-import { CompositionDraftDetailsRubric } from '../index';
+import { CompositionDraftDetailsHeader, CompositionDraftDetailsRubric } from '../index';
 import { DraftInstructionsDisplay, DraftGoalsDisplay } from '../../Draft';
 import { ReflectionQuestionsDisplay } from '../../ReflectionQuestions';
 import styles from './compositionDraftDetails.css';
@@ -81,7 +81,8 @@ class CompositionDraftDetails extends Component {
 
   render() {
     return (
-      <div className={styles.sidePanel}>
+      <div>
+        <CompositionDraftDetailsHeader />
         <div className={styles.navigationButton} data-id="details-panel-activity-link-div">
           <span onClick={this.navigateToActivitySummary} className={styles.link}>View Activity Summary</span>
         </div>

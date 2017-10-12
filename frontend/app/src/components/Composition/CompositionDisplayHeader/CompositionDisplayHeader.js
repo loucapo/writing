@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MLButton } from '../../MLComponents/index';
 
-import styles from '../CompositionHeader/compositionHeader.css';
+import styles from './compositionDisplayHeader.css';
 
 const Header = ({ homeRoute }) => {
   return (

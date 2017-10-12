@@ -6,6 +6,9 @@
   display: flex;
   justify-content: space-between;
   padding: 15px 20px;
+  position: fixed;
+  width: 320px;
+  margin-top: -66px;
 }
 
 .activityDetailsIcon {

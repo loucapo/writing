@@ -22,6 +22,7 @@
 .feedbackEditor {
   composes: editor;
   width: 75% !important;
+  word-wrap: break-word;
 }
 
 .toolbarHide {

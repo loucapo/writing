@@ -6,6 +6,4 @@
 
 .content {
   padding: 0 28px 12px;
-  overflow-y: auto;
-  max-height: 430px;
 }
