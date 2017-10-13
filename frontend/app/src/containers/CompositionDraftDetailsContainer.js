@@ -84,9 +84,9 @@ const mapStateToProps = (state, props) => {
     }) : [];
   }
 
-  const draftDetails = (draft && draft.instructions !== '') || goals.length > 0 || reflectionQuestions.length > 0;
+  const draftDetails = (draft && draft.instructions && draft.instructions !== '') || goals.length > 0 || reflectionQuestions.length > 0;
 
-  let promptIsNotEmpty = activity && activity.prompt && _.find(activity.prompt.blocks, block => _.get(block, 'text.length') > 0);
+  const promptIsNotEmpty = activity && activity.prompt && _.find(activity.prompt.blocks, block => _.get(block, 'text.length') > 0);
 
   return {
     activityPrompt: activity && activity.prompt,
