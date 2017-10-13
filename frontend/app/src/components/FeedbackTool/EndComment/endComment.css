@@ -13,4 +13,5 @@
 
 .endComment {
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
