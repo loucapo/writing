@@ -11,6 +11,7 @@
     "loadData": "node app/loadDataIndex",
     "killAllData": "node app/killDataIndex",
     "blastAndRebuild": "node app/killDataIndex && node app/migrateIndex && node app/loadDataIndex",
+    "blastAndRebuildDemo": "node app/killDataIndex && node app/migrateIndex && node app/loadDemoIndex",
     "lint": "eslint -c ./../.eslintrc.json .",
     "validate": "npm ls"
   },

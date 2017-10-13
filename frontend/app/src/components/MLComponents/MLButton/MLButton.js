@@ -10,7 +10,6 @@ const Button = ({
   id,
   color,
   handleClick,
-  handleMouseDown,
   icon,
   link,
   disabled,
@@ -24,9 +23,7 @@ const Button = ({
       id={id}
       data-id={dataId}
       className={`${styles.button} ${styles[buttonClass]}`}
-      onClick={!disabled && handleClick ? handleClick : ''}
-      onMouseDown={!disabled && handleMouseDown ? handleMouseDown : ''}
-    >
+      onClick={disabled ? '' : handleClick} >
       {icon ?
         <MLIcon
           className={styles.icon}
@@ -44,8 +41,7 @@ const Button = ({
   const renderLink = () => (
     <Link
       id={id}
-      onClick={!disabled && handleClick ? handleClick : () => {}}
-      onMouseDown={!disabled && handleMouseDown ? handleMouseDown : () => {}}
+      onClick={disabled ? () => {} : handleClick}
       to={disabled ? '' : link}
       data-id={dataId}
       className={`${styles.button} ${styles[buttonClass]}`} >
@@ -61,7 +57,6 @@ Button.propTypes = {
   id: PropTypes.string,
   color: PropTypes.string,
   handleClick: PropTypes.func,
-  handleMouseDown: PropTypes.func,
   icon: PropTypes.string,
   link: PropTypes.string,
   disabled: PropTypes.bool,

@@ -5,6 +5,7 @@
   width: 100%;}
 
 .title {
+  display: flex;
   @apply --font-28;
 }
 
@@ -19,7 +20,8 @@
 }
 
 .editField {
-  width: 100%;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .type {

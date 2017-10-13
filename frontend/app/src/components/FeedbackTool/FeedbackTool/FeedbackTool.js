@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { MLCard } from '../../MLComponents';
 import { FeedbackToolHeader, EndComment, FinalGrade } from '../index';
 import { FeedbackEditorContainer, RubricContainer } from '../../../containers';
+import { reflectionQuestionsConfig } from '../../../utilities/reflectionQuestions';
 import styles from './feedbackTool.css';
 
 const FeedbackTool = ({
@@ -29,12 +31,15 @@ const FeedbackTool = ({
     <div className={styles.container}>
       <MLCard type="reflection" title="Reflection">
         <div>
-          {reflectionQuestions.map(reflection => (
-            <p key={reflection.questionId}>
-              <strong>{reflection.question}</strong><br />
-              {reflection.answer}
-            </p>
-          ))}
+          {reflectionQuestions.map(reflection => {
+            const reflectionText = reflection.questionType === 'agree/disagree' && _.get(_.find(reflectionQuestionsConfig.labels, {value: reflection.answer}), 'text');
+            return (
+              <p key={reflection.questionId}>
+                <strong>{reflection.question}</strong><br />
+                {reflectionText || reflection.answer}
+              </p>
+            );
+          })}
         </div>
       </MLCard>
       <MLCard type="draft" title={draftTitle}>
