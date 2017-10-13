@@ -48,7 +48,7 @@ class ActivityPrompt extends Component {
                   title="Cancel"
                   dataId="prompt-cancel"
                   id="cancel"
-                  handleMouseDown={this.handleCancel}
+                  handleClick={this.handleCancel}
                   bordered={true}
                 />
                 <MLButton title="Save" dataId="prompt-save" />
