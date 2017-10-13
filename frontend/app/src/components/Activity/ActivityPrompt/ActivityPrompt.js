@@ -67,7 +67,7 @@ class ActivityPrompt extends Component {
                 </a>
               </div>
         }
-        <div data-id="prompt-description" className={styles.prompt}>
+        <div data-id="prompt-description">
           {(this.props.promptText || this.state.editable)
             ?
               <MLEditor
