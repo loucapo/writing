@@ -702,8 +702,8 @@ THEN VS. THAN`,
           editing_mark_id: 'e1c56134-45c9-40d6-ad75-af4f6ba36975',
           title: 'Pronoun Agreement',
           description: `Since pronouns take the place of nouns, it is important to use the correct pronouns so that your readers understand what you mean. There are three basic types of pronoun-antecedent agreement that will help you to write clearly::
-Agreement in number (A student should plan his or her schedule carefully.) 
-Agreement in person (When people exercise, they feel energized.) 
+Agreement in number (A student should plan his or her schedule carefully.)
+Agreement in person (When people exercise, they feel energized.)
 Agreement in gender (Anna ate her breakfast.)`,
           index: 4,
           created_by_id: '565d993b-d1a4-4eb9-8e8b-68b0c7151356',
