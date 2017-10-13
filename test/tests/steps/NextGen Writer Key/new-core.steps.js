@@ -208,6 +208,13 @@ exports.define = function(steps) {
       .then(actualText => actualText.should.have.string(text));
   });
 
+  // NOTE that this is an INCLUDES match, not an IS.
+  steps.then(/the text of "(.*)" should not include "(.*)"/, (elem, text) => {
+    return polocToElem(elem)
+      .then(el => el.getText())
+      .then(actualText => actualText.should.not.have.string(text));
+  });
+
   steps.then('I should see a fresh assignment', function() {
     // FIXME: do it
     console.log('TODO check a fresh assignment');

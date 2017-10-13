@@ -29,7 +29,3 @@ class StudentReview extends Component {
 }
 
 module.exports = StudentReview;
-
-
-
-
