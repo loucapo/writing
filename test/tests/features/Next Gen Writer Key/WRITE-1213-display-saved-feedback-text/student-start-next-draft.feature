@@ -1,5 +1,4 @@
 @WRITE-71
-@only
 Feature: Student Starts Next Draft
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -35,10 +34,10 @@ Feature: Student Starts Next Draft
   Scenario: Student Sees Start Draft Buttons
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
-    Then I wait until there is 1 "start_final_paper" visible
-    Given I launch the activity as a "student"
-    Then I wait until there is 1 "view_draft_button"
     Then I wait until there is 1 "start_final_paper_disabled" visible
+    Given I launch the activity as a "student"
+    Then I wait until there is 2 "view_draft_button"
+    Then I wait until there is 2 "start_final_paper_enabled" visible
 
   Scenario: Student Starts Next Draft
     Given I launch the activity as a "student"

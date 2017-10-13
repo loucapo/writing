@@ -25,6 +25,10 @@ exports.StudentSummaryPage = class extends Page {
         desc: `Link to instructor feedback`,
         locator: `[class^='ActivityHeaderDisplay__rightContainer'] a`
       },
+      view_summary_button: {
+        desc: `Link to the activity summary`,
+        locator: `[data-id='header-activity-link']`
+      },
       draft_submission_confirmation_banner: {
         desc: `Green confirmation message for successful draft submission`,
         locator: `[class*='MLMessage__message_success']`
@@ -56,6 +60,10 @@ exports.StudentSummaryPage = class extends Page {
       start_final_paper_disabled: {
         desc: `Start final paper button in disabled state`,
         locator: `[data-id='Start Final Paper'][class*='__disabled__']`
+      },
+      start_final_paper_enabled: {
+        desc: `Start final paper button in disabled state`,
+        locator: `[data-id='Start Final Paper']:not([class*='__disabled__'])`
       },
       view_draft_button: {
         desc: `Button to view submitted draft`,
