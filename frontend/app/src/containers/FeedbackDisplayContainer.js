@@ -102,7 +102,8 @@ const mapStateToProps = (state, props) => {
       return {
         questionId: reflection.studentReflectionQuestionId,
         question: question ? question.question : null,
-        answer: answer ? answer.studentReflectionAnswer : null
+        answer: answer ? answer.studentReflectionAnswer : null,
+        questionType: question ? question.questionType : null
       };
     });
   }
