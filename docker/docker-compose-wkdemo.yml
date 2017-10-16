@@ -1,71 +1,81 @@
-version: "2"
+version: "3"
 services:
   frontend:
-      build:
-        context: ./../frontend/
-        dockerfile: docker/Dockerfile
-      volumes:
-        - ./../frontend/app:/home/current/app:rw
-      env_file:
-        - ./../.envrc.example
-      environment:
-        APPLICATION_NAME: wk_frontend
-      ports:
-        - "8080:8080"
+    environment:
+      APPLICATION_NAME: wk_frontend
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    image: ${wk_frontend_image}
+    env_file:
+      - ./.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]
+
   api:
-      build:
-        context: ./../api/
-        dockerfile: docker/Dockerfile
-      volumes:
-        - ./../api/app:/home/current/app:rw
-      env_file:
-        - ./../.envrc.example
-      environment:
-        APPLICATION_NAME: wk_api
-        POSTGRES_HOST: postgres
-      ports:
-        - "3000:3000"
+    environment:
+      APPLICATION_NAME: wk_api
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    image: ${wk_api_image}
+    env_file:
+      - ./.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]
 
   data:
-      build:
-        context: ./../data/
-        dockerfile: docker/Dockerfile
-      entrypoint: yarn blastAndRebuildDemo && yarn start && yarn start_api
-      volumes:
-        - ./../data/app:/home/current/app
-        - ./../data/migrations:/home/current/migrations
-      env_file:
-        - ./../.envrc.example
-      environment:
-        POSTGRES_HOST: postgres
-      ports:
-        - "4667:4667"
+    # environment:
+    #   POSTGRES_HOST: ${POSTGRES_HOST}
+    ports:
+      - "${TESTING_API_PORT}:${TESTING_API_PORT}"
+    image: ${wk_data_image}
+    env_file:
+      - ./.env
+    entrypoint: yarn blastAndRebuildDemo && yarn start && yarn start_api
+    deploy:
+      placement:
+        constraints: [node.role == worker]
 
   serve:
-      build:
-        context: ./../serve/
-        dockerfile: docker/Dockerfile
-      volumes:
-        - ./../serve/app:/home/current/app:rw
-      env_file:
-        - ./../.envrc.example
-      environment:
-        APPLICATION_NAME: wk_serve
-        WK_API_URL: http://api:3000/api
-      ports:
-        - "10080:10080"
+    environment:
+      APPLICATION_NAME: wk_serve
+    ports:
+      - "${SERVE_PORT}:${SERVE_PORT}"
+    image: ${wk_serve_image}
+    env_file:
+      - ./.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]
 
   swaggerUi:
     image: schickling/swagger-ui
     environment:
-      API_URL: "http://api:3000/swagger"
+      API_URL: "http://localhost:3000/swagger"
       PORT: 4666
     ports:
-      - "4666:4666"
-
-  postgres:
-    image: postgres
-    env_file:
-      - ./../.envrc.example
-    ports:
-      - 5433:5432
+      - "${SWAGGER_PORT}:${SWAGGER_PORT}"
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      placement:
+        constraints: [node.role == worker]
