@@ -34,12 +34,10 @@ Feature: Student Starts Next Draft
   Scenario: Student Sees Start Draft Buttons
     Given I launch the activity as a "student"
     And I click "feedback_message_link"
-    Then I wait until there is 1 "start_final_paper" visible
+    Then I wait until there is 1 "start_final_paper_disabled" visible
     Given I launch the activity as a "student"
-    #Then I sleep for 2 seconds
-    # start_draft_enabled now also applies to "View Draft X Feedback"
-    Then I wait until there is 2 "start_draft_enabled"
-    Then I wait until there is 1 "start_final_paper" visible
+    Then I wait until there is 2 "view_draft_button"
+    Then I wait until there is 2 "start_final_paper_enabled" visible
 
   Scenario: Student Starts Next Draft
     Given I launch the activity as a "student"

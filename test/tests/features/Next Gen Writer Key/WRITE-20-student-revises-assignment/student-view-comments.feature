@@ -147,6 +147,7 @@ Feature: Student Can View Instructor Comments
     And Then the text of "student_read_only_feedback.comment_flag_title" should be "Thesis"
 
   @WRITE-974
+  @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"

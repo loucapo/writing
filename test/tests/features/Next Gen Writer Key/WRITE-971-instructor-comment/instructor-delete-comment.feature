@@ -67,4 +67,4 @@ Feature: Instructor Delete Comment
     And I click "feedback_flag"
     And I click "feedback_flag_more_button"
     And I click "comment_delete_option"
-    Then I wait until there is 0 "feedback_flag" visible
+    Then I wait until there is 0 "feedback_flag"

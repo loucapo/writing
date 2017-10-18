@@ -52,13 +52,12 @@ Feature: Add Another Draft To Activity
 
   @db=reset
   @WRITE-27
-  @QA-Fix
   Scenario: Draft Sequencing
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
     Then I wait until there are 2 "draft_card" visible
-    And the text of "draft.draft_note(1)" should be ""
-    And the text of "draft.draft_note(2)" should be "Students can view and start this draft once they've received feedback for Draft 1"
+    And I wait until there is 0 "draft(1).draft_note"
+    And the text of "draft(2).draft_note" should be "Students can view and start this draft once they've received feedback for Draft 1"
 
   @WRITE-27
   @db=reset
