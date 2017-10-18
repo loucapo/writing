@@ -44,7 +44,6 @@ Feature: Instructor Creates Drafting Revising Activity
 
   @WRITE-545
   @db=reset
-  @pending
   Scenario: Instructor Collapses ML Cards
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -53,11 +52,11 @@ Feature: Instructor Creates Drafting Revising Activity
     And I click "activity_prompt.edit"
     And I type "hello world" in "activity_prompt.edit_area"
     And I click "activity_prompt.save"
-    And I click "Draft 1 card"
-    And I click "Final Draft Card"
-    And I click "Rubric card"
-    And I click "Assignment Prompt card"
-    Then I wait until there are 0 "draft_instructions"
-    Then I wait until there are 0 "final_draft_message"
-    Then I wait until there are 0 "assignment_prompt_text"
-    Then I wait until there are 0 "rubric_preview"
+    And I click "draft_card(1)"
+    And I click "draft_card(2)"
+    And I click "final_rubric_card"
+    And I click "activity_prompt_card"
+    Then I wait until there are 0 "draft.draft_instructions"
+    Then I wait until there are 0 "rubric.preview"
+    Then I wait until there are 0 "activity_prompt.description"
+    Then I wait until there are 0 "draft.draft_note"
