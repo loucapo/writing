@@ -79,7 +79,7 @@ class CheckboxForm extends Component {
                 <strong>Selected Draft Goals: </strong>
                 {this._renderTitles()}
               </p>
-              : null
+              : <p>&nbsp;</p>
           }
         </div>
 

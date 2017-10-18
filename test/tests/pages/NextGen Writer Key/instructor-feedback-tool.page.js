@@ -126,7 +126,7 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       feedback_flag: {
         desc: `Feedback flag in margin`,
-        locator: `[class*='FeedbackFlag__flag__']`
+        locator: `[class^='FeedbackFlag__flag__']`
       },
       feedback_flag_title: {
         desc: `Feedback flag title`,
@@ -148,6 +148,22 @@ exports.InstructorFeedbackPage = class extends Page {
         desc: `Delete comment button`,
         locator: `[data-id='menu-delete']`
       },
+      reflection_section: {
+        desc: `Reflection Answer Card`,
+        locator: `[data-id='reflection-section']`
+      },
+      draft_section: {
+        desc: `Draft Card`,
+        locator: `[data-id='draft-section']`
+      },
+      final_grade_section: {
+        desc: `Final Grade Card`,
+        locator: `[data-id='final-grade-section']`
+      },
+      end_comment_section: {
+        desc: `End Comment Card`,
+        locator: `[data-id='end-comment-section']`
+      }
     };
   }
 

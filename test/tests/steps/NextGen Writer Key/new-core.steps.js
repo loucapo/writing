@@ -121,6 +121,7 @@ exports.define = function(steps) {
     if (user === 'student') { page = pages.student_summary; }
     if (user === 'instructor') { page = pages.instructor_summary; }
     await driver.sleep(2000);
+
   });
 
   steps.when(/Changing to using page "(.+)"/, function(newPage, done) {
@@ -205,6 +206,13 @@ exports.define = function(steps) {
     return polocToElem(elem)
       .then(el => el.getText())
       .then(actualText => actualText.should.have.string(text));
+  });
+
+  // NOTE that this is an INCLUDES match, not an IS.
+  steps.then(/the text of "(.*)" should not include "(.*)"/, (elem, text) => {
+    return polocToElem(elem)
+      .then(el => el.getText())
+      .then(actualText => actualText.should.not.have.string(text));
   });
 
   steps.then('I should see a fresh assignment', function() {

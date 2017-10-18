@@ -61,9 +61,7 @@ class CheckboxField extends Component {
                   <strong data-id="question-title">
                     Question {this.props.fieldOrder}
                   </strong>
-                  <span className={styles.questionType}>
-                    Type &nbsp;
-                  </span>
+                  Type: &nbsp;
                   <span data-id="question-type">
                     {field.questionType}
                   </span>

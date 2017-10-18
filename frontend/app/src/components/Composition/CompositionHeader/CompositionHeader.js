@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MLButton } from '../../MLComponents';
+import { MLButton } from '../../MLComponents/index';
 
 import styles from './compositionHeader.css';
 

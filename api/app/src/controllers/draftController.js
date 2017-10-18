@@ -1,4 +1,4 @@
-module.exports = function(repository, activityBuilder, sqlLibrary) {
+module.exports = function(repository, activityBuilder, sqlLibrary, moment) {
   return {
     async addDraftToActivity(ctx) {
       const command = ctx.request.body;
@@ -25,8 +25,14 @@ module.exports = function(repository, activityBuilder, sqlLibrary) {
       let event = activity.removeDraftFromActivity({draftId: ctx.params.draftId});
       let draftIndexes = activity.getDraftIndexes();
 
+      const queryParams = {
+        draftId: event.draftId,
+        deletedById: ctx.state.user.id,
+        deletedDate: moment().toISOString()
+      };
+
       repository.transaction(async repo => {
-        await repo.query(sqlLibrary.draft, 'removeDraftFromActivity', {draftId: event.draftId});
+        await repo.query(sqlLibrary.draft, 'deleteDraft', queryParams);
 
         for (let draft of draftIndexes) {
           draft.modifiedById = ctx.state.user.id;

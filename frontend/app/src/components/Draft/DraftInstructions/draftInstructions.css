@@ -37,9 +37,11 @@
   font-weight: normal;
   height: 100px;
   width: 100%;
+  resize: none;
 }
 
 .instructions {
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 

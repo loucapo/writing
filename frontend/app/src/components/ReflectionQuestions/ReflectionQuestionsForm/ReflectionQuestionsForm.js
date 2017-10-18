@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { MLDialog, MLButton, MLMessage } from '../../MLComponents';
 import { ReflectionQuestionsFormHeader } from '../index';
+import { reflectionQuestionsConfig } from '../../../utilities/reflectionQuestions';
 
 import styles from './reflectionQuestionsForm.css';
 
@@ -90,19 +91,13 @@ class ReflectionQuestionsForm extends Component {
       x => question.studentReflectionQuestionId === x.studentReflectionQuestionId
     );
     const answer = answerObj ? answerObj.studentReflectionAnswer : undefined;
-    return question.questionType === 'free'
+    return question.questionType === 'free response'
       ? this.renderTextArea(question.studentReflectionQuestionId, answer)
       : this.renderPoll(question.studentReflectionQuestionId, answer);
   };
 
   renderPoll = (questionId, value) => {
-    const labels = [
-      { text: 'Strongly Agree', value: 'stronglyAgree' },
-      { text: 'Agree', value: 'agree' },
-      { text: 'Neutral', value: 'neutral' },
-      { text: 'Disagree', value: 'disagree' },
-      { text: 'Strongly Disagree', value: 'stronglyDisagree' }
-    ];
+    const labels = reflectionQuestionsConfig.labels;
 
     return (
       <form onChange={x => this.handleChange(questionId, x.target.value)}>

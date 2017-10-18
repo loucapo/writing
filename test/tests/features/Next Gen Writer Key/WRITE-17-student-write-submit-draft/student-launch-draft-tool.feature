@@ -10,7 +10,7 @@ Feature: Student Launches Draft
   @WRITE-1451
   Scenario: Student Sees Start Draft Elements
     Given I launch the activity as an "student"
-    Then I wait until there is 2 "start_draft" visible
+    Then I wait until there is 3 "start_draft" visible
     Then I wait until there is 1 "start_draft_disabled" visible
     And the text of "start_draft_disabled" should be "Start Final Paper"
     #And the text of "draft_student_note" should be "Students can view and start this draft once they've received feedback for Draft 1"

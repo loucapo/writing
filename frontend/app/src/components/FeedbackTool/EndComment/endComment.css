@@ -4,6 +4,7 @@
   width: 100%;
   min-height: 80px;
   border-color: var(--gray-medium);
+  resize: none;
 }
 
 .addComment button {
@@ -12,4 +13,5 @@
 
 .endComment {
   white-space: pre-wrap;
+  word-wrap: break-word;
 }

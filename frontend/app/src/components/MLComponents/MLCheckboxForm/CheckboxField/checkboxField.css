@@ -31,10 +31,6 @@
   @apply --font-18;
 }
 
-.questionType {
-  color: var(--red);
-}
-
 .content {
   display: none;
   padding: 18px 23px;

@@ -76,6 +76,14 @@ exports.InstructorSummaryPage = class extends Page {
         desc: `The confirmation button in the alert dialog that is presented on attempting to delete a draft`,
         locator: `[class^='MLDialog__alert'] [class^='MLDialog__content'] [class^='MLDialog__buttons'] [data-id='dialog-delete']`
       },
+      activity_prompt_card: {
+        desc: `Activity Prompt Card`,
+        locator: `[data-id='prompt-section']`
+      },
+      final_rubric_card: {
+        desc: `Rubric Card`,
+        locator: `[data-id='rubric-section']`
+      },
     };
   }
 

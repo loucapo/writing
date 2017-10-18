@@ -87,12 +87,9 @@
 }
 
 .commentTextWrapper {
-  background-color: #fff;
-  border: 1px solid var(--gray);
-  flex: 1;
   height: 80px;
   padding: 5px;
-  overflow-y: scroll;
+  resize: none;
 }
 
 .commentText{

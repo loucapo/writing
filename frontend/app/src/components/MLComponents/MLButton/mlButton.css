@@ -12,6 +12,11 @@
   text-decoration: none;
   border-radius: 3px;
   border: none;
+  align-items: center;
+}
+
+.button:first-child, a.button:first-child {
+  margin: 0;
 }
 
 .button:hover, a.button:hover {

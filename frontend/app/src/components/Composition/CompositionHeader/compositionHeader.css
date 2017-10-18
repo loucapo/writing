@@ -7,18 +7,27 @@
   justify-content: flex-end;
   padding: 15px 80px;
   min-height: 36px;
+  position: fixed;
+  margin-top: -66px;
+  width: calc(100% - 480px);
 }
 
 .headerContainer {
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  padding: 15px 80px;
+  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
-  min-height: 35px;
-  align-items: center;
 }
 
 .buttonsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.headerRight {
   display: flex;
   justify-content: center;
 }

@@ -10,15 +10,16 @@ class MLEditor extends Component {
     editorState: null
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.createOrUpdateEditorState(this.props.content);
+    this.refs.editor.focusEditor();
   };
 
   componentWillReceiveProps = newProps => {
     if (newProps.editable) {
       this.refs.editor.focusEditor();
     }
-    if (!this.state.editorState) {
+    if (!this.state.editorState || newProps.content !== this.props.content) {
       this.createOrUpdateEditorState(newProps.content);
     }
   };
@@ -37,7 +38,7 @@ class MLEditor extends Component {
     this.setState({
       editorState: content ? EditorState.createWithContent(convertFromRaw(content)) : null
     });
-  };
+  }
 
   handleBlur = event => {
     let id;
@@ -53,15 +54,17 @@ class MLEditor extends Component {
       this.setState({
         editorState: EditorState.createWithContent(convertFromRaw(this.props.content))
       });
-    } else {
-      let content = convertToRaw(this.state.editorState.getCurrentContent());
-      if (this.props.handleSaveOnBlur) {
-        this.props.handleSaveOnBlur(content);
-      }
+      return;
+    }
+    let content = convertToRaw(this.state.editorState.getCurrentContent());
+    if (this.props.handleSaveOnBlur) {
+      this.props.handleSaveOnBlur(content);
     }
   };
 
   render = () => {
+    const editableClass = this.props.editable ? styles.border : '';
+    const editorTypeClass = this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor;
     return (
       <Editor
         onBlur={this.handleBlur}
@@ -71,7 +74,7 @@ class MLEditor extends Component {
         toolbar={this.props.toolbarHidden}
         ref="editor"
         toolbarOnFocus={!this.props.editable}
-        editorClassName={this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor}
+        editorClassName={`${editorTypeClass} ${editableClass}`}
         wrapperClassName={styles.editorWrapper}
         toolbarClassName={this.props.toolbarHidden ? styles.toolbarHide : styles.toolbar}
       />

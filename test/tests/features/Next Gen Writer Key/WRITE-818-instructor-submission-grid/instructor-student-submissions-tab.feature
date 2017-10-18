@@ -13,8 +13,8 @@ Feature: Instructor can view status of student drafts
     When I click "student_submissions"
     Then I wait until there is 1 "submissions.no_submissions_alert" visible
     Given I launch the activity as an "student"
-    Then I wait until there are 2 "start_draft" visible
-    Then I wait until there is 1 "start_draft_enabled" visible
+    Then I wait until there are 3 "start_draft" visible
+    Then I wait until there is 2 "start_draft_enabled" visible
     Then I wait until there is 1 "start_draft_disabled" visible
     Given I launch the activity as an "instructor"
     Then I wait until there is 1 "student_submissions" visible
@@ -34,8 +34,8 @@ Feature: Instructor can view status of student drafts
     When I click "student_submissions"
     Then I wait until there is 1 "submissions.no_submissions_alert" visible
     Given I launch the activity as an "student"
-    Then I wait until there are 2 "start_draft" visible
-    Then I wait until there is 1 "start_draft_enabled" visible
+    Then I wait until there are 3 "start_draft" visible
+    Then I wait until there is 2 "start_draft_enabled" visible
     Then I wait until there is 1 "start_draft_disabled" visible
     When I click "start_draft_enabled"
     Then I wait until there is 1 "draft_editor.draft_area" visible
@@ -63,8 +63,8 @@ Feature: Instructor can view status of student drafts
     When I click "student_submissions"
     Then I wait until there is 1 "submissions.no_submissions_alert" visible
     Given I launch the activity as an "student"
-    Then I wait until there are 2 "start_draft" visible
-    Then I wait until there is 1 "start_draft_enabled" visible
+    Then I wait until there are 3 "start_draft" visible
+    Then I wait until there is 2 "start_draft_enabled" visible
     Then I wait until there is 1 "start_draft_disabled" visible
     When I click "start_draft_enabled"
     Then I wait until there is 1 "draft_editor.draft_area" visible
@@ -95,8 +95,8 @@ Feature: Instructor can view status of student drafts
     When I click "student_submissions"
     Then I wait until there is 1 "submissions.no_submissions_alert" visible
     Given I launch the activity as an "student"
-    Then I wait until there are 2 "start_draft" visible
-    Then I wait until there is 1 "start_draft_enabled" visible
+    Then I wait until there are 3 "start_draft" visible
+    Then I wait until there is 2 "start_draft_enabled" visible
     Then I wait until there is 1 "start_draft_disabled" visible
     When I click "start_draft_enabled"
     Then I wait until there is 1 "draft_editor.draft_area" visible
