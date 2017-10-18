@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import { Composition } from '../components/Composition';
 import { getOrCreateStudentDraft, updateDraftPaper } from '../modules/studentDraftModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
@@ -38,25 +37,18 @@ CompositionContainer.propTypes = {
   getOrCreateStudentDraft: PropTypes.func
 };
 
-const getDraftIsEmpty = (content) => {
-  return !content || !_.find(content.blocks, block => _.get(block, 'text.length') > 0);
-};
-
 const mapStateToProps = (state, props) => {
   const studentDraft = state.studentDraft[0];
   const studentActivity = state.studentActivities[0];
   const hasStartedReflectionQuestions =
     studentDraft && !!state.reflectionAnswers.some(answer => answer.studentDraftId === studentDraft.studentDraftId);
-  const draftIsEmpty = studentDraft && studentDraft.paper ? getDraftIsEmpty(studentDraft.paper) : true;
 
   return {
     studentDraft,
     activityId: props.params.activityId,
-    studentActivityId: studentActivity.studentActivityId.trim(),
+    studentActivityId: studentActivity.studentActivityId,
     hasStartedReflectionQuestions,
-    saveDraftMessage: state.messaging.saveDraft,
-    draftIsEmpty,
-    getDraftIsEmpty
+    saveDraftMessage: state.messaging.saveDraft
   };
 };
 

@@ -9,7 +9,7 @@ export const SET_REFLECTION_ANSWERS = requestStates('set_reflection_answers');
 export default (state = [], action) => {
   switch (action.type) {
     case GET_REFLECTION_ANSWERS.SUCCESS: {
-      return reducerMerge(state, action.result, 'studentReflectionAnswerId');
+      return action.result;
     }
 
     case SET_REFLECTION_ANSWERS.SUCCESS: {

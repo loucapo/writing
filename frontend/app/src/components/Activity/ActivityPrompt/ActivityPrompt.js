@@ -10,13 +10,15 @@ class ActivityPrompt extends Component {
     editable: false
   };
 
-  toggleEditable = () => {
+  toggleEditable = (e) => {
+    e.stopPropagation();
     this.setState({
       editable: !this.state.editable
     });
   };
 
-  handleCancel = () => {
+  handleCancel = (e) => {
+    e.stopPropagation();
     this.setState({
       editable: false,
       prompt: this.props.prompt || null
@@ -58,16 +60,6 @@ class ActivityPrompt extends Component {
                     className={styles.icon}
                     title="edit"
                     type="edit"
-                    width="18"
-                    height="19"
-                    viewBox="0 0 24 24"
-                  />
-                </a>
-                <a data-id="prompt-delete">
-                  <MLIcon
-                    className={styles.icon}
-                    title="trash"
-                    type="trash"
                     width="18"
                     height="19"
                     viewBox="0 0 24 24"

@@ -1,8 +1,8 @@
 @import 'variables.css';
 
 .header {
-  background-color: var(--white);
-  padding: 20px;
+  background-color: var(--header-background-blue);
+  padding: 15px 80px;
 }
 
 .headerContainer {
@@ -11,12 +11,6 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
-}
-
-.draftLink {
-  text-decoration: none;
-  cursor: pointer;
-  color: var(--aqua);
 }
 
 .flex {

@@ -1,5 +1,5 @@
-@WRITE-96
 Feature: Student Views Activity
+  @WRITE-96
   @db=reset
   Scenario: Student Launches into Activity with No Rubric Selected
     Given I launch the activity as a "student"
@@ -12,6 +12,7 @@ Feature: Student Views Activity
     And Changing to using page "student_summary"
     Then the text of "start_draft_enabled" should be "Start Final Paper"
 
+  @WRITE-96
   @db=reset
   Scenario: Student Does Not See Instructer Options
     Given I launch the activity as a "student"
@@ -27,6 +28,7 @@ Feature: Student Views Activity
     Then I wait until there are 0 "student_preview"
 
   #student draft note missing for some reason, bug?
+  @WRITE-96
   @db=reset
   Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as an "instructor"
@@ -45,4 +47,27 @@ Feature: Student Views Activity
     #Then the text of "student_draft_note" should be "You will be able to view and start this draft once you've received feedback on Draft 1"
     Then the text of "start_draft_enabled" should be "Start Draft 1"
     Then I wait until there are 1 "start_final_paper_disabled"
+
+  @WRITE-545
+  @db=reset
+  Scenario: Student Collapses Student Cards
+    Given I launch the activity as an "instructor"
+    When I click "add_draft_button"
+    When I click "rubric.dropdown"
+    When I click "rubric.dropdown_option(2)"
+    And I click "activity_prompt.edit"
+    And I type "hello world" in "activity_prompt.edit_area"
+    And I click "activity_prompt.save"
+    Given I launch the activity as a "student"
+    And Changing to using page "instructor_summary"
+    And I click "draft_card(1)"
+    And I click "draft_card(2)"
+    And I click "final_rubric_card"
+    And I click "activity_prompt_card"
+    Then I wait until there are 0 "draft.draft_instructions"
+    Then I wait until there are 0 "rubric.preview"
+    Then I wait until there are 0 "activity_prompt.description"
+    And Changing to using page "student_summary"
+    Then I wait until there are 0 "student_draft_note"
+
 

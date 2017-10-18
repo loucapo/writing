@@ -7,11 +7,13 @@ Feature: Student Launches Draft
     When I click "add_draft_button"
 
   #Test shows user effectively doesn't change page
+  @WRITE-1451
   Scenario: Student Sees Start Draft Elements
     Given I launch the activity as an "student"
-    Then I wait until there is 2 "start_draft" visible
+    Then I wait until there is 3 "start_draft" visible
     Then I wait until there is 1 "start_draft_disabled" visible
     And the text of "start_draft_disabled" should be "Start Final Paper"
+    And the text of "student_draft_note" should be "You will be able to view and start this draft once you've received and viewed feedback on Draft 1"
 
   #Test shows user effectively doesn't change page
   Scenario: Student Launches Draft 1

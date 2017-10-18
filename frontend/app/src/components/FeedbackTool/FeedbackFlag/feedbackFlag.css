@@ -7,7 +7,7 @@
   color: var(--black);
   border-radius: 3px;
   font-size: 14px;
-  border: 1px solid var(--yellow-light);
+  border: 1px solid var(--yellow-medium);
   background: #fff;
   right: 0;
   user-select: none;
@@ -54,7 +54,7 @@
 }
 
 .commentIcon {
-  fill: var(--yellow-light);
+  fill: var(--yellow-medium);
   margin-top: 8px;
   margin-left: 8px;
 }
@@ -84,7 +84,7 @@
 }
   
 .triangleOutline {
-  stroke: var(--yellow-light);
+  stroke: var(--yellow-medium);
 }
 
 .flagGreen .triangleOutline {
@@ -103,6 +103,11 @@
 .predefined {
   font-weight: bold;
   padding-bottom: 10px;
+  white-space: pre-wrap;
+}
+
+.feedbackContent {
+  white-space: pre-wrap;
 }
 
 .feedbackFlagMenu {

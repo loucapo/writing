@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { MLCard } from '../../MLComponents';
 import { FeedbackDisplayHeader, FeedbackFlags } from '../index.js';
 import { RubricDisplayContainer } from '../../../containers';
+import { reflectionQuestionsConfig } from '../../../utilities/reflectionQuestions';
 import styles from './feedbackDisplay.css';
 
 const FeedbackDisplay = ({
@@ -41,7 +43,11 @@ const FeedbackDisplay = ({
           <span className={styles.finalGradeLabel}>Instructor did not select a final score</span>
           : null
         }
-        {studentDraft.endComment ? <span>{studentDraft.endComment}</span> : <span>No end comment added.</span>}
+        {studentDraft.endComment ?
+          <span className={styles.endComment}>
+            {studentDraft.endComment}
+          </span>
+          : <span>No end comment added.</span>}
       </MLCard>
 
       <MLCard type="draft" title={draftTitle}>
@@ -56,12 +62,15 @@ const FeedbackDisplay = ({
 
       <MLCard type="reflection" title="Reflection">
         <div>
-          {reflectionQuestions.map(reflection => (
-            <p key={reflection.questionId}>
-              <strong>{reflection.question}</strong><br />
-              {reflection.answer}
-            </p>
-          ))}
+          {reflectionQuestions.map(reflection => {
+            const reflectionText = reflection.questionType === 'agree/disagree' && _.get(_.find(reflectionQuestionsConfig.labels, {value: reflection.answer}), 'text');
+            return(
+              <p key={reflection.questionId}>
+                <strong>{reflection.question}</strong><br />
+                {reflectionText || reflection.answer}
+              </p>
+            );
+          })}
         </div>
       </MLCard>
 

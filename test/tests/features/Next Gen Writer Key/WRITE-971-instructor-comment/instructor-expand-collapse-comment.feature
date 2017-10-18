@@ -22,6 +22,7 @@ Feature: Instructor Expand and Collapse Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     And I click "add_open_comments_button"
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
@@ -33,9 +34,7 @@ Feature: Instructor Expand and Collapse Comment
   @WRITE-1198
   Scenario: The Instructor Clicks On Collapsed Comment
     Given I launch the activity as an "instructor"
-    Then I sleep for 1 seconds
     And I click "student_submissions"
-    Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I click "feedback_flag"
@@ -49,7 +48,6 @@ Feature: Instructor Expand and Collapse Comment
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I click "feedback_flag"
-    And I sleep for 1 seconds
     And I click "feedback_flag_title_text"
     Then I wait until there is 1 "feedback_flag_title_text" visible
     Then I wait until there is 0 "feedback_flag_content" visible
@@ -57,9 +55,7 @@ Feature: Instructor Expand and Collapse Comment
   @WRITE-1198
   Scenario: The Instructor Clicks On Outside Space of Expanded Comment
     Given I launch the activity as an "instructor"
-    Then I sleep for 1 seconds    
     And I click "student_submissions"
-    Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
     And I click "feedback_flag"

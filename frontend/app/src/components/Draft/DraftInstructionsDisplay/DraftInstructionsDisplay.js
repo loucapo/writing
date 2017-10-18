@@ -12,7 +12,7 @@ const DraftInstructionsDisplay = ({ instructions }) => {
       <div data-id="draft-instructions" className={styles.addDraftHeading}>
         <span>Draft Instructions</span>
       </div>
-      <div>
+      <div className={styles.instructions}>
         {instructions}
       </div>
     </div>

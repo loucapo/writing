@@ -37,7 +37,7 @@ const mapStateToProps = (state, props) => {
   let feedback = state.feedback.map(item => {
     // Grabs feedback titles and predefined comments
     if (item.editingMarkId && state.editingMarks) {
-      let editingMark = state.editingMarks.find(mark => mark.id === item.editingMarkId);
+      let editingMark = state.editingMarks.find(mark => mark.editingMarkId === item.editingMarkId);
       if (editingMark) {
         item.title = editingMark.title;
         item.predefined = editingMark.description;

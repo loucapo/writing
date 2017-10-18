@@ -23,6 +23,7 @@ WHERE draft_id = :draftId;
 SELECT *
 FROM draft
 WHERE activity_id = :activityId
+AND deleted_date is null
 ORDER BY index
 
 -- name: addGoalToDraft
@@ -44,8 +45,12 @@ SELECT * FROM draft2goal
 -- name: getDraftStudentReflectionQuestions
 SELECT * FROM draft_student_reflection_question
 
--- name: removeDraftFromActivity
-DELETE from draft WHERE draft_id = :draftId
+-- name: deleteDraft
+UPDATE draft
+SET
+    deleted_date = :deletedDate,
+    deleted_by_id = :deletedById
+WHERE draft_id = :draftId;
 
 -- name: removeAllGoals
 DELETE FROM draft2goal

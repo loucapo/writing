@@ -51,25 +51,28 @@ const mapStateToProps = (state, props) => {
   let draft;
   if (props.studentDraft) {
     draft = state.drafts.find(
-      x => x.draftId === props.studentDraft.draftId
+      draftInState => draftInState.draftId === props.studentDraft.draftId
     );
   }
 
-  let newRubric;
+  let rubric;
   if (activity.rubricId) {
-    let rubric = state.rubric.find(x => x.rubricId === activity.rubricId);
-    if (rubric && rubric.criteria) {
-      newRubric = {...rubric};
-      newRubric.criteria = rubric.criteria.map(x => state.criteria.find(y => y.criteriaId === x));
+    const currentRubric = state.rubric.find(rubricInState => rubricInState.rubricId === activity.rubricId);
+    if (currentRubric && currentRubric.criteria) {
+      rubric = {...currentRubric};
+      rubric.criteria = currentRubric.criteria.map(criteriaId =>
+        state.criteria.find(criteria => criteria.criteriaId === criteriaId)
+      );
     }
   }
 
   let reflectionQuestions = [];
   let goals = [];
   if (draft) {
-    draft.studentReflectionQuestions.forEach(x => {
-      let item = state.reflectionQuestions
-        .find(y => y.studentReflectionQuestionId === x);
+    draft.studentReflectionQuestions.forEach(questionId => {
+      let item = state.reflectionQuestions.find(
+        question => question.studentReflectionQuestionId === questionId
+      );
       if (item) {
         reflectionQuestions.push(item);
       }
@@ -81,14 +84,21 @@ const mapStateToProps = (state, props) => {
     }) : [];
   }
 
+  const draftDetails = (draft && draft.instructions && draft.instructions !== '') || goals.length > 0 || reflectionQuestions.length > 0;
+
+  const promptIsNotEmpty = activity && activity.prompt && _.find(activity.prompt.blocks, block => _.get(block, 'text.length') > 0);
+
   return {
-    activity,
+    activityPrompt: activity && activity.prompt,
+    promptIsNotEmpty,
+    draftInstructions: draft && draft.instructions,
     draft,
-    newRubric,
+    rubric,
     reflectionQuestions,
     goals,
     lastDraftWithFeedback,
-    homeRoute: state.defaults.homeRoute
+    homeRoute: state.defaults.homeRoute,
+    draftDetails
   };
 };
 

@@ -4,21 +4,32 @@ import MLIcon from 'ml-react-cdl-icons';
 
 import styles from './heading.css';
 
-const Heading = ({disabled, type, title, children}) => {
+const Heading = ({disabled, type, title, children, handleClick, collapsed}) => {
   let disabledClass = (disabled) ? ` ${styles.collapseIconDisabled}` : '';
   let iconClass = `${styles.collapseIcon}${disabledClass}`;
 
   return (
-    <h1 className={styles.heading} data-id={`${type}-section`}>
+    <h1 className={styles.heading} data-id={`${type}-section`} onClick={handleClick}>
       <span>
-        <MLIcon
-          className={iconClass}
-          title="minus"
-          type="minus"
-          width="12"
-          height="12"
-          viewBox="0 0 24 24"
-        />
+        {collapsed
+          ? <MLIcon
+            className={iconClass}
+            title="plus"
+            type="plus"
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+          />
+          : <MLIcon
+            className={iconClass}
+            title="minus"
+            type="minus"
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+          />
+        }
+
         <span className={styles.headingText}>
           {title}
         </span>
@@ -32,7 +43,9 @@ Heading.propTypes = {
   title: PropTypes.string,
   options: PropTypes.object,
   children: PropTypes.object,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  handleClick: PropTypes.func,
+  collapsed: PropTypes.bool
 };
 
 export default Heading;

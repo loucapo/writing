@@ -2,19 +2,29 @@
 
 .header {
   align-items: center;
-  background-color: var(--white);
-  color: var(--blue-light);
+  background-color: var(--header-background-blue);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 15px 80px;
+  min-height: 36px;
+  position: fixed;
+  margin-top: -66px;
+  width: calc(100% - 480px);
 }
 
 .headerContainer {
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  padding: 15px 80px;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
 }
 
 .headerRight {

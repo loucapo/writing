@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import { MLCard } from '../../MLComponents';
 import { FeedbackToolHeader, EndComment, FinalGrade } from '../index';
 import { FeedbackEditorContainer, RubricContainer } from '../../../containers';
+import { reflectionQuestionsConfig } from '../../../utilities/reflectionQuestions';
 import styles from './feedbackTool.css';
 
 const FeedbackTool = ({
@@ -11,7 +13,6 @@ const FeedbackTool = ({
   homeRoute,
   draft,
   draftTitle,
-  instructorName,
   submitEndComment,
   submitFinalGrade,
   rubricId,
@@ -23,19 +24,22 @@ const FeedbackTool = ({
   <div className={styles.page}>
     <FeedbackToolHeader
       homeRoute={homeRoute}
+      draftId={draft.draftId}
       draftTitle={draftTitle}
       submittedDate={studentDraft.submittedDate}
-      instructorName={instructorName}
     />
     <div className={styles.container}>
       <MLCard type="reflection" title="Reflection">
         <div>
-          {reflectionQuestions.map(reflection => (
-            <p key={reflection.questionId}>
-              <strong>{reflection.question}</strong><br />
-              {reflection.answer}
-            </p>
-          ))}
+          {reflectionQuestions.map(reflection => {
+            const reflectionText = reflection.questionType === 'agree/disagree' && _.get(_.find(reflectionQuestionsConfig.labels, {value: reflection.answer}), 'text');
+            return (
+              <p key={reflection.questionId}>
+                <strong>{reflection.question}</strong><br />
+                {reflectionText || reflection.answer}
+              </p>
+            );
+          })}
         </div>
       </MLCard>
       <MLCard type="draft" title={draftTitle}>
@@ -58,12 +62,14 @@ const FeedbackTool = ({
         />
         : null
       }
-      <EndComment
-        studentActivityId={studentDraft.studentActivityId}
-        studentDraftId={studentDraft.studentDraftId}
-        submitEndComment={submitEndComment}
-        endComment={studentDraft.endComment}
-      />
+      <MLCard type="end-comment" title="End Comment (optional)">
+        <EndComment
+          studentActivityId={studentDraft.studentActivityId}
+          studentDraftId={studentDraft.studentDraftId}
+          submitEndComment={submitEndComment}
+          endComment={studentDraft.endComment}
+        />
+      </MLCard>
       { (rubricId && rubricId !== '0000' && lastDraft) ?
         <MLCard type="rubric" title="Final Rubric Evaluation">
           <RubricContainer
@@ -83,7 +89,6 @@ FeedbackTool.propTypes = {
   reflectionQuestions: PropTypes.array,
   draft: PropTypes.object,
   draftTitle: PropTypes.string,
-  instructorName: PropTypes.string,
   submitEndComment: PropTypes.func,
   submitFinalGrade: PropTypes.func,
   rubricId: PropTypes.string,

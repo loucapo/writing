@@ -28,6 +28,7 @@ Feature: Instructor Can Right Click To Add Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     When I right click "student_submitted_draft_text"
     Then I wait until there is 1 "right_click_add_open_comments_button" visible
@@ -41,7 +42,7 @@ Feature: Instructor Can Right Click To Add Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    Then I sleep for 2 seconds
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     When I right click "student_submitted_draft_text"
     And I click "right_click_add_open_comments_button"
@@ -53,6 +54,7 @@ Feature: Instructor Can Right Click To Add Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     When I right click "student_submitted_draft_text"
     And I click "right_click_cancel_comment_button"

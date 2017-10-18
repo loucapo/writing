@@ -22,6 +22,7 @@ Feature: Instructor Delete Comment
     And I click "student_submissions"
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
+    Then I wait until there is 1 "student_submitted_draft_text" visible
     When I select text from "Happy" to "Key!" in "student_submitted_draft_text"
     And I click "add_open_comments_button"
     Then I wait until there is 1 "comment_modal.add_comment_textarea" visible
@@ -66,4 +67,4 @@ Feature: Instructor Delete Comment
     And I click "feedback_flag"
     And I click "feedback_flag_more_button"
     And I click "comment_delete_option"
-    Then I wait until there is 0 "feedback_flag" visible
+    Then I wait until there is 0 "feedback_flag"

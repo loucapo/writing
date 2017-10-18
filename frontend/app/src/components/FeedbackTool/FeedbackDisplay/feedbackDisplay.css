@@ -9,6 +9,7 @@
 .container {
   flex: 1;
   overflow-y: auto;
+  overflow-y: overlay;
   padding: 30px 80px;
 }
 
@@ -32,4 +33,10 @@
   flex: 1;
   overflow: visible;
   width: 75%;
+  word-wrap: break-word;
+}
+
+.endComment {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }

@@ -26,6 +26,7 @@ const FeedbackDisplayHeader = ({ backLink, backText, linkableDrafts }) => (
     </div>
     <div className={styles.rightContainer}>
       {linkableDrafts.map(draft => {
+        const feedbackAvailable = draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed';
         let link = `/activity/${draft.activityId}/draft/${draft.draftId}`;
         if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
           link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
@@ -38,8 +39,9 @@ const FeedbackDisplayHeader = ({ backLink, backText, linkableDrafts }) => (
             title={draft.studentInfo.buttonText}
             dataId={draft.studentInfo.buttonText}
             disabled={draft.studentInfo.disabled}
-            bordered={draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed'}
+            bordered={feedbackAvailable}
             link={link}
+            color={feedbackAvailable ? 'white' : ''}
           />
         );
       })}

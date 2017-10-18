@@ -4,6 +4,10 @@
   fill: var(--aqua);
 }
 
+.iconDisabled {
+  fill: var(--gray-light);
+}
+
 .draftType, .draftDetails {
   display: flex;
   padding: 15px 20px;
@@ -35,7 +39,8 @@
 }
 
 .draftNote {
-  margin-top: 40px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .studentReviewType {
@@ -44,4 +49,8 @@
 
 .studentNote {
   font-style: italic;
+}
+
+.deleteButton[disabled] {
+  cursor: auto;
 }

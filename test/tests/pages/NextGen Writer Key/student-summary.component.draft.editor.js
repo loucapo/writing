@@ -85,6 +85,10 @@ class DraftEditor extends Component {
         desc: `Done, Start Reflection button`,
         locator: `[data-id='start-reflection']`
       },
+      flash_message: {
+        desc: `Display for save + status type information`,
+        locator: `[data-id='message']`
+      },
       leave_page_alert: {
         desc: `Alert that appears when student tries to navigate away from page with unsaved work`,
         locator: `[class*='MLDialog__alert_container_show']`
@@ -130,7 +134,3 @@ class DraftEditor extends Component {
 }
 
 module.exports = DraftEditor;
-
-
-
-

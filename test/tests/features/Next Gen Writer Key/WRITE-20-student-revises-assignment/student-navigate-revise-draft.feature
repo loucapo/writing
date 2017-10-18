@@ -1,4 +1,5 @@
 @WRITE-68
+@WRITE-1451
 Feature: Student Navigate Draft Screens
   @db=reset
   Scenario: Instructor Sets Up Student Reflection Environment
@@ -28,9 +29,17 @@ Feature: Student Navigate Draft Screens
 
   Scenario: Student Sees View Previous Draft Link
     Given I launch the activity as a "student"
+    And the text of "student_draft_note" should be "You will be able to view and start this draft once you've received and viewed feedback on Draft 1"
     And I click "view_feedback_button"
+    Then I wait until there is 1 "start_final_paper" visible
+    Then I sleep for 2 seconds
     And I click "start_final_paper"
     Then I wait until there is 1 "draft_editor.view_previous_draft_link" visible
+
+  Scenario: Student Sees Correct UX for Starting Next Draft After Viewing Feedback
+    Given I launch the activity as a "student"
+    Then I wait until there are 0 "student_draft_note"
+    Then I wait until there is 2 "start_final_paper" visible
 
   Scenario: Student Leaves Work Without Saving
     Given I launch the activity as a "student"
@@ -59,4 +68,5 @@ Feature: Student Navigate Draft Screens
     Then I wait until there are 1 "student_read_only_feedback.instructor_end_comment"
     Then the text of "student_read_only_feedback.start_next_draft" should be "Return to Final Paper"
     And the text of "student_read_only_feedback.submitted_draft_paper" should be "Happy birthday Writer Key!"
-    
+
+

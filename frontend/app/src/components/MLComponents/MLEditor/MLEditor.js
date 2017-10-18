@@ -10,8 +10,9 @@ class MLEditor extends Component {
     editorState: null
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.createOrUpdateEditorState(this.props.content);
+    this.refs.editor.focusEditor();
   };
 
   componentWillReceiveProps = newProps => {
@@ -62,6 +63,8 @@ class MLEditor extends Component {
   };
 
   render = () => {
+    const editableClass = this.props.editable ? styles.border : '';
+    const editorTypeClass = this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor;
     return (
       <Editor
         onBlur={this.handleBlur}
@@ -71,7 +74,7 @@ class MLEditor extends Component {
         toolbar={this.props.toolbarHidden}
         ref="editor"
         toolbarOnFocus={!this.props.editable}
-        editorClassName={this.props.onFeedbackEditor ? styles.feedbackEditor : styles.editor}
+        editorClassName={`${editorTypeClass} ${editableClass}`}
         wrapperClassName={styles.editorWrapper}
         toolbarClassName={this.props.toolbarHidden ? styles.toolbarHide : styles.toolbar}
       />

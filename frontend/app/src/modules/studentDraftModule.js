@@ -49,8 +49,12 @@ export default (state = [], action) => {
       });
     }
     case UPDATE_REVIEW_STATUS.SUCCESS: {
-      state[0].reviewStatus = action.result.key;
-      return state;
+      const studentDraftId = action.action.studentDraftId;
+      return state.map(studentDraft => {
+        return studentDraft.studentDraftId === studentDraftId
+          ? {...studentDraft, reviewStatus: action.result.key}
+          : studentDraft;
+      });
     }
     case SUBMIT_DRAFT_END_COMMENT.SUCCESS: {
       const body = JSON.parse(action.action.params.body);

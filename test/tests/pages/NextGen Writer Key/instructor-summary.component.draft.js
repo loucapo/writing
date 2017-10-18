@@ -27,8 +27,7 @@ class Draft extends Component {
       },
       saved_draft_goal: {
         desc: `draft goals list after instructor has added draft goals`,
-        locator: `//*[@data-id='drafts-goal-list']/li[not(./a[@data-id='add-draft-goal'])]`,
-        type: 'xpath'
+        locator: `ul[data-id='drafts-goal-list'] li[data-id='draft-goal-label']`
       },
       edit_reflections: {
         desc: `pencil icon to edit reflection questions`,
@@ -92,12 +91,10 @@ class Draft extends Component {
       },
       draft_note: {
         desc: `Text block per draft describing necessary preconditions to start work on this particular draft`,
-        locator: "//*[starts-with(@class,'Draft__draftNote__')]",
-        type: 'xpath'
+        locator: `[class^='Draft__draftNote__']`
       }
     };
   }
 }
 
 module.exports = Draft;
-

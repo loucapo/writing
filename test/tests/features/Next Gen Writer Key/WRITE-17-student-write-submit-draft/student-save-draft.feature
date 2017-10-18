@@ -20,7 +20,7 @@ Feature: Student Saves Work
     #Then I wait until there is 1 "draft_save_confirmation" visible
     Then I wait until there is 1 "draft_editor.saved_draft_alert" visible
     Given I launch the activity as a "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     Then the text of "draft_editor.draft_area" should be "happy"
 
   #Dunno how to blow this up yet
@@ -35,7 +35,7 @@ Feature: Student Saves Work
   Scenario: Student Sees Return To Draft Button
     Given I launch the activity as a "student"
     Then I sleep for 1 seconds
-    Then the text of "start_draft" should be "Return to Final Paper"
+    Then the text of "return_to_final_draft" should be "Return to Final Paper"
 
   Scenario: Instructor Sets Up Reflection Questions
     Given I launch the activity as an "instructor"
@@ -46,14 +46,14 @@ Feature: Student Saves Work
 
   Scenario: Student Has Enabled Save Button in Reflection Page
     Given I launch the activity as a "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     And I type "very " in "draft_editor.draft_area"
     And I click "draft_editor.start_reflection"
     Then I wait until there is 1 "student_reflection_questions.reflection_button_submit_disabled" visible
 
   Scenario: Student Saves in Reflection Page
     Given I launch the activity as a "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     And I click "draft_editor.start_reflection"
     And I type "yay" in "student_reflection_questions.student_reflection_text"
     And I click "student_reflection_questions.reflection_polls_radio_button(1)"

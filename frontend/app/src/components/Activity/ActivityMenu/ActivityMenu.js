@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import {
   DraftListContainer
 } from './../../../containers/index';
-
-import { SubmissionStatusContainer } from './../../../containers';
+import {SubmissionStatus} from './../../SubmissionStatus';
 
 import styles from './activityMenu.css';
 
 class ActivityMenu extends Component {
   state = {
-    display: this.props.display || 'drafts'
+    currentDraft: this.props.currentDraft,
+    display: this.props.currentDraft ? 'submissions' : 'drafts'
   };
 
   toggleSelection = (selection) => {
@@ -35,15 +35,23 @@ class ActivityMenu extends Component {
         </nav>
 
         <div className={styles.spacer}>
-          {(display === 'drafts')
-          ? <DraftListContainer activityId={this.props.activityId} />
-          : null}
+          {(display === 'drafts') ?
+            <DraftListContainer
+              drafts={this.props.drafts}
+              activityId={this.props.activityId}
+            />
+            : null
+          }
         </div>
 
         <div className={styles.spacer}>
-          {(display === 'submissions')
-            ? <SubmissionStatusContainer />
-            : null}
+          {(display === 'submissions') ?
+            <SubmissionStatus
+              drafts={this.props.drafts}
+              currentDraft={this.props.currentDraft}
+            />
+            : null
+          }
         </div>
       </div>
     );
@@ -53,7 +61,8 @@ class ActivityMenu extends Component {
 ActivityMenu.propTypes = {
   draftCount: PropTypes.number,
   activityId: PropTypes.string,
-  display: PropTypes.string
+  drafts: PropTypes.array,
+  currentDraft: PropTypes.string
 };
 
 

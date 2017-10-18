@@ -28,7 +28,6 @@ const ActivityRubricSelector = ({ rubricId, activityId, rubricOptions, updateAct
               openDataId="rubric-selection-open"
             />
           </div>
-          <a data-id="create-rubric" href="#">Create Custom Rubric</a>
         </div>
 
         <RubricDisplayContainer />

@@ -56,8 +56,8 @@ Feature: Add Another Draft To Activity
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
     Then I wait until there are 2 "draft_card" visible
-    And the text of "draft.draft_note(1)" should be ""
-    And the text of "draft.draft_note(2)" should be "Students can view and start this draft once they've received feedback for Draft 1"
+    And I wait until there is 0 "draft(1).draft_note"
+    And the text of "draft(2).draft_note" should be "Students can view and start this draft once they've received feedback for Draft 1"
 
   @WRITE-27
   @db=reset
@@ -242,4 +242,5 @@ Feature: Add Another Draft To Activity
     Then I wait until there is 1 "draft_card" visible
     Then the text of "draft.draft_instructions" should be "Ax1"
     Then the text of "draft.title" should be "Final Paper"
-    Then I wait until there are 0 "draft.delete_button" visible
+    Then I wait until there is 1 "draft.delete_button" visible
+    Then "draft.delete_button" should be disabled

@@ -110,11 +110,18 @@ exports.define = function(steps) {
 
   const isViz = el => el.isDisplayed().then(bool => bool);
 
-  steps.given(/I launch the activity as a[n]? "(.+)"/, function(user, done) {
+  const isDisabled = el => {
+    return el.getAttribute('disabled').then((attributeValue) => {
+      return !!attributeValue;
+    });
+  }
+
+  steps.given(/I launch the activity as a[n]? "(.+)"/, async function(user) {
     driver.get(marvin.config.baseUrl + '/' + user);
     if (user === 'student') { page = pages.student_summary; }
     if (user === 'instructor') { page = pages.instructor_summary; }
-    done();
+    await driver.sleep(2000);
+
   });
 
   steps.when(/Changing to using page "(.+)"/, function(newPage, done) {
@@ -201,6 +208,13 @@ exports.define = function(steps) {
       .then(actualText => actualText.should.have.string(text));
   });
 
+  // NOTE that this is an INCLUDES match, not an IS.
+  steps.then(/the text of "(.*)" should not include "(.*)"/, (elem, text) => {
+    return polocToElem(elem)
+      .then(el => el.getText())
+      .then(actualText => actualText.should.not.have.string(text));
+  });
+
   steps.then('I should see a fresh assignment', function() {
     // FIXME: do it
     console.log('TODO check a fresh assignment');
@@ -257,7 +271,7 @@ exports.define = function(steps) {
                                        `return rangySelectStartTextToEndText("${startText}", "${endText}", "${selector}");`]);
     /*eslint-enable indent */
   }
-  
+
   steps.when(/I select "(.*)" text/, async function(element) {
     let pageObject = await polocToPO(element);
     return await selectStartTextToEndText(0, 0, pageObject.locator);
@@ -296,6 +310,14 @@ exports.define = function(steps) {
         .click(el, selenium.Button["RIGHT"])
         .perform();
 
+    });
+  });
+
+  steps.then(/"(.+)" should be disabled/, (element) => {
+    return polocToElem(element).then(el => {
+      return isDisabled(el).then(isDisabled => {
+        return expect(isDisabled).to.equal(true);
+      });
     });
   });
 };

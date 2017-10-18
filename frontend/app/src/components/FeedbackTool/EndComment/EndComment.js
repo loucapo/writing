@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { MLCard, MLButton } from '../../MLComponents';
+import { MLButton } from '../../MLComponents';
 import styles from './endComment.css';
 
 class EndComment extends Component {
@@ -20,14 +20,13 @@ class EndComment extends Component {
 
   render() {
     return (
-      <MLCard type="end-comment" title="End Comment (optional)">
-        {this.props.endComment ?
-          <span>{this.props.endComment}</span>
-        :
-          <div className={styles.addComment}>
-            <textarea onChange={this.handleChange} placeholder="Add comment">
-              {this.state.value}
-            </textarea>
+      <div>
+        {this.props.endComment
+          ? <div className={styles.endComment}>
+            {this.props.endComment}
+          </div>
+          : <div className={styles.addComment}>
+            <textarea onChange={this.handleChange} placeholder="Add comment" defaultValue={this.state.value} />
             <MLButton
               className={styles.addCommentButton}
               dataId="add-end-comment"
@@ -36,7 +35,7 @@ class EndComment extends Component {
               disabled={!this.state.value}
             />
           </div>}
-      </MLCard>
+      </div>
     );
   }
 }

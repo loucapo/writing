@@ -80,7 +80,8 @@ const mapStateToProps = (state) => {
       return {
         questionId,
         question: question ? question.question : null,
-        answer: answer ? answer.studentReflectionAnswer : null
+        answer: answer ? answer.studentReflectionAnswer : null,
+        questionType: question ? question.questionType : null
       };
     });
   }
@@ -91,7 +92,6 @@ const mapStateToProps = (state) => {
     homeRoute: state.defaults.homeRoute,
     draft,
     draftTitle,
-    instructorName: `${state.auth.firstName} ${state.auth.lastName}`,
     rubricId,
     lastDraft
   };

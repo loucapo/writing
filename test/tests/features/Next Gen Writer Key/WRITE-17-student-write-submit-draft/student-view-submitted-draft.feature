@@ -17,7 +17,7 @@ Feature: Student Views Submitted Draft
     And I click "student_reflection_questions.reflection_polls_radio_button(1)"
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
-    Then I wait until there is 1 "view_final_draft_button" visible
+    Then I wait until there is 2 "view_final_draft_button" visible
     When I click "view_final_draft_button"
     Then I wait until there is 1 "student_read_only.submitted_message" visible
     Then the text of "student_read_only.submitted_draft_text" should be "Cookies are the best dessert known to man. Round, with the capacity to be topped with all the manner of chocolate or candy, it's the perfect treat no matter how young or old one is."
@@ -25,7 +25,7 @@ Feature: Student Views Submitted Draft
 
   Scenario: Student Views Read Only Draft Alt Route
     Given I launch the activity as a "student"
-    When I click "start_draft"
+    When I click "view_final_draft_button"
     Then I wait until there is 1 "student_read_only.submitted_message" visible
     Then the text of "student_read_only.submitted_draft_text" should be "Cookies are the best dessert known to man. Round, with the capacity to be topped with all the manner of chocolate or candy, it's the perfect treat no matter how young or old one is."
     Then the text of "student_read_only.submitted_reflection_question_textarea(1)" should include "yay"
@@ -34,6 +34,4 @@ Feature: Student Views Submitted Draft
     Given I launch the activity as a "student"
     When I click "view_final_draft_button"
     And I click "student_read_only.view_activity_summary_link"
-    Then I wait until there is 1 "view_final_draft_button" visible
-    # Looks like not both of the buttons are in sync (View Final Paper vs. start draft). Text on buttons is the same and functionally works correctly, just data id needs update eventually
-    Then I wait until there is 1 "start_draft" visible
+    Then I wait until there is 2 "view_final_draft_button" visible

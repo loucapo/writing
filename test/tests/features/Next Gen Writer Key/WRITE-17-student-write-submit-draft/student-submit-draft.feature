@@ -14,12 +14,12 @@ Feature: Student Views Reflection Questions
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
     And I click "draft_editor.start_reflection"
     Given I launch the activity as an "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     Then the text of "draft_editor.draft_area" should be "Happy birthday Writer Key!"
 
   Scenario: Student Moves To Reflection Screen
     Given I launch the activity as an "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
     And I click "draft_editor.start_reflection"
     Then I wait until there is 1 "student_reflection_questions.student_reflection_text" visible
@@ -28,7 +28,7 @@ Feature: Student Views Reflection Questions
 
   Scenario: Student Able to Submit
     Given I launch the activity as an "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
     And I click "draft_editor.start_reflection"
     And I type "yay" in "student_reflection_questions.student_reflection_text"
@@ -38,7 +38,7 @@ Feature: Student Views Reflection Questions
 
   Scenario: Student Does Not Submit Draft
     Given I launch the activity as an "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
     And I click "draft_editor.start_reflection"
     And I type "yay" in "student_reflection_questions.student_reflection_text"
@@ -52,14 +52,14 @@ Feature: Student Views Reflection Questions
 
   Scenario: Student Submits Draft
     Given I launch the activity as an "student"
-    When I click "start_draft"
+    When I click "return_to_final_draft"
     And I type "Happy birthday Writer Key!" in "draft_editor.draft_area"
     And I click "draft_editor.start_reflection"
     And I type "yay" in "student_reflection_questions.student_reflection_text"
     And I click "student_reflection_questions.reflection_polls_radio_button(1)"
     And I click "student_reflection_questions.reflection_button_submit_enabled"
     And I click "student_reflection_questions.draft_submit_confirm"
-    Then I wait until there is 1 "view_final_draft_button" visible
+    Then I wait until there is 2 "view_final_draft_button" visible
     Then I wait until there is 1 "success_flash" visible
     Then I wait until there is 1 "draft_submitted_date" visible
 
