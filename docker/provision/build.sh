@@ -3,7 +3,7 @@
 ###########################################
 #
 # This script is used to dynamically build all Docker Images for a project
-#  compose/provision/build.sh <aws profile name> <build plan name> 
+#  compose/provision/build.sh <aws profile name> <build plan name>
 #  This script must be run at the root of a project plan directory
 #
 ###########################################
@@ -19,6 +19,7 @@ echo "Creating the Build artifacts directory"
 rm -rf artifacts
 mkdir -p artifacts
 cp ./docker/docker-compose-deploy.yml artifacts/docker-compose.yml
+cp ./docker/docker-compose-wkdemo.yml artifacts/docker-compose-wkdemo.yml
 cp ./docker/provision/deploy_containers.sh artifacts/deploy_containers.sh
 cp ./docker/provision/deploy.sh artifacts/deploy.sh
 cp ./docker/provision/env_builder.sh artifacts/env_builder.sh

@@ -34,11 +34,6 @@
   fill: var(--aqua);
 }
 
-.helpIcon {
-  fill: var(--blue-dark);
-  margin-left: 10px;
-}
-
 .commentIcon {
   composes: icon;
   margin-right: 5px;

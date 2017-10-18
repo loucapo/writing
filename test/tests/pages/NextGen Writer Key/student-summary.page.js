@@ -25,21 +25,33 @@ exports.StudentSummaryPage = class extends Page {
         desc: `Link to instructor feedback`,
         locator: `[class^='ActivityHeaderDisplay__rightContainer'] a`
       },
+      view_summary_button: {
+        desc: `Link to the activity summary`,
+        locator: `[data-id='header-activity-link']`
+      },
       draft_submission_confirmation_banner: {
         desc: `Green confirmation message for successful draft submission`,
         locator: `[class*='MLMessage__message_success']`
       },
+      return_to_draft: {
+        desc: `Return to an unsubmitted draft`,
+        locator: `[data-id='Return to Draft ']`
+      },
+      return_to_final_draft: {
+        desc: `Return to unsibmitted final draft`,
+        locator: `[data-id='Return to Final Paper']`
+      },
       start_draft: {
         desc: `Start draft button for user to enter drafting tool`,
-        locator: `[data-id='start-draft']`
+        locator: `[data-id^='Start Draft '],[data-id='Start Final Paper']`
       },
       start_draft_enabled: {
         desc: `Start draft button in clickable state`,
-        locator: `[data-id='start-draft']:not([class*='__disabled__'])`
+        locator: `[data-id^='Start Draft ']:not([class*='__disabled__']),[data-id='Start Final Paper']:not([class*='__disabled__'])`
       },
       start_draft_disabled: {
         desc: `Start draft button in grayed out state`,
-        locator: `[data-id='start-draft'][class*='__disabled__']`
+        locator: `[data-id^='Start Draft '][class*='__disabled__'],[data-id='Start Final Paper'][class*='__disabled__']`
       },
       start_final_paper: {
         desc: `Start final paper button in enabled out state`,
@@ -49,8 +61,16 @@ exports.StudentSummaryPage = class extends Page {
         desc: `Start final paper button in disabled state`,
         locator: `[data-id='Start Final Paper'][class*='__disabled__']`
       },
-      view_final_draft_button: {
+      start_final_paper_enabled: {
+        desc: `Start final paper button in disabled state`,
+        locator: `[data-id='Start Final Paper']:not([class*='__disabled__'])`
+      },
+      view_draft_button: {
         desc: `Button to view submitted draft`,
+        locator: `[data-id^='View Draft ']`
+      },
+      view_final_draft_button: {
+        desc: `Button to view submitted final draft`,
         locator: `[data-id='View Final Paper']`
       },
       student_draft_note: {

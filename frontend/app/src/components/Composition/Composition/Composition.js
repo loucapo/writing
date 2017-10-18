@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import _ from 'lodash';
 import { MLEditor, MLMessage } from '../../MLComponents';
-import { CompositionHeader, CompositionDraftDetailsHeader } from '../index';
+import { CompositionHeader } from '../index';
 import { CompositionDraftDetailsContainer } from '../../../containers';
 import styles from './composition.css';
 
@@ -67,36 +67,33 @@ class Composition extends Component {
   render() {
     return (
       <div className={styles.page}>
-        <div className={styles.wrapper}>
-          <div className={styles.subpage}>
-            <CompositionHeader
-              handleSave={this.handleSave}
-              draftIsEmpty={this.draftIsEmpty(this.state.content)}
-              studentDraftId={this.props.studentDraft.studentDraftId}
-              studentActivityId={this.props.studentActivityId}
-              hasStartedReflectionQuestions={this.props.hasStartedReflectionQuestions}
-            />
-            <div className={styles.container}>
-              <div className={styles.alert} data-id="saved-draft-alert">
-                {this.renderSaveMessage()}
-              </div>
-              <MLEditor
-                content={this.props.studentDraft.paper}
-                editable={true}
-                toolbarHidden={false}
-                notifyOnEditorUpdate={this.handleEditorStateChange}
-              />
+        <div className={styles.subpage}>
+          <CompositionHeader
+            handleSave={this.handleSave}
+            draftIsEmpty={this.draftIsEmpty(this.state.content)}
+            studentDraftId={this.props.studentDraft.studentDraftId}
+            studentActivityId={this.props.studentActivityId}
+            hasStartedReflectionQuestions={this.props.hasStartedReflectionQuestions}
+          />
+          <div className={styles.container}>
+            <div className={styles.alert} data-id="saved-draft-alert">
+              {this.renderSaveMessage()}
             </div>
-          </div>
-          <div className={styles.infoColumn}>
-            <CompositionDraftDetailsHeader />
-            <CompositionDraftDetailsContainer
-              activityId={this.props.activityId}
-              studentActivityId={this.props.studentActivityId}
-              studentDraft={this.props.studentDraft}
-              unsavedChanges={this.checkForUnSavedChanges()}
+            <MLEditor
+              content={this.props.studentDraft.paper}
+              editable={true}
+              toolbarHidden={false}
+              notifyOnEditorUpdate={this.handleEditorStateChange}
             />
           </div>
+        </div>
+        <div className={styles.infoColumn}>
+          <CompositionDraftDetailsContainer
+            activityId={this.props.activityId}
+            studentActivityId={this.props.studentActivityId}
+            studentDraft={this.props.studentDraft}
+            unsavedChanges={this.checkForUnSavedChanges()}
+          />
         </div>
       </div>
     );

@@ -41,10 +41,6 @@ describe('<ActivityPrompt />', () => {
     });
   });
 
-  context('when clicking trash button on activity prompt header', () => {
-    //...
-  });
-
   context('when clicking "Click to add prompt" link in an activityPrompt with no content', () => {
     xit('should open the rich text editor', () => {
       emptyPrompt.find('[data-id="add-prompt"]').simulate('click');

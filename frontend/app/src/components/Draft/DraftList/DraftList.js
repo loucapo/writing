@@ -36,9 +36,6 @@ const DraftList = ({
           icon="plus"
           bordered={true}
         />
-        <div className={styles.required}>
-          *Grade type field is required
-        </div>
       </div> {
       drafts.map((draft, idx) => {
         let cardTitle = 'Draft ' + (idx + 1);
@@ -47,9 +44,9 @@ const DraftList = ({
           cardTitle = 'Final Paper';
         }
 
-        let finalInstruct = '';
+        let draftNote;
         if (idx > 0) {
-          finalInstruct = 'Students can view and start this draft once they\'ve received feedback for Draft ' + idx;
+          draftNote = 'Students can view and start this draft once they\'ve received feedback for Draft ' + idx;
         }
         return (
           <Draft
@@ -58,9 +55,8 @@ const DraftList = ({
             totalDrafts={drafts.length}
             key={draft.draftId}
             removeDraft={removeDraft}
-            updateInstructions={updateInstructions}>
-            {finalInstruct}
-          </Draft>
+            updateInstructions={updateInstructions}
+            draftNote={draftNote} />
         );
       })
     }

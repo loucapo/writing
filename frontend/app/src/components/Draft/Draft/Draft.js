@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import MLIcon from 'ml-react-cdl-icons';
 import {
   MLButton,
-  MLDropdown,
   MLCard,
   MLDialog
 } from './../../MLComponents/index';
@@ -28,9 +27,11 @@ class Draft extends Component {
 
   showDialog = (e) => {
     e.stopPropagation();
-    this.setState({
-      showDeleteConfirm: true
-    });
+    if (this.props.totalDrafts > 1) {
+      this.setState({
+        showDeleteConfirm: true
+      });
+    }
   };
 
   closeDialog = confirm => {
@@ -50,23 +51,23 @@ class Draft extends Component {
 
   render() {
     let cardMessage = `Are you sure you want to delete ${this.props.cardTitle}? Once deleted it cannot be restored.`;
+    const deleteEnabled = this.props.totalDrafts > 1;
     return (
       <MLCard
         key={this.props.draft.draftId}
         type="draft"
-        title={this.props.cardTitle} >
-        {this.props.totalDrafts > 1
-            ? <a data-id="draft-delete" onClick={this.showDialog}>
-              <MLIcon
-                className={styles.icon}
-                title="trash"
-                type="trash"
-                width="18"
-                height="19"
-                viewBox="0 0 24 24"
-                />
-            </a>
-            : null }
+        title={this.props.cardTitle}
+      >
+        <a data-id="draft-delete" className={styles.deleteButton} disabled={!deleteEnabled} onClick={this.showDialog}>
+          <MLIcon
+            className={deleteEnabled ? styles.icon : styles.iconDisabled}
+            title="trash"
+            type="trash"
+            width="18"
+            height="19"
+            viewBox="0 0 24 24"
+          />
+        </a>
         <div>
           <MLDialog
             title={'Delete ' + this.props.cardTitle}
@@ -88,19 +89,21 @@ class Draft extends Component {
             />
 
           </MLDialog>
-
+          {this.props.draftNote ?
+            <section>
+              <div className={styles.draftNote}>
+                {this.props.draftNote}
+              </div>
+            </section> : null
+          }
           <section className={styles.draftType}>
-            <div data-id="review-type-dropdown" className={styles.draftTypeLeft} >
-              <div className={styles.subheader}>Review Type</div>
-              <MLDropdown
-                defaultOption={{ id: '0000', value: 'Instructor Review' }}
-                onChange={() => {}}
-                contentDataId="review-type-selection-content"
-                openDataId="review-type-selection-open"
-              />
+            <div data-id="review-type-dropdown" className={styles.draftTypeLeft}>
+              <div className={styles.subheader}>
+                Review Type &nbsp;
+                <span className={styles.studentReviewType}>Instructor Review</span>
+              </div>
             </div>
           </section>
-
           <section className={styles.draftDetails}>
             <DraftGoals draft={this.props.draft} />
 
@@ -111,10 +114,6 @@ class Draft extends Component {
               />
 
               <ReflectionQuestionsSelector draft={this.props.draft} />
-
-              <div className={styles.draftNote}>
-                {this.props.children}
-              </div>
             </div>
           </section>
         </div>
@@ -126,7 +125,7 @@ class Draft extends Component {
 Draft.propTypes = {
   draft: PropTypes.object,
   totalDrafts: PropTypes.number,
-  children: PropTypes.string,
+  draftNote: PropTypes.string,
   cardTitle: PropTypes.string,
   removeDraft: PropTypes.func,
   updateInstructions: PropTypes.func

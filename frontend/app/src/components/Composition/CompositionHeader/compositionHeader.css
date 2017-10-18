@@ -1,22 +1,33 @@
 @import 'variables.css';
 
 .header {
-  background-color: var(--white);
-  padding: 15px 20px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  min-height: 35px;
   align-items: center;
+  background-color: var(--header-background-blue);
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 80px;
+  min-height: 36px;
+  position: fixed;
+  margin-top: -66px;
+  width: calc(100% - 480px);
 }
 
-.header a {
-  text-decoration: none;
-  color: var(--blue-light);
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 80px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 }
 
 .buttonsContainer {
   display: flex;
   justify-content: center;
-  margin-right: 60px;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: center;
 }

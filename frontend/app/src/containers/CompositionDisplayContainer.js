@@ -40,7 +40,8 @@ const mapStateToProps = (state, props) => {
     let question = state.reflectionQuestions.find(x => x.studentReflectionQuestionId === questionId);
     return {
       question: question ? question.question : null,
-      answer: answer ? answer.studentReflectionAnswer : null
+      answer: answer ? answer.studentReflectionAnswer : null,
+      questionType: question ? question.questionType : null
     };
   });
 

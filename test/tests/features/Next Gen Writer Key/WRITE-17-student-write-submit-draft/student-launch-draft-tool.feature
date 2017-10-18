@@ -9,7 +9,7 @@ Feature: Student Launches Draft
   #Test shows user effectively doesn't change page
   Scenario: Student Sees Start Draft Elements
     Given I launch the activity as an "student"
-    Then I wait until there is 2 "start_draft" visible
+    Then I wait until there is 3 "start_draft" visible
     Then I wait until there is 1 "start_draft_disabled" visible
     And the text of "start_draft_disabled" should be "Start Final Paper"
 

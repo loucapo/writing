@@ -8,14 +8,13 @@ const DetailsPanelHeader = () => {
     <header className={styles.header}>
       <MLIcon
         title="activity details"
-        fill="black"
+        fill="white"
         type="info_outline"
         width="36"
         height="36"
         scale={1.2}
         viewBox="0 0 36 36"
-        className="activityDetailsIcon"
-      />
+        className="activityDetailsIcon" />
     </header>
   );
 };

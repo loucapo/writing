@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MLButton } from '../../MLComponents';
+import { MLButton } from '../../MLComponents/index';
 
 import styles from './compositionHeader.css';
 
@@ -20,7 +20,6 @@ const CompositionHeader = ({
           title="Save"
           dataId="save-draft"
           disabled={draftIsEmpty}
-          bordered={true}
         />
         <MLButton
           handleClick={handleSave}
@@ -28,6 +27,7 @@ const CompositionHeader = ({
           title={buttonTitle}
           dataId="start-reflection"
           disabled={draftIsEmpty}
+          color="green"
         />
       </div>
     </header>

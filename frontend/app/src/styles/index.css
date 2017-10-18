@@ -24,8 +24,6 @@ body {
   font-weight: 400;
   margin: 0;
   overflow: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .spacer {

@@ -1,11 +1,5 @@
 @import 'variables.css';
 
-
-.sidePanel {
-  border: 1px solid var(--gray-light);
-  height: 100%;
-}
-
 .padder {
   padding: 20px 12px;
 }

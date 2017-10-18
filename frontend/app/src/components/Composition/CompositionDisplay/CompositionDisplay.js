@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import moment from 'moment';
 import { MLEditor, MLCard, MLMessage } from '../../MLComponents';
 import { CompositionDisplayHeader } from '../index';
+import { reflectionQuestionsConfig } from '../../../utilities/reflectionQuestions';
 import styles from './compositionDisplay.css';
 
 const CompositionDisplay = ({ studentDraft, reflectionQuestions, homeRoute, draftTitle }) => (
@@ -26,12 +28,15 @@ const CompositionDisplay = ({ studentDraft, reflectionQuestions, homeRoute, draf
 
       <MLCard type="reflection" title="Reflection">
         <div>
-          {reflectionQuestions.map((reflection, index) => (
-            <p key={index}>
-              <strong>{reflection.question}</strong><br />
-              {reflection.answer}
-            </p>
-          ))}
+          {reflectionQuestions.map((reflection, index) => {
+            const reflectionText = reflection.questionType === 'agree/disagree' && _.get(_.find(reflectionQuestionsConfig.labels, {value: reflection.answer}), 'text');
+            return (
+              <p key={index}>
+                <strong>{reflection.question}</strong><br />
+                {reflectionText || reflection.answer}
+              </p>
+            );
+          })}
         </div>
       </MLCard>
     </div>

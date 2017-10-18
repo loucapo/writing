@@ -41,7 +41,7 @@ class FeedbackEditor extends Component {
     }
   };
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     document.body.addEventListener('contextmenu', this.handleRightClick.bind(this));
   };
 
@@ -81,22 +81,43 @@ class FeedbackEditor extends Component {
     });
 
     // Grab position of selected text
-    let selected = document.querySelector(`.${styles.selected}`);
+    let selecteds = Array.from(document.querySelectorAll(`.${styles.selected}`));
+    let selectedParent = document.querySelector(`.${styles.feedbackEditorWrapper}`);
+    // find upper and lowermost selected
+    let firstSelected = null;
+    let lastSelected = null;
+    let firstSelectedRect = null;
+    let lastSelectedRect = null;
+    selecteds.map(selected => {
+      if (firstSelected === null || (selected.y < firstSelected.y)) {
+        firstSelected = selected;
+      }
+      if (lastSelected === null || (selected.y > lastSelected.y)) {
+        lastSelected = selected;
+      }
+    });
+    firstSelectedRect = firstSelected.getBoundingClientRect();
+    lastSelectedRect = lastSelected.getBoundingClientRect();
     this.position = {
-      top: selected.offsetTop - 60,
-      left: selected.getBoundingClientRect().left,
-      bottom: selected.getBoundingClientRect().bottom
+      top: firstSelected.offsetTop - 60,
+      left: firstSelectedRect.left,
+      bottom: lastSelectedRect.bottom,
+      y: firstSelectedRect.y,
+      height: lastSelectedRect.y - firstSelectedRect.y + lastSelectedRect.height,
+      parentY: selectedParent.getBoundingClientRect().y
     };
   };
 
   removeSelections = () => {
     let selections = Array.from(document.getElementsByClassName(styles.selected));
-    selections.map(selection => {
+    while (selections.length > 0) {
+      const selection = selections[0];
       selection.parentNode.replaceChild(
         document.createRange().createContextualFragment(selection.innerHTML),
         selection
       );
-    });
+      selections = Array.from(document.getElementsByClassName(styles.selected));
+    }
   };
 
   removeHighlights = (removedFeedbackIds) => {
@@ -133,7 +154,6 @@ class FeedbackEditor extends Component {
     if (selected) {
       e.preventDefault();
       this.position.top += 20;
-
       this.setState({
         showCommentMenu: true,
         showFeedbackMenu: false

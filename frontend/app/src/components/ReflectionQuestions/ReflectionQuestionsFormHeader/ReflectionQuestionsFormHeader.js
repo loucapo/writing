@@ -32,13 +32,13 @@ class Header extends Component {
         <div className={styles.headerContainer}>
           <div className={styles.flex}>
             <div className={styles.linkContainer}>
-              <span
-                onClick={this.checkForUnsavedChanges}
-                data-id="return-to-draft-from-reflection-questions"
-                className={styles.draftLink}
-              >
-                View Draft
-              </span>
+              <MLButton
+                handleClick={this.checkForUnsavedChanges}
+                dataId="return-to-draft-from-reflection-questions"
+                title="View Draft"
+                bordered={true}
+                color="white"
+              />
             </div>
             <MLDialog
               title={'Do you want to leave this page?'}
@@ -63,7 +63,6 @@ class Header extends Component {
             </MLDialog>
             <MLButton title="Save"
               dataId="save-draft"
-              bordered={true}
               disabled={!this.props.questionsHaveBeenBegun}
               handleClick={this.props.handleSave} />
             <MLButton
@@ -71,6 +70,7 @@ class Header extends Component {
               dataId="submit-draft"
               handleClick={this.props.handleSubmit}
               disabled={!this.props.questionsAreComplete}
+              color="green"
             />
           </div>
         </div>

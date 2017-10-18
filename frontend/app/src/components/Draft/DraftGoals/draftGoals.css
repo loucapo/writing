@@ -24,6 +24,7 @@
 }
 
 .goalsList li {
+  align-items: center;
   display: flex;
   border-bottom: 1px solid var(--gray-light);
   padding: 10px;
@@ -37,11 +38,6 @@
 
 .icon {
   fill: var(--aqua);
-}
-
-.helpIcon {
-  fill: var(--blue-dark);
-  margin-left: 10px;
 }
 
 .commentIcon {

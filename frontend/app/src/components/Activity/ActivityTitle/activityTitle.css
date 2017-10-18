@@ -9,6 +9,10 @@
   @apply --font-28;
 }
 
+.titleEdit {
+  margin-left: 10px;
+}
+
 .subheader {
   display: flex;
   justify-content: space-between;
@@ -16,7 +20,8 @@
 }
 
 .editField {
-  width: 100%;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .type {

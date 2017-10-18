@@ -15,21 +15,39 @@ class DraftGoals extends Component {
   };
 
   render() {
+    let goalsList = [];
+
+    if (this.props.draft.goals && this.props.draft.goals.length > 0) {
+      goalsList = this.props.draft.goals.map((title) => (
+        <li data-id="draft-goal-label" key={title}>
+          <MLIcon
+            className={styles.commentIcon}
+            title="comment"
+            type="comment"
+            width="23"
+            height="24"
+            viewBox="0 0 24 24"
+          />
+          {title}
+        </li>
+      ));
+    } else {
+      goalsList.push(<li key="add-draft-goals">
+        <a data-id="add-draft-goal" onClick={this.toggleModal}>
+          Click to Add Draft Goals
+        </a>
+      </li>);
+    }
+
+    while (goalsList.length < 6) {
+      goalsList.push(<li data-id="draft-goal-empty" key={goalsList.length}>&nbsp;</li>);
+    }
+
     return (
       <div className={styles.container}>
         <div className={styles.heading}>
           <div className={styles.title}>
             Draft Goals
-            <span data-id="draft-goal-help">
-              <MLIcon
-                className={styles.helpIcon}
-                title="help"
-                type="help"
-                width="18"
-                height="19"
-                viewBox="0 0 24 24"
-              />
-            </span>
           </div>
 
           <div>
@@ -45,43 +63,11 @@ class DraftGoals extends Component {
                 />
               </a>
             </span>
-            <span data-id="draft-goal-delete">
-              <MLIcon
-                className={styles.icon}
-                title="trash"
-                type="trash"
-                width="18"
-                height="19"
-                viewBox="0 0 24 24"
-              />
-            </span>
           </div>
         </div>
 
         <ul data-id="drafts-goal-list" className={styles.goalsList}>
-          {
-            this.props.draft.goals && this.props.draft.goals.length > 0
-              ?
-                this.props.draft.goals.map((title, index) => (
-                  <li key={index}>
-                    <MLIcon
-                      className={styles.commentIcon}
-                      title="comment"
-                      type="comment"
-                      width="23"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    />
-                    {title}
-                  </li>
-                ))
-              :
-                <li>
-                  <a data-id="add-draft-goal" onClick={this.toggleModal}>
-                    Click to Add Draft Goals
-                  </a>
-                </li>
-          }
+          {goalsList}
         </ul>
 
         <DraftGoalsSelectorModalContainer

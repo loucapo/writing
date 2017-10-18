@@ -83,7 +83,7 @@ class ActivityTitle extends Component {
           :
           <div data-id="activity-title" className={styles.title}>
             {this.state.title}
-            <a onClick={this.toggleEditable}>
+            <a className={styles.titleEdit} onClick={this.toggleEditable}>
               <MLIcon
                 className={styles.editIcon}
                 title="edit"
@@ -97,7 +97,7 @@ class ActivityTitle extends Component {
 
         <div className={styles.subheader}>
           <div data-id="activity-type" className={styles.type}>
-            Drafting and Revising Activity
+            Writing Activity
           </div>
 
           {this.renderWarning()}
