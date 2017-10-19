@@ -17,11 +17,13 @@ Feature: Instructor Creates Drafting Revising Activity
     And I reload the page
     Then I wait until there are 1 "created_activity_alert" visible
 
-@pending
+@only
   Scenario: Green Confirmation Message Exists After Creating Assignment Until Closed
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
-    And "created_activity_alert" should be "#daf4d4"
+    And Changing to using page "kitchen_sink_cdl"
+    And the color of "alert_success" should be "#daf4d4"
+    And Changing to using page "instructor_summary"
     And I close the green confirmation message
     And I reload the page
     Then I wait until there are 0 "created_activity_alert" visible
