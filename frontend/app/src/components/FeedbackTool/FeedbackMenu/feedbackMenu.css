@@ -23,6 +23,8 @@
   justify-content: center;
   padding: 5px;
   width: 50px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .feedbackButtons {

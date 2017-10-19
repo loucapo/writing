@@ -19,7 +19,7 @@ class DraftGoals extends Component {
 
     if (this.props.draft.goals && this.props.draft.goals.length > 0) {
       goalsList = this.props.draft.goals.map((title) => (
-        <li key={title}>
+        <li data-id="draft-goal-label" key={title}>
           <MLIcon
             className={styles.commentIcon}
             title="comment"
@@ -40,7 +40,7 @@ class DraftGoals extends Component {
     }
 
     while (goalsList.length < 6) {
-      goalsList.push(<li key={goalsList.length}>&nbsp;</li>);
+      goalsList.push(<li data-id="draft-goal-empty" key={goalsList.length}>&nbsp;</li>);
     }
 
     return (

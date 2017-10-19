@@ -1,3 +1,6 @@
+// ERRORS :: somewhere in this feature file the following error happens 3 times
+//(node:91128) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): AssertionError: expected false to be true
+//(node:91128) DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 @WRITE-29
 @WRITE-94
   #Summary list
@@ -43,7 +46,7 @@ Feature:Instructor Adds Pre-Defined Draft Goals to Assignment
     And I click "draft_goals_modal.goal_checkbox(5)"
     And I click "draft_goals_modal.goal_checkbox(6)"
     Then the draft goal summary list should have 0 goals
-    And the text of "draft_goals_modal.goal_summary_list" should be ""
+    And the text of "draft_goals_modal.goal_summary_list" should be " "
     And I click "draft_goals_modal.goal_checkbox(1)"
     And I click "draft_goals_modal.goal_checkbox(2)"
     And the text of "draft_goals_modal.goal_summary_list" should be "Selected Draft Goals: Thesis, Reason and Support"
