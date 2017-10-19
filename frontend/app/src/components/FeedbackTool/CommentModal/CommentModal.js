@@ -41,8 +41,9 @@ class CommentModal extends Component {
   };
 
   repositionModal = () => {
-    const modal = document.querySelector(`.${styles.commentModalContainerContainer}`);
-    modal.style.top = this.calculatePosition(this.props.position, modal.offsetHeight);
+    const modal = document.querySelector(`.${styles.commentModal}`);
+    const modalContainer = document.querySelector(`.${styles.commentModalContainerContainer}`);
+    modalContainer.style.top = this.calculatePosition(this.props.position, modal.offsetHeight);
   };
 
   calculatePosition = (position, modalHeight) => {

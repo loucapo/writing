@@ -89,22 +89,23 @@ class FeedbackEditor extends Component {
     let firstSelectedRect = null;
     let lastSelectedRect = null;
     selecteds.map(selected => {
-      if (firstSelected === null || (selected.y < firstSelected.y)) {
+      let selectedRect = selected.getBoundingClientRect();
+      if (firstSelected === null || (selectedRect.top < firstSelectedRect.top)) {
         firstSelected = selected;
+        firstSelectedRect = firstSelected.getBoundingClientRect();
       }
-      if (lastSelected === null || (selected.y > lastSelected.y)) {
+      if (lastSelected === null || (selectedRect.bottom > lastSelectedRect.bottom)) {
         lastSelected = selected;
+        lastSelectedRect = lastSelected.getBoundingClientRect();
       }
     });
-    firstSelectedRect = firstSelected.getBoundingClientRect();
-    lastSelectedRect = lastSelected.getBoundingClientRect();
     this.position = {
       top: firstSelected.offsetTop - 60,
       left: firstSelectedRect.left,
       bottom: lastSelectedRect.bottom,
-      y: firstSelectedRect.y,
-      height: lastSelectedRect.y - firstSelectedRect.y + lastSelectedRect.height,
-      parentY: selectedParent.getBoundingClientRect().y
+      y: firstSelectedRect.top,
+      height: lastSelectedRect.bottom - firstSelectedRect.top,
+      parentY: selectedParent.getBoundingClientRect().top
     };
   };
 
