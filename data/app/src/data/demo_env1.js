@@ -260,7 +260,7 @@ module.exports = function() {
           "student_reflection_question_id" : "179b9ad1-ec34-42ca-a8c3-098127fc91a8",
           "question" : "One piece of evidence I want to call attention to in my essay is",
           "created_by_id" : "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
-          "question_type" : "free"
+          "question_type" : `free response`
         },
         {
           "created_date" : "2017-04-10",
@@ -269,7 +269,7 @@ module.exports = function() {
           "student_reflection_question_id" : "4886a427-bf88-4d94-b3bd-721ef74333db",
           "question" : "The primary argument I'm making is",
           "created_by_id" : "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
-          "question_type" : "free"
+          "question_type" : `free response`
         },
         {
           "created_date" : "2017-04-10",
@@ -278,7 +278,7 @@ module.exports = function() {
           "student_reflection_question_id" : "556a98d1-bf89-4aef-9b73-81254a787af0",
           "question" : "I want you to know that",
           "created_by_id" : "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
-          "question_type" : "free"
+          "question_type" : `free response`
         },
         {
           "created_date" : "2017-04-10",
@@ -296,7 +296,7 @@ module.exports = function() {
           "student_reflection_question_id" : "60bc8787-dd48-4702-8135-bec9fd8cd623",
           "question" : "The most challenging part of this assignment was",
           "created_by_id" : "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
-          "question_type" : "free"
+          "question_type" : `free response`
         },
         {
           "created_date" : "2017-04-10",
@@ -305,7 +305,7 @@ module.exports = function() {
           "student_reflection_question_id" : "823955a1-0a8e-42cc-b24c-cb30afcac93f",
           "question" : "One idea I want to develop further is",
           "created_by_id" : "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
-          "question_type" : "free"
+          "question_type" : `free response`
         },
         {
           "created_date" : "2017-04-10",
@@ -314,7 +314,7 @@ module.exports = function() {
           "student_reflection_question_id" : "f1b0e2d8-21c8-4ea7-9b28-5b9be7ecf9aa",
           "question" : "One thing I want my reader to understand is",
           "created_by_id" : "565d993b-d1a4-4eb9-8e8b-68b0c7151356",
-          "question_type" : "free"
+          "question_type" : `free response`
         },
         {
           "created_date" : "2017-04-10",
