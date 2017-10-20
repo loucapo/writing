@@ -1,16 +1,18 @@
 @intermittent-fail
-@WRITE-438
 Feature: Instructor Creates Drafting Revising Activity
-  @db=reset
+  @dbreset
+  @WRITE-438
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
 
+  @WRITE-438
   Scenario: Green Confirmation Message Exists After Creating Assignment
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
     And the color of "confirmation_message" should be "#daf4d4"
 
+  @WRITE-438
   Scenario: Green Confirmation Message Exists After Creating Assignment Persists
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
@@ -18,6 +20,8 @@ Feature: Instructor Creates Drafting Revising Activity
     Then I wait until there are 1 "created_activity_alert" visible
 
 @only
+  @pending
+  @WRITE-438
   Scenario: Green Confirmation Message Exists After Creating Assignment Until Closed
     Given I create a new activity as an "instructor"
     Then I wait until there are 1 "created_activity_alert" visible
@@ -28,6 +32,7 @@ Feature: Instructor Creates Drafting Revising Activity
     And I reload the page
     Then I wait until there are 0 "created_activity_alert" visible
 
+  @WRITE-438
   Scenario: Activity Fields Created
     Given I create a new activity as an "instructor"
     And I maximize the browser
@@ -39,3 +44,22 @@ Feature: Instructor Creates Drafting Revising Activity
     Then I wait until there are 1 "rubric.dropdown" visible
     And the text of "rubric.dropdown" should include "No Rubric"
     Then I wait until there are 1 "draft_card"
+
+  @WRITE-545
+  @dbreset
+  Scenario: Instructor Collapses ML Cards
+    Given I launch the activity as an "instructor"
+    When I click "add_draft_button"
+    When I click "rubric.dropdown"
+    When I click "rubric.dropdown_option(2)"
+    And I click "activity_prompt.edit"
+    And I type "hello world" in "activity_prompt.edit_area"
+    And I click "activity_prompt.save"
+    And I click "draft_card(1)"
+    And I click "draft_card(2)"
+    And I click "final_rubric_card"
+    And I click "activity_prompt_card"
+    Then I wait until there are 0 "draft.draft_instructions"
+    Then I wait until there are 0 "rubric.preview"
+    Then I wait until there are 0 "activity_prompt.description"
+    Then I wait until there are 0 "draft.draft_note"
