@@ -1,5 +1,5 @@
 Feature: Instructor Can Open Feedback Tool From Submission Grid
-  @db=reset
+  @dbreset
   @WRITE-826
   Scenario: Setup submission grid
     Given I launch the activity as an "instructor"

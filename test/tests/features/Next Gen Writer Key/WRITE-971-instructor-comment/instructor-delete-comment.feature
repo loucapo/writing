@@ -1,6 +1,6 @@
 @WRITE-976
 Feature: Instructor Delete Comment
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"

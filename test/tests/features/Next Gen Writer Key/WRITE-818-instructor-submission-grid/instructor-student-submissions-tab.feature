@@ -1,6 +1,6 @@
 @WRITE-858
 Feature: Instructor can view status of student drafts
-  @db=reset
+  @dbreset
   Scenario: Instructor's draft submission list is empty when no students have opened a draft for the activity
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -21,7 +21,7 @@ Feature: Instructor can view status of student drafts
     When I click "student_submissions"
     Then I wait until there is 1 "submissions.no_submissions_alert" visible
 
-  @db=reset
+  @dbreset
   Scenario: Instructor's draft submission list contains students that have opened a draft for the activity
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -50,7 +50,7 @@ Feature: Instructor can view status of student drafts
     And the text of "submissions.row_status(1)" should be "—"
     And the text of "submissions.row_sent(1)" should be "—"
 
-  @db=reset
+  @dbreset
   Scenario: Instructor's draft submission list contains students that have saved a version of their draft
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -82,7 +82,7 @@ Feature: Instructor can view status of student drafts
     And the text of "submissions.row_status(1)" should be "—"
     And the text of "submissions.row_sent(1)" should be "—"
 
-  @db=reset
+  @dbreset
   Scenario: Instructor's draft submission list contains students that have submitted their draft
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"

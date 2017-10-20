@@ -1,6 +1,6 @@
 @WRITE-41
 Feature: Student Views Submitted Draft
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"

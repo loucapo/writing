@@ -1,6 +1,6 @@
 @WRITE-968
 Feature: Instructor Sends Student Feedback
-  @db=reset
+  @dbreset
   Scenario: Setup Student Draft Submission
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"

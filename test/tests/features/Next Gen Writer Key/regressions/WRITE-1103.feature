@@ -1,4 +1,4 @@
-@db=reset
+@dbreset
 @WRITE-1103
 @regression
 Feature: Regression for: Initial save of student draft gives "Invalid date" success message

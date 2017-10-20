@@ -1,7 +1,7 @@
 @WRITE-819
 @WRITE-942
 Feature: Student Launches Draft
-  @db=reset
+  @dbreset
   Scenario: Page Setup for Student Draft With Fleshed Out Activity
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"

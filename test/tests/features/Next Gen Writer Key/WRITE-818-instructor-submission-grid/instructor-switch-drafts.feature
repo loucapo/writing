@@ -1,7 +1,7 @@
 @WRITE-331
 Feature: Instructor Views Draft Submissions Switcher
 
-  @db=reset
+  @dbreset
   Scenario: Setup Student Draft Submission
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"
@@ -40,7 +40,7 @@ Feature: Instructor Views Draft Submissions Switcher
     Then I wait until there is 1 "submissions.row_name" visible
     And the text of "submissions.row_name(1)" should be "5ef7fa10-f4a4-4add-9191-882de6b9065b"
 
-  @db=reset
+  @dbreset
   Scenario: Setup Student Draft Submission
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"

@@ -1,5 +1,5 @@
 Feature: Add Another Draft To Activity
-  @db=reset
+  @dbreset
   @WRITE-27
   Scenario: Adding a second draft
     Given I launch the activity as an "instructor"
@@ -16,7 +16,7 @@ Feature: Add Another Draft To Activity
     And I wait until there are 1 "draft(1).draft_review_dropdown" visible
     And I wait until there are 1 "draft(2).draft_review_dropdown" visible
 
-  @db=reset
+  @dbreset
   @WRITE-27
   Scenario: Saving descriptions to drafts
     Given I launch the activity as an "instructor"
@@ -32,7 +32,7 @@ Feature: Add Another Draft To Activity
     Then the text of "draft(2).draft_instructions" should be "hello world"
     And  the text of "draft.draft_instructions(1)" should be "more hello world"
 
-  @db=reset
+  @dbreset
   @WRITE-27
   Scenario: Adding drafts
     Given I launch the activity as an "instructor"
@@ -50,7 +50,7 @@ Feature: Add Another Draft To Activity
     And I wait until there are 1 "draft(4).delete_button" visible
     And the text of "draft_count" should be "DRAFTS (4)"
 
-  @db=reset
+  @dbreset
   @WRITE-27
   Scenario: Draft Sequencing
     Given I launch the activity as an "instructor"
@@ -60,7 +60,7 @@ Feature: Add Another Draft To Activity
     And the text of "draft(2).draft_note" should be "Students can view and start this draft once they've received feedback for Draft 1"
 
   @WRITE-27
-  @db=reset
+  @dbreset
   Scenario: Removing drafts
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -75,7 +75,7 @@ Feature: Add Another Draft To Activity
     And the text of "draft_count" should be "DRAFTS (1)"
 
   @WRITE-27
-  @db=reset
+  @dbreset
   Scenario: Removing 'Final Paper' converts remaining draft into a 'Final Paper'
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -90,7 +90,7 @@ Feature: Add Another Draft To Activity
     And the text of "draft(1).title" should be "Final Paper"
 
   @WRITE-27
-  @db=reset
+  @dbreset
   Scenario: Cancel changing draft description
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -102,7 +102,7 @@ Feature: Add Another Draft To Activity
     Then I wait until there are 0 "draft.draft_instructions" visible
 
   @WRITE-27
-  @db=reset
+  @dbreset
   Scenario: Saving updated description for draft
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -116,7 +116,7 @@ Feature: Add Another Draft To Activity
     And the text of "draft(1).draft_instructions" should be "zingbat doowop blatz"
 
   @WRITE-27
-  @db=reset
+  @dbreset
   Scenario: Navigating away with unsaved draft description discards changes
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -128,7 +128,7 @@ Feature: Add Another Draft To Activity
     Then I wait until there are 0 "draft.draft_instructions" visible
 
   @WRITE-27
-  @db=reset
+  @dbreset
   Scenario: Draft Renaming
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -144,7 +144,7 @@ Feature: Add Another Draft To Activity
     And I wait until there is 1 "draft_card" visible
     Then the text of "draft.draft_instructions(1)" should be "just some basic instructions"
 
-  @db=reset
+  @dbreset
   @WRITE-1036
   Scenario: New drafts are always inserted directly before the final draft
     Given I launch the activity as an "instructor"
@@ -192,7 +192,7 @@ Feature: Add Another Draft To Activity
     Then the text of "draft(3).draft_instructions" should be "D4"
     Then the text of "draft(4).draft_instructions" should be "A1"
 
-  @db=reset
+  @dbreset
   @WRITE-1036
   Scenario: Final and sole drafts are always named "Final Paper"
     Given I launch the activity as an "instructor"

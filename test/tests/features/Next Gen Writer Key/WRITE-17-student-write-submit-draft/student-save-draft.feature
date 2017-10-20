@@ -1,5 +1,5 @@
 @WRITE-39
-@db=reset
+@dbreset
 Feature: Student Saves Work
   Scenario: Student Can Not Save Empty Draft
     Given I launch the activity as a "student"
