@@ -1,6 +1,6 @@
 @WRITE-970
 Feature: Instructor Gives Score to Final Paper
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -28,7 +28,7 @@ Feature: Instructor Gives Score to Final Paper
     And Changing to using page "instructor_feedback"
     Then I wait until there is 0 "final_grade_box" visible
 
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"

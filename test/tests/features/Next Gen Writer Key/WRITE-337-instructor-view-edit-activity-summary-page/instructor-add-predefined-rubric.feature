@@ -1,6 +1,6 @@
 @WRITE-30
 Feature: Instructor Can Add Pre-Defined Rubric To Activity
-  @db=reset
+  @dbreset
   Scenario: The Instructor Opens the Rubric Selector
     Given I launch the activity as an "instructor"
     And the text of "rubric.dropdown(1)" should be "No Rubric"
@@ -15,7 +15,7 @@ Feature: Instructor Can Add Pre-Defined Rubric To Activity
     Then I wait until there is 1 "rubric.preview" visible
     And the text of "rubric.dropdown" should be "Analysis"
 
-  @db=reset
+  @dbreset
   Scenario: The Instructor Changes Rubric
     Given I launch the activity as an "instructor"
     When I click "rubric.dropdown"

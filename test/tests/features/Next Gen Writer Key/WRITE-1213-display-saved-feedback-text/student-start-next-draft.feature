@@ -1,6 +1,6 @@
 @WRITE-71
 Feature: Student Starts Next Draft
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -46,7 +46,7 @@ Feature: Student Starts Next Draft
     Then I wait until there is 1 "draft_editor.draft_area" visible
     And the text of "draft_editor.draft_area" should include "Happy birthday Writer Key!"
 
-  @db=reset
+  @dbreset
   Scenario: Student Can Start Draft 2 But Not Final Draft
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -78,7 +78,7 @@ Feature: Student Starts Next Draft
     Then I wait until there is 1 "start_final_paper_disabled" visible
     Then I wait until there is 1 "student_read_only_feedback.start_next_draft" visible
 
-  @db=reset
+  @dbreset
   Scenario: Student can only view feedback on final draft
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"

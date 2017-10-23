@@ -1,6 +1,6 @@
 @WRITE-228
 Feature: Instructor can add end comment to completed draft
-  @db=reset
+  @dbreset
   Scenario: Setup A Student Draft Submission
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"

@@ -1,6 +1,6 @@
 @intermittent-fail
 Feature: Instructor Creates Drafting Revising Activity
-  @db=reset
+  @dbreset
   @WRITE-438
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I create a new activity as an "instructor"
@@ -43,7 +43,7 @@ Feature: Instructor Creates Drafting Revising Activity
     Then I wait until there are 1 "draft_card"
 
   @WRITE-545
-  @db=reset
+  @dbreset
   Scenario: Instructor Collapses ML Cards
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"

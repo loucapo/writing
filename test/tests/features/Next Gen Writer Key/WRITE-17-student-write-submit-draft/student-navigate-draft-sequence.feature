@@ -1,6 +1,6 @@
 @WRITE-861
 Feature: Student Navigate Draft Screens
-  @db=reset
+  @dbreset
   Scenario: Page Setup for Student Draft With Fleshed Out Activity
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"

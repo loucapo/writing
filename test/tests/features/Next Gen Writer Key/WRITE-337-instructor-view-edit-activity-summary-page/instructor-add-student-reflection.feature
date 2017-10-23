@@ -4,7 +4,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Given I launch the activity as an "instructor"
     Then I wait until there is 1 "draft.add_reflection_questions"
 
-  @db=reset
+  @dbreset
   Scenario: The Instructor can open and close the student reflection question modal selector
     Given I launch the activity as an "instructor"
     When I click "draft.add_reflection_questions"
@@ -25,7 +25,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Then the text of "reflection_questions_modal.question_type(7)" should be "agree/disagree"
     And the text of "reflection_questions_modal.desc(7)" should include "I know the criteria that will be used for giving me feedback."
 
-  @db=reset
+  @dbreset
   Scenario: The instructor can close the student reflection question modal selector via icon
     Given I launch the activity as an "instructor"
     When I click "draft.add_reflection_questions"
@@ -33,7 +33,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     When I click "reflection_questions_modal.close"
     Then I wait until there are 0 "reflection_questions_modal.ref_question_modal" visible
 
-  @db=reset
+  @dbreset
   Scenario: Instructor can select and unselect reflection questions
     Given I launch the activity as an "instructor"
     When I click "draft.add_reflection_questions"
@@ -48,7 +48,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Then I wait until there is 3 "reflection_questions_modal.check__checked" visible
     Then I wait until there is 6 "reflection_questions_modal.check__unchecked" visible
 
-  @db=reset
+  @dbreset
   Scenario: The Instructor saves changes and saves lack-of-changes to questions
     Given I launch the activity as an "instructor"
     When I click "draft.add_reflection_questions"
@@ -64,7 +64,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Then I wait until there are 0 "reflection_questions_modal.ref_question_modal" visible
     Then I wait until there are 2 "draft.reflection_question" visible
   
-  @db=reset
+  @dbreset
   Scenario: The Instructor saves nothing
     Given I launch the activity as an "instructor"
     When I click "draft.add_reflection_questions"
@@ -72,7 +72,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     And I click "reflection_questions_modal.save"
     Then I wait until there are 0 "draft.reflection_question" visible
 
-  @db=reset
+  @dbreset
   Scenario: The Instructor Cancels Question
     Given I launch the activity as an "instructor"
     When I click "draft.add_reflection_questions"
@@ -81,7 +81,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Then I wait until there is 0 "reflection_questions_modal.ref_question_modal" visible
     Then I wait until there are 0 "draft.reflection_question" visible
 
-  @db=reset
+  @dbreset
   Scenario: The Instructor Edits Selected Questions
     Given I launch the activity as an "instructor"
     When I click "draft.add_reflection_questions"

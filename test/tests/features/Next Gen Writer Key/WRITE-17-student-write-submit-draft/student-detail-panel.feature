@@ -1,7 +1,7 @@
 @WRITE-46
 @WRITE-1061
 Feature: Student Views Details Panel
-  @db=reset
+  @dbreset
   Scenario: Page Setup for Student Detail Panel View
     Given I launch the activity as an "instructor"
     And I click "activity_prompt.edit"
@@ -63,7 +63,7 @@ Feature: Student Views Details Panel
     When I click "draft_editor.final_rubric_panel_left_arrow"
     Then the text of "draft_editor.final_rubric_panel_column_2" should include "2 - Nearly Meets Expectations"
 
-  @db=reset
+  @dbreset
   Scenario: Student Launch Draft With Only Reflection Questions
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"
@@ -74,7 +74,7 @@ Feature: Student Views Details Panel
     Then the text of "draft_editor.activity_reflection_questions_panel" should be "free response: The most challenging part of this assignment was..."
 
   @WRITE-1062
-  @db=reset
+  @dbreset
   Scenario: Hidden Detail Panel For Non-Selected Options
     Given I launch the activity as an "instructor"
     And I click "draft.add_draft_goals"

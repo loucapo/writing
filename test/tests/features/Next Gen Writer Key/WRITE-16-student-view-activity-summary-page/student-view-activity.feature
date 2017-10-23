@@ -1,6 +1,6 @@
 Feature: Student Views Activity
   @WRITE-96
-  @db=reset
+  @dbreset
   Scenario: Student Launches into Activity with No Rubric Selected
     Given I launch the activity as a "student"
     And Changing to using page "instructor_summary"
@@ -13,7 +13,7 @@ Feature: Student Views Activity
     Then the text of "start_draft_enabled" should be "Start Final Paper"
 
   @WRITE-96
-  @db=reset
+  @dbreset
   Scenario: Student Does Not See Instructer Options
     Given I launch the activity as a "student"
     And Changing to using page "instructor_summary"
@@ -28,7 +28,7 @@ Feature: Student Views Activity
     Then I wait until there are 0 "student_preview"
 
   @WRITE-96
-  @db=reset
+  @dbreset
   Scenario: Student Launches into Full Activity with More Than One Draft
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"
@@ -48,7 +48,7 @@ Feature: Student Views Activity
     Then I wait until there are 1 "start_final_paper_disabled"
 
   @WRITE-545
-  @db=reset
+  @dbreset
   Scenario: Student Collapses Student Cards
     Given I launch the activity as an "instructor"
     When I click "add_draft_button"

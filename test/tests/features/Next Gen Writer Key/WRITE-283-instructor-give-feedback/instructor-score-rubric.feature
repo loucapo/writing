@@ -1,6 +1,6 @@
 @WRITE-967
 Feature: Instructor Can Score Rubric
-  @db=reset
+  @dbreset
   Scenario: Setup submission grid
     Given I launch the activity as an "instructor"
     When I click "draft(1).add_reflection_questions"

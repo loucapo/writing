@@ -1,5 +1,5 @@
 Feature: Student Can View Instructor Comments
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -54,7 +54,7 @@ Feature: Student Can View Instructor Comments
     Then I wait until there is 1 "student_read_only_feedback.comment_flag_title" visible
     Then I wait until there is 0 "student_read_only_feedback.comment_flag_feedback" visible
 
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment Again
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -105,7 +105,7 @@ Feature: Student Can View Instructor Comments
     And Then the text of "student_read_only_feedback.comment_flag_feedback_typed(1)" should include "This is no bueno"
 
   @WRITE-973
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment Another Time
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
@@ -147,7 +147,7 @@ Feature: Student Can View Instructor Comments
     And Then the text of "student_read_only_feedback.comment_flag_title" should be "Thesis"
 
   @WRITE-974
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"
