@@ -7,7 +7,8 @@
     "start": "node app/index.js",
     "start_dev": "nodemon --ignore app/src/swagger app/index.js",
     "lint": "eslint -c ./../.eslintrc.json .",
-    "licenses": "license-checker --production --csv | tee licenses.csv"
+    "licenses": "license-checker --production --csv | tee licenses.csv",
+    "validate": "npm ls"
   },
   "license": "MIT",
   "engines": {

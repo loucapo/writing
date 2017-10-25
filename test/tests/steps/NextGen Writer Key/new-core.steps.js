@@ -3,12 +3,10 @@ const pages = [];
 const { InstructorSummaryPage } = require('../../pages/NextGen Writer Key/instructor-summary.page');
 const { StudentSummaryPage } = require('../../pages/NextGen Writer Key/student-summary.page');
 const { InstructorFeedbackPage } = require('../../pages/NextGen Writer Key/instructor-feedback-tool.page');
-const { KitchenSinkCDL } = require('../../pages/NextGen Writer Key/kitchen-sink-cdl.page'); 
 
 pages.instructor_summary = new InstructorSummaryPage();
 pages.student_summary = new StudentSummaryPage();
 pages.instructor_feedback = new InstructorFeedbackPage();
-pages.kitchen_sink_cdl = new KitchenSinkCDL();
 
 let page = pages.instructor_summary;
 const faker = require('faker');
