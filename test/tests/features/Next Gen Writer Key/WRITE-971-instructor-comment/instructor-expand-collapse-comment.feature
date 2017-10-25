@@ -1,6 +1,6 @@
 @WRITE-1198
 Feature: Instructor Expand and Collapse Comment
-  @db=reset
+  @dbreset
   Scenario: Instructor Sets Up Student Reflection Environment
     Given I launch the activity as an "instructor"
     And I click "add_draft_button"

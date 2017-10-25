@@ -1,7 +1,7 @@
 @WRITE-855
 Feature: Activities have editable titles
   
-  @db=reset
+  @dbreset
   Scenario: Default title and type
     Given I create a new activity as an "instructor"
     Then I wait until there is 1 "activity_title" visible
@@ -9,7 +9,7 @@ Feature: Activities have editable titles
     Then I wait until there is 1 "activity_type" visible
     And the text of "activity_type" should be "Writing Activity"
 
-  @db=reset
+  @dbreset
   Scenario: Edit title
     Given I launch the activity as an "instructor"
     Then I wait until there is 1 "activity_title" visible
@@ -18,7 +18,7 @@ Feature: Activities have editable titles
     Then I wait until there is 1 "edit_title_cancel"
     Then I wait until there is 1 "edit_title_textarea"
 
-  @db=reset
+  @dbreset
   Scenario: Character counter appears
     Given I create a new activity as an "instructor"
     Then I wait until there is 1 "activity_title" visible
@@ -26,7 +26,7 @@ Feature: Activities have editable titles
     Then I wait until there is 1 "title_char_counter"
     And the text of "title_char_counter" should be "115 characters left"
 
-  @db=reset
+  @dbreset
   Scenario: Save edited title
     Given I create a new activity as an "instructor"    
     Then I wait until there is 1 "activity_title" visible
@@ -38,7 +38,7 @@ Feature: Activities have editable titles
     And I wait until there is 1 "activity_title" visible
     And the text of "activity_title" should include "Cookies Are Awesome!"
 
-  @db=reset
+  @dbreset
   Scenario: Cancel saving an edited title
     Given I create a new activity as an "instructor"    
     Then I wait until there is 1 "activity_title" visible
@@ -51,7 +51,7 @@ Feature: Activities have editable titles
     And I wait until there is 1 "activity_title" visible
     And the text of "activity_title" should include "Untitled Writing Activity"
 
-  @db=reset
+  @dbreset
   Scenario: Student can see edited title
     Given I launch the activity as an "instructor"
     Then I wait until there is 1 "activity_title" visible
@@ -68,7 +68,7 @@ Feature: Activities have editable titles
     # TODO: Verify we're actually on the student page
     And the text of "activity_title" should be "Cookies Are Awesome!"
 
-  @db=reset
+  @dbreset
   Scenario: 140 Character Limit
     Given I create a new activity as an "instructor"
     Then I wait until there is 1 "activity_title" visible

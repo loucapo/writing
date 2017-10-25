@@ -46,6 +46,8 @@ services:
     deploy:
       placement:
         constraints: [node.role == worker]
+      restart_policy:
+        condition: none
 
   serve:
     environment:
