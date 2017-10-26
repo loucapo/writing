@@ -22,13 +22,14 @@ const Activity = ({ activity, drafts, draftCount, currentDraft }) => (
             icon: 'check'
           }}
         />
+      </div>
 
+      <div data-id="activity-summary" className={styles.spacer}>
         <ActivityTitleContainer activityId={activity.activityId} />
 
         <ActivityPromptContainer activityId={activity.activityId} prompt={activity.prompt} />
 
         <ActivityRubricSelectorContainer activityId={activity.activityId} rubricId={activity.rubricId} />
-
       </div>
 
       <ActivityMenu
