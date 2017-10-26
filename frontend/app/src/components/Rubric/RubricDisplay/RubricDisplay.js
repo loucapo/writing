@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import parser from 'html-react-parser';
 import { CriteriaDisplay } from '../index';
 import styles from './rubricDisplay.css';
 
@@ -16,7 +17,7 @@ const RubricDisplay = ({ rubric, studentDraftId }) => {
       {rubric.criteria.map((criteria) => {
         return (
           <div key={criteria.criteriaId} className={styles.row}>
-            <div className={styles.heading}>{criteria.title}</div>
+            <div className={styles.heading}>{parser(criteria.title.replace('/', '/<wbr>'))}</div>
             {criteria.rubricLevels.map((level, index) => (
               <CriteriaDisplay
                 key={index}

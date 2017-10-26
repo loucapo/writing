@@ -2846,6 +2846,13 @@ html-comment-regex@^1.1.0:
   version "1.1.1"
   resolved "http://npm.macmillantech.com:8080/h/html-comment-regex/_attachments/html-comment-regex-1.1.1.tgz#668b93776eaae55ebde8f3ad464b307a4963625e"
 
+html-dom-parser@0.1.1:
+  version "0.1.1"
+  resolved "http://npm.macmillantech.com:8080/h/html-dom-parser/_attachments/html-dom-parser-0.1.1.tgz#4f149f16ce6cc35458fe2f7a9e8187db2c8c1f76"
+  dependencies:
+    domhandler "^2.3.0"
+    htmlparser2 "^3.9.1"
+
 html-encoding-sniffer@^1.0.1:
   version "1.0.1"
   resolved "http://npm.macmillantech.com:8080/h/html-encoding-sniffer/_attachments/html-encoding-sniffer-1.0.1.tgz#79bf7a785ea495fe66165e734153f363ff5437da"
@@ -2864,6 +2871,12 @@ html-minifier@^3.2.3:
     param-case "2.1.x"
     relateurl "0.2.x"
     uglify-js "2.8.x"
+
+html-react-parser@^0.3.5:
+  version "0.3.5"
+  resolved "http://npm.macmillantech.com:8080/h/html-react-parser/_attachments/html-react-parser-0.3.5.tgz#befe046d75b97f51fbd1be43c12ae6c5563e5e13"
+  dependencies:
+    html-dom-parser "0.1.1"
 
 html-webpack-plugin@^2.22.0:
   version "2.28.0"
