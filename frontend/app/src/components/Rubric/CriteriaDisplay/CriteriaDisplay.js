@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import parser from 'html-react-parser';
 import styles from '../Criteria/criteria.css';
 
 const CriteriaDisplay = ({ score, content, selected, studentDraftId }) => {
@@ -23,9 +24,7 @@ const CriteriaDisplay = ({ score, content, selected, studentDraftId }) => {
 
   let className = selected ? `selected ${backgroundColor()}` : '';
   return (
-    <div className={studentDraftId ? className : ''}>
-      {content}
-    </div>
+    <div className={studentDraftId ? className : ''}>{parser(content.replace('/', '/<wbr>'))}</div>
   );
 };
 
