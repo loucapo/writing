@@ -1,40 +1,39 @@
-@only
 @intermittent-fail
 Feature: Instructor Creates Drafting Revising Activity
   @dbreset
   @WRITE-438
   Scenario: The Instructor Creates Drafting Revising Activity
     Given I create a new activity as an "instructor"
-    Then I wait until there are 1 "created_activity_alert" visible
+    Then I wait until there are 1 "cdl.message_success" visible
 
   @WRITE-438
   Scenario: Green Confirmation Message Exists After Creating Assignment
     Given I create a new activity as an "instructor"
-    Then I wait until there are 1 "created_activity_alert" visible
-    And the color of "confirmation_message" should be "#daf4d4"
+    Then I wait until there are 1 "cdl.message_success" visible
+    And the color of "cdl.message_success" should be "#daf4d4"
 
   @WRITE-438
   Scenario: Green Confirmation Message Exists After Creating Assignment Persists
     Given I create a new activity as an "instructor"
-    Then I wait until there are 1 "created_activity_alert" visible
+    Then I wait until there are 1 "cdl.message_success" visible
     And I reload the page
-    Then I wait until there are 1 "created_activity_alert" visible
+    Then I wait until there are 1 "cdl.message_success" visible
 
   @pending
   @WRITE-438
   Scenario: Green Confirmation Message Exists After Creating Assignment Until Closed
     Given I create a new activity as an "instructor"
-    Then I wait until there are 1 "created_activity_alert" visible
-    And the color of "alert_success" should be "#daf4d4"
+    Then I wait until there are 1 "cdl.message_success" visible
+    And the color of "message_success" should be "#daf4d4"
     And I close the green confirmation message
     And I reload the page
-    Then I wait until there are 0 "created_activity_alert" visible
+    Then I wait until there are 0 "cdl.message_success" visible
 
   @WRITE-438
   Scenario: Activity Fields Created
     Given I create a new activity as an "instructor"
     And I maximize the browser
-    Then I wait until there are 1 "created_activity_alert" visible
+    Then I wait until there are 1 "cdl.message_success" visible
     Then I wait until there are 1 "activity_title" visible
     And the text of "activity_title" should include "Untitled Writing Activity"
     Then I wait until there are 1 "activity_prompt.description" visible
