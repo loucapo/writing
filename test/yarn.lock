@@ -1109,9 +1109,9 @@ lowercase-keys@^1.0.0:
   version "1.0.0"
   resolved "http://npm.macmillantech.com:8080/l/lowercase-keys/_attachments/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
 
-marvin-js@0.6.0-beta2:
-  version "0.6.0-beta2"
-  resolved "http://npm.macmillantech.com:8080/m/marvin-js/_attachments/marvin-js-0.6.0-beta2.tgz#31099319b8c1c19ce8f8a2f97f45b8106f38f22b"
+marvin-js@0.6.3:
+  version "0.6.3"
+  resolved "http://npm.macmillantech.com:8080/m/marvin-js/_attachments/marvin-js-0.6.3.tgz#fd3cb8ebaddf930189d37080d5dbbe9b110b56cd"
   dependencies:
     chai "^4.1.0"
     chai-as-promised "^7.1.1"

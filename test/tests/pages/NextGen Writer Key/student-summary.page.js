@@ -5,6 +5,7 @@ const draftEditor = require('./student-summary.component.draft.editor');
 const refQuestions = require('./student-summary.component.reflection-questions');
 const StudentReview = require('./student-summary.component.review-page');
 const StudentReviewFeedback = require('./student-summary.component.review-feedback-page');
+const cdl = require('./cdl.component');
 
 exports.StudentSummaryPage = class extends Page {
   things() {
@@ -28,10 +29,6 @@ exports.StudentSummaryPage = class extends Page {
       view_summary_button: {
         desc: `Link to the activity summary`,
         locator: `[data-id='header-activity-link']`
-      },
-      draft_submission_confirmation_banner: {
-        desc: `Green confirmation message for successful draft submission`,
-        locator: `[class*='MLMessage__message_success']`
       },
       return_to_draft: {
         desc: `Return to an unsubmitted draft`,
@@ -99,4 +96,9 @@ exports.StudentSummaryPage = class extends Page {
   student_reflection_questions(arg) {
     return refQuestions.generate(arg, {
       locator: `[class^='ReflectionQuestionsForm__page']`}); }
+  
+  cdl(arg) {
+    return cdl.generate(arg, {
+      locator: `div.app`});
+  }
 };

@@ -1,5 +1,6 @@
 const Page = require('marvin-js').Page;
 const InstructorCommentModal = require('./instructor-feedback-tool.component.add-comment');
+const cdl = require('./cdl.component');
 
 exports.InstructorFeedbackPage = class extends Page {
   things() {
@@ -170,5 +171,10 @@ exports.InstructorFeedbackPage = class extends Page {
   comment_modal(arg) {
     return InstructorCommentModal.generate(arg, {
       locator: `[id='commentModal']`});
+  }
+  
+  cdl(arg) {
+    return cdl.generate(arg, {
+      locator: `div.app`});
   }
 };

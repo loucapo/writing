@@ -7,6 +7,7 @@ const activityPromptComponent = require('./instructor-summary.component.activity
 const draftGoalsModal = require('./instructor-summary.component.draft-goals-modal');
 const rubricComponent = require('./instructor-summary.component.rubric');
 const studentSubmissionsComponent = require('./instructor-summary.component.student-submissions');
+const cdl = require('./cdl.component');
 
 exports.InstructorSummaryPage = class extends Page {
   things() {
@@ -60,10 +61,6 @@ exports.InstructorSummaryPage = class extends Page {
         desc: `counter at end of activity title that tells user how many title characters they have left`,
         locator: `[data-id='char-limit-count']`
       },
-      confirmation_message: {
-        desc: `Green banner that shows instructor when assignment was created`,
-        locator: `[class*='MLMessage__message_success__']`
-      },
       created_activity_alert: {
         desc: `Green alert banner upon creating activity`,
         locator: `[data-id='created-activity-alert']`
@@ -93,25 +90,36 @@ exports.InstructorSummaryPage = class extends Page {
   draft(arg) {
     return draftComponent.generate(arg, {
       locator: `//*[@data-id='draft-section']/ancestor::div[contains(@data-id, 'MLCard')]`,
-      type: `xpath`}); }
+      type: `xpath`}); 
+  }
 
   reflection_questions_modal(arg) {
     return refQuestionModal.generate(arg, {
-      locator: `[data-id='modal'] [class^='MLModal__modalWrapper']`}); }
+      locator: `[data-id='modal'] [class^='MLModal__modalWrapper']`}); 
+  }
 
   activity_prompt(arg) {
     return activityPromptComponent.generate(arg, {
-      locator: `[data-id='MLCard-Assignment-Prompt'],[data-id='MLCard-Activity-Prompt']` }); }
+      locator: `[data-id='MLCard-Assignment-Prompt'],[data-id='MLCard-Activity-Prompt']` }); 
+  }
 
   rubric(arg) {
     return rubricComponent.generate(arg, {
-      locator: `[data-id='MLCard-Final-Rubric']`}); }
+      locator: `[data-id='MLCard-Final-Rubric']`}); 
+  }
 
   submissions(arg) {
     return studentSubmissionsComponent.generate(arg, {
-      locator: `[class^='SubmissionStatus__wrapper']`}); }
+      locator: `[class^='SubmissionStatus__wrapper']`}); 
+  }
 
   draft_goals_modal(arg) {
     return draftGoalsModal.generate(arg, {
-      locator: `[data-id='modal']`}); }
+      locator: `[data-id='modal']`}); 
+  }
+
+  cdl(arg) {
+    return cdl.generate(arg, {
+      locator: `div.app`});
+  }
 };
