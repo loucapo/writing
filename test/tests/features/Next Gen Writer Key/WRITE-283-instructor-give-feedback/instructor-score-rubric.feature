@@ -102,6 +102,32 @@ Feature: Instructor Can Score Rubric
     And I reload the page
     Then I wait until there is 0 "yellow_criteria_selected" visible
 
+@WRITE-1165
+  Scenario: Instructor Leaves Page Without Saving Rubric and Stays
+    Given I launch the activity as an "instructor"
+    When I click "student_submissions"
+    Then I sleep for 1 seconds
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    And I click "rubric_row_1(4)"
+    And I click "done_button"
+    And I click "stay_draft_page_button"
+    Then I wait until there is 0 "yellow_criteria_selected" visible
+    Then I wait until there is 1 "add_end_comment" visible
+
+@WRITE-1165
+  Scenario: Instructor Leaves Page Without Saving Rubric and Leaves
+    Given I launch the activity as an "instructor"
+    When I click "student_submissions"
+    Then I sleep for 1 seconds
+    And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
+    And I click "rubric_row_1(4)"
+    And I click "done_button"
+    And I click "leave_draft_page_button"
+    And I click "submissions.row_start(1)"
+    Then I wait until there is 0 "yellow_criteria_selected" visible
+
   Scenario: Instructor Cancels Save On Whole Rubric
     Given I launch the activity as an "instructor"
     When I click "student_submissions"
