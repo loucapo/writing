@@ -10,11 +10,18 @@ class EndComment extends Component {
 
   handleSave = () => {
     this.props.submitEndComment(this.props.studentActivityId, this.props.studentDraftId, this.state.value);
+    this.props.setUnsavedChanges(false);
   };
 
   handleChange = event => {
     this.setState({
       value: event.target.value
+    }, () => {
+      if(!!this.state.value && this.state.value !== this.props.endComment) {
+        this.props.setUnsavedChanges(true);
+      } else {
+        this.props.setUnsavedChanges(false);
+      }
     });
   };
 
@@ -42,6 +49,7 @@ class EndComment extends Component {
 
 EndComment.propTypes = {
   submitEndComment: PropTypes.func,
+  setUnsavedChanges: PropTypes.func,
   studentDraftId: PropTypes.string,
   studentActivityId: PropTypes.string,
   endComment: PropTypes.string

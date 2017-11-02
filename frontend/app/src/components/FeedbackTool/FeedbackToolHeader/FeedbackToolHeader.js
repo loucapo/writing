@@ -10,8 +10,10 @@ const Header = ({
   homeRoute,
   draftId,
   draftTitle,
-  submittedDate
+  submittedDate,
+  checkUnsavedChanges
 }) => {
+
   return (
     <header className={styles.header}>
       <div className={styles.leftContainer}>
@@ -34,7 +36,7 @@ const Header = ({
           </div>
         </div>
       </div>
-      <MLButton dataId="done" link={`${homeRoute}?currentDraft=${draftId}`} title="Done" />
+      <MLButton dataId="done" handleClick={checkUnsavedChanges} title="Done" />
     </header>
   );
 };
@@ -43,7 +45,8 @@ Header.propTypes = {
   homeRoute: PropTypes.string,
   draftId: PropTypes.string,
   draftTitle: PropTypes.string,
-  submittedDate: PropTypes.string
+  submittedDate: PropTypes.string,
+  checkUnsavedChanges: PropTypes.func
 };
 
 export default Header;
