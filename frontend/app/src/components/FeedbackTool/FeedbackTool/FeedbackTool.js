@@ -98,6 +98,7 @@ class FeedbackTool extends Component {
               studentDraftId={this.props.studentDraft.studentDraftId}
               submitFinalGrade={this.props.submitFinalGrade}
               finalGrade={this.props.studentDraft.finalGrade}
+              setUnsavedChanges={this.setUnsavedChanges}
             />
             : null
           }
