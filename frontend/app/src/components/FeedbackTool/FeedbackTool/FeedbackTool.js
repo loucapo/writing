@@ -116,6 +116,7 @@ class FeedbackTool extends Component {
               <RubricContainer
                 studentActivityId={this.props.studentDraft.studentActivityId}
                 studentDraftId={this.props.studentDraft.studentDraftId}
+                setUnsavedChanges={this.setUnsavedChanges}
               />
             </MLCard>
             : null

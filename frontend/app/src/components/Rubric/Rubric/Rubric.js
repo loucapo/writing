@@ -24,7 +24,13 @@ class Rubric extends Component {
   };
 
   setRubricScores = (rubricScores) => {
-    this.setState({rubricScores});
+    this.setState({rubricScores}, () => {
+      if(!!this.state.rubricScores && this.state.rubricScores !== this.props.rubricScores) {
+        this.props.setUnsavedChanges(true);
+      } else {
+        this.props.setUnsavedChanges(false);
+      }
+    });
   };
 
   handleSave = () => {
@@ -82,7 +88,8 @@ Rubric.propTypes = {
   rubricScores: PropTypes.array,
   studentActivityId: PropTypes.string,
   studentDraftId: PropTypes.string,
-  updateRubricScores: PropTypes.func
+  updateRubricScores: PropTypes.func,
+  setUnsavedChanges: PropTypes.func
 };
 
 export default Rubric;

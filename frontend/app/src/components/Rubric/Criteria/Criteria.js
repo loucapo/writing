@@ -29,7 +29,7 @@ const Criteria = ({ score, content, selected, criteriaId, rubricScores, setRubri
     let previousSelected = parent.getElementsByClassName('selected')[0];
     if (previousSelected) {
       previousSelected.className = styles.enabled;
-      scores = scores.filter(score => score.criteriaId !== criteriaId);
+      scores = scores.filter(thisScore => thisScore.criteriaId !== criteriaId);
     }
 
     // Add new selected criteria if not same as previous.
