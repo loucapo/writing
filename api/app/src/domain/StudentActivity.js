@@ -31,7 +31,7 @@ module.exports = function(AggregateRootBase, invariant, uuid) {
       invariant(!this.studentDrafts.find(studentDraft => studentDraft.active),
         `You may not start a new Draft while you still have another active Draft`);
 
-      if (this.studentDrafts.length > 1) {
+      if (this.studentDrafts.length > 0) {
         event.paper = this.studentDrafts[this.studentDrafts.length - 1].paper;
       } else {
         event.paper = null;
