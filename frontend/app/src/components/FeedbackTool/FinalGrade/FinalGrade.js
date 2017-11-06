@@ -19,7 +19,7 @@ class FinalGrade extends Component {
       value: event.target.value,
       className: (event.target.value > 100) ? ' ' + styles.error : ''
     }, () => {
-      if(!!this.state.value && this.state.value !== this.props.finalGrade) {
+      if(this.state.value && this.state.value !== this.props.finalGrade) {
         this.props.setUnsavedChanges(true);
       } else {
         this.props.setUnsavedChanges(false);

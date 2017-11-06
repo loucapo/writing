@@ -25,7 +25,7 @@ class Rubric extends Component {
 
   setRubricScores = (rubricScores) => {
     this.setState({rubricScores}, () => {
-      if(!!this.state.rubricScores && this.state.rubricScores !== this.props.rubricScores) {
+      if(this.state.rubricScores && this.state.rubricScores !== this.props.rubricScores) {
         this.props.setUnsavedChanges(true);
       } else {
         this.props.setUnsavedChanges(false);

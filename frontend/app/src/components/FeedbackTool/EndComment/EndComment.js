@@ -17,7 +17,7 @@ class EndComment extends Component {
     this.setState({
       value: event.target.value
     }, () => {
-      if(!!this.state.value && this.state.value !== this.props.endComment) {
+      if(this.state.value && this.state.value !== this.props.endComment) {
         this.props.setUnsavedChanges(true);
       } else {
         this.props.setUnsavedChanges(false);

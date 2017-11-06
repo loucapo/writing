@@ -14,9 +14,9 @@ class FeedbackTool extends Component {
     showSaveDialog: false
   };
 
-  setUnsavedChanges = (unsaved) => {
+  setUnsavedChanges = (hasUnsavedChanges) => {
     this.setState({
-      unsavedChanges: unsaved
+      unsavedChanges: hasUnsavedChanges
     });
   };
 
