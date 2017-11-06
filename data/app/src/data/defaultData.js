@@ -1661,17 +1661,7 @@ Some writers get confused when they use quotation marks with other marks of punc
           created_date: `2017-06-01`
         }
       ],
-      student_draft: [
-        {
-          student_draft_id: `b9c60aa4-476a-4eae-9bc0-e8f026ef3ea2`,
-          student_activity_id: `f0d2123e-2e10-4138-8af8-f93499eb02f0`,
-          student_id: '5ef7fa10-f4a4-4add-9191-882de6b9065b',
-          draft_id: 'd3e3c2d5-cf43-4f63-924f-3ec7a125a335',
-          created_by_id: `5ef7fa10-f4a4-4add-9191-882de6b9065b`,
-          created_date: `2017-06-01`,
-          status: `active`
-        }
-      ]
+      student_draft: []
     };
   };
 };
