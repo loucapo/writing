@@ -52,7 +52,7 @@ class FeedbackTool extends Component {
             bordered={true}
             color="red"
             dataId="details-panel-activity-link-dialog-leave"
-            link={this.props.homeRoute}
+            link={`${this.props.homeRoute}?currentDraft=${this.props.draft.draftId}`}
           />
           <MLButton
             title="Stay"
