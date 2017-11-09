@@ -26,7 +26,7 @@ const FeedbackTool = ({
       homeRoute={homeRoute}
       draftId={draft.draftId}
       draftTitle={draftTitle}
-      submittedDate={studentDraft.submittedDate}
+      submittedDate={studentDraft.submittedAt}
     />
     <div className={styles.container}>
       <MLCard type="reflection" title="Reflection">

@@ -15,7 +15,7 @@ const CompositionDisplay = ({ studentDraft, reflectionQuestions, homeRoute, draf
         <MLMessage
           options={{
             id: '12345',
-            message: `This draft was submitted successfully on ${moment(studentDraft.submittedDate).format('MMMM Do, YYYY')}`,
+            message: `This draft was submitted successfully on ${moment(studentDraft.submittedAt).format('MMMM Do, YYYY')}`,
             type: 'success',
             icon: 'check'
           }}

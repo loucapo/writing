@@ -1,14 +1,14 @@
 module.exports = function(koarouter, controllers) {
   return function module(appRouter) {
-    const criteriaRouter = koarouter();
+    const criterionRouter = koarouter();
 
     /**
      * @swagger
-     * /criteria:
+     * /criterion:
      *   get:
      *     x-name: allCriteria
      *     description: Returns all criteria
-     *     operationId: criteria
+     *     operationId: criterion
      *     responses:
      *       200:
      *         description: Success
@@ -19,8 +19,8 @@ module.exports = function(koarouter, controllers) {
      *         schema:
      *             $ref: "#/definitions/standardFailureResponse"
      */
-    criteriaRouter.get('criteria', '/criteria', controllers.criteriaController.getCriteria);
+    criterionRouter.get('criterion', '/criterion', controllers.criterionController.getCriteria);
 
-    appRouter.use(criteriaRouter.routes(), criteriaRouter.allowedMethods());
+    appRouter.use(criterionRouter.routes(), criterionRouter.allowedMethods());
   };
 };

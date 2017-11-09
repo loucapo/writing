@@ -5,7 +5,7 @@ module.exports = function(repository, sqlLibrary, logger) {
       let rubrics = await repository.query(sqlLibrary.rubric, 'getRubrics', {});
       let rubCrit = await repository.query(sqlLibrary.rubric, 'getRubricCriteria', {});
       const rubricsWithCrit = rubrics.map(x => {
-        x.criteria = rubCrit.filter(y=>y.rubricId === x.rubricId).map(z => z.criteriaId);
+        x.criteria = rubCrit.filter(y=>y.rubricId === x.rubricId).map(z => z.criterionId);
         return x;
       });
 

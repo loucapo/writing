@@ -103,7 +103,7 @@ class FeedbackFlag extends Component {
         </div>
         {expandedId ?
           <div className={styles.feedback}>
-            {feedback.showHeader ?
+            {feedback.isHeaderShown ?
               <div className={styles.predefined}>
                 {feedback.predefined}
               </div>

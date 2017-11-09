@@ -46,7 +46,7 @@ class Composition extends Component {
           options={{
             id: '1234',
             message: `This draft was successfully saved on ${moment(
-              this.props.studentDraft.modifiedDate || this.props.studentDraft.createdDate).format(
+              this.props.studentDraft.modifiedAt || this.props.studentDraft.createdAt).format(
               'MMMM Do, YYYY'
             )}`,
             type: 'success',

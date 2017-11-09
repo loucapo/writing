@@ -1,3 +1,3 @@
 -- name: getCriteria
 select *
-from criteria
+from criterion

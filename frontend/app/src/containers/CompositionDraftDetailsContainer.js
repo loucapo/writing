@@ -60,8 +60,8 @@ const mapStateToProps = (state, props) => {
     const currentRubric = state.rubric.find(rubricInState => rubricInState.rubricId === activity.rubricId);
     if (currentRubric && currentRubric.criteria) {
       rubric = {...currentRubric};
-      rubric.criteria = currentRubric.criteria.map(criteriaId =>
-        state.criteria.find(criteria => criteria.criteriaId === criteriaId)
+      rubric.criteria = currentRubric.criteria.map(criterionId =>
+        state.criteria.find(criterion => criterion.criterionId === criterionId)
       );
     }
   }

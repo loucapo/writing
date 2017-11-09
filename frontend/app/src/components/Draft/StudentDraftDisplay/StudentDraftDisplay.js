@@ -28,7 +28,7 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
                 height="20"
                 viewBox="0 0 24 24"
               />
-              <strong>Submitted</strong> {moment(draft.submittedDate).format('MMMM Do, YYYY')}
+              <strong>Submitted</strong> {moment(draft.submittedAt).format('MMMM Do, YYYY')}
             </span>
           : null}
         {!draft.studentInfo.disabled ?

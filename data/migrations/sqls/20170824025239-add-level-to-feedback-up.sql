@@ -1,1 +1,0 @@
-ALTER TABLE feedback ADD COLUMN level text NOT NULL;
