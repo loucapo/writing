@@ -16,7 +16,6 @@ const routes = (
   <Route path="/" component={Layout}>
     <IndexRedirect to={redirectActivity} />
     <Route path="/kitchensink" component={KitchenSink} />
-    <Route path="/lms/:lmsId/course/:courseId/resource/:activityId" component={LaunchContainer} />
     <Route path="/activity/:activityId/draft/:draftId" component={CompositionContainer} />
     <Route path="/studentDraft/:studentDraftId/display" component={CompositionDisplayContainer} />
     <Route
@@ -25,6 +24,9 @@ const routes = (
     />
     <Route path="/studentdraft/:studentDraftId/feedbacktool" component={FeedbackToolContainer} />
     <Route path="/studentdraft/:studentDraftId/feedbackdisplay" component={FeedbackDisplayContainer} />
+
+    //This route needs to be at the bottom, since it is the most non-specific
+    <Route path="/:lmsId/:courseId/:activityId" component={LaunchContainer} />
   </Route>
 );
 module.exports = routes;

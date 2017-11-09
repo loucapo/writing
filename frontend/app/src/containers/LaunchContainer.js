@@ -8,23 +8,56 @@ import jwtDecode from 'jwt-decode';
 import cookie from 'react-cookie';
 
 class LaunchContainer extends Component {
-  componentWillMount() {
+
+  state = {
+    auth: {}
+  };
+
+  componentWillMount = () => {
+    const pathArray = this.props.location.pathname.split('/');
+    if (pathArray.length < 4) {
+      throw new Error('Unable to authorize user. URL is malformed.');
+    }
+    const courseId = pathArray[2];
+    const resourceId = pathArray[3];
     const token = cookie.load('id_token'); //XXX should die here if not there.;
     const authValues = jwtDecode(token);
-    const course = authValues.course_data.find(
-      x => x.course_id === this.props.params.courseId
-    );
-    //XXX we need to error here if course isn't set.
+    const appMetadata = authValues['https://macmillantech.com/app_metadata'];
+    const userMetadata = authValues['https://macmillantech.com/user_metadata'];
+    let studentEnrollments = [];
+    let instructorEnrollments = [];
+    if (appMetadata && appMetadata.course_data) {
+      if (appMetadata.course_data.student) {
+        studentEnrollments = appMetadata.course_data.student;
+      }
+
+      if (appMetadata.course_data.instructor) {
+        instructorEnrollments = appMetadata.course_data.instructor;
+      }
+    }
+
+    const isEnrolledStudent = studentEnrollments ? studentEnrollments.includes(courseId) : false;
+    const isEnrolledInstructor = instructorEnrollments ? instructorEnrollments.includes(courseId) : false;
+    let role;
+    if (isEnrolledInstructor) {
+      role = 'instructor';
+    } else if (isEnrolledStudent) {
+      role = 'student';
+    }
 
     const auth = {
-      id: authValues.id,
-      firstName: authValues.first_name,
-      lastName: authValues.last_name,
-      role: course.role,
+      id: authValues.sub,
+      firstName: userMetadata.first_name,
+      lastName: userMetadata.last_name,
+      role,
       activity: {
-        activityId: this.props.params.activityId
+        activityId: resourceId
       }
     };
+
+    this.setState({
+      auth
+    });
 
     this.props.loadAuth(auth);
 
@@ -33,10 +66,10 @@ class LaunchContainer extends Component {
     };
 
     this.props.loadDefaults(defaultValues);
-  }
+  };
 
-  render() {
-    switch (this.props.role) {
+  render = () => {
+    switch (this.state.auth.role) {
       case 'instructor': {
         return <ActivityContainer />;
       }
@@ -46,12 +79,12 @@ class LaunchContainer extends Component {
       default:
         return null;
     }
-  }
+  };
 }
 
 LaunchContainer.propTypes = {
   role: PropTypes.string,
-  params: PropTypes.object,
+  location: PropTypes.object,
   loadAuth: PropTypes.func,
   loadDefaults: PropTypes.func
 };
