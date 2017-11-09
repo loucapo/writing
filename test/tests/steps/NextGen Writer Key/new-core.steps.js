@@ -136,6 +136,15 @@ exports.define = function(steps) {
     done();
   });
 
+
+  steps.given(/I launch "(.+)" data fixtures activity as a student/, function(fixture, done) {
+    let ctx = this.ctx;
+    let act_id = this.ctx.dbload.activity.activity_id;
+    const createUrl = `${marvin.config.baseUrl}/student/${act_id}`;
+    driver.get(createUrl);
+    done();
+  });
+
   // TODO: move this one out of core.steps.js
   steps.then(/the draft goal summary list should have (\d+) goal/, function(goals) {
     goals = parseInt(goals);

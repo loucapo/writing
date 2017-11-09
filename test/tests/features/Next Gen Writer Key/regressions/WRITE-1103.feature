@@ -1,4 +1,4 @@
-@dbreset
+#@dbreset
 @WRITE-1103
 @regression
 Feature: Regression for: Initial save of student draft gives "Invalid date" success message
@@ -9,6 +9,13 @@ Feature: Regression for: Initial save of student draft gives "Invalid date" succ
      Then the text of "created_activity_alert" should include ". This is in draft mode and will not be visible to students until you assign it."
      Then the text of "created_activity_alert" should include "visible to students until you assign it."
      Then the text of "created_activity_alert" should not include "Invalid date"
+
+     @only
+   @dbload=studentSubmittedActivity
+  Scenario: POC Data Fixtures
+    #Given I launch data fixtures activity as a student
+     Given I launch "studentSubmittedActivity" data fixtures activity as a student
+
 
    Scenario: Saved date for new student draft should be a real date
      Given I launch the activity as an "student"
