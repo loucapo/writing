@@ -137,9 +137,9 @@ exports.define = function(steps) {
   });
 
 
-  steps.given(/I launch "(.+)" data fixtures activity as a student/, function(fixture, done) {
+  steps.given(/I launch data fixtures activity as a student/, function(done) {
     let ctx = this.ctx;
-    let act_id = this.ctx.dbload.activity.activity_id;
+    let act_id = this.ctx.dbload.studentSubmittedActivity[0].activity.activity_id;
     const createUrl = `${marvin.config.baseUrl}/student/${act_id}`;
     driver.get(createUrl);
     done();
