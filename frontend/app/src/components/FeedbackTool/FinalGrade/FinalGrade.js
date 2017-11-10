@@ -11,12 +11,19 @@ class FinalGrade extends Component {
 
   handleSave = () => {
     this.props.submitFinalGrade(this.props.studentActivityId, this.props.studentDraftId, this.state.value);
+    this.props.setUnsavedChanges(false);
   };
 
   handleChange = event => {
     this.setState({
       value: event.target.value,
       className: (event.target.value > 100) ? ' ' + styles.error : ''
+    }, () => {
+      if(this.state.value && this.state.value !== this.props.finalGrade) {
+        this.props.setUnsavedChanges(true);
+      } else {
+        this.props.setUnsavedChanges(false);
+      }
     });
   };
 
@@ -76,6 +83,7 @@ class FinalGrade extends Component {
 
 FinalGrade.propTypes = {
   submitFinalGrade: PropTypes.func,
+  setUnsavedChanges: PropTypes.func,
   studentDraftId: PropTypes.string,
   studentActivityId: PropTypes.string,
   finalGrade: PropTypes.string

@@ -11,7 +11,7 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
   if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
     link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
   } else if (draft.studentInfo.status === 'submitted') {
-    link = `/studentDraft/${draft.studentInfo.studentDraftId}/display`;
+    link = `/activity/${activityId}/studentDraft/${draft.studentInfo.studentDraftId}/display`;
   }
 
   return (
@@ -28,7 +28,7 @@ const StudentDraftDisplay = ({ draft, activityId }) => {
                 height="20"
                 viewBox="0 0 24 24"
               />
-              <strong>Submitted</strong> {moment(draft.submittedDate).format('MMMM Do, YYYY')}
+              <strong>Submitted</strong> {moment(draft.submittedAt).format('MMMM Do, YYYY')}
             </span>
           : null}
         {!draft.studentInfo.disabled ?

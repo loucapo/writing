@@ -18,7 +18,7 @@ import styles from './kitchenSink.css';
 const dummyCriteria = [
   {
     id: '1234',
-    createdDate: moment(new Date()).format('MM/DD/YYYY'),
+    createdAt: moment(new Date()).format('MM/DD/YYYY'),
     title: 'asdf',
     description: 'desc',
     useInRubric: true,
@@ -36,7 +36,7 @@ const dummyCriteria = [
   },
   {
     id: '5678',
-    createdDate: moment(new Date()).format('MM/DD/YYYY'),
+    createdAt: moment(new Date()).format('MM/DD/YYYY'),
     title: 'qwerty',
     description: 'desc',
     useInRubric: true,
@@ -54,7 +54,7 @@ const dummyCriteria = [
   },
   {
     id: '9012',
-    createdDate: moment(new Date()).format('MM/DD/YYYY'),
+    createdAt: moment(new Date()).format('MM/DD/YYYY'),
     title: 'uiop',
     description: 'desc',
     useInRubric: true,

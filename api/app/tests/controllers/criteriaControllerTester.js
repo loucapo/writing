@@ -23,7 +23,7 @@ describe('CRITERIA TEST', function() {
     // set up DIC and get instance of mut
     const container = registry({repositoryStub});
     sqlLibrary = container.getInstanceOf('sqlLibrary');
-    mut = container.getInstanceOf('criteriaController');
+    mut = container.getInstanceOf('criterionController');
 
   });
 
@@ -47,7 +47,7 @@ describe('CRITERIA TEST', function() {
         it('should return proper body properties', async () => {
           ctx = {};
           let _criteria = [criteria1, criteria2];
-          td.when(repositoryStub.query(sqlLibrary.criteria, 'getCriteria', {})).thenReturn(_criteria);
+          td.when(repositoryStub.query(sqlLibrary.criterion, 'getCriteria', {})).thenReturn(_criteria);
 
           let result = await mut.getCriteria(ctx);
           result.body.should.equal(_criteria);

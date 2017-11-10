@@ -3,36 +3,37 @@ INSERT INTO draft
     (draft_id,
     activity_id,
     index,
-    created_by_id,
-    created_date)
+    created_by)
 VALUES
     (:draftId,
     :activityId,
     :index,
-    :createdById,
-    now())
+    :createdBy)
 
 -- name: updateDraftInstructions
 UPDATE draft
 SET
     instructions = :instructions,
-    modified_by_id = :modifiedById
+    modified_by = :modifiedBy,
+    modified_at = now()
 WHERE draft_id = :draftId;
 
 -- name: getDraftsByActivityId
 SELECT *
 FROM draft
 WHERE activity_id = :activityId
-AND deleted_date is null
+AND deleted_at is null
 ORDER BY index
 
 -- name: addGoalToDraft
 INSERT INTO draft2goal
     (draft_id,
-    goal_id)
+    goal_id,
+    index)
 VALUES
     (:draftId,
-    :goalId)
+    :goalId,
+    :index)
 
 -- name: removeGoalFromDraft
 DELETE FROM draft2goal
@@ -43,13 +44,13 @@ where draft_id = :draftId
 SELECT * FROM draft2goal
 
 -- name: getDraftStudentReflectionQuestions
-SELECT * FROM draft_student_reflection_question
+SELECT * FROM draft2student_reflection_question
 
 -- name: deleteDraft
 UPDATE draft
 SET
-    deleted_date = :deletedDate,
-    deleted_by_id = :deletedById
+    deleted_at = now(),
+    deleted_by = :deletedBy
 WHERE draft_id = :draftId;
 
 -- name: removeAllGoals
@@ -57,18 +58,19 @@ DELETE FROM draft2goal
 WHERE draft_id = :draftId
 
 -- name: removeAllStudentReflectionQuestions
-DELETE FROM draft_student_reflection_question
+DELETE FROM draft2student_reflection_question
 WHERE draft_id = :draftId
 
 -- name: updateDraftIndex
 UPDATE draft
 SET
     index = :index,
-    modified_by_id = :modifiedById
+    modified_by = :modifiedBy,
+    modified_at = now()
 WHERE draft_id = :draftId;
 
 -- name: addStudentReflectionQuestionsToDraft
-INSERT INTO draft_student_reflection_question
+INSERT INTO draft2student_reflection_question
     (draft_id,
     student_reflection_question_id,
     index)

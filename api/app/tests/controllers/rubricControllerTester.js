@@ -46,10 +46,10 @@ describe('RUBRIC TEST', function() {
       title: "hello2",
       description: "This is a rubric description2.",
     };
-    rubricCrit1 =  {rubricId:'f775f8e2-069f-4c6d-b5cd-999e75b63bfc', criteriaId:critId1};
-    rubricCrit2 =  {rubricId:'f775f8e2-069f-4c6d-b5cd-999e75b63bfc', criteriaId:critId2};
-    rubricCrit3 =  {rubricId:'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc', criteriaId:critId3};
-    rubricCrit4 =  {rubricId:'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc', criteriaId:critId4};
+    rubricCrit1 =  {rubricId:'f775f8e2-069f-4c6d-b5cd-999e75b63bfc', criterionId:critId1};
+    rubricCrit2 =  {rubricId:'f775f8e2-069f-4c6d-b5cd-999e75b63bfc', criterionId:critId2};
+    rubricCrit3 =  {rubricId:'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc', criterionId:critId3};
+    rubricCrit4 =  {rubricId:'fff5f8e2-069f-4c6d-b5cd-999e75b63bfc', criterionId:critId4};
   });
 
   describe('#RUBRIC CONTROLLER', () => {

@@ -23,7 +23,7 @@ module.exports = function(Activity, repository, sqlLibrary, activityBuilder, log
       const command = ctx.request.body;
       command.title = 'Untitled Writing Activity'; //XXX we need to get this from somewhere
       command.activityId = ctx.params.activityId;
-      command.createdById = ctx.state.user.id;
+      command.createdBy = ctx.state.user.id;
       logger.info(`Receiving payload from wk_serve: ${JSON.stringify(command)}`);
       let activity = await repository.query(sqlLibrary.activity, 'getActivityById', {activityId: command.activityId});
       if (!activity || !activity[0]) {
@@ -34,7 +34,7 @@ module.exports = function(Activity, repository, sqlLibrary, activityBuilder, log
         let draftEvent = activity.addDraftToActivity({
           index: 0,
           activityId: command.activityId,
-          createdById: ctx.state.user.id
+          createdBy: ctx.state.user.id
         });
         //XXX this should only happen if the previous repository call to create activity succeeds.  #transaction
         await repository.query(sqlLibrary.draft, 'addDraftToActivity', draftEvent);
@@ -48,7 +48,7 @@ module.exports = function(Activity, repository, sqlLibrary, activityBuilder, log
     async updateActivityPrompt(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.modifiedById = ctx.state.user.id;
+      command.modifiedBy = ctx.state.user.id;
       let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.updateActivityPrompt(command);
 
@@ -61,7 +61,7 @@ module.exports = function(Activity, repository, sqlLibrary, activityBuilder, log
     async updateActivityTitle(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.modifiedById = ctx.state.user.id;
+      command.modifiedBy = ctx.state.user.id;
       let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.updateActivityTitle(command);
 
@@ -74,7 +74,7 @@ module.exports = function(Activity, repository, sqlLibrary, activityBuilder, log
     async updateActivityRubric(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.modifiedById = ctx.state.user.id;
+      command.modifiedBy = ctx.state.user.id;
       let props = await repository.query(sqlLibrary.activity, 'getActivityById', {activityId: command.activityId});
       if (!props) {
         ctx.errors = [`No activity found with id ${command.activityId}`];

@@ -4,30 +4,28 @@ INSERT INTO feedback
   student_draft_id,
   content,
   level,
-  show_header,
+  is_header_shown,
   goal_id,
   editing_mark_id,
-  created_date,
-  created_by_id)
+  created_by)
 VALUES
   (:feedbackId,
   :studentDraftId,
   :content,
   :level,
-  :showHeader,
+  :isHeaderShown,
   :goalId,
   :editingMarkId,
-  :createdDate,
-  :createdById)
+  :createdBy)
 
 --name: getFeedback
 SELECT * FROM feedback
 WHERE student_draft_id = :studentDraftId
-AND deleted_date is null
+AND deleted_at is null
 
 --name: deleteFeedback
 UPDATE feedback
 SET
-    deleted_date = :deletedDate,
-    deleted_by_id = :deletedById
+    deleted_at = now(),
+    deleted_by = :deletedById
 WHERE feedback_id = :feedbackId;

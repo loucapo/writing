@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ReflectionQuestionsForm } from '../components/ReflectionQuestions/index';
+import _ from 'lodash';
+import { ReflectionQuestionsForm } from '../components/ReflectionQuestions';
+import { getDraftsForActivity } from '../modules/draftModule';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
-import { setReflectionAnswers } from '../modules/reflectionAnswersModule';
-import { getStudentDraftByStudentDraftId } from '../modules/studentDraftModule';
-import { submitDraft } from '../modules/studentDraftModule';
+import { getReflectionAnswers, setReflectionAnswers } from '../modules/reflectionAnswersModule';
+import { getStudentDraftByStudentDraftId, submitDraft } from '../modules/studentDraftModule';
 
 class ReflectionQuestionsFormContainer extends Component {
   componentWillMount() {
@@ -13,8 +14,16 @@ class ReflectionQuestionsFormContainer extends Component {
   }
 
   loadData() {
-    this.props.getReflectionQuestions();
-    this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
+    if (_.isEmpty(this.props.drafts)) {
+      this.props.getDraftsForActivity(this.props.params.activityId);
+    }
+    if (_.isEmpty(this.props.reflectionQuestionsState)) {
+      this.props.getReflectionQuestions();
+    }
+    this.props.getReflectionAnswers(this.props.params.studentDraftId);
+    if (!this.props.studentDraft) {
+      this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
+    }
   }
 
   render() {
@@ -24,47 +33,56 @@ class ReflectionQuestionsFormContainer extends Component {
 
 ReflectionQuestionsFormContainer.propTypes = {
   params: PropTypes.object,
-  studentReflectionQuestions: PropTypes.array,
-  studentReflectionAnswers: PropTypes.array,
-  setReflectionAnswers: PropTypes.func,
-  studentActivityId: PropTypes.string,
-  studentDraftId: PropTypes.string,
+  studentDraft: PropTypes.object,
+  drafts: PropTypes.array,
+  reflectionQuestionsState: PropTypes.array,
+  reflectionAnswersState: PropTypes.array,
+  getDraftsForActivity: PropTypes.func,
   getReflectionQuestions: PropTypes.func,
+  getReflectionAnswers: PropTypes.func,
   getStudentDraftByStudentDraftId: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
-  let studentDraft = state.studentDraft[0];
+  const studentDraft = state.studentDraft[0];
+  const drafts = state.drafts;
+  const draft = drafts.find(draftInState =>
+    draftInState.draftId === (studentDraft && studentDraft.draftId)
+  );
+  const reflectionQuestionsState = state.reflectionQuestions;
+  const reflectionAnswersState = state.reflectionAnswers;
 
-  let draft = state.drafts.find(draftInState => draftInState.draftId === studentDraft.draftId);
-
-  let reflectionQuestions = (state.reflectionQuestions.length > 0) ?
-    draft.studentReflectionQuestions.map(questionId =>
-        state.reflectionQuestions.find(question => question.studentReflectionQuestionId === questionId)
-      )
-    : [];
-
-  let reflectionAnswers = state.reflectionAnswers.filter(answer =>
-    reflectionQuestions.find(question => question.studentReflectionQuestionId === answer.studentReflectionQuestionId)
+  const reflectionQuestions = draft && draft.studentReflectionQuestions.map(questionId =>
+    reflectionQuestionsState.find(question =>
+      question.studentReflectionQuestionId === questionId
+    )
   );
 
-  let draftName = (draft.index === studentDraft.length - 1) ?
-    `Final Paper` : `Draft ${draft.index + 1}`;
+  const reflectionAnswers = state.reflectionAnswers.filter(answer =>
+    reflectionQuestions && reflectionQuestions.find(question =>
+      question.studentReflectionQuestionId === answer.studentReflectionQuestionId
+    )
+  );
 
   return {
-    reflectionQuestions,
-    reflectionAnswers,
-    studentActivityId: props.params.studentActivityId.trim(),
-    studentDraftId: props.params.studentDraftId.trim(),
-    draftId: draft.draftId,
-    activityId: draft.activityId,
+    activityId: props.params.activityId,
+    studentActivityId: studentDraft && studentDraft.studentActivityId,
+    studentDraftId: props.params.studentDraftId,
+    studentDraft,
+    drafts,
+    draftId: draft && draft.draftId,
     homeRoute: state.defaults.homeRoute,
-    draftName,
-    saveReflectionMessage: state.messaging.saveReflection
+    saveReflectionMessage: state.messaging.saveReflection,
+    reflectionQuestions: reflectionQuestions || [],
+    reflectionAnswers,
+    reflectionQuestionsState,
+    reflectionAnswersState
   };
 };
 
 export default connect(mapStateToProps, {
+  getDraftsForActivity,
+  getReflectionAnswers,
   setReflectionAnswers,
   getReflectionQuestions,
   submitDraft,

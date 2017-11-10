@@ -49,14 +49,14 @@ class FeedbackEditor extends Component {
     document.body.removeEventListener('contextmenu', this.handleRightClick.bind(this));
   };
 
-  handleSave = (comment, level, showHeader, goalId, editorMarkId) => {
+  handleSave = (comment, level, isHeaderShown, goalId, editorMarkId) => {
     this.setState({ saving: true }, () => {
       this.props.createFeedback(
         this.props.studentActivityId,
         this.props.studentDraftId,
         comment,
         level,
-        showHeader,
+        isHeaderShown,
         goalId,
         editorMarkId
       );

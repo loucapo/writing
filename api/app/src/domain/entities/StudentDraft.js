@@ -38,12 +38,12 @@ module.exports = function(EntityBase, StudentReflectionAnswer, StudentRubricScor
     submit(cmd) {
       this.status = 'submitted';
       this.reviewStatus = ReviewStatus.notStarted;
-      this.submittedDate = cmd.submittedDate;
+      this.submittedAt = cmd.submittedAt;
     }
 
     updateReviewStatus(cmd) {
       this.reviewStatus = cmd.reviewStatus;
-      this.reviewedDate = cmd.reviewedDate;
+      this.reviewedAt = cmd.reviewedAt;
     }
 
     submitEndComment(cmd) {

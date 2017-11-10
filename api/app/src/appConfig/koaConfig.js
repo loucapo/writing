@@ -10,6 +10,7 @@ module.exports = function(koaresponsetime,
                           config,
                           swaggerSpec,
                           customValidators,
+                          authMiddleware,
                           swaggerValidationMiddleware) {
   return function(app) {
     if (!config.app.keys) {
@@ -25,14 +26,18 @@ module.exports = function(koaresponsetime,
     app.use(koaErrorHandler());
     app.use(koa2cors({origin: '*'}));
     // Exempting the health check from the jwt authentication. All other routes are looking for the auth cookie.
-    app.use(koaconvert(koajwt({secret: config.app.jwt_secret, cookie: 'id_token'}).unless({ path: [/^\/health/] })));
+    app.use(koaconvert(koajwt(
+      {
+        secret: config.app.jwt_secret, key: 'jwtdata', cookie: 'id_token'
+      }
+    ).unless({ path: [/^\/health/] })));
 //    app.use(koacors({origin:config.app.swagger_ui_url}));
 //XXX -- it would appear that last CORS wins...  need to revisit this for swagger.
     app.use(koabodyparser());
     app.use(koacompress());
     let JSONSwaggerDoc = JSON.parse(swaggerSpec());
     app.use(swaggerValidationMiddleware(JSONSwaggerDoc, customValidators));
-
+    app.use(authMiddleware());
     app.use(koaresponsetime());
   };
 };
