@@ -17,7 +17,10 @@ const routes = (
     <IndexRedirect to={redirectActivity} />
     <Route path="/kitchensink" component={KitchenSink} />
     <Route path="/activity/:activityId/draft/:draftId" component={CompositionContainer} />
-    <Route path="/studentDraft/:studentDraftId/display" component={CompositionDisplayContainer} />
+    <Route
+      path="/activity/:activityId/studentDraft/:studentDraftId/display"
+      component={CompositionDisplayContainer}
+    />
     <Route
       path="/reflectionQuestions/:activityId/studentdraft/:studentDraftId"
       component={ReflectionQuestionsFormContainer}
@@ -25,7 +28,7 @@ const routes = (
     <Route path="/studentdraft/:studentDraftId/feedbacktool" component={FeedbackToolContainer} />
     <Route path="/studentdraft/:studentDraftId/feedbackdisplay" component={FeedbackDisplayContainer} />
 
-    //This route needs to be at the bottom, since it is the most non-specific
+    {/* This route needs to be at the bottom, since it is the most non-specific */}
     <Route path="/:lmsId/:courseId/:activityId" component={LaunchContainer} />
   </Route>
 );
