@@ -1,4 +1,4 @@
-#@dbreset
+@dbreset
 @WRITE-1103
 @regression
 Feature: Regression for: Initial save of student draft gives "Invalid date" success message
@@ -13,8 +13,8 @@ Feature: Regression for: Initial save of student draft gives "Invalid date" succ
      @only
    @dbload=studentSubmittedActivity
   Scenario: POC Data Fixtures
-    #Given I launch data fixtures activity as a student
-     Given I launch "studentSubmittedActivity" data fixtures activity as a student
+     Given I launch data fixtures activity as a student
+     #Given I launch "studentSubmittedActivity" data fixtures activity as a student
 
 
    Scenario: Saved date for new student draft should be a real date
