@@ -1,6 +1,9 @@
 export default state => {
+  const activity = state.activities[0];
+  const activityId = (activity && activity.activityId) || (state.auth.activity && state.auth.activity.activityId);
+
   return state.drafts
-    .filter(draft => draft.activityId === (state.activities[0].activityId || state.auth.activity.activityId))
+    .filter(draft => draft.activityId === activityId)
     .map(draft => {
       let goals = [];
       let studentReflectionQuestions = [];
