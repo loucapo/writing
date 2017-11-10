@@ -35,7 +35,7 @@ RubricContainer.propTypes = {
 const mapStateToProps = state => {
   let rubric = addCriteriaToRubric(state);
   let rubricScores = state.rubricScores.map(score => ({
-    criteriaId: score.criteriaId,
+    criterionId: score.criterionId,
     score: score.score
   }));
 

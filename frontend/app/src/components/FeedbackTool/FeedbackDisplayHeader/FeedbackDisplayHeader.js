@@ -31,7 +31,7 @@ const FeedbackDisplayHeader = ({ backLink, backText, linkableDrafts }) => (
         if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
           link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
         } else if (draft.studentInfo.status === 'submitted') {
-          link = `/studentDraft/${draft.studentInfo.studentDraftId}/display`;
+          link = `/activity/${draft.activityId}/studentDraft/${draft.studentInfo.studentDraftId}/display`;
         }
         return (
           <MLButton

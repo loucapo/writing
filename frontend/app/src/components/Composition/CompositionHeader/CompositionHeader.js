@@ -7,7 +7,7 @@ import styles from './compositionHeader.css';
 const CompositionHeader = ({
   draftIsEmpty,
   studentDraftId,
-  studentActivityId,
+  activityId,
   handleSave,
   hasStartedReflectionQuestions
 }) => {
@@ -23,7 +23,7 @@ const CompositionHeader = ({
         />
         <MLButton
           handleClick={handleSave}
-          link={`/reflectionQuestions/${studentActivityId}/studentdraft/${studentDraftId}`}
+          link={`/reflectionQuestions/${activityId}/studentdraft/${studentDraftId}`}
           title={buttonTitle}
           dataId="start-reflection"
           disabled={draftIsEmpty}
@@ -37,7 +37,7 @@ const CompositionHeader = ({
 CompositionHeader.propTypes = {
   draftIsEmpty: PropTypes.bool,
   studentDraftId: PropTypes.string,
-  studentActivityId: PropTypes.string,
+  activityId: PropTypes.string,
   handleSave: PropTypes.func,
   hasStartedReflectionQuestions: PropTypes.bool
 };

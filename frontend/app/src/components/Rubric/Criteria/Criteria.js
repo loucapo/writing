@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './criteria.css';
 
-const Criteria = ({ score, content, selected, criteriaId, setRubricScore }) => {
+const Criteria = ({ score, content, selected, criterionId, setRubricScore }) => {
   const backgroundColor = () => {
     let color;
     switch (score) {
@@ -35,7 +35,7 @@ const Criteria = ({ score, content, selected, criteriaId, setRubricScore }) => {
       event.target.classList = `${styles.enabled} selected ${backgroundColor()}`;
 
     }
-    setRubricScore({ criteriaId, score });
+    setRubricScore({ criterionId, score });
   };
 
   let className = selected ? `selected ${backgroundColor()}` : '';
@@ -50,7 +50,7 @@ Criteria.propTypes = {
   score: PropTypes.string,
   content: PropTypes.string,
   selected: PropTypes.bool,
-  criteriaId: PropTypes.string,
+  criterionId: PropTypes.string,
   setRubricScore: PropTypes.func
 };
 

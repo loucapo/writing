@@ -46,7 +46,7 @@ class Composition extends Component {
           options={{
             id: '1234',
             message: `This draft was successfully saved on ${moment(
-              this.props.studentDraft.modifiedDate || this.props.studentDraft.createdDate).format(
+              this.props.studentDraft.modifiedAt || this.props.studentDraft.createdAt).format(
               'MMMM Do, YYYY'
             )}`,
             type: 'success',
@@ -72,7 +72,7 @@ class Composition extends Component {
             handleSave={this.handleSave}
             draftIsEmpty={this.draftIsEmpty(this.state.content)}
             studentDraftId={this.props.studentDraft.studentDraftId}
-            studentActivityId={this.props.studentActivityId}
+            activityId={this.props.activityId}
             hasStartedReflectionQuestions={this.props.hasStartedReflectionQuestions}
           />
           <div className={styles.container}>

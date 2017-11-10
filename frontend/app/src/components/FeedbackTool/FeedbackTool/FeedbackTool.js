@@ -64,7 +64,7 @@ class FeedbackTool extends Component {
           homeRoute={this.props.homeRoute}
           draftId={this.props.draft.draftId}
           draftTitle={this.props.draftTitle}
-          submittedDate={this.props.studentDraft.submittedDate}
+          submittedDate={this.props.studentDraft.submittedAt}
           checkUnsavedChanges={this.checkUnsavedChanges}
         />
         <div className={styles.container}>

@@ -55,7 +55,7 @@ class MLTable extends Component {
             header={<Cell className={styles.headerRow}>Date Created</Cell>}
             cell={({rowIndex, ...props}) => (
               <Cell {...props}>
-                {this.props.criteriaList[rowIndex].createdDate}
+                {this.props.criteriaList[rowIndex].createdAt}
               </Cell>
             )}
             width={200}

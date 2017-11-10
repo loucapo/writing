@@ -1825,7 +1825,7 @@ kind-of@^3.0.2:
   dependencies:
     is-buffer "^1.0.2"
 
-koa-bodyparser@^3.2.0:
+koa-bodyparser@~3.2.0:
   version "3.2.0"
   resolved "http://npm.macmillantech.com:8080/k/koa-bodyparser/_attachments/koa-bodyparser-3.2.0.tgz#b916de17e2039fe82650481973d7c294f10b5719"
   dependencies:
@@ -1837,7 +1837,7 @@ koa-compose@^3.0.0:
   dependencies:
     any-promise "^1.1.0"
 
-koa-compress@^2.0.0:
+koa-compress@~2.0.0:
   version "2.0.0"
   resolved "http://npm.macmillantech.com:8080/k/koa-compress/_attachments/koa-compress-2.0.0.tgz#7b7eb2921b847746b5e122ba9f5cd8a671e8ea3a"
   dependencies:
@@ -1846,22 +1846,22 @@ koa-compress@^2.0.0:
     koa-is-json "^1.0.0"
     statuses "^1.0.0"
 
-koa-convert@^1.2.0:
+koa-convert@^1.2.0, koa-convert@~1.2.0:
   version "1.2.0"
   resolved "http://npm.macmillantech.com:8080/k/koa-convert/_attachments/koa-convert-1.2.0.tgz#da40875df49de0539098d1700b50820cebcd21d0"
   dependencies:
     co "^4.6.0"
     koa-compose "^3.0.0"
 
-koa-errorhandler@^0.1.1:
+koa-errorhandler@~0.1.1:
   version "0.1.1"
   resolved "http://npm.macmillantech.com:8080/k/koa-errorhandler/_attachments/koa-errorhandler-0.1.1.tgz#cc778e5a4732d7f8754da28d8932ab10970e365b"
   dependencies:
     swig "^1.4.2"
 
-koa-generic-session@^1.11.3:
-  version "1.11.5"
-  resolved "http://npm.macmillantech.com:8080/k/koa-generic-session/_attachments/koa-generic-session-1.11.5.tgz#430467152ccfc6f81baa944bad8683dd37df24ff"
+koa-generic-session@~1.11.3:
+  version "1.11.6"
+  resolved "http://npm.macmillantech.com:8080/k/koa-generic-session/_attachments/koa-generic-session-1.11.6.tgz#8d714cc3671a6b9fcde2c7eb4f32fe7bd6096566"
   dependencies:
     copy-to "~2.0.1"
     crc "~3.4.0"
@@ -1873,7 +1873,7 @@ koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "http://npm.macmillantech.com:8080/k/koa-is-json/_attachments/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
 
-koa-jwt@^1.3.1:
+koa-jwt@~1.3.1:
   version "1.3.2"
   resolved "http://npm.macmillantech.com:8080/k/koa-jwt/_attachments/koa-jwt-1.3.2.tgz#3f57bb4ae8979fc100f16c81fe7b97a7386a7636"
   dependencies:
@@ -1881,7 +1881,7 @@ koa-jwt@^1.3.1:
     koa-unless "0.0.1"
     thunkify "~2.1.x"
 
-koa-logger@^2.0.0:
+koa-logger@~2.0.0:
   version "2.0.1"
   resolved "http://npm.macmillantech.com:8080/k/koa-logger/_attachments/koa-logger-2.0.1.tgz#3ee42f457c40fb4d4a19a131c8022504b5b232b8"
   dependencies:
@@ -1896,11 +1896,11 @@ koa-papers@1.0.2:
   dependencies:
     co "^4.6.0"
 
-koa-response-time@^2.0.0:
+koa-response-time@~2.0.0:
   version "2.0.0"
   resolved "http://npm.macmillantech.com:8080/k/koa-response-time/_attachments/koa-response-time-2.0.0.tgz#9590b54284dc59a9ec10f80b69048a66188342bb"
 
-koa-router@^7.0.1:
+koa-router@~7.1.1:
   version "7.1.1"
   resolved "http://npm.macmillantech.com:8080/k/koa-router/_attachments/koa-router-7.1.1.tgz#38cce6b1381fada18cfa47a3b3323e995ca231cf"
   dependencies:
@@ -1910,7 +1910,7 @@ koa-router@^7.0.1:
     methods "^1.0.1"
     path-to-regexp "^1.1.1"
 
-koa-send@^3.2.0:
+koa-send@~3.3.0:
   version "3.3.0"
   resolved "http://npm.macmillantech.com:8080/k/koa-send/_attachments/koa-send-3.3.0.tgz#5a4ae245564680c6ecf6079e9275fa5173a861dc"
   dependencies:
@@ -1923,13 +1923,13 @@ koa-unless@0.0.1:
   version "0.0.1"
   resolved "http://npm.macmillantech.com:8080/k/koa-unless/_attachments/koa-unless-0.0.1.tgz#cfcdd1cdfbaf066e05d843e6a412df8a7c69b218"
 
-koa2-cors@^2.0.3:
+koa2-cors@~2.0.3:
   version "2.0.3"
   resolved "http://npm.macmillantech.com:8080/k/koa2-cors/_attachments/koa2-cors-2.0.3.tgz#43209a32dff6cf50d446d77a44fac9c95bb87c28"
   dependencies:
     babel-runtime "^6.20.0"
 
-koa@^2.0.0:
+koa@~2.2.0:
   version "2.2.0"
   resolved "http://npm.macmillantech.com:8080/k/koa/_attachments/koa-2.2.0.tgz#b055933187849d540ad8b9f731baaa4be97c652d"
   dependencies:

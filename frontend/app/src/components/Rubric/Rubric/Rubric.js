@@ -25,7 +25,7 @@ class Rubric extends Component {
 
   setRubricScore = (newScore) => {
     let newScores = this.state.rubricScores.slice();
-    newScores = newScores.filter(rubricScore => rubricScore.criteriaId !== newScore.criteriaId);
+    newScores = newScores.filter(rubricScore => rubricScore.criterionId !== newScore.criterionId);
     newScores.push(newScore);
     this.setState({rubricScores: newScores});
   };
@@ -54,12 +54,12 @@ class Rubric extends Component {
             <div>4 - Exceeds Expectations</div>
           </header>
           {rubric.criteria.map(criteria => (
-            <div key={criteria.criteriaId} className={styles.row}>
+            <div key={criteria.criterionId} className={styles.row}>
               <div className={styles.heading}>{criteria.title}</div>
               {criteria.rubricLevels.map((level, index) => (
                 <Criteria
                   key={index}
-                  criteriaId={criteria.criteriaId}
+                  criterionId={criteria.criterionId}
                   score={level.score}
                   content={level.content}
                   selected={level.selected}

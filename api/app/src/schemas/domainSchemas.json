@@ -26,25 +26,32 @@
           },
           "uniqueItems": true
         },
-        "createdById": {
+        "createdBy": {
           "type": "string",
           "format": "uuid"
         },
-        "createdDate": {
+        "createdAt": {
           "type": "string"
         },
-        "modifiedById": {
+        "modifiedBy": {
           "type": "string",
           "format": "uuid"
         },
-        "modifiedDate": {
+        "modifiedAt": {
+          "type": "string"
+        },
+        "deletedBy": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "deletedAt": {
           "type": "string"
         }
       },
       "required": [
         "activityId",
         "courseId",
-        "createdById"
+        "createdBy"
       ]
     },
     "rubric": {
@@ -64,37 +71,19 @@
           "type": "array",
           "minItems": 1,
           "items": {
-            "$ref": "#/definitions/criteria"
+            "$ref": "#/definitions/criterion"
           },
           "uniqueItems": true
-        },
-        "createdById": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "createdDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "modifiedById": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "modifiedDate": {
-          "type": "string",
-          "format": "date-time"
         }
       },
       "required": [
-        "rubricId",
-        "createdById",
-        "createdDate"
+        "rubricId"
       ]
     },
-    "criteria": {
-      "title": "criteria",
+    "criterion": {
+      "title": "criterion",
       "properties": {
-        "criteriaId": {
+        "criterionId": {
           "type": "string",
           "format": "uuid"
         },
@@ -104,7 +93,7 @@
         "description": {
           "type": "string"
         },
-        "availableToRubric": {
+        "isAvailableToRubric": {
           "type": "bool"
         },
         "rubricLevel1": {
@@ -118,28 +107,10 @@
         },
         "rubricLevel4": {
           "type": "string"
-        },
-        "createdById": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "createdDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "modifiedById": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "modifiedDate": {
-          "type": "string",
-          "format": "date-time"
         }
       },
       "required": [
-        "criteriaId",
-        "createdById",
-        "createdDate"
+        "criterionId"
       ]
     },
     "goal": {
@@ -163,31 +134,12 @@
         },
         "option3": {
           "type": "string"
-        },
-        "createdById": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "createdDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "modifiedById": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "modifiedDate": {
-          "type": "string",
-          "format": "date-time"
         }
       },
       "required": [
-        "criteriaId",
-        "createdById",
-        "createdDate"
+        "goalId"
       ]
     },
-    
     "draft": {
       "title": "draft",
       "properties": {
@@ -201,27 +153,34 @@
         "index": {
           "type": "number"
         },
-        "createdById": {
+        "createdBy": {
           "type": "string",
           "format": "uuid"
         },
-        "createdDate": {
+        "createdAt": {
           "type": "string",
           "format": "date-time"
         },
-        "modifiedById": {
+        "modifiedBy": {
           "type": "string",
           "format": "uuid"
         },
-        "modifiedDate": {
+        "modifiedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "deletedBy": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "deletedAt": {
           "type": "string",
           "format": "date-time"
         }
       },
       "required": [
         "draftId",
-        "createdById",
-        "createdDate"
+        "createdBy"
       ]
     }
   }
