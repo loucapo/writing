@@ -51,12 +51,12 @@ class Rubric extends Component {
             <div>4 - Exceeds Expectations</div>
           </header>
           {rubric.criteria.map(criteria => (
-            <div key={criteria.criteriaId} className={styles.row}>
+            <div key={criteria.criterionId} className={styles.row}>
               <div className={styles.heading}>{criteria.title}</div>
               {criteria.rubricLevels.map((level, index) => (
                 <Criteria
                   key={index}
-                  criteriaId={criteria.criteriaId}
+                  criterionId={criteria.criterionId}
                   score={level.score}
                   content={level.content}
                   selected={level.selected}

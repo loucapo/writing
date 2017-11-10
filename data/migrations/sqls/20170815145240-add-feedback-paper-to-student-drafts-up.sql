@@ -1,1 +1,0 @@
-ALTER TABLE student_draft ADD COLUMN feedback_paper text;

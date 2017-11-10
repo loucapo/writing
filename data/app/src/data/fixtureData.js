@@ -6,11 +6,10 @@ module.exports = function(faker) {
         activity_id: faker.random.uuid(),
         course_id: 123456,
         title: faker.fake(`Assignment {{random.words}}`),
-        created_by_id: faker.random.uuid(),
-        created_date: `2017-04-07`,
+        created_by: faker.random.uuid(),
         prompt: null,
-        modified_by_id: null,
-        modified_date: null
+        modified_by: null,
+        modified_at: null
       };
     };
 

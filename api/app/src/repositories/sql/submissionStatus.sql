@@ -4,8 +4,9 @@ SELECT
     student_activity_id,
     draft_id,
     student_id,
-    submitted_date,
+    submitted_at,
     review_status,
     status
 FROM student_draft
 WHERE draft_id = :draftId
+AND deleted_at is null

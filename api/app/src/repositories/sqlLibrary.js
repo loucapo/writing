@@ -4,18 +4,18 @@ module.exports = function(path) {
     let studentActivity = path.join(__dirname, `./sql/studentActivity.sql`);
     let studentDraft = path.join(__dirname, `./sql/studentDraft.sql`);
     let rubric = path.join(__dirname, `./sql/rubric.sql`);
-    let criteria = path.join(__dirname, `./sql/criteria.sql`);
+    let criterion = path.join(__dirname, `./sql/criterion.sql`);
     let goal = path.join(__dirname, `./sql/goal.sql`);
     let draft = path.join(__dirname, `./sql/draft.sql`);
     let studentReflectionQuestions = path.join(__dirname, `./sql/studentReflectionQuestions.sql`);
     let submissionStatus = path.join(__dirname, `./sql/submissionStatus.sql`);
     let studentRubricScore = path.join(__dirname, `./sql/studentRubricScore.sql`);
     let feedback = path.join(__dirname, `./sql/feedback.sql`);
-    let editingMarks = path.join(__dirname, `./sql/editingMarks.sql`);
+    let editingMark = path.join(__dirname, `./sql/editingMark.sql`);
 
     return {
       activity,
-      criteria,
+      criterion,
       goal,
       rubric,
       draft,
@@ -25,7 +25,7 @@ module.exports = function(path) {
       submissionStatus,
       studentRubricScore,
       feedback,
-      editingMarks
+      editingMark
     };
   }();
 };

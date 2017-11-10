@@ -1,16 +1,16 @@
-module.exports = function(repository, activityBuilder, sqlLibrary, moment) {
+module.exports = function(repository, activityBuilder, sqlLibrary) {
   return {
     async addDraftToActivity(ctx) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
-      command.createdById = ctx.state.user.id;
+      command.createdBy = ctx.state.user.id;
       let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.addDraftToActivity(command);
       let draftIndexes = activity.getDraftIndexes();
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'addDraftToActivity', event);
         for (let draft of draftIndexes) {
-          draft.modifiedById = ctx.state.user.id;
+          draft.modifiedBy = ctx.state.user.id;
           await repo.query(sqlLibrary.draft, 'updateDraftIndex', draft);
         }
       });
@@ -27,15 +27,14 @@ module.exports = function(repository, activityBuilder, sqlLibrary, moment) {
 
       const queryParams = {
         draftId: event.draftId,
-        deletedById: ctx.state.user.id,
-        deletedDate: moment().toISOString()
+        deletedBy: ctx.state.user.id
       };
 
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'deleteDraft', queryParams);
 
         for (let draft of draftIndexes) {
-          draft.modifiedById = ctx.state.user.id;
+          draft.modifiedBy = ctx.state.user.id;
           await repo.query(sqlLibrary.draft, 'updateDraftIndex', draft);
         }
       });
@@ -47,7 +46,7 @@ module.exports = function(repository, activityBuilder, sqlLibrary, moment) {
     async updateDraftInstructions(ctx) {
       const command = ctx.request.body;
       command.draftId = ctx.params.draftId;
-      command.modifiedById = ctx.state.user.id;
+      command.modifiedBy = ctx.state.user.id;
       let activity = await activityBuilder.getActivityARById(ctx.params.activityId);
       let event = activity.updateDraftInstructions(command);
 
@@ -67,8 +66,10 @@ module.exports = function(repository, activityBuilder, sqlLibrary, moment) {
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'removeAllGoals', { draftId: command.draftId });
 
+        let i = 0;
         for (let goal of goals) {
-          await repo.query(sqlLibrary.draft, 'addGoalToDraft', goal);
+          i++;
+          await repo.query(sqlLibrary.draft, 'addGoalToDraft', {draftId: goal.draftId, goalId: goal.goalId, index: i});
         }
       });
 
@@ -80,17 +81,19 @@ module.exports = function(repository, activityBuilder, sqlLibrary, moment) {
       const command = ctx.request.body;
       command.activityId = ctx.params.activityId;
       command.draftId = ctx.params.draftId;
-      command.modifiedById = ctx.state.user.id;
+      command.modifiedBy = ctx.state.user.id;
       let activity = await activityBuilder.getActivityARById(command.activityId);
       let event = activity.setStudentReflectionQuestions(command);
       repository.transaction(async repo => {
         await repo.query(sqlLibrary.draft, 'removeAllStudentReflectionQuestions', {draftId: command.draftId});
 
+        let i = 0;
         for (let srq of event.studentReflectionQuestions) {
+          i++;
           await repo.query(
             sqlLibrary.draft,
             'addStudentReflectionQuestionsToDraft',
-            {draftId: command.draftId, studentReflectionQuestionId: srq, index: 0});
+            {draftId: command.draftId, studentReflectionQuestionId: srq, index: i});
         }
       });
       ctx.status = 200;
@@ -123,7 +126,7 @@ module.exports = function(repository, activityBuilder, sqlLibrary, moment) {
 
     async getEditingMarks(ctx) {
       // TODO: Should eventually only get editingMarks associated with draft
-      const editingMarks = await repository.query(sqlLibrary.editingMarks, 'getEditingMarks', {});
+      const editingMarks = await repository.query(sqlLibrary.editingMark, 'getEditingMarks', {});
       ctx.status = 200;
       ctx.body = editingMarks;
       return ctx;

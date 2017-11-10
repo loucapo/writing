@@ -23,7 +23,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     And the text of "reflection_questions_modal.desc(4)" should include "The primary argument I'm making is"
     Then the text of "reflection_questions_modal.question_title(7)" should be "Question 7"
     Then the text of "reflection_questions_modal.question_type(7)" should be "agree/disagree"
-    And the text of "reflection_questions_modal.desc(7)" should include "I know the criteria that will be used for giving me feedback."
+    And the text of "reflection_questions_modal.desc(7)" should include "I know the criterion that will be used for giving me feedback."
 
   @dbreset
   Scenario: The instructor can close the student reflection question modal selector via icon
@@ -92,7 +92,7 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     Then I wait until there is 0 "reflection_questions_modal.ref_question_modal" visible
     Then I wait until there are 2 "draft.reflection_question" visible
     Then the text of "draft.reflection_question(1)" should include "free response: One thing I want my reader to understand is"
-    Then the text of "draft.reflection_question(2)" should include "agree/disagree: I know the criteria that will be used for giving me feedback."
+    Then the text of "draft.reflection_question(2)" should include "agree/disagree: I know the criterion that will be used for giving me feedback."
     When I click "draft.edit_reflections(1)"
     #Then I wait until there is 1 "reflection_questions_modal.ref_question_modal" visible
     When I click "reflection_questions_modal.check(2)"
@@ -100,5 +100,5 @@ Feature: Instructor Can Add Student Reflection Questions To Activity
     And I click "reflection_questions_modal.save"
     Then I wait until there is 0 "reflection_questions_modal.ref_question_modal" visible
     Then I wait until there are 2 "draft.reflection_question" visible
-    Then the text of "draft.reflection_question(1)" should include "agree/disagree: I know the criteria that will be used for giving me feedback."
+    Then the text of "draft.reflection_question(1)" should include "agree/disagree: I know the criterion that will be used for giving me feedback."
     Then the text of "draft.reflection_question(2)" should include "free response: I want you to know that"
