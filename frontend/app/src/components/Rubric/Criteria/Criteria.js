@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './criteria.css';
 
-const Criteria = ({ score, content, selected, criteriaId, rubricScores, setRubricScores }) => {
-  let scores = rubricScores.slice(0);
+const Criteria = ({ score, content, selected, criteriaId, setRubricScore }) => {
   const backgroundColor = () => {
     let color;
     switch (score) {
@@ -29,16 +28,14 @@ const Criteria = ({ score, content, selected, criteriaId, rubricScores, setRubri
     let previousSelected = parent.getElementsByClassName('selected')[0];
     if (previousSelected) {
       previousSelected.className = styles.enabled;
-      scores = scores.filter(thisScore => thisScore.criteriaId !== criteriaId);
     }
 
     // Add new selected criteria if not same as previous.
     if (event.target !== previousSelected) {
       event.target.classList = `${styles.enabled} selected ${backgroundColor()}`;
-      scores.push({ criteriaId, score });
-    }
 
-    setRubricScores(scores);
+    }
+    setRubricScore({ criteriaId, score });
   };
 
   let className = selected ? `selected ${backgroundColor()}` : '';
@@ -54,8 +51,7 @@ Criteria.propTypes = {
   content: PropTypes.string,
   selected: PropTypes.bool,
   criteriaId: PropTypes.string,
-  rubricScores: PropTypes.array,
-  setRubricScores: PropTypes.func
+  setRubricScore: PropTypes.func
 };
 
 export default Criteria;

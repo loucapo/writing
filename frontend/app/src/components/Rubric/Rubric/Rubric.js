@@ -6,7 +6,7 @@ import styles from './rubric.css';
 
 class Rubric extends Component {
   state = {
-    rubricScores: this.props.rubricScores
+    rubricScores: this.props.rubricScores || []
   };
 
   componentWillReceiveProps = newProps => {
@@ -23,14 +23,11 @@ class Rubric extends Component {
     return this.state.rubricScores.length === 0;
   };
 
-  setRubricScores = (rubricScores) => {
-    this.setState({rubricScores}, () => {
-      if(this.state.rubricScores && this.state.rubricScores !== this.props.rubricScores) {
-        this.props.setUnsavedChanges(true);
-      } else {
-        this.props.setUnsavedChanges(false);
-      }
-    });
+  setRubricScore = (newScore) => {
+    let newScores = this.state.rubricScores.slice();
+    newScores = newScores.filter(rubricScore => rubricScore.criteriaId !== newScore.criteriaId);
+    newScores.push(newScore);
+    this.setState({rubricScores: newScores});
   };
 
   handleSave = () => {
@@ -66,8 +63,7 @@ class Rubric extends Component {
                   score={level.score}
                   content={level.content}
                   selected={level.selected}
-                  rubricScores={this.state.rubricScores}
-                  setRubricScores={this.setRubricScores}
+                  setRubricScore={this.setRubricScore}
                 />
               ))}
             </div>
