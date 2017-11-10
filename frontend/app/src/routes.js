@@ -19,7 +19,7 @@ const routes = (
     <Route path="/activity/:activityId/draft/:draftId" component={CompositionContainer} />
     <Route path="/studentDraft/:studentDraftId/display" component={CompositionDisplayContainer} />
     <Route
-      path="/reflectionQuestions/:studentActivityId/studentdraft/:studentDraftId"
+      path="/reflectionQuestions/:activityId/studentdraft/:studentDraftId"
       component={ReflectionQuestionsFormContainer}
     />
     <Route path="/studentdraft/:studentDraftId/feedbacktool" component={FeedbackToolContainer} />

@@ -72,7 +72,7 @@ class Composition extends Component {
             handleSave={this.handleSave}
             draftIsEmpty={this.draftIsEmpty(this.state.content)}
             studentDraftId={this.props.studentDraft.studentDraftId}
-            studentActivityId={this.props.studentActivityId}
+            activityId={this.props.activityId}
             hasStartedReflectionQuestions={this.props.hasStartedReflectionQuestions}
           />
           <div className={styles.container}>
