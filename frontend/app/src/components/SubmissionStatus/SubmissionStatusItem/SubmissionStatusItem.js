@@ -31,7 +31,7 @@ const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
         return <a onClick={updateReviewStatus.bind(this, item.studentActivityId, item.studentDraftId, 'submitted')}>Send Review</a>;
       case 'submitted':
       case 'viewed':
-        return `Review sent ${item.reviewedDate}`;
+        return `Review sent ${item.reviewedAt}`;
       default:
         return <span>&mdash;</span>;
     }
@@ -43,7 +43,7 @@ const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
         {item.studentId}
       </td>
       <td data-id="completion-date">
-        {item.status === 'submitted' ? item.submittedDate : <span>&mdash;</span>}
+        {item.status === 'submitted' ? item.submittedAt : <span>&mdash;</span>}
       </td>
       <td data-id="review-status">
         {renderReviewStatus()}

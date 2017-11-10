@@ -13,8 +13,7 @@ module.exports = function(
       let command = {
         studentActivityId: ctx.params.studentActivityId,
         draftId: ctx.params.draftId,
-        createdById: ctx.state.user.id,
-        createdDate: moment().toISOString()
+        createdBy: ctx.state.user.id
       };
       let studentDraft = await repository.query(
         sqlLibrary.studentDraft,
@@ -72,8 +71,7 @@ module.exports = function(
       let command = ctx.request.body;
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
-      command.modifiedById = ctx.state.user.id;
-      command.modifiedDate = moment().toISOString();
+      command.modifiedBy = ctx.state.user.id;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.updateDraftPaper(command);
 
@@ -87,6 +85,7 @@ module.exports = function(
       let command = ctx.request.body;
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
+      command.modifiedBy = ctx.state.user.id;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.updateFeedbackPaper(command);
 
@@ -121,7 +120,7 @@ module.exports = function(
 
         for (let answer of answers) {
           let data = {
-            createdById: ctx.state.user.id,
+            createdBy: ctx.state.user.id,
             studentDraftId: command.studentDraftId,
             studentReflectionAnswerId: answer.studentReflectionAnswerId,
             studentReflectionQuestionId: answer.studentReflectionQuestionId,
@@ -139,8 +138,7 @@ module.exports = function(
       const studentActivityId = ctx.params.studentActivityId;
       let command = {
         studentDraftId: ctx.params.studentDraftId,
-        modifiedById: ctx.state.user.id,
-        submittedDate: moment().format('YYYY-MM-DD')
+        modifiedBy: ctx.state.user.id
       };
 
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
@@ -163,12 +161,15 @@ module.exports = function(
       }
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
-      command.modifiedById = ctx.state.user.id;
-      command.reviewedDate = reviewStatus === 'submitted' ? moment().format('YYYY-MM-DD') : null;
+      command.modifiedBy = ctx.state.user.id;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.updateReviewStatus(command);
 
-      await repository.query(sqlLibrary.studentDraft, 'updateReviewStatus', event);
+      if (reviewStatus === 'submitted') {
+        await repository.query(sqlLibrary.studentDraft, 'updateReviewStatusSubmitted', event);
+      } else {
+        await repository.query(sqlLibrary.studentDraft, 'updateReviewStatus', event);
+      }
 
       ctx.body = reviewStatus;
       ctx.status = 200;
@@ -179,8 +180,7 @@ module.exports = function(
       const command = ctx.request.body;
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
-      command.modifiedById = ctx.state.user.id;
-      command.modifiedDate = moment().toISOString();
+      command.modifiedBy = ctx.state.user.id;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.submitEndComment(command);
 
@@ -194,8 +194,7 @@ module.exports = function(
       const command = ctx.request.body;
       const studentActivityId = ctx.params.studentActivityId;
       command.studentDraftId = ctx.params.studentDraftId;
-      command.modifiedById = ctx.state.user.id;
-      command.modifiedDate = moment().toISOString();
+      command.modifiedBy = ctx.state.user.id;
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.submitFinalGrade(command);
 
@@ -223,15 +222,14 @@ module.exports = function(
 
         for (let score of scores) {
           let data = {
-            modifiedById: ctx.state.user.id,
-            modifiedDate: moment().toISOString(),
+            createdBy: ctx.state.user.id,
             studentRubricScoreId: score.studentRubricScoreId,
             studentDraftId: command.studentDraftId,
             rubricId: command.rubricId,
-            criteriaId: score.criteriaId,
+            criterionId: score.criterionId,
             score: score.score
           };
-          await repo.query(sqlLibrary.studentRubricScore, 'updateStudentRubricScore', data);
+          await repo.query(sqlLibrary.studentRubricScore, 'createStudentRubricScore', data);
         }
       });
 
@@ -261,12 +259,11 @@ module.exports = function(
 
       repository.transaction(async repo => {
         let data = {
-          createdById: ctx.state.user.id,
-          createdDate: moment().toISOString(),
+          createdBy: ctx.state.user.id,
           studentDraftId: command.studentDraftId,
           content: feedback.content,
           level: feedback.level || null,
-          showHeader: !!feedback.showHeader,
+          isHeaderShown: !!feedback.isHeaderShown,
           goalId: feedback.goalId || null,
           editingMarkId: feedback.editingMarkId || null,
           feedbackId: feedback.feedbackId
@@ -295,14 +292,12 @@ module.exports = function(
       command.studentDraftId = ctx.params.studentDraftId;
       command.feedbackId = ctx.params.feedbackId;
       command.deletedById = ctx.state.user.id;
-      command.deletedDate = moment().toISOString();
       const studentActivity = await studentActivityBuilder.getStudentActivityARById(command.studentActivityId);
       const event = studentActivity.removeFeedbackFromStudentDraft(command);
 
       const queryParams = {
         feedbackId: event.feedbackId,
-        deletedById: ctx.state.user.id,
-        deletedDate: moment().toISOString()
+        deletedById: ctx.state.user.id
       };
 
       repository.transaction(async repo => {

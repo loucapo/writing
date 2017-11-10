@@ -14,14 +14,14 @@ const RubricDisplay = ({ rubric, studentDraftId }) => {
         <div>3 - Meets Expectations</div>
         <div>4 - Exceeds Expectations</div>
       </header>
-      {rubric.criteria.map((criteria) => {
+      {rubric.criteria.map((criterion) => {
         return (
-          <div key={criteria.criteriaId} className={styles.row}>
-            <div className={styles.heading}>{parser(criteria.title.replace('/', '/<wbr>'))}</div>
-            {criteria.rubricLevels.map((level, index) => (
+          <div key={criterion.criterionId} className={styles.row}>
+            <div className={styles.heading}>{parser(criterion.title.replace('/', '/<wbr>'))}</div>
+            {criterion.rubricLevels.map((level, index) => (
               <CriteriaDisplay
                 key={index}
-                criteriaId={criteria.criteriaId}
+                criterionId={criterion.criterionId}
                 score={level.score}
                 content={level.content}
                 selected={level.selected}

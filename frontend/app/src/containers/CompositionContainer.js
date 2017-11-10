@@ -4,22 +4,26 @@ import { connect } from 'react-redux';
 import { Composition } from '../components/Composition';
 import { getOrCreateStudentDraft, updateDraftPaper } from '../modules/studentDraftModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
+import { getStudentActivityByActivityId } from '../modules/studentActivityModule';
 
 class CompositionContainer extends Component {
   componentWillMount() {
     this.loadData();
   }
 
-  loadData() {
-    this.props.getOrCreateStudentDraft(this.props.studentActivityId, this.props.params.draftId);
-    if (this.props.studentDraft) {
-      this.props.getReflectionAnswers(this.props.studentDraft.studentDraftId);
-    }
+  componentDidUpdate() {
+    this.loadData();
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.studentDraft && newProps.studentDraft !== this.props.studentDraft) {
-      this.props.getReflectionAnswers(newProps.studentDraft.studentDraftId);
+  loadData() {
+    if (!this.props.studentActivityId) {
+      this.props.getStudentActivityByActivityId(this.props.params.activityId);
+    } else {
+      if (!this.props.studentDraft || this.props.studentDraft.draftId !== this.props.params.draftId) {
+        this.props.getOrCreateStudentDraft(this.props.studentActivityId, this.props.params.draftId);
+      } else {
+        this.props.getReflectionAnswers(this.props.studentDraft.studentDraftId);
+      }
     }
   }
 
@@ -32,27 +36,28 @@ CompositionContainer.propTypes = {
   studentDraft: PropTypes.object,
   params: PropTypes.object,
   studentActivityId: PropTypes.string,
-  activityId: PropTypes.string,
+  getStudentActivityByActivityId: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
   getOrCreateStudentDraft: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
+  const studentActivityId = state.studentActivities[0] && state.studentActivities[0].studentActivityId;
   const studentDraft = state.studentDraft[0];
-  const studentActivity = state.studentActivities[0];
   const hasStartedReflectionQuestions =
     studentDraft && !!state.reflectionAnswers.some(answer => answer.studentDraftId === studentDraft.studentDraftId);
 
   return {
     studentDraft,
     activityId: props.params.activityId,
-    studentActivityId: studentActivity.studentActivityId,
+    studentActivityId,
     hasStartedReflectionQuestions,
     saveDraftMessage: state.messaging.saveDraft
   };
 };
 
 export default connect(mapStateToProps, {
+  getStudentActivityByActivityId,
   getReflectionAnswers,
   getOrCreateStudentDraft,
   updateDraftPaper

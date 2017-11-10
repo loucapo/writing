@@ -16,7 +16,7 @@ const Activity = ({ activity, drafts, draftCount, currentDraft }) => (
           options={{
             id: '12345',
             message: 'Activity created on ' +
-              moment(activity.createdDate).format('MMMM Do, YYYY') +
+              moment(activity.createdAt).format('MMMM Do, YYYY') +
               '. This is in draft mode and will not be visible to students until you assign it.',
             type: 'success',
             icon: 'check'

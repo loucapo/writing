@@ -1,9 +1,10 @@
 -- name: getRubrics
 select *
 from rubric
+ORDER BY index
 
 -- name: getRubricCriteria
-SELECT * FROM rubric_criteria
+SELECT * FROM rubric2criterion
 
 -- name: getRubricById
 select *

@@ -35,8 +35,8 @@ const mapStateToProps = (state, props) => {
     .map(submission => {
       return {
         ...submission,
-        submittedDate: moment(submission.submittedDate).format('MMMM Do, YYYY'),
-        reviewedDate: moment(submission.reviewedDate).format('MMMM Do, YYYY')
+        submittedAt: moment(submission.submittedAt).format('MMMM Do, YYYY'),
+        reviewedAt: moment(submission.reviewedAt).format('MMMM Do, YYYY')
       };
     })
     .sort(sortBy('studentId'));
