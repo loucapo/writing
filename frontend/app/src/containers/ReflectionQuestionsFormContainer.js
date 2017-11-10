@@ -46,18 +46,22 @@ ReflectionQuestionsFormContainer.propTypes = {
 const mapStateToProps = (state, props) => {
   const studentDraft = state.studentDraft[0];
   const drafts = state.drafts;
-  const draft = drafts.find(draftInState => draftInState.draftId === studentDraft.draftId);
+  const draft = drafts.find(draftInState => 
+    draftInState.draftId === (studentDraft && studentDraft.draftId)
+  );
   const reflectionQuestionsState = state.reflectionQuestions;
   const reflectionAnswersState = state.reflectionAnswers;
 
   const reflectionQuestions = draft && draft.studentReflectionQuestions.map(questionId =>
-    reflectionQuestionsState && reflectionQuestionsState.find(question =>
+    reflectionQuestionsState.find(question =>
       question.studentReflectionQuestionId === questionId
     )
   );
 
   const reflectionAnswers = state.reflectionAnswers.filter(answer =>
-    reflectionQuestions.find(question => question.studentReflectionQuestionId === answer.studentReflectionQuestionId)
+    reflectionQuestions && reflectionQuestions.find(question => 
+      question.studentReflectionQuestionId === answer.studentReflectionQuestionId
+    )
   );
 
   return {

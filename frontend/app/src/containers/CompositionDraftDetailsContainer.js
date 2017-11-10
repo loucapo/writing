@@ -25,7 +25,7 @@ class CompositionDraftDetailsContainer extends Component {
     if (_.isEmpty(this.props.drafts)) {
       this.props.getDraftsForActivity(this.props.activityId);
     }
-    if (_.isEmpty(this.props.studentDrafts)) {
+    if (_.isEmpty(this.props.studentDrafts) && this.props.studentActivityId) {
       this.props.getStudentDrafts(this.props.studentActivityId);
     }
     if (_.isEmpty(this.props.reflectionQuestionsState)) {
