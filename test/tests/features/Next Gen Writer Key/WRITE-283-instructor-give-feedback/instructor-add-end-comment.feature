@@ -40,10 +40,10 @@ Feature: Instructor can add end comment to completed draft
     Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And I type "Good job" in "end_comment_textarea"
+    And I type "Good Job" in "end_comment_textarea"
     And I click "done_button"
     And I click "stay_draft_page_button"
-    Then I wait until there is 1 "add_end_comment" visible
+    Then the text of "end_comment_textarea" should be "Good Job"
 
   @WRITE-1165
   Scenario: Instructor Leaves Page Without Saving End Comment and Leaves
@@ -52,11 +52,12 @@ Feature: Instructor can add end comment to completed draft
     Then I sleep for 1 seconds
     And I click "submissions.row_start(1)"
     And Changing to using page "instructor_feedback"
-    And Changing to using page "instructor_feedback"
     And I type "Good job" in "end_comment_textarea"
     And I click "done_button"
     And I click "leave_draft_page_button"
+    And Changing to using page "instructor_summary"
     And I click "submissions.row_start(1)"
+    And Changing to using page "instructor_feedback"
     Then the text of "end_comment_textarea" should be ""
 
   Scenario: The Instructor Adds an End Comment

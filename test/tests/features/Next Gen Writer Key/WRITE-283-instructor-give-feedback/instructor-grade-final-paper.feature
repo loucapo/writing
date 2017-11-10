@@ -62,7 +62,7 @@ Feature: Instructor Gives Score to Final Paper
     And I type "78" in "final_grade_box"
     And I click "done_button"
     And I click "stay_draft_page_button"
-    Then the text of "final_grade_box" should be "78"
+    Then the value of "final_grade_box" should be "78"
 
   @WRITE-1165
   Scenario: Instructor Leaves Page Without Saving Final Grade and Leaves
@@ -74,8 +74,10 @@ Feature: Instructor Gives Score to Final Paper
     And I type "78" in "final_grade_box"
     And I click "done_button"
     And I click "leave_draft_page_button"
+    And Changing to using page "instructor_summary"
     And I click "submissions.row_start(1)"
-    Then the text of "final_grade_box" should be ""
+    And Changing to using page "instructor_feedback"
+    Then the value of "final_grade_box" should be ""
 
   Scenario: Instructor Gives a Decimal Grade
     Given I launch the activity as an "instructor"
