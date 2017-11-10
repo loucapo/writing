@@ -13,7 +13,7 @@ const ActivityHeaderDisplay = ({ drafts, activityId }) => {
           if (feedbackAvailable) {
             link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
           } else if (draft.studentInfo.status === 'submitted') {
-            link = `/studentDraft/${draft.studentInfo.studentDraftId}/display`;
+            link = `/activity/${activityId}/studentDraft/${draft.studentInfo.studentDraftId}/display`;
           }
           return (
             <MLButton
