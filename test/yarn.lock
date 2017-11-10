@@ -224,6 +224,16 @@ check-error@^1.0.1, check-error@^1.0.2:
   version "1.0.2"
   resolved "http://npm.macmillantech.com:8080/c/check-error/_attachments/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
 
+chromedriver@2.33.1:
+  version "2.33.1"
+  resolved "http://npm.macmillantech.com:8080/c/chromedriver/_attachments/chromedriver-2.33.1.tgz#e5434f1a1636aa7d826099cd5616276e55ac4ec1"
+  dependencies:
+    extract-zip "^1.6.5"
+    kew "^0.7.0"
+    mkdirp "^0.5.1"
+    request "^2.81.0"
+    rimraf "^2.5.4"
+
 chromedriver@^2.29.0:
   version "2.31.0"
   resolved "http://npm.macmillantech.com:8080/c/chromedriver/_attachments/chromedriver-2.31.0.tgz#82c758ee4015aa880f45008bba346433cf9db14a"
