@@ -44,7 +44,7 @@ module.exports = function(faker) {
             "created_by": "activity:0:created_by_id",
             "student_activity_id": faker.random.uuid(),
             "activity_id": 'activity:0:activity_id',
-            "student_id": "5ef7fa10-f4a4-4add-9191-882de6b9065b"
+            "student_id": "auth0|5ef7fa10-f4a4-4add-9191-882de6b9065b"
           }
         ],
         draft: [
@@ -86,10 +86,10 @@ module.exports = function(faker) {
             "draft_id": 'draft:0:draft_id',
             "review_status": "notStarted",
             "status": "submitted",
-            "student_id": "5ef7fa10-f4a4-4add-9191-882de6b9065b"
+            "student_id": "auth0|5ef7fa10-f4a4-4add-9191-882de6b9065b"
           }
         ],
-        draft_student_reflection_question: [
+        draft2student_reflection_question: [
           {
             "draft_id": 'draft:0:draft_id',
             "index": 0,
@@ -111,7 +111,7 @@ module.exports = function(faker) {
             "modified_at": null,
             "student_reflection_answer": "how texting and writing for school are related.",
             "student_reflection_question_id": "823955a1-0a8e-42cc-b24c-cb30afcac93f",
-            "created_by": "5ef7fa10-f4a4-4add-9191-882de6b9065b"
+            "created_by": "auth0|5ef7fa10-f4a4-4add-9191-882de6b9065b"
           }
         ]
       }
