@@ -1,4 +1,3 @@
-@only
 @WRITE-967
 Feature: Instructor Can Score Rubric
   @dbreset

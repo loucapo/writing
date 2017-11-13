@@ -55,7 +55,7 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       yellow_criteria_selected: {
         desc: `Yellow highlighting`,
-        locator: `[class^= 'Criteria__yellow']`
+        locator: `[class*= 'Criteria__yellow']`
       },
       rubric_row_2: {
         desc: `Second row of the rubric table for grading`,
