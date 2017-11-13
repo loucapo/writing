@@ -27,7 +27,9 @@ class Rubric extends Component {
     let newScores = this.state.rubricScores.slice();
     newScores = newScores.filter(rubricScore => rubricScore.criterionId !== newScore.criterionId);
     newScores.push(newScore);
-    this.setState({rubricScores: newScores});
+    this.setState({rubricScores: newScores}, () => {
+      this.props.setUnsavedChanges(true);
+    });
   };
 
   handleSave = () => {
@@ -38,6 +40,7 @@ class Rubric extends Component {
       rubric.rubricId,
       this.state.rubricScores
     );
+    this.props.setUnsavedChanges(false);
   };
 
   render() {
