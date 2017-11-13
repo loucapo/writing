@@ -38,7 +38,7 @@ Feature: Instructor Views Draft Submissions Switcher
     And I click "submissions.dropdown_drafts(2)"
     Then the text of "submissions.dropdown_drafts_title" should be "Final Paper"
     Then I wait until there is 1 "submissions.row_name" visible
-    And the text of "submissions.row_name(1)" should be "5ef7fa10-f4a4-4add-9191-882de6b9065b"
+    And the text of "submissions.row_name(1)" should be "auth0|5ef7fa10-f4a4-4add-9191-882de6b9065b"
 
   @dbreset
   Scenario: Setup Student Draft Submission
@@ -57,7 +57,7 @@ Feature: Instructor Views Draft Submissions Switcher
     And I click "student_submissions"
     Then I wait until there is 1 "submissions.row_name" visible
     Then the text of "submissions.dropdown_drafts_title" should be "Draft 1"
-    And the text of "submissions.row_name(1)" should be "5ef7fa10-f4a4-4add-9191-882de6b9065b"
+    And the text of "submissions.row_name(1)" should be "auth0|5ef7fa10-f4a4-4add-9191-882de6b9065b"
     And I click "draft_count"
     And I click "draft.delete_button"
     Then I sleep for 1 seconds
