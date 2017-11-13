@@ -1,38 +1,53 @@
 -- name: getActivityById
-select *
-from activity
-where activity_id = :activityId
-AND deleted_at is null
+SELECT
+  activity_id,
+  course_id,
+  title,
+  prompt,
+  rubric_id
+FROM
+  writer_key.activity
+WHERE
+  activity_id = :activityId
+  AND deleted_at IS NULL
+;
 
 -- name: createActivity
-INSERT INTO activity
-    (activity_id,
-    course_id,
-    title,
-    created_by)
+INSERT INTO
+  writer_key.activity (activity_id, course_id, title, created_by)
 VALUES
-    (:activityId,
-    :courseId,
-    :title,
-    :createdBy)
+  (:activityId, :courseId, :title, :createdBy)
+;
 
 -- name: updateActivityTitle
-UPDATE activity
-SET title = :title,
-modified_by = :modifiedBy,
-modified_at = now()
-WHERE activity_id = :activityId
+UPDATE
+  writer_key.activity
+SET
+  title = :title,
+  modified_by = :modifiedBy,
+  modified_at = now()
+WHERE
+  activity_id = :activityId
+;
 
 -- name: updateActivityPrompt
-UPDATE activity
-SET prompt = :prompt,
-modified_by = :modifiedBy,
-modified_at = now()
-WHERE activity_id = :activityId
+UPDATE
+  writer_key.activity
+SET
+  prompt = :prompt,
+  modified_by = :modifiedBy,
+  modified_at = now()
+WHERE
+  activity_id = :activityId
+;
 
 -- name: updateActivityRubric
-UPDATE activity
-SET rubric_id = :rubricId,
-modified_by = :modifiedBy,
-modified_at = now()
-WHERE activity_id = :activityId
+UPDATE
+  writer_key.activity
+SET
+  rubric_id = :rubricId,
+  modified_by = :modifiedBy,
+  modified_at = now()
+WHERE
+  activity_id = :activityId
+;
