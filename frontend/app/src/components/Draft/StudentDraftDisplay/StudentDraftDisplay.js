@@ -9,7 +9,7 @@ import styles from './studentDraftDisplay.css';
 const StudentDraftDisplay = ({ draft, activityId }) => {
   let link = `/activity/${activityId}/draft/${draft.draftId}`;
   if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
-    link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
+    link = `/activity/${activityId}/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
   } else if (draft.studentInfo.status === 'submitted') {
     link = `/activity/${activityId}/studentDraft/${draft.studentInfo.studentDraftId}/display`;
   }

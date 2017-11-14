@@ -4,10 +4,10 @@ import { Link } from 'react-router';
 
 import styles from './submissionStatusItem.css';
 
-const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
+const SubmissionStatusItem = ({ item, updateReviewStatus, activityId }) => {
   const renderReviewStatus = () => {
     const createLink = (text) => {
-      return (<Link to={`/studentdraft/${item.studentDraftId}/feedbacktool`}>{text}</Link>);
+      return (<Link to={`/activity/${activityId}/studentdraft/${item.studentDraftId}/feedbacktool`}>{text}</Link>);
     };
 
     switch(item.reviewStatus) {
@@ -57,7 +57,8 @@ const SubmissionStatusItem = ({ item, updateReviewStatus }) => {
 
 SubmissionStatusItem.propTypes = {
   item: PropTypes.object,
-  updateReviewStatus: PropTypes.func
+  updateReviewStatus: PropTypes.func,
+  activityId: PropTypes.string
 };
 
 

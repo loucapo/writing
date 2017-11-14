@@ -8,12 +8,13 @@ import styles from './activityDisplay.css';
 
 const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
   const getLatestDraftWithFeedback = () => {
-    let reversedDrafts = drafts.slice().reverse();
+    const reversedDrafts = drafts.slice().reverse();
     return reversedDrafts.find(draft => draft.studentInfo.reviewStatus === 'submitted');
   };
 
   const renderMessages = message => {
-    let draftWithFeedback = getLatestDraftWithFeedback();
+    const draftWithFeedback = getLatestDraftWithFeedback();
+    const studentDraftId = draftWithFeedback && draftWithFeedback.studentInfo.studentDraftId;
 
     if (message && message.status === 'success') {
       return (
@@ -32,7 +33,7 @@ const ActivityDisplay = ({ activityId, activity, drafts, draftMessage }) => {
           options={{
             id: '998877',
             message: `Your instructor has submitted feedback for your ${draftWithFeedback.studentInfo.title}.`,
-            link: `/studentDraft/${draftWithFeedback.studentInfo.studentDraftId}/feedbackdisplay`,
+            link: `/activity/${activityId}/studentDraft/${studentDraftId}/feedbackdisplay`,
             linkText: 'View Feedback',
             type: 'default'
           }}
