@@ -129,9 +129,16 @@ exports.define = function(steps) {
     done();
   });
 
-  steps.given(/I create a new activity as a[n] "(.+)"/, function(user, done) {
+  steps.given(/I create a new activity as a[n]? "(.+)"/, function(user, done) {
     const uuid = faker.random.uuid();
     const createUrl = `${marvin.config.baseUrl}/${user}/${uuid}`;
+    driver.get(createUrl);
+    done();
+  });
+
+  steps.given(/I launch data fixtures activity as a[n]? "(.+)"/, function(user,done) {
+    let act_id = this.ctx.dbload.studentSubmittedActivity.activity[0].activity_id;
+    const createUrl = `${marvin.config.baseUrl}/${user}/${act_id}`;
     driver.get(createUrl);
     done();
   });
