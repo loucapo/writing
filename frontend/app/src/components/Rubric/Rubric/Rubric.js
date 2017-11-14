@@ -6,7 +6,7 @@ import styles from './rubric.css';
 
 class Rubric extends Component {
   state = {
-    rubricScores: this.props.rubricScores
+    rubricScores: this.props.rubricScores || []
   };
 
   componentWillReceiveProps = newProps => {
@@ -23,8 +23,13 @@ class Rubric extends Component {
     return this.state.rubricScores.length === 0;
   };
 
-  setRubricScores = (rubricScores) => {
-    this.setState({rubricScores});
+  setRubricScore = (newScore) => {
+    let newScores = this.state.rubricScores.slice();
+    newScores = newScores.filter(rubricScore => rubricScore.criterionId !== newScore.criterionId);
+    newScores.push(newScore);
+    this.setState({rubricScores: newScores}, () => {
+      this.props.setUnsavedChanges(true);
+    });
   };
 
   handleSave = () => {
@@ -35,6 +40,7 @@ class Rubric extends Component {
       rubric.rubricId,
       this.state.rubricScores
     );
+    this.props.setUnsavedChanges(false);
   };
 
   render() {
@@ -60,8 +66,7 @@ class Rubric extends Component {
                   score={level.score}
                   content={level.content}
                   selected={level.selected}
-                  rubricScores={this.state.rubricScores}
-                  setRubricScores={this.setRubricScores}
+                  setRubricScore={this.setRubricScore}
                 />
               ))}
             </div>
@@ -82,7 +87,8 @@ Rubric.propTypes = {
   rubricScores: PropTypes.array,
   studentActivityId: PropTypes.string,
   studentDraftId: PropTypes.string,
-  updateRubricScores: PropTypes.func
+  updateRubricScores: PropTypes.func,
+  setUnsavedChanges: PropTypes.func
 };
 
 export default Rubric;
