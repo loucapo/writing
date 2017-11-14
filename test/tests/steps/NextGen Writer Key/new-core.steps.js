@@ -201,6 +201,11 @@ exports.define = function(steps) {
     return polocToElem(element).then(el => el.click());
   });
 
+  steps.then(/the value of "(.*)" should be "(.*)"/, (elem, value) => {
+    return polocToElem(elem)
+      .then(el => el.getAttribute('value'))
+      .then(actualValue => value.should.equal(actualValue));
+  });
   // NOTE that this is an IS match, not a contains.
   steps.then(/the text of "(.*)" should be "(.*)"/, (elem, text) => {
     return polocToElem(elem)

@@ -55,7 +55,7 @@ exports.InstructorFeedbackPage = class extends Page {
       },
       yellow_criteria_selected: {
         desc: `Yellow highlighting`,
-        locator: `[class^= 'Criteria__yellow']`
+        locator: `[class*= 'Criteria__yellow']`
       },
       rubric_row_2: {
         desc: `Second row of the rubric table for grading`,
@@ -164,7 +164,15 @@ exports.InstructorFeedbackPage = class extends Page {
       end_comment_section: {
         desc: `End Comment Card`,
         locator: `[data-id='end-comment-section']`
-      }
+      },
+      leave_draft_page_button: {
+        desc: `Button on alert that navigates student back to activity summary page`,
+        locator: `[data-id='details-panel-activity-link-dialog-leave']`
+      },
+      stay_draft_page_button: {
+        desc: `Button on alert that keeps student on drafting page`,
+        locator: `[data-id='details-panel-activity-link-dialog-stay']`
+      },
     };
   }
 
