@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { FeedbackDisplay } from '../components/FeedbackTool';
-import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
-import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
 import { addStudentInfoToDrafts } from './selectors';
+import { getActivity } from '../modules/activityModule';
+import { getDraftsForActivity } from '../modules/draftModule';
 import { getStudentDraftByStudentDraftId, updateReviewStatus } from '../modules/studentDraftModule';
 import { getStudentDrafts } from '../modules/studentDraftsModule';
+import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
+import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
 import { getRubricScores } from '../modules/rubricScoresModule';
 import { getFeedback } from '../modules/feedbackModule';
 import { getEditingMarks } from '../modules/editingMarksModule';
@@ -18,13 +21,27 @@ class FeedbackDisplayContainer extends Component {
   }
 
   loadData() {
-    this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
-    this.props.getReflectionQuestions();
+    if (!this.props.activity) {
+      this.props.getActivity(this.props.params.activityId);
+    }
+    if (_.isEmpty(this.props.drafts)) {
+      this.props.getDraftsForActivity(this.props.params.activityId);
+    }
+    if (!this.props.studentDraft) {
+      this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
+    }
+    if (_.isEmpty(this.props.reflectionQuestionsState)) {
+      this.props.getReflectionQuestions();
+    }
+    if (_.isEmpty(this.props.editingMarks)) {
+      this.props.getEditingMarks();
+    }
+    if (_.isEmpty(this.props.goals)) {
+      this.props.getGoals();
+    }
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
     this.props.getRubricScores(this.props.params.studentDraftId);
     this.props.getFeedback(this.props.params.studentDraftId);
-    this.props.getEditingMarks();
-    this.props.getGoals();
   }
 
   componentWillUpdate(newProps) {
@@ -47,8 +64,15 @@ class FeedbackDisplayContainer extends Component {
 }
 
 FeedbackDisplayContainer.propTypes = {
+  activity: PropTypes.object,
   params: PropTypes.object,
   studentDraft: PropTypes.object,
+  drafts: PropTypes.array,
+  reflectionQuestionsState: PropTypes.array,
+  editingMarks: PropTypes.array,
+  goals: PropTypes.array,
+  getActivity: PropTypes.func,
+  getDraftsForActivity: PropTypes.func,
   getReflectionQuestions: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
   getStudentDraftByStudentDraftId: PropTypes.func,
@@ -61,18 +85,23 @@ FeedbackDisplayContainer.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
+  const activity = state.activities[0];
   const draftsWithInfo = addStudentInfoToDrafts(state, props);
-  let studentDraft = state.studentDraft[0];
+  const studentDraft = state.studentDraft[0];
+  const activityTitle = activity && activity.title;
+  const noRubricScores = state.rubricScores.length === 0;
+  const draft = draftsWithInfo.find(draftWithInfo => draftWithInfo.draftId === (studentDraft && studentDraft.draftId));
+  const linkableDrafts = draftsWithInfo.filter(
+    draftWithInfo => draftWithInfo.draftId !== (studentDraft && studentDraft.draftId)
+  );
+  const reflectionQuestionsState = state.reflectionQuestions;
+  const editingMarks = state.editingMarks;
+  const goals = state.goal;
+
   let lastDraft;
   let numberOfDrafts = state.drafts.length;
   let reflectionQuestions = [];
   let draftTitle = '';
-  let activityTitle = state.activities[0].title;
-  let noRubricScores = state.rubricScores.length === 0;
-  let draft = draftsWithInfo.find(draftWithInfo => draftWithInfo.draftId === (studentDraft && studentDraft.draftId));
-  let linkableDrafts = draftsWithInfo.filter(
-    draftWithInfo => draftWithInfo.draftId !== (studentDraft && studentDraft.draftId)
-  );
 
   // Default back button goes to activity
   let backLink = `${state.defaults.homeRoute}?display=submissions`;
@@ -111,13 +140,13 @@ const mapStateToProps = (state, props) => {
   let feedback = state.feedback.map(item => {
     // Grabs feedback titles and predefined comments
     if (item.editingMarkId) {
-      let editingMark = state.editingMarks.find(mark => mark.editingMarkId === item.editingMarkId);
+      let editingMark = editingMarks.find(mark => mark.editingMarkId === item.editingMarkId);
       if (editingMark) {
         item.title = editingMark.title;
         item.predefined = editingMark.description;
       }
     } else if (item.goalId) {
-      let draftGoal = state.goal.find(goal => goal.goalId === item.goalId);
+      let draftGoal = goals.find(goal => goal.goalId === item.goalId);
       if (draftGoal) {
         item.title = draftGoal.title;
         item.predefined = draftGoal[`option${item.level}`];
@@ -139,7 +168,7 @@ const mapStateToProps = (state, props) => {
     studentDraft,
     reflectionQuestions,
     homeRoute: state.defaults.homeRoute,
-    rubricId: state.activities[0].rubricId,
+    rubricId: activity && activity.rubricId,
     draftTitle,
     activityTitle,
     lastDraft,
@@ -147,11 +176,15 @@ const mapStateToProps = (state, props) => {
     backText,
     linkableDrafts,
     noRubricScores,
-    feedback
+    feedback,
+    reflectionQuestionsState,
+    editingMarks
   };
 };
 
 export default connect(mapStateToProps, {
+  getActivity,
+  getDraftsForActivity,
   getReflectionQuestions,
   getReflectionAnswers,
   getStudentDraftByStudentDraftId,

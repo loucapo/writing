@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromRaw } from 'draft-js';
 import { FeedbackTool } from '../components/FeedbackTool';
+import { getActivity } from '../modules/activityModule';
+import { getDraftsForActivity } from '../modules/draftModule';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
 import {
@@ -20,8 +23,18 @@ class FeedbackToolContainer extends Component {
   }
 
   loadData() {
-    this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
-    this.props.getReflectionQuestions();
+    if (!this.props.activity) {
+      this.props.getActivity(this.props.params.activityId);
+    }
+    if (_.isEmpty(this.props.drafts)) {
+      this.props.getDraftsForActivity(this.props.params.activityId);
+    }
+    if (!this.props.studentDraft) {
+      this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
+    }
+    if (_.isEmpty(this.props.reflectionQuestionsState)) {
+      this.props.getReflectionQuestions();
+    }
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
   }
 
@@ -48,10 +61,14 @@ class FeedbackToolContainer extends Component {
 }
 
 FeedbackToolContainer.propTypes = {
+  activity: PropTypes.object,
+  drafts: PropTypes.array,
   draft: PropTypes.object,
   studentDraft: PropTypes.object,
+  reflectionQuestionsState: PropTypes.array,
   params: PropTypes.object,
-  homeRoute: PropTypes.string,
+  getActivity: PropTypes.func,
+  getDraftsForActivity: PropTypes.func,
   getReflectionQuestions: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
   getStudentDraftByStudentDraftId: PropTypes.func,
@@ -60,15 +77,17 @@ FeedbackToolContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  let studentDraft = state.studentDraft[0];
-  let draft = state.drafts.find(draftInState => draftInState.draftId === (studentDraft && studentDraft.draftId));
-  let numberOfDrafts = state.drafts.length;
+  const activity = state.activities[0];
+  const studentDraft = state.studentDraft[0];
+  const drafts = state.drafts;
+  const draft = drafts.find(draftState => draftState.draftId === (studentDraft && studentDraft.draftId));
+  const rubricIsEmpty = activity && (!activity.rubricId || activity.rubricId === '0000');
+  const reflectionQuestionsState = state.reflectionQuestions;
   let draftTitle = '';
   let reflectionQuestions = [];
-  let rubricId = state.activities[0].rubricId;
   let lastDraft;
   if (draft) {
-    lastDraft = numberOfDrafts === draft.index + 1;
+    lastDraft = drafts.length === draft.index + 1;
     draftTitle = lastDraft ? `Final Paper` : `Draft ${draft.index + 1}`;
     reflectionQuestions = draft.studentReflectionQuestions.map(questionId => {
       let answer = state.reflectionAnswers.find(
@@ -87,17 +106,22 @@ const mapStateToProps = (state) => {
   }
 
   return {
+    activity,
     studentDraft,
     reflectionQuestions,
     homeRoute: state.defaults.homeRoute,
     draft,
+    drafts,
     draftTitle,
-    rubricId,
-    lastDraft
+    rubricIsEmpty,
+    lastDraft,
+    reflectionQuestionsState
   };
 };
 
 export default connect(mapStateToProps, {
+  getActivity,
+  getDraftsForActivity,
   getReflectionQuestions,
   getReflectionAnswers,
   getStudentDraftByStudentDraftId,

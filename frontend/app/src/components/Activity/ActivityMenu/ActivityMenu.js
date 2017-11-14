@@ -47,6 +47,7 @@ class ActivityMenu extends Component {
         <div className={styles.spacer}>
           {(display === 'submissions') ?
             <SubmissionStatus
+              activityId={this.props.activityId}
               drafts={this.props.drafts}
               currentDraft={this.props.currentDraft}
             />

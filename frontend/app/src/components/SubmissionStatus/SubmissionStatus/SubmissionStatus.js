@@ -51,7 +51,10 @@ class SubmissionStatus extends Component {
               draftOptions={this.state.draftOptions}
               selectDraftSubmissions={this.selectDraftSubmissions}
               draftId={this.state.draftId} />
-            <SubmissionStatusTableContainer draftId={this.state.draftId} />
+            <SubmissionStatusTableContainer
+              activityId={this.props.activityId}
+              draftId={this.state.draftId}
+            />
           </div>
           :
           <div className={styles.submissionStatusEmpty}>
@@ -63,6 +66,7 @@ class SubmissionStatus extends Component {
 }
 
 SubmissionStatus.propTypes = {
+  activityId: PropTypes.string,
   drafts: PropTypes.array,
   currentDraft: PropTypes.string
 };

@@ -4,7 +4,7 @@ import { SubmissionStatusItem } from '../index';
 
 import styles from './submissionStatusTable.css';
 
-const SubmissionStatusTable = ({ submissionStatuses, updateReviewStatus }) => {
+const SubmissionStatusTable = ({ submissionStatuses, updateReviewStatus, activityId }) => {
   return (
     <table className={styles.table}>
       <thead>
@@ -18,7 +18,12 @@ const SubmissionStatusTable = ({ submissionStatuses, updateReviewStatus }) => {
       <tbody>
         {(submissionStatuses && submissionStatuses.length > 0) ?
           submissionStatuses.map(x => (
-            <SubmissionStatusItem key={x.studentId} item={x} updateReviewStatus={updateReviewStatus} />
+            <SubmissionStatusItem
+              key={x.studentId}
+              item={x}
+              updateReviewStatus={updateReviewStatus}
+              activityId={activityId}
+            />
           ))
           :
           <tr>
@@ -33,6 +38,7 @@ const SubmissionStatusTable = ({ submissionStatuses, updateReviewStatus }) => {
 };
 
 SubmissionStatusTable.propTypes = {
+  activityId: PropTypes.string,
   submissionStatuses: PropTypes.array,
   updateReviewStatus: PropTypes.func
 };

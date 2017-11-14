@@ -1,12 +1,32 @@
 -- name: getRubrics
-select *
-from rubric
-ORDER BY index
+SELECT
+  rubric_id,
+  title,
+  description,
+  index
+FROM
+  writer_key.rubric
+ORDER BY
+  index
+;
 
 -- name: getRubricCriteria
-SELECT * FROM rubric2criterion
+SELECT
+  rubric_id,
+  criterion_id,
+  index
+FROM
+  writer_key.rubric2criterion
+;
 
 -- name: getRubricById
-select *
-from rubric
-where rubric_id = :id
+SELECT
+  rubric_id,
+  title,
+  description,
+  index
+FROM
+  writer_key.rubric
+WHERE
+  rubric_id = :id
+;

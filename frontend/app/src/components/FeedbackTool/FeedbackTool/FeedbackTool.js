@@ -52,7 +52,7 @@ class FeedbackTool extends Component {
             bordered={true}
             color="red"
             dataId="details-panel-activity-link-dialog-leave"
-            link={`${this.props.homeRoute}?currentDraft=${this.props.draft.draftId}`}
+            link={`${this.props.homeRoute}?currentDraft=${this.props.draft && this.props.draft.draftId}`}
           />
           <MLButton
             title="Stay"
@@ -62,7 +62,7 @@ class FeedbackTool extends Component {
         </MLDialog>
         <FeedbackToolHeader
           homeRoute={this.props.homeRoute}
-          draftId={this.props.draft.draftId}
+          draftId={this.props.draft && this.props.draft.draftId}
           draftTitle={this.props.draftTitle}
           submittedDate={this.props.studentDraft.submittedAt}
           checkUnsavedChanges={this.checkUnsavedChanges}
@@ -111,7 +111,7 @@ class FeedbackTool extends Component {
               setUnsavedChanges={this.setUnsavedChanges}
             />
           </MLCard>
-          {(this.props.rubricId && this.props.rubricId !== '0000' && this.props.lastDraft) ?
+          {(!this.props.rubricIsEmpty && this.props.lastDraft) ?
             <MLCard type="rubric" title="Final Rubric Evaluation">
               <RubricContainer
                 studentActivityId={this.props.studentDraft.studentActivityId}
@@ -135,7 +135,7 @@ FeedbackTool.propTypes = {
   draftTitle: PropTypes.string,
   submitEndComment: PropTypes.func,
   submitFinalGrade: PropTypes.func,
-  rubricId: PropTypes.string,
+  rubricIsEmpty: PropTypes.bool,
   lastDraft: PropTypes.bool,
   updateFeedbackPaper: PropTypes.func,
   createFeedback: PropTypes.func,

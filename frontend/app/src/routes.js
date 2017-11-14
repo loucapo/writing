@@ -25,9 +25,14 @@ const routes = (
       path="/reflectionQuestions/:activityId/studentdraft/:studentDraftId"
       component={ReflectionQuestionsFormContainer}
     />
-    <Route path="/studentdraft/:studentDraftId/feedbacktool" component={FeedbackToolContainer} />
-    <Route path="/studentdraft/:studentDraftId/feedbackdisplay" component={FeedbackDisplayContainer} />
-
+    <Route
+      path="/activity/:activityId/studentdraft/:studentDraftId/feedbacktool"
+      component={FeedbackToolContainer}
+    />
+    <Route
+      path="/activity/:activityId/studentdraft/:studentDraftId/feedbackdisplay"
+      component={FeedbackDisplayContainer}
+    />
     {/* This route needs to be at the bottom, since it is the most non-specific */}
     <Route path="/:lmsId/:courseId/:activityId" component={LaunchContainer} />
   </Route>
