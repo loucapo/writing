@@ -30,7 +30,8 @@ class CompositionDraftDetails extends Component {
   navigateToPreviousDraft = () => {
     const lastDraftId = this.props.lastDraftWithFeedback.studentInfo.studentDraftId;
     const currentDraftId = this.props.draft.draftId;
-    const link = `/studentDraft/${lastDraftId}/feedbackdisplay?fromDraftId=${currentDraftId}`;
+    const activityId = this.props.activityId;
+    const link = `/activity/${activityId}/studentDraft/${lastDraftId}/feedbackdisplay?fromDraftId=${currentDraftId}`;
     this.checkForUnsavedChanges(link);
   };
 
@@ -126,6 +127,7 @@ class CompositionDraftDetails extends Component {
 }
 
 CompositionDraftDetails.propTypes = {
+  activityId: PropTypes.string,
   activityPrompt: PropTypes.object,
   promptIsNotEmpty: PropTypes.bool,
   draft: PropTypes.object,

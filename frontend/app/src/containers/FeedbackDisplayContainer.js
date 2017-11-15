@@ -21,13 +21,14 @@ class FeedbackDisplayContainer extends Component {
   }
 
   loadData() {
-    if (!this.props.activity) {
+    const activityLoaded = this.props.activity && this.props.activity.activityId === this.props.params.activityId;
+    if (!activityLoaded) {
       this.props.getActivity(this.props.params.activityId);
     }
-    if (_.isEmpty(this.props.drafts)) {
+    if (_.isEmpty(this.props.drafts) || !activityLoaded) {
       this.props.getDraftsForActivity(this.props.params.activityId);
     }
-    if (!this.props.studentDraft) {
+    if (!this.props.studentDraft || this.props.studentDraft.studentDraftId !== this.props.params.studentDraftId) {
       this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
     }
     if (_.isEmpty(this.props.reflectionQuestionsState)) {

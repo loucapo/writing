@@ -29,7 +29,7 @@ const FeedbackDisplayHeader = ({ backLink, backText, linkableDrafts }) => (
         const feedbackAvailable = draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed';
         let link = `/activity/${draft.activityId}/draft/${draft.draftId}`;
         if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
-          link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
+          link = `/activity/${draft.activityId}/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
         } else if (draft.studentInfo.status === 'submitted') {
           link = `/activity/${draft.activityId}/studentDraft/${draft.studentInfo.studentDraftId}/display`;
         }

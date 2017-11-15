@@ -11,7 +11,7 @@ const ActivityHeaderDisplay = ({ drafts, activityId }) => {
           const feedbackAvailable = draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed';
           let link = `/activity/${activityId}/draft/${draft.draftId}`;
           if (feedbackAvailable) {
-            link = `/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
+            link = `/activity/${activityId}/studentDraft/${draft.studentInfo.studentDraftId}/feedbackdisplay`;
           } else if (draft.studentInfo.status === 'submitted') {
             link = `/activity/${activityId}/studentDraft/${draft.studentInfo.studentDraftId}/display`;
           }
