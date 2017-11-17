@@ -12,7 +12,9 @@ const SubmissionStatusItem = ({ item, updateReviewStatus, activityId }) => {
 
     switch(item.reviewStatus) {
       case 'submitted':
-      case 'viewed':
+      case 'viewed': {
+        return createLink('Review Complete');
+      }
       case 'inProgress': {
         return createLink('Return to Review');
       }

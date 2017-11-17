@@ -17,10 +17,10 @@ const SubmissionStatusTable = ({ submissionStatuses, updateReviewStatus, activit
       </thead>
       <tbody>
         {(submissionStatuses && submissionStatuses.length > 0) ?
-          submissionStatuses.map(x => (
+          submissionStatuses.map(statusItem => (
             <SubmissionStatusItem
-              key={x.studentId}
-              item={x}
+              key={statusItem.studentId}
+              item={statusItem}
               updateReviewStatus={updateReviewStatus}
               activityId={activityId}
             />

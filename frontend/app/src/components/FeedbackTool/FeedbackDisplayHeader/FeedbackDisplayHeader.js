@@ -25,7 +25,7 @@ const FeedbackDisplayHeader = ({ backLink, backText, linkableDrafts }) => (
       </div>
     </div>
     <div className={styles.rightContainer}>
-      {linkableDrafts.map(draft => {
+      {linkableDrafts ? linkableDrafts.map(draft => {
         const feedbackAvailable = draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed';
         let link = `/activity/${draft.activityId}/draft/${draft.draftId}`;
         if (draft.studentInfo.reviewStatus === 'submitted' || draft.studentInfo.reviewStatus === 'viewed') {
@@ -44,7 +44,7 @@ const FeedbackDisplayHeader = ({ backLink, backText, linkableDrafts }) => (
             color={feedbackAvailable ? 'white' : ''}
           />
         );
-      })}
+      }) : null}
     </div>
   </header>
 );

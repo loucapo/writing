@@ -90,6 +90,7 @@ class FeedbackTool extends Component {
               createFeedback={this.props.createFeedback}
               content={this.props.studentDraft.feedbackPaper}
               createFeedbackError={this.props.createFeedbackError}
+              feedback={this.props.feedback}
             />
           </MLCard>
           {this.props.lastDraft ?
@@ -139,7 +140,8 @@ FeedbackTool.propTypes = {
   lastDraft: PropTypes.bool,
   updateFeedbackPaper: PropTypes.func,
   createFeedback: PropTypes.func,
-  createFeedbackError: PropTypes.object
+  createFeedbackError: PropTypes.object,
+  feedback: PropTypes.array
 };
 
 export default FeedbackTool;

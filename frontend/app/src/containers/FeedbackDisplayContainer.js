@@ -81,6 +81,7 @@ FeedbackDisplayContainer.propTypes = {
   getRubricScores: PropTypes.func,
   updateReviewStatus: PropTypes.func,
   getFeedback: PropTypes.func,
+  feedback: PropTypes.array,
   getEditingMarks: PropTypes.func,
   getGoals: PropTypes.func
 };

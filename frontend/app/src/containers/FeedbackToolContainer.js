@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { stateToHTML } from 'draft-js-export-html';
 import { convertFromRaw } from 'draft-js';
-import { FeedbackTool } from '../components/FeedbackTool';
 import { getActivity } from '../modules/activityModule';
 import { getDraftsForActivity } from '../modules/draftModule';
+import { FeedbackTool, FeedbackDisplay } from '../components/FeedbackTool';
+import { getFeedback } from '../modules/feedbackModule';
 import { getReflectionQuestions } from '../modules/reflectionQuestionsModule';
 import { getReflectionAnswers } from '../modules/reflectionAnswersModule';
 import {
@@ -35,6 +36,10 @@ class FeedbackToolContainer extends Component {
     if (_.isEmpty(this.props.reflectionQuestionsState)) {
       this.props.getReflectionQuestions();
     }
+
+    this.props.getStudentDraftByStudentDraftId(this.props.params.studentDraftId);
+    this.props.getFeedback(this.props.params.studentDraftId);
+    this.props.getReflectionQuestions();
     this.props.getReflectionAnswers(this.props.params.studentDraftId);
   }
 
@@ -56,7 +61,13 @@ class FeedbackToolContainer extends Component {
   }
 
   render() {
-    return this.props.studentDraft ? <FeedbackTool {...this.props} /> : null;
+    if (this.props.studentDraft &&
+        (this.props.studentDraft.reviewStatus === 'viewed' ||
+        this.props.studentDraft.reviewStatus === 'submitted')) {
+      return <FeedbackDisplay {...this.props} />;
+    } else {
+      return this.props.studentDraft ? <FeedbackTool {...this.props} /> : null;
+    }
   }
 }
 
@@ -72,6 +83,8 @@ FeedbackToolContainer.propTypes = {
   getReflectionQuestions: PropTypes.func,
   getReflectionAnswers: PropTypes.func,
   getStudentDraftByStudentDraftId: PropTypes.func,
+  getFeedback: PropTypes.func,
+  feedback: PropTypes.array,
   updateReviewStatus: PropTypes.func,
   updateFeedbackPaper: PropTypes.func
 };
@@ -105,6 +118,33 @@ const mapStateToProps = (state) => {
     });
   }
 
+  let feedback = state.feedback.map(item => {
+    // Grabs feedback titles and predefined comments
+    if (item.editingMarkId && state.editingMarks) {
+      let editingMark = state.editingMarks.find(mark => mark.editingMarkId === item.editingMarkId);
+      if (editingMark) {
+        item.title = editingMark.title;
+        item.predefined = editingMark.description;
+      }
+    } else if (item.goalId && state.goal) {
+      let draftGoal = state.goal.find(goal => goal.goalId === item.goalId);
+      if (draftGoal) {
+        item.title = draftGoal.title;
+        item.predefined = draftGoal[`option${item.level}`];
+      }
+    } else {
+      item.title = 'Comment';
+      if (item.level === 1) {
+        item.predefined = 'Needs extensive revision';
+      } else if (item.level === 2) {
+        item.predefined = 'Needs work';
+      } else if (item.level === 3) {
+        item.predefined = 'Nice job!';
+      }
+    }
+    return item;
+  });
+
   return {
     activity,
     studentDraft,
@@ -114,14 +154,16 @@ const mapStateToProps = (state) => {
     drafts,
     draftTitle,
     rubricIsEmpty,
+    reflectionQuestionsState,
     lastDraft,
-    reflectionQuestionsState
+    feedback
   };
 };
 
 export default connect(mapStateToProps, {
   getActivity,
   getDraftsForActivity,
+  getFeedback,
   getReflectionQuestions,
   getReflectionAnswers,
   getStudentDraftByStudentDraftId,
