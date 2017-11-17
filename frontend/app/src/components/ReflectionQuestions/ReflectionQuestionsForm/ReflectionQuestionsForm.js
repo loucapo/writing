@@ -57,7 +57,8 @@ class ReflectionQuestionsForm extends Component {
     this.props.submitDraft(
       this.props.studentActivityId,
       this.props.studentDraftId,
-      this.props.homeRoute
+      this.props.homeRoute,
+      this.props.draftName
     );
 
   handleChange = (reflectionId, value) => {
@@ -191,6 +192,7 @@ ReflectionQuestionsForm.propTypes = {
   activityId: PropTypes.string,
   draftId: PropTypes.string,
   submitDraft: PropTypes.func,
+  draftName: PropTypes.string,
   homeRoute: PropTypes.string,
   saveReflectionMessage: PropTypes.object
 };

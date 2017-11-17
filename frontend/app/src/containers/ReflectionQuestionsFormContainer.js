@@ -64,6 +64,9 @@ const mapStateToProps = (state, props) => {
     )
   );
 
+  let draftName = (draft.index === studentDraft.length - 1) ?
+    `Final Paper` : `Draft ${draft.index + 1}`;
+
   return {
     activityId: props.params.activityId,
     studentActivityId: studentDraft && studentDraft.studentActivityId,
@@ -72,6 +75,7 @@ const mapStateToProps = (state, props) => {
     drafts,
     draftId: draft && draft.draftId,
     homeRoute: state.defaults.homeRoute,
+    draftName,
     saveReflectionMessage: state.messaging.saveReflection,
     reflectionQuestions: reflectionQuestions || [],
     reflectionAnswers,

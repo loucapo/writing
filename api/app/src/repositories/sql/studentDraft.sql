@@ -129,6 +129,11 @@ SET
   modified_at = now()
 WHERE
   student_draft_id = :studentDraftId
+RETURNING
+  student_draft_id,
+  status,
+  review_status,
+  submitted_at
 ;
 
 -- name: updateReviewStatus

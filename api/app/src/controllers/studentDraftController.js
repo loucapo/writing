@@ -144,8 +144,8 @@ module.exports = function(
       let studentActivity = await studentActivityBuilder.getStudentActivityARById(studentActivityId);
       let event = studentActivity.submitDraft(command);
 
-      await repository.query(sqlLibrary.studentDraft, 'submitStudentDraft', event);
-
+      const result = await repository.query(sqlLibrary.studentDraft, 'submitStudentDraft', event);
+      ctx.body = result;
       ctx.status = 200;
       return ctx;
     },

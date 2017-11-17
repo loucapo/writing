@@ -42,9 +42,17 @@ export default (state = [], action) => {
     }
     case SUBMIT_DRAFT.SUCCESS: {
       const studentDraftId = action.action.studentDraftId;
+      const savedStudentDraft = action.result[0];
+      let submitted = null;
+      let submittedAt = null;
+
       return state.map(studentDraft => {
+        if (studentDraftId === savedStudentDraft.studentDraftId) {
+          submitted = savedStudentDraft.status === 'submitted';
+          submittedAt = savedStudentDraft.submittedAt;
+        }
         return studentDraft.studentDraftId === studentDraftId
-          ? {...studentDraft, submitted: true}
+          ? {...studentDraft, submitted, submittedAt}
           : studentDraft;
       });
     }
@@ -144,12 +152,13 @@ const successFunction = route => (action, result) => {
   return {type: action.states.SUCCESS, action, result};
 };
 
-export function submitDraft(studentActivityId, studentDraftId, homeRoute) {
+export function submitDraft(studentActivityId, studentDraftId, homeRoute, draftName) {
   return {
     type: SUBMIT_DRAFT.REQUEST,
     states: SUBMIT_DRAFT,
     url: `${config.apiUrl}studentactivity/${studentActivityId}/studentdraft/${studentDraftId}/submit`,
     studentDraftId,
+    draftName,
     successFunction: successFunction(homeRoute),
     params: {
       method: 'put'
