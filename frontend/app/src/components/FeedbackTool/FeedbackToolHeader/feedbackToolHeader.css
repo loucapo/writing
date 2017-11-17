@@ -17,11 +17,6 @@
   justify-content: center;
 }
 
-.arrowIcon {
-  fill: var(--white);
-  margin-right: 5px;
-}
-
 .draftTitle {
   font-size: 17px;
 }

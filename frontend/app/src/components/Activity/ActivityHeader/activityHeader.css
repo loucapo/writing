@@ -1,29 +1,7 @@
 @import 'variables.css';
 
-.header, .studentHeader {
-  align-items: center;
+.header {
   background-color: var(--header-background-blue);
-  color: var(--blue-light);
-  display: flex;
-  justify-content: space-between;
   padding: 15px 20px;
-}
-
-.studentHeader {
-  justify-content: flex-end;
-}
-
-.rightContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.leftContainer {
-  width: 40px;
-  display: flex;
-}
-
-.arrowIcon {
-  fill: var(--white);
-  margin: auto auto;
+  min-height: 33px;
 }

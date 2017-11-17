@@ -90,38 +90,24 @@ const mapStateToProps = (state, props) => {
   const activity = state.activities[0];
   const draftsWithInfo = addStudentInfoToDrafts(state, props);
   const studentDraft = state.studentDraft[0];
-  const activityTitle = activity && activity.title;
   const noRubricScores = state.rubricScores.length === 0;
   const draft = draftsWithInfo.find(draftWithInfo => draftWithInfo.draftId === (studentDraft && studentDraft.draftId));
-  const linkableDrafts = draftsWithInfo.filter(
-    draftWithInfo => draftWithInfo.draftId !== (studentDraft && studentDraft.draftId)
+  const linkableDrafts = draftsWithInfo.filter(draftWithInfo =>
+    (draftWithInfo.draftId !== (studentDraft && studentDraft.draftId)) && !draftWithInfo.studentInfo.disabled
   );
   const reflectionQuestionsState = state.reflectionQuestions;
   const editingMarks = state.editingMarks;
   const goals = state.goal;
+  const homeRoute = `${state.defaults.homeRoute}?display=submissions`;
 
   let lastDraft;
   let numberOfDrafts = state.drafts.length;
   let reflectionQuestions = [];
   let draftTitle = '';
 
-  // Default back button goes to activity
-  let backLink = `${state.defaults.homeRoute}?display=submissions`;
-  let backText = activityTitle;
-
   if (draft) {
     lastDraft = numberOfDrafts === draft.index + 1;
     draftTitle = draft.studentInfo.buttonText;
-
-    const routingState = state.routing.locationBeforeTransitions;
-    if (routingState.query && routingState.query.fromDraftId) {
-      const fromDraftId = routingState.query.fromDraftId;
-      const fromDraft = draftsWithInfo.find(draftWithInfo => draftWithInfo.draftId === fromDraftId);
-      if (fromDraft) {
-        backLink = `/activity/${draft.activityId}/draft/${fromDraftId}`;
-        backText = fromDraft.studentInfo.title;
-      }
-    }
 
     reflectionQuestions = draft.studentReflectionQuestions.map(reflection => {
       let answer = state.reflectionAnswers.find(
@@ -169,13 +155,10 @@ const mapStateToProps = (state, props) => {
   return {
     studentDraft,
     reflectionQuestions,
-    homeRoute: state.defaults.homeRoute,
+    homeRoute,
     rubricId: activity && activity.rubricId,
     draftTitle,
-    activityTitle,
     lastDraft,
-    backLink,
-    backText,
     linkableDrafts,
     noRubricScores,
     feedback,

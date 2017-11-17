@@ -12,9 +12,6 @@ const FeedbackDisplay = ({
   reflectionQuestions,
   homeRoute,
   draftTitle,
-  backText,
-  backLink,
-  activityTitle,
   rubricId,
   lastDraft,
   linkableDrafts,
@@ -22,14 +19,7 @@ const FeedbackDisplay = ({
   feedback
 }) => (
   <div className={styles.page}>
-    <FeedbackDisplayHeader
-      homeRoute={homeRoute}
-      draftTitle={draftTitle}
-      backText={backText}
-      backLink={backLink}
-      activityTitle={activityTitle}
-      linkableDrafts={linkableDrafts}
-    />
+    <FeedbackDisplayHeader homeRoute={homeRoute} linkableDrafts={linkableDrafts} />
     <div className={styles.container}>
       <MLCard type="end-comment" title="Instructor Comment">
         { (lastDraft && studentDraft.finalGrade) ?
@@ -98,11 +88,8 @@ FeedbackDisplay.propTypes = {
   homeRoute: PropTypes.string,
   reflectionQuestions: PropTypes.array,
   draftTitle: PropTypes.string,
-  activityTitle: PropTypes.string,
   rubricId: PropTypes.string,
   lastDraft: PropTypes.bool,
-  backLink: PropTypes.string,
-  backText: PropTypes.string,
   linkableDrafts: PropTypes.array,
   noRubricScores: PropTypes.bool,
   feedback: PropTypes.array

@@ -61,8 +61,6 @@ class FeedbackTool extends Component {
           />
         </MLDialog>
         <FeedbackToolHeader
-          homeRoute={this.props.homeRoute}
-          draftId={this.props.draft && this.props.draft.draftId}
           draftTitle={this.props.draftTitle}
           submittedDate={this.props.studentDraft.submittedAt}
           checkUnsavedChanges={this.checkUnsavedChanges}

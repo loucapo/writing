@@ -15,19 +15,13 @@
   justify-content: center;
 }
 
-.leftSubContainer {
-  display: flex;
-  justify-content: center;
-}
-
 .rightContainer {
   display: flex;
   justify-content: center;
 }
 
-.arrowIcon {
+.icon {
   fill: var(--white);
-  margin-right: 5px;
 }
 
 .instructorName {
